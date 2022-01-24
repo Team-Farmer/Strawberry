@@ -10,7 +10,7 @@ public class StrawBerry : MonoBehaviour
     public float createTime = 0f;
     public bool canGrow = true;
     Animator anim;
-    // Start is called before the first frame update
+   
     void Awake()
     {
         anim = GetComponent<Animator>();
@@ -29,9 +29,8 @@ public class StrawBerry : MonoBehaviour
         transform.localPosition = Vector3.zero;
         transform.localRotation = Quaternion.identity;
         transform.localScale = Vector3.zero;
-    }
-    // Update is called once per frame
-    void Update()
+    }   
+    void Update() // 시간에 따라 딸기 성장
     {
         if (canGrow)
         {
@@ -42,20 +41,18 @@ public class StrawBerry : MonoBehaviour
                 SetAnim(2);
             else if (15.0f <= createTime && createTime < 20.0f)
                 SetAnim(3);
-            else if (20.0f <= createTime && createTime < 25.0f)
-                SetAnim(4);
-            else if (createTime >= 25.0f)
+            else if (createTime >= 20.0f)
             {
-                SetAnim(5);
+                SetAnim(4);
                 canGrow = false;
             }
         }
     }
-    void SetAnim(int level)
+    public void SetAnim(int level)
     {
         anim.SetInteger("Level", level);
     }
-    public void Explosion(Vector2 from, Vector2 to, float explo_range)
+    public void Explosion(Vector2 from, Vector2 to, float explo_range) // DOTWeen 효과
     {
         transform.position = from;
         Sequence sequence = DOTween.Sequence();
