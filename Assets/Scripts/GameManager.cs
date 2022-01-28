@@ -5,13 +5,8 @@ using DG.Tweening;
 
 public class GameManager : MonoBehaviour
 {
-    [Header("------------[ Object ]")]
-    public GameObject Strawberry;
-    public GameObject Farm;
-    public List<Farm> FarmList = new List<Farm>();
-
     [Header("------------[ Object Pooling ]")]
-    
+    public GameObject Strawberry;
     public Transform StrawberryGroup;
     public List<StrawBerry> strawPool;
     
@@ -21,46 +16,41 @@ public class GameManager : MonoBehaviour
     [Header("------------[ DOTWeen ]")]
     public Transform target;
 
-    //[Header("------------[ Other ]")]
-    
+    // Start is called before the first frame update
     void Awake()
     {
         Application.targetFrameRate = 60;
         strawPool = new List<StrawBerry>();
-        
-        for (int i = 0; i < poolSize; i++) // 오브젝트 풀링으로 미리 딸기 생성
+
+        for(int i = 0; i < poolSize; i++)
         {
             MakeStrawBerry();
         }
-    }    
-    void Update()
+    }
+    // Update is called once per frame
+    void LateUpdate()
     {
-        if (Input.GetMouseButtonDown(0)) // 마우스 왼쪽 버튼으로
-        {           
-            StrawBerry stb = GetStrawBerry(); // 딸기를 풀링에서 가져온다
-            if(stb != null)
-            {
-                GameObject farmObj = ClickObj(); // 클릭한 오브젝트를 가져온다
-                if(farmObj != null && !farmObj.GetComponent<Farm>().isPlant) // 밭이 클릭 되었으며 밭에 딸기가 심어져 있지 않다면
-                {
-                    PlantStrawBerry(stb, farmObj); // 심는다
-                    farmObj.GetComponent<Farm>().isPlant = true; // 체크 변수 갱신
-                }                                  
-            }                
-        }
-        if(Input.GetMouseButtonDown(1)) // 오른쪽 마우스 버튼으로
+        if (Input.GetMouseButtonDown(0))
         {
-            Harvest(); // 수확
+            StrawBerry st = GetStrawBerry();
+            if(st != null)
+                PlantStrawBerry(st);
+        }
+        if(Input.GetMouseButtonDown(1))
+        {
+            Harvest();
         }
     }
-    void MakeStrawBerry() // 딸기 생성
+    StrawBerry MakeStrawBerry()
     {
         GameObject instantStrawBerryObj = Instantiate(Strawberry, StrawberryGroup);
         instantStrawBerryObj.name = "StrawBerry " + strawPool.Count;
         StrawBerry instantStrawBerry = instantStrawBerryObj.GetComponent<StrawBerry>();
 
         instantStrawBerry.gameObject.SetActive(false);
-        strawPool.Add(instantStrawBerry);       
+        strawPool.Add(instantStrawBerry);
+
+        return instantStrawBerry;
     }
     StrawBerry GetStrawBerry()
     {
@@ -69,16 +59,17 @@ public class GameManager : MonoBehaviour
         {
             if (!strawPool[poolCursor].gameObject.activeSelf)
             {
-                return strawPool[poolCursor]; // 비활성화된 딸기 반환
+                return strawPool[poolCursor];
             }
             poolCursor = (poolCursor + 1) % strawPool.Count;
         }
-        return null; // 딸기가 16개 가득 찼다면 null 반환
+        return null;
     }
-    void PlantStrawBerry(StrawBerry stb, GameObject obj)
+    void PlantStrawBerry(StrawBerry st)
     {
-        stb.gameObject.SetActive(true); // 딸기 활성화      
-        stb.transform.position = obj.transform.position; // 밭의 Transform에 딸기를 심는다
+        st.gameObject.SetActive(true);
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        st.transform.position = new Vector3(mousePos.x, mousePos.y, 0);
     }
     void Harvest()
     {
@@ -86,25 +77,12 @@ public class GameManager : MonoBehaviour
         Vector2 pos;
         for (int i = 0; i < strawPool.Count; i++)
         {
-            if (strawPool[poolCursor].gameObject.activeSelf && !strawPool[poolCursor].canGrow) // 딸기가 활성화 된 상태 && 다 자란 딸기라면
+            if (strawPool[poolCursor].gameObject.activeSelf && !strawPool[poolCursor].canGrow)
             {
-                StrawBerry stb = strawPool[poolCursor];
-
-                stb.SetAnim(5); // 수확 이미지로 변경
-                pos = stb.transform.position;
-                stb.Explosion(pos, target.position, 0.5f); // DOTWeen 효과 구현
-                FarmList[poolCursor].isPlant = false; // 밭을 비워준다
+                pos = strawPool[poolCursor].transform.position;
+                strawPool[poolCursor].Explosion(pos, target.position, 0.5f);
             }
             poolCursor = (poolCursor + 1) % strawPool.Count;
         }
-    }
-    GameObject ClickObj() // 클릭당한 오브젝트를 반환
-    {
-        Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero, 0f);
-
-        if(hit.collider == null) return null;
-
-        return hit.collider.gameObject;
     }
 }
