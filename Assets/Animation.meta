@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: dc919c76af51c5c4aa2ff19ecc2ae93a
+=======
+guid: 2ab6dd5ab0091f64e881dd0715018910
+>>>>>>> parent of 9006bdf (딸기 심기 + 수확 연출)
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
