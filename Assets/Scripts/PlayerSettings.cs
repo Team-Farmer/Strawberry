@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Farm : MonoBehaviour
+public class PlayerSettings : MonoBehaviour
 {
-    public bool isPlant = false;
-    
+    // Start is called before the first frame update
     void Start()
     {
         
     }
-   
+
+    // Update is called once per frame
     void Update()
     {
         
-    }  
+    }
 }
