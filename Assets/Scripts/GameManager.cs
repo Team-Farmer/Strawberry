@@ -19,7 +19,13 @@ public class GameManager : MonoBehaviour
     [Header("------------[ DOTWeen ]")]
     public Transform target;
 
-    //[Header("------------[ Other ]")]  
+    //[Header("------------[ Other ]")]
+
+    [Header("------------[PartTime/Search/Berry List]")]
+    public GameObject PartTimeList;
+    public GameObject ResearchList;
+    public GameObject BerryList;
+
     
     void Awake()
     {
@@ -119,5 +125,32 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(0.5f); // 0.5초 뒤에
 
         farm.GetComponent<BoxCollider2D>().enabled = true; // 밭을 다시 활성화
+    }
+
+
+    //리스트 활성화 비활성화===========================================================================================
+    //중복.... 개선필요 공부
+    public void selectPTJList()
+    {
+        if (PartTimeList.activeSelf == false)
+            PartTimeList.SetActive(true);
+        else
+            PartTimeList.SetActive(false);
+
+    }
+    public void selectSearchList()
+    {
+        if (ResearchList.activeSelf == false)
+            ResearchList.SetActive(true);
+        else
+            ResearchList.SetActive(false);
+    }
+
+    public void selectBerryList()
+    {
+        if (BerryList.activeSelf == false)
+            BerryList.SetActive(true);
+        else
+            BerryList.SetActive(false);
     }
 }
