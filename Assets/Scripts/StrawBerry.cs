@@ -7,17 +7,23 @@ using Random = UnityEngine.Random;
 
 public class StrawBerry : MonoBehaviour
 {
+    Animator anim;
+ 
+    public GameObject Farm;
     public float createTime = 0f;
     public bool canGrow = true;
-    Animator anim;
-   
+
+    public int berryIdx;
+    public int farmIdx;
+
+
     void Awake()
     {
         anim = GetComponent<Animator>();
     }
     private void OnEnable()
     {
-        SetAnim(0);
+        SetAnim(0);        
     }
     private void OnDisable()
     {
@@ -28,7 +34,7 @@ public class StrawBerry : MonoBehaviour
         // 딸기 트랜스폼 초기화
         transform.localPosition = Vector3.zero;
         transform.localRotation = Quaternion.identity;
-        transform.localScale = Vector3.zero;
+        transform.localScale = Vector3.zero;       
     }   
     void Update() // 시간에 따라 딸기 성장
     {
@@ -52,11 +58,11 @@ public class StrawBerry : MonoBehaviour
     {
         anim.SetInteger("Level", level);
     }
-    public void Explosion(Vector2 from, Vector2 to, float explo_range) // DOTWeen 효과
+    public void Explosion(Vector2 from, Vector2 to, float exploRange) // DOTWeen 효과
     {
         transform.position = from;
         Sequence sequence = DOTween.Sequence();
-        sequence.Append(transform.DOMove(from + Random.insideUnitCircle * explo_range, 0.25f).SetEase(Ease.OutCubic));
+        sequence.Append(transform.DOMove(from + Random.insideUnitCircle * exploRange, 0.25f).SetEase(Ease.OutCubic));
         sequence.Append(transform.DOMove(to, 0.5f).SetEase(Ease.InCubic));
         sequence.AppendCallback(() => { gameObject.SetActive(false); });
     }

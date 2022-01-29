@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -115,4 +115,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119143a58df9bb14b82a6eccab17a38a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Farm: {fileID: 0}
   createTime: 0
+  canGrow: 1
+  berryIdx: 0
+  farmIdx: 0
