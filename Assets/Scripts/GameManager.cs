@@ -94,8 +94,8 @@ public class GameManager : MonoBehaviour
     }
     void PlantStrawBerry(StrawBerry stb, GameObject obj)
     {
-        stb.gameObject.SetActive(true); // µþ±â È°¼ºÈ­      
-        stb.transform.position = obj.transform.position; // ¹çÀÇ Transform¿¡ µþ±â¸¦ ½É´Â´Ù
+        stb.transform.position = obj.transform.position; ; // ¹çÀÇ Transform¿¡ µþ±â¸¦ ½É´Â´Ù
+        stb.gameObject.SetActive(true); // µþ±â È°¼ºÈ­              
     }
     void Harvest(StrawBerry berry)
     {       
