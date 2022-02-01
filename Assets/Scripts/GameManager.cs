@@ -25,8 +25,9 @@ public class GameManager : MonoBehaviour
     public GameObject PartTimeList;
     public GameObject ResearchList;
     public GameObject BerryList;
+    public GameObject blackPanel;
 
-    
+
     void Awake()
     {
         Application.targetFrameRate = 60;
@@ -133,24 +134,45 @@ public class GameManager : MonoBehaviour
     public void selectPTJList()
     {
         if (PartTimeList.activeSelf == false)
+        {
             PartTimeList.SetActive(true);
+            blackPanel.SetActive(true);
+        }
         else
+        {
             PartTimeList.SetActive(false);
+            blackPanel.SetActive(false);
+        }
+            
 
     }
     public void selectSearchList()
     {
         if (ResearchList.activeSelf == false)
+        {
             ResearchList.SetActive(true);
+            blackPanel.SetActive(true);
+        }
         else
+        {
             ResearchList.SetActive(false);
+            blackPanel.SetActive(false);
+        }
+            
     }
 
     public void selectBerryList()
     {
         if (BerryList.activeSelf == false)
+        {
             BerryList.SetActive(true);
+            blackPanel.SetActive(true);
+        }
         else
+        {
             BerryList.SetActive(false);
+            blackPanel.SetActive(false);
+        }
+            
     }
 }
