@@ -133,9 +133,9 @@ TextureImporter:
         x: 124
         y: 421
         width: 229
-        height: 114
+        height: 129
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -151,12 +151,12 @@ TextureImporter:
       name: truck_1
       rect:
         serializedVersion: 2
-        x: 395
+        x: 396
         y: 436
         width: 229
-        height: 116
+        height: 129
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -172,12 +172,12 @@ TextureImporter:
       name: truck_2
       rect:
         serializedVersion: 2
-        x: 125
+        x: 124
         y: 150
         width: 229
-        height: 116
+        height: 129
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -193,12 +193,12 @@ TextureImporter:
       name: truck_3
       rect:
         serializedVersion: 2
-        x: 391
+        x: 389
         y: 148
         width: 229
         height: 129
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
