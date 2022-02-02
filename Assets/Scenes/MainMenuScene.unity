@@ -1927,8 +1927,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7023c14a6daa40418b33253dfff1b2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Strawberry: {fileID: 3681563082960653409, guid: 1a3ded4f3cc60704c81c12f0c7768455, type: 3}
-  Farm: {fileID: 9217127060991989623, guid: 2cfd907148d0b4f49b367715f9f94d8a, type: 3}
+  berryPrefab: {fileID: 3681563082960653409, guid: 1a3ded4f3cc60704c81c12f0c7768455, type: 3}
+  truck: {fileID: 996431694}
   farmList:
   - {fileID: 393829940}
   - {fileID: 214265607}
@@ -1947,7 +1947,7 @@ MonoBehaviour:
   - {fileID: 525861762}
   - {fileID: 850695547}
   berryGroup: {fileID: 26298298}
-  strawList: []
+  berryList: []
   target: {fileID: 996431692}
   PartTimeList: {fileID: 642284036}
   ResearchList: {fileID: 969289837}
@@ -4180,6 +4180,9 @@ GameObject:
   m_Component:
   - component: {fileID: 996431692}
   - component: {fileID: 996431691}
+  - component: {fileID: 996431693}
+  - component: {fileID: 996431694}
+  - component: {fileID: 996431695}
   m_Layer: 0
   m_Name: Truck
   m_TagString: Untagged
@@ -4252,6 +4255,64 @@ Transform:
   m_Father: {fileID: 1391749330}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &996431693
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 996431690}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a2517d09354fbac429d7a564cd84a6b5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &996431694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 996431690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d92bf83d39bb86c4ca3ba187ecafe817, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  berryCnt: 0
+--- !u!61 &996431695
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 996431690}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 14.3125, y: 7.125}
+    newSize: {x: 14.010411, y: 19.05}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 14.3125, y: 7.125}
+  m_EdgeRadius: 0
 --- !u!1 &996972256
 GameObject:
   m_ObjectHideFlags: 0

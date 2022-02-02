@@ -6,15 +6,14 @@ using DG.Tweening;
 public class GameManager : MonoBehaviour
 {
     [Header("------------[ Object ]")]
-    public GameObject Strawberry; // 프리팹
-    public GameObject Farm; // 프리팹
-    
+    public GameObject berryPrefab; // 프리팹
+    public Truck truck;
     public List<Farm> farmList = new List<Farm>();
 
     [Header("------------[ Object Pooling ]")]
     
     public Transform berryGroup;
-    public List<StrawBerry> strawList;
+    public List<StrawBerry> berryList;
   
     [Header("------------[ DOTWeen ]")]
     public Transform target;
@@ -26,12 +25,10 @@ public class GameManager : MonoBehaviour
     public GameObject ResearchList;
     public GameObject BerryList;
     public GameObject blackPanel;
-
-
     void Awake()
     {
         Application.targetFrameRate = 60;
-        strawList = new List<StrawBerry>();
+        berryList = new List<StrawBerry>();
         
         for (int i = 0; i < 16; i++) // 오브젝트 풀링으로 미리 딸기 생성
         {
@@ -47,51 +44,55 @@ public class GameManager : MonoBehaviour
             {
                 if(obj.GetComponent<Farm>() != null)
                 {
-                    Farm farm = obj.GetComponent<Farm>();
-                    if (!farm.isPlant)
-                    {
-                        StrawBerry stb = GetStrawBerry();
-                        if (stb != null)
-                        {
-                            PlantStrawBerry(stb, obj); // 심는다
-                            stb.farmIdx = farm.farmIdx; // 딸기와 밭을 연결
-                            farm.berryIdx = stb.berryIdx; // 밭과 딸기를 연결
-
-                            farm.GetComponent<Farm>().isPlant = true; // 체크 변수 갱신
-                        }
-                    }
-                    else
-                    {
-                        if(!strawList[farm.berryIdx].canGrow)
-                        {
-                            Harvest(strawList[farm.berryIdx]); // 수확
-                        }
-                    }
-                }                
+                    ClickedFarm(obj);
+                }
+                else if(obj.GetComponent<Truck>() != null)
+                {
+                    ClickedTruck(obj);
+                }
             }
         }       
     }
+    void ClickedFarm(GameObject obj)
+    {
+        Farm farm = obj.GetComponent<Farm>();
+        if (!farm.isPlant)
+        {
+            StrawBerry stb = GetStrawBerry(farm.farmIdx);
+            if (stb != null)
+            {
+                PlantStrawBerry(stb, obj); // 심는다                            
+                farm.GetComponent<Farm>().isPlant = true; // 체크 변수 갱신
+            }
+        }
+        else
+        {
+            if (!berryList[farm.farmIdx].canGrow)
+            {
+                Harvest(berryList[farm.farmIdx]); // 수확
+            }
+        }
+    }
+    void ClickedTruck(GameObject obj)
+    {
+        truck.berryCnt = 0;
+    }
     void MakeStrawBerry() // 딸기 생성
     {
-        GameObject instantStrawBerryObj = Instantiate(Strawberry, berryGroup);
-        instantStrawBerryObj.name = "StrawBerry " + strawList.Count;
+        GameObject instantStrawBerryObj = Instantiate(berryPrefab, berryGroup);
+        instantStrawBerryObj.name = "StrawBerry " + berryList.Count;
 
         StrawBerry instantStrawBerry = instantStrawBerryObj.GetComponent<StrawBerry>();
-        instantStrawBerry.berryIdx = strawList.Count;
+        instantStrawBerry.berryIdx = berryList.Count;
 
         instantStrawBerry.gameObject.SetActive(false);
-        strawList.Add(instantStrawBerry);       
+        berryList.Add(instantStrawBerry);       
     }    
-    StrawBerry GetStrawBerry()
-    {       
-        for (int i = 0; i < strawList.Count; i++)
-        {
-            if (!strawList[i].gameObject.activeSelf)
-            {
-                return strawList[i]; // 비활성화된 딸기 반환
-            }            
-        }
-        return null; // 딸기가 16개 가득 찼다면 null 반환
+    StrawBerry GetStrawBerry(int idx)
+    {
+        if (farmList[idx].isPlant) return null;
+
+        return berryList[idx];       
     }
     void PlantStrawBerry(StrawBerry stb, GameObject obj)
     {
@@ -99,14 +100,17 @@ public class GameManager : MonoBehaviour
         stb.gameObject.SetActive(true); // 딸기 활성화              
     }
     void Harvest(StrawBerry berry)
-    {       
-        Vector2 pos;
-        Farm farm = farmList[berry.farmIdx];
+    {        
+        Farm farm = farmList[berry.berryIdx];
+        if (farm.isHarvest) return;
 
+        farm.isHarvest = true;        
+        Vector2 pos;
+        
         berry.SetAnim(5); // 수확 이미지로 변경
         pos = berry.transform.position;
         berry.Explosion(pos, target.position, 0.5f); // DOTWeen 효과 구현
-        farm.isPlant = false; // 밭을 비워준다
+        
 
         StartCoroutine(HarvestRoutine(farm)); // 연속으로 딸기가 심어지는 현상을 방지
     }
@@ -123,11 +127,20 @@ public class GameManager : MonoBehaviour
     {
         farm.GetComponent<BoxCollider2D>().enabled = false; // 밭을 잠시 비활성화
 
-        yield return new WaitForSeconds(0.5f); // 0.5초 뒤에
+        yield return new WaitForSeconds(0.65f); // 0.65초 뒤에
 
-        farm.GetComponent<BoxCollider2D>().enabled = true; // 밭을 다시 활성화
+        UpdateBerryCnt(berryList[farm.farmIdx]);
+
+        yield return new WaitForSeconds(0.25f); // 0.25초 뒤에
+
+        farm.isHarvest = false; // 수확이 끝남
+        farm.isPlant = false; // 밭을 비워준다
+        farm.GetComponent<BoxCollider2D>().enabled = true; // 밭을 다시 활성화      
     }
-
+    void UpdateBerryCnt(StrawBerry berry)
+    {     
+        truck.berryCnt += berry.route + 1;
+    }
 
     //리스트 활성화 비활성화===========================================================================================
     //중복.... 개선필요 공부
@@ -142,9 +155,7 @@ public class GameManager : MonoBehaviour
         {
             PartTimeList.SetActive(false);
             blackPanel.SetActive(false);
-        }
-            
-
+        }           
     }
     public void selectSearchList()
     {
@@ -157,10 +168,8 @@ public class GameManager : MonoBehaviour
         {
             ResearchList.SetActive(false);
             blackPanel.SetActive(false);
-        }
-            
+        }          
     }
-
     public void selectBerryList()
     {
         if (BerryList.activeSelf == false)

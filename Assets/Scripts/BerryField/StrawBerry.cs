@@ -13,8 +13,7 @@ public class StrawBerry : MonoBehaviour
     public float createTime = 0f;
     public bool canGrow = true;
 
-    public int berryIdx;
-    public int farmIdx;
+    public int berryIdx;    
     public int level;
     public int route = -1;
 
