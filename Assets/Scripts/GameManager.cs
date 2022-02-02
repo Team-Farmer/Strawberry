@@ -141,7 +141,28 @@ public class GameManager : MonoBehaviour
     {     
         truck.berryCnt += berry.route + 1;
     }
-
+    public void DisableObjColliderAll()
+    {
+        BoxCollider2D coll;
+        for (int i = 0; i < farmList.Count; i++)
+        {
+            coll = farmList[i].GetComponent<BoxCollider2D>();
+            coll.enabled = false;
+        }
+        coll = truck.GetComponent<BoxCollider2D>();
+        coll.enabled = false;
+    }
+    public void EnableObjColliderAll()
+    {
+        BoxCollider2D coll;
+        for (int i = 0; i < farmList.Count; i++)
+        {
+            coll = farmList[i].GetComponent<BoxCollider2D>();
+            coll.enabled = true;
+        }
+        coll = truck.GetComponent<BoxCollider2D>();
+        coll.enabled = true;
+    }
     //리스트 활성화 비활성화===========================================================================================
     //중복.... 개선필요 공부
     public void selectPTJList()
