@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class SettingBtn : MonoBehaviour
 {
-    private Animator animator;
+    private Animator SettingBtnAnimation;
 
     private void Awake()
     {
-        animator = GetComponent<Animator>();
+        SettingBtnAnimation = GetComponent<Animator>();
     }
 
     public void Close()
@@ -18,9 +18,9 @@ public class SettingBtn : MonoBehaviour
 
     private IEnumerator CloseAfterDelay()
     {
-        animator.SetTrigger("close");
+        SettingBtnAnimation.SetTrigger("close");
         yield return new WaitForSeconds(0.5f);
         gameObject.SetActive(false);
-        animator.ResetTrigger("close");
+        SettingBtnAnimation.ResetTrigger("close");
     }
 }
