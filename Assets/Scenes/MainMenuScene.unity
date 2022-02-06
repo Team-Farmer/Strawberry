@@ -821,7 +821,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: -3675539878750817376, guid: 06977984415298a4cac7e6140d63ae47, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -1123,7 +1123,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 5095874632179011366, guid: 06977984415298a4cac7e6140d63ae47, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -2183,7 +2183,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: -8927183765976450191, guid: 06977984415298a4cac7e6140d63ae47, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -3959,7 +3959,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 3977495248890329826, guid: e98be9ab0cc35ba458226243cc504810, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -4403,7 +4403,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 2382634430466632976, guid: e98be9ab0cc35ba458226243cc504810, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -5177,7 +5177,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 5918977534646295190, guid: 06977984415298a4cac7e6140d63ae47, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -5629,7 +5629,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 1215992238690302290, guid: 06977984415298a4cac7e6140d63ae47, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -6667,7 +6667,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 2382634430466632976, guid: e98be9ab0cc35ba458226243cc504810, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -7696,7 +7696,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 0}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -7956,7 +7956,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1426705492}
   m_Layer: 5
-  m_Name: CheckBtn
+  m_Name: CheckPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8285,7 +8285,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: -3673124854625704643, guid: 06977984415298a4cac7e6140d63ae47, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -8360,7 +8360,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 2094465837300424816, guid: 06977984415298a4cac7e6140d63ae47, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -8435,7 +8435,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: -565512039415540965, guid: 06977984415298a4cac7e6140d63ae47, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -9329,7 +9329,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 3977495248890329826, guid: e98be9ab0cc35ba458226243cc504810, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -9996,7 +9996,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: -729415088736156377, guid: 06977984415298a4cac7e6140d63ae47, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -10386,7 +10386,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 2382634430466632976, guid: e98be9ab0cc35ba458226243cc504810, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -10592,7 +10592,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1922965541}
   m_Layer: 5
-  m_Name: Settings
+  m_Name: Settings Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
