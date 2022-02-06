@@ -90,5 +90,5 @@ public class StrawBerry : MonoBehaviour
         sequence.Append(transform.DOMove(from + Random.insideUnitCircle * exploRange, 0.25f).SetEase(Ease.OutCubic));
         sequence.Append(transform.DOMove(to, 0.5f).SetEase(Ease.InCubic));
         sequence.AppendCallback(() => { gameObject.SetActive(false); });
-    }
+    }   
 }

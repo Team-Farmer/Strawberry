@@ -148,9 +148,12 @@ public class GameManager : MonoBehaviour
         {
             coll = farmList[i].GetComponent<BoxCollider2D>();
             coll.enabled = false;
+            
         }
+        //Time.timeScale = 0f;
+        Time.fixedDeltaTime = 0.02f * Time.timeScale;
         coll = truck.GetComponent<BoxCollider2D>();
-        coll.enabled = false;
+        coll.enabled = false;        
     }
     public void EnableObjColliderAll()
     {
@@ -158,11 +161,14 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < farmList.Count; i++)
         {
             coll = farmList[i].GetComponent<BoxCollider2D>();
-            coll.enabled = true;
+            coll.enabled = true;            
         }
+        //Time.timeScale = 1.0f;
+        Time.fixedDeltaTime = 0.02f * Time.timeScale;
         coll = truck.GetComponent<BoxCollider2D>();
-        coll.enabled = true;
+        coll.enabled = true;      
     }
+
     //리스트 활성화 비활성화===========================================================================================
     //중복.... 개선필요 공부
     public void selectPTJList()
