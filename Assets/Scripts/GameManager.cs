@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     [Header("------------[ DOTWeen ]")]
     public Transform target;
 
-    //[Header("------------[ Other ]")]
+    //[Header("------------[ Other ]")]   
 
     [Header("------------[PartTime/Search/Berry List]")]
     public GameObject PartTimeList;
@@ -80,7 +80,7 @@ public class GameManager : MonoBehaviour
     void MakeStrawBerry() // 딸기 생성
     {
         GameObject instantStrawBerryObj = Instantiate(berryPrefab, berryGroup);
-        instantStrawBerryObj.name = "StrawBerry " + berryList.Count;
+        instantStrawBerryObj.name = "Berry " + berryList.Count;
 
         StrawBerry instantStrawBerry = instantStrawBerryObj.GetComponent<StrawBerry>();
         instantStrawBerry.berryIdx = berryList.Count;
@@ -141,30 +141,29 @@ public class GameManager : MonoBehaviour
     {     
         truck.berryCnt += berry.route + 1;
     }
-    public void DisableObjColliderAll()
-    {
+    public void DisableObjColliderAll() // 모든 오브젝트의 collider 비활성화
+    {       
         BoxCollider2D coll;
         for (int i = 0; i < farmList.Count; i++)
         {
             coll = farmList[i].GetComponent<BoxCollider2D>();
             coll.enabled = false;
-            
+            berryList[i].canGrow = false;
         }
-        //Time.timeScale = 0f;
-        Time.fixedDeltaTime = 0.02f * Time.timeScale;
+        
         coll = truck.GetComponent<BoxCollider2D>();
         coll.enabled = false;        
     }
-    public void EnableObjColliderAll()
-    {
+    public void EnableObjColliderAll() // 모든 오브젝트의 collider 활성화
+    {        
         BoxCollider2D coll;
         for (int i = 0; i < farmList.Count; i++)
         {
             coll = farmList[i].GetComponent<BoxCollider2D>();
-            coll.enabled = true;            
+            coll.enabled = true;
+            berryList[i].canGrow = true;
         }
-        //Time.timeScale = 1.0f;
-        Time.fixedDeltaTime = 0.02f * Time.timeScale;
+       
         coll = truck.GetComponent<BoxCollider2D>();
         coll.enabled = true;      
     }

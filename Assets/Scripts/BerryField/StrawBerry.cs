@@ -6,7 +6,7 @@ using DG.Tweening;
 using Random = UnityEngine.Random;
 
 public class StrawBerry : MonoBehaviour
-{
+{   
     private Animator anim;
     private Vector2 pos;
     
@@ -17,6 +17,8 @@ public class StrawBerry : MonoBehaviour
     public int level;
     public int route = -1;
 
+    public float[] berryProb = { 10f, 20f, 30f, 40f };
+
     void Awake()
     {
         anim = GetComponent<Animator>();       
@@ -24,7 +26,7 @@ public class StrawBerry : MonoBehaviour
     private void OnEnable()
     {
         pos = transform.position;
-        route = Random.Range(0, 4);
+        DefineBerryRank();
         SetAnim(0);       
     }
     private void OnDisable()
@@ -73,9 +75,13 @@ public class StrawBerry : MonoBehaviour
         {
             transform.position = new Vector2(pos.x, pos.y + 0.1f);
         }
+        else if (this.level == 1)
+        {
+            transform.position = new Vector2(pos.x - 0.1f, pos.y + 0.35f);
+        }
         else
         {
-            transform.position = new Vector2(pos.x, pos.y + 0.3f);
+            transform.position = new Vector2(pos.x - 0.1f, pos.y + 0.4f);
         }
         anim.SetInteger("Level", level);
     }
@@ -90,5 +96,25 @@ public class StrawBerry : MonoBehaviour
         sequence.Append(transform.DOMove(from + Random.insideUnitCircle * exploRange, 0.25f).SetEase(Ease.OutCubic));
         sequence.Append(transform.DOMove(to, 0.5f).SetEase(Ease.InCubic));
         sequence.AppendCallback(() => { gameObject.SetActive(false); });
-    }   
+    }
+    void DefineBerryRank() // ´©Àû È®·üº¯¼ö·Î ·£´ýÇÑ µþ±â »ý¼º
+    {        
+        float probSum = 0f, cumulative = 0f;
+        float chance;
+        for (int i = 0; i < berryProb.Length; i++)
+        {
+            probSum += berryProb[i];
+        }
+        chance = Random.Range(0, probSum + 1);
+        
+        for (int i = 0; i < 4; i++)
+        {
+            cumulative += berryProb[i];
+            if (chance <= cumulative)
+            {
+                route = 3 - i;
+                break;
+            }
+        }
+    }
 }
