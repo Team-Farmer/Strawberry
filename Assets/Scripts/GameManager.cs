@@ -1,10 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using DG.Tweening;
 
 public class GameManager : MonoBehaviour
 {
+    [Header("------------[ Money ]")]
+    [SerializeField] int coin;
+    [SerializeField] int heart;
+    public Text CoinText;
+    public Text HeartText;
+
     [Header("------------[ Object ]")]
     public GameObject berryPrefab; // 프리팹
     public Truck truck;
@@ -34,6 +41,12 @@ public class GameManager : MonoBehaviour
         {
             MakeStrawBerry();            
         }
+
+        // 임시 재화 설정
+        coin = 100000;
+        heart = 300;
+        CoinText.text = coin.ToString() + " A";
+        HeartText.text = heart.ToString();
     }    
     void Update()
     {

@@ -162,7 +162,7 @@ TextureImporter:
         width: 1002
         height: 1319
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -183,7 +183,7 @@ TextureImporter:
         width: 72
         height: 72
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -191,90 +191,6 @@ TextureImporter:
       bones: []
       spriteID: 01d24990461d01120800000000000000
       internalID: 2382634430466632976
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: panelSetting_2
-      rect:
-        serializedVersion: 2
-        x: 130
-        y: 264
-        width: 21
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6d7ad31053d61fc00800000000000000
-      internalID: 932646672263915478
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: panelSetting_3
-      rect:
-        serializedVersion: 2
-        x: 153
-        y: 253
-        width: 18
-        height: 45
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7a9b4512f26ef0740800000000000000
-      internalID: 5120564391440595367
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: panelSetting_4
-      rect:
-        serializedVersion: 2
-        x: 178
-        y: 272
-        width: 38
-        height: 26
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f9829aed0ebdf86f0800000000000000
-      internalID: -680083259854870369
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: panelSetting_5
-      rect:
-        serializedVersion: 2
-        x: 227
-        y: 280
-        width: 33
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 89ea4e5c45bdbde70800000000000000
-      internalID: 9141141025822387864
       vertices: []
       indices: 
       edges: []
@@ -288,7 +204,7 @@ TextureImporter:
         width: 649
         height: 46
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -296,69 +212,6 @@ TextureImporter:
       bones: []
       spriteID: a68fbdd3c60360b80800000000000000
       internalID: -8428996411124877206
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: panelSetting_7
-      rect:
-        serializedVersion: 2
-        x: 222
-        y: 272
-        width: 44
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 70169a916c606b6d0800000000000000
-      internalID: -2975183055927811833
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: panelSetting_8
-      rect:
-        serializedVersion: 2
-        x: 184
-        y: 252
-        width: 32
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6f46b523f3a748e50800000000000000
-      internalID: 6810702948337411318
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: panelSetting_9
-      rect:
-        serializedVersion: 2
-        x: 228
-        y: 253
-        width: 32
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bb92e1253259320b0800000000000000
-      internalID: -5754591919915259461
       vertices: []
       indices: 
       edges: []
@@ -372,7 +225,7 @@ TextureImporter:
         width: 465
         height: 34
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -393,7 +246,7 @@ TextureImporter:
         width: 90
         height: 60
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -409,12 +262,12 @@ TextureImporter:
       name: panelSetting_12
       rect:
         serializedVersion: 2
-        x: 98
-        y: 232
+        x: 101
+        y: 224
         width: 191
         height: 108
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
