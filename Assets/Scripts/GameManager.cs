@@ -7,7 +7,7 @@ using DG.Tweening;
 public class GameManager : MonoBehaviour
 {
     [Header("------------[ Money ]")]
-    [SerializeField] int coin;
+    [SerializeField] public int coin;
     [SerializeField] int heart;
     public Text CoinText;
     public Text HeartText;
@@ -34,8 +34,10 @@ public class GameManager : MonoBehaviour
     public GameObject blackPanel;
     internal object count;
 
+
     void Awake()
     {
+
         Application.targetFrameRate = 60;
         berryList = new List<StrawBerry>();
         
