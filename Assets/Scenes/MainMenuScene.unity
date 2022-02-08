@@ -5883,7 +5883,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.74243754}
   m_AnchorMax: {x: 0, y: 0.74243754}
   m_AnchoredPosition: {x: 200, y: 16}
-  m_SizeDelta: {x: 14.3125, y: -16.9375}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!95 &996431693
 Animator:
@@ -5934,7 +5934,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.37, y: 1.31}
+    oldSize: {x: 14.8125, y: 8.1875}
     newSize: {x: 14.010411, y: 19.05}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
