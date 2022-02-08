@@ -1659,7 +1659,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &279432230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1885,7 +1885,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &366425171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2789,6 +2789,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7023c14a6daa40418b33253dfff1b2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coin: 0
+  heart: 0
   CoinText: {fileID: 1846183568}
   HeartText: {fileID: 905899711}
   berryPrefab: {fileID: 3681563082960653409, guid: 1a3ded4f3cc60704c81c12f0c7768455, type: 3}
