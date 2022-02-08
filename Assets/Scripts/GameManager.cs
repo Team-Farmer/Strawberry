@@ -32,6 +32,8 @@ public class GameManager : MonoBehaviour
     public GameObject ResearchList;
     public GameObject BerryList;
     public GameObject blackPanel;
+    internal object count;
+
     void Awake()
     {
         Application.targetFrameRate = 60;
