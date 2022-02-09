@@ -16,7 +16,7 @@ public class StrawBerry : MonoBehaviour
     public int berryIdx;    
     public int level;
     public int route = -1;
-
+    public float chance;
     public float[] berryProb = { 10f, 20f, 30f, 40f };
 
     void Awake()
@@ -35,6 +35,7 @@ public class StrawBerry : MonoBehaviour
         canGrow = true;
         createTime = 0f;
         route = -1;
+        chance = 0f;        
 
         // µþ±â Æ®·£½ºÆû ÃÊ±âÈ­
         transform.localPosition = Vector3.zero;
@@ -99,13 +100,13 @@ public class StrawBerry : MonoBehaviour
     }
     void DefineBerryRank() // ´©Àû È®·üº¯¼ö·Î ·£´ýÇÑ µþ±â »ý¼º
     {        
-        float probSum = 0f, cumulative = 0f;
-        float chance;
+        float cumulative = 0f, probSum = 0;
+        
         for (int i = 0; i < berryProb.Length; i++)
         {
             probSum += berryProb[i];
         }
-        chance = Random.Range(0, probSum + 1);
+        chance = Random.Range(0, probSum);
         
         for (int i = 0; i < 4; i++)
         {
