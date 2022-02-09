@@ -15,8 +15,9 @@ public class BerryManager : MonoBehaviour
     void Start()
     {
         prefabnum = Prefabcount;
+        Debug.Log(prefabnum);
         Prefabcount++;
-
+        
     }
 
     // Update is called once per frame
