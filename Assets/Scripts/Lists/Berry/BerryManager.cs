@@ -1,44 +1,79 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BerryManager : MonoBehaviour
 {
     [SerializeField]
-    private GameObject berryExp;//berryExplanation
+    private GameObject berryExpPanel;//berryExplanation 로 화면에 뜰 것
+    
+    [SerializeField]
+    private Sprite[] berryImg;//띄울 베리 이미지들 스프라이트들
+
+    [SerializeField]
+    private GameObject berryImage;
+
+    [SerializeField]
+    private int startCount;
 
 
-    //추가 된 Prefab 수
+    Image nowBerryImg;
+
+
     static int Prefabcount = 0;
-    //자신이 몇번째 Prefab인지
     int prefabnum;
+
+
+
+    private void Awake()
+    {
+        Prefabcount = 0;
+    }
+
     void Start()
     {
+        nowBerryImg = berryImage.GetComponent<Image>();
+
+
         prefabnum = Prefabcount;
         Debug.Log(prefabnum);
         Prefabcount++;
-        
+
+        berryImageChange();
+
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    //누르면 설명창 뜨고 다시 누르면 설명차 내려간다
-    public void Explanation() { 
 
-        if (berryExp.activeSelf == false)
+
+    //누르면 설명창 뜨고 다시 누르면 설명차 내려간다
+    public void Explanation() {
+
+        if (berryExpPanel.activeSelf == false)
         {
-            berryExp.SetActive(true);
-            berryExp.SetActive(true);
+            berryExpPanel.SetActive(true);
+            berryExpPanel.SetActive(true);
         }
         else
         {
-            berryExp.SetActive(false);
-            berryExp.SetActive(false);
-        } 
+            berryExpPanel.SetActive(false);
+            berryExpPanel.SetActive(false);
+        }
+    }
+
+    public void berryImageChange()
+    {
+        for (int i = 0; i < berryImg.Length; i++)
+        {
+            if (prefabnum == i)
+                berryImage.GetComponent<Image>().sprite = berryImg[i];
+        }
+
     }
 
 

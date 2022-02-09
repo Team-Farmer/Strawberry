@@ -181,6 +181,20 @@ public class GameManager : MonoBehaviour
 
     //리스트 활성화 비활성화===========================================================================================
     //중복.... 개선필요 공부
+
+    public void Xbutton() 
+    { 
+        //X버튼 -> 부모 오브젝트 비활성화, 블랙 패널 비활성화
+        //X.transform.parent.gameObject.SetActive(false);
+    }
+
+    public void ListButton() 
+    {
+        //리스트 버튼 -> 자식 오브젝트 활성화, 블랙패널 활성화
+        //L.transform.GetChild(0).gameObject.SetActive(true);
+
+    }
+
     public void selectPTJList()
     {
         if (PartTimeList.activeSelf == false)
