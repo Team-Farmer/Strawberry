@@ -90,7 +90,7 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-    void ClickedTruck(GameObject obj)
+    public void ClickedTruck(GameObject obj)
     {
         truck.berryCnt = 0;
     }
@@ -166,10 +166,7 @@ public class GameManager : MonoBehaviour
             coll = farmList[i].GetComponent<BoxCollider2D>();
             coll.enabled = false;
             berryList[i].canGrow = false;
-        }
-        
-        coll = truck.GetComponent<BoxCollider2D>();
-        coll.enabled = false;        
+        }                       
     }
     public void EnableObjColliderAll() // 모든 오브젝트의 collider 활성화
     {        
@@ -179,10 +176,7 @@ public class GameManager : MonoBehaviour
             coll = farmList[i].GetComponent<BoxCollider2D>();
             coll.enabled = true;
             berryList[i].canGrow = true;
-        }
-       
-        coll = truck.GetComponent<BoxCollider2D>();
-        coll.enabled = true;      
+        }             
     }
 
     //리스트 활성화 비활성화===========================================================================================
