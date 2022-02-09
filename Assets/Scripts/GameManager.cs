@@ -65,7 +65,7 @@ public class GameManager : MonoBehaviour
                 }
                 else if(obj.GetComponent<Truck>() != null)
                 {
-                    ClickedTruck(obj);
+                    ClickedTruck();
                 }
             }
         }       
@@ -90,7 +90,7 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-    public void ClickedTruck(GameObject obj)
+    public void ClickedTruck()
     {
         truck.berryCnt = 0;
     }
