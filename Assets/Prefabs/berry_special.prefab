@@ -91,6 +91,7 @@ GameObject:
   - component: {fileID: 51087816894089787}
   - component: {fileID: 8682566489666979486}
   - component: {fileID: 8599184397474414373}
+  - component: {fileID: 3633413468689225926}
   m_Layer: 5
   m_Name: berry_special
   m_TagString: berry_special
@@ -200,3 +201,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3633413468689225926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4627074309705252755}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdbacebad87097344ab60889cf36cc03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  berryExp: {fileID: 0}
