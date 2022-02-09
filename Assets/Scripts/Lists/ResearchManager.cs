@@ -7,9 +7,13 @@ using UnityEngine.UI;
 public class ResearchManager : MonoBehaviour
 {
 
+    //gameManager Script
     GameManager gm1;
+
     //추가 된 Prefab 수
     static int Prefabcount=0;
+    //자신이 몇번째 Prefab인지
+    int prefabnum;
 
     //Research Info  적용할 것들=====================================================================
     public GameObject titleText;
@@ -23,19 +27,16 @@ public class ResearchManager : MonoBehaviour
     string[] ResearchExplanation = { "딸기의 가치가 5%->10% 높아진다", " 딸기의 성장시간이 5%->10% 감소한다",
             "트럭으로 딸기를 판매할 때 5%->10% 높은 가격으로 판매한다.","소나기가 내릴 확률이 5%->10% 증가한다.",
             "잡초가 생길 확률이 5%->10% 감소한다.","벌레가 생길 확률이 5%->10% 감소한다.","미정"};
-    int[] ResearchPrice = { 100, 200, 200, 300, 300, 300, 0 };
-    int[] ResearchLevel = { 3, 1, 1, 1, 1, 1, 0 };
+    int[] ResearchPrice = { 100, 200, 300, 400, 500, 1000, 0 };
+    int[] ResearchLevel = { 10, 1, 1, 1, 1, 1, 0 };
 
    
 
 
     void Start()
     {
-        GameManager gm1 = GameObject.Find("GameManager").GetComponent<GameManager>();
+        gm1 = GameObject.Find("GameManager").GetComponent<GameManager>();
         InfoUpdate();
-        int c = 100;
-        gm1.coin = c;
-        Debug.Log("coin=" + gm1.coin);
     }
 
 
@@ -48,12 +49,14 @@ public class ResearchManager : MonoBehaviour
     //coin 버튼을 누르면 실행
     public void clickCoin() {
 
-        //왜 이게 되지..?
-        Prefabcount = 0;
         //레벨이 올라간다.
-        levelNum.GetComponent<Text>().text= ResearchLevel[Prefabcount]++.ToString();
-        
-        
+        ResearchLevel[prefabnum]++;
+        levelNum.GetComponent<Text>().text = ResearchLevel[prefabnum].ToString();
+
+        //해당 금액의 코인이 감소된다.
+        gm1.coin -= ResearchPrice[prefabnum];
+        gm1.CoinText.text = gm1.coin.ToString() + " A";
+
     }
 
 
@@ -63,6 +66,8 @@ public class ResearchManager : MonoBehaviour
         explanationText.GetComponent<Text>().text = ResearchExplanation[Prefabcount];
         coinNum.GetComponent<Text>().text = ResearchPrice[Prefabcount].ToString();
         levelNum.GetComponent<Text>().text = ResearchLevel[Prefabcount].ToString();
+        prefabnum = Prefabcount;
         Prefabcount++;
+        
     }
 }
