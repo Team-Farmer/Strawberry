@@ -77,7 +77,8 @@ public class GameManager : MonoBehaviour
     }
     void LateUpdate()
     {
-        
+        CoinText.text = coin.ToString() + " A";
+        HeartText.text = heart.ToString();
     }
     void ClickedFarm(GameObject obj)
     {
@@ -166,6 +167,14 @@ public class GameManager : MonoBehaviour
     {
         truck.berryCnt += berry.route + 1;
     }
+    public void UpdateCoin(int coin)
+    {
+        this.coin += coin;
+    }
+    public void UpdateHeart(int heart)
+    {
+        this.heart += heart;
+    }
     public void DisableObjColliderAll() // 모든 오브젝트의 collider 비활성화
     {
         BoxCollider2D coll;
@@ -203,7 +212,7 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void selectPTJList()
+    public void selectPTJList() // 각각의 패널을 클릭 했을 때 패널 활성화
     {
         if (PartTimeList.activeSelf == false)
         {
