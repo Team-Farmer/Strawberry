@@ -197,7 +197,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8682566489666979486}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 895782025742099113}
+        m_TargetAssemblyTypeName: BerryManager, Assembly-CSharp
+        m_MethodName: Explanation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &895782025742099113
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,13 +222,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdbacebad87097344ab60889cf36cc03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  berryExpPanel: {fileID: 7209917557766205673}
   berryImg:
   - {fileID: -365557343746000341, guid: 60a7952c2d98afa46bbec2d461a51f4e, type: 3}
   - {fileID: -6238070487526216217, guid: 60a7952c2d98afa46bbec2d461a51f4e, type: 3}
   - {fileID: -9173398184038589919, guid: 60a7952c2d98afa46bbec2d461a51f4e, type: 3}
+  berryName:
+  - "\uD0B9\uC2A4\uBCA0\uB9AC"
+  - "\uB9E4\uD5A5"
+  - "\uB9CC\uB144\uC124"
+  berryTxt:
+  - "\uACFC\uC2E4\uC774 \uB9E4\uC6B0 \uD06C\uACE0 \uC644\uC219\uB420\uC218\uB85D
+    \uB2E8\uB9DB\uC774 \uAC15\uD574\uC9C4\uB2E4. \n \uCC29\uC0C9\uACFC\uC5D0\uC11C
+    \uD48D\uAE30\uB294 \uC740\uC740\uD55C \uBCF5\uC22D\uC544 \uD5A5\uC774 \uB9E4\uB825\uC801\uC774\uB2E4. "
+  - "\uB192\uC740 \uB2F9\uB3C4\uB85C \uB9DB\uACFC \uD5A5\uC774 \uC6B0\uC218\uD558\uBA70,
+    \uB6F0\uC5B4\uB09C \uC800\uC7A5\uC131\uC73C\uB85C \uC218\uC1A1\uC5D0 \uC720\uB9AC\uD574
+    \uB3D9\uB0A8\uC544\uC2DC\uC544\uC5D0\uC11C \uD55C\uAD6D \uB538\uAE30\uC758 \uD55C\uB958\uB97C
+    \uC774\uB04C\uACE0 \uC788\uB2E4."
+  - "\uC5F0\uBD84\uD64D\uBE5B\uC744 \uB744\uC5B4 \uD770 \uBE5B\uAE54\uC5D0\uC11C
+    \uCC29\uC548\uD574 \uB9CC\uB144\uC124\uB85C \uBD88\uB9AC\uC6B0\uB294 \uB538\uAE30\uC774\uB2E4.
+    \uBE68\uAC04 \uB538\uAE30\uC5D0 \uBE44\uD574 \uB2F9\uB3C4\uAC00 \uB192\uC544
+    \uD2B9\uC720\uC758 \uB2EC\uCF64\uD55C \uB9DB\uC744 \uC990\uAE38 \uC218 \uC788\uB2E4. "
   berryImage: {fileID: 3211075358437019884}
-  startCount: 0
 --- !u!1 &7209917557766205673
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,20 +7,27 @@ public class BerryManager : MonoBehaviour
 {
 
     [SerializeField]
-    private Sprite[] berryImg;//띄울 베리 이미지 소스들. 스프라이트들
+    private Sprite[] berryImg;//베리 이미지 소스들. 스프라이트들
+
+    //설명 저장 구조체로 저장하는 방법나중에 찾아보기
+    [Header("BERRY EXPLANATION")]
+    public string[] berryName;
+    public string[] berryTxt;
 
     [SerializeField]
-    private GameObject berryImage;
+    private GameObject berryImage;//이미지를 보일 오브젝트 대상
 
     GameObject berryExp;
 
+    GameObject ExpChildren;
+    GameObject ExpChildren2;
 
     static int Prefabcount = 0;
     int prefabnum;
 
 
 
-    void Start()
+void Start()
     {
 
         berryExp = GameObject.Find("berryExplanation");
@@ -48,26 +55,42 @@ public class BerryManager : MonoBehaviour
 
 
 
-    //누르면 설명창 뜨고 다시 누르면 설명차 내려간다
+
     public void Explanation()
     {
+        ExpChildren = berryExp.transform.GetChild(0).transform.gameObject;//Expchildren은 하이라키의 berryExplanation의 자식 berryExp를 의미한다.
 
-        if (berryExp.transform.GetChild(0).transform.gameObject.activeSelf == true)
+        //베리를 누르면 설명창이 뜬다.
+        if (ExpChildren.activeSelf == true)
         {
-            berryExp.transform.GetChild(0).transform.gameObject.SetActive(false);
+            ExpChildren.SetActive(false);//지금 얘네는 무용지물
         }
         else
         {
-            berryExp.transform.GetChild(0).transform.gameObject.SetActive(true);
+            ExpChildren.SetActive(true);//설명창이 뜬다.
+
+            ExpChildren2 = ExpChildren.transform.GetChild(0).transform.gameObject;//Expchlidren2는 Expchildren1의 자식인 berryExpImage를 의미
+            ExpChildren2.transform.GetChild(0).transform.gameObject.GetComponentInChildren<Image>().sprite = berryImg[prefabnum];
+            ExpChildren2.transform.GetChild(1).transform.gameObject.GetComponentInChildren<Text>().text = berryName[prefabnum];
+            ExpChildren2.transform.GetChild(2).transform.gameObject.GetComponentInChildren<Text>().text = berryTxt[prefabnum];
+
+            //berryExp.transform.GetChild(0).transform.gameObject.GetComponentInChildren<Text>().text = berryName[prefabnum];//설명하는 글
+            //berryExp.transform.GetChild(0).transform.gameObject.GetComponentInChildren<Image>().sprite= berryImg[prefabnum];//사진
+
+
         }
+
+
 
     }
 
     public void OffExplanation() 
     { 
-    
+        //누르면 berryExp 꺼지게 구현
 
     }
+
+
 
     public void berryImageChange()
     {
