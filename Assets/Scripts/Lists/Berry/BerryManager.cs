@@ -35,11 +35,14 @@ public class BerryManager : MonoBehaviour
     {
         nowBerryImg = berryImage.GetComponent<Image>();
 
+        if (Prefabcount >= 32)
+            Prefabcount -= 32;
 
         prefabnum = Prefabcount;
         Debug.Log(prefabnum);
         Prefabcount++;
 
+        
         berryImageChange();
 
     }
@@ -57,17 +60,16 @@ public class BerryManager : MonoBehaviour
         if (berryExpPanel.activeSelf == false)
         {
             berryExpPanel.SetActive(true);
-            berryExpPanel.SetActive(true);
         }
         else
         {
-            berryExpPanel.SetActive(false);
             berryExpPanel.SetActive(false);
         }
     }
 
     public void berryImageChange()
     {
+
         for (int i = 0; i < berryImg.Length; i++)
         {
             if (prefabnum == i)
@@ -75,6 +77,6 @@ public class BerryManager : MonoBehaviour
         }
 
     }
-
+    
 
 }
