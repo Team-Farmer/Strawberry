@@ -9,19 +9,20 @@ public class BerryManager : MonoBehaviour
     [SerializeField]
     private Sprite[] berryImg;//베리 이미지 소스들. 스프라이트들
 
-    //설명 저장 구조체로 저장하는 방법나중에 찾아보기
-    [Header("BERRY EXPLANATION")]
+
+    [Header("BERRY EXPLANATION")]//설명 저장 구조체로 저장할까..?
     public string[] berryName;
     public string[] berryTxt;
 
     [SerializeField]
     private GameObject berryImage;//이미지를 보일 오브젝트 대상
 
-    GameObject berryExp;
 
+    GameObject berryExp;
     GameObject ExpChildren;
     GameObject ExpChildren2;
 
+    //프리팹들 번호 붙여주기 용
     static int Prefabcount = 0;
     int prefabnum;
 
@@ -29,23 +30,17 @@ public class BerryManager : MonoBehaviour
 
 void Start()
     {
-
         berryExp = GameObject.Find("berryExplanation");
-
 
 
         //프리팹들에게 번호를 붙여 주자
         if (Prefabcount >= 32)
-            Prefabcount -= 32;
+        {    Prefabcount -= 32;    }
         prefabnum = Prefabcount;
-        //Debug.Log(prefabnum);
         Prefabcount++;
 
 
-
-
         berryImageChange();
-
     }
 
     void Update()
@@ -74,10 +69,6 @@ void Start()
             ExpChildren2.transform.GetChild(1).transform.gameObject.GetComponentInChildren<Text>().text = berryName[prefabnum];
             ExpChildren2.transform.GetChild(2).transform.gameObject.GetComponentInChildren<Text>().text = berryTxt[prefabnum];
 
-            //berryExp.transform.GetChild(0).transform.gameObject.GetComponentInChildren<Text>().text = berryName[prefabnum];//설명하는 글
-            //berryExp.transform.GetChild(0).transform.gameObject.GetComponentInChildren<Image>().sprite= berryImg[prefabnum];//사진
-
-
         }
 
 
@@ -85,8 +76,9 @@ void Start()
     }
 
     public void OffExplanation() 
-    { 
-        //누르면 berryExp 꺼지게 구현
+    {
+        ExpChildren = berryExp.transform.GetChild(0).transform.gameObject;
+        ExpChildren.SetActive(false);
 
     }
 
