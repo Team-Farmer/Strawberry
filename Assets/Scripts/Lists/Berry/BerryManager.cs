@@ -12,9 +12,7 @@ public class BerryManager : MonoBehaviour
     [SerializeField]
     private GameObject berryImage;
 
-    GameObject test;
-
-
+    GameObject berryExp;
 
 
     static int Prefabcount = 0;
@@ -22,24 +20,21 @@ public class BerryManager : MonoBehaviour
 
 
 
-    private void Awake()
-    {
-        Prefabcount = 0;
-    }
-
     void Start()
     {
 
-        test = GameObject.Find("test_special");
-        Debug.Log("test=" + test);
+        berryExp = GameObject.Find("berryExplanation");
 
 
+
+        //프리팹들에게 번호를 붙여 주자
         if (Prefabcount >= 32)
             Prefabcount -= 32;
-
         prefabnum = Prefabcount;
         //Debug.Log(prefabnum);
         Prefabcount++;
+
+
 
 
         berryImageChange();
@@ -57,14 +52,20 @@ public class BerryManager : MonoBehaviour
     public void Explanation()
     {
 
-        if (test.transform.GetChild(0).transform.gameObject.activeSelf == true)
+        if (berryExp.transform.GetChild(0).transform.gameObject.activeSelf == true)
         {
-            test.transform.GetChild(0).transform.gameObject.SetActive(false);
+            berryExp.transform.GetChild(0).transform.gameObject.SetActive(false);
         }
         else
         {
-            test.transform.GetChild(0).transform.gameObject.SetActive(true);
+            berryExp.transform.GetChild(0).transform.gameObject.SetActive(true);
         }
+
+    }
+
+    public void OffExplanation() 
+    { 
+    
 
     }
 
