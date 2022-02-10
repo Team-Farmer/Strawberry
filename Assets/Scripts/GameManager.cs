@@ -13,8 +13,7 @@ public class GameManager : MonoBehaviour
     public Text HeartText;
 
     [Header("------------[ Object ]")]
-    public GameObject berryPrefab; // 프리팹
-    public Truck truck;
+    public GameObject berryPrefab; // 프리팹    
     public List<Farm> farmList = new List<Farm>();
 
     [Header("------------[ Object Pooling ]")]
@@ -22,10 +21,11 @@ public class GameManager : MonoBehaviour
     public Transform berryGroup;
     public List<StrawBerry> berryList;
 
-    [Header("------------[ DOTWeen ]")]
-    public Transform target;
-
-    //[Header("------------[ Other ]")]   
+    [Header("------------[Truck List]")]
+    public GameObject TruckObj;
+    public GameObject TruckPanel;
+    Truck truck;
+    Transform target;
 
     [Header("------------[PartTime/Search/Berry List]")]
     public GameObject PartTimeList;
@@ -38,14 +38,13 @@ public class GameManager : MonoBehaviour
     public GameObject Setting;
     public GameObject Check;
 
-
-
     void Awake()
     {
 
         Application.targetFrameRate = 60;
         berryList = new List<StrawBerry>();
-
+        truck = TruckObj.GetComponent<Truck>();
+        target = TruckObj.GetComponent<Transform>();
 
         for (int i = 0; i < 16; i++) // 오브젝트 풀링으로 미리 딸기 생성
         {
@@ -133,7 +132,6 @@ public class GameManager : MonoBehaviour
         berry.SetAnim(5); // 수확 이미지로 변경
         pos = berry.transform.position;
         berry.Explosion(pos, target.position, 0.5f); // DOTWeen 효과 구현
-
 
         StartCoroutine(HarvestRoutine(farm)); // 연속으로 딸기가 심어지는 현상을 방지
     }
@@ -269,6 +267,19 @@ public class GameManager : MonoBehaviour
         }
 
     }
+    public void selectTruckPanel()
+    {
+        if (TruckPanel.activeSelf == false)
+        {
+            TruckPanel.SetActive(true);
+            PanelBlack.SetActive(true);
+        }
+        else
+        {
+            TruckPanel.SetActive(false);
+            PanelBlack.SetActive(false);
+        }
+    }
 
 
     public void selectPanelBlack() // 검은창 클릭시 UI 종료
@@ -296,6 +307,11 @@ public class GameManager : MonoBehaviour
         else if (BerryList.activeSelf == true)
         {
             BerryList.SetActive(false);
+            PanelBlack.SetActive(false);
+        }
+        else if (TruckPanel.activeSelf == true)
+        {
+            TruckPanel.SetActive(false);
             PanelBlack.SetActive(false);
         }
     }
