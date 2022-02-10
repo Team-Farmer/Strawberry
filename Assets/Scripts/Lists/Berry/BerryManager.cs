@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class BerryManager : MonoBehaviour
 {
-    
+
     [SerializeField]
     private Sprite[] berryImg;//띄울 베리 이미지 소스들. 스프라이트들
 
@@ -14,7 +14,7 @@ public class BerryManager : MonoBehaviour
 
     GameObject test;
 
-    Image nowBerryImg;
+
 
 
     static int Prefabcount = 0;
@@ -32,7 +32,7 @@ public class BerryManager : MonoBehaviour
 
         test = GameObject.Find("test_special");
         Debug.Log("test=" + test);
-        nowBerryImg = berryImage.GetComponent<Image>();
+
 
         if (Prefabcount >= 32)
             Prefabcount -= 32;
@@ -41,7 +41,7 @@ public class BerryManager : MonoBehaviour
         //Debug.Log(prefabnum);
         Prefabcount++;
 
-        
+
         berryImageChange();
 
     }
@@ -54,17 +54,18 @@ public class BerryManager : MonoBehaviour
 
 
     //누르면 설명창 뜨고 다시 누르면 설명차 내려간다
-    public void Explanation() {
+    public void Explanation()
+    {
 
         if (test.transform.GetChild(0).transform.gameObject.activeSelf == true)
         {
             test.transform.GetChild(0).transform.gameObject.SetActive(false);
         }
-        else 
+        else
         {
             test.transform.GetChild(0).transform.gameObject.SetActive(true);
         }
-            
+
     }
 
     public void berryImageChange()
@@ -75,6 +76,6 @@ public class BerryManager : MonoBehaviour
                 berryImage.GetComponent<Image>().sprite = berryImg[i];
         }
     }
-    
+
 
 }
