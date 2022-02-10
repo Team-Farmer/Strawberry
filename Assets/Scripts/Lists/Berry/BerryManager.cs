@@ -53,34 +53,30 @@ void Start()
 
     public void Explanation()
     {
-        ExpChildren = berryExp.transform.GetChild(0).transform.gameObject;//Expchildren은 하이라키의 berryExplanation의 자식 berryExp를 의미한다.
+        ExpChildren = berryExp.transform.GetChild(0).transform.gameObject;//Expchildren = 하이라키의 berryExplanation의 자식 berryExp를 의미
+        ExpChildren2 = ExpChildren.transform.GetChild(0).transform.gameObject;//Expchlidren2 = Expchildren1의 자식인 berryExpImage를 의미
 
-        //베리를 누르면 설명창이 뜬다.
-        if (ExpChildren.activeSelf == true)
+
+        //설명창이 뜬다.
+        ExpChildren.SetActive(true);
+            
+
+        try
         {
-            ExpChildren.SetActive(false);//지금 얘네는 무용지물
+            //Explanation 내용을 채운다.
+            ExpChildren2.transform.GetChild(0).transform.gameObject.GetComponentInChildren<Image>().sprite = berryImg[prefabnum];//이미지 설정
+            ExpChildren2.transform.GetChild(1).transform.gameObject.GetComponentInChildren<Text>().text = berryName[prefabnum];//이름 설정
+            ExpChildren2.transform.GetChild(2).transform.gameObject.GetComponentInChildren<Text>().text = berryTxt[prefabnum];//설명 설정
         }
-        else
+        catch(System.IndexOutOfRangeException exception) 
         {
-            ExpChildren.SetActive(true);//설명창이 뜬다.
-
-            ExpChildren2 = ExpChildren.transform.GetChild(0).transform.gameObject;//Expchlidren2는 Expchildren1의 자식인 berryExpImage를 의미
-            ExpChildren2.transform.GetChild(0).transform.gameObject.GetComponentInChildren<Image>().sprite = berryImg[prefabnum];
-            ExpChildren2.transform.GetChild(1).transform.gameObject.GetComponentInChildren<Text>().text = berryName[prefabnum];
-            ExpChildren2.transform.GetChild(2).transform.gameObject.GetComponentInChildren<Text>().text = berryTxt[prefabnum];
-
+            ExpChildren.SetActive(false);
+            Debug.Log("여기에 해당하는 베리는 아직 없다");
         }
-
 
 
     }
 
-    public void OffExplanation() 
-    {
-        ExpChildren = berryExp.transform.GetChild(0).transform.gameObject;
-        ExpChildren.SetActive(false);
-
-    }
 
 
 
