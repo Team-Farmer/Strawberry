@@ -11,21 +11,21 @@ public class GameManager : MonoBehaviour
     [SerializeField] int heart;
     public Text CoinText;
     public Text HeartText;
+    public int[] berryPrice = { 10, 20, 30, 40 };
 
     [Header("------------[ Object ]")]
-    public GameObject berryPrefab; // 프리팹
-    public Truck truck;
+    public GameObject berryPrefab; // 프리팹    
     public List<Farm> farmList = new List<Farm>();
 
     [Header("------------[ Object Pooling ]")]
-
     public Transform berryGroup;
     public List<StrawBerry> berryList;
 
-    [Header("------------[ DOTWeen ]")]
-    public Transform target;
-
-    //[Header("------------[ Other ]")]   
+    [Header("------------[Truck List]")]
+    public GameObject TruckObj;
+    public GameObject TruckPanel;
+    Truck truck;
+    Transform target;
 
     [Header("------------[PartTime/Search/Berry List]")]
     public GameObject PartTimeList;
@@ -35,17 +35,16 @@ public class GameManager : MonoBehaviour
     internal object count;
 
     [Header("------------[Check/Settings Panel]")]
-    public GameObject Setting;
-    public GameObject Check;
-
-
+    public GameObject SettingsPanel;
+    public GameObject CheckPanel;
 
     void Awake()
     {
 
         Application.targetFrameRate = 60;
         berryList = new List<StrawBerry>();
-
+        truck = TruckObj.GetComponent<Truck>();
+        target = TruckObj.GetComponent<Transform>();
 
         for (int i = 0; i < 16; i++) // 오브젝트 풀링으로 미리 딸기 생성
         {
@@ -75,6 +74,11 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+    }
+    void LateUpdate()
+    {
+        CoinText.text = coin.ToString() + " A";
+        HeartText.text = heart.ToString();
     }
     void ClickedFarm(GameObject obj)
     {
@@ -134,7 +138,6 @@ public class GameManager : MonoBehaviour
         pos = berry.transform.position;
         berry.Explosion(pos, target.position, 0.5f); // DOTWeen 효과 구현
 
-
         StartCoroutine(HarvestRoutine(farm)); // 연속으로 딸기가 심어지는 현상을 방지
     }
     GameObject ClickObj() // 클릭당한 오브젝트를 반환
@@ -163,6 +166,14 @@ public class GameManager : MonoBehaviour
     void UpdateBerryCnt(StrawBerry berry)
     {
         truck.berryCnt += berry.route + 1;
+    }
+    public void UpdateCoin(int coin)
+    {
+        this.coin += coin;
+    }
+    public void UpdateHeart(int heart)
+    {
+        this.heart += heart;
     }
     public void DisableObjColliderAll() // 모든 오브젝트의 collider 비활성화
     {
@@ -201,18 +212,13 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void selectPTJList()
+    public void selectPTJList() // 각각의 패널을 클릭 했을 때 패널 활성화
     {
         if (PartTimeList.activeSelf == false)
         {
             PartTimeList.SetActive(true);
             PanelBlack.SetActive(true);
-        }
-        else
-        {
-            PartTimeList.SetActive(false);
-            PanelBlack.SetActive(false);
-        }
+        }        
     }
     public void selectSearchList()
     {
@@ -220,12 +226,7 @@ public class GameManager : MonoBehaviour
         {
             ResearchList.SetActive(true);
             PanelBlack.SetActive(true);
-        }
-        else
-        {
-            ResearchList.SetActive(false);
-            PanelBlack.SetActive(false);
-        }
+        }       
     }
     public void selectBerryList()
     {
@@ -233,54 +234,43 @@ public class GameManager : MonoBehaviour
         {
             BerryList.SetActive(true);
             PanelBlack.SetActive(true);
-        }
-        else
-        {
-            BerryList.SetActive(false);
-            PanelBlack.SetActive(false);
-        }
-
+        }       
     }
     public void selectSettingPanel()
     {
-        if (Setting.activeSelf == false)
+        if (SettingsPanel.activeSelf == false)
         {
-            Setting.SetActive(true);
+            SettingsPanel.SetActive(true);
             PanelBlack.SetActive(true);
-        }
-        else
-        {
-            Setting.SetActive(false);
-            PanelBlack.SetActive(false);
-        }
-
+        }       
     }
     public void selectCheckPanel()
     {
-        if (Check.activeSelf == false)
+        if (CheckPanel.activeSelf == false)
         {
-            Check.SetActive(true);
+            CheckPanel.SetActive(true);
             PanelBlack.SetActive(true);
-        }
-        else
-        {
-            Check.SetActive(false);
-            PanelBlack.SetActive(false);
-        }
-
+        }       
     }
-
+    public void selectTruckPanel()
+    {
+        if (TruckPanel.activeSelf == false)
+        {
+            TruckPanel.SetActive(true);
+            PanelBlack.SetActive(true);
+        }       
+    }
 
     public void selectPanelBlack() // 검은창 클릭시 UI 종료
     {
-        if (Setting.activeSelf == true)
+        if (SettingsPanel.activeSelf == true)
         {
-            Setting.SetActive(false);
+            SettingsPanel.SetActive(false);
             PanelBlack.SetActive(false);
         }
-        else if (Check.activeSelf == true)
+        else if (CheckPanel.activeSelf == true)
         {
-            Check.SetActive(false);
+            CheckPanel.SetActive(false);
             PanelBlack.SetActive(false);
         }
         else if (PartTimeList.activeSelf == true)
@@ -296,6 +286,11 @@ public class GameManager : MonoBehaviour
         else if (BerryList.activeSelf == true)
         {
             BerryList.SetActive(false);
+            PanelBlack.SetActive(false);
+        }
+        else if (TruckPanel.activeSelf == true)
+        {
+            TruckPanel.SetActive(false);
             PanelBlack.SetActive(false);
         }
     }
