@@ -5,18 +5,14 @@ using UnityEngine.UI;
 
 public class BerryManager : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject berryExpPanel;//berryExplanation 로 화면에 뜰 것
     
     [SerializeField]
-    private Sprite[] berryImg;//띄울 베리 이미지들 스프라이트들
+    private Sprite[] berryImg;//띄울 베리 이미지 소스들. 스프라이트들
 
     [SerializeField]
     private GameObject berryImage;
 
-    [SerializeField]
-    private int startCount;
-
+    GameObject test;
 
     Image nowBerryImg;
 
@@ -33,13 +29,16 @@ public class BerryManager : MonoBehaviour
 
     void Start()
     {
+
+        test = GameObject.Find("test_special");
+        Debug.Log("test=" + test);
         nowBerryImg = berryImage.GetComponent<Image>();
 
         if (Prefabcount >= 32)
             Prefabcount -= 32;
 
         prefabnum = Prefabcount;
-        Debug.Log(prefabnum);
+        //Debug.Log(prefabnum);
         Prefabcount++;
 
         
@@ -57,25 +56,24 @@ public class BerryManager : MonoBehaviour
     //누르면 설명창 뜨고 다시 누르면 설명차 내려간다
     public void Explanation() {
 
-        if (berryExpPanel.activeSelf == false)
+        if (test.transform.GetChild(0).transform.gameObject.activeSelf == true)
         {
-            berryExpPanel.SetActive(true);
+            test.transform.GetChild(0).transform.gameObject.SetActive(false);
         }
-        else
+        else 
         {
-            berryExpPanel.SetActive(false);
+            test.transform.GetChild(0).transform.gameObject.SetActive(true);
         }
+            
     }
 
     public void berryImageChange()
     {
-
         for (int i = 0; i < berryImg.Length; i++)
         {
             if (prefabnum == i)
                 berryImage.GetComponent<Image>().sprite = berryImg[i];
         }
-
     }
     
 
