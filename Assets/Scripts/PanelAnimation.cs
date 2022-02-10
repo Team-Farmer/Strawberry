@@ -2,15 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SettingBtn : MonoBehaviour
+public class PanelAnimation : MonoBehaviour
 {
     private Animator animator;
-
-    private void Awake()
+    void Awake()
     {
         animator = GetComponent<Animator>();
     }
-
     public void Close()
     {
         StartCoroutine(CloseAfterDelay());
