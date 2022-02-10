@@ -656,22 +656,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 409529194}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 3459070}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 496606690}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: selectPanelBlack
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3213,7 +3201,6 @@ MonoBehaviour:
   CoinText: {fileID: 1846183568}
   HeartText: {fileID: 905899711}
   berryPrefab: {fileID: 3681563082960653409, guid: 1a3ded4f3cc60704c81c12f0c7768455, type: 3}
-  truck: {fileID: 1218476148}
   farmList:
   - {fileID: 393829940}
   - {fileID: 214265607}
@@ -3233,13 +3220,14 @@ MonoBehaviour:
   - {fileID: 850695547}
   berryGroup: {fileID: 26298298}
   berryList: []
-  target: {fileID: 1218476152}
+  TruckObj: {fileID: 1218476147}
+  TruckPanel: {fileID: 3459070}
   PartTimeList: {fileID: 642284036}
   ResearchList: {fileID: 969289837}
   BerryList: {fileID: 698710642}
   PanelBlack: {fileID: 41530268}
-  Setting: {fileID: 2031592367}
-  Check: {fileID: 1334959770}
+  SettingsPanel: {fileID: 2031592367}
+  CheckPanel: {fileID: 1334959770}
 --- !u!4 &496606691
 Transform:
   m_ObjectHideFlags: 0
@@ -4911,7 +4899,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 496606690}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: selectBerryList
+        m_MethodName: EnableObjColliderAll
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4923,7 +4911,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 496606690}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: EnableObjColliderAll
+        m_MethodName: selectPanelBlack
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5055,7 +5043,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 496606690}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: selectSettingPanel
+        m_MethodName: EnableObjColliderAll
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5067,7 +5055,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 496606690}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: EnableObjColliderAll
+        m_MethodName: selectPanelBlack
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7955,7 +7943,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 496606690}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: selectCheckPanel
+        m_MethodName: EnableObjColliderAll
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7967,7 +7955,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 496606690}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: EnableObjColliderAll
+        m_MethodName: selectPanelBlack
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8323,22 +8311,10 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 409529194}
-          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_MethodName: SetActive
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
-        - m_Target: {fileID: 3459070}
-          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_MethodName: SetActive
-          m_Mode: 6
+        - m_Target: {fileID: 496606690}
+          m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+          m_MethodName: DisableObjColliderAll
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -8349,7 +8325,7 @@ MonoBehaviour:
           m_CallState: 2
         - m_Target: {fileID: 496606690}
           m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-          m_MethodName: DisableObjColliderAll
+          m_MethodName: selectTruckPanel
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -11233,7 +11209,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 496606690}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: selectSearchList
+        m_MethodName: EnableObjColliderAll
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11245,7 +11221,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 496606690}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: EnableObjColliderAll
+        m_MethodName: selectPanelBlack
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12132,7 +12108,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 496606690}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: selectPTJList
+        m_MethodName: EnableObjColliderAll
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12144,7 +12120,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 496606690}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: EnableObjColliderAll
+        m_MethodName: selectPanelBlack
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
