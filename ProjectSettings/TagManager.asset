@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Farm
+  - berry_unique
+  - berry_special
+  - berry_classic
+  - Bug
   layers:
   - Default
   - TransparentFX

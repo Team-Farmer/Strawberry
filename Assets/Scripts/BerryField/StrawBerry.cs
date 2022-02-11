@@ -9,18 +9,20 @@ public class StrawBerry : MonoBehaviour
 {   
     private Animator anim;
     private Vector2 pos;
-    
+    public Bug bug;
+
     public float createTime = 0f;
     public bool canGrow = true;
+    public bool hasBug = false;
 
     public int berryIdx;    
     public int level;
     public int route = -1;
     public float chance;
-    public float[] berryProb = { 10f, 20f, 30f, 40f };
+    public float[] berryProb = { 10f, 20f, 30f, 40f };   
 
     void Awake()
-    {
+    {       
         anim = GetComponent<Animator>();       
     }
     private void OnEnable()
@@ -60,12 +62,15 @@ public class StrawBerry : MonoBehaviour
             else if (15.0f <= createTime && createTime < 20.0f)
             {
                 if (level == 3) return;
+
                 SetAnim(3);
+                bug.GenerateBug();                
             }
             else if (createTime >= 20.0f)
             {
                 SelectRoute();
                 canGrow = false;
+                GameManager.instance.farmList[berryIdx].GetComponent<BoxCollider2D>().enabled = true; // 밭의 콜라이더 다시 활성화
             }
         }
     }
@@ -117,5 +122,5 @@ public class StrawBerry : MonoBehaviour
                 break;
             }
         }
-    }
+    }   
 }

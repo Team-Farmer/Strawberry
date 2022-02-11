@@ -6,6 +6,8 @@ using DG.Tweening;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance;
+
     [Header("------------[ Money ]")]
     [SerializeField] public int coin;
     [SerializeField] int heart;
@@ -45,8 +47,9 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-
         Application.targetFrameRate = 60;
+        instance = this; // 게임 매니저의 싱글턴 패턴화 >> 타 스크립트에서 GameManager의 컴포넌트 쓰고 싶으시면
+                         // 굳이 스크립트 마다 게임매니저 할당 안해도 GameManager.instance.~~ 로 호출하시면 돼요!! 
         berryList = new List<StrawBerry>();
         truck = TruckObj.GetComponent<Truck>();
         target = TruckObj.GetComponent<Transform>();
@@ -73,9 +76,9 @@ public class GameManager : MonoBehaviour
                 {
                     ClickedFarm(obj);
                 }
-                else if (obj.GetComponent<Truck>() != null)
+                else if (obj.GetComponent<Bug>() != null)
                 {
-                    ClickedTruck();
+                    ClickedBug(obj);
                 }
             }
         }
@@ -105,6 +108,11 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+    void ClickedBug(GameObject obj)
+    {
+        Bug bug = obj.GetComponent<Bug>();
+        bug.DieBug();
+    }
     public void ClickedTruck()
     {
         truck.berryCnt = 0;
@@ -128,8 +136,10 @@ public class GameManager : MonoBehaviour
     }
     void PlantStrawBerry(StrawBerry stb, GameObject obj)
     {
+        BoxCollider2D coll = obj.GetComponent<BoxCollider2D>();
         stb.transform.position = obj.transform.position; ; // 밭의 Transform에 딸기를 심는다
         stb.gameObject.SetActive(true); // 딸기 활성화              
+        coll.enabled = false; // 밭의 콜라이더를 비활성화 (잡초와 충돌 방지)
     }
     void Harvest(StrawBerry berry)
     {
@@ -188,6 +198,7 @@ public class GameManager : MonoBehaviour
             coll = farmList[i].GetComponent<BoxCollider2D>();
             coll.enabled = false;
             berryList[i].canGrow = false;
+            berryList[i].bug.GetComponent<CircleCollider2D>().enabled = false;
         }
     }
     public void EnableObjColliderAll() // 모든 오브젝트의 collider 활성화
@@ -195,9 +206,16 @@ public class GameManager : MonoBehaviour
         BoxCollider2D coll;
         for (int i = 0; i < farmList.Count; i++)
         {
-            coll = farmList[i].GetComponent<BoxCollider2D>();
-            coll.enabled = true;
-            berryList[i].canGrow = true;
+            if(!farmList[i].isPlant)
+            {
+                coll = farmList[i].GetComponent<BoxCollider2D>();
+                coll.enabled = true;
+            }
+            if(!berryList[i].hasBug)
+            {
+                berryList[i].canGrow = true;
+            }
+            berryList[i].bug.GetComponent<CircleCollider2D>().enabled = true;
         }
     }
 
