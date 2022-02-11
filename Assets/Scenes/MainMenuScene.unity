@@ -2204,6 +2204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
@@ -2224,6 +2225,13 @@ MonoBehaviour:
   m_PixelsPerUnitMultiplier: 1
 --- !u!222 &268564001
 CanvasRenderer:
+=======
+  androidGameId: 4597599
+  iosGameId: 4597598
+  isTestMode: 1
+--- !u!4 &274168414
+Transform:
+>>>>>>> parent of 8036d4d (보상형 광고 추가)
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}

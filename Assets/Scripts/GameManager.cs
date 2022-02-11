@@ -35,8 +35,8 @@ public class GameManager : MonoBehaviour
     internal object count;
 
     [Header("------------[Check/Settings Panel]")]
-    public GameObject Setting;
-    public GameObject Check;
+    public GameObject SettingPanel;
+    public GameObject CheckPanel;
 
     [Header("------------[CheckList]")]
     public bool Day1, Day2, Day3, Day4, Day5, Day6, Day7;
@@ -248,28 +248,28 @@ public class GameManager : MonoBehaviour
     }
     public void selectSettingPanel()
     {
-        if (Setting.activeSelf == false)
+        if (SettingPanel.activeSelf == false)
         {
-            Setting.SetActive(true);
+            SettingPanel.SetActive(true);
             PanelBlack.SetActive(true);
         }
         else
         {
-            Setting.SetActive(false);
+            SettingPanel.SetActive(false);
             PanelBlack.SetActive(false);
         }
 
     }
     public void selectCheckPanel()
     {
-        if (Check.activeSelf == false)
+        if (CheckPanel.activeSelf == false)
         {
-            Check.SetActive(true);
+            CheckPanel.SetActive(true);
             PanelBlack.SetActive(true);
         }
         else
         {
-            Check.SetActive(false);
+            CheckPanel.SetActive(false);
             PanelBlack.SetActive(false);
         }
 
@@ -278,14 +278,14 @@ public class GameManager : MonoBehaviour
 
     public void selectPanelBlack() // 검은창 클릭시 UI 종료
     {
-        if (Setting.activeSelf == true)
+        if (SettingPanel.activeSelf == true)
         {
-            Setting.SetActive(false);
+            SettingPanel.SetActive(false);
             PanelBlack.SetActive(false);
         }
-        else if (Check.activeSelf == true)
+        else if (CheckPanel.activeSelf == true)
         {
-            Check.SetActive(false);
+            CheckPanel.SetActive(false);
             PanelBlack.SetActive(false);
         }
         else if (PartTimeList.activeSelf == true)
