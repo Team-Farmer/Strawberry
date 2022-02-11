@@ -140,7 +140,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &3459071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,7 +161,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 84a4e3a40581cef4f8a2d3c4dd4b92c7, type: 3}
+  m_Sprite: {fileID: -692798944733013305, guid: 45e37776917961146a91478231aa7a2f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -597,7 +597,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -25, y: -30}
+  m_AnchoredPosition: {x: -25, y: -75}
   m_SizeDelta: {x: 64, y: 64}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &85999772
@@ -2634,7 +2634,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 396545913}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 496606690}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: selectDay1
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &396545913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3425,6 +3437,34 @@ MonoBehaviour:
   PanelBlack: {fileID: 41530268}
   SettingsPanel: {fileID: 2031592367}
   CheckPanel: {fileID: 1334959770}
+  Day1: 0
+  Day2: 0
+  Day3: 0
+  Day4: 0
+  Day5: 0
+  Day6: 0
+  Day7: 0
+  Day1_1: {fileID: 1248610251}
+  Day1_2: {fileID: 453802649}
+  Day1_3: {fileID: 396545910}
+  Day2_1: {fileID: 1773459306}
+  Day2_2: {fileID: 923876643}
+  Day2_3: {fileID: 1712557475}
+  Day3_1: {fileID: 1452331664}
+  Day3_2: {fileID: 780843484}
+  Day3_3: {fileID: 608074536}
+  Day4_1: {fileID: 1488835122}
+  Day4_2: {fileID: 874315962}
+  Day4_3: {fileID: 1860574803}
+  Day5_1: {fileID: 152006048}
+  Day5_2: {fileID: 238801930}
+  Day5_3: {fileID: 2119959384}
+  Day6_1: {fileID: 976334077}
+  Day6_2: {fileID: 828150635}
+  Day6_3: {fileID: 946351618}
+  Day7_1: {fileID: 1490663929}
+  Day7_2: {fileID: 2135634201}
+  Day7_3: {fileID: 997283058}
 --- !u!4 &496606691
 Transform:
   m_ObjectHideFlags: 0
@@ -4069,7 +4109,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 608074539}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 496606690}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: selectDay3
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &608074539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6562,7 +6614,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 946351621}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 496606690}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: selectDay6
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &946351621
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7311,7 +7375,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 997283061}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 496606690}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: selectDay7
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &997283061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10021,7 +10097,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1334959771
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12474,7 +12550,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1712557478}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 496606690}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: selectDay2
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1712557478
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13572,7 +13660,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1860574806}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 496606690}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: selectDay4
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1860574806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15520,7 +15620,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2119959387}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 496606690}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: selectDay5
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2119959387
 MonoBehaviour:
   m_ObjectHideFlags: 0
