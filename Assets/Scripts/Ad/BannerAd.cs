@@ -5,10 +5,10 @@ using UnityEngine.Advertisements;
 
 public class BannerAd : MonoBehaviour
 {
-    [SerializeField] BannerPosition bannerPosition = BannerPosition.BOTTOM_CENTER;
+    [SerializeField] BannerPosition bannerPosition = BannerPosition.TOP_CENTER;
 
-    [SerializeField] string androidAdUnitId = "Banner Android";
-    // [SerializeField] string iosAdUnitId = "Banner iOS"; // 콘솔창에서 미사용 변수라고해서 주석처리 해둘게요! -희규
+    [SerializeField] string androidAdUnitId = "Banner_Android";
+    // [SerializeField] string iosAdUnitId = "Banner_iOS"; // 콘솔창에서 미사용 변수라고해서 주석처리 해둘게요! -희규
     string adUnitId = null; //This will remain null for unsupported platforms.
 
     void Start()
@@ -59,11 +59,11 @@ public class BannerAd : MonoBehaviour
         Debug.Log($"Banner Error:{message}");
     }
 
-    /*private void OnDestroy()
+    /*void OnDestroy()
     {
         if (Advertisement.Banner.isLoaded)
         {
-            Advertisement.Banner.Hide();
+            Advertisement.Banner.Hide(true);
         }    
     }*/
 }

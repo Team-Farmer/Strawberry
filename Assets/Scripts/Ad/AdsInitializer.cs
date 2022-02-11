@@ -5,19 +5,36 @@ using UnityEngine.Advertisements;
 
 public class AdsInitializer : MonoBehaviour,IUnityAdsInitializationListener
 {
+    public static AdsInitializer instance = null;
+
     [SerializeField] string androidGameId;
     [SerializeField] string iosGameId;
     [SerializeField] bool isTestMode = true;
-    private string gameId;
+    string gameId;
 
     void Awake()
     {
         InitializeAds();
     }
 
+    void Start()
+    {
+        //Singleton
+        if(instance==null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
+    }
+
     public void InitializeAds()
     {
-        gameId = (Application.platform == RuntimePlatform.Android) ? androidGameId : iosGameId;
+        //gameId = (Application.platform == RuntimePlatform.Android) ? androidGameId : iosGameId;
+        gameId = androidGameId;
         Advertisement.Initialize(gameId, isTestMode, this);
     }
 
