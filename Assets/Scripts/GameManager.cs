@@ -38,6 +38,11 @@ public class GameManager : MonoBehaviour
     public GameObject Setting;
     public GameObject Check;
 
+    [Header("------------[CheckList]")]
+    public bool Day1, Day2, Day3, Day4, Day5, Day6, Day7;
+    public GameObject Day1_1, Day1_2, Day1_3, Day2_1, Day2_2, Day2_3, Day3_1, Day3_2, Day3_3, Day4_1, Day4_2, Day4_3
+        , Day5_1, Day5_2, Day5_3, Day6_1, Day6_2, Day6_3, Day7_1, Day7_2, Day7_3;
+
 
 
     void Awake()
@@ -299,4 +304,85 @@ public class GameManager : MonoBehaviour
             PanelBlack.SetActive(false);
         }
     }
+
+    public void selectDay1()
+    {
+        if (Day1 == false)
+        {
+            Day1_2.SetActive(true);
+            Day1_3.SetActive(false);
+            Day1 = true;
+            Day2_3.SetActive(true);
+        }
+    }
+
+    public void selectDay2()
+    {
+        if (Day1 == true)
+        {
+            Day2_2.SetActive(true);
+            Day2_3.SetActive(false);
+            Day2 = true;
+            Day3_3.SetActive(true);
+        }
+    }
+
+    public void selectDay3()
+    {
+        if (Day2 == true)
+        {
+            Day3_2.SetActive(true);
+            Day3_3.SetActive(false);
+            Day3 = true;
+            Day4_3.SetActive(true);
+
+        }
+    }
+
+    public void selectDay4()
+    {
+        if (Day3 == true)
+        {
+            Day4_2.SetActive(true);
+            Day4_3.SetActive(false);
+            Day4 = true;
+            Day5_3.SetActive(true);
+
+        }
+    }
+
+    public void selectDay5()
+    {
+        if (Day4 == true)
+        {
+            Day5_2.SetActive(true);
+            Day5_3.SetActive(false);
+            Day5 = true;
+            Day6_3.SetActive(true);
+
+        }
+    }
+
+    public void selectDay6()
+    {
+        if (Day5 == true)
+        {
+            Day6_2.SetActive(true);
+            Day6_3.SetActive(false);
+            Day6 = true;
+            Day7_3.SetActive(true);
+
+        }
+    }
+
+    public void selectDay7()
+    {
+        if (Day6 == true)
+        {
+            Day7_2.SetActive(true);
+            Day7_3.SetActive(false);
+            Day7 = true;
+        }
+    }
+
 }
