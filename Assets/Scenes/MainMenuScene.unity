@@ -3435,6 +3435,8 @@ MonoBehaviour:
   ResearchList: {fileID: 969289837}
   BerryList: {fileID: 698710642}
   PanelBlack: {fileID: 41530268}
+  panelBlack_Exp: {fileID: 0}
+  berryExpPanel: {fileID: 0}
   SettingsPanel: {fileID: 2031592367}
   CheckPanel: {fileID: 1334959770}
   Day1: 0
@@ -4382,7 +4384,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementPrefab: {fileID: 3705786545946922626, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
   content: {fileID: 1179187197}
-  count: 0
+  count: 7
 --- !u!114 &642284039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4778,9 +4780,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 698710643}
-  - component: {fileID: 698710646}
-  - component: {fileID: 698710645}
-  - component: {fileID: 698710644}
+  - component: {fileID: 698710649}
+  - component: {fileID: 698710648}
+  - component: {fileID: 698710647}
   m_Layer: 5
   m_Name: BerryList
   m_TagString: Untagged
@@ -4809,7 +4811,7 @@ Transform:
   m_Father: {fileID: 2075785727}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &698710644
+--- !u!114 &698710647
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4818,12 +4820,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 698710642}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98f46a49e70c55240be1191d30301306, type: 3}
+  m_Script: {fileID: 11500000, guid: 37f5d238c6e305e42a847cb03afe81f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  berryPrefab: {fileID: 5586810261264398575, guid: 3cc2f8fae1bc28b41b41a0de174f3797, type: 3}
-  _content: {fileID: 996972257}
---- !u!114 &698710645
+  elementPrefab: {fileID: 5586810261264398575, guid: 3cc2f8fae1bc28b41b41a0de174f3797, type: 3}
+  content: {fileID: 996972257}
+  count: 32
+--- !u!114 &698710648
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4832,12 +4835,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 698710642}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98f46a49e70c55240be1191d30301306, type: 3}
+  m_Script: {fileID: 11500000, guid: 37f5d238c6e305e42a847cb03afe81f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  berryPrefab: {fileID: 4627074309705252755, guid: d66f38991a9038346a2a5b39f5e59948, type: 3}
-  _content: {fileID: 996972257}
---- !u!114 &698710646
+  elementPrefab: {fileID: 4627074309705252755, guid: d66f38991a9038346a2a5b39f5e59948, type: 3}
+  content: {fileID: 996972257}
+  count: 32
+--- !u!114 &698710649
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4846,11 +4850,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 698710642}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98f46a49e70c55240be1191d30301306, type: 3}
+  m_Script: {fileID: 11500000, guid: 37f5d238c6e305e42a847cb03afe81f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  berryPrefab: {fileID: 5225169736592362495, guid: 78a1f0bab626483409bc5cd16f265701, type: 3}
-  _content: {fileID: 996972257}
+  elementPrefab: {fileID: 5225169736592362495, guid: 78a1f0bab626483409bc5cd16f265701, type: 3}
+  content: {fileID: 996972257}
+  count: 32
 --- !u!1 &708116552
 GameObject:
   m_ObjectHideFlags: 0
@@ -6945,7 +6950,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementPrefab: {fileID: 7523383970360610591, guid: de05a49ceb67bea458e80dea1ba61d6e, type: 3}
   content: {fileID: 1427270974}
-  count: 0
+  count: 7
 --- !u!114 &969289840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13230,6 +13235,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Obj:
   - {fileID: 576054017}
+  PanelBlack: {fileID: 0}
 --- !u!1 &1814458729
 GameObject:
   m_ObjectHideFlags: 0
