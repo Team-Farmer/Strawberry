@@ -6,7 +6,6 @@ using System;
 
 public class BerryManager : MonoBehaviour
 {
-
     [Serializable]
     public struct BerryStruct 
     {
@@ -18,6 +17,7 @@ public class BerryManager : MonoBehaviour
             this.berryImage = berryImage;
             this.berryName = berryName;
             this.berryTxt = berryTxt;
+
         }
     }
 
