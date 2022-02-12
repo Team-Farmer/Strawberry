@@ -15,7 +15,14 @@ public class Bug : MonoBehaviour
     }
     void OnEnable()
     {
-        
+        SetAnim("isGenerate", true);
+        berry.canGrow = false;
+        berry.hasBug = true;
+    }
+    void OnDisable()
+    {
+        transform.localRotation = Quaternion.identity;
+        transform.localScale = Vector3.zero;
     }
     // Update is called once per frame
     void Update()
@@ -27,10 +34,7 @@ public class Bug : MonoBehaviour
         float prob = Random.Range(0, 100);
         if (prob < bugProb)
         {
-            this.gameObject.SetActive(true);
-            SetAnim("isGenerate", true);
-            berry.canGrow = false;
-            berry.hasBug = true;
+            this.gameObject.SetActive(true);           
         }
     }
     public void DieBug()
