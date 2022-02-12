@@ -19,7 +19,6 @@ public class BerryManager : MonoBehaviour
             this.berryName = berryName;
             this.berryTxt = berryTxt;
         }
-    
     }
 
 
@@ -36,13 +35,15 @@ public class BerryManager : MonoBehaviour
     GameObject ExpChildren;
     GameObject ExpChildren2;
 
+
     //프리팹들 번호 붙여주기 용
     static int Prefabcount = 0;
     int prefabnum;
 
 
 
-void Start()
+    //=====================================================================================================
+    void Start()
     {
         berryExp = GameObject.Find("berryExplanation");
 
@@ -63,7 +64,7 @@ void Start()
 
 
 
-
+    //=====================================================================================================
     public void Explanation()
     {
         ExpChildren = berryExp.transform.GetChild(0).transform.gameObject;//Expchildren = 하이라키의 berryExplanation의 자식 berryExp를 의미
@@ -94,7 +95,7 @@ void Start()
 
 
 
-    public void berryImageChange()
+    public void berryImageChange()//베리 리스트에 이미지를 보인다.
     {
         for (int i = 0; i < berryInfo.Length; i++)
         {

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class XButton : MonoBehaviour
 {
-    [Header("끄고싶은 창")]
+    [Header("끄고 켜고 싶은 창")]
     public GameObject[] Obj;
     [Header("검정패널")]
     public GameObject PanelBlack;
