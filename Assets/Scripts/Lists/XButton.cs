@@ -6,7 +6,8 @@ public class XButton : MonoBehaviour
 {
     [Header("끄고싶은 창")]
     public GameObject[] Obj;
-
+    [Header("검정패널")]
+    public GameObject PanelBlack;
 
     void Start()
     {

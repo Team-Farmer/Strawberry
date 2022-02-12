@@ -221,11 +221,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdbacebad87097344ab60889cf36cc03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  berryImg:
-  - {fileID: 6012652252893621343, guid: 60a7952c2d98afa46bbec2d461a51f4e, type: 3}
-  berryName:
-  - "\uC791\uC740 \uB538\uAE30"
-  berryTxt:
-  - "\uC27D\uAC8C \uBCFC \uC218 \uC788\uB294, \n \uC870\uAE08 \uC791\uC740 \uD3C9\uBC94\uD55C
-    \uB538\uAE30\uC774\uB2E4."
-  berryImage: {fileID: 3040711945836427131}
+  berryImagePanel: {fileID: 3040711945836427131}
+  berryInfo:
+  - berryImage: {fileID: 6012652252893621343, guid: 60a7952c2d98afa46bbec2d461a51f4e, type: 3}
+    berryName: "\uC791\uC740 \uB538\uAE30"
+    berryTxt: "\uC27D\uAC8C \uBCFC \uC218 \uC788\uB294, \\n \uC870\uAE08 \uC791\uC740
+      \uD3C9\uBC94\uD55C \uB538\uAE30\uC774\uB2E4. "

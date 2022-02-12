@@ -2,20 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class BerryManager : MonoBehaviour
 {
 
+    [Serializable]
+    public struct BerryStruct 
+    {
+        public Sprite berryImage;
+        public string berryName, berryTxt;
+        
+        public BerryStruct(Sprite berryImage, string berryName, string berryTxt) 
+        {
+            this.berryImage = berryImage;
+            this.berryName = berryName;
+            this.berryTxt = berryTxt;
+        }
+    
+    }
+
+
     [SerializeField]
-    private Sprite[] berryImg;//베리 이미지 소스들. 스프라이트들
+    private GameObject berryImagePanel;//이미지를 보일 오브젝트 대상
 
-
-    [Header("BERRY EXPLANATION")]//설명 저장 구조체로 저장할까..?
-    public string[] berryName;
-    public string[] berryTxt;
-
+    [Header("==========BERRY STRUCT==========")]
     [SerializeField]
-    private GameObject berryImage;//이미지를 보일 오브젝트 대상
+    BerryStruct[] berryInfo;
+
 
 
     GameObject berryExp;
@@ -31,7 +45,6 @@ public class BerryManager : MonoBehaviour
 void Start()
     {
         berryExp = GameObject.Find("berryExplanation");
-
 
         //프리팹들에게 번호를 붙여 주자
         if (Prefabcount >= 32)
@@ -59,14 +72,15 @@ void Start()
 
         //설명창이 뜬다.
         ExpChildren.SetActive(true);
+
             
 
         try
         {
             //Explanation 내용을 채운다.
-            ExpChildren2.transform.GetChild(0).transform.gameObject.GetComponentInChildren<Image>().sprite = berryImg[prefabnum];//이미지 설정
-            ExpChildren2.transform.GetChild(1).transform.gameObject.GetComponentInChildren<Text>().text = berryName[prefabnum];//이름 설정
-            ExpChildren2.transform.GetChild(2).transform.gameObject.GetComponentInChildren<Text>().text = berryTxt[prefabnum];//설명 설정
+            ExpChildren2.transform.GetChild(0).transform.gameObject.GetComponentInChildren<Image>().sprite = berryInfo[prefabnum].berryImage;//이미지 설정
+            ExpChildren2.transform.GetChild(1).transform.gameObject.GetComponentInChildren<Text>().text = berryInfo[prefabnum].berryName;//이름 설정
+            ExpChildren2.transform.GetChild(2).transform.gameObject.GetComponentInChildren<Text>().text = berryInfo[prefabnum].berryTxt;//설명 설정
         }
         catch(System.IndexOutOfRangeException exception) 
         {
@@ -82,10 +96,10 @@ void Start()
 
     public void berryImageChange()
     {
-        for (int i = 0; i < berryImg.Length; i++)
+        for (int i = 0; i < berryInfo.Length; i++)
         {
             if (prefabnum == i)
-                berryImage.GetComponent<Image>().sprite = berryImg[i];
+                berryImagePanel.GetComponent<Image>().sprite = berryInfo[i].berryImage;
         }
     }
 

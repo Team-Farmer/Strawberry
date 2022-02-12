@@ -34,6 +34,8 @@ public class GameManager : MonoBehaviour
     public GameObject ResearchList;
     public GameObject BerryList;
     public GameObject PanelBlack;
+    public GameObject panelBlack_Exp;
+    public GameObject berryExpPanel;
     internal object count;
 
     [Header("------------[Check/Settings Panel]")]
@@ -259,6 +261,11 @@ public class GameManager : MonoBehaviour
             PanelBlack.SetActive(true);
         }       
     }
+
+
+
+
+
     public void selectSettingPanel()
     {
         if (SettingsPanel.activeSelf == false)
@@ -316,6 +323,7 @@ public class GameManager : MonoBehaviour
             TruckPanel.SetActive(false);
             PanelBlack.SetActive(false);
         }
+
     }
 
     public void selectDay1()
