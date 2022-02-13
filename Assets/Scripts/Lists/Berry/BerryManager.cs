@@ -11,12 +11,14 @@ public class BerryManager : MonoBehaviour
     {
         public Sprite berryImage;
         public string berryName, berryTxt;
+        public int berryValue;
         
-        public BerryStruct(Sprite berryImage, string berryName, string berryTxt) 
+        public BerryStruct(Sprite berryImage, string berryName, string berryTxt, int berryValue) 
         {
             this.berryImage = berryImage;
             this.berryName = berryName;
             this.berryTxt = berryTxt;
+            this.berryValue = berryValue;
 
         }
     }
