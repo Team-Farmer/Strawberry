@@ -33,9 +33,6 @@ public class PrefabManager : MonoBehaviour
     public GameObject levelNum;
 
 
-    //gameManager Script
-    GameManager gm1;
-
     //추가 된 Prefab 수
     static int Prefabcount = 0;
     //자신이 몇번째 Prefab인지
@@ -45,7 +42,6 @@ public class PrefabManager : MonoBehaviour
     //===================================================================================================
     void Start()
     {
-        gm1 = GameObject.Find("GameManager").GetComponent<GameManager>();
         InfoUpdate();
     }
     void Update()
@@ -64,8 +60,8 @@ public class PrefabManager : MonoBehaviour
         levelNum.GetComponent<Text>().text = Info[prefabnum].Level.ToString();
 
         //해당 금액의 코인이 감소된다.
-        gm1.coin -= Info[prefabnum].Price;
-        gm1.ShowCoinText(gm1.coin);
+        GameManager.instance.coin -= Info[prefabnum].Price;
+        GameManager.instance.ShowCoinText(GameManager.instance.coin);
         //gm1.CoinText.text = gm1.coin.ToString() + " A";
 
     }
@@ -78,8 +74,8 @@ public class PrefabManager : MonoBehaviour
         if (Info[prefabnum].Level == 0) //고용 중이 아니라면 !!!!!!!!!!!!왜 prefabnum말로 0을 넣어도 되는가
         {
             //해당 금액의 코인이 감소된다.
-            gm1.coin -= Info[prefabnum].Price;
-            gm1.ShowCoinText(gm1.coin);
+            GameManager.instance.coin -= Info[prefabnum].Price;
+            GameManager.instance.ShowCoinText(GameManager.instance.coin);
             //gm1.CoinText.text = gm1.coin.ToString() + " A";
 
             Info[prefabnum].Level = 1;

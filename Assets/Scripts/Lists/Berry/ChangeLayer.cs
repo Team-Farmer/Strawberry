@@ -135,4 +135,20 @@ public class ChangeLayer : MonoBehaviour
         }
     }
 
+
+    /*
+     public class Swipe : MonoBehaviour
+{
+    public float speed = 1.0f;
+    void Update()
+    {
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
+        {
+            Vector2 touchDeltaPosition = Input.GetTouch(0).deltaPosition;
+            transform.Translate(touchDeltaPosition.x * speed, touchDeltaPosition.y * speed, 0);
+        }
+    }
+}
+     
+     */
 }
