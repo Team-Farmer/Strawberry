@@ -107,7 +107,7 @@ public class PrefabManager : MonoBehaviour
         else
         {    levelNum.GetComponent<Text>().text = Info[Prefabcount].Level.ToString();    }
 
-        Debug.Log(prefabnum);
+        //Debug.Log(prefabnum);
         Prefabcount++;
     }
 }

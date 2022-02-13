@@ -85,7 +85,7 @@ public class BerryManager : MonoBehaviour
             ExpChildren2.transform.GetChild(1).transform.gameObject.GetComponentInChildren<Text>().text = berryInfo[prefabnum].berryName;//이름 설정
             ExpChildren2.transform.GetChild(2).transform.gameObject.GetComponentInChildren<Text>().text = berryInfo[prefabnum].berryTxt;//설명 설정
         }
-        catch(System.IndexOutOfRangeException exception) 
+        catch
         {
             ExpChildren.SetActive(false);
             Debug.Log("여기에 해당하는 베리는 아직 없다");
@@ -104,13 +104,6 @@ public class BerryManager : MonoBehaviour
             if (prefabnum == i)
                 berryImagePanel.GetComponent<Image>().sprite = berryInfo[i].berryImage;
         }
-    }
-
-    public void newBerry() 
-    {
-        Debug.Log("새로운 딸기");
-    
-    
     }
 
 
