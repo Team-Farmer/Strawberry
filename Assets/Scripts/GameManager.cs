@@ -66,7 +66,7 @@ public class GameManager : MonoBehaviour
         }
 
         // 임시 재화 설정
-        coin = 100000;
+        coin = 10000;
         heart = 300;
         ShowCoinText(coin);
         //CoinText.text = coin.ToString() + " A";
@@ -201,12 +201,12 @@ public class GameManager : MonoBehaviour
     #region 재화
     void SetBerryPrice()
     {
-        BerryPrice[0, 0] = 20; // 클래식의 0번 딸기
+        BerryPrice[0, 0] = 10; // 클래식의 0번 딸기
 
         for (int i = 0; i < 32; i++)
         {
             if (i != 0)
-                BerryPrice[0, i] = BerryPrice[0, i - 1] + 10; // 클래식 딸기값 세팅 (1번부터)
+                BerryPrice[0, i] = BerryPrice[0, i - 1] + 5; // 클래식 딸기값 세팅 (1번부터)
             BerryPrice[1, i] = BerryPrice[0, i] * 2;
             BerryPrice[2, i] = BerryPrice[0, i] * 3;
         }
