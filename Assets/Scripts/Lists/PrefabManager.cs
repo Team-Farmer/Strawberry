@@ -65,7 +65,8 @@ public class PrefabManager : MonoBehaviour
 
         //해당 금액의 코인이 감소된다.
         gm1.coin -= Info[prefabnum].Price;
-        gm1.CoinText.text = gm1.coin.ToString() + " A";
+        gm1.ShowCoinText(gm1.coin);
+        //gm1.CoinText.text = gm1.coin.ToString() + " A";
 
     }
 
@@ -78,7 +79,8 @@ public class PrefabManager : MonoBehaviour
         {
             //해당 금액의 코인이 감소된다.
             gm1.coin -= Info[prefabnum].Price;
-            gm1.CoinText.text = gm1.coin.ToString() + " A";
+            gm1.ShowCoinText(gm1.coin);
+            //gm1.CoinText.text = gm1.coin.ToString() + " A";
 
             Info[prefabnum].Level = 1;
             levelNum.GetComponent<Text>().text = "고용중";

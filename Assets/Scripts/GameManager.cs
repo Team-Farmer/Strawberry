@@ -6,14 +6,16 @@ using DG.Tweening;
 
 public class GameManager : MonoBehaviour
 {
+    #region 인스펙터
     public static GameManager instance;
 
     [Header("------------[ Money ]")]
     [SerializeField] public int coin;
-    [SerializeField] int heart;
+    [SerializeField] public int heart;
     public Text CoinText;
     public Text HeartText;
-    public int[] berryPrice = { 10, 20, 30, 40 };
+    //public int[] berryPrice = { 10, 20, 30, 40 };
+    public int[,] BerryPrice = new int[3, 32];
 
     [Header("------------[ Object ]")]
     public GameObject berryPrefab; // 프리팹    
@@ -43,10 +45,12 @@ public class GameManager : MonoBehaviour
     public GameObject CheckPanel;
 
     [Header("------------[Check/Day List]")]
-    public bool Day1, Day2, Day3, Day4, Day5, Day6, Day7;
+    public bool Day1, Day2, Day3, Day4, Day5, Day6, Day7; //public bool[] Today; 얘네 배열로 처리하면 어떨까요 (우연)
     public GameObject Day1_1, Day1_2, Day1_3, Day2_1, Day2_2, Day2_3, Day3_1, Day3_2, Day3_3, 
-        Day4_1, Day4_2, Day4_3, Day5_1, Day5_2, Day5_3, Day6_1, Day6_2, Day6_3, Day7_1, Day7_2, Day7_3;
+        Day4_1, Day4_2, Day4_3, Day5_1, Day5_2, Day5_3, Day6_1, Day6_2, Day6_3, Day7_1, Day7_2, Day7_3; // 얘네도요 (우연)
+    #endregion
 
+    #region 기본
     void Awake()
     {
         Application.targetFrameRate = 60;
@@ -64,8 +68,11 @@ public class GameManager : MonoBehaviour
         // 임시 재화 설정
         coin = 100000;
         heart = 300;
-        CoinText.text = coin.ToString() + " A";
+        ShowCoinText(coin);
+        //CoinText.text = coin.ToString() + " A";
         HeartText.text = heart.ToString();
+
+        SetBerryPrice();
     }
     void Update()
     {
@@ -87,9 +94,13 @@ public class GameManager : MonoBehaviour
     }
     void LateUpdate()
     {
-        CoinText.text = coin.ToString() + " A";
+        //CoinText.text = coin.ToString() + " A";
+        ShowCoinText(coin);
         HeartText.text = heart.ToString();
     }
+    #endregion
+
+    #region 딸기밭
     void ClickedFarm(GameObject obj)
     {
         Farm farm = obj.GetComponent<Farm>();
@@ -184,6 +195,44 @@ public class GameManager : MonoBehaviour
     {
         truck.berryCnt += berry.route + 1;
     }
+
+    #endregion
+
+    #region 재화
+    void SetBerryPrice()
+    {
+        BerryPrice[0, 0] = 20; // 클래식의 0번 딸기
+
+        for (int i = 0; i < 32; i++)
+        {
+            if (i != 0)
+                BerryPrice[0, i] = BerryPrice[0, i - 1] + 10; // 클래식 딸기값 세팅 (1번부터)
+            BerryPrice[1, i] = BerryPrice[0, i] * 2;
+            BerryPrice[2, i] = BerryPrice[0, i] * 3;
+        }
+
+        Debug.Log("딸기가치 : " + BerryPrice[0, 0] + " " + BerryPrice[1, 0] + " " + BerryPrice[2, 0]);
+    }
+
+    public void ShowCoinText(int coin)
+    {
+        int show = coin;
+        if (show <= 9999)           // 0~9999까지 A
+        {
+            CoinText.text = show.ToString() + " A";
+        }
+        else if (show <= 9999999)   // 10000~9999999(=9999B)까지 B
+        {
+            show /= 1000;
+            CoinText.text = show.ToString() + " B";
+        }
+        else                        // 그 외 C (최대 2100C)
+        {
+            show /= 1000000;
+            CoinText.text = show.ToString() + " C";
+        }
+    }
+
     public void UpdateCoin(int coin)
     {
         this.coin += coin;
@@ -192,6 +241,10 @@ public class GameManager : MonoBehaviour
     {
         this.heart += heart;
     }
+
+    #endregion
+
+    #region 콜라이더
     public void DisableObjColliderAll() // 모든 오브젝트의 collider 비활성화
     {
         BoxCollider2D coll;
@@ -220,7 +273,9 @@ public class GameManager : MonoBehaviour
             berryList[i].bug.GetComponent<CircleCollider2D>().enabled = true;
         }
     }
+    #endregion
 
+    #region 리스트
     //리스트 활성화 비활성화===========================================================================================
     //중복.... 개선필요 공부
 
@@ -261,10 +316,9 @@ public class GameManager : MonoBehaviour
             PanelBlack.SetActive(true);
         }       
     }
+    #endregion
 
-
-
-
+    #region 패널
 
     public void selectSettingPanel()
     {
@@ -326,6 +380,9 @@ public class GameManager : MonoBehaviour
 
     }
 
+    #endregion
+
+    #region 출석
     public void selectDay1()
     {
         if (Day1 == false)
@@ -438,4 +495,6 @@ public class GameManager : MonoBehaviour
 
 
     }
+
+    #endregion
 }
