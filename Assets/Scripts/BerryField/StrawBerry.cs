@@ -8,6 +8,7 @@ using Random = UnityEngine.Random;
 public class StrawBerry : MonoBehaviour
 {   
     private Animator anim;
+    private SpriteRenderer sprite;
     private Vector2 pos;
     public Bug bug;
 
@@ -18,15 +19,18 @@ public class StrawBerry : MonoBehaviour
     public int berryIdx;    
     public int level;
     public int route = -1;
+    public float randomTime = 0f;
     public float chance;
     public float[] berryProb = { 10f, 20f, 30f, 40f };   
 
     void Awake()
     {       
-        anim = GetComponent<Animator>();       
+        anim = GetComponent<Animator>();
+        sprite = GetComponent<SpriteRenderer>();
     }
     private void OnEnable()
     {
+        randomTime = Random.Range(7.0f, 18.0f);
         pos = transform.position;
         DefineBerryRank();
         SetAnim(0);       
@@ -37,6 +41,7 @@ public class StrawBerry : MonoBehaviour
         canGrow = true;
         createTime = 0f;
         route = -1;
+        randomTime = 0f;
         chance = 0f;        
 
         // µþ±â Æ®·£½ºÆû ÃÊ±âÈ­
@@ -49,6 +54,12 @@ public class StrawBerry : MonoBehaviour
         if (canGrow)
         {
             createTime += Time.deltaTime;
+            if(randomTime <= createTime)
+            {
+                bug.GenerateBug();
+                randomTime = 200f;
+            }
+
             if (5.0f <= createTime && createTime < 10.0f)
             {
                 if (level == 1) return;
@@ -64,7 +75,7 @@ public class StrawBerry : MonoBehaviour
                 if (level == 3) return;
 
                 SetAnim(3);
-                bug.GenerateBug();                
+                         
             }
             else if (createTime >= 20.0f)
             {
@@ -75,15 +86,17 @@ public class StrawBerry : MonoBehaviour
         }
     }
     public void SetAnim(int level)
-    {
+    {        
         this.level = level;
-        if(this.level == 0)
+        
+        if (this.level == 0)
         {
             transform.position = new Vector2(pos.x, pos.y + 0.1f);
         }
         else if (this.level == 1)
         {
-            transform.position = new Vector2(pos.x - 0.1f, pos.y + 0.35f);
+            sprite.sortingOrder = 0;
+            transform.position = new Vector2(pos.x - 0.1f, pos.y + 0.3f);
         }
         else
         {

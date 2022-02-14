@@ -48,6 +48,7 @@ public class GameManager : MonoBehaviour
     public bool Day1, Day2, Day3, Day4, Day5, Day6, Day7; //public bool[] Today; 얘네 배열로 처리하면 어떨까요 (우연)
     public GameObject Day1_1, Day1_2, Day1_3, Day2_1, Day2_2, Day2_3, Day3_1, Day3_2, Day3_3, 
         Day4_1, Day4_2, Day4_3, Day5_1, Day5_2, Day5_3, Day6_1, Day6_2, Day6_3, Day7_1, Day7_2, Day7_3; // 얘네도요 (우연)
+   
     #endregion
 
     #region 기본
@@ -55,7 +56,7 @@ public class GameManager : MonoBehaviour
     {
         Application.targetFrameRate = 60;
         instance = this; // 게임 매니저의 싱글턴 패턴화 >> 타 스크립트에서 GameManager의 컴포넌트 쓰고 싶으시면
-                         // 굳이 스크립트 마다 게임매니저 할당 안해도 GameManager.instance.~~ 로 호출하시면 돼요!! 
+                         // 굳이 스크립트 마다 게임매니저 할당 안해도 GameManager.instance.~~ 로 호출하시면 돼요!!        
         berryList = new List<StrawBerry>();
         truck = TruckObj.GetComponent<Truck>();
         target = TruckObj.GetComponent<Transform>();
@@ -162,6 +163,7 @@ public class GameManager : MonoBehaviour
         farm.isHarvest = true;
         Vector2 pos;
 
+        berry.GetComponent<SpriteRenderer>().sortingOrder = 4;
         berry.SetAnim(5); // 수확 이미지로 변경
         pos = berry.transform.position;
         berry.Explosion(pos, target.position, 0.5f); // DOTWeen 효과 구현
