@@ -37,13 +37,13 @@ public class NewBerry : MonoBehaviour
     public void newBerryAdd() 
     {
         //타이머가 0 이라면 
-        if (time[0] == 0)
+        if (time[index] < 0.9)
         {
             //새로운 딸기가 추가된다.
             Debug.Log("새로운 딸기!!");
 
-            //금액이 빠져나간다.(지금은 일단 하나로 통일)
-            GameManager.instance.coin -= price[0];
+            //금액이 빠져나간다.
+            GameManager.instance.coin -= price[index];
             GameManager.instance.ShowCoinText(GameManager.instance.coin);
 
             //업스레이드 레벨 상승 -> 그 다음 업그레이드 금액이 보인다.

@@ -16898,10 +16898,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priceText: {fileID: 1295824419}
   timeText: {fileID: 2120615085}
-  price: 64000000c8000000
+  price: 64000000c80000002c01000090010000f4010000
   time:
-  - 10
-  - 20
+  - 5
+  - 7
+  - 9
+  - 11
 --- !u!1 &2119959384
 GameObject:
   m_ObjectHideFlags: 0
