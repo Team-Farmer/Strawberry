@@ -4,25 +4,35 @@ using UnityEngine;
 
 public class Bug : MonoBehaviour
 {
+    SpriteRenderer sprite;    
     public float bugProb = 100f;
     private Animator anim;
     private StrawBerry berry;
+
+    public float scale = 1.5f;
     // Start is called before the first frame update
     void Awake()
     {
+        sprite = GetComponent<SpriteRenderer>();        
         anim = GetComponent<Animator>();
         berry = transform.parent.gameObject.GetComponent<StrawBerry>();
     }
     void OnEnable()
     {
+        transform.localScale = new Vector2(scale, scale);
         SetAnim("isGenerate", true);
+        
         berry.canGrow = false;
         berry.hasBug = true;
     }
     void OnDisable()
     {
+        Color color = sprite.color; 
+        
+        color.a = 0f;
+        sprite.color = color;
         transform.localRotation = Quaternion.identity;
-        transform.localScale = Vector3.zero;
+        transform.localScale = Vector2.zero;
     }
     // Update is called once per frame
     void Update()
@@ -32,9 +42,10 @@ public class Bug : MonoBehaviour
     public void GenerateBug()
     {
         float prob = Random.Range(0, 100);
+        scale = Random.Range(1.3f, 1.8f);
         if (prob < bugProb)
-        {
-            this.gameObject.SetActive(true);           
+        {           
+            this.gameObject.SetActive(true);            
         }
     }
     public void DieBug()

@@ -232,16 +232,6 @@ public class GameManager : MonoBehaviour
             CoinText.text = show.ToString() + " C";
         }
     }
-
-    public void UpdateCoin(int coin)
-    {
-        this.coin += coin;
-    }
-    public void UpdateHeart(int heart)
-    {
-        this.heart += heart;
-    }
-
     #endregion
 
     #region 콜라이더
