@@ -16896,10 +16896,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5dc86236bea1f443854f725c5b7e3c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradePrice: {fileID: 1295824419}
-  upgradeTimer: {fileID: 2120615085}
-  upgradePrice_: 64000000c80000002c010000
-  upgradeTime_: 000000000a00000014000000
+  priceText: {fileID: 1295824419}
+  timeText: {fileID: 2120615085}
+  price: 64000000c8000000
+  time:
+  - 10
+  - 20
 --- !u!1 &2119959384
 GameObject:
   m_ObjectHideFlags: 0
@@ -17207,7 +17209,7 @@ MonoBehaviour:
   scrollBar: {fileID: 789590240}
   circleContents: []
   swipeTime: 0.2
-  swipeDistance: 50
+  swipeDistance: 200
 --- !u!1 &2128544915
 GameObject:
   m_ObjectHideFlags: 0
