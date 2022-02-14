@@ -214,7 +214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95244d41cdad79f44966a4d4e7f56909, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bugProb: 50
+  bugProb: 20
   scale: 1.5
 --- !u!1 &3681563082960653409
 GameObject:
@@ -340,6 +340,7 @@ MonoBehaviour:
   berryIdx: 0
   level: 0
   route: -1
+  randomTime: 0
   chance: 0
   berryProb:
   - 10

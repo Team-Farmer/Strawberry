@@ -91,16 +91,16 @@ public class StrawBerry : MonoBehaviour
         
         if (this.level == 0)
         {
-            transform.position = new Vector2(pos.x, pos.y + 0.1f);
+            transform.position = new Vector2(pos.x, pos.y + 0.05f);
         }
         else if (this.level == 1)
         {
             sprite.sortingOrder = 0;
-            transform.position = new Vector2(pos.x - 0.1f, pos.y + 0.3f);
+            transform.position = new Vector2(pos.x - 0.1f, pos.y + 0.25f);
         }
         else
         {
-            transform.position = new Vector2(pos.x - 0.1f, pos.y + 0.4f);
+            transform.position = new Vector2(pos.x - 0.1f, pos.y + 0.38f);
         }
         anim.SetInteger("Level", level);
     }

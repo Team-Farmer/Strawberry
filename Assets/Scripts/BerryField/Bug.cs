@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bug : MonoBehaviour
 {
     SpriteRenderer sprite;    
-    public float bugProb = 100f;
+    public float bugProb;
     private Animator anim;
     private StrawBerry berry;
 

@@ -4,8 +4,17 @@ using UnityEngine;
 
 public class Truck : MonoBehaviour
 {
-    Animator anim;
+    public GameObject MaxPanel;    
     public int berryCnt = 0;
+    private Animator anim;
+    public enum Count
+    {
+        Cnt0 = 0,
+        Cnt1 = 16,
+        Cnt2 = 32,       
+        Max = 48
+    }
+ 
     // Start is called before the first frame update
     void Awake()
     {
@@ -14,24 +23,26 @@ public class Truck : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(0 <= berryCnt && berryCnt < 30)
+        if((int)Count.Cnt0 <= berryCnt && berryCnt < (int)Count.Cnt1)
         {
             if (anim.GetInteger("Truck") == 0) return;
+            MaxPanel.SetActive(false);
             SetAnim(0);
         }
-        if (30 <= berryCnt && berryCnt < 60)
+        if ((int)Count.Cnt1 <= berryCnt && berryCnt < (int)Count.Cnt2)
         {
             if (anim.GetInteger("Truck") == 1) return;
             SetAnim(1);
         }
-        if (60 <= berryCnt && berryCnt < 90)
+        if ((int)Count.Cnt2 <= berryCnt && berryCnt < (int)Count.Max)
         {
             if (anim.GetInteger("Truck") == 2) return;
             SetAnim(2);
         }
-        if (90 <= berryCnt)
+        if ((int)Count.Max == berryCnt)
         {
             if (anim.GetInteger("Truck") == 3) return;
+            MaxPanel.SetActive(true);
             SetAnim(3);
         }      
     }    

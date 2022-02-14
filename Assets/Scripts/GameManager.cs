@@ -27,9 +27,10 @@ public class GameManager : MonoBehaviour
 
     [Header("------------[Truck List]")]
     public GameObject TruckObj;
-    public GameObject TruckPanel;
+    public GameObject TruckPanel;    
     Truck truck;
     Transform target;
+    
 
     [Header("------------[PartTime/Search/Berry List]")]
     public GameObject PartTimeList;
@@ -183,9 +184,9 @@ public class GameManager : MonoBehaviour
     {
         farm.GetComponent<BoxCollider2D>().enabled = false; // 밭을 잠시 비활성화
 
-        yield return new WaitForSeconds(0.65f); // 0.65초 뒤에
+        yield return new WaitForSeconds(0.75f); // 0.75초 뒤에
 
-        UpdateBerryCnt(berryList[farm.farmIdx]);
+        UpdateBerryCnt();
 
         yield return new WaitForSeconds(0.25f); // 0.25초 뒤에
 
@@ -193,9 +194,12 @@ public class GameManager : MonoBehaviour
         farm.isPlant = false; // 밭을 비워준다
         farm.GetComponent<BoxCollider2D>().enabled = true; // 밭을 다시 활성화      
     }
-    void UpdateBerryCnt(StrawBerry berry)
-    {
-        truck.berryCnt += berry.route + 1;
+    void UpdateBerryCnt()
+    {       
+        if(truck.berryCnt < (int)Truck.Count.Max)
+        {
+            truck.berryCnt += 1;
+        }
     }
 
     #endregion
