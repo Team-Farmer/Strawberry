@@ -49,7 +49,9 @@ public class GameManager : MonoBehaviour
     public bool Day1, Day2, Day3, Day4, Day5, Day6, Day7; //public bool[] Today; 얘네 배열로 처리하면 어떨까요 (우연)
     public GameObject Day1_1, Day1_2, Day1_3, Day2_1, Day2_2, Day2_3, Day3_1, Day3_2, Day3_3, 
         Day4_1, Day4_2, Day4_3, Day5_1, Day5_2, Day5_3, Day6_1, Day6_2, Day6_3, Day7_1, Day7_2, Day7_3; // 얘네도요 (우연)
-   
+
+  
+
     #endregion
 
     #region 기본
@@ -287,95 +289,6 @@ public class GameManager : MonoBehaviour
         //L.transform.GetChild(0).gameObject.SetActive(true);
 
     }
-
-    public void selectPTJList() // 각각의 패널을 클릭 했을 때 패널 활성화
-    {
-        if (PartTimeList.activeSelf == false)
-        {
-            PartTimeList.SetActive(true);
-            PanelBlack.SetActive(true);
-        }        
-    }
-    public void selectSearchList()
-    {
-        if (ResearchList.activeSelf == false)
-        {
-            ResearchList.SetActive(true);
-            PanelBlack.SetActive(true);
-        }       
-    }
-    public void selectBerryList()
-    {
-        if (BerryList.activeSelf == false)
-        {
-            BerryList.SetActive(true);
-            PanelBlack.SetActive(true);
-        }       
-    }
-    #endregion
-
-    #region 패널
-
-    public void selectSettingPanel()
-    {
-        if (SettingsPanel.activeSelf == false)
-        {
-            SettingsPanel.SetActive(true);
-            PanelBlack.SetActive(true);
-        }       
-    }
-    public void selectCheckPanel()
-    {
-        if (CheckPanel.activeSelf == false)
-        {
-            CheckPanel.SetActive(true);
-            PanelBlack.SetActive(true);
-        }       
-    }
-    public void selectTruckPanel()
-    {
-        if (TruckPanel.activeSelf == false)
-        {
-            TruckPanel.SetActive(true);
-            PanelBlack.SetActive(true);
-        }       
-    }
-
-    public void selectPanelBlack() // 검은창 클릭시 UI 종료
-    {
-        if (SettingsPanel.activeSelf == true)
-        {
-            SettingsPanel.SetActive(false);
-            PanelBlack.SetActive(false);
-        }
-        else if (CheckPanel.activeSelf == true)
-        {
-            CheckPanel.SetActive(false);
-            PanelBlack.SetActive(false);
-        }
-        else if (PartTimeList.activeSelf == true)
-        {
-            PartTimeList.SetActive(false);
-            PanelBlack.SetActive(false);
-        }
-        else if (ResearchList.activeSelf == true)
-        {
-            ResearchList.SetActive(false);
-            PanelBlack.SetActive(false);
-        }
-        else if (BerryList.activeSelf == true)
-        {
-            BerryList.SetActive(false);
-            PanelBlack.SetActive(false);
-        }
-        else if (TruckPanel.activeSelf == true)
-        {
-            TruckPanel.SetActive(false);
-            PanelBlack.SetActive(false);
-        }
-
-    }
-
     #endregion
 
     #region 출석
@@ -492,5 +405,26 @@ public class GameManager : MonoBehaviour
 
     }
 
+    #endregion
+
+    #region 메인 메뉴
+    public void OnclickStart()
+    {
+    }
+
+    public void OnclickOption()
+    {
+
+    }
+
+    public void OnclickQuit()
+    {
+
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
+    }
     #endregion
 }

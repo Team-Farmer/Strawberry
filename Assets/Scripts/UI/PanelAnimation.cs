@@ -1,24 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class PanelAnimation : MonoBehaviour
 {
-    private Animator animator;
-    void Awake()
+
+    public int UpPosition;
+    public void Open()
     {
-        animator = GetComponent<Animator>();
-    }
-    public void Close()
-    {
-        StartCoroutine(CloseAfterDelay());
+        RectTransform rt = GetComponent<RectTransform>();
+        gameObject.SetActive(true);
+
+        rt.DOAnchorPosY(UpPosition, 0.2f);
     }
 
-    private IEnumerator CloseAfterDelay()
+    public void Close()
     {
-        animator.SetTrigger("close");
-        yield return new WaitForSeconds(0.5f);
+        RectTransform rt = GetComponent<RectTransform>();
+        rt.DOAnchorPosY(-1940, 0.2f);
+        Invoke("ActiveOff", 0.2f);
+    }
+
+    public void ActiveOff()
+    {
         gameObject.SetActive(false);
-        animator.ResetTrigger("close");
     }
 }
