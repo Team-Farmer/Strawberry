@@ -3711,34 +3711,36 @@ MonoBehaviour:
   berryExpPanel: {fileID: 0}
   SettingsPanel: {fileID: 2031592367}
   CheckPanel: {fileID: 1334959770}
-  Day1: 0
-  Day2: 0
-  Day3: 0
-  Day4: 0
-  Day5: 0
-  Day6: 0
-  Day7: 0
-  Day1_1: {fileID: 1248610251}
-  Day1_2: {fileID: 453802649}
-  Day1_3: {fileID: 396545910}
-  Day2_1: {fileID: 1773459306}
-  Day2_2: {fileID: 923876643}
-  Day2_3: {fileID: 1712557475}
-  Day3_1: {fileID: 1452331664}
-  Day3_2: {fileID: 780843484}
-  Day3_3: {fileID: 608074536}
-  Day4_1: {fileID: 1488835122}
-  Day4_2: {fileID: 874315962}
-  Day4_3: {fileID: 1860574803}
-  Day5_1: {fileID: 152006048}
-  Day5_2: {fileID: 238801930}
-  Day5_3: {fileID: 2119959384}
-  Day6_1: {fileID: 976334077}
-  Day6_2: {fileID: 828150635}
-  Day6_3: {fileID: 946351618}
-  Day7_1: {fileID: 1490663929}
-  Day7_2: {fileID: 2135634201}
-  Day7_3: {fileID: 997283058}
+  Today: 000000000000
+  Front:
+  - Behind:
+    - {fileID: 1248610251}
+    - {fileID: 453802649}
+    - {fileID: 396545910}
+  - Behind:
+    - {fileID: 1773459306}
+    - {fileID: 923876643}
+    - {fileID: 1712557475}
+  - Behind:
+    - {fileID: 1452331664}
+    - {fileID: 780843484}
+    - {fileID: 608074536}
+  - Behind:
+    - {fileID: 1488835122}
+    - {fileID: 874315962}
+    - {fileID: 1860574803}
+  - Behind:
+    - {fileID: 152006048}
+    - {fileID: 238801930}
+    - {fileID: 2119959384}
+  - Behind:
+    - {fileID: 976334077}
+    - {fileID: 828150635}
+    - {fileID: 946351618}
+  - Behind:
+    - {fileID: 1490663929}
+    - {fileID: 2135634201}
+    - {fileID: 997283058}
 --- !u!4 &496606691
 Transform:
   m_ObjectHideFlags: 0
@@ -11748,7 +11750,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1334959771
 RectTransform:
   m_ObjectHideFlags: 0

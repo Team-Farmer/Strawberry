@@ -5,6 +5,12 @@ using UnityEngine.UI;
 using DG.Tweening;
 using System;
 
+[System.Serializable]
+public class ObjectArray //GameObject의 다차원 배열 만들기 위해 MonoBehaviour 외부에서 선언
+{
+    public GameObject[] Behind = new GameObject[3];
+}
+
 public class GameManager : MonoBehaviour
 {
     #region 인스펙터
@@ -47,11 +53,9 @@ public class GameManager : MonoBehaviour
     public GameObject CheckPanel;
 
     [Header("------------[Check/Day List]")]
-    public bool Day1, Day2, Day3, Day4, Day5, Day6, Day7; //public bool[] Today; 얘네 배열로 처리하면 어떨까요 (우연)
-    public GameObject Day1_1, Day1_2, Day1_3, Day2_1, Day2_2, Day2_3, Day3_1, Day3_2, Day3_3, 
-        Day4_1, Day4_2, Day4_3, Day5_1, Day5_2, Day5_3, Day6_1, Day6_2, Day6_3, Day7_1, Day7_2, Day7_3; // 얘네도요 (우연)
+    public bool[] Today;
+    public ObjectArray[] Front = new ObjectArray[7];
 
-  
 
     #endregion
 
@@ -293,113 +297,114 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region 출석
+
     public void selectDay1()
     {
-        if (Day1 == false)
+        if (Today[0] == false)
         {
-            Day1_2.SetActive(true);
-            Day1_3.SetActive(false);
-            Day2_3.SetActive(true);
-            Day1 = true;
-            Day2 = true;
+            Front[0].Behind[1].SetActive(true);
+            Front[0].Behind[2].SetActive(false);
+            Front[1].Behind[2].SetActive(true);
+            Today[0] = true;
+            Today[1] = true;
         }
         else
         {
-            Day1_2.SetActive(false);
-            Day1_3.SetActive(true);
-            Day1 = false;
+            Front[0].Behind[1].SetActive(false);
+            Front[0].Behind[2].SetActive(true);
+            Today[0] = false;
         }
     }
     public void selectDay2()
     {
-        if (Day2 == true)
+        if (Today[1] == true)
         {
-            Day2_2.SetActive(true);
-            Day2_3.SetActive(false);
-            Day3_3.SetActive(true);
-            Day3 = true;
+            Front[1].Behind[1].SetActive(true);
+            Front[1].Behind[2].SetActive(false);
+            Front[2].Behind[2].SetActive(true);
+            Today[2] = true;
         }
         else
         {
-            Day2_2.SetActive(false);
-            Day2_3.SetActive(true);
+            Front[1].Behind[1].SetActive(false);
+            Front[1].Behind[2].SetActive(true);
         }
     }
     public void selectDay3()
     {
-        if (Day3 == true)
+        if (Today[2] == true)
         {
-            Day3_2.SetActive(true);
-            Day3_3.SetActive(false);
-            Day4_3.SetActive(true);
-            Day4 = true;
+            Front[2].Behind[1].SetActive(true);
+            Front[2].Behind[2].SetActive(false);
+            Front[3].Behind[2].SetActive(true);
+            Today[3] = true;
         }
         else
         {
-            Day3_2.SetActive(false);
-            Day3_3.SetActive(true);
+            Front[2].Behind[1].SetActive(false);
+            Front[2].Behind[2].SetActive(true);
         }
     }
     public void selectDay4()
     {
-        if (Day4 == true)
+        if (Today[3] == true)
         {
-            Day4_2.SetActive(true);
-            Day4_3.SetActive(false);
-            Day5_3.SetActive(true);
-            Day5 = true;
+            Front[3].Behind[1].SetActive(true);
+            Front[3].Behind[2].SetActive(false);
+            Front[4].Behind[2].SetActive(true);
+            Today[4] = true;
         }
         else
         {
-            Day4_2.SetActive(false);
-            Day4_3.SetActive(true);
+            Front[3].Behind[1].SetActive(false);
+            Front[3].Behind[2].SetActive(true);
         }
     }
     public void selectDay5()
     {
-        if (Day5 == true)
+        if (Today[4] == true)
         {
-            Day5_2.SetActive(true);
-            Day5_3.SetActive(false);
-            Day6_3.SetActive(true);
-            Day6 = true;
+            Front[4].Behind[1].SetActive(true);
+            Front[4].Behind[2].SetActive(false);
+            Front[5].Behind[2].SetActive(true);
+            Today[5] = true;
         }
         else
         {
-            Day5_2.SetActive(false);
-            Day5_3.SetActive(true);
+            Front[4].Behind[1].SetActive(false);
+            Front[4].Behind[2].SetActive(true);
         }
     }
     public void selectDay6()
     {
-        if (Day6 == true)
+        if (Today[5] == true)
         {
-            Day6_2.SetActive(true);
-            Day6_3.SetActive(false);
-            Day7_3.SetActive(true);
-            Day7 = true;
+            Front[5].Behind[1].SetActive(true);
+            Front[5].Behind[2].SetActive(false);
+            Front[6].Behind[2].SetActive(true);
+            Today[6] = true;
         }
         else
         {
-            Day6_2.SetActive(false);
-            Day6_3.SetActive(true);
+            Front[5].Behind[1].SetActive(false);
+            Front[5].Behind[2].SetActive(true);
         }
     }
     public void selectDay7()
     {
-        if (Day7 == true)
+        if (Today[6] == true)
         {
-            Day7_2.SetActive(true);
-            Day7_3.SetActive(false);
+            Front[6].Behind[1].SetActive(true);
+            Front[6].Behind[2].SetActive(false);
         }
         else
         {
-            Day2_2.SetActive(false);
-            Day2_3.SetActive(true);
+            Front[6].Behind[1].SetActive(false);
+            Front[6].Behind[2].SetActive(true);
         }
     }
 
-    public void resetDay()
+    public void ResetDays()
     {
         //reset기능 추가 예정
 
