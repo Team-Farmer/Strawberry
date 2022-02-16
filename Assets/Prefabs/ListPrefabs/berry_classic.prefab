@@ -225,6 +225,6 @@ MonoBehaviour:
   berryInfo:
   - berryImage: {fileID: 6012652252893621343, guid: 60a7952c2d98afa46bbec2d461a51f4e, type: 3}
     berryName: "\uC791\uC740 \uB538\uAE30"
-    berryTxt: "\uC27D\uAC8C \uBCFC \uC218 \uC788\uB294, \\n \uC870\uAE08 \uC791\uC740
+    berryTxt: "\uC27D\uAC8C \uBCFC \uC218 \uC788\uB294, \uC870\uAE08 \uC791\uC740
       \uD3C9\uBC94\uD55C \uB538\uAE30\uC774\uB2E4. "
     berryValue: 20

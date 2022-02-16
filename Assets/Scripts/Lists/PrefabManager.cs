@@ -11,13 +11,15 @@ public class PrefabManager : MonoBehaviour
     {
         public string Name,Explanation;
         public int Price, Level;
+        public bool employ;
 
-        public PrefabStruct(string Name,string Explanation, int Price, int Level)
+        public PrefabStruct(string Name,string Explanation, int Price, int Level,bool employ)
         {
             this.Name = Name;
             this.Explanation = Explanation;
             this.Price = Price;
             this.Level = Level;//PTJ이라면 고용여부 의미. 0이 고용안함 1이 고용함
+            this.employ=employ;
         }
     }
 

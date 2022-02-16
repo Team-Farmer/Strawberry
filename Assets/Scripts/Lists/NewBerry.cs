@@ -65,12 +65,12 @@ public class NewBerry : MonoBehaviour
 
         try
         {
-            if (time[index] > 0) { time[index] -= Time.deltaTime; }//시간이 0보다 크면 조금씩 줄인다.
+            if (time[index] > 0) { time[index] -= Time.deltaTime; }//시간이 0보다 크면 1초씩 감소
 
             //현재 price와 time text를 보인다.
             priceText.GetComponent<Text>().text = price[index].ToString();
-            //timeText.GetComponent<Text>().text = string.Format("{0:N2}", time);//!!!!!!!!!!string.Foramt을 사용한다. 문자열 내에 {}을 쓰고 변수를 넣을 순서대로 0, 1, 2를 쓴다. 추가적인 형식이 필요한 경우 인덱스 다음에 : 을 쓰고 형식을 서술한다. N과 F를 사용해 소수점 몇 번째 까지만 표시할 수 있다. N2를 쓰면 소수점 둘째 자리까지 표시하겠다는 의미
-            timeText.GetComponent<Text>().text = Mathf.Ceil (time[index]).ToString (); //정수부분만 출력한다. CeilTolnt함수는 int형으로 반환해주기도 한다.
+            timeText.GetComponent<Text>().text = TimeForm(Mathf.CeilToInt(time[index])); //정수부분만 출력한다.
+
         }
         catch
         {
@@ -78,6 +78,32 @@ public class NewBerry : MonoBehaviour
             //버튼 누르지 못하게 하기
         }
 
+
+    }
+
+    public string TimeForm(int time)
+    {
+        int M=0, S=0;//M,S 계산용
+        string Minutes, Seconds;//M,S 텍스트 적용용
+
+        M = (time / 60); 
+        S = (time % 60);
+
+
+        //M,S적용
+        Minutes = M.ToString();
+        Seconds = S.ToString();
+
+        //M,S가 10미만이면 01, 02... 식으로 표시
+        if (M < 10 && M>0) { Minutes = "0" + M.ToString(); }
+        if (S < 10 && S>0) { Seconds = "0" + S.ToString(); }
+
+        //M,S가 0이면 00으로 표시한다.
+        if (M == 0) { Minutes = "00"; }
+        if (S == 0) { Seconds = "00"; }
+
+
+        return Minutes + " : " + Seconds;
 
     }
 }
