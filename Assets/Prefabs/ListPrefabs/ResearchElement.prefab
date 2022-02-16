@@ -202,8 +202,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 551554344734381312}
-        m_TargetAssemblyTypeName: ResearchManager, Assembly-CSharp
-        m_MethodName: clickCoin
+        m_TargetAssemblyTypeName: PrefabManager, Assembly-CSharp
+        m_MethodName: clickCoin_Research
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
