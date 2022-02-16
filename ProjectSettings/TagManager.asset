@@ -9,6 +9,7 @@ TagManager:
   - berry_special
   - berry_classic
   - Bug
+  - Weed
   layers:
   - Default
   - TransparentFX

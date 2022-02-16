@@ -8,7 +8,7 @@ public class Bug : MonoBehaviour
     public float bugProb;
     private Animator anim;
     private StrawBerry berry;
-
+    private Farm farm;
     public float scale = 1.5f;
     // Start is called before the first frame update
     void Awake()
@@ -16,6 +16,7 @@ public class Bug : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();        
         anim = GetComponent<Animator>();
         berry = transform.parent.gameObject.GetComponent<StrawBerry>();
+        farm = GameManager.instance.farmList[berry.berryIdx];
     }
     void OnEnable()
     {
@@ -24,6 +25,7 @@ public class Bug : MonoBehaviour
         
         berry.canGrow = false;
         berry.hasBug = true;
+
     }
     void OnDisable()
     {
@@ -51,7 +53,10 @@ public class Bug : MonoBehaviour
     public void DieBug()
     {
         SetAnim("isDie", true);
-        berry.canGrow = true;
+        if(!farm.hasWeed)
+        {
+            berry.canGrow = true;
+        }
         berry.hasBug = false;
         StartCoroutine(DisableBug(0.25f));        
     }

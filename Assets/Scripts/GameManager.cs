@@ -98,6 +98,10 @@ public class GameManager : MonoBehaviour
                 {
                     ClickedBug(obj);
                 }
+                else if (obj.GetComponent<Weed>() != null)
+                {
+                    ClickedWeed(obj);
+                }
             }
         }
     }
@@ -134,6 +138,11 @@ public class GameManager : MonoBehaviour
     {
         Bug bug = obj.GetComponent<Bug>();
         bug.DieBug();
+    }
+    void ClickedWeed(GameObject obj)
+    {
+        Weed weed = obj.GetComponent<Weed>();
+        weed.DeleteWeed();
     }
     public void ClickedTruck()
     {
@@ -199,7 +208,10 @@ public class GameManager : MonoBehaviour
 
         farm.isHarvest = false; // 수확이 끝남
         farm.isPlant = false; // 밭을 비워준다
-        farm.GetComponent<BoxCollider2D>().enabled = true; // 밭을 다시 활성화      
+        if(!farm.hasWeed) // 잡초가 없다면
+        {
+            farm.GetComponent<BoxCollider2D>().enabled = true; // 밭을 다시 활성화 
+        }     
     }
     void UpdateBerryCnt()
     {       
@@ -257,23 +269,27 @@ public class GameManager : MonoBehaviour
             coll.enabled = false;
             berryList[i].canGrow = false;
             berryList[i].bug.GetComponent<CircleCollider2D>().enabled = false;
+            farmList[i].weed.GetComponent<CapsuleCollider2D>().enabled = false;
+            farmList[i].canGrowWeed = false;
         }
     }
     public void EnableObjColliderAll() // 모든 오브젝트의 collider 활성화
     {
         BoxCollider2D coll;
         for (int i = 0; i < farmList.Count; i++)
-        {
-            if(!farmList[i].isPlant)
+        {           
+            if (!farmList[i].isPlant && !farmList[i].hasWeed)
             {
                 coll = farmList[i].GetComponent<BoxCollider2D>();
                 coll.enabled = true;
             }
-            if(!berryList[i].hasBug)
+            if(!berryList[i].hasBug && !farmList[i].hasWeed)
             {
                 berryList[i].canGrow = true;
             }
             berryList[i].bug.GetComponent<CircleCollider2D>().enabled = true;
+            farmList[i].weed.GetComponent<CapsuleCollider2D>().enabled = true;
+            farmList[i].canGrowWeed = true;
         }
     }
     #endregion
