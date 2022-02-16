@@ -284,6 +284,7 @@ MonoBehaviour:
   explanationText: {fileID: 552661853564872658}
   coinNum: {fileID: 3823790824684782391}
   levelNum: {fileID: 8784485498364733456}
+  PTJ: 1
 --- !u!1 &3823790824684782391
 GameObject:
   m_ObjectHideFlags: 0

@@ -32,21 +32,28 @@ public class PrefabManager : MonoBehaviour
     public GameObject coinNum;
     public GameObject levelNum;
 
+    [Header("==========Research Or PTJ===========")]
+    public bool PTJ;
+
+
+
 
     //추가 된 Prefab 수
     static int Prefabcount = 0;
     //자신이 몇번째 Prefab인지
     int prefabnum;
 
-
+    
     //몇명 고용중인지 확인
-    private static int employCount;
+    static int employCount = 0;
+    
+
 
 
     //===================================================================================================
     void Start()
     {
-       
+        
         InfoUpdate();
     }
     void Update()
@@ -55,7 +62,6 @@ public class PrefabManager : MonoBehaviour
     }
 
     //===================================================================================================
-    
     
     //coin 버튼 -> 연구 레벨, 코인 변화
     public void clickCoin_Research() {
@@ -72,34 +78,48 @@ public class PrefabManager : MonoBehaviour
     }
 
 
-    //coin 버튼 -> 알바 레벨, 고용 여부
+    //coin 버튼 -> 알바 고용 여부
     public void clickCoin_PTJ() 
     {
-        if (employCount >= 3) { Debug.Log("3명이 넘게 고용하지 못합니다."); }
-        else
+        if (PTJ == true)//그냥 한번더 확인
         {
-            if (Info[prefabnum].Level == 0) //고용 중아니고 3명이하 일하고 있으면 고용가능            //의문점 = 왜 prefabnum말로 0을 넣어도 되는가
+
+            if (employCount < 3)//3명 이하면 선택 가능
             {
-                //해당 금액의 코인이 감소된다.
-                GameManager.instance.coin -= Info[prefabnum].Price;
-                GameManager.instance.ShowCoinText(GameManager.instance.coin);
+                if (Info[prefabnum].Level == 0) //고용 중아니면 고용가능            //의문점 = 왜 prefabnum말로 0을 넣어도 되는가
+                {
+                    //해당 금액의 코인이 감소된다.
+                    GameManager.instance.coin -= Info[prefabnum].Price;
+                    GameManager.instance.ShowCoinText(GameManager.instance.coin);
 
-                employCount += 1;
-                Info[prefabnum].Level = 1;//1=고용
-                levelNum.GetComponent<Text>().text = "고용";
+                    ++employCount;
+                    Info[prefabnum].Level = 1;//1=고용
+                    levelNum.GetComponent<Text>().text = "고용";
 
+                }
+                else //고용중이라면 무직으로 변경
+                {
+                    --employCount;
+                    Info[prefabnum].Level = 0;//0=무직
+                    levelNum.GetComponent<Text>().text = "무직";
+
+                }
             }
-            else //고용중이라면 무직으로 변경
+            else 
             {
-                employCount -= 1;
-                Info[prefabnum].Level = 0;//0=무직
-                levelNum.GetComponent<Text>().text = "무직";
-
+                if (Info[prefabnum].Level == 1) 
+                {
+                    --employCount;
+                    Info[prefabnum].Level = 0;//0=무직
+                    levelNum.GetComponent<Text>().text = "무직";
+                }
+                Debug.Log("3명이 넘게 고용하지 못합니다."); 
             }
+
+
+            //Debug.Log("count="+employCount);
+            //Debug.Log("employ=" + Info[prefabnum].Level);
         }
-        //Debug.Log("count="+employCount);
-        //Debug.Log("employ=" + Info[prefabnum].Level);
-
     }
 
 
@@ -117,7 +137,8 @@ public class PrefabManager : MonoBehaviour
         titleText.GetComponent<Text>().text = Info[Prefabcount].Name;
         explanationText.GetComponent<Text>().text = Info[Prefabcount].Explanation;
         coinNum.GetComponent<Text>().text = Info[Prefabcount].Price.ToString();
-        if (Info[Prefabcount].Level == 0)//level이 0이라면 PTJ과 관련된 것이다.
+        
+        if (PTJ==true)
         {    levelNum.GetComponent<Text>().text = " ";    }
         else
         {    levelNum.GetComponent<Text>().text = Info[Prefabcount].Level.ToString();    }
