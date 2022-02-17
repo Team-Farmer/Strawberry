@@ -228,3 +228,19 @@ MonoBehaviour:
     berryTxt: "\uC27D\uAC8C \uBCFC \uC218 \uC788\uB294, \uC870\uAE08 \uC791\uC740
       \uD3C9\uBC94\uD55C \uB538\uAE30\uC774\uB2E4. "
     berryValue: 20
+    exist: 1
+  - berryImage: {fileID: 6012652252893621343, guid: 60a7952c2d98afa46bbec2d461a51f4e, type: 3}
+    berryName: "\uC791\uC740 \uB538\uAE302"
+    berryTxt: "\uC784\uC2DC\uB538\uAE30"
+    berryValue: 20
+    exist: 0
+  - berryImage: {fileID: 6012652252893621343, guid: 60a7952c2d98afa46bbec2d461a51f4e, type: 3}
+    berryName: "\uC791\uC740 \uB538\uAE303"
+    berryTxt: "\uC784\uC2DC\uB538\uAE30"
+    berryValue: 20
+    exist: 0
+  - berryImage: {fileID: 6012652252893621343, guid: 60a7952c2d98afa46bbec2d461a51f4e, type: 3}
+    berryName: "\uC791\uC740 \uB538\uAE304"
+    berryTxt: "\uC784\uC2DC \uB538\uAE30"
+    berryValue: 20
+    exist: 0

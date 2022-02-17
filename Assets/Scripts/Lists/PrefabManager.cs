@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class PrefabManager : MonoBehaviour
 {
     [Serializable]
-    public struct PrefabStruct
+    public class PrefabStruct
     {
         public string Name,Explanation;
         public int Price, Level;

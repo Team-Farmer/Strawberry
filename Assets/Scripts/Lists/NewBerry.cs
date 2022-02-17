@@ -16,6 +16,7 @@ public class NewBerry : MonoBehaviour
     public int[] price;//업그레이드에 필요한 가격 배열
     public float[] time;//업그레이드에 필요한 시간 배열
 
+
     private int index=0;//현재 인덱스
 
 
@@ -41,6 +42,7 @@ public class NewBerry : MonoBehaviour
         {
             //새로운 딸기가 추가된다.
             Debug.Log("새로운 딸기!!");
+            
 
             //금액이 빠져나간다.
             GameManager.instance.coin -= price[index];
@@ -50,8 +52,7 @@ public class NewBerry : MonoBehaviour
             index++;
             updateInfo(index);
 
-            //타이머가 시작된다.(지금은 일단 10초)
-            //버튼을 누르지 못한다.
+            
 
         }
         else 
