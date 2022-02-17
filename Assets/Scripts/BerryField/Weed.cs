@@ -40,41 +40,41 @@ public class Weed : MonoBehaviour
         //scale = Random.Range(1.3f, 1.8f);
         if (prob < weedProb)
         {
-            this.gameObject.SetActive(true);
+            this.gameObject.SetActive(true); // 나 자신(잡초)를 활성화
 
-            farmColl.enabled = false;
-            farm.hasWeed = true;
-            berry.canGrow = false;
+            farmColl.enabled = false; // 밭의 콜라이더 비활성화
+            farm.hasWeed = true; // 잡초보유여부를 확인하는 변수
+            berry.canGrow = false; // 딸기의 성장 제어
 
-            xPos = Random.Range(-0.35f, 0.35f);
+            xPos = Random.Range(-0.35f, 0.35f); // 밭의 X축의 랜덤한 위치에 잡초 생성
             transform.position = new Vector2(pos.x + xPos, pos.y + 0.07f);            
         }
     }
     public void DeleteWeed()
     {
         anim.SetTrigger("Delete");
-               
-        StartCoroutine(DisableWeed(0.25f));
+
+        StartCoroutine(DisableWeed(0.25f)); // 애니메이션이 끝난 후 비활성화
     }
     IEnumerator DisableWeed(float time)
     {
         yield return new WaitForSeconds(time);
 
-        this.gameObject.SetActive(false);
+        this.gameObject.SetActive(false); // 잡초 비활성화
 
-        float creatTime = berry.createTime;
-        if (creatTime == 0f || creatTime >= 20f)
+        float creatTime = berry.createTime; // 딸기가 생성된 시간변수 참조
+        if (creatTime == 0f || creatTime >= 20f) // 맨 땅이거나 딸기가 수확가능한 상태라면
         {
-            farmColl.enabled = true;
+            farmColl.enabled = true; // 밭의 Collider를 켠다.
         }
-        else
+        else // 아니라면
         {
-            farmColl.enabled = false;
+            farmColl.enabled = false; // 끈다.
         }
-        farm.hasWeed = false;
-        if(!berry.hasBug)
+        farm.hasWeed = false; // 잡초 제거됨
+        if (!berry.hasBug) // 벌레가 없다면
         {
-            berry.canGrow = true;
+            berry.canGrow = true; // 딸기는 다시 자랄 수 있다.
         }
     }
 }

@@ -270,6 +270,7 @@ public class GameManager : MonoBehaviour
             berryList[i].canGrow = false;
             berryList[i].bug.GetComponent<CircleCollider2D>().enabled = false;
             farmList[i].weed.GetComponent<CapsuleCollider2D>().enabled = false;
+            // Weed의 Collider 제거
             farmList[i].canGrowWeed = false;
         }
     }
@@ -277,18 +278,18 @@ public class GameManager : MonoBehaviour
     {
         BoxCollider2D coll;
         for (int i = 0; i < farmList.Count; i++)
-        {           
-            if (!farmList[i].isPlant && !farmList[i].hasWeed)
+        {
+            if (!farmList[i].isPlant && !farmList[i].hasWeed) // 잡초가 없을 때만 밭의 Collider활성화
             {
                 coll = farmList[i].GetComponent<BoxCollider2D>();
                 coll.enabled = true;
             }
-            if(!berryList[i].hasBug && !farmList[i].hasWeed)
+            if (!berryList[i].hasBug && !farmList[i].hasWeed) // (4)의 상황, 즉 벌레와 잡초 둘 다 없을 때
             {
                 berryList[i].canGrow = true;
             }
             berryList[i].bug.GetComponent<CircleCollider2D>().enabled = true;
-            farmList[i].weed.GetComponent<CapsuleCollider2D>().enabled = true;
+            farmList[i].weed.GetComponent<CapsuleCollider2D>().enabled = true; // 잡초의 Collider 활성화
             farmList[i].canGrowWeed = true;
         }
     }
