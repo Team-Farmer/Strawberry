@@ -32,11 +32,9 @@ public class ChangeLayer : MonoBehaviour
         tap_changed();
     }
 
-   
-
-
-
     //======================================================================================================================
+    
+
 
     //버튼
     private void makeBtn() {
@@ -76,9 +74,6 @@ public class ChangeLayer : MonoBehaviour
         //노가다;;;; 
         switch (nowTap)
         {
-            case "all":
-                find_tag_active("berry_classic"); find_tag_active("berry_special"); find_tag_active("berry_unique");
-                break;
             case "classic":
                 
                 find_tag_active("berry_classic");
@@ -136,19 +131,7 @@ public class ChangeLayer : MonoBehaviour
     }
 
 
-    /*
-     public class Swipe : MonoBehaviour
-{
-    public float speed = 1.0f;
-    void Update()
-    {
-        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
-        {
-            Vector2 touchDeltaPosition = Input.GetTouch(0).deltaPosition;
-            transform.Translate(touchDeltaPosition.x * speed, touchDeltaPosition.y * speed, 0);
-        }
-    }
-}
-     
-     */
+    
+
+
 }
