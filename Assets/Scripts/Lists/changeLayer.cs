@@ -1,15 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using System;
 
 public class changeLayer : MonoBehaviour
 {
+    //스트롤바
+    public GameObject scrollBar;
 
-    private GameObject[] target_berry;
+    [SerializeField]
+    private GameObject[] tagButtons;
 
-    //베리 오브젝트들의 부모 오브젝트
+    //베리 오브젝트 부모 오브젝트
     [SerializeField]
     GameObject parent_content;
+
+
+    private GameObject[] target_berry;
 
     void Start()
     {
@@ -20,6 +28,11 @@ public class changeLayer : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void TagImageChange(Sprite selectImage) {
+        tagButtons[1].GetComponent<Image>().sprite = selectImage;
+    
     }
 
     //버튼을 눌렀을 때 해당 분류의 딸기를 보인다.name=tag이름
@@ -38,8 +51,7 @@ public class changeLayer : MonoBehaviour
 
 
         //horizontal scrollbar 처음으로 돌리기
-        //다른 버튼 스프라이트 보통으로 변경
-        //해당 버튼 스프라이트 눌림으로 변경
+        
 
     }
 
