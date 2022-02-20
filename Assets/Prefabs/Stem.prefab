@@ -333,6 +333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119143a58df9bb14b82a6eccab17a38a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  berryTrans: {fileID: 2248473446957879966}
   bug: {fileID: 43837746447511568}
   createTime: 0
   canGrow: 1
@@ -342,8 +343,6 @@ MonoBehaviour:
   kind: -1
   rank: -1
   randomTime: 0
-  chance: 0
-  berryRankProb:
-  - 50
-  - 35
-  - 15
+  rankChance: 0
+  kindChance: 0
+  berryRankProb: 32000000230000000f000000

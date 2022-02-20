@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Level 5-3
+  m_Name: SeolHyang 1
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -73,7 +73,7 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: -8684561682398728360, guid: fe31faef522d06b4bb1eef0a43ff95c4, type: 3}
+      value: {fileID: -7627651752551417209, guid: d1194e2c3cf36e84ca58f65a57d43d60, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -107,7 +107,7 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: -8684561682398728360, guid: fe31faef522d06b4bb1eef0a43ff95c4, type: 3}
+    - {fileID: -7627651752551417209, guid: d1194e2c3cf36e84ca58f65a57d43d60, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
