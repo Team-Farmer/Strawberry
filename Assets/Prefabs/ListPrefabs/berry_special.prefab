@@ -136,14 +136,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.764151, g: 0.2270826, b: 0.2270826, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 3645725571107039976, guid: 45e37776917961146a91478231aa7a2f, type: 3}
+  m_Sprite: {fileID: -4623353640749799153, guid: 444a423d1a551964c901bb870538e3e4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -223,14 +223,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   berryImagePanel: {fileID: 3211075358437019884}
   berryInfo:
-  - berryImage: {fileID: -365557343746000341, guid: 60a7952c2d98afa46bbec2d461a51f4e, type: 3}
+  - berryImage: {fileID: -8684561682398728360, guid: d1194e2c3cf36e84ca58f65a57d43d60, type: 3}
     berryName: "\uD0B9\uC2A4\uBCA0\uB9AC"
     berryTxt: "\uACFC\uC2E4\uC774 \uB9E4\uC6B0 \uD06C\uACE0 \uC644\uC219\uB420\uC218\uB85D
       \uB2E8\uB9DB\uC774 \uAC15\uD574\uC9C4\uB2E4. \uCC29\uC0C9\uACFC\uC5D0\uC11C
       \uD48D\uAE30\uB294 \uC740\uC740\uD55C \uBCF5\uC22D\uC544 \uD5A5\uC774 \uB9E4\uB825\uC801\uC774\uB2E4."
     berryValue: 20
     exist: 1
-  - berryImage: {fileID: -6238070487526216217, guid: 60a7952c2d98afa46bbec2d461a51f4e, type: 3}
+  - berryImage: {fileID: -3859627200237796889, guid: d1194e2c3cf36e84ca58f65a57d43d60, type: 3}
     berryName: "\uB9E4\uD5A5"
     berryTxt: "\uB192\uC740 \uB2F9\uB3C4\uB85C \uB9DB\uACFC \uD5A5\uC774 \uC6B0\uC218\uD558\uBA70,
       \uB6F0\uC5B4\uB09C \uC800\uC7A5\uC131\uC73C\uB85C \uC218\uC1A1\uC5D0 \uC720\uB9AC\uD574
@@ -238,11 +238,16 @@ MonoBehaviour:
       \uD55C\uB958\uB97C \uC774\uB04C\uACE0 \uC788\uB2E4."
     berryValue: 40
     exist: 1
-  - berryImage: {fileID: -9173398184038589919, guid: 60a7952c2d98afa46bbec2d461a51f4e, type: 3}
+  - berryImage: {fileID: 2883912329823682490, guid: d1194e2c3cf36e84ca58f65a57d43d60, type: 3}
     berryName: "\uB9CC\uB144"
     berryTxt: "\uC5F0\uBD84\uD64D\uBE5B\uC744 \uB744\uC5B4 \uD770 \uBE5B\uAE54\uC5D0\uC11C
       \uCC29\uC548\uD574 \uB9CC\uB144\uC124\uB85C \uBD88\uB9AC\uC6B0\uB294 \uB538\uAE30\uC774\uB2E4.
       \uBE68\uAC04 \uB538\uAE30\uC5D0 \uBE44\uD574 \uB2F9\uB3C4\uAC00 \uB192\uC544
       \uD2B9\uC720\uC758 \uB2EC\uCF64\uD55C \uB9DB\uC744 \uC990\uAE38 \uC218 \uC788\uB2E4."
+    berryValue: 60
+    exist: 1
+  - berryImage: {fileID: -5927244008994070643, guid: d1194e2c3cf36e84ca58f65a57d43d60, type: 3}
+    berryName: "\uCD08\uCF54\uB538\uAE30"
+    berryTxt: "\uCD08\uCF54\uCD08\uCF54"
     berryValue: 60
     exist: 1

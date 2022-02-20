@@ -136,14 +136,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9058824, g: 0.4039216, b: 0.4039216, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 3645725571107039976, guid: 45e37776917961146a91478231aa7a2f, type: 3}
+  m_Sprite: {fileID: -4623353640749799153, guid: 444a423d1a551964c901bb870538e3e4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -223,23 +223,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   berryImagePanel: {fileID: 3040711945836427131}
   berryInfo:
-  - berryImage: {fileID: 6012652252893621343, guid: 60a7952c2d98afa46bbec2d461a51f4e, type: 3}
+  - berryImage: {fileID: -7627651752551417209, guid: d1194e2c3cf36e84ca58f65a57d43d60, type: 3}
     berryName: "\uC791\uC740 \uB538\uAE30"
     berryTxt: "\uC27D\uAC8C \uBCFC \uC218 \uC788\uB294, \uC870\uAE08 \uC791\uC740
       \uD3C9\uBC94\uD55C \uB538\uAE30\uC774\uB2E4. "
     berryValue: 20
     exist: 1
-  - berryImage: {fileID: 6012652252893621343, guid: 60a7952c2d98afa46bbec2d461a51f4e, type: 3}
+  - berryImage: {fileID: -7627651752551417209, guid: d1194e2c3cf36e84ca58f65a57d43d60, type: 3}
     berryName: "\uC791\uC740 \uB538\uAE302"
     berryTxt: "\uC784\uC2DC\uB538\uAE30"
     berryValue: 20
     exist: 0
-  - berryImage: {fileID: 6012652252893621343, guid: 60a7952c2d98afa46bbec2d461a51f4e, type: 3}
+  - berryImage: {fileID: -7627651752551417209, guid: d1194e2c3cf36e84ca58f65a57d43d60, type: 3}
     berryName: "\uC791\uC740 \uB538\uAE303"
     berryTxt: "\uC784\uC2DC\uB538\uAE30"
     berryValue: 20
     exist: 0
-  - berryImage: {fileID: 6012652252893621343, guid: 60a7952c2d98afa46bbec2d461a51f4e, type: 3}
+  - berryImage: {fileID: -7627651752551417209, guid: d1194e2c3cf36e84ca58f65a57d43d60, type: 3}
     berryName: "\uC791\uC740 \uB538\uAE304"
     berryTxt: "\uC784\uC2DC \uB538\uAE30"
     berryValue: 20
