@@ -19,7 +19,6 @@ public class SwipeList : MonoBehaviour
 	private float startTouchX;              // 터치 시작 위치
 	private float endTouchX;                    // 터치 종료 위치
 	private bool isSwipeMode = false;       // 현재 Swipe가 되고 있는지 체크
-	private float circleContentScale = 1.6f;    // 현재 페이지의 원 크기(배율)
 
 	private void Awake()
 	{

@@ -12424,6 +12424,7 @@ GameObject:
   - component: {fileID: 1357359587}
   - component: {fileID: 1357359586}
   - component: {fileID: 1357359588}
+  - component: {fileID: 1357359589}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -12498,6 +12499,21 @@ MonoBehaviour:
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 51f5960ffd3320140aeb5ec7ed6aab6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrollBar: {fileID: 896976377}
+  swipeTime: 0.2
+  swipeDistance: 50
+--- !u!114 &1357359589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1357359584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 283b90a4556dc12459054f3303163778, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   scrollBar: {fileID: 896976377}
