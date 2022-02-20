@@ -985,12 +985,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16791a99c24657a45bfe5218b9115f82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollBar: {fileID: 896976375}
   tagButtons:
   - {fileID: 1266262814}
   - {fileID: 979504438}
   - {fileID: 369898248}
-  parent_content: {fileID: 1357359584}
+  tagButtons_Image:
+  - {fileID: 694202471202292666, guid: 2f51b24d9dc07da4ab7a32fe2fb5773e, type: 3}
+  - {fileID: 909970405838342822, guid: 2f51b24d9dc07da4ab7a32fe2fb5773e, type: 3}
+  - {fileID: -8866099141273210981, guid: 2f51b24d9dc07da4ab7a32fe2fb5773e, type: 3}
+  tagButtons_selectImage:
+  - {fileID: 6122467330548741304, guid: 2f51b24d9dc07da4ab7a32fe2fb5773e, type: 3}
+  - {fileID: 4708825373916996430, guid: 2f51b24d9dc07da4ab7a32fe2fb5773e, type: 3}
+  - {fileID: 4463126360832078301, guid: 2f51b24d9dc07da4ab7a32fe2fb5773e, type: 3}
+  content: {fileID: 1357359584}
+  scrollBar: {fileID: 896976375}
 --- !u!1 &145198669
 GameObject:
   m_ObjectHideFlags: 0
@@ -2710,11 +2718,11 @@ MonoBehaviour:
       - m_Target: {fileID: 135233325}
         m_TargetAssemblyTypeName: changeLayer, Assembly-CSharp
         m_MethodName: TagImageChange
-        m_Mode: 2
+        m_Mode: 3
         m_Arguments:
-          m_ObjectArgument: {fileID: 4463126360832078301, guid: 2f51b24d9dc07da4ab7a32fe2fb5773e, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
-          m_IntArgument: 0
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -8431,11 +8439,11 @@ MonoBehaviour:
       - m_Target: {fileID: 135233325}
         m_TargetAssemblyTypeName: changeLayer, Assembly-CSharp
         m_MethodName: TagImageChange
-        m_Mode: 2
+        m_Mode: 3
         m_Arguments:
-          m_ObjectArgument: {fileID: 4708825373916996430, guid: 2f51b24d9dc07da4ab7a32fe2fb5773e, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
-          m_IntArgument: 0
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -11819,10 +11827,10 @@ MonoBehaviour:
       - m_Target: {fileID: 135233325}
         m_TargetAssemblyTypeName: changeLayer, Assembly-CSharp
         m_MethodName: TagImageChange
-        m_Mode: 2
+        m_Mode: 3
         m_Arguments:
-          m_ObjectArgument: {fileID: 6122467330548741304, guid: 2f51b24d9dc07da4ab7a32fe2fb5773e, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

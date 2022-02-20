@@ -6,21 +6,27 @@ using System;
 
 public class changeLayer : MonoBehaviour
 {
-    //스트롤바
-    public GameObject scrollBar;
 
+    [Header("====Berry List Buttons====")]
     [SerializeField]
     private GameObject[] tagButtons;
+    public Sprite[] tagButtons_Image;
+    public Sprite[] tagButtons_selectImage;
 
+    [Header("====ScrollView====")]
     //베리 오브젝트 부모 오브젝트
     [SerializeField]
-    GameObject parent_content;
+    private GameObject content;
+
+    //스트롤바
+    public GameObject scrollBar;
 
 
     private GameObject[] target_berry;
 
     void Start()
     {
+        //처음에는 berry classic
         selectBerryTag("berry_classic");
     }
 
@@ -30,8 +36,16 @@ public class changeLayer : MonoBehaviour
         
     }
 
-    public void TagImageChange(Sprite selectImage) {
-        tagButtons[1].GetComponent<Image>().sprite = selectImage;
+    public void TagImageChange(int index) {
+
+        //버튼 스프라이트 다 안눌린거로
+        for (int i = 0; i < tagButtons_Image.Length; i++) {
+            tagButtons[i].GetComponent<Image>().sprite = tagButtons_Image[i];
+            Debug.Log("test");
+        }
+
+        //해당 버튼 스프라이트만 눌린거로
+        tagButtons[index].GetComponent<Image>().sprite = tagButtons_selectImage[index];
     
     }
 
@@ -51,7 +65,7 @@ public class changeLayer : MonoBehaviour
 
 
         //horizontal scrollbar 처음으로 돌리기
-        
+        scrollBar.transform.GetComponent<Scrollbar>().value = 0;
 
     }
 
@@ -71,10 +85,10 @@ public class changeLayer : MonoBehaviour
     public void Active(string name)
     {
         //모든 베리 오브젝트 활성화
-        int iCount = parent_content.transform.childCount;
+        int iCount = content.transform.childCount;
         for (int i = 0; i < iCount; i++)
         {
-            Transform trChild = parent_content.transform.GetChild(i);
+            Transform trChild = content.transform.GetChild(i);
             trChild.gameObject.SetActive(true);
         }
         
