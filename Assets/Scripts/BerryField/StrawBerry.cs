@@ -6,11 +6,28 @@ using DG.Tweening;
 using Random = UnityEngine.Random;
 
 public class StrawBerry : MonoBehaviour
-{   
+{
     private Animator anim;
     private SpriteRenderer sprite;
     private Vector2 pos;
     public Bug bug;
+
+    Dictionary<string, int> Classic = new Dictionary<string, int>()
+    {
+        {"SeolHyang", 100 }
+    };
+    Dictionary<string, int> Special = new Dictionary<string, int>()
+    {
+        {"MaeHyang", 50 },
+        {"PermanentSnow", 35 },
+        {"KingsBerry", 15 },
+    };
+    Dictionary<string, int> Unique = new Dictionary<string, int>()
+    {
+        {"Choco", 100 }
+    };
+
+    List<Dictionary<string, int>> berryKindProb = new List<Dictionary<string, int>>();
 
     public float createTime = 0f;
     public bool canGrow = true;
@@ -18,21 +35,27 @@ public class StrawBerry : MonoBehaviour
 
     public int berryIdx;    
     public int level;
-    public int route = -1;
+    public int kind = -1;
+    public int rank = -1;
     public float randomTime = 0f;
     public float chance;
-    public float[] berryProb = { 10f, 20f, 30f, 40f };   
+    
+    public float[] berryRankProb = { 50f, 35f, 15f };
 
     void Awake()
     {       
         anim = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
+
+        berryKindProb.Add(Classic);
+        berryKindProb.Add(Special);
+        berryKindProb.Add(Unique);
     }
     private void OnEnable()
     {
         randomTime = Random.Range(7.0f, 18.0f);
         pos = transform.position;
-        DefineBerryRank();
+        DefineBerryKind();
         SetAnim(0);       
     }
     private void OnDisable()
@@ -40,7 +63,8 @@ public class StrawBerry : MonoBehaviour
         // 변수 초기화
         canGrow = true;
         createTime = 0f;
-        route = -1;
+        kind = -1;
+        rank = -1;
         randomTime = 0f;
         chance = 0f;        
 
@@ -96,17 +120,17 @@ public class StrawBerry : MonoBehaviour
         else if (this.level == 1)
         {
             sprite.sortingOrder = 0;
-            transform.position = new Vector2(pos.x - 0.1f, pos.y + 0.25f);
+            transform.position = new Vector2(pos.x - 0.1f, pos.y + 0.3f);
         }
-        else
+        else if(this.level == 2)
         {
             transform.position = new Vector2(pos.x - 0.1f, pos.y + 0.38f);
-        }
+        }        
         anim.SetInteger("Level", level);
     }
     void SelectRoute()
     {        
-        anim.SetInteger("Route", this.route);
+        anim.SetInteger("Route", this.kind);
     }
     public void Explosion(Vector2 from, Vector2 to, float exploRange) // DOTWeen 효과
     {
@@ -118,22 +142,46 @@ public class StrawBerry : MonoBehaviour
     }
     void DefineBerryRank() // 누적 확률변수로 랜덤한 딸기 생성
     {        
-        float cumulative = 0f, probSum = 0;
-        
-        for (int i = 0; i < berryProb.Length; i++)
+        float cumulative = 0f, probRankSum = 0;
+        int rankLen = berryRankProb.Length;
+
+        for (int i = 0; i < rankLen; i++)
         {
-            probSum += berryProb[i];
+            probRankSum += berryRankProb[i];
         }
-        chance = Random.Range(0, probSum);
-        
-        for (int i = 0; i < 4; i++)
+        chance = Random.Range(0, probRankSum + 1);
+
+        for (int i = 0; i < rankLen; i++)
         {
-            cumulative += berryProb[i];
+            cumulative += berryRankProb[i];
             if (chance <= cumulative)
             {
-                route = 3 - i;
+                rank = rankLen - i - 1;
+                break;              
+            }
+        }        
+    }
+    void DefineBerryKind()
+    {
+        DefineBerryRank();
+        int cumulative = 0, probKindSum = 0;
+        int kindLen = berryKindProb[rank].Count;
+
+        foreach (int value in berryKindProb[rank].Values)
+        {
+            probKindSum += value;
+        }        
+        chance = Random.Range(0, probKindSum + 1);
+        int i = 0;
+        foreach (int value in berryKindProb[rank].Values)
+        {
+            cumulative += value;
+            if (chance <= cumulative)
+            {
+                kind = berryKindProb[rank].Count - i - 1;
                 break;
             }
-        }
-    }   
+            i++;
+        }        
+    }
 }
