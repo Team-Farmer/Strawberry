@@ -64,7 +64,6 @@ public class SwipeList : MonoBehaviour
 		//스크롤바 위치 0혹은 1로 변경
 		//if (scrollBar.value < 0.5f) { scrollBar.value = 0f; }
 		//else { scrollBar.value = 1f; }
-		Debug.Log(currentPage);
 	}
 
 	public void swipeButton(int value) {

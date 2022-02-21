@@ -16,7 +16,9 @@ public class changeLayer : MonoBehaviour
     [Header("====ScrollView====")]
     //베리 오브젝트 부모 오브젝트
     [SerializeField]
-    private GameObject content;
+    private GameObject content1;
+    [SerializeField]
+    private GameObject content2;
 
     //스트롤바
     public GameObject scrollBar;
@@ -41,7 +43,6 @@ public class changeLayer : MonoBehaviour
         //버튼 스프라이트 다 안눌린거로
         for (int i = 0; i < tagButtons_Image.Length; i++) {
             tagButtons[i].GetComponent<Image>().sprite = tagButtons_Image[i];
-            Debug.Log("test");
         }
 
         //해당 버튼 스프라이트만 눌린거로
@@ -85,13 +86,19 @@ public class changeLayer : MonoBehaviour
     public void Active(string name)
     {
         //모든 베리 오브젝트 활성화
-        int iCount = content.transform.childCount;
+        int iCount = content1.transform.childCount;
         for (int i = 0; i < iCount; i++)
         {
-            Transform trChild = content.transform.GetChild(i);
+            Transform trChild = content1.transform.GetChild(i);
             trChild.gameObject.SetActive(true);
         }
-        
+        int iCount2 = content2.transform.childCount;
+        for (int i = 0; i < iCount2; i++)
+        {
+            Transform trChild2 = content2.transform.GetChild(i);
+            trChild2.gameObject.SetActive(true);
+        }
+
 
         //해당 베리들 보이게 활성화
         target_berry = GameObject.FindGameObjectsWithTag(name);
