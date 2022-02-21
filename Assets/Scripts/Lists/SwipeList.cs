@@ -5,12 +5,15 @@ using UnityEngine.UI;
 
 public class SwipeList : MonoBehaviour
 {
+	[Header("========Swipe List=======")]
 	[SerializeField]
 	private Scrollbar scrollBar;                    // Scrollbar의 위치를 바탕으로 현재 페이지 검사
 	[SerializeField]
 	private float swipeTime = 0.2f;         // 페이지가 Swipe 되는 시간
 	[SerializeField]
 	private float swipeDistance = 50.0f;        // 페이지가 Swipe되기 위해 움직여야 하는 최소 거리
+
+
 
 	private float[] scrollPageValues;           // 각 페이지의 위치 값 [0.0 - 1.0]
 	private float valueDistance = 0;            // 각 페이지 사이의 거리
@@ -23,7 +26,7 @@ public class SwipeList : MonoBehaviour
 	private void Awake()
 	{
 		// 스크롤 되는 페이지의 각 value 값을 저장하는 배열 메모리 할당
-		scrollPageValues = new float[transform.childCount];
+		scrollPageValues = new float[2];
 
 		// 스크롤 되는 페이지 사이의 거리
 		valueDistance = 1f / (scrollPageValues.Length - 1f);
@@ -35,7 +38,7 @@ public class SwipeList : MonoBehaviour
 		}
 
 		// 최대 페이지의 수
-		maxPage = transform.childCount;
+		maxPage = 2;
 	}
 
 	private void Start()
