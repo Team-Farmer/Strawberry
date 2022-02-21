@@ -1,5 +1,80 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &56983697321961158
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1853567358534803597}
+  - component: {fileID: 8588996463547964912}
+  - component: {fileID: 2501836056231309297}
+  m_Layer: 5
+  m_Name: PTJFace
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1853567358534803597
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 56983697321961158}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4889772765070719696}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.969, y: 0.000015624}
+  m_SizeDelta: {x: 0.7036, y: 0.7036}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &8588996463547964912
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 56983697321961158}
+  m_CullTransparentMesh: 1
+--- !u!114 &2501836056231309297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 56983697321961158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &552661853564872658
 GameObject:
   m_ObjectHideFlags: 0
@@ -30,7 +105,7 @@ RectTransform:
   m_LocalScale: {x: 0.001, y: 0.001, z: 1}
   m_Children: []
   m_Father: {fileID: 4889772765070719696}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -110,7 +185,7 @@ RectTransform:
   m_Children:
   - {fileID: 8053387060775036860}
   m_Father: {fileID: 4889772765070719696}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -189,6 +264,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1853567358534803597}
   - {fileID: 5111880575352676390}
   - {fileID: 8418195916815686796}
   - {fileID: 612216588739738433}
@@ -229,7 +305,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 5097328576711328732, guid: 57213c06877b9844a9e1e51e167dc39e, type: 3}
+  m_Sprite: {fileID: -3282431432855110751, guid: 6a5ecbab22c008444b6fb861e4651c1a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -253,34 +329,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Info:
   - Name: "\uD1A0\uB07C"
+    Picture: {fileID: -8401692288953904933, guid: df07be0af1a925943b510f2140243138, type: 3}
     Explanation: "\uB538\uAE30 \uC790\uB3D9 \uC2EC\uAE30"
     Price: 100
     Level: 0
   - Name: "\uACF0"
+    Picture: {fileID: -8090365562718305141, guid: df07be0af1a925943b510f2140243138, type: 3}
     Explanation: "\uB538\uAE30 \uC790\uB3D9 \uC218\uD655"
     Price: 200
     Level: 0
   - Name: "\uB3FC\uC9C0"
+    Picture: {fileID: 7456334905099763947, guid: df07be0af1a925943b510f2140243138, type: 3}
     Explanation: "\uAC70\uB798\uC758 \uB2EC\uC778"
     Price: 200
     Level: 0
   - Name: "\uACE0\uC591\uC774"
+    Picture: {fileID: -4124168217499134943, guid: df07be0af1a925943b510f2140243138, type: 3}
     Explanation: "\uBE44\uC758 \uC8FC\uC220\uC0AC \uC18C\uB0B4\uAE30\uAC00 \uB0B4\uB9B0\uB2E4"
     Price: 300
     Level: 0
   - Name: "\uD584\uC2A4\uD130"
+    Picture: {fileID: 7152930139536384079, guid: df07be0af1a925943b510f2140243138, type: 3}
     Explanation: "\uC7A1\uCD08 \uC790\uB3D9 \uBF51"
     Price: 300
     Level: 0
   - Name: "\uAC15\uC544\uC9C0"
+    Picture: {fileID: -6835189599539173722, guid: df07be0af1a925943b510f2140243138, type: 3}
     Explanation: "\uBC8C\uB808 \uC790\uB3D9 \uC8FD\uC774\uAE30"
     Price: 300
     Level: 0
   - Name: "\uBBF8\uC815"
+    Picture: {fileID: 0}
     Explanation: "\uBBF8\uC815"
     Price: 0
     Level: 0
   titleText: {fileID: 9018496231175234831}
+  facePicture: {fileID: 56983697321961158}
   explanationText: {fileID: 552661853564872658}
   coinNum: {fileID: 3823790824684782391}
   levelNum: {fileID: 8784485498364733456}
@@ -396,7 +480,7 @@ RectTransform:
   m_Children:
   - {fileID: 3823042607324074682}
   m_Father: {fileID: 4889772765070719696}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -606,7 +690,7 @@ RectTransform:
   m_LocalScale: {x: 0.002, y: 0.002, z: 1}
   m_Children: []
   m_Father: {fileID: 4889772765070719696}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

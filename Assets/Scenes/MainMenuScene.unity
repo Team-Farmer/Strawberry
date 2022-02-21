@@ -4359,8 +4359,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1357359588}
-        m_TargetAssemblyTypeName: SwipeList, Assembly-CSharp
+      - m_Target: {fileID: 135233325}
+        m_TargetAssemblyTypeName: changeLayer, Assembly-CSharp
         m_MethodName: swipeButton
         m_Mode: 3
         m_Arguments:
@@ -5607,8 +5607,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1357359588}
-        m_TargetAssemblyTypeName: SwipeList, Assembly-CSharp
+      - m_Target: {fileID: 135233325}
+        m_TargetAssemblyTypeName: changeLayer, Assembly-CSharp
         m_MethodName: swipeButton
         m_Mode: 3
         m_Arguments:
@@ -6273,7 +6273,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 12, y: 59.99989}
+  m_AnchoredPosition: {x: 12, y: 59.99988}
   m_SizeDelta: {x: 103, y: 95.000015}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &755967742
@@ -14877,7 +14877,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -110.5, y: 59.99989}
+  m_AnchoredPosition: {x: -110.5, y: 59.99988}
   m_SizeDelta: {x: 97.46, y: 96.82001}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1629387834

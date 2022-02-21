@@ -9,15 +9,19 @@ public class PrefabManager : MonoBehaviour
     [Serializable]
     public class PrefabStruct
     {
-        public string Name,Explanation;
+        public string Name;
+        public Sprite Picture;
+        public string Explanation;
         public int Price, Level;
+        
 
-        public PrefabStruct(string Name,string Explanation, int Price, int Level)
+        public PrefabStruct(string Name,string Explanation, int Price, int Level, Sprite Picture)
         {
             this.Name = Name;
             this.Explanation = Explanation;
             this.Price = Price;
             this.Level = Level;//PTJ이라면 고용여부 의미. 0이 고용안함 1이 고용함
+            this.Picture = Picture;
         }
     }
 
@@ -28,6 +32,7 @@ public class PrefabManager : MonoBehaviour
     //Research Info  적용할 것들
     [Header("==========INFO 적용할 대상=========")]
     public GameObject titleText;
+    public GameObject facePicture;
     public GameObject explanationText;
     public GameObject coinNum;
     public GameObject levelNum;
@@ -135,6 +140,10 @@ public class PrefabManager : MonoBehaviour
 
         //타이틀, 설명, 코인값, 레벨, 고용여부 텍스트에 표시
         titleText.GetComponent<Text>().text = Info[Prefabcount].Name;
+        if (Info[Prefabcount].Picture != null)
+        {
+            facePicture.GetComponent<Image>().sprite = Info[Prefabcount].Picture;
+        }
         explanationText.GetComponent<Text>().text = Info[Prefabcount].Explanation;
         coinNum.GetComponent<Text>().text = Info[Prefabcount].Price.ToString();
         
