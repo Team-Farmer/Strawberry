@@ -63,12 +63,24 @@ public class SwipeList : MonoBehaviour
 
 	public void swipeButton(int value) {
 		switch (value) {
-			case 0: startTouchX = 0f; endTouchX = 100f; break;
-			case 1: startTouchX = 100f; endTouchX = 0f; break;
+
+			case 0: 
+				// 현재 페이지가 왼쪽 끝이면 종료
+				if (currentPage == 0) return;
+				// 왼쪽으로 이동을 위해 현재 페이지를 1 감소
+				currentPage--; 
+				break;
+
+			case 1: 
+				// 현재 페이지가 오른쪽 끝이면 종료
+				if (currentPage == maxPage - 1) return;
+
+				// 오른쪽으로 이동을 위해 현재 페이지를 1 증가
+				currentPage++; 
+				break;
 		
 		}
-		
-		Debug.Log(scrollBar.value);
+
 	}
 
 	private void UpdateInput()
