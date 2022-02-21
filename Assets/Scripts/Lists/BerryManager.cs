@@ -25,7 +25,8 @@ public class BerryManager : MonoBehaviour
         }
     }
 
-
+    [Header("======berry Image=====")]
+    public Sprite yesBerryImage;
 
     [SerializeField]
     private GameObject berryImagePanel;//이미지를 보일 오브젝트 대상
@@ -106,8 +107,15 @@ public class BerryManager : MonoBehaviour
     {
         for (int i = 0; i < berryInfo.Length; i++)
         {
-            if (prefabnum == i && berryInfo[i].exist==true)
+
+            
+
+            if (prefabnum == i && berryInfo[i].exist == true)
+            {
+                this.transform.GetComponent<Image>().sprite = yesBerryImage;
+                berryImagePanel.transform.GetComponent<Image>().color = new Color(1f,1f,1f,1f);
                 berryImagePanel.GetComponent<Image>().sprite = berryInfo[i].berryImage;
+            }
         }
     }
 

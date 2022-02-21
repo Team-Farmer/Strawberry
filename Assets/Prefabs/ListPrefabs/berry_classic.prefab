@@ -35,7 +35,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 40, y: 40}
+  m_SizeDelta: {x: 45, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8358642043776768908
 CanvasRenderer:
@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -143,7 +143,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -4623353640749799153, guid: 444a423d1a551964c901bb870538e3e4, type: 3}
+  m_Sprite: {fileID: 6121904584092846314, guid: 444a423d1a551964c901bb870538e3e4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -221,6 +221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdbacebad87097344ab60889cf36cc03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  yesBerryImage: {fileID: -4623353640749799153, guid: 444a423d1a551964c901bb870538e3e4, type: 3}
   berryImagePanel: {fileID: 3040711945836427131}
   berryInfo:
   - berryImage: {fileID: -7627651752551417209, guid: d1194e2c3cf36e84ca58f65a57d43d60, type: 3}
@@ -233,14 +234,14 @@ MonoBehaviour:
     berryName: "\uC791\uC740 \uB538\uAE302"
     berryTxt: "\uC784\uC2DC\uB538\uAE30"
     berryValue: 20
-    exist: 0
+    exist: 1
   - berryImage: {fileID: -7627651752551417209, guid: d1194e2c3cf36e84ca58f65a57d43d60, type: 3}
     berryName: "\uC791\uC740 \uB538\uAE303"
     berryTxt: "\uC784\uC2DC\uB538\uAE30"
     berryValue: 20
-    exist: 0
+    exist: 1
   - berryImage: {fileID: -7627651752551417209, guid: d1194e2c3cf36e84ca58f65a57d43d60, type: 3}
     berryName: "\uC791\uC740 \uB538\uAE304"
     berryTxt: "\uC784\uC2DC \uB538\uAE30"
     berryValue: 20
-    exist: 0
+    exist: 1
