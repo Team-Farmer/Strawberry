@@ -22,7 +22,7 @@ public class ListAdd : MonoBehaviour
 
     private void Start()
     {
-        if (isBerry == true)
+        if (isBerry == true)//베리 리스트는 반으로 나눠서 담는다. swipe 관련
         {
             for (int i = 0; i < count/2; i++)
             {
@@ -34,7 +34,7 @@ public class ListAdd : MonoBehaviour
                 AddElement(content2);
             }
         }
-        else
+        else//그 외 리스트들은 그냥 담는다.
         {
             for (int i = 0; i < count; i++)
             {

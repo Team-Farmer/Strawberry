@@ -21,7 +21,8 @@ public class changeLayer : MonoBehaviour
     private GameObject content2;
 
     //스트롤바
-    public GameObject scrollBar;
+    [SerializeField]
+    private GameObject scrollBar;
 
 
     private GameObject[] target_berry;
