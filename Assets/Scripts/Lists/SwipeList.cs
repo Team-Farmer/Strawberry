@@ -60,26 +60,23 @@ public class SwipeList : MonoBehaviour
 	private void Update()
 	{
 		UpdateInput();
-
-		//스크롤바 위치 0혹은 1로 변경
-		//if (scrollBar.value < 0.5f) { scrollBar.value = 0f; }
-		//else { scrollBar.value = 1f; }
+	
 	}
 
 	public void swipeButton(int value) {
 		switch (value) {
 
-			case 0: 
+			case 0:
 				// 현재 페이지가 왼쪽 끝이면 종료
 				if (currentPage == 0) return;
 				// 왼쪽으로 이동. 현재 페이지를 1 감소
 				currentPage--; 
+
 				break;
 
-			case 1: 
+			case 1:
 				// 현재 페이지가 오른쪽 끝이면 종료
 				if (currentPage == maxPage - 1) return;
-
 				// 오른쪽으로 이동. 현재 페이지를 1 증가
 				currentPage++; 
 				break;
@@ -99,15 +96,13 @@ public class SwipeList : MonoBehaviour
 		{
 			// 터치 시작 지점 (Swipe 방향 구분)
 			startTouchX = Input.mousePosition.x;
-			// 스크롤 시작 지점
-			startScroll = scrollBar.value;
+
 		}
 		else if (Input.GetMouseButtonUp(0))
 		{
 			// 터치 종료 지점 (Swipe 방향 구분)
 			endTouchX = Input.mousePosition.x;
-			//스크롤 종료 지점
-			endScroll = scrollBar.value;
+
 
 			UpdateSwipe();
 		}
@@ -122,42 +117,41 @@ public class SwipeList : MonoBehaviour
 			{
 				// 터치 시작 지점 (Swipe 방향 구분)
 				startTouchX = touch.position.x;
-				// 스크롤 시작 지점
-				startScroll = scrollBar.value;
+
 			}
 			else if (touch.phase == TouchPhase.Ended)
 			{
 				// 터치 종료 지점 (Swipe 방향 구분)
 				endTouchX = touch.position.x;
-				//스크롤 종료 지점
-				endScroll = scrollBar.value;
+
 
 				UpdateSwipe();
 			}
 		}
 		#endif
+
+		
 	}
 
 	private void UpdateSwipe()
 	{
 
 		// 너무 작은 거리를 움직였을 때는 Swipe 안된다.
-		if (Mathf.Abs(startTouchX - endTouchX) < swipeDistance || Mathf.Abs(startScroll - endScroll) < swipeDistance_scrollBar)
+		if (Mathf.Abs(startTouchX - endTouchX) < swipeDistance)
 		{
 			// 원래 페이지로 Swipe해서 돌아간다
 			StartCoroutine(OnSwipeOneStep(currentPage));
 			return;
+			Debug.Log("swipe");
 		}
 
 		
 
-
 		// Swipe 방향
 		bool isLeft = startTouchX < endTouchX ? true : false;
-		bool isLeft2 = startScroll < endScroll ? true : false;
 
 		// 이동 방향이 왼쪽일 때
-		if (isLeft == true || isLeft2==false)
+		if (isLeft == true)
 		{
 			// 현재 페이지가 왼쪽 끝이면 종료
 			if (currentPage == 0) return;
@@ -166,7 +160,7 @@ public class SwipeList : MonoBehaviour
 			currentPage--;
 		}
 		// 이동 방향이 오른쪽일 떄
-		else if(isLeft==false||isLeft2==true)
+		else if(isLeft==false)
 		{
 			// 현재 페이지가 오른쪽 끝이면 종료
 			if (currentPage == maxPage - 1) return;
@@ -176,15 +170,9 @@ public class SwipeList : MonoBehaviour
 		}
 
 		
-		
-
-
-
 		// currentIndex번째 페이지로 Swipe해서 이동
 		StartCoroutine(OnSwipeOneStep(currentPage));
 
-
-		
 	}
 
 
