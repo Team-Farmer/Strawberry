@@ -12799,7 +12799,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollBar: {fileID: 896976377}
   swipeTime: 0
-  swipeDistance: 50
+  swipeDistance: 20
 --- !u!1 &1363630426
 GameObject:
   m_ObjectHideFlags: 0
