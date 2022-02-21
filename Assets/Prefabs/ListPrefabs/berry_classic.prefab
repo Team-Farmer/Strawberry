@@ -245,3 +245,13 @@ MonoBehaviour:
     berryTxt: "\uC784\uC2DC \uB538\uAE30"
     berryValue: 20
     exist: 1
+  - berryImage: {fileID: -7627651752551417209, guid: d1194e2c3cf36e84ca58f65a57d43d60, type: 3}
+    berryName: "\uC791\uC740 \uB538\uAE304"
+    berryTxt: "\uC784\uC2DC \uB538\uAE30"
+    berryValue: 20
+    exist: 1
+  - berryImage: {fileID: -7627651752551417209, guid: d1194e2c3cf36e84ca58f65a57d43d60, type: 3}
+    berryName: "\uC791\uC740 \uB538\uAE304"
+    berryTxt: "\uC784\uC2DC \uB538\uAE30"
+    berryValue: 20
+    exist: 1

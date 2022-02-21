@@ -18,7 +18,7 @@ public class SwipeList : MonoBehaviour
 	private float[] scrollPageValues;           // 각 페이지의 위치 값 [0.0 - 1.0]
 	private float valueDistance = 0;            // 각 페이지 사이의 거리
 	private int currentPage = 0;            // 현재 페이지
-	private int maxPage = 0;                // 최대 페이지
+	private int maxPage = 2;                // 최대 페이지 2로 설정
 	private float startTouchX;              // 터치 시작 위치
 	private float endTouchX;                    // 터치 종료 위치
 	private bool isSwipeMode = false;       // 현재 Swipe가 되고 있는지 체크
@@ -37,13 +37,11 @@ public class SwipeList : MonoBehaviour
 			scrollPageValues[i] = valueDistance * i;
 		}
 
-		// 최대 페이지의 수
-		maxPage = 2;
 	}
 
 	private void Start()
 	{
-		// 최초 시작할 때 0번 페이지를 볼 수 있도록 설정
+		// 처음 시작할 때 0번 페이지 보인다.
 		SetScrollBarValue(0);
 	}
 
@@ -56,6 +54,21 @@ public class SwipeList : MonoBehaviour
 	private void Update()
 	{
 		UpdateInput();
+
+		//스크롤바 위치 0혹은 1로 변경
+		//if (scrollBar.value < 0.5f) { scrollBar.value = 0f; }
+		//else { scrollBar.value = 1f; }
+
+	}
+
+	public void swipeButton(int value) {
+		switch (value) {
+			case 0: startTouchX = 0f; endTouchX = 100f; break;
+			case 1: startTouchX = 100f; endTouchX = 0f; break;
+		
+		}
+		
+		Debug.Log(scrollBar.value);
 	}
 
 	private void UpdateInput()
@@ -102,7 +115,7 @@ public class SwipeList : MonoBehaviour
 
 	private void UpdateSwipe()
 	{
-		// 너무 작은 거리를 움직였을 때는 Swipe X
+		// 너무 작은 거리를 움직였을 때는 Swipe 안된다.
 		if (Mathf.Abs(startTouchX - endTouchX) < swipeDistance)
 		{
 			// 원래 페이지로 Swipe해서 돌아간다
@@ -134,11 +147,13 @@ public class SwipeList : MonoBehaviour
 
 		// currentIndex번째 페이지로 Swipe해서 이동
 		StartCoroutine(OnSwipeOneStep(currentPage));
+
+
+		
 	}
 
-	/// <summary>
-	/// 페이지를 한 장 옆으로 넘기는 Swipe 효과 재생
-	/// </summary>
+
+	// 페이지를 한 장 옆으로 넘기는 Swipe 효과 재생
 	private IEnumerator OnSwipeOneStep(int index)
 	{
 		float start = scrollBar.value;
