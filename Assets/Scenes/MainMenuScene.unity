@@ -1138,7 +1138,9 @@ MonoBehaviour:
   - {fileID: 4463126360832078301, guid: 2f51b24d9dc07da4ab7a32fe2fb5773e, type: 3}
   content1: {fileID: 638177078}
   content2: {fileID: 1862953771}
-  scrollBar: {fileID: 896976375}
+  scrollBar: {fileID: 896976377}
+  swipeTime: 0
+  swipeDistance: 1
 --- !u!1 &145198669
 GameObject:
   m_ObjectHideFlags: 0
@@ -6271,7 +6273,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 12, y: 59.9999}
+  m_AnchoredPosition: {x: 12, y: 59.99989}
   m_SizeDelta: {x: 103, y: 95.000015}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &755967742
@@ -13057,10 +13059,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51f5960ffd3320140aeb5ec7ed6aab6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollBar: {fileID: 896976377}
-  swipeTime: 0
-  swipeDistance: 10
-  swipeDistance_scrollBar: 0.01
 --- !u!1 &1363630426
 GameObject:
   m_ObjectHideFlags: 0
@@ -14879,7 +14877,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -110.5, y: 59.9999}
+  m_AnchoredPosition: {x: -110.5, y: 59.99989}
   m_SizeDelta: {x: 97.46, y: 96.82001}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1629387834
@@ -19023,10 +19021,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51f5960ffd3320140aeb5ec7ed6aab6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollBar: {fileID: 789590240}
-  swipeTime: 0.2
-  swipeDistance: 200
-  swipeDistance_scrollBar: 0.01
 --- !u!1 &2128544915
 GameObject:
   m_ObjectHideFlags: 0
