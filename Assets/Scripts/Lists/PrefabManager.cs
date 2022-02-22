@@ -11,17 +11,19 @@ public class PrefabManager : MonoBehaviour
     {
         public string Name;
         public Sprite Picture;
+        public Sprite FacePicture;
         public string Explanation;
         public int Price, Level;
         
 
-        public PrefabStruct(string Name,string Explanation, int Price, int Level, Sprite Picture)
+        public PrefabStruct(string Name,string Explanation, int Price, int Level, Sprite Picture, Sprite FacePicture)
         {
             this.Name = Name;
             this.Explanation = Explanation;
             this.Price = Price;
             this.Level = Level;//PTJ이라면 고용여부 의미. 0이 고용안함 1이 고용함
             this.Picture = Picture;
+            this.FacePicture = FacePicture;
         }
     }
 
@@ -124,7 +126,9 @@ public class PrefabManager : MonoBehaviour
         levelNum.GetComponent<Text>().text = "고용 중";
         levelNum.GetComponent<Text>().color = new Color32(245, 71, 71, 255);//#F54747
 
-        PTJBackground.transform.GetComponent<Image>().sprite = selectPTJSprite;//아니이게 왜 안되냐고
+        PTJBackground.transform.GetComponent<Image>().sprite = selectPTJSprite;
+
+        GameManager.instance.workingApply(Info[prefabnum].FacePicture,0);//GameManager workingApply에 고용중인 알바생의 얼굴 사진을 보낸다.
     }
     private void fire() 
     {
@@ -133,6 +137,8 @@ public class PrefabManager : MonoBehaviour
         levelNum.GetComponent<Text>().text = "고용 전";
         levelNum.GetComponent<Text>().color = new Color32(164, 164, 164, 255);
         PTJBackground.transform.GetComponent<Image>().sprite = originalPTJSprite;
+
+        GameManager.instance.workingApply(null,0);
 
     }
 

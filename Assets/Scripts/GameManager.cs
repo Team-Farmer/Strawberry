@@ -47,6 +47,8 @@ public class GameManager : MonoBehaviour
     public GameObject panelBlack_Exp;
     public GameObject berryExpPanel;
     internal object count;
+    public GameObject[] workingFace;
+
 
     [Header("------------[Check/Settings Panel]")]
     public GameObject SettingsPanel;
@@ -304,6 +306,13 @@ public class GameManager : MonoBehaviour
         else
         { Obj.SetActive(true); }
     }
+    public void workingApply(Sprite workingSprite,int index_) 
+    {
+
+        workingFace[index_].transform.GetComponent<Image>().sprite =workingSprite;
+
+    }
+
 
     #endregion
 
