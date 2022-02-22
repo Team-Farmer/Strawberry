@@ -296,21 +296,15 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region 리스트
-    //리스트 활성화 비활성화===========================================================================================
-    //중복.... 개선필요 공부
-
-    public void Xbutton()
+    //활성화 비활성화
+    public void turnOff(GameObject Obj)
     {
-        //X버튼 -> 부모 오브젝트 비활성화, 블랙 패널 비활성화
-        //X.transform.parent.gameObject.SetActive(false);
+        if (Obj.activeSelf == true)
+        { Obj.SetActive(false); }
+        else
+        { Obj.SetActive(true); }
     }
 
-    public void ListButton()
-    {
-        //리스트 버튼 -> 자식 오브젝트 활성화, 블랙패널 활성화
-        //L.transform.GetChild(0).gameObject.SetActive(true);
-
-    }
     #endregion
 
     #region 출석

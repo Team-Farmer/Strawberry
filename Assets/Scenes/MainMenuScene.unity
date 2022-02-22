@@ -6161,7 +6161,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 12, y: 59.99949}
+  m_AnchoredPosition: {x: 12, y: 59.99948}
   m_SizeDelta: {x: 103, y: 95.000015}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &755967742
@@ -14802,7 +14802,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -110.5, y: 59.99949}
+  m_AnchoredPosition: {x: -110.5, y: 59.99948}
   m_SizeDelta: {x: 97.46, y: 96.82001}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1629387834
@@ -15950,13 +15950,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1802891356}
-        m_TargetAssemblyTypeName: XButton, Assembly-CSharp
+      - m_Target: {fileID: 496606690}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: turnOff
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 576054017}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -16012,9 +16012,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34d179d1ce1810346a3b1540d45328f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Obj:
-  - {fileID: 576054017}
-  PanelBlack: {fileID: 0}
 --- !u!1001 &1825285055
 PrefabInstance:
   m_ObjectHideFlags: 0
