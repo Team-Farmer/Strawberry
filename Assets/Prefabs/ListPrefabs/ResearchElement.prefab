@@ -27,7 +27,7 @@ RectTransform:
   m_GameObject: {fileID: 232301757304511274}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.004, y: 0.004, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6861322975643061920}
   m_Father: {fileID: 754176992741476759}
@@ -35,7 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.1284, y: 0.283}
+  m_AnchoredPosition: {x: 319, y: 83}
   m_SizeDelta: {x: 107.6028, y: 51.9032}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7912005350839147690
@@ -108,16 +108,16 @@ RectTransform:
   m_GameObject: {fileID: 515451423587742638}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.004, y: 0.004, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3406976695519037260}
   m_Father: {fileID: 754176992741476759}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.8244962, y: 0.5}
-  m_AnchoredPosition: {x: 0.6417, y: -0.2766}
-  m_SizeDelta: {x: 140.629, y: 64.0784}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 279.8, y: -68}
+  m_SizeDelta: {x: 186, y: 66}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7862896458885048165
 CanvasRenderer:
@@ -147,7 +147,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1693852141536938087, guid: b07d15329c6684947bd242a765e26a2b, type: 3}
+  m_Sprite: {fileID: -3267488763566437363, guid: 6a5ecbab22c008444b6fb861e4651c1a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -240,15 +240,15 @@ RectTransform:
   m_GameObject: {fileID: 1015919002668168413}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.002, y: 0.002, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 754176992741476759}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.19898, y: 0.155}
-  m_SizeDelta: {x: 725.3463, y: 162.6}
+  m_AnchoredPosition: {x: -0.0024414, y: 43}
+  m_SizeDelta: {x: 310, y: 65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5677428750705983046
 CanvasRenderer:
@@ -280,7 +280,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: fffcb38c5316eb843924a2af66e3bd38, type: 3}
-    m_FontSize: 25
+    m_FontSize: 36
     m_FontStyle: 1
     m_BestFit: 1
     m_MinSize: 2
@@ -319,14 +319,14 @@ RectTransform:
   m_GameObject: {fileID: 4024267953252206434}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.004, y: 0.004, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 754176992741476759}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.1084, y: -0.124}
+  m_AnchoredPosition: {x: 8, y: -46}
   m_SizeDelta: {x: 326.6778, y: 81.3632}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4334383867775516376
@@ -478,7 +478,7 @@ RectTransform:
   m_GameObject: {fileID: 7523383970360610591}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.005, y: 0.005, z: 1}
   m_Children:
   - {fileID: 9084664455449588775}
   - {fileID: 8535314080986270496}
@@ -490,7 +490,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 3, y: 1}
+  m_SizeDelta: {x: 801, y: 252}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &940502465822309899
 CanvasRenderer:
@@ -544,39 +544,48 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Info:
   - Name: "\uB538\uAE30 \uAC00\uCE58 \uC0C1\uC2B9"
+    Picture: {fileID: 0}
     Explanation: "\uB538\uAE30\uC758 \uAC00\uCE58\uAC00 5%->10% \uB192\uC544\uC9C4\uB2E4"
     Price: 100
     Level: 10
   - Name: "\uB538\uAE30 \uC131\uC7A5\uAE30\uAC04 \uAC10\uC18C"
+    Picture: {fileID: 0}
     Explanation: "\uB538\uAE30\uC758 \uC131\uC7A5\uC2DC\uAC04\uC774 5%->10% \uAC10\uC18C\uD55C\uB2E4"
     Price: 200
     Level: 1
   - Name: "\uD2B8\uB7ED \uC218\uC775 \uC0C1\uC2B9"
+    Picture: {fileID: 0}
     Explanation: "\uD2B8\uB7ED\uC73C\uB85C \uB538\uAE30\uB97C \uD310\uB9E4\uD560
       \uB54C 5%->10% \uB192\uC740 \uAC00\uACA9\uC73C\uB85C \uD310\uB9E4\uD55C\uB2E4"
     Price: 300
     Level: 1
   - Name: "\uBE44\uAC00 \uC628\uB2E4!"
+    Picture: {fileID: 0}
     Explanation: "\uC18C\uB098\uAE30\uAC00 \uB0B4\uB9B4 \uD655\uB960\uC774 5%->10%
       \uC99D\uAC00\uD55C\uB2E4"
     Price: 400
     Level: 1
   - Name: "\uC7A1\uCD08 \uAC10\uC18C"
+    Picture: {fileID: 0}
     Explanation: "\uC7A1\uCD08\uAC00 \uC0DD\uAE38 \uD655\uB960\uC774 5%->10% \uAC10\uC18C\uD55C\uB2E4"
     Price: 500
     Level: 1
   - Name: "\uBC8C\uB808 \uAC10\uC18C"
+    Picture: {fileID: 0}
     Explanation: "\uBC8C\uB808\uAC00 \uC0DD\uAE38 \uD655\uB960\uC774 5%->10% \uAC10\uC18C\uD55C\uB2E4."
     Price: 1000
     Level: 1
   - Name: "\uBBF8\uC815"
+    Picture: {fileID: 0}
     Explanation: "\uBBF8\uC815"
     Price: 0
     Level: 0
   titleText: {fileID: 1015919002668168413}
+  facePicture: {fileID: 0}
   explanationText: {fileID: 4024267953252206434}
   coinNum: {fileID: 7782225767939862393}
   levelNum: {fileID: 5807405014252815133}
+  PTJ: 0
 --- !u!1 &7782225767939862393
 GameObject:
   m_ObjectHideFlags: 0
