@@ -31,7 +31,8 @@ public class PrefabManager : MonoBehaviour
 
     //Research Info  적용할 것들
     [Header("==========INFO 적용할 대상=========")]
-    public GameObject Element;
+    [SerializeField]
+    private GameObject PTJElement;
     public GameObject titleText;
     public GameObject facePicture;
     public GameObject explanationText;
@@ -90,12 +91,13 @@ public class PrefabManager : MonoBehaviour
     //coin 버튼 -> 알바 고용 여부
     public void clickCoin_PTJ() 
     {
+        
         if (PTJ == true)//그냥 한번더 확인
         {
 
-            if (employCount < 3)//3명 이하면 선택 가능
+            if (employCount < 3)//3명 이하일 때 고용 혹은 고용 해제
             {
-                if (Info[prefabnum].Level == 0) //고용 중아니면 고용가능            //의문점 = 왜 prefabnum말로 0을 넣어도 되는가
+                if (Info[prefabnum].Level == 0) //고용중아니면 고용            //의문점 = 왜 prefabnum말로 0을 넣어도 되는가
                 {
                     //해당 금액의 코인이 감소된다.
                     GameManager.instance.coin -= Info[prefabnum].Price;
@@ -104,11 +106,12 @@ public class PrefabManager : MonoBehaviour
                     ++employCount;
                     Info[prefabnum].Level = 1;//1=고용
                     levelNum.GetComponent<Text>().text = "고용 중";
+                    //levelNum.GetComponent<Text>().color = new Color(245,71,71);
 
-                    Element.GetComponent<Image>().sprite = selectPTJSprite;
+                    //PTJElement.transform.GetComponent<Image>().sprite = selectPTJSprite;//아니이게 왜 안되냐고
 
                 }
-                else //고용중이라면 무직으로 변경
+                else //고용중이면 고용해제
                 {
                     --employCount;
                     Info[prefabnum].Level = 0;//0=무직
@@ -117,21 +120,17 @@ public class PrefabManager : MonoBehaviour
                     
                 }
             }
-            else 
+            else //3명 이상일 때
             {
-                if (Info[prefabnum].Level == 1) 
+                if (Info[prefabnum].Level == 1)//고용중이면 고용해제
                 {
                     --employCount;
                     Info[prefabnum].Level = 0;//0=무직
-                    levelNum.GetComponent<Text>().text = "고용 전";
-                    Element.GetComponent<Image>().sprite = selectPTJSprite;
+                    levelNum.GetComponent<Text>().text = "고용 전";  
                 }
                 Debug.Log("3명이 넘게 고용하지 못합니다."); 
             }
 
-
-            //Debug.Log("count="+employCount);
-            //Debug.Log("employ=" + Info[prefabnum].Level);
         }
     }
 

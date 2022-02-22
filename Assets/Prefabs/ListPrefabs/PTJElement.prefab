@@ -189,8 +189,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 260, y: 73}
-  m_SizeDelta: {x: 120, y: 50}
+  m_AnchoredPosition: {x: 284.3, y: 67.8}
+  m_SizeDelta: {x: 168.7, y: 60.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5916963183078333395
 CanvasRenderer:
@@ -363,7 +363,7 @@ MonoBehaviour:
     Explanation: "\uBBF8\uC815"
     Price: 0
     Level: 0
-  Element: {fileID: 3705786545946922626}
+  PTJElement: {fileID: 3705786545946922626}
   titleText: {fileID: 9018496231175234831}
   facePicture: {fileID: 56983697321961158}
   explanationText: {fileID: 552661853564872658}
@@ -618,8 +618,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 29.11, y: -12.857}
-  m_SizeDelta: {x: 10.1, y: 75.7}
+  m_AnchoredPosition: {x: -42.167, y: -0.015206}
+  m_SizeDelta: {x: 84.4, y: 60.382}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5473609524820755098
 CanvasRenderer:
@@ -656,7 +656,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 3
     m_MaxSize: 171
-    m_Alignment: 5
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
