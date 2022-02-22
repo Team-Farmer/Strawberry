@@ -31,6 +31,7 @@ public class PrefabManager : MonoBehaviour
 
     //Research Info  적용할 것들
     [Header("==========INFO 적용할 대상=========")]
+    public GameObject Element;
     public GameObject titleText;
     public GameObject facePicture;
     public GameObject explanationText;
@@ -39,8 +40,11 @@ public class PrefabManager : MonoBehaviour
 
     [Header("==========Research Or PTJ===========")]
     public bool PTJ;
-
-
+    [Header("==========select PTJ===========")]
+    [SerializeField]
+    private Sprite selectPTJSprite;
+    [SerializeField]
+    private Sprite originalPTJSprite;
 
 
     //추가 된 Prefab 수
@@ -99,15 +103,18 @@ public class PrefabManager : MonoBehaviour
 
                     ++employCount;
                     Info[prefabnum].Level = 1;//1=고용
-                    levelNum.GetComponent<Text>().text = "고용";
+                    levelNum.GetComponent<Text>().text = "고용 중";
+
+                    Element.GetComponent<Image>().sprite = selectPTJSprite;
 
                 }
                 else //고용중이라면 무직으로 변경
                 {
                     --employCount;
                     Info[prefabnum].Level = 0;//0=무직
-                    levelNum.GetComponent<Text>().text = "무직";
+                    levelNum.GetComponent<Text>().text = "고용 전";
 
+                    
                 }
             }
             else 
@@ -116,7 +123,8 @@ public class PrefabManager : MonoBehaviour
                 {
                     --employCount;
                     Info[prefabnum].Level = 0;//0=무직
-                    levelNum.GetComponent<Text>().text = "무직";
+                    levelNum.GetComponent<Text>().text = "고용 전";
+                    Element.GetComponent<Image>().sprite = selectPTJSprite;
                 }
                 Debug.Log("3명이 넘게 고용하지 못합니다."); 
             }
