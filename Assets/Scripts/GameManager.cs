@@ -50,6 +50,7 @@ public class GameManager : MonoBehaviour
     public GameObject[] workingFace;
 
 
+
     [Header("------------[Check/Settings Panel]")]
     public GameObject SettingsPanel;
     public GameObject CheckPanel;
@@ -306,11 +307,24 @@ public class GameManager : MonoBehaviour
         else
         { Obj.SetActive(true); }
     }
-    public void workingApply(Sprite workingSprite,int index_) 
+    public void workingApply(List<Sprite> workingSprite) 
     {
+        for (int i = 0; i < 3; i++)
+        {
+            try
+            {
+                if (workingSprite[i] == null)
+                {
+                    workingFace[i].transform.GetComponent<Image>().sprite = null;
+                }
+                else
+                {
+                    workingFace[i].transform.GetComponent<Image>().sprite = workingSprite[i];
+                }
+            }
+            catch{ Debug.Log("test"); }
 
-        workingFace[index_].transform.GetComponent<Image>().sprite =workingSprite;
-
+        }
     }
 
 

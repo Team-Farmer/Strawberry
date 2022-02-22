@@ -58,14 +58,14 @@ public class PrefabManager : MonoBehaviour
     
     //몇명 고용중인지 확인
     static int employCount = 0;
-    
 
+    List<Sprite> workingList = new List<Sprite>(3);
+    
 
 
     //===================================================================================================
     void Start()
     {
-        
         InfoUpdate();
     }
     void Update()
@@ -121,24 +121,30 @@ public class PrefabManager : MonoBehaviour
         GameManager.instance.coin -= Info[prefabnum].Price;
         GameManager.instance.ShowCoinText(GameManager.instance.coin);
 
-        ++employCount;
+        
         Info[prefabnum].Level = 1;//1=고용
         levelNum.GetComponent<Text>().text = "고용 중";
         levelNum.GetComponent<Text>().color = new Color32(245, 71, 71, 255);//#F54747
 
         PTJBackground.transform.GetComponent<Image>().sprite = selectPTJSprite;
 
-        GameManager.instance.workingApply(Info[prefabnum].FacePicture,0);//GameManager workingApply에 고용중인 알바생의 얼굴 사진을 보낸다.
+        workingList.Add(Info[prefabnum].FacePicture);
+        GameManager.instance.workingApply(workingList);//GameManager workingApply에 고용중인 알바생의 얼굴 사진을 보낸다.
+
+        ++employCount;
     }
     private void fire() 
     {
-        --employCount;
+        
         Info[prefabnum].Level = 0;//0=무직
         levelNum.GetComponent<Text>().text = "고용 전";
         levelNum.GetComponent<Text>().color = new Color32(164, 164, 164, 255);
         PTJBackground.transform.GetComponent<Image>().sprite = originalPTJSprite;
+        --employCount;
 
-        GameManager.instance.workingApply(null,0);
+        workingList.Remove(Info[prefabnum].FacePicture);
+        GameManager.instance.workingApply(workingList);
+        
 
     }
 
