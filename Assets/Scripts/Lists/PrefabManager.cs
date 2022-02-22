@@ -32,7 +32,7 @@ public class PrefabManager : MonoBehaviour
     //Research Info  적용할 것들
     [Header("==========INFO 적용할 대상=========")]
     [SerializeField]
-    private GameObject PTJElement;
+    private GameObject PTJBackground;
     public GameObject titleText;
     public GameObject facePicture;
     public GameObject explanationText;
@@ -106,9 +106,9 @@ public class PrefabManager : MonoBehaviour
                     ++employCount;
                     Info[prefabnum].Level = 1;//1=고용
                     levelNum.GetComponent<Text>().text = "고용 중";
-                    //levelNum.GetComponent<Text>().color = new Color(245,71,71);
+                    levelNum.GetComponent<Text>().color = new Color32(245,71,71,255);//#F54747
 
-                    //PTJElement.transform.GetComponent<Image>().sprite = selectPTJSprite;//아니이게 왜 안되냐고
+                    PTJBackground.transform.GetComponent<Image>().sprite = selectPTJSprite;//아니이게 왜 안되냐고
 
                 }
                 else //고용중이면 고용해제
@@ -116,8 +116,8 @@ public class PrefabManager : MonoBehaviour
                     --employCount;
                     Info[prefabnum].Level = 0;//0=무직
                     levelNum.GetComponent<Text>().text = "고용 전";
-
-                    
+                    levelNum.GetComponent<Text>().color = new Color32(164, 164, 164, 255);
+                    PTJBackground.transform.GetComponent<Image>().sprite = originalPTJSprite;
                 }
             }
             else //3명 이상일 때
@@ -126,7 +126,9 @@ public class PrefabManager : MonoBehaviour
                 {
                     --employCount;
                     Info[prefabnum].Level = 0;//0=무직
-                    levelNum.GetComponent<Text>().text = "고용 전";  
+                    levelNum.GetComponent<Text>().text = "고용 전";
+                    levelNum.GetComponent<Text>().color = new Color32(164, 164, 164, 255);
+                    PTJBackground.transform.GetComponent<Image>().sprite = originalPTJSprite;
                 }
                 Debug.Log("3명이 넘게 고용하지 못합니다."); 
             }
@@ -134,6 +136,9 @@ public class PrefabManager : MonoBehaviour
         }
     }
 
+
+    private void hire() { }
+    private void fire() { }
 
     public void InfoUpdate()
     {
@@ -155,7 +160,7 @@ public class PrefabManager : MonoBehaviour
         coinNum.GetComponent<Text>().text = Info[Prefabcount].Price.ToString();
         
         if (PTJ==true)
-        {    levelNum.GetComponent<Text>().text = " ";    }
+        {    levelNum.GetComponent<Text>().text = "고용 전";    }
         else
         {    levelNum.GetComponent<Text>().text = Info[Prefabcount].Level.ToString();    }
 
