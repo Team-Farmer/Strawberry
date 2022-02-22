@@ -97,39 +97,15 @@ public class PrefabManager : MonoBehaviour
 
             if (employCount < 3)//3명 이하일 때 고용 혹은 고용 해제
             {
-                if (Info[prefabnum].Level == 0) //고용중아니면 고용            //의문점 = 왜 prefabnum말로 0을 넣어도 되는가
-                {
-                    //해당 금액의 코인이 감소된다.
-                    GameManager.instance.coin -= Info[prefabnum].Price;
-                    GameManager.instance.ShowCoinText(GameManager.instance.coin);
-
-                    ++employCount;
-                    Info[prefabnum].Level = 1;//1=고용
-                    levelNum.GetComponent<Text>().text = "고용 중";
-                    levelNum.GetComponent<Text>().color = new Color32(245,71,71,255);//#F54747
-
-                    PTJBackground.transform.GetComponent<Image>().sprite = selectPTJSprite;//아니이게 왜 안되냐고
-
-                }
+                if (Info[prefabnum].Level == 0) //고용중아니면 고용           
+                {   hire();   }
                 else //고용중이면 고용해제
-                {
-                    --employCount;
-                    Info[prefabnum].Level = 0;//0=무직
-                    levelNum.GetComponent<Text>().text = "고용 전";
-                    levelNum.GetComponent<Text>().color = new Color32(164, 164, 164, 255);
-                    PTJBackground.transform.GetComponent<Image>().sprite = originalPTJSprite;
-                }
+                {   fire();   }
             }
             else //3명 이상일 때
             {
                 if (Info[prefabnum].Level == 1)//고용중이면 고용해제
-                {
-                    --employCount;
-                    Info[prefabnum].Level = 0;//0=무직
-                    levelNum.GetComponent<Text>().text = "고용 전";
-                    levelNum.GetComponent<Text>().color = new Color32(164, 164, 164, 255);
-                    PTJBackground.transform.GetComponent<Image>().sprite = originalPTJSprite;
-                }
+                {   fire();   }
                 Debug.Log("3명이 넘게 고용하지 못합니다."); 
             }
 
@@ -137,8 +113,28 @@ public class PrefabManager : MonoBehaviour
     }
 
 
-    private void hire() { }
-    private void fire() { }
+    private void hire()  //의문점 = 왜 prefabnum말로 0을 넣어도 되는가
+    {
+        //해당 금액의 코인이 감소된다.
+        GameManager.instance.coin -= Info[prefabnum].Price;
+        GameManager.instance.ShowCoinText(GameManager.instance.coin);
+
+        ++employCount;
+        Info[prefabnum].Level = 1;//1=고용
+        levelNum.GetComponent<Text>().text = "고용 중";
+        levelNum.GetComponent<Text>().color = new Color32(245, 71, 71, 255);//#F54747
+
+        PTJBackground.transform.GetComponent<Image>().sprite = selectPTJSprite;//아니이게 왜 안되냐고
+    }
+    private void fire() 
+    {
+        --employCount;
+        Info[prefabnum].Level = 0;//0=무직
+        levelNum.GetComponent<Text>().text = "고용 전";
+        levelNum.GetComponent<Text>().color = new Color32(164, 164, 164, 255);
+        PTJBackground.transform.GetComponent<Image>().sprite = originalPTJSprite;
+
+    }
 
     public void InfoUpdate()
     {
