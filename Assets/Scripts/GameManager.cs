@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
     public GameObject PanelBlack;
     public GameObject panelBlack_Exp;
     internal object count;
-    public GameObject[] workingFace;
+    public GameObject[] working;
 
 
 
@@ -312,10 +312,13 @@ public class GameManager : MonoBehaviour
         {
             try
             {
-                workingFace[i].transform.GetComponent<Image>().sprite = workingList[i];
+                if (workingList[i] == null) { working[i].SetActive(false); }
+                else {
+                    working[i].SetActive(true);
+                    working[i].transform.GetChild(0).transform.GetComponent<Image>().sprite = workingList[i]; 
+                }
             }
             catch{ Debug.Log("error test"); }
-
         }
     }
 
@@ -452,11 +455,11 @@ public class GameManager : MonoBehaviour
     public void OnclickQuit()
     {
 
-#if UNITY_EDITOR
+    #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
-#else
+    #else
         Application.Quit();
-#endif
+    #endif
     }
     #endregion
 }

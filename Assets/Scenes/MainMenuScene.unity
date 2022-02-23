@@ -3601,10 +3601,10 @@ MonoBehaviour:
   BerryList: {fileID: 698710642}
   PanelBlack: {fileID: 41530268}
   panelBlack_Exp: {fileID: 0}
-  workingFace:
-  - {fileID: 1261517595}
-  - {fileID: 1629157874}
-  - {fileID: 806801675}
+  working:
+  - {fileID: 1297610195}
+  - {fileID: 1160523579}
+  - {fileID: 641708685}
   SettingsPanel: {fileID: 2031592367}
   CheckPanel: {fileID: 1334959770}
   Today: 00000000000000
@@ -4954,7 +4954,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &641708686
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5803,7 +5803,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 12, y: 59.999367}
+  m_AnchoredPosition: {x: 12, y: 59.999283}
   m_SizeDelta: {x: 103, y: 95.000015}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &755967742
@@ -9959,7 +9959,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1160523580
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11531,7 +11531,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1297610196
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13617,7 +13617,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -110.5, y: 59.999367}
+  m_AnchoredPosition: {x: -110.5, y: 59.999283}
   m_SizeDelta: {x: 97.46, y: 96.82001}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1629387834

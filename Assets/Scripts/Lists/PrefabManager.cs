@@ -59,7 +59,7 @@ public class PrefabManager : MonoBehaviour
     //몇명 고용중인지 확인
     static int employCount = 0;
 
-    List<Sprite> workingList = new List<Sprite>();
+    static List<Sprite> workingList = new List<Sprite>();
     
 
 
@@ -93,11 +93,9 @@ public class PrefabManager : MonoBehaviour
     //coin 버튼 -> 알바 고용 여부
     public void clickCoin_PTJ() 
     {
-        
         if (PTJ == true)//그냥 한번더 확인
         {
-
-            if (employCount < 3)//3명 이하일 때 고용 혹은 고용 해제
+            if (employCount < 3)//3명 이하일 때
             {
                 if (Info[prefabnum].Level == 0) //고용중아니면 고용           
                 {   hire();   }
@@ -108,9 +106,7 @@ public class PrefabManager : MonoBehaviour
             {
                 if (Info[prefabnum].Level == 1)//고용중이면 고용해제
                 {   fire();   }
-                Debug.Log("3명이 넘게 고용하지 못합니다."); 
             }
-
         }
     }
 
@@ -123,13 +119,14 @@ public class PrefabManager : MonoBehaviour
 
         
         Info[prefabnum].Level = 1;//1=고용
-        levelNum.GetComponent<Text>().text = "고용 중";
-        levelNum.GetComponent<Text>().color = new Color32(245, 71, 71, 255);//#F54747
+        levelNum.GetComponent<Text>().text = "고용 중";//고용중으로 표시
+        levelNum.GetComponent<Text>().color = new Color32(245, 71, 71, 255);//#F54747 글자색 변경
+        PTJBackground.transform.GetComponent<Image>().sprite = selectPTJSprite;//배경스프라이트 눌림으로 변경
 
-        PTJBackground.transform.GetComponent<Image>().sprite = selectPTJSprite;
+        workingList.Remove(null);
+        workingList.Add(Info[prefabnum].FacePicture);//해당 얼굴 리스트에 추가
+        GameManager.instance.workingApply(workingList);//GameManager workingApply에 고용중인 사진 list 보냄
 
-        workingList.Add(Info[prefabnum].FacePicture);
-        GameManager.instance.workingApply(workingList);//GameManager workingApply에 고용중인 알바생의 얼굴 사진을 보낸다.
 
         ++employCount;
     }
@@ -137,9 +134,10 @@ public class PrefabManager : MonoBehaviour
     {
         
         Info[prefabnum].Level = 0;//0=무직
-        levelNum.GetComponent<Text>().text = "고용 전";
-        levelNum.GetComponent<Text>().color = new Color32(164, 164, 164, 255);
-        PTJBackground.transform.GetComponent<Image>().sprite = originalPTJSprite;
+        levelNum.GetComponent<Text>().text = "고용 전";//고용 전으로 표시
+        levelNum.GetComponent<Text>().color = new Color32(164, 164, 164, 255);//글자색 회색으로
+        PTJBackground.transform.GetComponent<Image>().sprite = originalPTJSprite;//배경 스프라이트 원래대로
+       
         --employCount;
 
         workingList.Remove(Info[prefabnum].FacePicture);
