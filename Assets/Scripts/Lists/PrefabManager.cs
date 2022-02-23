@@ -59,7 +59,7 @@ public class PrefabManager : MonoBehaviour
     //몇명 고용중인지 확인
     static int employCount = 0;
 
-    List<Sprite> workingList = new List<Sprite>(3);
+    List<Sprite> workingList = new List<Sprite>();
     
 
 
@@ -143,6 +143,7 @@ public class PrefabManager : MonoBehaviour
         --employCount;
 
         workingList.Remove(Info[prefabnum].FacePicture);
+        workingList.Add(null);
         GameManager.instance.workingApply(workingList);
         
 

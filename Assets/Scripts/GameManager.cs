@@ -307,22 +307,15 @@ public class GameManager : MonoBehaviour
         else
         { Obj.SetActive(true); }
     }
-    public void workingApply(List<Sprite> workingSprite) 
+    public void workingApply(List<Sprite> workingList) 
     {
         for (int i = 0; i < 3; i++)
         {
             try
             {
-                if (workingSprite[i] == null)
-                {
-                    workingFace[i].transform.GetComponent<Image>().sprite = null;
-                }
-                else
-                {
-                    workingFace[i].transform.GetComponent<Image>().sprite = workingSprite[i];
-                }
+                workingFace[i].transform.GetComponent<Image>().sprite = workingList[i];
             }
-            catch{ Debug.Log("test"); }
+            catch{ Debug.Log("error test"); }
 
         }
     }
