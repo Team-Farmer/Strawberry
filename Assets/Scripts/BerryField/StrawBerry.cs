@@ -126,7 +126,8 @@ public class StrawBerry : MonoBehaviour
         }
         else if(this.level == 2)
         {
-            transform.position = new Vector2(stemPos.x - 0.1f, stemPos.y + 0.38f);            
+            transform.position = new Vector2(stemPos.x - 0.1f, stemPos.y + 0.38f);
+            berryTrans.position = new Vector2(transform.position.x + 0.41f, transform.position.y + 0.04f);
         }
         else if (this.level == 3)
         {           
