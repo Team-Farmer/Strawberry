@@ -45,7 +45,6 @@ public class GameManager : MonoBehaviour
     public GameObject BerryList;
     public GameObject PanelBlack;
     public GameObject panelBlack_Exp;
-    public GameObject berryExpPanel;
     internal object count;
     public GameObject[] workingFace;
 
