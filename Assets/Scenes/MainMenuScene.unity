@@ -141,7 +141,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &3459071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,7 +189,7 @@ RectTransform:
   m_GameObject: {fileID: 3459070}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 1}
   m_Children:
   - {fileID: 1195280829}
   - {fileID: 1667062838}
@@ -201,7 +201,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -1683}
+  m_AnchoredPosition: {x: 0, y: 78}
   m_SizeDelta: {x: 800, y: 1000}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3459074
@@ -217,6 +217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UpPosition: 40
+  DownPosition: 0
 --- !u!1 &26298297
 GameObject:
   m_ObjectHideFlags: 0
@@ -264,6 +265,7 @@ GameObject:
   - component: {fileID: 41530272}
   - component: {fileID: 41530271}
   - component: {fileID: 41530270}
+  - component: {fileID: 41530273}
   m_Layer: 5
   m_Name: PanelBlack
   m_TagString: Untagged
@@ -334,18 +336,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 41530268}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 496606690}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: EnableObjColliderAll
@@ -360,7 +350,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 2031592369}
         m_TargetAssemblyTypeName: PanelAnimation, Assembly-CSharp
-        m_MethodName: Close
+        m_MethodName: CloseDown
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -372,7 +362,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1334959772}
         m_TargetAssemblyTypeName: PanelAnimation, Assembly-CSharp
-        m_MethodName: Close
+        m_MethodName: CloseDown
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -384,7 +374,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 642284041}
         m_TargetAssemblyTypeName: PanelAnimation, Assembly-CSharp
-        m_MethodName: Close
+        m_MethodName: CloseUp
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -396,7 +386,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 969289842}
         m_TargetAssemblyTypeName: PanelAnimation, Assembly-CSharp
-        m_MethodName: Close
+        m_MethodName: CloseUp
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -408,7 +398,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 698710650}
         m_TargetAssemblyTypeName: PanelAnimation, Assembly-CSharp
-        m_MethodName: Close
+        m_MethodName: CloseUp
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -420,7 +410,19 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 3459074}
         m_TargetAssemblyTypeName: PanelAnimation, Assembly-CSharp
-        m_MethodName: Close
+        m_MethodName: CloseScale
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 41530273}
+        m_TargetAssemblyTypeName: PanelAnimation, Assembly-CSharp
+        m_MethodName: FadeOut
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -468,6 +470,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 41530268}
   m_CullTransparentMesh: 1
+--- !u!114 &41530273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 41530268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 572474bec6679744aaec1b74c64505d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UpPosition: 0
+  DownPosition: 0
 --- !u!114 &49241841 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5471392258496989000, guid: 2cfd907148d0b4f49b367715f9f94d8a, type: 3}
@@ -806,9 +822,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 3459074}
+      - m_Target: {fileID: 41530273}
         m_TargetAssemblyTypeName: PanelAnimation, Assembly-CSharp
-        m_MethodName: Close
+        m_MethodName: FadeOut
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -818,10 +834,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 41530268}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 3459074}
+        m_TargetAssemblyTypeName: PanelAnimation, Assembly-CSharp
+        m_MethodName: CloseScale
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1620,10 +1636,10 @@ RectTransform:
   m_Father: {fileID: 2031592368}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 28.449951, y: 107}
-  m_SizeDelta: {x: -980.8999, y: -1820}
+  m_SizeDelta: {x: -0.89990234, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &201599970
 GameObject:
@@ -1833,10 +1849,10 @@ RectTransform:
   m_Father: {fileID: 2031592368}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 28.449951, y: 240}
-  m_SizeDelta: {x: -980.8999, y: -1820}
+  m_SizeDelta: {x: -0.89990234, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &236047895
 GameObject:
@@ -3519,7 +3535,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 642284041}
         m_TargetAssemblyTypeName: PanelAnimation, Assembly-CSharp
-        m_MethodName: Open
+        m_MethodName: OpenUP
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3533,6 +3549,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 41530273}
+        m_TargetAssemblyTypeName: PanelAnimation, Assembly-CSharp
+        m_MethodName: Fadein
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3901,7 +3929,19 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 969289842}
         m_TargetAssemblyTypeName: PanelAnimation, Assembly-CSharp
-        m_MethodName: Open
+        m_MethodName: OpenUP
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 41530273}
+        m_TargetAssemblyTypeName: PanelAnimation, Assembly-CSharp
+        m_MethodName: Fadein
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5085,6 +5125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UpPosition: 50
+  DownPosition: 0
 --- !u!1001 &650465263
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5348,6 +5389,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UpPosition: 0
+  DownPosition: 0
 --- !u!1001 &668079874
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5581,6 +5623,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UpPosition: 60
+  DownPosition: 0
 --- !u!1 &708116552
 GameObject:
   m_ObjectHideFlags: 0
@@ -5803,7 +5846,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 12, y: 59.999226}
+  m_AnchoredPosition: {x: 12, y: 59.99911}
   m_SizeDelta: {x: 103, y: 95.000015}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &755967742
@@ -6133,7 +6176,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 698710650}
         m_TargetAssemblyTypeName: PanelAnimation, Assembly-CSharp
-        m_MethodName: Close
+        m_MethodName: CloseUp
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6143,10 +6186,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 41530268}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 41530273}
+        m_TargetAssemblyTypeName: PanelAnimation, Assembly-CSharp
+        m_MethodName: FadeOut
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -6364,7 +6407,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 2031592369}
         m_TargetAssemblyTypeName: PanelAnimation, Assembly-CSharp
-        m_MethodName: Close
+        m_MethodName: CloseDown
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6374,10 +6417,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 41530268}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 41530273}
+        m_TargetAssemblyTypeName: PanelAnimation, Assembly-CSharp
+        m_MethodName: FadeOut
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -8267,6 +8310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UpPosition: 50
+  DownPosition: 0
 --- !u!1 &976334077
 GameObject:
   m_ObjectHideFlags: 0
@@ -9750,7 +9794,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1334959772}
         m_TargetAssemblyTypeName: PanelAnimation, Assembly-CSharp
-        m_MethodName: Open
+        m_MethodName: OpenDown
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9764,6 +9808,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 41530273}
+        m_TargetAssemblyTypeName: PanelAnimation, Assembly-CSharp
+        m_MethodName: Fadein
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -10096,7 +10152,19 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 698710650}
         m_TargetAssemblyTypeName: PanelAnimation, Assembly-CSharp
-        m_MethodName: Open
+        m_MethodName: OpenUP
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 41530273}
+        m_TargetAssemblyTypeName: PanelAnimation, Assembly-CSharp
+        m_MethodName: Fadein
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10541,10 +10609,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 41530268}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1334959772}
+        m_TargetAssemblyTypeName: PanelAnimation, Assembly-CSharp
+        m_MethodName: CloseDown
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -10553,9 +10621,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1334959772}
+      - m_Target: {fileID: 41530273}
         m_TargetAssemblyTypeName: PanelAnimation, Assembly-CSharp
-        m_MethodName: Close
+        m_MethodName: FadeOut
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10927,7 +10995,7 @@ MonoBehaviour:
           m_CallState: 2
         - m_Target: {fileID: 3459074}
           m_TargetAssemblyTypeName: PanelAnimation, Assembly-CSharp
-          m_MethodName: Open
+          m_MethodName: OpenScale
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -10941,6 +11009,18 @@ MonoBehaviour:
           m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_MethodName: SetActive
           m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+        - m_Target: {fileID: 41530273}
+          m_TargetAssemblyTypeName: PanelAnimation, Assembly-CSharp
+          m_MethodName: Fadein
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -11715,7 +11795,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -2027}
+  m_AnchoredPosition: {x: 0, y: 1870}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1334959772
@@ -11731,6 +11811,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UpPosition: 40
+  DownPosition: 30
 --- !u!212 &1334959774
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13586,7 +13667,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -110.5, y: 59.999226}
+  m_AnchoredPosition: {x: -110.5, y: 59.99911}
   m_SizeDelta: {x: 97.46, y: 96.82001}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1629387834
@@ -14298,7 +14379,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 969289842}
         m_TargetAssemblyTypeName: PanelAnimation, Assembly-CSharp
-        m_MethodName: Close
+        m_MethodName: CloseUp
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -14308,10 +14389,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 41530268}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 41530273}
+        m_TargetAssemblyTypeName: PanelAnimation, Assembly-CSharp
+        m_MethodName: FadeOut
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -15775,7 +15856,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 642284041}
         m_TargetAssemblyTypeName: PanelAnimation, Assembly-CSharp
-        m_MethodName: Close
+        m_MethodName: CloseUp
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -15785,10 +15866,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 41530268}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 41530273}
+        m_TargetAssemblyTypeName: PanelAnimation, Assembly-CSharp
+        m_MethodName: FadeOut
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -16059,7 +16140,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -100, y: -100}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1934114410
 GameObject:
@@ -16522,7 +16603,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 2031592369}
         m_TargetAssemblyTypeName: PanelAnimation, Assembly-CSharp
-        m_MethodName: Open
+        m_MethodName: OpenDown
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -16536,6 +16617,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 41530273}
+        m_TargetAssemblyTypeName: PanelAnimation, Assembly-CSharp
+        m_MethodName: Fadein
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -16928,9 +17021,9 @@ RectTransform:
   m_Father: {fileID: 1922965541}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -28.449951, y: -1849}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -28.449951, y: 1746}
   m_SizeDelta: {x: 980.9, y: 1820}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2031592369
@@ -16946,6 +17039,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UpPosition: 50
+  DownPosition: 30
 --- !u!212 &2031592371
 SpriteRenderer:
   m_ObjectHideFlags: 0
