@@ -40,7 +40,6 @@ public class BerryManager : MonoBehaviour
     GameObject berryExp;
     GameObject ExpChildren;
     GameObject ExpChildren2;
-    private GameObject PanelBlack;
 
 
     //프리팹들 번호 붙여주기 용
@@ -60,7 +59,6 @@ public class BerryManager : MonoBehaviour
         prefabnum = Prefabcount;
         Prefabcount++;
 
-
         berryImageChange();
     }
 
@@ -75,29 +73,25 @@ public class BerryManager : MonoBehaviour
     public void Explanation()
     {
 
-
             ExpChildren = berryExp.transform.GetChild(0).transform.gameObject;//berryExp
-            PanelBlack = ExpChildren.transform.GetChild(0).transform.gameObject;//블랙패널을 의미    
             ExpChildren2 = ExpChildren.transform.GetChild(1).transform.gameObject;//berryExpImage
-            
 
             try
             {
                 if (berryInfo[prefabnum].exist == true)
                 {
                     //검정창 띄운다.
-                    PanelBlack.SetActive(true);
                     //설명창이 뜬다.
                     ExpChildren.SetActive(true);
                     //Explanation 내용을 채운다.
-                    ExpChildren2.transform.GetChild(1).transform.gameObject.GetComponentInChildren<Image>().sprite = berryInfo[prefabnum].berryImage;//이미지 설정
-                    ExpChildren2.transform.GetChild(2).transform.gameObject.GetComponentInChildren<Text>().text = berryInfo[prefabnum].berryName;//이름 설정
-                    ExpChildren2.transform.GetChild(3).transform.gameObject.GetComponentInChildren<Text>().text = berryInfo[prefabnum].berryTxt;//설명 설정
+                    ExpChildren2.transform.GetChild(0).transform.gameObject.GetComponentInChildren<Image>().sprite = berryInfo[prefabnum].berryImage;//이미지 설정
+                    ExpChildren2.transform.GetChild(1).transform.gameObject.GetComponentInChildren<Text>().text = berryInfo[prefabnum].berryName;//이름 설정
+                    ExpChildren2.transform.GetChild(2).transform.gameObject.GetComponentInChildren<Text>().text = berryInfo[prefabnum].berryTxt;//설명 설정
                 }
             }
             catch
             {
-                ExpChildren.SetActive(false);
+                //ExpChildren.SetActive(false);
                 Debug.Log("여기에 해당하는 베리는 아직 없다");
             }
 
@@ -111,9 +105,6 @@ public class BerryManager : MonoBehaviour
     {
         for (int i = 0; i < berryInfo.Length; i++)
         {
-
-            
-
             if (prefabnum == i && berryInfo[i].exist == true)
             {
                 this.transform.GetComponent<Image>().sprite = yesBerryImage;
