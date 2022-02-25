@@ -40,6 +40,7 @@ public class BerryManager : MonoBehaviour
     GameObject berryExp;
     GameObject ExpChildren;
     GameObject ExpChildren2;
+    private GameObject PanelBlack;
 
 
     //프리팹들 번호 붙여주기 용
@@ -75,20 +76,23 @@ public class BerryManager : MonoBehaviour
     {
 
 
-            ExpChildren = berryExp.transform.GetChild(0).transform.gameObject;//Expchildren = 하이라키의 berryExplanation의 자식 berryExp를 의미
-            ExpChildren2 = ExpChildren.transform.GetChild(0).transform.gameObject;//Expchlidren2 = Expchildren1의 자식인 berryExpImage를 의미
-
+            ExpChildren = berryExp.transform.GetChild(0).transform.gameObject;//berryExp
+            PanelBlack = ExpChildren.transform.GetChild(0).transform.gameObject;//블랙패널을 의미    
+            ExpChildren2 = ExpChildren.transform.GetChild(1).transform.gameObject;//berryExpImage
+            
 
             try
             {
                 if (berryInfo[prefabnum].exist == true)
                 {
+                    //검정창 띄운다.
+                    PanelBlack.SetActive(true);
                     //설명창이 뜬다.
                     ExpChildren.SetActive(true);
                     //Explanation 내용을 채운다.
-                    ExpChildren2.transform.GetChild(0).transform.gameObject.GetComponentInChildren<Image>().sprite = berryInfo[prefabnum].berryImage;//이미지 설정
-                    ExpChildren2.transform.GetChild(1).transform.gameObject.GetComponentInChildren<Text>().text = berryInfo[prefabnum].berryName;//이름 설정
-                    ExpChildren2.transform.GetChild(2).transform.gameObject.GetComponentInChildren<Text>().text = berryInfo[prefabnum].berryTxt;//설명 설정
+                    ExpChildren2.transform.GetChild(1).transform.gameObject.GetComponentInChildren<Image>().sprite = berryInfo[prefabnum].berryImage;//이미지 설정
+                    ExpChildren2.transform.GetChild(2).transform.gameObject.GetComponentInChildren<Text>().text = berryInfo[prefabnum].berryName;//이름 설정
+                    ExpChildren2.transform.GetChild(3).transform.gameObject.GetComponentInChildren<Text>().text = berryInfo[prefabnum].berryTxt;//설명 설정
                 }
             }
             catch
