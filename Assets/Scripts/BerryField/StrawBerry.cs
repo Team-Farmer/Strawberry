@@ -52,11 +52,13 @@ public class StrawBerry : MonoBehaviour
         berryKindProb.Add(Classic);
         berryKindProb.Add(Special);
         berryKindProb.Add(Unique);
+
+        
     }
     private void OnEnable()
     {
-        randomTime = Random.Range(7.0f, 18.0f);
-        stemPos = transform.position;       
+        stemPos = transform.position;
+        randomTime = Random.Range(7.0f, 18.0f);              
         DefineBerryKind();
         SetAnim(0);       
     }
@@ -73,6 +75,7 @@ public class StrawBerry : MonoBehaviour
 
         // µþ±â Æ®·£½ºÆû ÃÊ±âÈ­
         transform.localPosition = Vector3.zero;
+        berryTrans.localPosition = new Vector2(0.42f, 0.02f);
         transform.localRotation = Quaternion.identity;
         transform.localScale = Vector3.zero;       
     }   
@@ -122,21 +125,21 @@ public class StrawBerry : MonoBehaviour
         else if (this.level == 1)
         {
             sprite.sortingOrder = 0;
-            transform.position = new Vector2(stemPos.x - 0.1f, stemPos.y + 0.3f);
+            transform.position = new Vector2(stemPos.x - 0.12f, stemPos.y + 0.26f);
         }
         else if(this.level == 2)
         {
-            transform.position = new Vector2(stemPos.x - 0.1f, stemPos.y + 0.38f);
-            berryTrans.position = new Vector2(transform.position.x + 0.41f, transform.position.y + 0.04f);
+            transform.position = new Vector2(stemPos.x - 0.15f, stemPos.y + 0.32f);           
         }
         else if (this.level == 3)
-        {           
-            berryTrans.position = new Vector2(transform.position.x + 0.48f, transform.position.y - 0.05f);
+        {
+            transform.position = new Vector2(stemPos.x - 0.15f, stemPos.y + 0.35f);
+            berryTrans.position = new Vector2(transform.position.x + 0.37f, transform.position.y - 0.02f);
         }
         anim.SetInteger("Level", level);
     }
     void SelectRoute()
-    {        
+    {       
         anim.SetInteger("Kind", this.kind);
         anim.SetInteger("Rank", this.rank);
     }

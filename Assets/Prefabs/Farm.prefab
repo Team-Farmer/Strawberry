@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 9049695608040008425}
   - component: {fileID: 6750494896011967641}
   - component: {fileID: 6276483865271743662}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Weed
   m_TagString: Weed
   m_Icon: {fileID: 0}
@@ -134,8 +134,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.3, y: 0.38}
-  m_Direction: 0
+  m_Size: {x: 0.6, y: 0.4}
+  m_Direction: 1
 --- !u!1 &9217127060991989623
 GameObject:
   m_ObjectHideFlags: 0
@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 7226134946315250275}
   - component: {fileID: 2018442073946009316}
   - component: {fileID: 5471392258496989000}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Farm
   m_TagString: Farm
   m_Icon: {fileID: 0}

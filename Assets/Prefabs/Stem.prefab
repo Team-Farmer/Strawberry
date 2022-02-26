@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 958232348917082183}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.45, y: 0, z: 0}
+  m_LocalPosition: {x: 0.42, y: 0.02, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8805974852612428702}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 8904784904412859386}
   - component: {fileID: 5811043677648715907}
   - component: {fileID: 43837746447511568}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bug
   m_TagString: Bug
   m_Icon: {fileID: 0}
@@ -201,7 +201,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.12
+  m_Radius: 0.2
 --- !u!114 &43837746447511568
 MonoBehaviour:
   m_ObjectHideFlags: 0
