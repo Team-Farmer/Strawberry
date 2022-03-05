@@ -1,7 +1,100 @@
 fileFormatVersion: 2
 guid: 70239e5dde32fc6458d56e083071699b
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 1076058604362874642
+    second: popupNoti_0
+  - first:
+      213: -2141410080275395780
+    second: popupNoti_1
+  - first:
+      213: 9048980101966856664
+    second: popupNoti_2
+  - first:
+      213: -1708838236322367897
+    second: popupNoti_3
+  - first:
+      213: 3272470073908200681
+    second: popupNoti_4
+  - first:
+      213: -43594996106134226
+    second: popupNoti_5
+  - first:
+      213: -3595402730977829046
+    second: popupNoti_6
+  - first:
+      213: 4338597875001372810
+    second: popupNoti_7
+  - first:
+      213: 4279327656710277141
+    second: popupNoti_8
+  - first:
+      213: 1432046339285932235
+    second: popupNoti_9
+  - first:
+      213: 1571551948762016590
+    second: popupNoti_10
+  - first:
+      213: 7621937321798401029
+    second: popupNoti_11
+  - first:
+      213: 6359663021588014058
+    second: popupNoti_12
+  - first:
+      213: 1967011146563047379
+    second: popupNoti_13
+  - first:
+      213: -3348205509821616988
+    second: popupNoti_14
+  - first:
+      213: 5696295380736592487
+    second: popupNoti_15
+  - first:
+      213: 3936329758675122201
+    second: popupNoti_16
+  - first:
+      213: -2717865092756690611
+    second: popupNoti_17
+  - first:
+      213: -5491089477717326102
+    second: popupNoti_18
+  - first:
+      213: -6664792710344086276
+    second: popupNoti_19
+  - first:
+      213: 4465749109520202013
+    second: popupNoti_20
+  - first:
+      213: 2240238176777199547
+    second: popupNoti_21
+  - first:
+      213: 7105920479548798162
+    second: popupNoti_22
+  - first:
+      213: 2644659712091588864
+    second: popupNoti_23
+  - first:
+      213: -2469193210957600619
+    second: popupNoti_24
+  - first:
+      213: -8850850789583833064
+    second: popupNoti_25
+  - first:
+      213: 6914076471064039284
+    second: popupNoti_26
+  - first:
+      213: -2885533871306294659
+    second: popupNoti_34
+  - first:
+      213: 3004038888197386389
+    second: popupNoti_35
+  - first:
+      213: -3598817718264966155
+    second: popupNoti_36
+  - first:
+      213: 6334983616634551691
+    second: popupNoti_37
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -41,7 +134,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -75,9 +168,138 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: popupNoti_0
+      rect:
+        serializedVersion: 2
+        x: 517
+        y: 1460
+        width: 169
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21f3d86799deeee00800000000000000
+      internalID: 1076058604362874642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: popupNoti_34
+      rect:
+        serializedVersion: 2
+        x: 925
+        y: 1316
+        width: 72
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7a3e657b3684f7d0800000000000000
+      internalID: -2885533871306294659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: popupNoti_35
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 486
+        width: 906
+        height: 798
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 590f676e37d70b920800000000000000
+      internalID: 3004038888197386389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: popupNoti_36
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 179
+        width: 380
+        height: 124
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f35f634a5e6e0ec0800000000000000
+      internalID: -3598817718264966155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: popupNoti_37
+      rect:
+        serializedVersion: 2
+        x: 598
+        y: 179
+        width: 380
+        height: 124
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8dfb6ff8026ae750800000000000000
+      internalID: 6334983616634551691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
