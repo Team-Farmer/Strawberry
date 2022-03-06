@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
 
     [Header("------------[ Object ]")]
     public GameObject berryPrefab; // 프리팹    
-    public List<Farm> farmList = new List<Farm>();
+    public List<Farm> farmList = new List<Farm>(); // 일단 보류
 
     [Header("------------[ Object Pooling ]")]
     public Transform berryGroup;

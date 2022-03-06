@@ -7,7 +7,10 @@ using UnityEngine.UI;
 
 public class GameData
 {
-    public int money;
-    public int heart;
-    public Vector2 pos;
+    //Truck
+    public int berryCnt; // Æ®·° µþ±â °³¼ö
+
+    //µþ±â ¹ß»ý È®·ü
+    public int[] berryRankProb = { 50, 35, 15 };
+
 }

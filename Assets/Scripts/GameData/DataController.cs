@@ -51,6 +51,7 @@ public class DataController : MonoBehaviour
         {
             Debug.Log("새로운 데이터 생성");
             gameData = new GameData();
+            InitData();
             SaveData();
         }
     }
@@ -69,9 +70,20 @@ public class DataController : MonoBehaviour
         Debug.Log("저장 완료");
     }
 
+    public void InitData()
+    {
+        //Truck
+        gameData.berryCnt = 0;
+        //Bug
+        //gameData.bugProb = 10f;
+        //Weed
+        //gameData.weedProb = 20f;
+        
+    }
     void OnApplicationQuit()
     {
         //게임종료시 저장
         SaveData();
     }
+    
 }

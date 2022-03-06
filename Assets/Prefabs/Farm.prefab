@@ -118,8 +118,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weedProb: 50
   xPos: 0
-  pos: {x: 0, y: 0}
-  spNum: 0
+  weedPos: {x: 0, y: 0}
+  weedSpriteNum: 0
 --- !u!70 &6276483865271743662
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -266,4 +266,4 @@ MonoBehaviour:
   hasWeed: 0
   canGrowWeed: 1
   weedTime: 0
-  period: 30
+  period: 5

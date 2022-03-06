@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class Weed : MonoBehaviour
 {   
-    public float weedProb = 100f;
-    public float xPos = 0f;   
-    public Vector2 pos;
-    public int spNum;
+    public float weedProb = 100f; // ¿Å±è
+    public float xPos = 0f;   // ¿Å±è   
+    public int weedSpriteNum; // ¿Å±è
 
     private Farm farm;
     private StrawBerry berry;
@@ -20,12 +19,12 @@ public class Weed : MonoBehaviour
 
         berry = GameManager.instance.berryList[farm.farmIdx];
         farmColl = farm.GetComponent<BoxCollider2D>();
-        pos = farm.transform.position;
+        //weedPos = farm.transform.position;
     }
     void OnEnable()
     {
-        spNum = Random.Range(0, 3);
-        anim.SetInteger("Generate", spNum);
+        weedSpriteNum = Random.Range(0, 3);
+        anim.SetInteger("Generate", weedSpriteNum);
     }
     
     // Update is called once per frame
@@ -47,7 +46,7 @@ public class Weed : MonoBehaviour
             berry.canGrow = false; // µþ±âÀÇ ¼ºÀå Á¦¾î
 
             xPos = Random.Range(-0.35f, 0.35f); // ¹çÀÇ XÃàÀÇ ·£´ýÇÑ À§Ä¡¿¡ ÀâÃÊ »ý¼º
-            transform.position = new Vector2(pos.x + xPos, pos.y + 0.07f);            
+            transform.position = new Vector2(farm.transform.position.x + xPos, farm.transform.position.y + 0.07f);            
         }
     }
     public void DeleteWeed()

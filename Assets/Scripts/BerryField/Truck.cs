@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Truck : MonoBehaviour
 {
     public GameObject MaxPanel;    
-    public int berryCnt = 0;
+    public int berryCnt = 0; // ¿Å±è
     private Animator anim;
     public enum Count
     {
@@ -19,6 +20,7 @@ public class Truck : MonoBehaviour
     void Awake()
     {
         anim = GetComponent<Animator>();
+        
     }
     // Update is called once per frame
     void FixedUpdate()

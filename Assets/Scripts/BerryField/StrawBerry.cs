@@ -10,7 +10,6 @@ public class StrawBerry : MonoBehaviour
     public Transform berryTrans;
     private Animator anim;
     private SpriteRenderer sprite;
-    private Vector2 stemPos;
     public Bug bug;
 
     Dictionary<string, int> Classic = new Dictionary<string, int>()
@@ -27,9 +26,11 @@ public class StrawBerry : MonoBehaviour
     {
         {"Choco", 100 }
     };
-
+    
     List<Dictionary<string, int>> berryKindProb = new List<Dictionary<string, int>>();
+    private Vector2 stemPos;
 
+    //
     public float createTime = 0f;
     public bool canGrow = true;
     public bool hasBug = false;
@@ -42,7 +43,7 @@ public class StrawBerry : MonoBehaviour
     public int rankChance;
     public int kindChance;
 
-    public int[] berryRankProb = { 50, 35, 15 };
+    public int[] berryRankProb = { 50, 35, 15 }; //À§¿¡ ´Ù ¿Å±è
 
     void Awake()
     {       
@@ -52,8 +53,7 @@ public class StrawBerry : MonoBehaviour
         berryKindProb.Add(Classic);
         berryKindProb.Add(Special);
         berryKindProb.Add(Unique);
-
-        
+     
     }
     private void OnEnable()
     {

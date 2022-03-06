@@ -5,11 +5,11 @@ using UnityEngine;
 public class Bug : MonoBehaviour
 {
     SpriteRenderer sprite;    
-    public float bugProb;
+    public float bugProb; // ¿Å±è
     private Animator anim;
     private StrawBerry berry;
     private Farm farm;
-    public float scale = 1.5f;
+    public float scale = 1.5f; // ¿Å±è
     // Start is called before the first frame update
     void Awake()
     {
