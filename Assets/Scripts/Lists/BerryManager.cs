@@ -54,8 +54,13 @@ public class BerryManager : MonoBehaviour
         berryExp = GameObject.Find("berryExplanation");//이거 과부화 위험. 다른 방법은 없을까
 
         //프리팹들에게 번호를 붙여 주자
+        /*
         if (Prefabcount >= 32)
         {    Prefabcount -= 32;    }
+        */
+        if (Prefabcount % 32==0)
+        { Prefabcount =0; }
+
         prefabnum = Prefabcount;
         Prefabcount++;
 

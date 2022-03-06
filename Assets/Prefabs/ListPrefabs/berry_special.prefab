@@ -143,7 +143,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 6121904584092846314, guid: 444a423d1a551964c901bb870538e3e4, type: 3}
+  m_Sprite: {fileID: 6121904584092846314, guid: 5793a0752ea94ed4d8413bd1fcc8df20, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -224,31 +224,98 @@ MonoBehaviour:
   yesBerryImage: {fileID: -4623353640749799153, guid: 444a423d1a551964c901bb870538e3e4, type: 3}
   berryImagePanel: {fileID: 3211075358437019884}
   berryInfo:
-  - berryImage: {fileID: -8684561682398728360, guid: d1194e2c3cf36e84ca58f65a57d43d60, type: 3}
-    berryName: "\uD0B9\uC2A4\uBCA0\uB9AC"
-    berryTxt: "\uACFC\uC2E4\uC774 \uB9E4\uC6B0 \uD06C\uACE0 \uC644\uC219\uB420\uC218\uB85D
-      \uB2E8\uB9DB\uC774 \uAC15\uD574\uC9C4\uB2E4. \uCC29\uC0C9\uACFC\uC5D0\uC11C
-      \uD48D\uAE30\uB294 \uC740\uC740\uD55C \uBCF5\uC22D\uC544 \uD5A5\uC774 \uB9E4\uB825\uC801\uC774\uB2E4."
+  - berryImage: {fileID: 266045358689404642, guid: 9514129d6406c864ca06a22fea2e150f, type: 3}
+    berryName: "\uC124\uD5A5"
+    berryTxt: "\uAD6D\uB0B4 \uB538\uAE30\uC758 \uC57D 85%\uB97C \uCC28\uC9C0\uD558\uB294
+      \uC6B0\uB9AC\uAC00 \uC544\uB294 \uADF8 \uB538\uAE30\uC774\uB2E4. \uD0A4\uC6B0\uAE30
+      \uC27D\uACE0 \uACA8\uC6B8 \uC7AC\uBC30\uAC00 \uAC00\uB2A5\uD574\uC9C4 \uD488\uC885\uC774\uB77C\uB294
+      \uB73B\uC73C\uB85C \uB208 \uC124(\u96EA)\uC790\uB97C \uBD99\uC600\uB2E4. \uD0A4\uC6B0\uAE30
+      \uC27D\uACE0 \uC218\uB7C9\uB3C4 \uB9CE\uB2E4."
     berryValue: 20
     exist: 1
-  - berryImage: {fileID: -3859627200237796889, guid: d1194e2c3cf36e84ca58f65a57d43d60, type: 3}
+  - berryImage: {fileID: 3380624379705996926, guid: 9514129d6406c864ca06a22fea2e150f, type: 3}
     berryName: "\uB9E4\uD5A5"
-    berryTxt: "\uB192\uC740 \uB2F9\uB3C4\uB85C \uB9DB\uACFC \uD5A5\uC774 \uC6B0\uC218\uD558\uBA70,
-      \uB6F0\uC5B4\uB09C \uC800\uC7A5\uC131\uC73C\uB85C \uC218\uC1A1\uC5D0 \uC720\uB9AC\uD574
-      \uB3D9\uB0A8\uC544\uC2DC\uC544\uC5D0\uC11C \uD55C\uAD6D \uB538\uAE30\uC758
-      \uD55C\uB958\uB97C \uC774\uB04C\uACE0 \uC788\uB2E4."
+    berryTxt: "\uC218\uB7C9\uC774 \uC801\uACE0 \uD0A4\uC6B0\uAE30 \uAE4C\uB2E4\uB86D\uC9C0\uB9CC
+      \uB9DB\uC774 \uC88B\uACE0 \uACFC\uC2E4\uC774 \uB2E8\uB2E8\uD55C \uB538\uAE30\uC774\uB2E4.
+      \uC800\uC7A5\uC131\uACFC \uC6B4\uBC18\uC131\uC774 \uC88B\uC544 \uC7A5\uAC70\uB9AC
+      \uC774\uB3D9\uC5D0 \uC720\uB9AC\uD574 \uC218\uCD9C\uC6A9\uC73C\uB85C \uAC01\uAD11\uBC1B\uB294
+      \uD574\uC678\uD30C \uB538\uAE30\uC774\uB2E4."
     berryValue: 40
     exist: 1
-  - berryImage: {fileID: 2883912329823682490, guid: d1194e2c3cf36e84ca58f65a57d43d60, type: 3}
-    berryName: "\uB9CC\uB144"
-    berryTxt: "\uC5F0\uBD84\uD64D\uBE5B\uC744 \uB744\uC5B4 \uD770 \uBE5B\uAE54\uC5D0\uC11C
-      \uCC29\uC548\uD574 \uB9CC\uB144\uC124\uB85C \uBD88\uB9AC\uC6B0\uB294 \uB538\uAE30\uC774\uB2E4.
-      \uBE68\uAC04 \uB538\uAE30\uC5D0 \uBE44\uD574 \uB2F9\uB3C4\uAC00 \uB192\uC544
-      \uD2B9\uC720\uC758 \uB2EC\uCF64\uD55C \uB9DB\uC744 \uC990\uAE38 \uC218 \uC788\uB2E4."
+  - berryImage: {fileID: 6148513765739363964, guid: 9514129d6406c864ca06a22fea2e150f, type: 3}
+    berryName: "\uD0B9\uC2A4\uBCA0\uB9AC"
+    berryTxt: "\uC774\uB984\uCC98\uB7FC \uD06C\uAE30\uAC00 \uB300\uB2E8\uD55C \uC190\uBC14\uB2E5\uB9CC\uD55C
+      \uB538\uAE30\uC774\uB2E4. \uACFC\uC999\uC774 \uB9CE\uACE0 \uACFC\uC721\uC774
+      \uBD80\uB4DC\uB7EC\uC6B0\uBA70, \uC740\uC740\uD55C \uBCF5\uC22D\uC544 \uD5A5\uC744
+      \uD48D\uAE34\uB2E4."
     berryValue: 60
     exist: 1
-  - berryImage: {fileID: -5927244008994070643, guid: d1194e2c3cf36e84ca58f65a57d43d60, type: 3}
-    berryName: "\uCD08\uCF54\uB538\uAE30"
-    berryTxt: "\uCD08\uCF54\uCD08\uCF54"
+  - berryImage: {fileID: -7443522304575854791, guid: 9514129d6406c864ca06a22fea2e150f, type: 3}
+    berryName: "\uB9CC\uB144\uC124"
+    berryTxt: "\uC5F0\uBD84\uD64D\uBE5B\uC744 \uB744\uC5B4 \uB9CC\uB144\uC124\uCC98\uB7FC
+      \uD76C\uB2E4 \uD558\uC5EC \uB9CC\uB144\uC124\uC774\uB77C \uBD88\uB9AC\uC6B0\uB294
+      \uB538\uAE30\uC774\uB2E4. \uBE68\uAC04 \uB538\uAE30\uC5D0 \uBE44\uD574 \uB2F9\uB3C4\uAC00
+      \uB192\uC544 \uD2B9\uC720\uC758 \uB2EC\uCF64\uD55C \uB9DB\uC744 \uC990\uAE38
+      \uC218 \uC788\uB2E4."
+    berryValue: 60
+    exist: 1
+  - berryImage: {fileID: 266045358689404642, guid: 9514129d6406c864ca06a22fea2e150f, type: 3}
+    berryName: "\uC544\uB9AC\uD5A5"
+    berryTxt: "\uD0B9\uC2A4\uBCA0\uB9AC\uC5D0 \uC9C0\uC9C0 \uC54A\uB294 \uD06C\uAE30\uC758
+      \uC18C\uC720\uC790. \uC0C8\uCF64\uB2EC\uCF64\uD55C \uB9DB\uC774 \uC9C4\uD558\uBA70
+      \uACFC\uC2E4\uC758 \uD06C\uAE30\uAC00 \uD06C\uACE0 \uB2E8\uB2E8\uD558\uB2E4."
+    berryValue: 60
+    exist: 1
+  - berryImage: {fileID: 266045358689404642, guid: 9514129d6406c864ca06a22fea2e150f, type: 3}
+    berryName: "\uC2FC\uD0C0"
+    berryTxt: "\uCD9C\uD558\uAC00 \uBE60\uB978 \uD488\uC885\uC73C\uB85C, 10\uC6D4\uBD80\uD130
+      \uC218\uD655 \uAC00\uB2A5\uD558\uB2E4. \uBAA8\uC591\uC774 \uC0B0\uD0C0 \uBAA8\uC790\uB97C
+      \uB2EE\uC558\uB2E4\uACE0 \uD574\uC11C \u2018\uC2FC\uD0C0\u2019\uB77C\uACE0
+      \uC774\uB984 \uBD99\uC5C8\uC73C\uBA70, \uB355\uBD84\uC5D0 \uACBD\uBD81 \uBD09\uD654\uC18C
+      \uC0B0\uD0C0\uB9C8\uC744\uC758 \uD2B9\uC0B0\uBB3C\uC774 \uB418\uC5C8\uB2E4\uACE0
+      \uD55C\uB2E4."
+    berryValue: 60
+    exist: 1
+  - berryImage: {fileID: 266045358689404642, guid: 9514129d6406c864ca06a22fea2e150f, type: 3}
+    berryName: "\uBE44\uD0C0\uBCA0\uB9AC"
+    berryTxt: "\uC774\uB984\uCC98\uB7FC \uBE44\uD0C0\uBBFC C \uD568\uB7C9\uC774 \uB192\uC740
+      \uB538\uAE30\uC774\uB2E4. \uACFC\uC2E4 100g \uB2F9 \uBE44\uD0C0\uBBFCC 77.1mg\uC774
+      \uD568\uC720\uB418\uC5B4 \uC788\uB2E4. \uB2E8\uB9DB\uACFC \uC2E0\uB9DB\uACFC\uC758
+      \uC870\uD654\uAC00 \uB6F0\uC5B4\uB098\uB2E4."
+    berryValue: 60
+    exist: 1
+  - berryImage: {fileID: 266045358689404642, guid: 9514129d6406c864ca06a22fea2e150f, type: 3}
+    berryName: "\uBA54\uB9AC\uD038"
+    berryTxt: "\u2018\uACA8\uC6B8\uC758 \uC5EC\uC655? \uBAA8\uB4E0 \uC774\uC5D0\uAC8C
+      \uC990\uAC70\uC6C0\uC744 \uC8FC\uB294(Merry) \uB538\uAE30\uC758 \uC5EC\uC655(Queen)\u2019\uC774\uB780
+      \uB73B\uC73C\uB85C, \uB2F9\uB3C4\uAC00 \uB192\uACE0 \uC2E0\uB9DB \uC801\uB2E4.
+      \uC0AC\uACFC\uB97C \uBCA0\uC5B4\uBA39\uB294 \uB4EF\uD55C \uC2DD\uAC10?? \uB2E8\uB2E8.
+      \uACFC\uC2E4 \uBAA8\uC591 \uC6B0\uC218"
+    berryValue: 60
+    exist: 1
+  - berryImage: {fileID: 266045358689404642, guid: 9514129d6406c864ca06a22fea2e150f, type: 3}
+    berryName: "\uAE08\uC2E4"
+    berryTxt: "\u2018\uAE08\uC9C0\uC625\uC5FD\uAC19\uC774 \uADC0\uD55C \uB538\uAE30\u2019\uB77C\uACE0
+      \uD558\uC5EC \uAE08\uC2E4\uC774\uB77C\uACE0 \uBD80\uB978\uB2E4. \uB2E8\uB9DB\uC774
+      \uAC15\uD558\uACE0 \uC57D\uD55C \uBCF5\uC22D\uC544\uD5A5\uC774 \uB09C\uB2E4."
+    berryValue: 60
+    exist: 1
+  - berryImage: {fileID: 266045358689404642, guid: 9514129d6406c864ca06a22fea2e150f, type: 3}
+    berryName: "\uC8FD\uD5A5"
+    berryTxt: "\uC804\uB0A8 \uB2F4\uC591\uC5D0\uC11C \uAC1C\uBC1C\uD55C \uB2F9\uB3C4
+      \uB192\uC740 \uD504\uB9AC\uBBF8\uC5C4 \uB538\uAE30."
+    berryValue: 60
+    exist: 1
+  - berryImage: {fileID: 266045358689404642, guid: 9514129d6406c864ca06a22fea2e150f, type: 3}
+    berryName: "\uAE08\uD5A5"
+    berryTxt: "\uD488\uC9C8\uC774 \uAD49\uC7A5\uD788 \uC88B\uACE0 \uB2E8\uB2E8\uD55C
+      \uAE08\uD5A5\uC740 \uAE08(\uF90A)\uC744 \uBD99\uC778 \uAC83\uC774\uACE0"
+    berryValue: 60
+    exist: 1
+  - berryImage: {fileID: 266045358689404642, guid: 9514129d6406c864ca06a22fea2e150f, type: 3}
+    berryName: "\uB9CC\uD5A5"
+    berryTxt: "\uB9CC\uD5A5\uC740 \uB2A6\uC744 \uB9CC(\u6669)\uC790\uB97C \uC368\uC11C
+      \uACA8\uC6B8\uC744 \uC9C0\uB098 \uB2A6\uAC8C\uAE4C\uC9C0 \uACFC\uC77C\uC774
+      \uB9FA\uD78C\uB2E4\uB294 \uC758\uBBF8\uB97C \uB2F4\uC558\uB2E4."
     berryValue: 60
     exist: 1

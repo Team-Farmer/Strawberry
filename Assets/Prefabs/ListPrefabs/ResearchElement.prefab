@@ -247,8 +247,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 18.806, y: 48.4}
-  m_SizeDelta: {x: 336, y: 81.7}
+  m_AnchoredPosition: {x: 32.4, y: 48.4}
+  m_SizeDelta: {x: 325, y: 81.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5677428750705983046
 CanvasRenderer:
@@ -367,6 +367,81 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &3456816838606078675
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 607751080026929450}
+  - component: {fileID: 4857128851934911633}
+  - component: {fileID: 1597808359815754234}
+  m_Layer: 5
+  m_Name: face
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &607751080026929450
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3456816838606078675}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 754176992741476759}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -229, y: -0.0046873}
+  m_SizeDelta: {x: 151, y: 151}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &4857128851934911633
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3456816838606078675}
+  m_CullTransparentMesh: 1
+--- !u!114 &1597808359815754234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3456816838606078675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &4024267953252206434
 GameObject:
   m_ObjectHideFlags: 0
@@ -401,8 +476,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -18.1, y: -42}
-  m_SizeDelta: {x: 262.2, y: 99}
+  m_AnchoredPosition: {x: -3.1504, y: -42}
+  m_SizeDelta: {x: 253.9, y: 99}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4334383867775516376
 CanvasRenderer:
@@ -559,6 +634,7 @@ RectTransform:
   - {fileID: 8535314080986270496}
   - {fileID: 4813655237661704461}
   - {fileID: 5229960487727572922}
+  - {fileID: 607751080026929450}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -589,40 +665,40 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Info:
   - Name: "\uB538\uAE30 \uAC00\uCE58 \uC0C1\uC2B9"
-    Picture: {fileID: 0}
-    FacePicture: {fileID: 0}
+    Picture: {fileID: 4797985456115717453, guid: 4a782c50b2bb02a4a81b18e13d67cb90, type: 3}
+    FacePicture: {fileID: 4797985456115717453, guid: 4a782c50b2bb02a4a81b18e13d67cb90, type: 3}
     Explanation: "\uB538\uAE30\uC758 \uAC00\uCE58\uAC00 5%->10% \uB192\uC544\uC9C4\uB2E4"
     Price: 100
     Level: 10
   - Name: "\uB538\uAE30 \uC131\uC7A5\uAE30\uAC04 \uAC10\uC18C"
-    Picture: {fileID: 0}
-    FacePicture: {fileID: 0}
+    Picture: {fileID: -7122343688644831495, guid: 4a782c50b2bb02a4a81b18e13d67cb90, type: 3}
+    FacePicture: {fileID: -7122343688644831495, guid: 4a782c50b2bb02a4a81b18e13d67cb90, type: 3}
     Explanation: "\uB538\uAE30\uC758 \uC131\uC7A5\uC2DC\uAC04\uC774 5%->10% \uAC10\uC18C\uD55C\uB2E4"
     Price: 200
     Level: 1
   - Name: "\uD2B8\uB7ED \uC218\uC775 \uC0C1\uC2B9"
-    Picture: {fileID: 0}
-    FacePicture: {fileID: 0}
+    Picture: {fileID: -5804490749463610629, guid: 4a782c50b2bb02a4a81b18e13d67cb90, type: 3}
+    FacePicture: {fileID: -5804490749463610629, guid: 4a782c50b2bb02a4a81b18e13d67cb90, type: 3}
     Explanation: "\uD2B8\uB7ED\uC73C\uB85C \uB538\uAE30\uB97C \uD310\uB9E4\uD560
       \uB54C 5%->10% \uB192\uC740 \uAC00\uACA9\uC73C\uB85C \uD310\uB9E4\uD55C\uB2E4"
     Price: 300
     Level: 1
   - Name: "\uBE44\uAC00 \uC628\uB2E4!"
-    Picture: {fileID: 0}
-    FacePicture: {fileID: 0}
+    Picture: {fileID: -1716160622732779056, guid: 4a782c50b2bb02a4a81b18e13d67cb90, type: 3}
+    FacePicture: {fileID: -1716160622732779056, guid: 4a782c50b2bb02a4a81b18e13d67cb90, type: 3}
     Explanation: "\uC18C\uB098\uAE30\uAC00 \uB0B4\uB9B4 \uD655\uB960\uC774 5%->10%
       \uC99D\uAC00\uD55C\uB2E4"
     Price: 400
     Level: 1
   - Name: "\uC7A1\uCD08 \uAC10\uC18C"
-    Picture: {fileID: 0}
-    FacePicture: {fileID: 0}
+    Picture: {fileID: -7908086550202134589, guid: 4a782c50b2bb02a4a81b18e13d67cb90, type: 3}
+    FacePicture: {fileID: -7908086550202134589, guid: 4a782c50b2bb02a4a81b18e13d67cb90, type: 3}
     Explanation: "\uC7A1\uCD08\uAC00 \uC0DD\uAE38 \uD655\uB960\uC774 5%->10% \uAC10\uC18C\uD55C\uB2E4"
     Price: 500
     Level: 1
   - Name: "\uBC8C\uB808 \uAC10\uC18C"
-    Picture: {fileID: 0}
-    FacePicture: {fileID: 0}
+    Picture: {fileID: -2640173872217149559, guid: 4a782c50b2bb02a4a81b18e13d67cb90, type: 3}
+    FacePicture: {fileID: -2640173872217149559, guid: 4a782c50b2bb02a4a81b18e13d67cb90, type: 3}
     Explanation: "\uBC8C\uB808\uAC00 \uC0DD\uAE38 \uD655\uB960\uC774 5%->10% \uAC10\uC18C\uD55C\uB2E4."
     Price: 1000
     Level: 1
@@ -634,7 +710,7 @@ MonoBehaviour:
     Level: 0
   PTJBackground: {fileID: 0}
   titleText: {fileID: 1015919002668168413}
-  facePicture: {fileID: 0}
+  facePicture: {fileID: 3456816838606078675}
   explanationText: {fileID: 4024267953252206434}
   coinNum: {fileID: 7782225767939862393}
   levelNum: {fileID: 5807405014252815133}

@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1444195631741432145}
   - component: {fileID: 5998988598118015018}
-  - component: {fileID: 5817272766945848701}
+  - component: {fileID: 5941803383407726878}
   m_Layer: 5
-  m_Name: Text
+  m_Name: berryImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +27,7 @@ RectTransform:
   m_GameObject: {fileID: 606698243013065376}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.003, y: 0.003, z: 0.003}
+  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 7995187923362170187}
   m_RootOrder: 0
@@ -35,7 +35,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 192, y: 192}
+  m_SizeDelta: {x: 45, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5998988598118015018
 CanvasRenderer:
@@ -45,7 +45,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 606698243013065376}
   m_CullTransparentMesh: 1
---- !u!114 &5817272766945848701
+--- !u!114 &5941803383407726878
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -54,31 +54,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 606698243013065376}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 40
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 1
-    m_MaxSize: 40
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: unique Berry
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &5586810261264398575
 GameObject:
   m_ObjectHideFlags: 0
@@ -91,6 +87,7 @@ GameObject:
   - component: {fileID: 6614393051750235257}
   - component: {fileID: 6067648692171721990}
   - component: {fileID: 8489743529681980341}
+  - component: {fileID: 2728365409228713237}
   m_Layer: 5
   m_Name: berry_unique
   m_TagString: berry_unique
@@ -146,7 +143,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -4623353640749799153, guid: 444a423d1a551964c901bb870538e3e4, type: 3}
+  m_Sprite: {fileID: 6121904584092846314, guid: 5793a0752ea94ed4d8413bd1fcc8df20, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -199,4 +196,169 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6067648692171721990}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2728365409228713237}
+        m_TargetAssemblyTypeName: BerryManager, Assembly-CSharp
+        m_MethodName: Explanation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2728365409228713237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5586810261264398575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdbacebad87097344ab60889cf36cc03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  yesBerryImage: {fileID: -4623353640749799153, guid: 5793a0752ea94ed4d8413bd1fcc8df20, type: 3}
+  berryImagePanel: {fileID: 606698243013065376}
+  berryInfo:
+  - berryImage: {fileID: 4163286833491349941, guid: 9514129d6406c864ca06a22fea2e150f, type: 3}
+    berryName: "\uCD08\uCF54 \uB538\uAE30"
+    berryTxt: "\uCD08\uCF54 \uD401\uB4C0\uC5D0 \uB2F4\uAC14\uB2E4 \uBE80, \uCD08\uCF5C\uB9BF\uC774
+      \uBB3B\uC740 \uB538\uAE30\uC774\uB2E4. \uB450 \uBC30\uB85C \uB2EC\uCF64\uD574\uC84C\uC73C\uB2C8
+      \uBA39\uC73C\uBA74 \uAE30\uBD84\uB3C4 \uB450 \uBC30\uB85C \uC88B\uC544\uC9C8
+      \uAC83\uB9CC \uAC19\uB2E4."
+    berryValue: 0
+    exist: 1
+  - berryImage: {fileID: 8072210295801945290, guid: 9514129d6406c864ca06a22fea2e150f, type: 3}
+    berryName: "\uBB34\uC9C0\uAC1C \uB538\uAE30"
+    berryTxt: "\uBB34\uC9C0\uAC2F\uBE5B\uC774 \uB098\uB294 \uB538\uAE30\uC774\uB2E4.
+      \uB9DB\uB3C4 \uBB34\uC9C0\uAC1C \uB9DB\uC774 \uB09C\uB2E4\uACE0 \uD558\uB294\uB370,
+      \uD55C\uBC88 \uBA39\uC5B4\uBCF4\uBA74 \uADF8 \uB9DB\uC744 \uC78A\uC744 \uC218
+      \uC5C6\uB2E4\uB098 \uBB50\uB77C\uB098."
+    berryValue: 0
+    exist: 1
+  - berryImage: {fileID: 5315238982483914533, guid: 9514129d6406c864ca06a22fea2e150f, type: 3}
+    berryName: "\uD558\uD2B8 \uB538\uAE30"
+    berryTxt: "\uC644\uBCBD\uD55C \uD558\uD2B8 \uBAA8\uC591\uC758 \uD551\uD06C\uBE5B
+      \uB538\uAE30\uC774\uB2E4\uB9CC, \uC660\uC9C0 \uBAA8\uB974\uAC8C \uC74C\uD749\uD55C
+      \uD45C\uC815\uC744 \uC9D3\uACE0 \uC788\uB2E4."
+    berryValue: 0
+    exist: 1
+  - berryImage: {fileID: 0}
+    berryName: "\uD0D5\uD6C4\uB8E8 \uB538\uAE30"
+    berryTxt: "\uB728\uAC70\uC6B4 \uC124\uD0D5 \uCF54\uD305\uC744 \uACAC\uB518 \uC6A9\uB9F9\uD55C
+      \uB538\uAE30. \uACE0\uC9C4\uAC10\uB798\uB77C \uD588\uB358\uAC00, \uC774\uC81C
+      \uB538\uAE30\uB294 \uBE5B\uB098\uACE0 \uB2EC\uCF64\uD55C \uD2BC\uD2BC\uD55C
+      \uC124\uD0D5 \uAC11\uC637\uC744 \uC785\uAC8C \uB418\uC5C8\uB2E4."
+    berryValue: 0
+    exist: 1
+  - berryImage: {fileID: 0}
+    berryName: "\uB530\uBD09 \uB538\uAE30"
+    berryTxt: "\uC774 \uB538\uAE30\uB97C \uBCF8 \uB2F9\uC2E0, \uC624\uB298\uB3C4
+      \uC88B\uC740 \uD558\uB8E8\uB97C \uBCF4\uB0BC \uC608\uAC10\uC774 \uB4E0\uB2E4."
+    berryValue: 0
+    exist: 1
+  - berryImage: {fileID: 0}
+    berryName: "\uB85D\uC2A4\uD0C0 \uB538\uAE30"
+    berryTxt: "\uBA4B\uC9C4 \uD5E4\uB4DC\uBC45\uC789\uC744 \uC704\uD574 \uBA38\uB9AC\uB97C
+      \uAE30\uB974\uACE0 \uC788\uB294 \uC774 \uB538\uAE30\uC758 \uB9C8\uC74C\uC18D\uC5D4
+      \uC5B8\uC81C\uB098 \uB85D\uC774 \uD750\uB974\uACE0 \uC788\uB2E4. (\uC774\uAC70
+      \uBE68\uB9AC \uADF8\uB9AC\uACE0 \uC2F6\uB2E4 \u314B)"
+    berryValue: 0
+    exist: 1
+  - berryImage: {fileID: 0}
+    berryName: "\uD669\uAE08 \uB538\uAE30"
+    berryTxt: "\uBC18\uC9DD\uBC18\uC9DD \uBE5B\uB098\uB294 \uD669\uAE08\uBE5B\uC758
+      \uB538\uAE30\uC774\uB2E4. \uC774 \uB538\uAE30\uB97C \uBA39\uACE0 \uAE38\uC744
+      \uAC78\uC73C\uBA74 \uB3C8\uC744 \uC90D\uAC8C \uB418\uC9C0 \uC54A\uC744\uAE4C?"
+    berryValue: 0
+    exist: 1
+  - berryImage: {fileID: 0}
+    berryName: "\uBBFC\uCD08 \uB538\uAE30"
+    berryTxt: "\uBBFC\uD2B8 \uCD08\uCF54\uB9DB\uC774 \uB098\uB294 \uB538\uAE30\uC774\uB2E4.
+      \uC778\uAE30\uAC00 \uB9CE\uC740 \uB9CC\uD07C \uB098\uC05C \uC18C\uB9AC\uB3C4
+      \uB9CE\uC774 \uB4E3\uB294 \uB538\uAE30\uC9C0\uB9CC, \uC774\uB294 \uC5B4\uCA54
+      \uC218 \uC5C6\uB294 \uC720\uBA85 \uB538\uAE30\uC758 \uC219\uBA85\uC774\uB77C\uACE0
+      \uB538\uAE30\uB294 \uC0DD\uAC01\uD55C\uB2E4."
+    berryValue: 0
+    exist: 1
+  - berryImage: {fileID: 0}
+    berryName: "\uC0DD\uD06C\uB9BC \uB538\uAE30"
+    berryTxt: "\uC5B4\uB9B0 \uC2DC\uC808 \uAD6C\uB984\uC774 \uB418\uACE0 \uC2F6\uC5C8\uB358
+      \uB538\uAE30\uB294, \uC0C8\uCF64\uB2EC\uCF64\uD55C \uB538\uAE30\uC640 \uC798
+      \uC5B4\uC6B8\uB9AC\uB294 \uD3ED\uC2E0\uD55C \uC0DD\uD06C\uB9BC\uC744 \uB9CC\uB098
+      \uD589\uBCF5\uD574\uC84C\uB2E4\uACE0 \uD55C\uB2E4."
+    berryValue: 0
+    exist: 1
+  - berryImage: {fileID: 0}
+    berryName: "\uC678\uACC4 \uB538\uAE30"
+    berryTxt: "\uC5B4\uB290 \uB0A0 \uAC11\uC790\uAE30 \uB098\uD0C0\uB09C \uD2B9\uC774\uD55C
+      \uC0C9, \uD2B9\uC774\uD55C \uBAA8\uC591\uC758 \uB538\uAE30. \uC9C0\uAD6C \uC815\uBCF5\uC744
+      \uD558\uB7EC \uC628 \uB538\uAE30\uC778\uC9C0, \uADF8\uC800 \uC6B0\uB9AC \uD589\uC131\uC5D0
+      \uBD88\uC2DC\uCC29\uD55C \uBD88\uC30D\uD55C \uBBF8\uC544 \uB538\uAE30\uC778\uC9C0\uB294
+      \uC544\uBB34\uB3C4 \uBAA8\uB978\uB2E4."
+    berryValue: 0
+    exist: 1
+  - berryImage: {fileID: 0}
+    berryName: "\uD30C\uB9C8\uBA38\uB9AC \uB538\uAE30"
+    berryTxt: "\uBA38\uB9AC\uB97C \uBF40\uAE00\uBF40\uAE00\uD558\uAC8C \uBCF6\uC544\uC11C
+      \uBA4B\uB0B8 \uB538\uAE30. \uB538\uAE30\uB294 \uC88B\uC544\uD558\uB294 \uB538\uAE30\uAC00
+      \uC0DD\uAE30\uBA74 \uD30C\uB9C8\uB97C \uD55C\uB2E4\uB358\uB370.."
+    berryValue: 0
+    exist: 1
+  - berryImage: {fileID: 0}
+    berryName: "\uCC39\uC300\uB5A1 \uB538\uAE30"
+    berryTxt: "\uB9D0\uB791\uB9D0\uB791 \uCC39\uC300\uB5A1 \uC0AC\uC774\uC5D0 \uC559\uAE08\uC744
+      \uB450\uB974\uACE0 \uC228\uC5B4\uC788\uB294 \uC7A5\uB09C\uAE30 \uB9CE\uC740
+      \uB538\uAE30. \uCC39\uC300\uB5A1\uC778\uCC99 \uD558\uB2E4\uAC00 \uC0C1\uD07C\uD55C
+      \uACFC\uC999\uC73C\uB85C \uC0AC\uB78C\uB4E4\uC744 \uB180\uB798\uD0A4\uACE4
+      \uD55C\uB2E4. "
+    berryValue: 0
+    exist: 1
+  - berryImage: {fileID: 0}
+    berryName: "\uBB38\uC5B4 \uB538\uAE30"
+    berryTxt: "\uC774\uAC83\uC740 \uC18C\uC138\uC9C0\uC778\uAC00 \uB538\uAE30\uC778\uAC00..
+      \uC660\uC9C0 \uC9ED\uC9E4\uD55C \uB9DB\uC774 \uB0A0\uAC83 \uAC19\uB2E4."
+    berryValue: 0
+    exist: 1
+  - berryImage: {fileID: 4163286833491349941, guid: 9514129d6406c864ca06a22fea2e150f, type: 3}
+    berryName: "\uBC00\uD06C\uCD08\uCF54 \uB538\uAE30"
+    berryTxt: "\uCD08\uCF54 \uB538\uAE30\uC758 \uC30D\uB465\uC774\uB465\uC774~"
+    berryValue: 0
+    exist: 1
+  - berryImage: {fileID: 127591473424162222, guid: 9514129d6406c864ca06a22fea2e150f, type: 3}
+    berryName: "\uB354\uBE14\uCD08\uCF54 \uB538\uAE30"
+    berryTxt: "\uB2E8\uB9DB\uC774 \uB124 \uBC30"
+    berryValue: 0
+    exist: 1
+  - berryImage: {fileID: 0}
+    berryName: "\uC880\uBE44 \uB538\uAE30\u2764"
+    berryTxt: "\uC904\uAE30\uC5D0 \uB2EC\uB824\uC788\uB294\uAC8C \uC2E0\uAE30\uD55C
+      \uC880\uBE44 \uB538\uAE30\uC774\uB2E4. \uB2E4\uB4E4 \uB3C4\uB9DD\uAC00! \uBB34\uC12D\uB2E4..
+      \uBA39\uC73C\uBA74 \uC880\uBE44 \uB428? (\uB208\uAE54\uC774 \uC880 \uB9DB\uD0F1\uC774
+      \uAC04)"
+    berryValue: 0
+    exist: 1
+  - berryImage: {fileID: 0}
+    berryName: "\uBCF4\uC0C1 \uB538\uAE30"
+    berryTxt: 00
+    berryValue: 0
+    exist: 1
+  - berryImage: {fileID: 0}
+    berryName: "\uACE0\uC591\uC774 \uB538\uAE30"
+    berryTxt: 00
+    berryValue: 0
+    exist: 1
+  - berryImage: {fileID: 0}
+    berryName: "\uBBF8\uB77C \uB538\uAE30"
+    berryTxt: 00
+    berryValue: 0
+    exist: 1
+  - berryImage: {fileID: 0}
+    berryName: "\uBAA8\uBC94\uC0DD \uB538\uAE30"
+    berryTxt: 00
+    berryValue: 0
+    exist: 1
