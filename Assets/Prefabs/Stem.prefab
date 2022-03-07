@@ -335,6 +335,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   berryTrans: {fileID: 2248473446957879966}
   bug: {fileID: 43837746447511568}
+  berryName: RainBow
+  berrykindProb: 0
+  Rank: 0
+  Kind: 0
   createTime: 0
   canGrow: 1
   hasBug: 0
