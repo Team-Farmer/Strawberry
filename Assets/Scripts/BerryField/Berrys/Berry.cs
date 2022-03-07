@@ -32,9 +32,9 @@ public class Berry : MonoBehaviour
 
     //03.07 추가
     public string berryName;
-    public float berrykindProb;
-    public int berryRank;
-    public int berryKind;
+    public int berrykindProb;
+    //public int berryRank;
+    //public int berryKind;
 
     //
     /*public float createTime = 0f;
@@ -82,8 +82,7 @@ private void OnEnable()
         // 딸기 트랜스폼 초기화
         transform.localPosition = Vector3.zero;
         //berryTrans.localPosition = new Vector2(0.42f, 0.02f);
-        transform.localRotation = Quaternion.identity;
-        transform.localScale = Vector3.zero;
+        transform.localRotation = Quaternion.identity;       
     }
     /*void Update() // 시간에 따라 딸기 성장
     {
@@ -155,7 +154,7 @@ private void OnEnable()
         Sequence sequence = DOTween.Sequence();
         sequence.Append(transform.DOMove(from + Random.insideUnitCircle * exploRange, 0.25f).SetEase(Ease.OutCubic));
         sequence.Append(transform.DOMove(to, 0.5f).SetEase(Ease.InCubic));
-        sequence.AppendCallback(() => { gameObject.SetActive(false); });
+        sequence.AppendCallback(() => { Destroy(gameObject); });
     }
     /*void DefineBerryRank() // 누적 확률변수로 랜덤한 딸기 생성
     {
