@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 
 public class Berry : MonoBehaviour
 {
-    public Transform berryTrans;
+    //public Transform berryTrans;
     private Animator anim;
     private SpriteRenderer sprite;
     public Bug bug;
@@ -81,7 +81,7 @@ private void OnEnable()
 
         // µþ±â Æ®·£½ºÆû ÃÊ±âÈ­
         transform.localPosition = Vector3.zero;
-        berryTrans.localPosition = new Vector2(0.42f, 0.02f);
+        //berryTrans.localPosition = new Vector2(0.42f, 0.02f);
         transform.localRotation = Quaternion.identity;
         transform.localScale = Vector3.zero;
     }

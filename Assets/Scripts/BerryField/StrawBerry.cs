@@ -92,7 +92,7 @@ public class StrawBerry : MonoBehaviour
             createTime += Time.deltaTime;
             if(randomTime <= createTime)
             {
-                bug.GenerateBug();
+                //bug.GenerateBug(); 임시비활성화
                 randomTime = 200f;
             }
 

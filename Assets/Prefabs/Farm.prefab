@@ -118,7 +118,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weedProb: 50
   xPos: 0
-  weedPos: {x: 0, y: 0}
   weedSpriteNum: 0
 --- !u!70 &6276483865271743662
 CapsuleCollider2D:
@@ -259,11 +258,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 839beefd1d19c0847a65014edf0a0c83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weed: {fileID: 6750494896011967641}
   isPlant: 0
   farmIdx: 0
   isHarvest: 0
-  weed: {fileID: 6750494896011967641}
   hasWeed: 0
   canGrowWeed: 1
   weedTime: 0
-  period: 5
+  period: 60

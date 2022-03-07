@@ -228,7 +228,7 @@ GameObject:
   m_Component:
   - component: {fileID: 26298298}
   m_Layer: 5
-  m_Name: BerryGroup
+  m_Name: StemGroup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3637,7 +3637,7 @@ MonoBehaviour:
   heart: 0
   CoinText: {fileID: 1846183568}
   HeartText: {fileID: 905899711}
-  berryPrefab: {fileID: 3681563082960653409, guid: 1a3ded4f3cc60704c81c12f0c7768455, type: 3}
+  stemPrefab: {fileID: 4035880483817675467, guid: 7472d0e0e33818244bfbde2fe34e734e, type: 3}
   farmList:
   - {fileID: 393829940}
   - {fileID: 214265607}
@@ -3655,8 +3655,8 @@ MonoBehaviour:
   - {fileID: 1628171281}
   - {fileID: 525861762}
   - {fileID: 850695547}
-  berryGroup: {fileID: 26298298}
-  berryList: []
+  stemGroup: {fileID: 26298298}
+  stemList: []
   TruckObj: {fileID: 1218476147}
   TruckPanel: {fileID: 3459070}
   PartTimeList: {fileID: 642284036}
@@ -6029,7 +6029,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 12, y: 59.99881}
+  m_AnchoredPosition: {x: 12, y: 59.998802}
   m_SizeDelta: {x: 103, y: 95.000015}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &755967742
@@ -13979,7 +13979,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -110.5, y: 59.99881}
+  m_AnchoredPosition: {x: -110.5, y: 59.998802}
   m_SizeDelta: {x: 97.46, y: 94.57}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1629387834
@@ -18465,60 +18465,3 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1960532229223420410, guid: 2cfd907148d0b4f49b367715f9f94d8a, type: 3}
   m_PrefabInstance: {fileID: 2141110324}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &4035880483467972955
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4035880483817675465, guid: 7472d0e0e33818244bfbde2fe34e734e, type: 3}
-      propertyPath: m_RootOrder
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 4035880483817675465, guid: 7472d0e0e33818244bfbde2fe34e734e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.10252914
-      objectReference: {fileID: 0}
-    - target: {fileID: 4035880483817675465, guid: 7472d0e0e33818244bfbde2fe34e734e, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.21718092
-      objectReference: {fileID: 0}
-    - target: {fileID: 4035880483817675465, guid: 7472d0e0e33818244bfbde2fe34e734e, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4035880483817675465, guid: 7472d0e0e33818244bfbde2fe34e734e, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4035880483817675465, guid: 7472d0e0e33818244bfbde2fe34e734e, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4035880483817675465, guid: 7472d0e0e33818244bfbde2fe34e734e, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4035880483817675465, guid: 7472d0e0e33818244bfbde2fe34e734e, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4035880483817675465, guid: 7472d0e0e33818244bfbde2fe34e734e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4035880483817675465, guid: 7472d0e0e33818244bfbde2fe34e734e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4035880483817675465, guid: 7472d0e0e33818244bfbde2fe34e734e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4035880483817675467, guid: 7472d0e0e33818244bfbde2fe34e734e, type: 3}
-      propertyPath: m_Name
-      value: Seed
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 7472d0e0e33818244bfbde2fe34e734e, type: 3}

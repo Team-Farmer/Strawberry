@@ -9,7 +9,7 @@ public class Weed : MonoBehaviour
     public int weedSpriteNum; // 옮김
 
     private Farm farm;
-    private StrawBerry berry;
+    private Stem stem;
     private Animator anim;
     private BoxCollider2D farmColl;
     void Awake()
@@ -17,7 +17,7 @@ public class Weed : MonoBehaviour
         anim = GetComponent<Animator>();
         farm = transform.parent.gameObject.GetComponent<Farm>();
 
-        berry = GameManager.instance.berryList[farm.farmIdx];
+        stem = GameManager.instance.stemList[farm.farmIdx];
         farmColl = farm.GetComponent<BoxCollider2D>();
         //weedPos = farm.transform.position;
     }
@@ -43,7 +43,7 @@ public class Weed : MonoBehaviour
 
             farmColl.enabled = false; // 밭의 콜라이더 비활성화
             farm.hasWeed = true; // 잡초보유여부를 확인하는 변수
-            berry.canGrow = false; // 딸기의 성장 제어
+            stem.canGrow = false; // 딸기의 성장 제어
 
             xPos = Random.Range(-0.35f, 0.35f); // 밭의 X축의 랜덤한 위치에 잡초 생성
             transform.position = new Vector2(farm.transform.position.x + xPos, farm.transform.position.y + 0.07f);            
@@ -61,7 +61,7 @@ public class Weed : MonoBehaviour
 
         this.gameObject.SetActive(false); // 잡초 비활성화
 
-        float creatTime = berry.createTime; // 딸기가 생성된 시간변수 참조
+        float creatTime = stem.createTime; // 딸기가 생성된 시간변수 참조
         if (creatTime == 0f || creatTime >= 20f) // 맨 땅이거나 딸기가 수확가능한 상태라면
         {
             farmColl.enabled = true; // 밭의 Collider를 켠다.
@@ -71,9 +71,9 @@ public class Weed : MonoBehaviour
             farmColl.enabled = false; // 끈다.
         }
         farm.hasWeed = false; // 잡초 제거됨
-        if (!berry.hasBug) // 벌레가 없다면
+        if (!stem.hasBug) // 벌레가 없다면
         {
-            berry.canGrow = true; // 딸기는 다시 자랄 수 있다.
+            stem.canGrow = true; // 딸기는 다시 자랄 수 있다.
         }
     }
 }

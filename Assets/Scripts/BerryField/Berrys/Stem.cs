@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 
 public class Stem : MonoBehaviour
 {
-    public Transform berryTrans;
+    //private Transform berryTrans;
     private Animator anim;
     private SpriteRenderer sprite;
     public Bug bug;
@@ -50,6 +50,8 @@ public class Stem : MonoBehaviour
         anim = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
 
+        //berryTrans.transform.position = new Vector2(transform.position.x + 0.37f, transform.position.y - 0.02f);
+
         berryKindProb.Add(Classic);
         berryKindProb.Add(Special);
         berryKindProb.Add(Unique);
@@ -75,9 +77,9 @@ public class Stem : MonoBehaviour
 
         // 딸기 트랜스폼 초기화
         transform.localPosition = Vector3.zero;
-        berryTrans.localPosition = new Vector2(0.42f, 0.02f);
+        //berryTrans.transform.localPosition = new Vector2(0.42f, 0.02f);
         transform.localRotation = Quaternion.identity;
-        transform.localScale = Vector3.zero;
+        transform.localScale = Vector3.one;
     }
     void Update() // 시간에 따라 딸기 성장
     {
@@ -86,7 +88,7 @@ public class Stem : MonoBehaviour
             createTime += Time.deltaTime;
             if (randomTime <= createTime)
             {
-                bug.GenerateBug();
+                //bug.GenerateBug();임시비활성화
                 randomTime = 200f;
             }
 
@@ -117,6 +119,7 @@ public class Stem : MonoBehaviour
     public void SetAnim(int level)
     {
         this.seedAnimLevel = level;
+        anim.SetInteger("Seed", seedAnimLevel);
 
         if (this.seedAnimLevel == 0)
         {
@@ -134,16 +137,16 @@ public class Stem : MonoBehaviour
         else if (this.seedAnimLevel == 3)
         {
             transform.position = new Vector2(stemPos.x - 0.15f, stemPos.y + 0.35f);
-            berryTrans.position = new Vector2(transform.position.x + 0.37f, transform.position.y - 0.02f);
+            
         }
-        anim.SetInteger("Seed", seedAnimLevel);
+        
     }
     /*void SelectRoute()
     {
         anim.SetInteger("Kind", this.kind);
         anim.SetInteger("Rank", this.rank);
     }*/
-    public void Explosion(Vector2 from, Vector2 to, float exploRange) // DOTWeen 효과
+        public void Explosion(Vector2 from, Vector2 to, float exploRange) // DOTWeen 효과
     {
         transform.position = from;
         Sequence sequence = DOTween.Sequence();

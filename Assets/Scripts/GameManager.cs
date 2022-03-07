@@ -25,12 +25,12 @@ public class GameManager : MonoBehaviour
     public int[,] BerryPrice = new int[3, 32];
 
     [Header("------------[ Object ]")]
-    public GameObject berryPrefab; // 프리팹    
+    public GameObject stemPrefab; // 프리팹    
     public List<Farm> farmList = new List<Farm>(); // 일단 보류
 
     [Header("------------[ Object Pooling ]")]
-    public Transform berryGroup;
-    public List<StrawBerry> berryList;
+    public Transform stemGroup;
+    public List<Stem> stemList;
 
     [Header("------------[Truck List]")]
     public GameObject TruckObj;
@@ -67,7 +67,7 @@ public class GameManager : MonoBehaviour
         Application.targetFrameRate = 60;
         instance = this; // 게임 매니저의 싱글턴 패턴화 >> 타 스크립트에서 GameManager의 컴포넌트 쓰고 싶으시면
                          // 굳이 스크립트 마다 게임매니저 할당 안해도 GameManager.instance.~~ 로 호출하시면 돼요!!        
-        berryList = new List<StrawBerry>();
+        stemList = new List<Stem>();
         truck = TruckObj.GetComponent<Truck>();
         target = TruckObj.GetComponent<Transform>();
 
@@ -121,7 +121,7 @@ public class GameManager : MonoBehaviour
         Farm farm = obj.GetComponent<Farm>();
         if (!farm.isPlant)
         {
-            StrawBerry stb = GetStrawBerry(farm.farmIdx);
+            Stem stb = GetStrawBerry(farm.farmIdx);
             if (stb != null)
             {
                 PlantStrawBerry(stb, obj); // 심는다                            
@@ -130,9 +130,9 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            if (!berryList[farm.farmIdx].canGrow)
+            if (!stemList[farm.farmIdx].canGrow)
             {
-                Harvest(berryList[farm.farmIdx]); // 수확
+                Harvest(stemList[farm.farmIdx]); // 수확
             }
         }
     }
@@ -152,40 +152,40 @@ public class GameManager : MonoBehaviour
     }
     void MakeStrawBerry() // 딸기 생성
     {
-        GameObject instantStrawBerryObj = Instantiate(berryPrefab, berryGroup);
-        instantStrawBerryObj.name = "Berry " + berryList.Count;
+        GameObject instantStrawBerryObj = Instantiate(stemPrefab, stemGroup);
+        instantStrawBerryObj.name = "stem " + stemList.Count;
 
-        StrawBerry instantStrawBerry = instantStrawBerryObj.GetComponent<StrawBerry>();
-        instantStrawBerry.berryIdx = berryList.Count;
+        Stem instantStrawBerry = instantStrawBerryObj.GetComponent<Stem>();
+        instantStrawBerry.berryIdx = stemList.Count;
 
         instantStrawBerry.gameObject.SetActive(false);
-        berryList.Add(instantStrawBerry);
+        stemList.Add(instantStrawBerry);
     }
-    StrawBerry GetStrawBerry(int idx)
+    Stem GetStrawBerry(int idx)
     {
         if (farmList[idx].isPlant) return null;
 
-        return berryList[idx];
+        return stemList[idx];
     }
-    void PlantStrawBerry(StrawBerry stb, GameObject obj)
+    void PlantStrawBerry(Stem stem, GameObject obj)
     {
         BoxCollider2D coll = obj.GetComponent<BoxCollider2D>();
-        stb.transform.position = obj.transform.position; ; // 밭의 Transform에 딸기를 심는다
-        stb.gameObject.SetActive(true); // 딸기 활성화              
+        stem.transform.position = obj.transform.position; ; // 밭의 Transform에 딸기를 심는다
+        stem.gameObject.SetActive(true); // 딸기 활성화              
         coll.enabled = false; // 밭의 콜라이더를 비활성화 (잡초와 충돌 방지)
     }
-    void Harvest(StrawBerry berry)
+    void Harvest(Stem stem)
     {
-        Farm farm = farmList[berry.berryIdx];
+        Farm farm = farmList[stem.berryIdx];
         if (farm.isHarvest) return;
 
         farm.isHarvest = true;
         Vector2 pos;
 
-        berry.GetComponent<SpriteRenderer>().sortingOrder = 4;
-        berry.SetAnim(5); // 수확 이미지로 변경
-        pos = berry.transform.position;
-        berry.Explosion(pos, target.position, 0.5f); // DOTWeen 효과 구현
+        stem.GetComponent<SpriteRenderer>().sortingOrder = 4;
+        stem.SetAnim(5); // 수확 이미지로 변경
+        pos = stem.transform.position;
+        stem.Explosion(pos, target.position, 0.5f); // DOTWeen 효과 구현
 
         StartCoroutine(HarvestRoutine(farm)); // 연속으로 딸기가 심어지는 현상을 방지
     }
@@ -269,8 +269,8 @@ public class GameManager : MonoBehaviour
         {
             coll = farmList[i].GetComponent<BoxCollider2D>();
             coll.enabled = false;
-            berryList[i].canGrow = false;
-            berryList[i].bug.GetComponent<CircleCollider2D>().enabled = false;
+            stemList[i].canGrow = false;
+            stemList[i].bug.GetComponent<CircleCollider2D>().enabled = false;
             farmList[i].weed.GetComponent<CapsuleCollider2D>().enabled = false;
             // Weed의 Collider 제거
             farmList[i].canGrowWeed = false;
@@ -286,11 +286,11 @@ public class GameManager : MonoBehaviour
                 coll = farmList[i].GetComponent<BoxCollider2D>();
                 coll.enabled = true;
             }
-            if (!berryList[i].hasBug && !farmList[i].hasWeed) // (4)의 상황, 즉 벌레와 잡초 둘 다 없을 때
+            if (!stemList[i].hasBug && !farmList[i].hasWeed) // (4)의 상황, 즉 벌레와 잡초 둘 다 없을 때
             {
-                berryList[i].canGrow = true;
+                stemList[i].canGrow = true;
             }
-            berryList[i].bug.GetComponent<CircleCollider2D>().enabled = true;
+            stemList[i].bug.GetComponent<CircleCollider2D>().enabled = true;
             farmList[i].weed.GetComponent<CapsuleCollider2D>().enabled = true; // 잡초의 Collider 활성화
             farmList[i].canGrowWeed = true;
         }
