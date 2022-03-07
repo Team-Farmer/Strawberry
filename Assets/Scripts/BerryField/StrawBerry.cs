@@ -30,6 +30,12 @@ public class StrawBerry : MonoBehaviour
     List<Dictionary<string, int>> berryKindProb = new List<Dictionary<string, int>>();
     private Vector2 stemPos;
 
+    //03.07 Ãß°¡
+    public string berryName;
+    public float berrykindProb;
+    public int Rank;
+    public int Kind;
+    
     //
     public float createTime = 0f;
     public bool canGrow = true;
