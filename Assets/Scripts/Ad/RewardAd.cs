@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Advertisements;
 using UnityEngine.UI;
 
-public class RewardAd : MonoBehaviour,IUnityAdsLoadListener,IUnityAdsShowListener
+public class RewardAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListener
 {
     [SerializeField] Button showAdButton;
     [SerializeField] string androidUnitId = "Rewarded_Android";
@@ -23,7 +23,7 @@ public class RewardAd : MonoBehaviour,IUnityAdsLoadListener,IUnityAdsShowListene
 #elif UNITY_ANDROID
         adUnitId = androidUnitId;
 #endif
-        //ì•ˆë“œ, ios ì™¸ì˜ í”Œë«í¼ì´ë©´ ë²„íŠ¼ ì•ˆëˆŒë¦¬ê²Œ ì²˜ë¦¬
+        //¾Èµå, ios ¿ÜÀÇ ÇÃ·§ÆûÀÌ¸é ¹öÆ° ¾È´­¸®°Ô Ã³¸®
         showAdButton.interactable = false;
 
         StartCoroutine(LoadAd());
@@ -36,7 +36,7 @@ public class RewardAd : MonoBehaviour,IUnityAdsLoadListener,IUnityAdsShowListene
         WaitForSeconds wait = new WaitForSeconds(.5f);
         while (!Advertisement.isInitialized)
         {
-            //ê´‘ê³  ë¡œë“œì¤‘ íŒì—… ë„ìš°ê¸°
+            //±¤°í ·ÎµåÁß ÆË¾÷ ¶ç¿ì±â
             yield return wait;
         }
         Advertisement.Load(adUnitId, this);
@@ -44,7 +44,7 @@ public class RewardAd : MonoBehaviour,IUnityAdsLoadListener,IUnityAdsShowListene
 
     public void OnUnityAdsAdLoaded(string placementId)
     {
-        Debug.Log("ë³´ìƒí˜• ê´‘ê³  ë¡œë“œ ì™„ë£Œ");
+        Debug.Log("º¸»óÇü ±¤°í ·Îµå ¿Ï·á");
         showAdButton.interactable = true;
     }
 
@@ -56,15 +56,15 @@ public class RewardAd : MonoBehaviour,IUnityAdsLoadListener,IUnityAdsShowListene
 
     public void OnUnityAdsFailedToLoad(string placementId, UnityAdsLoadError error, string message)
     {
-        Debug.Log($"ê´‘ê³  ë¡œë“œ ì‹¤íŒ¨: {error.ToString()}-{message}");
+        Debug.Log($"±¤°í ·Îµå ½ÇÆĞ: {error.ToString()}-{message}");
 
     }
 
     public void OnUnityAdsShowComplete(string placementId, UnityAdsShowCompletionState showCompletionState)
     {
-        if(adUnitId==placementId && showCompletionState.Equals(UnityAdsCompletionState.COMPLETED))
+        if (adUnitId == placementId && showCompletionState.Equals(UnityAdsCompletionState.COMPLETED))
         {
-            //ë¦¬ì›Œë“œ êµ¬í˜„
+            //¸®¿öµå ±¸Çö
             showAdButton.interactable = true;
         }
     }

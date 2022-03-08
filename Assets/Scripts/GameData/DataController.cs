@@ -39,6 +39,7 @@ public class DataController : MonoBehaviour
         if (File.Exists(filePath))
         {
             //json파일 불러오기
+            //Debug.Log(filePath);
             string jsonData = File.ReadAllText(filePath);
 
             //역직렬화
@@ -52,7 +53,7 @@ public class DataController : MonoBehaviour
             Debug.Log("새로운 데이터 생성");
             gameData = new GameData();
             InitData();
-            SaveData();
+            //SaveData();
         }
     }
 
@@ -67,13 +68,13 @@ public class DataController : MonoBehaviour
         //로컬에 저장
         File.WriteAllText(filePath, jsonData);
 
-        Debug.Log("저장 완료");
+        Debug.Log("저장 완료 경로 : "+filePath);
     }
 
     public void InitData()
     {
         //Truck
-        gameData.berryCnt = 0;
+        gameData.berryCnt = 48;
         //Bug
         //gameData.bugProb = 10f;
         //Weed
@@ -89,8 +90,8 @@ public class DataController : MonoBehaviour
     }
     void OnApplicationQuit()
     {
-        //게임종료시 저장
-        SaveData();
+        //게임종료시 저장 - 개발중이니까 일단 주석
+        //SaveData();
     }
     
 }

@@ -8,7 +8,7 @@ public class BannerAd : MonoBehaviour
     [SerializeField] BannerPosition bannerPosition = BannerPosition.TOP_CENTER;
 
     [SerializeField] string androidAdUnitId = "Banner_Android";
-    // [SerializeField] string iosAdUnitId = "Banner_iOS"; // ì½˜ì†”ì°½ì—ì„œ ë¯¸ì‚¬ìš© ë³€ìˆ˜ë¼ê³ í•´ì„œ ì£¼ì„ì²˜ë¦¬ í•´ë‘˜ê²Œìš”! -í¬ê·œ
+    // [SerializeField] string iosAdUnitId = "Banner_iOS"; // ÄÜ¼ÖÃ¢¿¡¼­ ¹Ì»ç¿ë º¯¼ö¶ó°íÇØ¼­ ÁÖ¼®Ã³¸® ÇØµÑ°Ô¿ä! -Èñ±Ô
     string adUnitId = null; //This will remain null for unsupported platforms.
 
     void Start()
@@ -20,7 +20,7 @@ public class BannerAd : MonoBehaviour
         adUnitId = androidAdUnitId;
 #endif
 
-        //ì´ˆê¸°í™”ê°€ ëëŠ”ì§€ í™•ì¸í•˜ê³  ë°°ë„ˆê´‘ê³  ë¡œë“œ
+        //ÃÊ±âÈ­°¡ µÆ´ÂÁö È®ÀÎÇÏ°í ¹è³Ê±¤°í ·Îµå
         StartCoroutine(CheckInitialize());
     }
 
