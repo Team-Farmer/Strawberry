@@ -7,25 +7,25 @@ public class Bug : MonoBehaviour
     SpriteRenderer sprite;    
     public float bugProb; // ¿Å±è
     private Animator anim;
-    private StrawBerry berry;
+    private Stem stem;
     private Farm farm;
+    public int bugIdx;
     public float scale = 1.5f; // ¿Å±è
-    // Start is called before the first frame update
+    
     void Awake()
     {
         sprite = GetComponent<SpriteRenderer>();        
         anim = GetComponent<Animator>();
-        berry = transform.parent.gameObject.GetComponent<StrawBerry>();
-        farm = GameManager.instance.farmList[berry.berryIdx];
+        stem = transform.parent.gameObject.GetComponent<Stem>();
+        farm = GameManager.instance.farmList[stem.stemIdx];
     }
     void OnEnable()
     {
         transform.localScale = new Vector2(scale, scale);
         SetAnim("isGenerate", true);
-        
-        berry.canGrow = false;
-        berry.hasBug = true;
 
+        stem.canGrow = false;
+        stem.hasBug = true;
     }
     void OnDisable()
     {
@@ -42,7 +42,7 @@ public class Bug : MonoBehaviour
         
     }
     public void GenerateBug()
-    {
+    {      
         float prob = Random.Range(0, 100);
         scale = Random.Range(1.3f, 1.8f);
         if (prob < bugProb)
@@ -55,9 +55,9 @@ public class Bug : MonoBehaviour
         SetAnim("isDie", true);
         if(!farm.hasWeed)
         {
-            berry.canGrow = true;
+            stem.canGrow = true;
         }
-        berry.hasBug = false;
+        stem.hasBug = false;
         StartCoroutine(DisableBug(0.25f));        
     }
     void SetAnim(string name, bool b)

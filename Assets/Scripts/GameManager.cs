@@ -20,8 +20,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public int coin;
     [SerializeField] public int heart;
     public Text CoinText;
-    public Text HeartText;
-    //public int[] berryPrice = { 10, 20, 30, 40 };
+    public Text HeartText;   
     public int[,] BerryPrice = new int[3, 32];
 
     [Header("------------[ Object ]")]
@@ -29,8 +28,9 @@ public class GameManager : MonoBehaviour
     public List<Farm> farmList = new List<Farm>(); // 일단 보류
     public Transform stemGroup;
     public Transform berryGroup;
-    public List<Stem> stemList;
-    public Bug bug;
+    public List<Stem> stemList = new List<Stem>();
+    public List<Bug> bugList = new List<Bug>();
+    public GameObject bugPrefab;
 
     public List<GameObject> berryPrefabListAll = new List<GameObject>();
     public List<GameObject> berryPrefabListUnlock = new List<GameObject>();
@@ -42,7 +42,6 @@ public class GameManager : MonoBehaviour
     Truck truck;
     Transform target;
     
-
     [Header("------------[PartTime/Search/Berry List]")]
     public GameObject PartTimeList;
     public GameObject ResearchList;
@@ -51,8 +50,6 @@ public class GameManager : MonoBehaviour
     public GameObject panelBlack_Exp;
     internal object count;
     public GameObject[] working;
-
-
 
     [Header("------------[Check/Settings Panel]")]
     public GameObject SettingsPanel;
@@ -71,13 +68,16 @@ public class GameManager : MonoBehaviour
         Application.targetFrameRate = 60;
         instance = this; // 게임 매니저의 싱글턴 패턴화 >> 타 스크립트에서 GameManager의 컴포넌트 쓰고 싶으시면
                          // 굳이 스크립트 마다 게임매니저 할당 안해도 GameManager.instance.~~ 로 호출하시면 돼요!!        
-        stemList = new List<Stem>();
+               
         truck = TruckObj.GetComponent<Truck>();
         target = TruckObj.GetComponent<Transform>();
 
-        for (int i = 0; i < 16; i++) // 오브젝트 풀링으로 미리 딸기 생성
+        if(stemList.Count != 16)
         {
-            MakeStem();
+            for (int i = 0; i < 16; i++) // 오브젝트 풀링으로 미리 딸기 생성
+            {
+                MakeStemAndBug();
+            }
         }
 
         // 임시 재화 설정
@@ -154,16 +154,25 @@ public class GameManager : MonoBehaviour
     {
         truck.berryCnt = 0;
     }
-    void MakeStem() // 줄기 생성
+    void MakeStemAndBug() // 줄기 생성
     {
-        GameObject instantStrawBerryObj = Instantiate(stemPrefab, stemGroup);
-        instantStrawBerryObj.name = "stem " + stemList.Count;
+        GameObject instantStemObj = Instantiate(stemPrefab, stemGroup);
+        instantStemObj.name = "stem " + stemList.Count;
 
-        Stem instantStrawBerry = instantStrawBerryObj.GetComponent<Stem>();
-        instantStrawBerry.berryIdx = stemList.Count;
+        Stem instantStem = instantStemObj.GetComponent<Stem>();
+        instantStem.stemIdx = stemList.Count;
 
-        instantStrawBerry.gameObject.SetActive(false);
-        stemList.Add(instantStrawBerry);
+        instantStem.gameObject.SetActive(false);
+        stemList.Add(instantStem);
+
+        GameObject instantBugObj = Instantiate(bugPrefab, instantStemObj.transform);
+        instantBugObj.name = "Bug " + stemList.Count;
+
+        Bug instantBug = instantBugObj.GetComponent<Bug>();
+        instantBug.bugIdx = bugList.Count;
+
+        instantBug.gameObject.SetActive(false); // 냅둬
+        bugList.Add(instantBug);
     }
     Stem GetStem(int idx)
     {
@@ -180,7 +189,7 @@ public class GameManager : MonoBehaviour
     }
     void Harvest(Stem stem)
     {
-        Farm farm = farmList[stem.berryIdx];
+        Farm farm = farmList[stem.stemIdx];
         if (farm.isHarvest) return;
 
         farm.isHarvest = true;
@@ -277,7 +286,7 @@ public class GameManager : MonoBehaviour
             coll = farmList[i].GetComponent<BoxCollider2D>();
             coll.enabled = false;
             stemList[i].canGrow = false;
-            //stemList[i].bug.GetComponent<CircleCollider2D>().enabled = false;
+            bugList[i].GetComponent<CircleCollider2D>().enabled = false;
             farmList[i].weed.GetComponent<CapsuleCollider2D>().enabled = false;
             // Weed의 Collider 제거
             farmList[i].canGrowWeed = false;
@@ -297,7 +306,7 @@ public class GameManager : MonoBehaviour
             {
                 stemList[i].canGrow = true;
             }
-            //stemList[i].bug.GetComponent<CircleCollider2D>().enabled = true;
+            bugList[i].GetComponent<CircleCollider2D>().enabled = true;
             farmList[i].weed.GetComponent<CapsuleCollider2D>().enabled = true; // 잡초의 Collider 활성화
             farmList[i].canGrowWeed = true;
         }

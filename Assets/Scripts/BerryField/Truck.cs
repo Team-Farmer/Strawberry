@@ -16,13 +16,12 @@ public class Truck : MonoBehaviour
         Max = 48
     }
  
-    // Start is called before the first frame update
+    
     void Awake()
     {
-        anim = GetComponent<Animator>();
-        
+        anim = GetComponent<Animator>();        
     }
-    // Update is called once per frame
+    
     void FixedUpdate()
     {
         if((int)Count.Cnt0 <= berryCnt && berryCnt < (int)Count.Cnt1)
