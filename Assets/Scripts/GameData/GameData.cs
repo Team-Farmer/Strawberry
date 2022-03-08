@@ -13,4 +13,10 @@ public class GameData
     //딸기 발생 확률
     public int[] berryRankProb = { 50, 35, 15 };
 
+    //알바 가지고있는지 여부
+    //public bool[] isEmployed;
+
+    //연구 레벨
+    public int[] researchLevel=new int[7];
+
 }

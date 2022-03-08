@@ -78,6 +78,13 @@ public class DataController : MonoBehaviour
         //gameData.bugProb = 10f;
         //Weed
         //gameData.weedProb = 20f;
+
+        //Research
+        for (int i = 0; i < gameData.researchLevel.Length; i++) 
+        {
+            gameData.researchLevel[i] = 1;
+        }
+        
         
     }
     void OnApplicationQuit()
