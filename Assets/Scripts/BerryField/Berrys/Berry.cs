@@ -11,19 +11,6 @@ public class Berry : MonoBehaviour
     public string berryName;
     public int berrykindProb;
     
-  
-    void Awake()
-    {         
-    }
-    private void OnEnable()
-    {
-            
-    }
-    private void OnDisable()
-    {     
-        transform.localPosition = Vector3.zero;
-        transform.localRotation = Quaternion.identity;        
-    }  
     public void Explosion(Vector2 from, Vector2 to, float exploRange) // DOTWeen È¿°ú
     {
         transform.position = from;

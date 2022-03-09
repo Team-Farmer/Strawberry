@@ -122,7 +122,8 @@ public class GameManager : MonoBehaviour
     #region 딸기밭
     void ClickedFarm(GameObject obj)
     {
-        Farm farm = obj.GetComponent<Farm>();
+        
+        Farm farm = obj.GetComponent<Farm>();       
         if (!farm.isPlant)
         {
             Stem st = GetStem(farm.farmIdx);
@@ -166,7 +167,7 @@ public class GameManager : MonoBehaviour
         stemList.Add(instantStem);
 
         GameObject instantBugObj = Instantiate(bugPrefab, instantStemObj.transform);
-        instantBugObj.name = "Bug " + stemList.Count;
+        instantBugObj.name = "Bug " + bugList.Count;
 
         Bug instantBug = instantBugObj.GetComponent<Bug>();
         instantBug.bugIdx = bugList.Count;
@@ -192,6 +193,7 @@ public class GameManager : MonoBehaviour
         Farm farm = farmList[stem.stemIdx];
         if (farm.isHarvest) return;
 
+        farm.isPlant = false; // 밭을 비워준다
         farm.isHarvest = true;
         Vector2 pos = stem.transform.position; ;
         stem.instantBerry.Explosion(pos, target.position, 0.5f);
@@ -214,7 +216,7 @@ public class GameManager : MonoBehaviour
         return hit.collider.gameObject;
     }
     IEnumerator HarvestRoutine(Farm farm, Stem stem)
-    {
+    {       
         farm.GetComponent<BoxCollider2D>().enabled = false; // 밭을 잠시 비활성화
 
         yield return new WaitForSeconds(0.75f); // 0.75초 뒤에
@@ -224,8 +226,7 @@ public class GameManager : MonoBehaviour
 
         yield return new WaitForSeconds(0.25f); // 0.25초 뒤에
 
-        farm.isHarvest = false; // 수확이 끝남
-        farm.isPlant = false; // 밭을 비워준다       
+        farm.isHarvest = false; // 수확이 끝남              
         if (!farm.hasWeed) // 잡초가 없다면
         {
             farm.GetComponent<BoxCollider2D>().enabled = true; // 밭을 다시 활성화 

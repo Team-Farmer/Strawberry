@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Farm : MonoBehaviour
 {
-    public Weed weed; // 얘도 배열로 해줘야할듯? 벌레 같이
+    public Weed weed;
 
     public bool isPlant = false;
     public int farmIdx;

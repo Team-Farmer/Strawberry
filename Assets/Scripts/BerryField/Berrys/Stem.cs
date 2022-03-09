@@ -18,21 +18,30 @@ public class Stem : MonoBehaviour
     public GameObject berryPrefabNow;
     public Berry instantBerry;
     public Bug stemBug;
-
+    public Farm stemFarm;
     public int stemIdx;
-    public int seedAnimLevel; // 현재 레벨 저장해서 게임 데이터에 넘겨줘야함
-
+    
+    public bool isStemEnable; // 얘 일때만 만들어주면 되니까
     public float randomTime = 0f;
-    public int[] berryRankProb = { 50, 35, 15 }; //위에 다 옮김
+    public int[] berryRankProb = { 50, 35, 15 }; // 얘는 데이터 클래스에 들어갈 내용은 아님
+    public int seedAnimLevel; // 안넘겨줘야됨 어차피 creatTime 넘기면 알아서 조정되는 변수임 아마?
 
     void Awake()
     {
         anim = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
         stemBug = GameManager.instance.bugList[stemIdx];
+        stemFarm = GameManager.instance.farmList[stemIdx];
     }
     private void OnEnable()
     {
+        isStemEnable = true;
+
+        if (createTime >= 5.0f) sprite.sortingOrder = 0;
+        else sprite.sortingOrder = 2;
+
+        if (stemFarm.isPlant) return;
+       
         stemPos = transform.position;
         randomTime = Random.Range(7.0f, 18.0f);
         DefineBerry();
@@ -41,7 +50,10 @@ public class Stem : MonoBehaviour
     }
     private void OnDisable()
     {
-        // 변수 초기화
+        isStemEnable = false;
+        // 변수 초기화       
+        if (stemFarm.isPlant) return;
+
         canGrow = true;
         createTime = 0f;
         randomTime = 0f;
@@ -95,31 +107,33 @@ public class Stem : MonoBehaviour
 
         if (this.seedAnimLevel == 0)
         {
-            transform.position = new Vector2(stemPos.x, stemPos.y + 0.05f);
+            transform.position = new Vector2(stemPos.x, stemPos.y + 0.02f);
         }
         else if (this.seedAnimLevel == 1)
         {
             sprite.sortingOrder = 0;
-            transform.position = new Vector2(stemPos.x - 0.12f, stemPos.y + 0.26f);
+            transform.position = new Vector2(stemPos.x - 0.12f, stemPos.y + 0.24f);
         }
         else if (this.seedAnimLevel == 2)
-        {
-            transform.position = new Vector2(stemPos.x - 0.15f, stemPos.y + 0.32f);
+        {           
+            transform.position = new Vector2(stemPos.x - 0.15f, stemPos.y + 0.27f);
             instantBerry.gameObject.SetActive(true);
             instantBerry.GetComponent<Animator>().SetInteger("berryLevel", level);
-            instantBerry.transform.position = new Vector2(transform.position.x + 0.3f, transform.position.y + 0.1f);
+            //instantBerry.transform.position = new Vector2(transform.position.x + 0.3f, transform.position.y + 0.1f);
         }
         else if (this.seedAnimLevel == 3)
-        {
-            transform.position = new Vector2(stemPos.x - 0.15f, stemPos.y + 0.35f);
+        {            
+            transform.position = new Vector2(stemPos.x - 0.15f, stemPos.y + 0.29f);
             instantBerry.gameObject.SetActive(true);
             instantBerry.GetComponent<Animator>().SetInteger("berryLevel", level);
+            instantBerry.transform.position = new Vector3(transform.position.x + 0.29f, transform.position.y, transform.position.z);
         }
         else if (this.seedAnimLevel == 4)
-        {
+        {          
             transform.position = new Vector2(stemPos.x - 0.15f, stemPos.y + 0.35f);
             instantBerry.gameObject.SetActive(true);
             instantBerry.GetComponent<Animator>().SetInteger("berryLevel", level);
+            instantBerry.transform.position = new Vector2(transform.position.x + 0.32f, transform.position.y + 0.06f);
         }
     }
 
@@ -151,6 +165,7 @@ public class Stem : MonoBehaviour
         instantBerryObj.name = berryPrefabNow.name;
 
         instantBerry = instantBerryObj.GetComponent<Berry>();
+        instantBerry.transform.position = new Vector3(transform.position.x + 0.22f, transform.position.y - 0.01f, transform.position.z);
         instantBerry.gameObject.SetActive(false);
     }
 }

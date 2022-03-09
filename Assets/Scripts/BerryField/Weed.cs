@@ -7,6 +7,7 @@ public class Weed : MonoBehaviour
     public float weedProb = 100f; // 옮김
     public float xPos = 0f;   // 옮김   
     public int weedSpriteNum; // 옮김
+    public bool isWeedEnable; // true면은 있었던거니까 켜주고 false면은 없던거니깐 건들지말고
 
     private Farm farm;
     private Stem stem;
@@ -18,20 +19,19 @@ public class Weed : MonoBehaviour
         farm = transform.parent.gameObject.GetComponent<Farm>();
 
         stem = GameManager.instance.stemList[farm.farmIdx];
-        farmColl = farm.GetComponent<BoxCollider2D>();
-        //weedPos = farm.transform.position;
+        farmColl = farm.GetComponent<BoxCollider2D>();       
     }
     void OnEnable()
     {
+        isWeedEnable = true;
         weedSpriteNum = Random.Range(0, 3);
         anim.SetInteger("Generate", weedSpriteNum);
     }
-    
-    // Update is called once per frame
-    void Update()
+    void OnDisable()
     {
-        
+        isWeedEnable = false;
     }
+    
     public void GenerateWeed() // 잡초 생성
     {
         float prob = Random.Range(0, 100);

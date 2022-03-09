@@ -14,9 +14,7 @@ public class Truck : MonoBehaviour
         Cnt1 = 16,
         Cnt2 = 32,       
         Max = 48
-    }
- 
-    
+    }   
     void Awake()
     {
         anim = GetComponent<Animator>();        

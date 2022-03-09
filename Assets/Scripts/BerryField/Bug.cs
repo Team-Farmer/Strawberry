@@ -10,7 +10,8 @@ public class Bug : MonoBehaviour
     private Stem stem;
     private Farm farm;
     public int bugIdx;
-    public float scale = 1.5f; // ¿Å±è
+    public float scale; // ¿Å±è
+    public bool isBugEnable;
     
     void Awake()
     {
@@ -21,30 +22,28 @@ public class Bug : MonoBehaviour
     }
     void OnEnable()
     {
-        transform.localScale = new Vector2(scale, scale);
+        isBugEnable = true;
         SetAnim("isGenerate", true);
-
+        
+        transform.localScale = new Vector2(scale, scale);
+        
         stem.canGrow = false;
         stem.hasBug = true;
     }
     void OnDisable()
     {
-        Color color = sprite.color; 
-        
-        color.a = 0f;
-        sprite.color = color;
-        transform.localRotation = Quaternion.identity;
-        transform.localScale = Vector2.zero;
+        isBugEnable = false;
+        if (!farm.hasWeed)
+        {
+            stem.canGrow = true;
+        }
+        stem.hasBug = false;
     }
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    // Update is called once per frame    
     public void GenerateBug()
     {      
         float prob = Random.Range(0, 100);
-        scale = Random.Range(1.3f, 1.8f);
+        scale = Random.Range(1.2f, 1.5f);
         if (prob < bugProb)
         {           
             this.gameObject.SetActive(true);            
@@ -53,11 +52,7 @@ public class Bug : MonoBehaviour
     public void DieBug()
     {
         SetAnim("isDie", true);
-        if(!farm.hasWeed)
-        {
-            stem.canGrow = true;
-        }
-        stem.hasBug = false;
+        
         StartCoroutine(DisableBug(0.25f));        
     }
     void SetAnim(string name, bool b)
