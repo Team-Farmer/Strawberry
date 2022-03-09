@@ -123,7 +123,8 @@ public class GameManager : MonoBehaviour
     void ClickedFarm(GameObject obj)
     {
         
-        Farm farm = obj.GetComponent<Farm>();       
+        Farm farm = obj.GetComponent<Farm>();
+        
         if (!farm.isPlant)
         {
             Stem st = GetStem(farm.farmIdx);

@@ -160,7 +160,7 @@ public class Stem : MonoBehaviour
     }
     void MakeBerry() // 딸기 생성
     {
-        // 로드될때 isPlant에 의해 영향받게 or instantBerry가 null이 아니면 생성
+        // 로드될때는 없어졌으니깐 로드 클래스에서 다시 생성해야됨(MakeBerry() 호출하면 됨)
         GameObject instantBerryObj = Instantiate(berryPrefabNow, this.transform);
         instantBerryObj.name = berryPrefabNow.name;
 
