@@ -379,42 +379,49 @@ MonoBehaviour:
     Explanation: "\uB538\uAE30 \uC790\uB3D9 \uC2EC\uAE30"
     Price: 100
     Level: 0
+    isEmployed: 0
   - Name: "\uACF0"
     Picture: {fileID: 3445332486847661990, guid: bac779e1f038d5e40bbe137bcb8ace25, type: 3}
     FacePicture: {fileID: -8090365562718305141, guid: bac779e1f038d5e40bbe137bcb8ace25, type: 3}
     Explanation: "\uB538\uAE30 \uC790\uB3D9 \uC218\uD655"
     Price: 200
     Level: 0
+    isEmployed: 0
   - Name: "\uB3FC\uC9C0"
     Picture: {fileID: 5377859178988851676, guid: bac779e1f038d5e40bbe137bcb8ace25, type: 3}
     FacePicture: {fileID: 7456334905099763947, guid: bac779e1f038d5e40bbe137bcb8ace25, type: 3}
     Explanation: "\uAC70\uB798\uC758 \uB2EC\uC778"
     Price: 200
     Level: 0
+    isEmployed: 0
   - Name: "\uACE0\uC591\uC774"
     Picture: {fileID: 4620578802948863353, guid: bac779e1f038d5e40bbe137bcb8ace25, type: 3}
     FacePicture: {fileID: -4124168217499134943, guid: bac779e1f038d5e40bbe137bcb8ace25, type: 3}
     Explanation: "\uBE44\uC758 \uC8FC\uC220\uC0AC \uC18C\uB0B4\uAE30\uAC00 \uB0B4\uB9B0\uB2E4"
     Price: 300
     Level: 0
+    isEmployed: 0
   - Name: "\uD584\uC2A4\uD130"
     Picture: {fileID: -5725962078152895296, guid: bac779e1f038d5e40bbe137bcb8ace25, type: 3}
     FacePicture: {fileID: 7152930139536384079, guid: bac779e1f038d5e40bbe137bcb8ace25, type: 3}
     Explanation: "\uC7A1\uCD08 \uC790\uB3D9 \uBF51"
     Price: 300
     Level: 0
+    isEmployed: 0
   - Name: "\uAC15\uC544\uC9C0"
     Picture: {fileID: 679739729869728943, guid: bac779e1f038d5e40bbe137bcb8ace25, type: 3}
     FacePicture: {fileID: -6835189599539173722, guid: bac779e1f038d5e40bbe137bcb8ace25, type: 3}
     Explanation: "\uBC8C\uB808 \uC790\uB3D9 \uC8FD\uC774\uAE30"
     Price: 300
     Level: 0
+    isEmployed: 0
   - Name: "\uBBF8\uC815"
     Picture: {fileID: 0}
     FacePicture: {fileID: 0}
     Explanation: "\uBBF8\uC815"
     Price: 0
     Level: 0
+    isEmployed: 0
   PTJBackground: {fileID: 3464224768173057888}
   titleText: {fileID: 9018496231175234831}
   facePicture: {fileID: 56983697321961158}

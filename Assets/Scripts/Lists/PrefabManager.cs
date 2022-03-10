@@ -14,9 +14,10 @@ public class PrefabManager : MonoBehaviour
         public Sprite FacePicture;
         public string Explanation;
         public int Price, Level;
-        
+        public bool isEmployed;
 
-        public PrefabStruct(string Name,string Explanation, int Price, int Level, Sprite Picture, Sprite FacePicture)
+
+        public PrefabStruct(string Name,string Explanation, int Price, int Level, Sprite Picture, Sprite FacePicture, bool isEmployed, bool exist)
         {
             this.Name = Name;
             this.Explanation = Explanation;
@@ -24,6 +25,9 @@ public class PrefabManager : MonoBehaviour
             this.Level = Level;//PTJ이라면 고용여부 의미. 0이 고용안함 1이 고용함
             this.Picture = Picture;
             this.FacePicture = FacePicture;
+            this.isEmployed=isEmployed;
+
+            
         }
     }
 
@@ -97,14 +101,14 @@ public class PrefabManager : MonoBehaviour
         {
             if (employCount < 3)//3명 이하일 때
             {
-                if (Info[prefabnum].Level == 0) //고용중아니면 고용           
+                if (Info[prefabnum].isEmployed == false) //고용중아니면 고용           
                 {   hire();   }
                 else //고용중이면 고용해제
                 {   fire();   }
             }
             else //3명 이상일 때
             {
-                if (Info[prefabnum].Level == 1)//고용중이면 고용해제
+                if (Info[prefabnum].isEmployed == true)//고용중이면 고용해제
                 {   fire();   }
             }
         }
@@ -118,7 +122,7 @@ public class PrefabManager : MonoBehaviour
         GameManager.instance.ShowCoinText(GameManager.instance.coin);
 
         
-        Info[prefabnum].Level = 1;//1=고용
+        Info[prefabnum].isEmployed = true;//고용
         levelNum.GetComponent<Text>().text = "고용 중";//고용중으로 표시
         levelNum.GetComponent<Text>().color = new Color32(245, 71, 71, 255);//#F54747 글자색 변경
         PTJBackground.transform.GetComponent<Image>().sprite = selectPTJSprite;//배경스프라이트 눌림으로 변경
@@ -133,7 +137,7 @@ public class PrefabManager : MonoBehaviour
     private void fire() 
     {
         
-        Info[prefabnum].Level = 0;//0=무직
+        Info[prefabnum].isEmployed = false;//0=무직
         levelNum.GetComponent<Text>().text = "고용 전";//고용 전으로 표시
         levelNum.GetComponent<Text>().color = new Color32(164, 164, 164, 255);//글자색 회색으로
         PTJBackground.transform.GetComponent<Image>().sprite = originalPTJSprite;//배경 스프라이트 원래대로
@@ -175,4 +179,6 @@ public class PrefabManager : MonoBehaviour
         
         Prefabcount++;
     }
+
+
 }
