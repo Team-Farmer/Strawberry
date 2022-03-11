@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 /* 세이브되어야 할 변수를 넣어주세요! */
 
@@ -18,5 +19,8 @@ public class GameData
 
     //연구 레벨
     public int[] researchLevel=new int[7];
+
+    //마지막 출석 날짜 저장.
+    //DateTime Lastday = new DateTime();
 
 }
