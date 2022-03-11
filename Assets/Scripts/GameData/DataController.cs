@@ -75,22 +75,22 @@ public class DataController : MonoBehaviour
     {
         //Truck
         gameData.berryCnt = 0;
-        //Bug
-        //gameData.bugProb = 10f;
-        //Weed
-        //gameData.weedProb = 20f;
 
         //Research
         for (int i = 0; i < gameData.researchLevel.Length; i++) 
         {
             gameData.researchLevel[i] = 1;
         }
+
+        //BerryFieldData
         for(int i = 0; i < 16; i++)
         {
-            gameData.berryFieldData.stemIdx = i;
-            gameData.berryFieldData.farmIdx = i;
-            gameData.berryFieldData.bugIdx = i;
+            gameData.berryFieldData[i].stemIdx = i;
+            gameData.berryFieldData[i].farmIdx = i;
+            gameData.berryFieldData[i].bugIdx = i;
         }
+
+        //isBerryUnlock
         for(int i = 0; i < 192; i++)
         {
             gameData.isBerryUnlock[i] = false;

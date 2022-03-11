@@ -8,11 +8,15 @@ using System;
 
 public class GameData
 {
+    //재화
+    //public int coin;
+    //public int heart;
+
     //Truck
     public int berryCnt; // 트럭 딸기 개수
 
     //딸기 밭 데이터 생성
-    public BerryFieldData berryFieldData = new BerryFieldData();
+    public BerryFieldData[] berryFieldData = new BerryFieldData[16];
 
     //해금된 딸기
     public bool[] isBerryUnlock = new bool[192];
