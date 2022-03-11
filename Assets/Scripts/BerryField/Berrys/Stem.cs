@@ -20,8 +20,7 @@ public class Stem : MonoBehaviour
     public int berryPrefabNowIdx;
     public bool isStemEnable; // 얘 일때만 만들어주면 되니까
     public float randomTime = 0f;
-
-    public int[] berryRankProb = { 50, 35, 15 }; // 얘는 데이터 클래스에 들어갈 내용은 아님
+    
     public int seedAnimLevel; // 안넘겨줘야됨 어차피 creatTime 넘기면 알아서 조정되는 변수임 아마?
     public GameObject berryPrefabNow;
     public Berry instantBerry;

@@ -17,9 +17,6 @@ public class GameData
     //해금된 딸기
     public bool[] isBerryUnlock = new bool[192];
 
-    //딸기 발생 확률
-    public int[] berryRankProb = { 50, 35, 15 };
-
     //알바 가지고있는지 여부
     //public bool[] isEmployed;
 
