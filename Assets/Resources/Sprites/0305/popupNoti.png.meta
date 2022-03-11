@@ -125,7 +125,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -196,32 +196,11 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: popupNoti_0
-      rect:
-        serializedVersion: 2
-        x: 517
-        y: 1460
-        width: 169
-        height: 41
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 21f3d86799deeee00800000000000000
-      internalID: 1076058604362874642
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: popupNoti_34
       rect:
         serializedVersion: 2
         x: 925
-        y: 1316
+        y: 1315
         width: 72
         height: 72
       alignment: 0
@@ -247,7 +226,7 @@ TextureImporter:
         height: 798
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 50, y: 50, z: 50, w: 50}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -268,7 +247,7 @@ TextureImporter:
         height: 124
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 15, y: 15, z: 15, w: 15}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -284,18 +263,60 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 598
-        y: 179
+        y: 177
         width: 380
         height: 124
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 60, y: 15, z: 15, w: 15}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: b8dfb6ff8026ae750800000000000000
       internalID: 6334983616634551691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: popupNoti_0
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 213
+        width: 99
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21f3d86799deeee00800000000000000
+      internalID: 1076058604362874642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: popupNoti_1
+      rect:
+        serializedVersion: 2
+        x: 843
+        y: 210
+        width: 102
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3b8ebea0ee2842e0800000000000000
+      internalID: -2141410080275395780
       vertices: []
       indices: 
       edges: []
