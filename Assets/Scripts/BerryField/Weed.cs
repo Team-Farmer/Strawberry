@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Weed : MonoBehaviour
 {   
-    public float weedProb = 100f; // 옮김
+    public float weedProb = 20f; // 옮김
     public float xPos = 0f;   // 옮김   
     public int weedSpriteNum; // 옮김
     public bool isWeedEnable; // true면은 있었던거니까 켜주고 false면은 없던거니깐 건들지말고

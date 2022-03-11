@@ -15,16 +15,18 @@ public class Stem : MonoBehaviour
     public float createTime = 0f;
     public bool canGrow = true;
     public bool hasBug = false;
+    
+    public int stemIdx;
+    public int berryPrefabNowIdx;
+    public bool isStemEnable; // 얘 일때만 만들어주면 되니까
+    public float randomTime = 0f;
+
+    public int[] berryRankProb = { 50, 35, 15 }; // 얘는 데이터 클래스에 들어갈 내용은 아님
+    public int seedAnimLevel; // 안넘겨줘야됨 어차피 creatTime 넘기면 알아서 조정되는 변수임 아마?
     public GameObject berryPrefabNow;
     public Berry instantBerry;
     public Bug stemBug;
     public Farm stemFarm;
-    public int stemIdx;
-    
-    public bool isStemEnable; // 얘 일때만 만들어주면 되니까
-    public float randomTime = 0f;
-    public int[] berryRankProb = { 50, 35, 15 }; // 얘는 데이터 클래스에 들어갈 내용은 아님
-    public int seedAnimLevel; // 안넘겨줘야됨 어차피 creatTime 넘기면 알아서 조정되는 변수임 아마?
 
     void Awake()
     {
@@ -153,7 +155,8 @@ public class Stem : MonoBehaviour
             cumulative += GameManager.instance.berryPrefabListUnlock[i].GetComponent<Berry>().berrykindProb;
             if (berryRandomChance <= cumulative)
             {
-                berryPrefabNow = GameManager.instance.berryPrefabListUnlock[i];
+                berryPrefabNowIdx = i;
+                berryPrefabNow = GameManager.instance.berryPrefabListUnlock[berryPrefabNowIdx];
                 break;
             }
         }
@@ -161,7 +164,7 @@ public class Stem : MonoBehaviour
     void MakeBerry() // 딸기 생성
     {
         // 로드될때는 없어졌으니깐 로드 클래스에서 다시 생성해야됨(MakeBerry() 호출하면 됨)
-        GameObject instantBerryObj = Instantiate(berryPrefabNow, this.transform);
+        GameObject instantBerryObj = Instantiate(GameManager.instance.berryPrefabListUnlock[berryPrefabNowIdx], this.transform);
         instantBerryObj.name = berryPrefabNow.name;
 
         instantBerry = instantBerryObj.GetComponent<Berry>();

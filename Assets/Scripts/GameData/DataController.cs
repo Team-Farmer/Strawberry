@@ -74,7 +74,7 @@ public class DataController : MonoBehaviour
     public void InitData()
     {
         //Truck
-        gameData.berryCnt = 48;
+        gameData.berryCnt = 0;
         //Bug
         //gameData.bugProb = 10f;
         //Weed
@@ -85,7 +85,16 @@ public class DataController : MonoBehaviour
         {
             gameData.researchLevel[i] = 1;
         }
-        
+        for(int i = 0; i < 16; i++)
+        {
+            gameData.berryFieldData.stemIdx = i;
+            gameData.berryFieldData.farmIdx = i;
+            gameData.berryFieldData.bugIdx = i;
+        }
+        for(int i = 0; i < 192; i++)
+        {
+            gameData.isBerryUnlock[i] = false;
+        }
         
     }
     void OnApplicationQuit()

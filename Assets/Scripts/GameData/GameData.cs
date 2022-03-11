@@ -11,6 +11,12 @@ public class GameData
     //Truck
     public int berryCnt; // Æ®·° µþ±â °³¼ö
 
+    //µþ±â ¹ç µ¥ÀÌÅÍ »ý¼º
+    public BerryFieldData berryFieldData = new BerryFieldData();
+
+    //ÇØ±ÝµÈ µþ±â
+    public bool[] isBerryUnlock = new bool[192];
+
     //µþ±â ¹ß»ý È®·ü
     public int[] berryRankProb = { 50, 35, 15 };
 

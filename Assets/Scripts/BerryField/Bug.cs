@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Bug : MonoBehaviour
 {
-    SpriteRenderer sprite;    
-    public float bugProb; // ¿Å±è
+    SpriteRenderer sprite;
     private Animator anim;
     private Stem stem;
     private Farm farm;
+
+    public float bugProb; // ¿Å±è   
     public int bugIdx;
     public float scale; // ¿Å±è
     public bool isBugEnable;

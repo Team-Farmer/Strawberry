@@ -10,6 +10,8 @@ public class Berry : MonoBehaviour
     //여기에 public으로 딸기 정보 기입.
     public string berryName;
     public int berrykindProb;
+    public string berryExplain;
+    public int berryIdx;
     
     public void Explosion(Vector2 from, Vector2 to, float exploRange) // DOTWeen 효과
     {

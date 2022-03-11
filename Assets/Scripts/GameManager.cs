@@ -24,15 +24,17 @@ public class GameManager : MonoBehaviour
     public int[,] BerryPrice = new int[3, 32];
 
     [Header("------------[ Object ]")]
-    public GameObject stemPrefab; // 프리팹    
-    public List<Farm> farmList = new List<Farm>(); // 일단 보류
-    public Transform stemGroup;
-    public Transform berryGroup;
-    public List<Stem> stemList = new List<Stem>();
-    public List<Bug> bugList = new List<Bug>();
+    public GameObject stemPrefab; // 프리팹
     public GameObject bugPrefab;
 
-    public List<GameObject> berryPrefabListAll = new List<GameObject>();
+    public Transform stemGroup;
+    public Transform berryGroup;
+
+    public List<Farm> farmList = new List<Farm>(); // 일단 보류
+    public List<Stem> stemList = new List<Stem>();
+    public List<Bug> bugList = new List<Bug>();
+   
+    public List<GameObject> berryPrefabListAll = new List<GameObject>();   
     public List<GameObject> berryPrefabListUnlock = new List<GameObject>();
     public List<GameObject> berryPrefabListlock = new List<GameObject>();
 
