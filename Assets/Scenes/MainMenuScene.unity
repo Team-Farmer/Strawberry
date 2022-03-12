@@ -6638,7 +6638,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 12, y: 59.998302}
+  m_AnchoredPosition: {x: 12, y: 59.99829}
   m_SizeDelta: {x: 103, y: 95.000015}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &755967742
@@ -15702,7 +15702,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -110.5, y: 59.998302}
+  m_AnchoredPosition: {x: -110.5, y: 59.99829}
   m_SizeDelta: {x: 97.46, y: 94.57}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1629387834
@@ -16106,7 +16106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 076ee21cfd5ec411a9967e630f552fbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  showAdButton: {fileID: 0}
+  showAdButton: {fileID: 109862329}
   androidUnitId: Rewarded_Android
 --- !u!1 &1694770860
 GameObject:
