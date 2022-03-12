@@ -81,15 +81,19 @@ public class DataController : MonoBehaviour
         {
             gameData.researchLevel[i] = 1;
         }
-
+        
         //BerryFieldData
-        for(int i = 0; i < 16; i++)
+
+        for(int i = 0; i < gameData.berryFieldData.Length; i++)
         {
-            gameData.berryFieldData[i].stemIdx = i;
+            gameData.berryFieldData[i] = new BerryFieldData();
+        }
+        for (int i = 0; i < 16; i++)
+        {
             gameData.berryFieldData[i].farmIdx = i;
             gameData.berryFieldData[i].bugIdx = i;
-        }
-
+            gameData.berryFieldData[i].stemIdx = i;                       
+        }        
         //isBerryUnlock
         for(int i = 0; i < 192; i++)
         {
