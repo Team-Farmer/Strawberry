@@ -1,7 +1,46 @@
 fileFormatVersion: 2
 guid: e8ee2495dfe27ed4195439446c9a27d2
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 1365895810738710965
+    second: panelNews_0
+  - first:
+      213: 665183329504083579
+    second: panelNews_1
+  - first:
+      213: -7960612982273667828
+    second: panelNews_2
+  - first:
+      213: -3098878681657068007
+    second: panelNews_3
+  - first:
+      213: -4830542091206069554
+    second: panelNews_4
+  - first:
+      213: 2470297019848214649
+    second: panelNews_5
+  - first:
+      213: -3926116356967758208
+    second: panelNews_6
+  - first:
+      213: -4609626307013362723
+    second: panelNews_7
+  - first:
+      213: 1188514418956253683
+    second: panelNews_8
+  - first:
+      213: 278198001393836658
+    second: panelNews_9
+  - first:
+      213: -3518062791033839790
+    second: panelNews_10
+  - first:
+      213: 932384624119026419
+    second: panelNews_11
+  - first:
+      213: 6832041576879336217
+    second: panelNews_12
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -41,7 +80,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -75,9 +114,306 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: panelNews_0
+      rect:
+        serializedVersion: 2
+        x: 546
+        y: 2811
+        width: 23
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b96647c003a4f210800000000000000
+      internalID: 1365895810738710965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: panelNews_1
+      rect:
+        serializedVersion: 2
+        x: 361
+        y: 2682
+        width: 248
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7e3a91c6b43b3900800000000000000
+      internalID: 665183329504083579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: panelNews_2
+      rect:
+        serializedVersion: 2
+        x: 1203
+        y: 2666
+        width: 75
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0d07357ba8368190800000000000000
+      internalID: -7960612982273667828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: panelNews_3
+      rect:
+        serializedVersion: 2
+        x: 314
+        y: 1345
+        width: 1006
+        height: 1319
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 916bcc1f1429ef4d0800000000000000
+      internalID: -3098878681657068007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: panelNews_4
+      rect:
+        serializedVersion: 2
+        x: 1419
+        y: 1493
+        width: 24
+        height: 912
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec2f615bf8776fcb0800000000000000
+      internalID: -4830542091206069554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: panelNews_5
+      rect:
+        serializedVersion: 2
+        x: 1499
+        y: 2272
+        width: 63
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97842c52d02484220800000000000000
+      internalID: 2470297019848214649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: panelNews_6
+      rect:
+        serializedVersion: 2
+        x: 885
+        y: 1108
+        width: 191
+        height: 148
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 086061c89f1a389c0800000000000000
+      internalID: -3926116356967758208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: panelNews_7
+      rect:
+        serializedVersion: 2
+        x: 1084
+        y: 1108
+        width: 191
+        height: 148
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ddb3c2feb415700c0800000000000000
+      internalID: -4609626307013362723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: panelNews_8
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 838
+        width: 810
+        height: 158
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f9315821937e7010800000000000000
+      internalID: 1188514418956253683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: panelNews_9
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 620
+        width: 810
+        height: 158
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 272ad4abb9b5cd300800000000000000
+      internalID: 278198001393836658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: panelNews_10
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 408
+        width: 810
+        height: 157
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25f98e2f7845d2fc0800000000000000
+      internalID: -3518062791033839790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: panelNews_11
+      rect:
+        serializedVersion: 2
+        x: 1258
+        y: 449
+        width: 60
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f296aa20ee70fc00800000000000000
+      internalID: 932384624119026419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: panelNews_12
+      rect:
+        serializedVersion: 2
+        x: 694
+        y: 310
+        width: 143
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91ba790dd9940de50800000000000000
+      internalID: 6832041576879336217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
