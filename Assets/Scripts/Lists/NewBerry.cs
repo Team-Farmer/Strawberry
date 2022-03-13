@@ -11,26 +11,32 @@ public class NewBerry : MonoBehaviour
     private GameObject priceText;
     [SerializeField]
     private GameObject timeText;
+    [SerializeField]
+    private GameObject startBtn;
 
     [Header("=====INFO=====")]
     public int[] price;//업그레이드에 필요한 가격 배열
     public float[] time;//업그레이드에 필요한 시간 배열
 
+    [Header("=====SPRITE=====")]
+    public Sprite startImg;
+    public Sprite doneImg;
+    public Sprite ingImg;
+
 
     private int index=0;//현재 인덱스
-
+    private bool isStart = false;//시작을 눌렀는가
 
 
     //===================================================================================================================
     void Start()
     {
-        
     }
 
     void Update()
     {
         updateInfo(index);
-
+        Debug.Log("isStart="+isStart);
     }
 
 
@@ -52,13 +58,14 @@ public class NewBerry : MonoBehaviour
             index++;
             updateInfo(index);
 
-            
-
+            //시작버튼으로 변경
+            startBtn.GetComponent<Image>().sprite = startImg;
+            isStart = false;
         }
         else 
         {
             Debug.Log("새로운 딸기를 위해 조금 더 기다리세요");
-        
+            isStart = true;
         }
     }
 
@@ -66,8 +73,18 @@ public class NewBerry : MonoBehaviour
 
         try
         {
-            if (time[index] > 0) { time[index] -= Time.deltaTime; }//시간이 0보다 크면 1초씩 감소
+            if (isStart == true)
+            {
+                if (time[index] > 0) //시간이 0보다 크면 1초씩 감소
+                { 
+                    time[index] -= Time.deltaTime; 
+                    startBtn.GetComponent<Image>().sprite = ingImg; 
+                }
+                else 
+                { startBtn.GetComponent<Image>().sprite = doneImg; }
 
+                
+            }
             //현재 price와 time text를 보인다.
             priceText.GetComponent<Text>().text = price[index].ToString();
             timeText.GetComponent<Text>().text = TimeForm(Mathf.CeilToInt(time[index])); //정수부분만 출력한다.
@@ -81,6 +98,11 @@ public class NewBerry : MonoBehaviour
 
 
     }
+
+
+
+
+
 
     public string TimeForm(int time)
     {
