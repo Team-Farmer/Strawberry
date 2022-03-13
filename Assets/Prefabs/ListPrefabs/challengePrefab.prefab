@@ -391,17 +391,12 @@ MonoBehaviour:
     challengeCount: 4
   Title: {fileID: 527783996456215474}
   countText_News: {fileID: 0}
+  lock_News: {fileID: 0}
   nowText_Challenge: {fileID: 527783996540281741}
   Btn_Challenge: {fileID: 527783997747247045}
   BtnImage_Challenge:
   - {fileID: -7943917676593969559, guid: d7462a2db557512448ed8c9a9d1c7db0, type: 3}
   - {fileID: -765015418919943096, guid: d7462a2db557512448ed8c9a9d1c7db0, type: 3}
-  UnlockImage_News: {fileID: 0}
-  tagButtons:
-  - {fileID: 0}
-  - {fileID: 0}
-  tagButtons_Image: []
-  tagButtons_selectImage: []
 --- !u!1 &527783997747247045
 GameObject:
   m_ObjectHideFlags: 0
@@ -659,7 +654,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.4433962, g: 0.4433962, b: 0.4433962, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

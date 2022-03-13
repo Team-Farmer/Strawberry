@@ -6,8 +6,8 @@ using System;
 
 public class changeLayer : MonoBehaviour
 {
-
-    [Header("====Berry List Buttons====")]
+	public bool isChallengeNews;
+    [Header("====Buttons====")]
     [SerializeField]
     private GameObject[] tagButtons;
     public Sprite[] tagButtons_Image;
@@ -50,6 +50,8 @@ public class changeLayer : MonoBehaviour
 
     private bool isSwipeMode = false;       // 현재 Swipe가 되고 있는지 체크
 
+
+	//===========================================================================================================
     private void Awake()
     {
         // 스크롤 되는 페이지의 각 value 값을 저장하는 배열 메모리 할당
@@ -67,24 +69,31 @@ public class changeLayer : MonoBehaviour
     }
     void Start()
     {
-        //처음에는 berry classic
-        selectBerryTag("berry_classic");
+		if (isChallengeNews == true)
+		{ }
+        else 
+		{ 
+			//처음에는 berry classic
+			selectBerryTag("berry_classic");
 
-        // 처음 시작할 때 0번 페이지 보인다.
-        SetScrollBarValue(0);
+			// 처음 시작할 때 0번 페이지 보인다.
+			SetScrollBarValue(0);
+		}
+
     }
 
+	private void Update()
+	{
+		if (isChallengeNews == false)
+		{ UpdateInput(); }
 
+	}
+
+	//===========================================================================================================
 	public void SetScrollBarValue(int index)
 	{
 		currentPage = index;
 		scrollBar.value = scrollPageValues[index];
-	}
-
-	private void Update()
-	{
-		UpdateInput();
-
 	}
 
 	public void swipeButton(int value)
@@ -170,7 +179,6 @@ public class changeLayer : MonoBehaviour
 			// 원래 페이지로 Swipe해서 돌아간다
 			StartCoroutine(OnSwipeOneStep(currentPage));
 			return;
-			Debug.Log("swipe");
 		}
 
 
@@ -237,6 +245,7 @@ public class changeLayer : MonoBehaviour
         tagButtons[index].GetComponent<Image>().sprite = tagButtons_selectImage[index];
     
     }
+	public void TurnOn(GameObject obj) { content1.SetActive(false);content2.SetActive(false); obj.SetActive(true); }
 
     //버튼을 눌렀을 때 해당 분류의 딸기를 보인다.name=tag이름
     public void selectBerryTag(string name)
