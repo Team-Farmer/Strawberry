@@ -4221,8 +4221,12 @@ MonoBehaviour:
   bugList: []
   berryPrefabListAll:
   - {fileID: 8238155578764226131, guid: ce4c320e680aa1243a829170d1d7b0a8, type: 3}
+  - {fileID: 8238155578764226131, guid: 89f2caedcdd28474ea3ac102f7755b09, type: 3}
+  - {fileID: 8238155578764226131, guid: 3c844389ae92c9e44878bfecc0d9b983, type: 3}
   berryPrefabListUnlock:
   - {fileID: 8238155578764226131, guid: ce4c320e680aa1243a829170d1d7b0a8, type: 3}
+  - {fileID: 8238155578764226131, guid: 89f2caedcdd28474ea3ac102f7755b09, type: 3}
+  - {fileID: 8238155578764226131, guid: 3c844389ae92c9e44878bfecc0d9b983, type: 3}
   berryPrefabListlock: []
   TruckObj: {fileID: 1218476147}
   TruckPanel: {fileID: 3459070}
@@ -6638,7 +6642,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 12, y: 59.99829}
+  m_AnchoredPosition: {x: 12, y: 59.998272}
   m_SizeDelta: {x: 103, y: 95.000015}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &755967742
@@ -15702,7 +15706,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -110.5, y: 59.99829}
+  m_AnchoredPosition: {x: -110.5, y: 59.998272}
   m_SizeDelta: {x: 97.46, y: 94.57}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1629387834

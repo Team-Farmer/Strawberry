@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8238155578764226140}
   - component: {fileID: 8238155578764226143}
   m_Layer: 0
-  m_Name: Rainbow
+  m_Name: SeolHyang
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: -1274572085
   m_SortingLayer: 1
   m_SortingOrder: 2
-  m_Sprite: {fileID: 8072210295801945290, guid: 9514129d6406c864ca06a22fea2e150f, type: 3}
+  m_Sprite: {fileID: 266045358689404642, guid: 9514129d6406c864ca06a22fea2e150f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -96,11 +96,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1623f1a85948efd45a0dfed04582153b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  berryName: Rainbow
+  berryName: SeolHyang
   berrykindProb: 100
   berryExplain: 
   berryIdx: 0
-  berryRank: 2
+  berryRank: 1
 --- !u!95 &8238155578764226143
 Animator:
   serializedVersion: 3
@@ -111,7 +111,7 @@ Animator:
   m_GameObject: {fileID: 8238155578764226131}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 88104a5ec56d4ec4694f1f0e5bdd9781, type: 2}
+  m_Controller: {fileID: 9100000, guid: c87a80cb9056ca848bf600242e3a9c4f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
