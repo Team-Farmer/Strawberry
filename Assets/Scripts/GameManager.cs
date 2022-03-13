@@ -52,6 +52,21 @@ public class GameManager : MonoBehaviour
     public GameObject panelBlack_Exp;
     internal object count;
     public GameObject[] working;
+    //새로운딸기 관련========================================
+    [Header("OBJECT")]
+    public GameObject priceText_newBerry;
+    public GameObject timeText_newBerry;
+    public GameObject startBtn_newBerry;
+    [Header("INFO")]
+    public float[] time_newBerry;
+    public int[] price_newBerry;
+    [Header("SPRITE")]
+    public Sprite startImg;
+    public Sprite doneImg;
+    public Sprite ingImg;
+
+    private int index_newBerry = 0;//현재 인덱스
+    private bool isStart_newBerry = false;//시작을 눌렀는가
 
     [Header("------------[Check/Settings Panel]")]
     public GameObject SettingsPanel;
@@ -112,6 +127,8 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+
+        updateInfo(index_newBerry);
     }
     void LateUpdate()
     {
@@ -341,8 +358,84 @@ public class GameManager : MonoBehaviour
             catch{ Debug.Log("error test"); }
         }
     }
+    public void updateInfo(int index)
+    {
+
+        try
+        {
+            if (isStart_newBerry == true)
+            {
+                if (GameManager.instance.time_newBerry[index] > 0) //시간이 0보다 크면 1초씩 감소
+                {
+                    GameManager.instance.time_newBerry[index] -= Time.deltaTime;
+                    startBtn_newBerry.GetComponent<Image>().sprite = ingImg;
+                }
+                else
+                { startBtn_newBerry.GetComponent<Image>().sprite = doneImg; }
 
 
+            }
+            //현재 price와 time text를 보인다.
+            priceText_newBerry.GetComponent<Text>().text = price_newBerry[index].ToString();
+            timeText_newBerry.GetComponent<Text>().text = TimeForm(Mathf.CeilToInt(GameManager.instance.time_newBerry[index])); //정수부분만 출력한다.
+
+        }
+        catch
+        {            Debug.Log("다음 레벨 정보 없음");        }
+    }
+    //버튼을 누르면
+    public void newBerryAdd()
+    {
+        //타이머가 0 이라면 
+        if (GameManager.instance.time_newBerry[index_newBerry] < 0.9)
+        {
+            //새로운 딸기가 추가된다.
+            Debug.Log("새로운 딸기!!");
+
+
+            //금액이 빠져나간다.
+            GameManager.instance.coin -= price_newBerry[index_newBerry];
+            GameManager.instance.ShowCoinText(GameManager.instance.coin);
+
+            //업스레이드 레벨 상승 -> 그 다음 업그레이드 금액이 보인다.
+            index_newBerry++;
+            updateInfo(index_newBerry);
+
+            //시작버튼으로 변경
+            startBtn_newBerry.GetComponent<Image>().sprite = startImg;
+            isStart_newBerry = false;
+        }
+        else
+        {
+            Debug.Log("새로운 딸기를 위해 조금 더 기다리세요");
+            isStart_newBerry = true;
+        }
+    }
+    public string TimeForm(int time)
+    {
+        int M = 0, S = 0;//M,S 계산용
+        string Minutes, Seconds;//M,S 텍스트 적용용
+
+        M = (time / 60);
+        S = (time % 60);
+
+
+        //M,S적용
+        Minutes = M.ToString();
+        Seconds = S.ToString();
+
+        //M,S가 10미만이면 01, 02... 식으로 표시
+        if (M < 10 && M > 0) { Minutes = "0" + M.ToString(); }
+        if (S < 10 && S > 0) { Seconds = "0" + S.ToString(); }
+
+        //M,S가 0이면 00으로 표시한다.
+        if (M == 0) { Minutes = "00"; }
+        if (S == 0) { Seconds = "00"; }
+
+
+        return Minutes + " : " + Seconds;
+
+    }
     #endregion
 
     #region 출석

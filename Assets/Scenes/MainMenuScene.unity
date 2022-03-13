@@ -4314,6 +4314,19 @@ MonoBehaviour:
   - {fileID: 1297610195}
   - {fileID: 1160523579}
   - {fileID: 641708685}
+  priceText_newBerry: {fileID: 1295824419}
+  timeText_newBerry: {fileID: 2120615085}
+  startBtn_newBerry: {fileID: 787233744}
+  time_newBerry:
+  - 3
+  - 10
+  - 5
+  - 2
+  - 2
+  price_newBerry: 64000000c80000002c01000090010000f4010000
+  startImg: {fileID: -6424938521615686402, guid: ba7797cf61411834084b3f3a7b9464b4, type: 3}
+  doneImg: {fileID: -765015418919943096, guid: d7462a2db557512448ed8c9a9d1c7db0, type: 3}
+  ingImg: {fileID: -7943917676593969559, guid: d7462a2db557512448ed8c9a9d1c7db0, type: 3}
   SettingsPanel: {fileID: 2031592367}
   CheckPanel: {fileID: 1334959770}
   Today: 00000000000000
@@ -6716,7 +6729,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 12, y: 59.998127}
+  m_AnchoredPosition: {x: 12, y: 59.998116}
   m_SizeDelta: {x: 103, y: 95.000015}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &755967742
@@ -7349,8 +7362,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2095064785}
-        m_TargetAssemblyTypeName: NewBerry, Assembly-CSharp
+      - m_Target: {fileID: 496606690}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: newBerryAdd
         m_Mode: 1
         m_Arguments:
@@ -16080,7 +16093,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -110.5, y: 59.998127}
+  m_AnchoredPosition: {x: -110.5, y: 59.998116}
   m_SizeDelta: {x: 97.46, y: 94.57}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1629387834
@@ -20339,7 +20352,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2095064781}
   - component: {fileID: 2095064783}
-  - component: {fileID: 2095064785}
   m_Layer: 5
   m_Name: infoImage
   m_TagString: Untagged
@@ -20380,30 +20392,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2095064780}
   m_CullTransparentMesh: 1
---- !u!114 &2095064785
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2095064780}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5dc86236bea1f443854f725c5b7e3c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  priceText: {fileID: 1295824419}
-  timeText: {fileID: 2120615085}
-  startBtn: {fileID: 787233744}
-  price: 64000000c80000002c01000090010000f4010000
-  time:
-  - 5
-  - 7
-  - 9
-  - 11
-  startImg: {fileID: -6424938521615686402, guid: ba7797cf61411834084b3f3a7b9464b4, type: 3}
-  doneImg: {fileID: -765015418919943096, guid: d7462a2db557512448ed8c9a9d1c7db0, type: 3}
-  ingImg: {fileID: -7943917676593969559, guid: d7462a2db557512448ed8c9a9d1c7db0, type: 3}
 --- !u!1 &2119959384
 GameObject:
   m_ObjectHideFlags: 0
