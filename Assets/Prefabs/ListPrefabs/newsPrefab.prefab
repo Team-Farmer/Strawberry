@@ -255,7 +255,7 @@ RectTransform:
   m_GameObject: {fileID: 5274030419520564147}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.005, y: 0.005, z: 1}
+  m_LocalScale: {x: 0.004, y: 0.004, z: 1}
   m_Children:
   - {fileID: 3895435139407276026}
   - {fileID: 6065326321095638597}
@@ -284,30 +284,53 @@ MonoBehaviour:
   Info:
   - Title: "\uC81C\uBAA91"
     reward: 
-    isDone: 0
-    NewsExp: 
-    challengeCount: 0
+    isDone_c: 0
+    isUnlock_n: 1
+    Exp_n: 
+    Count_c: 0
   - Title: "\uC81C\uBAA92"
     reward: 
-    isDone: 0
-    NewsExp: 
-    challengeCount: 0
+    isDone_c: 0
+    isUnlock_n: 1
+    Exp_n: 
+    Count_c: 0
   - Title: "\uC81C\uBAA93"
     reward: 
-    isDone: 0
-    NewsExp: 
-    challengeCount: 0
+    isDone_c: 0
+    isUnlock_n: 1
+    Exp_n: 
+    Count_c: 0
   - Title: "\uC81C\uBAA94"
     reward: 
-    isDone: 0
-    NewsExp: 
-    challengeCount: 0
-  Title: {fileID: 30754148979034878}
+    isDone_c: 0
+    isUnlock_n: 0
+    Exp_n: 
+    Count_c: 0
+  - Title: "\uC81C\uBAA94"
+    reward: 
+    isDone_c: 0
+    isUnlock_n: 0
+    Exp_n: 
+    Count_c: 0
+  - Title: "\uC81C\uBAA94"
+    reward: 
+    isDone_c: 0
+    isUnlock_n: 0
+    Exp_n: 
+    Count_c: 0
+  - Title: "\uC81C\uBAA94"
+    reward: 
+    isDone_c: 0
+    isUnlock_n: 0
+    Exp_n: 
+    Count_c: 0
+  titleText: {fileID: 30754148979034878}
   countText_News: {fileID: 7077524546287068990}
   lock_News: {fileID: 1473698404366124344}
   nowText_Challenge: {fileID: 0}
   Btn_Challenge: {fileID: 0}
   BtnImage_Challenge: []
+  isChallenge: 0
 --- !u!1 &7077524546287068990
 GameObject:
   m_ObjectHideFlags: 0
