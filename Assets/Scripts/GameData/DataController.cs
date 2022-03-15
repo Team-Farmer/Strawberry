@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using Newtonsoft.Json;
 
 public class DataController : MonoBehaviour
 {
+    public bool isSaveMode;
+
     //싱글톤
     public static DataController instance = null;
 
@@ -43,8 +46,8 @@ public class DataController : MonoBehaviour
             string jsonData = File.ReadAllText(filePath);
 
             //역직렬화
-            //gameData =JsonConvert.DeserializeObject<GameData>(jsonData);
-            gameData = JsonUtility.FromJson<GameData>(jsonData);
+            gameData =JsonConvert.DeserializeObject<GameData>(jsonData);
+            //gameData = JsonUtility.FromJson<GameData>(jsonData);
 
             Debug.Log("데이터를 로드했습니다");
         }
@@ -53,8 +56,9 @@ public class DataController : MonoBehaviour
             Debug.Log("새로운 데이터 생성");
             gameData = new GameData();
             InitData();
-            //SaveData();
+            if(isSaveMode) SaveData();
         }
+
     }
 
     public void SaveData()
@@ -62,8 +66,8 @@ public class DataController : MonoBehaviour
         string filePath = Application.persistentDataPath + gameDataFileName;
 
         //데이터 직렬화
-        //string jsonData = JsonConvert.SerializeObject(gameData);
-        string jsonData = JsonUtility.ToJson(gameData);
+        string jsonData = JsonConvert.SerializeObject(gameData);
+        //string jsonData = JsonUtility.ToJson(gameData);
 
         //로컬에 저장
         File.WriteAllText(filePath, jsonData);
@@ -73,6 +77,9 @@ public class DataController : MonoBehaviour
 
     public void InitData()
     {
+        gameData.heart = 500;
+        gameData.coin = 150000;
+
         //Truck
         gameData.berryCnt = 0;
 
@@ -87,9 +94,6 @@ public class DataController : MonoBehaviour
         for(int i = 0; i < gameData.berryFieldData.Length; i++)
         {
             gameData.berryFieldData[i] = new BerryFieldData();
-        }
-        for (int i = 0; i < 16; i++)
-        {
             gameData.berryFieldData[i].farmIdx = i;
             gameData.berryFieldData[i].bugIdx = i;
             gameData.berryFieldData[i].stemIdx = i;                       
@@ -103,8 +107,8 @@ public class DataController : MonoBehaviour
     }
     void OnApplicationQuit()
     {
-        //게임종료시 저장 - 개발중이니까 일단 주석
-        //SaveData();
+        //게임종료시 저장
+        if(isSaveMode)SaveData();
     }
     
 }

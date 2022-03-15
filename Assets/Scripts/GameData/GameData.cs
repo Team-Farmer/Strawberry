@@ -9,16 +9,18 @@ using System;
 public class GameData
 {
     //재화
-    //public int coin;
-    //public int heart;
+    public int coin;
+    public int heart;
 
     //Truck
     public int berryCnt; // 트럭 딸기 개수
 
     //딸기 밭 데이터 생성
     public BerryFieldData[] berryFieldData = new BerryFieldData[16];
-   
+
     //해금된 딸기
+    //배열 크기 조절 안되는건 원래 C#배열의 특성이다.
+    //List를 사용하거나 Linq사용해야 함
     public bool[] isBerryUnlock = new bool[192];
 
     //알바 가지고있는지 여부
