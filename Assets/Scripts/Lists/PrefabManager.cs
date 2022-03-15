@@ -168,7 +168,7 @@ public class PrefabManager : MonoBehaviour
             facePicture.GetComponent<Image>().sprite = Info[Prefabcount].Picture;
         }
         explanationText.GetComponent<Text>().text = Info[Prefabcount].Explanation;
-        coinNum.GetComponent<Text>().text = Info[Prefabcount].Price.ToString();
+        coinNum.GetComponent<Text>().text = Info[Prefabcount].Price.ToString()+"A";
         
         if (PTJ==true)
         {    levelNum.GetComponent<Text>().text = "°í¿ë Àü";    }
