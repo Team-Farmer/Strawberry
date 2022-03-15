@@ -87,9 +87,10 @@ public class PrefabManager : MonoBehaviour
         levelNum.GetComponent<Text>().text = Info[prefabnum].Level.ToString();
 
         //해당 금액의 코인이 감소된다.
-        GameManager.instance.coin -= Info[prefabnum].Price;
-        GameManager.instance.ShowCoinText(GameManager.instance.coin);
-        
+        //GameManager.instance.coin -= Info[prefabnum].Price;
+        DataController.instance.gameData.coin -= Info[prefabnum].Price;
+        //GameManager.instance.ShowCoinText(GameManager.instance.coin);
+        GameManager.instance.ShowCoinText();
 
     }
 
@@ -118,10 +119,12 @@ public class PrefabManager : MonoBehaviour
     private void hire()  //의문점 = 왜 prefabnum말로 0을 넣어도 되는가
     {
         //해당 금액의 코인이 감소된다.
-        GameManager.instance.coin -= Info[prefabnum].Price;
-        GameManager.instance.ShowCoinText(GameManager.instance.coin);
+        //GameManager.instance.coin -= Info[prefabnum].Price;
+        //GameManager.instance.ShowCoinText(GameManager.instance.coin);
+        DataController.instance.gameData.coin -= Info[prefabnum].Price;
+        GameManager.instance.ShowCoinText();
 
-        
+
         Info[prefabnum].isEmployed = true;//고용
         levelNum.GetComponent<Text>().text = "고용 중";//고용중으로 표시
         levelNum.GetComponent<Text>().color = new Color32(245, 71, 71, 255);//#F54747 글자색 변경

@@ -17,8 +17,8 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     [Header("------------[ Money ]")]
-    [SerializeField] public int coin;
-    [SerializeField] public int heart;
+    //[SerializeField] public int coin;
+    //[SerializeField] public int heart;
     public Text CoinText;
     public Text HeartText;   
     public int[,] BerryPrice = new int[3, 32];
@@ -98,11 +98,11 @@ public class GameManager : MonoBehaviour
         }
 
         // 임시 재화 설정
-        coin = 10000;
-        heart = 300;
-        ShowCoinText(coin);
+        //coin = 10000;
+        //heart = 300;
+        //ShowCoinText(coin);
         //CoinText.text = coin.ToString() + " A";
-        HeartText.text = heart.ToString();
+        //HeartText.text = heart.ToString();
 
         SetBerryPrice();
     }
@@ -133,8 +133,8 @@ public class GameManager : MonoBehaviour
     void LateUpdate()
     {
         //CoinText.text = coin.ToString() + " A";
-        ShowCoinText(coin);
-        HeartText.text = heart.ToString();
+        ShowCoinText();
+        HeartText.text = DataController.instance.gameData.heart.ToString();
     }
     #endregion
 
@@ -278,9 +278,9 @@ public class GameManager : MonoBehaviour
         Debug.Log("딸기가치 : " + BerryPrice[0, 0] + " " + BerryPrice[1, 0] + " " + BerryPrice[2, 0]);
     }
 
-    public void ShowCoinText(int coin)
+    public void ShowCoinText()
     {
-        int show = coin;
+        int show = DataController.instance.gameData.coin;
         if (show <= 9999)           // 0~9999까지 A
         {
             CoinText.text = show.ToString() + " A";
@@ -394,8 +394,10 @@ public class GameManager : MonoBehaviour
 
 
             //금액이 빠져나간다.
-            GameManager.instance.coin -= price_newBerry[index_newBerry];
-            GameManager.instance.ShowCoinText(GameManager.instance.coin);
+            //GameManager.instance.coin -= price_newBerry[index_newBerry];
+            DataController.instance.gameData.coin-= price_newBerry[index_newBerry];
+            //GameManager.instance.ShowCoinText(GameManager.instance.coin);
+            ShowCoinText();
 
             //업스레이드 레벨 상승 -> 그 다음 업그레이드 금액이 보인다.
             index_newBerry++;
