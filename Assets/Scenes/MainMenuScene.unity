@@ -3547,7 +3547,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &396545911
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3613,7 +3613,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 496606690}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: selectDay1
+        m_MethodName: clickDay1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6154,7 +6154,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 496606690}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: selectDay3
+        m_MethodName: clickDay3
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7738,7 +7738,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 12, y: 59.99731}
+  m_AnchoredPosition: {x: 12, y: 59.997303}
   m_SizeDelta: {x: 103, y: 95.000015}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &755967742
@@ -10755,7 +10755,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 496606690}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: selectDay6
+        m_MethodName: clickDay6
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11485,7 +11485,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 496606690}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: selectDay7
+        m_MethodName: clickDay7
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -14273,7 +14273,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1248610252
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15018,7 +15018,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1334959771
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18046,7 +18046,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -110.5, y: 59.99731}
+  m_AnchoredPosition: {x: -110.5, y: 59.997303}
   m_SizeDelta: {x: 97.46, y: 94.57}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1629387834
@@ -18686,7 +18686,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 496606690}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: selectDay2
+        m_MethodName: clickDay2
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -20093,7 +20093,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 496606690}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: selectDay4
+        m_MethodName: clickDay4
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -22877,7 +22877,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 496606690}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: selectDay5
+        m_MethodName: clickDay5
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

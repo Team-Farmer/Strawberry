@@ -451,6 +451,8 @@ public class GameManager : MonoBehaviour
         int days = DataController.instance.gameData.days;
         int weeks;
 
+        // days = 6; 출석 기능 테스트 용. 누적 날짜 조정.
+
         if (isAttendance == false)
         {
             if (days > 7)
@@ -468,6 +470,11 @@ public class GameManager : MonoBehaviour
                     case 4:
                         break;
                 }
+            }
+            else if (days == 0)
+            {
+                days += 1;
+                weeks = days;
             }
             else
             {
@@ -506,13 +513,11 @@ public class GameManager : MonoBehaviour
             }
             else // 과거면
             {
-                //days 0으로 초기화 후 day1버튼 활성화, week 1로 변경.
-                days = 0;
+                //days 1으로 초기화 후 day1버튼 활성화, week 1로 변경.
+                DataController.instance.gameData.days = 0;
                 selectDay1();
                 //week 1 텍스트 변경.
             }
-            DataController.instance.gameData.attendance = true; 
-            DataController.instance.gameData.Lastday = DateTime.Now;
         }
     }
 
@@ -522,26 +527,47 @@ public class GameManager : MonoBehaviour
     }
     public void selectDay2()
     {
+        Front[0].Behind[1].SetActive(true);
         Front[1].Behind[2].SetActive(true);
     }
     public void selectDay3()
     {
+        Front[0].Behind[1].SetActive(true);
+        Front[1].Behind[1].SetActive(true);
         Front[2].Behind[2].SetActive(true);
     }
     public void selectDay4()
     {
+        Front[0].Behind[1].SetActive(true);
+        Front[1].Behind[1].SetActive(true);
+        Front[2].Behind[1].SetActive(true);
         Front[3].Behind[2].SetActive(true);
     }
     public void selectDay5()
     {
+        Front[0].Behind[1].SetActive(true);
+        Front[1].Behind[1].SetActive(true);
+        Front[2].Behind[1].SetActive(true);
+        Front[3].Behind[1].SetActive(true);
         Front[4].Behind[2].SetActive(true);
     }
     public void selectDay6()
     {
+        Front[0].Behind[1].SetActive(true);
+        Front[1].Behind[1].SetActive(true);
+        Front[2].Behind[1].SetActive(true);
+        Front[3].Behind[1].SetActive(true);
+        Front[4].Behind[1].SetActive(true);
         Front[5].Behind[2].SetActive(true);
     }
     public void selectDay7()
     {
+        Front[0].Behind[1].SetActive(true);
+        Front[1].Behind[1].SetActive(true);
+        Front[2].Behind[1].SetActive(true);
+        Front[3].Behind[1].SetActive(true);
+        Front[4].Behind[1].SetActive(true);
+        Front[5].Behind[1].SetActive(true);
         Front[6].Behind[2].SetActive(true);
     }
 
@@ -551,42 +577,56 @@ public class GameManager : MonoBehaviour
         Front[0].Behind[1].SetActive(true);
         Front[0].Behind[2].SetActive(false);
         DataController.instance.gameData.days += 1;
+        DataController.instance.gameData.attendance = true;
+        DataController.instance.gameData.Lastday = DateTime.Now;
     }
     public void clickDay2()
     {
         Front[1].Behind[1].SetActive(true);
         Front[1].Behind[2].SetActive(false);
         DataController.instance.gameData.days += 1;
+        DataController.instance.gameData.attendance = true;
+        DataController.instance.gameData.Lastday = DateTime.Now;
     }
     public void clickDay3()
     {
         Front[2].Behind[1].SetActive(true);
         Front[2].Behind[2].SetActive(false);
         DataController.instance.gameData.days += 1;
+        DataController.instance.gameData.attendance = true;
+        DataController.instance.gameData.Lastday = DateTime.Now;
     }
     public void clickDay4()
     {
         Front[3].Behind[1].SetActive(true);
         Front[3].Behind[2].SetActive(false);
         DataController.instance.gameData.days += 1;
+        DataController.instance.gameData.attendance = true;
+        DataController.instance.gameData.Lastday = DateTime.Now;
     }
     public void clickDay5()
     {
         Front[4].Behind[1].SetActive(true);
         Front[4].Behind[2].SetActive(false);
         DataController.instance.gameData.days += 1;
+        DataController.instance.gameData.attendance = true;
+        DataController.instance.gameData.Lastday = DateTime.Now;
     }
     public void clickDay6()
     {
         Front[5].Behind[1].SetActive(true);
         Front[5].Behind[2].SetActive(false);
         DataController.instance.gameData.days += 1;
+        DataController.instance.gameData.attendance = true;
+        DataController.instance.gameData.Lastday = DateTime.Now;
     }
     public void clickDay7()
     {
         Front[6].Behind[1].SetActive(true);
         Front[6].Behind[2].SetActive(false);
         DataController.instance.gameData.days += 1;
+        DataController.instance.gameData.attendance = true;
+        DataController.instance.gameData.Lastday = DateTime.Now;
     }
 
 
