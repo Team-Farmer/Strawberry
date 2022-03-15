@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4035880483817675464}
   - component: {fileID: 4035880483817675471}
   m_Layer: 0
-  m_Name: Seed
+  m_Name: Stem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -99,14 +99,15 @@ MonoBehaviour:
   createTime: 0
   canGrow: 1
   hasBug: 0
+  stemIdx: 0
+  berryPrefabNowIdx: 0
+  isStemEnable: 0
+  randomTime: 0
+  seedAnimLevel: 0
   berryPrefabNow: {fileID: 0}
   instantBerry: {fileID: 0}
-  localBugPrefab: {fileID: 0}
-  instantBug: {fileID: 0}
-  berryIdx: 0
-  seedAnimLevel: 0
-  randomTime: 0
-  berryRankProb: 32000000230000000f000000
+  stemBug: {fileID: 0}
+  stemFarm: {fileID: 0}
 --- !u!95 &4035880483817675471
 Animator:
   serializedVersion: 3

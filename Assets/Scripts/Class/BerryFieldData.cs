@@ -24,7 +24,7 @@ public class BerryFieldData
     public bool hasWeed = false;
     public bool canGrowWeed = true;
     public float weedTime = 0f;
-    public float period = 12f; // 임의로 초기화 시킨 변수임
+    public float period = 15f; // 임의로 초기화 시킨 변수임
 
     //Stem
     public float createTime = 0f;

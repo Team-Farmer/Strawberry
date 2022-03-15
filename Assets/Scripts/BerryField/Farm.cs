@@ -5,32 +5,32 @@ using UnityEngine;
 public class Farm : MonoBehaviour
 {
     public Weed weed;
-
-    public bool isPlant = false;
     public int farmIdx;
+
+    /*public bool isPlant = false;   
     public bool isHarvest = false;
     
     public bool hasWeed = false;
     public bool canGrowWeed = true;
     public float weedTime = 0f;
-    public float period = 12f;  // À§¿¡ ´Ù ¿Å±è  
-    
+    public float period = 12f;  // À§¿¡ ´Ù ¿Å±è*/
+
     void Awake()
     {
            
     }    
     void Update()
     {
-        if (hasWeed || !canGrowWeed) return;
+        if (DataController.instance.gameData.berryFieldData[farmIdx].hasWeed || !DataController.instance.gameData.berryFieldData[farmIdx].canGrowWeed) return;
 
-        if (weedTime <= period)
+        if (DataController.instance.gameData.berryFieldData[farmIdx].weedTime <= DataController.instance.gameData.berryFieldData[farmIdx].period)
         {
-            weedTime += Time.deltaTime;
+            DataController.instance.gameData.berryFieldData[farmIdx].weedTime += Time.deltaTime;
         }
         else
         {
             weed.GenerateWeed();
-            weedTime = 0f;
+            DataController.instance.gameData.berryFieldData[farmIdx].weedTime = 0f;
         }
     }
     

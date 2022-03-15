@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Weed : MonoBehaviour
-{   
+{
+    public int weedIdx;
+
     public float weedProb = 20f; // 옮김
     public float xPos = 0f;   // 옮김   
     public int weedSpriteNum; // 옮김
@@ -23,13 +25,13 @@ public class Weed : MonoBehaviour
     }
     void OnEnable()
     {
-        isWeedEnable = true;
-        weedSpriteNum = Random.Range(0, 3);
+        DataController.instance.gameData.berryFieldData[weedIdx].isWeedEnable = true;
+        DataController.instance.gameData.berryFieldData[weedIdx].weedSpriteNum = Random.Range(0, 3);
         anim.SetInteger("Generate", weedSpriteNum);
     }
     void OnDisable()
     {
-        isWeedEnable = false;
+        DataController.instance.gameData.berryFieldData[weedIdx].isWeedEnable = false;
     }
     
     public void GenerateWeed() // 잡초 생성
@@ -37,13 +39,13 @@ public class Weed : MonoBehaviour
         float prob = Random.Range(0, 100);
         
         //scale = Random.Range(1.3f, 1.8f);
-        if (prob < weedProb)
+        if (prob < DataController.instance.gameData.berryFieldData[weedIdx].weedProb)
         {
             this.gameObject.SetActive(true); // 나 자신(잡초)를 활성화
 
             farmColl.enabled = false; // 밭의 콜라이더 비활성화
-            farm.hasWeed = true; // 잡초보유여부를 확인하는 변수
-            stem.canGrow = false; // 딸기의 성장 제어
+            DataController.instance.gameData.berryFieldData[weedIdx].hasWeed = true; // 잡초보유여부를 확인하는 변수
+            DataController.instance.gameData.berryFieldData[weedIdx].canGrow = false; // 딸기의 성장 제어
 
             xPos = Random.Range(-0.35f, 0.35f); // 밭의 X축의 랜덤한 위치에 잡초 생성
             transform.position = new Vector2(farm.transform.position.x + xPos, farm.transform.position.y + 0.07f);            
@@ -61,7 +63,7 @@ public class Weed : MonoBehaviour
 
         this.gameObject.SetActive(false); // 잡초 비활성화
 
-        float creatTime = stem.createTime; // 딸기가 생성된 시간변수 참조
+        float creatTime = DataController.instance.gameData.berryFieldData[weedIdx].createTime; // 딸기가 생성된 시간변수 참조
         if (creatTime == 0f || creatTime >= 20f) // 맨 땅이거나 딸기가 수확가능한 상태라면
         {
             farmColl.enabled = true; // 밭의 Collider를 켠다.
@@ -70,10 +72,10 @@ public class Weed : MonoBehaviour
         {
             farmColl.enabled = false; // 끈다.
         }
-        farm.hasWeed = false; // 잡초 제거됨
-        if (!stem.hasBug) // 벌레가 없다면
+        DataController.instance.gameData.berryFieldData[weedIdx].hasWeed = false; // 잡초 제거됨
+        if (!DataController.instance.gameData.berryFieldData[weedIdx].hasBug) // 벌레가 없다면
         {
-            stem.canGrow = true; // 딸기는 다시 자랄 수 있다.
+            DataController.instance.gameData.berryFieldData[weedIdx].canGrow = true; // 딸기는 다시 자랄 수 있다.
         }
     }
 }
