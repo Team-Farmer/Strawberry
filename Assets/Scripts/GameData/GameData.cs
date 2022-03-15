@@ -30,6 +30,10 @@ public class GameData
     public int[] researchLevel=new int[7];
 
     //마지막 출석 날짜 저장.
-    //DateTime Lastday = new DateTime();
+    public DateTime Lastday = new DateTime(2022, 3, 15);
+    //출석 일 수
+    public int days=0;
+    //오늘 출석 여부 판단
+    public bool attendance = false;
 
 }

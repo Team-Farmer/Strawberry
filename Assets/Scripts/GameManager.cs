@@ -76,13 +76,14 @@ public class GameManager : MonoBehaviour
     public bool[] Today;
     public ObjectArray[] Front = new ObjectArray[7];
 
-
     #endregion
 
     #region 기본
     void Awake()
     {
-        Application.targetFrameRate = 60;
+        Attendance();
+
+            Application.targetFrameRate = 60;
         instance = this; // 게임 매니저의 싱글턴 패턴화 >> 타 스크립트에서 GameManager의 컴포넌트 쓰고 싶으시면
                          // 굳이 스크립트 마다 게임매니저 할당 안해도 GameManager.instance.~~ 로 호출하시면 돼요!!        
                
@@ -105,6 +106,7 @@ public class GameManager : MonoBehaviour
         //HeartText.text = heart.ToString();
 
         SetBerryPrice();
+
     }
     void Update()
     {
@@ -441,118 +443,170 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region 출석
+    public void Attendance()
+    {
+        DateTime today = DateTime.Now;
+        DateTime lastday = DataController.instance.gameData.Lastday; //지난 날짜 받아오기
+        bool isAttendance = DataController.instance.gameData.attendance;
+        int days = DataController.instance.gameData.days;
+        int weeks;
+
+        if (isAttendance == false)
+        {
+            if (days > 7)
+            {
+                weeks = days % 7;
+                switch (weeks)
+                {
+                    //주차별로 Week 텍스트 설정 추후 추가예정.
+                    case 1:
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        break;
+                    case 4:
+                        break;
+                }
+            }
+            else
+            {
+                weeks = days;
+                //Week 1 로 텍스트 설정
+            }
+
+            if (DateTime.Compare(today, lastday) > 0) //오늘 날짜가 지난번 출석 날짜보다 미래면
+            {
+                //days에 맞는 버튼 활성화
+                //
+                switch (weeks)
+                {
+                    case 1:
+                        selectDay1();
+                        break;
+                    case 2:
+                        selectDay2();
+                        break;
+                    case 3:
+                        selectDay3();
+                        break;
+                    case 4:
+                        selectDay4();
+                        break;
+                    case 5:
+                        selectDay5();
+                        break;
+                    case 6:
+                        selectDay6();
+                        break;
+                    case 7:
+                        selectDay7();
+                        break;
+                }
+            }
+            else // 과거면
+            {
+                //days 0으로 초기화 후 day1버튼 활성화, week 1로 변경.
+                days = 0;
+                selectDay1();
+                //week 1 텍스트 변경.
+            }
+            DataController.instance.gameData.attendance = true; 
+            DataController.instance.gameData.Lastday = DateTime.Now;
+        }
+    }
 
     public void selectDay1()
     {
-        if (Today[0] == false)
-        {
-            Front[0].Behind[1].SetActive(true);
-            Front[0].Behind[2].SetActive(false);
-            Front[1].Behind[2].SetActive(true);
-            Today[0] = true;
-            Today[1] = true;
-        }
-        else
-        {
-            Front[0].Behind[1].SetActive(false);
-            Front[0].Behind[2].SetActive(true);
-            Today[0] = false;
-        }
+        Front[0].Behind[2].SetActive(true);
     }
     public void selectDay2()
     {
-        if (Today[1] == true)
-        {
-            Front[1].Behind[1].SetActive(true);
-            Front[1].Behind[2].SetActive(false);
-            Front[2].Behind[2].SetActive(true);
-            Today[2] = true;
-        }
-        else
-        {
-            Front[1].Behind[1].SetActive(false);
-            Front[1].Behind[2].SetActive(true);
-        }
+        Front[1].Behind[2].SetActive(true);
     }
     public void selectDay3()
     {
-        if (Today[2] == true)
-        {
-            Front[2].Behind[1].SetActive(true);
-            Front[2].Behind[2].SetActive(false);
-            Front[3].Behind[2].SetActive(true);
-            Today[3] = true;
-        }
-        else
-        {
-            Front[2].Behind[1].SetActive(false);
-            Front[2].Behind[2].SetActive(true);
-        }
+        Front[2].Behind[2].SetActive(true);
     }
     public void selectDay4()
     {
-        if (Today[3] == true)
-        {
-            Front[3].Behind[1].SetActive(true);
-            Front[3].Behind[2].SetActive(false);
-            Front[4].Behind[2].SetActive(true);
-            Today[4] = true;
-        }
-        else
-        {
-            Front[3].Behind[1].SetActive(false);
-            Front[3].Behind[2].SetActive(true);
-        }
+        Front[3].Behind[2].SetActive(true);
     }
     public void selectDay5()
     {
-        if (Today[4] == true)
-        {
-            Front[4].Behind[1].SetActive(true);
-            Front[4].Behind[2].SetActive(false);
-            Front[5].Behind[2].SetActive(true);
-            Today[5] = true;
-        }
-        else
-        {
-            Front[4].Behind[1].SetActive(false);
-            Front[4].Behind[2].SetActive(true);
-        }
+        Front[4].Behind[2].SetActive(true);
     }
     public void selectDay6()
     {
-        if (Today[5] == true)
-        {
-            Front[5].Behind[1].SetActive(true);
-            Front[5].Behind[2].SetActive(false);
-            Front[6].Behind[2].SetActive(true);
-            Today[6] = true;
-        }
-        else
-        {
-            Front[5].Behind[1].SetActive(false);
-            Front[5].Behind[2].SetActive(true);
-        }
+        Front[5].Behind[2].SetActive(true);
     }
     public void selectDay7()
     {
-        if (Today[6] == true)
-        {
-            Front[6].Behind[1].SetActive(true);
-            Front[6].Behind[2].SetActive(false);
-        }
-        else
-        {
-            Front[6].Behind[1].SetActive(false);
-            Front[6].Behind[2].SetActive(true);
-        }
+        Front[6].Behind[2].SetActive(true);
     }
 
-    public void ResetDays()
+
+    public void clickDay1()
     {
-        //reset기능 추가 예정
+        Front[0].Behind[1].SetActive(true);
+        Front[0].Behind[2].SetActive(false);
+        DataController.instance.gameData.days += 1;
+    }
+    public void clickDay2()
+    {
+        Front[1].Behind[1].SetActive(true);
+        Front[1].Behind[2].SetActive(false);
+        DataController.instance.gameData.days += 1;
+    }
+    public void clickDay3()
+    {
+        Front[2].Behind[1].SetActive(true);
+        Front[2].Behind[2].SetActive(false);
+        DataController.instance.gameData.days += 1;
+    }
+    public void clickDay4()
+    {
+        Front[3].Behind[1].SetActive(true);
+        Front[3].Behind[2].SetActive(false);
+        DataController.instance.gameData.days += 1;
+    }
+    public void clickDay5()
+    {
+        Front[4].Behind[1].SetActive(true);
+        Front[4].Behind[2].SetActive(false);
+        DataController.instance.gameData.days += 1;
+    }
+    public void clickDay6()
+    {
+        Front[5].Behind[1].SetActive(true);
+        Front[5].Behind[2].SetActive(false);
+        DataController.instance.gameData.days += 1;
+    }
+    public void clickDay7()
+    {
+        Front[6].Behind[1].SetActive(true);
+        Front[6].Behind[2].SetActive(false);
+        DataController.instance.gameData.days += 1;
+    }
 
 
+    public void CheckTime()
+    {
+        //플레이 도중 자정이 넘어갈 경우 출석 가능
+        // 자정시간 구하기.
+        DateTime target = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+        target = target.AddDays(1);
+        // 자정시간 - 현재시간
+        TimeSpan ts = target - DateTime.Now;
+        // 남은시간 만큼 대기 후 OnTimePass 함수 호출.
+        Invoke("OnTimePass", (float)ts.TotalSeconds);
+    }
+
+    public void OnTimePass()
+    {
+        //정보갱신
+        DataController.instance.gameData.attendance = false;
+        Attendance();
     }
 
     #endregion
