@@ -3,24 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Bug : MonoBehaviour
-{
-    SpriteRenderer sprite;
-    private Animator anim;
-    private Stem stem;
-    private Farm farm;
-    public int bugIdx;
-
-
-    /*public float bugProb; // ¿Å±è   
-    public float scale; // ¿Å±è
-    public bool isBugEnable;*/
+{    
+    private Animator anim; 
     
+    public int bugIdx;
+      
     void Awake()
-    {
-        sprite = GetComponent<SpriteRenderer>();        
-        anim = GetComponent<Animator>();
-        stem = GameManager.instance.stemList[bugIdx].GetComponent<Stem>();
-        farm = GameManager.instance.farmList[bugIdx];
+    {         
+        anim = GetComponent<Animator>();        
     }
     void OnEnable()
     {

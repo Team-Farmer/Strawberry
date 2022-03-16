@@ -10,40 +10,37 @@ public class Stem : MonoBehaviour
     private Animator anim;
     private SpriteRenderer sprite;
     private Vector2 stemPos;
+
+    private int seedAnimLevel;   
+    private Bug stemBug;
+
     public int stemIdx;
-    /* //
-     public float createTime = 0f;
-     public bool canGrow = true;
-     public bool hasBug = false; // 얘 여기서 안씀
-
-
-     public int berryPrefabNowIdx;
-     public bool isStemEnable; // 얘 일때만 만들어주면 되니까
-     public float randomTime = 0f;*/
-
-    public int seedAnimLevel; // 안넘겨줘야됨 어차피 creatTime 넘기면 알아서 조정되는 변수임 아마?
-    public GameObject berryPrefabNow;
     public Berry instantBerry;
-    public Bug stemBug;
-    public Farm stemFarm;
-
     void Awake()
     {
         anim = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
-        stemBug = GameManager.instance.bugList[stemIdx];
-        stemFarm = GameManager.instance.farmList[stemIdx];
+        stemBug = GameManager.instance.bugList[stemIdx];       
     }
     private void OnEnable()
     {       
         DataController.instance.gameData.berryFieldData[stemIdx].isStemEnable = true;
 
-        if (DataController.instance.gameData.berryFieldData[stemIdx].createTime >= 5.0f) sprite.sortingOrder = 0;
+        if (DataController.instance.gameData.berryFieldData[stemIdx].createTime >= 5.0f)
+        {
+            sprite.sortingOrder = 0;
+        }
         else sprite.sortingOrder = 2;
 
-        if (DataController.instance.gameData.berryFieldData[stemIdx].isPlant) return;
-       
         stemPos = transform.position;
+
+        if (DataController.instance.gameData.berryFieldData[stemIdx].isPlant)
+        {
+            MakeBerry();
+            updateStem();
+            return;
+        }  
+        
         DataController.instance.gameData.berryFieldData[stemIdx].randomTime = Random.Range(7.0f, 18.0f);
         DefineBerry();
         MakeBerry();
@@ -63,42 +60,45 @@ public class Stem : MonoBehaviour
         transform.localPosition = Vector3.zero;
         transform.localRotation = Quaternion.identity;
 
-        sprite.sortingOrder = 2;
-        berryPrefabNow = null;
+        sprite.sortingOrder = 2;        
         instantBerry = null;
     }
     void Update() // 시간에 따라 딸기 성장
     {
-        if (DataController.instance.gameData.berryFieldData[stemIdx].canGrow)
+        if (DataController.instance.gameData.berryFieldData[stemIdx].canGrow) // 잡초가 자랐거나 벌레가 자란 줄기는 불러오기가 안되네 >>  해결
         {
             DataController.instance.gameData.berryFieldData[stemIdx].createTime += Time.deltaTime;
-            if (DataController.instance.gameData.berryFieldData[stemIdx].randomTime <= DataController.instance.gameData.berryFieldData[stemIdx].createTime)
-            {
-                stemBug.GenerateBug();
-                DataController.instance.gameData.berryFieldData[stemIdx].randomTime = 200f;
-            }
-            if (5.0f <= DataController.instance.gameData.berryFieldData[stemIdx].createTime && DataController.instance.gameData.berryFieldData[stemIdx].createTime < 10.0f)
-            {
-                if (seedAnimLevel == 1) return;
-                SetAnim(1);
-            }
-            else if (10.0f <= DataController.instance.gameData.berryFieldData[stemIdx].createTime && DataController.instance.gameData.berryFieldData[stemIdx].createTime < 15.0f)
-            {
-                if (seedAnimLevel == 2) return;
+            updateStem();
+        }
+    }
+    private void updateStem()
+    {      
+        if (DataController.instance.gameData.berryFieldData[stemIdx].randomTime <= DataController.instance.gameData.berryFieldData[stemIdx].createTime)
+        {
+            stemBug.GenerateBug();
+            DataController.instance.gameData.berryFieldData[stemIdx].randomTime = 200f;
+        }
+        if (5.0f <= DataController.instance.gameData.berryFieldData[stemIdx].createTime && DataController.instance.gameData.berryFieldData[stemIdx].createTime < 10.0f)
+        {
+            if (seedAnimLevel == 1) return;
+            SetAnim(1);
+        }
+        else if (10.0f <= DataController.instance.gameData.berryFieldData[stemIdx].createTime && DataController.instance.gameData.berryFieldData[stemIdx].createTime < 15.0f)
+        {
+            if (seedAnimLevel == 2) return;
+            SetAnim(2);
+        }
+        else if (15.0f <= DataController.instance.gameData.berryFieldData[stemIdx].createTime && DataController.instance.gameData.berryFieldData[stemIdx].createTime < 20.0f)
+        {
+            if (seedAnimLevel == 3) return;
+            SetAnim(3);
+        }
+        else if (DataController.instance.gameData.berryFieldData[stemIdx].createTime >= 20.0f)
+        {            
+            DataController.instance.gameData.berryFieldData[stemIdx].canGrow = false;
+            GameManager.instance.farmList[stemIdx].GetComponent<BoxCollider2D>().enabled = true; // 밭의 콜라이더 다시 활성화
 
-                SetAnim(2);
-            }
-            else if (15.0f <= DataController.instance.gameData.berryFieldData[stemIdx].createTime && DataController.instance.gameData.berryFieldData[stemIdx].createTime < 20.0f)
-            {
-                if (seedAnimLevel == 3) return;
-                SetAnim(3);
-            }
-            else if (DataController.instance.gameData.berryFieldData[stemIdx].createTime >= 20.0f)
-            {
-                SetAnim(4);
-                DataController.instance.gameData.berryFieldData[stemIdx].canGrow = false;
-                GameManager.instance.farmList[stemIdx].GetComponent<BoxCollider2D>().enabled = true; // 밭의 콜라이더 다시 활성화
-            }
+            SetAnim(4);
         }
     }
     public void SetAnim(int level)
@@ -119,8 +119,7 @@ public class Stem : MonoBehaviour
         {           
             transform.position = new Vector2(stemPos.x - 0.15f, stemPos.y + 0.27f);
             instantBerry.gameObject.SetActive(true);
-            instantBerry.GetComponent<Animator>().SetInteger("berryLevel", level);
-            //instantBerry.transform.position = new Vector2(transform.position.x + 0.3f, transform.position.y + 0.1f);
+            instantBerry.GetComponent<Animator>().SetInteger("berryLevel", level);            
         }
         else if (this.seedAnimLevel == 3)
         {            
@@ -137,7 +136,6 @@ public class Stem : MonoBehaviour
             instantBerry.transform.position = new Vector2(transform.position.x + 0.32f, transform.position.y + 0.06f);
         }
     }
-
     void DefineBerry() // 누적 확률변수로 랜덤한 딸기 생성
     {
         int cumulative = 0, probSum = 0;
@@ -154,8 +152,7 @@ public class Stem : MonoBehaviour
             cumulative += GameManager.instance.berryPrefabListUnlock[i].GetComponent<Berry>().berrykindProb;
             if (berryRandomChance <= cumulative)
             {
-                DataController.instance.gameData.berryFieldData[stemIdx].berryPrefabNowIdx = i;
-                berryPrefabNow = GameManager.instance.berryPrefabListUnlock[DataController.instance.gameData.berryFieldData[stemIdx].berryPrefabNowIdx];
+                DataController.instance.gameData.berryFieldData[stemIdx].berryPrefabNowIdx = i;               
                 break;
             }
         }
@@ -164,7 +161,7 @@ public class Stem : MonoBehaviour
     {
         // 로드될때는 없어졌으니깐 로드 클래스에서 다시 생성해야됨(MakeBerry() 호출하면 됨)
         GameObject instantBerryObj = Instantiate(GameManager.instance.berryPrefabListUnlock[DataController.instance.gameData.berryFieldData[stemIdx].berryPrefabNowIdx], this.transform);
-        instantBerryObj.name = berryPrefabNow.name;
+        instantBerryObj.name = GameManager.instance.berryPrefabListUnlock[DataController.instance.gameData.berryFieldData[stemIdx].berryPrefabNowIdx].name;
 
         instantBerry = instantBerryObj.GetComponent<Berry>();
         instantBerry.transform.position = new Vector3(transform.position.x + 0.22f, transform.position.y - 0.01f, transform.position.z);

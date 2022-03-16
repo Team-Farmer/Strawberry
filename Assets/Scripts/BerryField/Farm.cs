@@ -6,19 +6,7 @@ public class Farm : MonoBehaviour
 {
     public Weed weed;
     public int farmIdx;
-
-    /*public bool isPlant = false;   
-    public bool isHarvest = false;
-    
-    public bool hasWeed = false;
-    public bool canGrowWeed = true;
-    public float weedTime = 0f;
-    public float period = 12f;  // À§¿¡ ´Ù ¿Å±è*/
-
-    void Awake()
-    {
-           
-    }    
+          
     void Update()
     {
         if (DataController.instance.gameData.berryFieldData[farmIdx].hasWeed || !DataController.instance.gameData.berryFieldData[farmIdx].canGrowWeed) return;

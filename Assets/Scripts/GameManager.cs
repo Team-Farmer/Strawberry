@@ -26,10 +26,7 @@ public class GameManager : MonoBehaviour
     [Header("------------[ Object ]")]
     public GameObject stemPrefab; // 프리팹
     public GameObject bugPrefab;
-
-    public Transform stemGroup;
-    public Transform berryGroup;
-
+      
     public List<Farm> farmList = new List<Farm>();
     public List<Stem> stemList = new List<Stem>();
     public List<Bug> bugList = new List<Bug>();
@@ -40,8 +37,7 @@ public class GameManager : MonoBehaviour
 
     [Header("------------[Truck List]")]
     public GameObject TruckObj;
-    public GameObject TruckPanel;    
-    Truck truck;
+    public GameObject TruckPanel;        
     Transform target;
     
     [Header("------------[PartTime/Search/Berry List]")]
@@ -84,29 +80,34 @@ public class GameManager : MonoBehaviour
         Attendance();
 
             Application.targetFrameRate = 60;
-        instance = this; // 게임 매니저의 싱글턴 패턴화 >> 타 스크립트에서 GameManager의 컴포넌트 쓰고 싶으시면
-                         // 굳이 스크립트 마다 게임매니저 할당 안해도 GameManager.instance.~~ 로 호출하시면 돼요!!        
-               
-        truck = TruckObj.GetComponent<Truck>();
+        instance = this; // 게임 매니저의 싱글턴 패턴화 >> GameManager.instance.~~ 로 호출                               
         target = TruckObj.GetComponent<Transform>();
-
-        /*if(stemList.Count != 16)
-        {
-            for (int i = 0; i < 16; i++) // 오브젝트 풀링으로 미리 딸기 생성
-            {
-                MakeStemAndBug();
-            }
-        }*/
-
-        // 임시 재화 설정
-        //coin = 10000;
-        //heart = 300;
-        //ShowCoinText(coin);
-        //CoinText.text = coin.ToString() + " A";
-        //HeartText.text = heart.ToString();
-
+        
         SetBerryPrice();
-
+        InitDataInGM();
+    }
+    void InitDataInGM()
+    {
+        for (int i = 0; i < 16; i++)
+        {
+            if (DataController.instance.gameData.berryFieldData[i].isStemEnable)
+            {
+                stemList[i].gameObject.SetActive(true);
+            }
+            if (DataController.instance.gameData.berryFieldData[i].isWeedEnable)
+            {
+                farmList[i].weed.gameObject.SetActive(true);
+            }
+            if (DataController.instance.gameData.berryFieldData[i].isBugEnable)
+            {
+                bugList[i].gameObject.SetActive(true);
+            }
+            float creatTimeTemp = DataController.instance.gameData.berryFieldData[i].createTime;
+            if ((0 < creatTimeTemp && creatTimeTemp < 20) || DataController.instance.gameData.berryFieldData[i].hasWeed)
+            {
+                farmList[i].GetComponent<BoxCollider2D>().enabled = false;
+            }
+        }
     }
     void Update()
     {
@@ -206,7 +207,7 @@ public class GameManager : MonoBehaviour
     void PlantStrawBerry(Stem stem, GameObject obj)
     {
         BoxCollider2D coll = obj.GetComponent<BoxCollider2D>();
-        stem.transform.position = obj.transform.position; ; // 밭의 Transform에 딸기를 심는다
+        //stem.transform.position = obj.transform.position; ; // 밭의 Transform에 딸기를 심는다
         stem.gameObject.SetActive(true); // 딸기 활성화              
         coll.enabled = false; // 밭의 콜라이더를 비활성화 (잡초와 충돌 방지)
     }
@@ -220,11 +221,7 @@ public class GameManager : MonoBehaviour
         Vector2 pos = stem.transform.position; ;
         stem.instantBerry.Explosion(pos, target.position, 0.5f);
         stem.instantBerry.GetComponent<SpriteRenderer>().sortingOrder = 4;
-        
-        //stem.SetAnim(5); // 수확 이미지로 변경
-        //pos = stem.transform.position;
-        //stem.Explosion(pos, target.position, 0.5f); // DOTWeen 효과 구현
-
+                
         StartCoroutine(HarvestRoutine(farm, stem)); // 연속으로 딸기가 심어지는 현상을 방지
        
     }
