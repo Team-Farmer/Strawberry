@@ -12,9 +12,9 @@ public class ChallengeNews : MonoBehaviour
         public string Title;
         public int[] reward;
         public bool isDone_c;
-        public bool isUnlock_n;
+        //public bool isUnlock_n;
         public string Exp_n;
-        public int Gauge_c;
+        //public int Gauge_c;
 
 
         public ChallengeNewsStruct(string Title, int[] reward, bool isDone_c, bool isUnlock_n, string Exp_n, int Gauge_c)
@@ -22,9 +22,9 @@ public class ChallengeNews : MonoBehaviour
             this.Title = Title;
             this.reward = reward;
             this.isDone_c = isDone_c;
-            this.isUnlock_n = isUnlock_n;
+            //this.isUnlock_n = isUnlock_n;
             this.Exp_n = Exp_n;
-            this.Gauge_c = Gauge_c;
+            //this.Gauge_c = Gauge_c;
         }
     }
     [Header("==========INFO STRUCT==========")]
@@ -87,19 +87,20 @@ public class ChallengeNews : MonoBehaviour
 
         if (isChallenge == true) //CHALLENGE
         {
-            if (Info[prefabnum].Gauge_c == 30)//도전과제 완료
+            if (DataController.instance.gameData.challengeGauge[prefabnum] == 30)//도전과제 완료
             {
                 Btn_Challenge.GetComponent<Image>().sprite = BtnImage_Challenge[1];
             }
             //도전과제 게이지 수치
-            Gauge_Challenge.GetComponent<Image>().fillAmount = (float)Info[prefabnum].Gauge_c / 30;
+            Gauge_Challenge.GetComponent<Image>().fillAmount = (float)DataController.instance.gameData.challengeGauge[prefabnum] / 30;
             //도전과제 게이지 수치 문자
-            gaugeText_Challenge.GetComponent<Text>().text = Info[prefabnum].Gauge_c.ToString();
+            gaugeText_Challenge.GetComponent<Text>().text = DataController.instance.gameData.challengeGauge[prefabnum].ToString();
 
         }
         else //NEWS
         {
-            if (Info[prefabnum].isUnlock_n == false) { lock_News.SetActive(true); }
+            if (DataController.instance.gameData.isNewsUnlock[prefabnum] == false) 
+            { lock_News.SetActive(true); }
             countText_News.GetComponent<Text>().text = "0" + (prefabnum+1);
         }
 

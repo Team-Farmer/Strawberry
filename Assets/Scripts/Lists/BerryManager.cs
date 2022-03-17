@@ -6,13 +6,18 @@ using System;
 
 public class BerryManager : MonoBehaviour
 {
+    //프리팹들 번호 붙여주기 용
+    static int Prefabcount = 0;
+    int prefabnum;
+
+
     [Serializable]
     public class BerryStruct 
     {
         public Sprite berryImage;
         public string berryName, berryTxt;
         public int berryValue;
-        public bool exist;
+        //public bool exist;
         
         public BerryStruct(Sprite berryImage, string berryName, string berryTxt, int berryValue, bool exist) 
         {
@@ -20,7 +25,7 @@ public class BerryManager : MonoBehaviour
             this.berryName = berryName;
             this.berryTxt = berryTxt;
             this.berryValue = berryValue;
-            this.exist = exist;
+            //this.exist = DataController.instance.gameData.isBerryUnlock[0];
 
         }
     }
@@ -42,9 +47,7 @@ public class BerryManager : MonoBehaviour
     GameObject ExpChildren2;
 
 
-    //프리팹들 번호 붙여주기 용
-    static int Prefabcount = 0;
-    int prefabnum;
+    
 
 
 
@@ -65,11 +68,8 @@ public class BerryManager : MonoBehaviour
         Prefabcount++;
 
         berryImageChange();
-    }
 
-    void Update()
-    {
-
+        //Debug.Log("exist====" + berryInfo[prefabnum].exist);
     }
 
 
@@ -83,8 +83,9 @@ public class BerryManager : MonoBehaviour
 
             try
             {
-                if (berryInfo[prefabnum].exist == true)
-                {
+            //if (berryInfo[prefabnum].exist == true)
+            if (DataController.instance.gameData.isBerryUnlock[prefabnum] == true)
+            {
                     //검정창 띄운다.
                     //설명창이 뜬다.
                     ExpChildren.SetActive(true);
@@ -110,13 +111,14 @@ public class BerryManager : MonoBehaviour
     {
         for (int i = 0; i < berryInfo.Length; i++)
         {
-            if (prefabnum == i && berryInfo[i].exist == true)
+            if (prefabnum == i && DataController.instance.gameData.isBerryUnlock[i] == true)
             {
                 this.transform.GetComponent<Image>().sprite = yesBerryImage;
                 berryImagePanel.transform.GetComponent<Image>().color = new Color(1f,1f,1f,1f);
                 berryImagePanel.GetComponent<Image>().sprite = berryInfo[i].berryImage;
             }
         }
+
     }
 
 

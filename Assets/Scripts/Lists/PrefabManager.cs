@@ -13,7 +13,7 @@ public class PrefabManager : MonoBehaviour
         public Sprite Picture;
         public Sprite FacePicture;
         public string Explanation;
-        public int Price, Level;
+        public int Price;
         public bool isEmployed;
 
 
@@ -22,7 +22,7 @@ public class PrefabManager : MonoBehaviour
             this.Name = Name;
             this.Explanation = Explanation;
             this.Price = Price;
-            this.Level = Level;//PTJ이라면 고용여부 의미. 0이 고용안함 1이 고용함
+            //this.Level = Level;
             this.Picture = Picture;
             this.FacePicture = FacePicture;
             this.isEmployed=isEmployed;
@@ -83,8 +83,8 @@ public class PrefabManager : MonoBehaviour
     public void clickCoin_Research() {
 
         //레벨이 올라간다.
-        Info[prefabnum].Level++;
-        levelNum.GetComponent<Text>().text = Info[prefabnum].Level.ToString();
+        DataController.instance.gameData.researchLevel[prefabnum]++;
+        levelNum.GetComponent<Text>().text = DataController.instance.gameData.researchLevel[prefabnum].ToString();
 
         //해당 금액의 코인이 감소된다.
         //GameManager.instance.coin -= Info[prefabnum].Price;
@@ -176,7 +176,7 @@ public class PrefabManager : MonoBehaviour
         if (PTJ==true)
         {    levelNum.GetComponent<Text>().text = "고용 전";    }
         else
-        {    levelNum.GetComponent<Text>().text = Info[Prefabcount].Level.ToString();    }
+        {    levelNum.GetComponent<Text>().text = DataController.instance.gameData.researchLevel[prefabnum].ToString();    }
 
 
         

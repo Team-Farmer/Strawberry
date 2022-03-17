@@ -11,6 +11,7 @@ public class GameData
     //재화
     public int coin;
     public int heart;
+    public int medal;
 
     //Truck
     public int berryCnt; // 트럭 딸기 개수
@@ -23,11 +24,16 @@ public class GameData
     //List를 사용하거나 Linq사용해야 함
     public bool[] isBerryUnlock = new bool[192];
 
-    //알바 가지고있는지 여부
-    //public bool[] isEmployed;
+
 
     //연구 레벨
     public int[] researchLevel=new int[7];
+
+    //도전과제 달성 수치
+    public int[] challengeGauge = new int[7];
+
+    //뉴스
+    public bool[] isNewsUnlock=new bool[7];
 
     //마지막 출석 날짜 저장.
     public DateTime Lastday = new DateTime(2022, 3, 14);

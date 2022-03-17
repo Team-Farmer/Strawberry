@@ -79,7 +79,7 @@ public class DataController : MonoBehaviour
     {
         gameData.heart = 500;
         gameData.coin = 150000;
-
+        gameData.medal = 0;
         //Truck
         gameData.berryCnt = 0;
 
@@ -100,7 +100,12 @@ public class DataController : MonoBehaviour
         {
             gameData.isBerryUnlock[i] = false;
         }
-        
+        for (int i = 0; i < 7; i++) {
+            gameData.challengeGauge[i] = 0;
+        }
+        for (int i = 0; i < 7; i++) {
+            gameData.isNewsUnlock[i]=false;
+        }
     }
     void OnApplicationQuit()
     {
