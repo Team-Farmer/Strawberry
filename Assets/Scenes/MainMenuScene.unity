@@ -1606,7 +1606,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adb5dc3f0b039de4a9abb2bfc3a78f87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSaveMode: 1
+  isSaveMode: 0
 --- !u!4 &139806055
 Transform:
   m_ObjectHideFlags: 0
@@ -5425,10 +5425,40 @@ MonoBehaviour:
   - {fileID: 8238155578764226131, guid: ce4c320e680aa1243a829170d1d7b0a8, type: 3}
   - {fileID: 8238155578764226131, guid: 89f2caedcdd28474ea3ac102f7755b09, type: 3}
   - {fileID: 8238155578764226131, guid: 3c844389ae92c9e44878bfecc0d9b983, type: 3}
+  - {fileID: 8238155578764226131, guid: 3ea58e6a0f435f74bb5ce8d3e706fd0c, type: 3}
+  - {fileID: 8238155578764226131, guid: 9617423a15ba60b468fb7af817560cbd, type: 3}
+  - {fileID: 8238155578764226131, guid: e9d339d764995e14aa69791ad72287a9, type: 3}
+  - {fileID: 8238155578764226131, guid: 712fb041e352bf74e8e71bafbce0c8e6, type: 3}
+  - {fileID: 8238155578764226131, guid: 7b5aab7edddc73b43abb3d5171abd34d, type: 3}
+  - {fileID: 8238155578764226131, guid: 0cf018b91f147764d9ccb66ded1b0fe6, type: 3}
+  - {fileID: 8238155578764226131, guid: f8b92fc6013a2c24fbbbdf8fd8f7a33a, type: 3}
+  - {fileID: 8238155578764226131, guid: baba8645bf4a18c4da65516d1173ed0e, type: 3}
+  - {fileID: 8238155578764226131, guid: a2e2fe7a677566f4aa1d403b90d9e2d6, type: 3}
+  - {fileID: 8238155578764226131, guid: 1b315bbcabf2a074b8957b27be578b11, type: 3}
+  - {fileID: 8238155578764226131, guid: 24ffc42181423cb4bb4ef7651f244a7e, type: 3}
+  - {fileID: 8238155578764226131, guid: 364f7bdb23ede1c458bb62f846f21fb1, type: 3}
+  - {fileID: 8238155578764226131, guid: f36cf85dd8ed98541a098f441e4613d7, type: 3}
+  - {fileID: 8238155578764226131, guid: f65c606e451f60a4f98e558d8f3b2514, type: 3}
+  - {fileID: 8238155578764226131, guid: 7882e07004d8e064fa570ee54bd401fe, type: 3}
   berryPrefabListUnlock:
   - {fileID: 8238155578764226131, guid: ce4c320e680aa1243a829170d1d7b0a8, type: 3}
   - {fileID: 8238155578764226131, guid: 89f2caedcdd28474ea3ac102f7755b09, type: 3}
   - {fileID: 8238155578764226131, guid: 3c844389ae92c9e44878bfecc0d9b983, type: 3}
+  - {fileID: 8238155578764226131, guid: 3ea58e6a0f435f74bb5ce8d3e706fd0c, type: 3}
+  - {fileID: 8238155578764226131, guid: 9617423a15ba60b468fb7af817560cbd, type: 3}
+  - {fileID: 8238155578764226131, guid: e9d339d764995e14aa69791ad72287a9, type: 3}
+  - {fileID: 8238155578764226131, guid: 712fb041e352bf74e8e71bafbce0c8e6, type: 3}
+  - {fileID: 8238155578764226131, guid: 7b5aab7edddc73b43abb3d5171abd34d, type: 3}
+  - {fileID: 8238155578764226131, guid: 0cf018b91f147764d9ccb66ded1b0fe6, type: 3}
+  - {fileID: 8238155578764226131, guid: f8b92fc6013a2c24fbbbdf8fd8f7a33a, type: 3}
+  - {fileID: 8238155578764226131, guid: baba8645bf4a18c4da65516d1173ed0e, type: 3}
+  - {fileID: 8238155578764226131, guid: a2e2fe7a677566f4aa1d403b90d9e2d6, type: 3}
+  - {fileID: 8238155578764226131, guid: 1b315bbcabf2a074b8957b27be578b11, type: 3}
+  - {fileID: 8238155578764226131, guid: 24ffc42181423cb4bb4ef7651f244a7e, type: 3}
+  - {fileID: 8238155578764226131, guid: 364f7bdb23ede1c458bb62f846f21fb1, type: 3}
+  - {fileID: 8238155578764226131, guid: f36cf85dd8ed98541a098f441e4613d7, type: 3}
+  - {fileID: 8238155578764226131, guid: f65c606e451f60a4f98e558d8f3b2514, type: 3}
+  - {fileID: 8238155578764226131, guid: 7882e07004d8e064fa570ee54bd401fe, type: 3}
   berryPrefabListlock: []
   TruckObj: {fileID: 1218476147}
   TruckPanel: {fileID: 3459070}
@@ -8538,7 +8568,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 12, y: 59.996902}
+  m_AnchoredPosition: {x: 12, y: 59.99686}
   m_SizeDelta: {x: 103, y: 95.000015}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &755967742
@@ -19953,7 +19983,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -110.5, y: 59.996902}
+  m_AnchoredPosition: {x: -110.5, y: 59.99686}
   m_SizeDelta: {x: 97.46, y: 94.57}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1629387834
