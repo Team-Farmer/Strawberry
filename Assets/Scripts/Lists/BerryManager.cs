@@ -10,25 +10,24 @@ public class BerryManager : MonoBehaviour
     static int Prefabcount = 0;
     int prefabnum;
 
-
+    /*
     [Serializable]
     public class BerryStruct 
     {
         public Sprite berryImage;
         public string berryName, berryTxt;
         public int berryValue;
-        //public bool exist;
-        
+
         public BerryStruct(Sprite berryImage, string berryName, string berryTxt, int berryValue, bool exist) 
         {
             this.berryImage = berryImage;
             this.berryName = berryName;
             this.berryTxt = berryTxt;
             this.berryValue = berryValue;
-            //this.exist = DataController.instance.gameData.isBerryUnlock[0];
 
         }
     }
+    */
 
     [Header("======berry Image=====")]
     public Sprite yesBerryImage;
@@ -36,10 +35,13 @@ public class BerryManager : MonoBehaviour
     [SerializeField]
     private GameObject berryImagePanel;//이미지를 보일 오브젝트 대상
 
+    /*
     [Header("==========BERRY STRUCT==========")]
     [SerializeField]
     BerryStruct[] berryInfo;
-
+    */
+    [Header("==========BERRY PREFAB==========")]
+    public GameObject[] berryPrefabs;
 
 
     GameObject berryExp;
@@ -56,11 +58,7 @@ public class BerryManager : MonoBehaviour
     {
         berryExp = GameObject.Find("berryExplanation");//이거 과부화 위험. 다른 방법은 없을까
 
-        //프리팹들에게 번호를 붙여 주자
-        /*
-        if (Prefabcount >= 32)
-        {    Prefabcount -= 32;    }
-        */
+        //프리팹들에게 번호를 붙여 주자 32개씩
         if (Prefabcount % 32==0)
         { Prefabcount =0; }
 
@@ -69,7 +67,6 @@ public class BerryManager : MonoBehaviour
 
         berryImageChange();
 
-        //Debug.Log("exist====" + berryInfo[prefabnum].exist);
     }
 
 
@@ -90,9 +87,9 @@ public class BerryManager : MonoBehaviour
                     //설명창이 뜬다.
                     ExpChildren.SetActive(true);
                     //Explanation 내용을 채운다.
-                    ExpChildren2.transform.GetChild(0).transform.gameObject.GetComponentInChildren<Image>().sprite = berryInfo[prefabnum].berryImage;//이미지 설정
-                    ExpChildren2.transform.GetChild(1).transform.gameObject.GetComponentInChildren<Text>().text = berryInfo[prefabnum].berryName;//이름 설정
-                    ExpChildren2.transform.GetChild(2).transform.gameObject.GetComponentInChildren<Text>().text = berryInfo[prefabnum].berryTxt;//설명 설정
+                    ExpChildren2.transform.GetChild(0).transform.gameObject.GetComponentInChildren<Image>().sprite = berryPrefabs[prefabnum].GetComponent<Image>().sprite;//이미지 설정
+                    ExpChildren2.transform.GetChild(1).transform.gameObject.GetComponentInChildren<Text>().text = berryPrefabs[prefabnum].GetComponent<Berry>().berryName;//이름 설정
+                    ExpChildren2.transform.GetChild(2).transform.gameObject.GetComponentInChildren<Text>().text = berryPrefabs[prefabnum].GetComponent<Berry>().berryExplain;//설명 설정
                 }
             }
             catch
@@ -109,13 +106,13 @@ public class BerryManager : MonoBehaviour
 
     public void berryImageChange()//베리 리스트에 이미지를 보인다.
     {
-        for (int i = 0; i < berryInfo.Length; i++)
+        for (int i = 0; i < berryPrefabs.Length; i++)
         {
             if (prefabnum == i && DataController.instance.gameData.isBerryUnlock[i] == true)
             {
                 this.transform.GetComponent<Image>().sprite = yesBerryImage;
                 berryImagePanel.transform.GetComponent<Image>().color = new Color(1f,1f,1f,1f);
-                berryImagePanel.GetComponent<Image>().sprite = berryInfo[i].berryImage;
+                berryImagePanel.GetComponent<Image>().sprite = berryPrefabs[i].GetComponent<SpriteRenderer>().sprite;
             }
         }
 
