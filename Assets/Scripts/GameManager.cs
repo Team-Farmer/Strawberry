@@ -17,11 +17,9 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     [Header("------------[ Money ]")]
-    //[SerializeField] public int coin;
-    //[SerializeField] public int heart;
     public Text CoinText;
-    public Text HeartText;   
-    public int[,] BerryPrice = new int[3, 32];
+    public Text HeartText;
+    public int[] BerryPrice = new int[192];
 
     [Header("------------[ Object ]")]
     public GameObject stemPrefab; // 프리팹
@@ -48,6 +46,7 @@ public class GameManager : MonoBehaviour
     public GameObject panelBlack_Exp;
     internal object count;
     public GameObject[] working;
+
     //새로운딸기 관련========================================
     [Header("OBJECT")]
     public GameObject priceText_newBerry;
@@ -61,8 +60,8 @@ public class GameManager : MonoBehaviour
     public Sprite doneImg;
     public Sprite ingImg;
 
-    private int index_newBerry = 0;//현재 인덱스
-    private bool isStart_newBerry = false;//시작을 눌렀는가
+    private int index_newBerry = 0; //현재 인덱스
+    private bool isStart_newBerry = false; //시작을 눌렀는가
 
     [Header("------------[Check/Settings Panel]")]
     public GameObject SettingsPanel;
@@ -264,17 +263,23 @@ public class GameManager : MonoBehaviour
     #region 재화
     void SetBerryPrice()
     {
-        BerryPrice[0, 0] = 10; // 클래식의 0번 딸기
+        BerryPrice[0] = 10;     // 클래식의 0번 딸기
+        BerryPrice[64] = 20;    // 스페셜의 0번 딸기
+        BerryPrice[128] = 30;   // 유니크의 0번 딸기
 
-        for (int i = 0; i < 32; i++)
+        for (int i = 0; i < 192; i++)
         {
-            if (i != 0)
-                BerryPrice[0, i] = BerryPrice[0, i - 1] + 5; // 클래식 딸기값 세팅 (1번부터)
-            BerryPrice[1, i] = BerryPrice[0, i] * 2;
-            BerryPrice[2, i] = BerryPrice[0, i] * 3;
+            if (i < 64)
+                BerryPrice[i] = BerryPrice[0] + i * 3;
+            else if (i < 128)
+                BerryPrice[i] = BerryPrice[64] + (i - 64) * 5;
+            else
+                BerryPrice[i] = BerryPrice[128] + (i - 128) * 7;
         }
 
-        Debug.Log("딸기가치 : " + BerryPrice[0, 0] + " " + BerryPrice[1, 0] + " " + BerryPrice[2, 0]);
+        //Debug.Log("딸기가치 세팅 완료");
+        //Debug.Log(BerryPrice[0] + " " + BerryPrice[64] + " " + BerryPrice[128] + " ");
+        //Debug.Log(BerryPrice[9] + " " + BerryPrice[73] + " " + BerryPrice[137] + " ");
     }
 
     public void ShowCoinText()
