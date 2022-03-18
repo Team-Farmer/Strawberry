@@ -132,6 +132,7 @@ public class Stem : MonoBehaviour
         {          
             transform.position = new Vector2(stemPos.x - 0.15f, stemPos.y + 0.35f);
             instantBerry.gameObject.SetActive(true);
+            instantBerry.GetComponent<SpriteRenderer>().sprite = GameManager.instance.berryPrefabListUnlock[DataController.instance.gameData.berryFieldData[stemIdx].berryPrefabNowIdx].GetComponent<SpriteRenderer>().sprite;
             instantBerry.GetComponent<Animator>().SetInteger("berryLevel", level);
             instantBerry.transform.position = new Vector2(transform.position.x + 0.32f, transform.position.y + 0.06f);
         }
