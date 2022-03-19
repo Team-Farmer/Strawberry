@@ -221,15 +221,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdbacebad87097344ab60889cf36cc03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  berryType: 2
   yesBerryImage: {fileID: -4623353640749799153, guid: 5793a0752ea94ed4d8413bd1fcc8df20, type: 3}
   berryImagePanel: {fileID: 606698243013065376}
   berryPrefabs:
+  - {fileID: 8238155578764226131, guid: 1b315bbcabf2a074b8957b27be578b11, type: 3}
+  - {fileID: 8238155578764226131, guid: 24ffc42181423cb4bb4ef7651f244a7e, type: 3}
   - {fileID: 8238155578764226131, guid: ce4c320e680aa1243a829170d1d7b0a8, type: 3}
-  - {fileID: 8238155578764226131, guid: ce4c320e680aa1243a829170d1d7b0a8, type: 3}
-  - {fileID: 8238155578764226131, guid: ce4c320e680aa1243a829170d1d7b0a8, type: 3}
-  - {fileID: 8238155578764226131, guid: ce4c320e680aa1243a829170d1d7b0a8, type: 3}
-  - {fileID: 8238155578764226131, guid: ce4c320e680aa1243a829170d1d7b0a8, type: 3}
-  - {fileID: 8238155578764226131, guid: ce4c320e680aa1243a829170d1d7b0a8, type: 3}
+  - {fileID: 8238155578764226131, guid: f65c606e451f60a4f98e558d8f3b2514, type: 3}
+  - {fileID: 8238155578764226131, guid: 364f7bdb23ede1c458bb62f846f21fb1, type: 3}
+  - {fileID: 8238155578764226131, guid: f36cf85dd8ed98541a098f441e4613d7, type: 3}
   - {fileID: 8238155578764226131, guid: ce4c320e680aa1243a829170d1d7b0a8, type: 3}
   - {fileID: 8238155578764226131, guid: ce4c320e680aa1243a829170d1d7b0a8, type: 3}
   - {fileID: 8238155578764226131, guid: ce4c320e680aa1243a829170d1d7b0a8, type: 3}

@@ -4,29 +4,28 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 
+public enum berryType { classic, special, unique }
 public class BerryManager : MonoBehaviour
 {
     //프리팹들 번호 붙여주기 용
     static int Prefabcount = 0;
     int prefabnum;
 
-
+    [Header("======berry Type=====")]
+    public berryType berryType;
 
     [Header("======berry Image=====")]
     public Sprite yesBerryImage;
-
     [SerializeField]
     private GameObject berryImagePanel;//이미지를 보일 오브젝트 대상
 
-    /*
-    [Header("==========BERRY STRUCT==========")]
-    [SerializeField]
-    BerryStruct[] berryInfo;
-    */
+
     [Header("==========BERRY PREFAB==========")]
     public GameObject[] berryPrefabs;
 
 
+
+    //베리 설명 관련
     GameObject berryExp;
     GameObject ExpChildren;
     GameObject ExpChildren2;
@@ -89,6 +88,13 @@ public class BerryManager : MonoBehaviour
 
     public void berryImageChange()//베리 리스트에 이미지를 보인다.
     {
+        int startNum;
+        switch (berryType) {
+            case berryType.classic: startNum = 0; break;
+            case berryType.special: startNum = 32; break;
+            case berryType.unique: startNum = 64; break;
+        }
+        
         for (int i = 0; i < berryPrefabs.Length; i++)
         {
             if (prefabnum == i && DataController.instance.gameData.isBerryUnlock[i] == true)
