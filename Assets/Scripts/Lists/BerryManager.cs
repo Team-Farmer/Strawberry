@@ -31,7 +31,7 @@ public class BerryManager : MonoBehaviour
     GameObject ExpChildren2;
 
 
-    
+    int startNum;
 
 
 
@@ -69,7 +69,7 @@ public class BerryManager : MonoBehaviour
                     //설명창이 뜬다.
                     ExpChildren.SetActive(true);
                     //Explanation 내용을 채운다.
-                    ExpChildren2.transform.GetChild(0).transform.gameObject.GetComponentInChildren<Image>().sprite = berryPrefabs[prefabnum].GetComponent<Image>().sprite;//이미지 설정
+                    ExpChildren2.transform.GetChild(0).transform.gameObject.GetComponentInChildren<Image>().sprite = berryPrefabs[prefabnum].GetComponent<SpriteRenderer>().sprite;//이미지 설정
                     ExpChildren2.transform.GetChild(1).transform.gameObject.GetComponentInChildren<Text>().text = berryPrefabs[prefabnum].GetComponent<Berry>().berryName;//이름 설정
                     ExpChildren2.transform.GetChild(2).transform.gameObject.GetComponentInChildren<Text>().text = berryPrefabs[prefabnum].GetComponent<Berry>().berryExplain;//설명 설정
                 }
@@ -88,7 +88,7 @@ public class BerryManager : MonoBehaviour
 
     public void berryImageChange()//베리 리스트에 이미지를 보인다.
     {
-        int startNum;
+        
         switch (berryType) {
             case berryType.classic: startNum = 0; break;
             case berryType.special: startNum = 32; break;
@@ -97,12 +97,15 @@ public class BerryManager : MonoBehaviour
         
         for (int i = 0; i < berryPrefabs.Length; i++)
         {
-            if (prefabnum == i && DataController.instance.gameData.isBerryUnlock[i] == true)
+            if (prefabnum == i && DataController.instance.gameData.isBerryUnlock[startNum] == true)
             {
                 this.transform.GetComponent<Image>().sprite = yesBerryImage;
                 berryImagePanel.transform.GetComponent<Image>().color = new Color(1f,1f,1f,1f);
                 berryImagePanel.GetComponent<Image>().sprite = berryPrefabs[i].GetComponent<SpriteRenderer>().sprite;
+
+                
             }
+            startNum++;
         }
 
     }
