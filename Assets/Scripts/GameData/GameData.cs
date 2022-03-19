@@ -31,6 +31,8 @@ public class GameData
 
     //도전과제 달성 수치
     public int[] challengeGauge = new int[7];
+    //도전과제 보상 받은 여부
+    public bool[] challengeEnd = new bool[7];
 
     //뉴스
     public bool[] isNewsUnlock=new bool[7];

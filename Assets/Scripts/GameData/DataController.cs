@@ -102,6 +102,7 @@ public class DataController : MonoBehaviour
         }
         for (int i = 0; i < 7; i++) {
             gameData.challengeGauge[i] = 0;
+            gameData.challengeEnd[i] = false;
         }
         for (int i = 0; i < 7; i++) {
             gameData.isNewsUnlock[i]=false;

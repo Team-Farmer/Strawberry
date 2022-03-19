@@ -10,24 +10,7 @@ public class BerryManager : MonoBehaviour
     static int Prefabcount = 0;
     int prefabnum;
 
-    /*
-    [Serializable]
-    public class BerryStruct 
-    {
-        public Sprite berryImage;
-        public string berryName, berryTxt;
-        public int berryValue;
 
-        public BerryStruct(Sprite berryImage, string berryName, string berryTxt, int berryValue, bool exist) 
-        {
-            this.berryImage = berryImage;
-            this.berryName = berryName;
-            this.berryTxt = berryTxt;
-            this.berryValue = berryValue;
-
-        }
-    }
-    */
 
     [Header("======berry Image=====")]
     public Sprite yesBerryImage;
