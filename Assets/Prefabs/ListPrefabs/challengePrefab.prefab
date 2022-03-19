@@ -366,48 +366,35 @@ MonoBehaviour:
   - Title: "\uB538\uAE30 \uC218\uC9D1\uD558\uAE30"
     reward: 
     isDone_c: 0
-    isUnlock_n: 0
-    Exp_n: 
-    Gauge_c: 10
+    Exp_news: 
   - Title: "\uB204\uC801 \uCF54\uC778"
     reward: 
     isDone_c: 0
-    isUnlock_n: 0
-    Exp_n: 
-    Gauge_c: 20
+    Exp_news: 
   - Title: "\uD558\uD2B8"
     reward: 
     isDone_c: 0
-    isUnlock_n: 0
-    Exp_n: 
-    Gauge_c: 30
+    Exp_news: 
   - Title: "\uC784\uC2DC"
     reward: 
     isDone_c: 0
-    isUnlock_n: 0
-    Exp_n: 
-    Gauge_c: 1
+    Exp_news: 
   - Title: "\uC784\uC2DC"
     reward: 
     isDone_c: 0
-    isUnlock_n: 0
-    Exp_n: 
-    Gauge_c: 7
+    Exp_news: 
   - Title: "\uC784\uC2DC"
     reward: 
     isDone_c: 0
-    isUnlock_n: 0
-    Exp_n: 
-    Gauge_c: 0
+    Exp_news: 
   - Title: "\uC784\uC2DC"
     reward: 
     isDone_c: 0
-    isUnlock_n: 0
-    Exp_n: 
-    Gauge_c: 0
+    Exp_news: 
   titleText: {fileID: 527783996456215474}
   countText_News: {fileID: 0}
   lock_News: {fileID: 0}
+  doneButton_Challenge: {fileID: 6844077706645152247}
   gaugeText_Challenge: {fileID: 527783996540281741}
   Btn_Challenge: {fileID: 527783997747247045}
   GaugeContainer_Challenge: {fileID: 527783996351974104}
@@ -535,7 +522,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 527783997747247046}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 409564450898243844}
+        m_TargetAssemblyTypeName: ChallengeNews, Assembly-CSharp
+        m_MethodName: ChallengeSuccess
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &527783997791190854
 GameObject:
   m_ObjectHideFlags: 0
@@ -646,6 +645,7 @@ RectTransform:
   - {fileID: 8123540764124747059}
   - {fileID: 527783997037598282}
   - {fileID: 527783997747247044}
+  - {fileID: 2911658881347657346}
   m_Father: {fileID: 527783997503068513}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -763,6 +763,81 @@ MonoBehaviour:
   m_FillCenter: 1
   m_FillMethod: 0
   m_FillAmount: 0.5
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!1 &6844077706645152247
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2911658881347657346}
+  - component: {fileID: 8595204095313712402}
+  - component: {fileID: 3744996763646250181}
+  m_Layer: 5
+  m_Name: doneButton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &2911658881347657346
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6844077706645152247}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 527783998005169601}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 293, y: 0}
+  m_SizeDelta: {x: 140, y: 140}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &8595204095313712402
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6844077706645152247}
+  m_CullTransparentMesh: 1
+--- !u!114 &3744996763646250181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6844077706645152247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.3584906, g: 0.3584906, b: 0.3584906, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 98ff8ba520c0ea847b00e0d6d9631ba7, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0

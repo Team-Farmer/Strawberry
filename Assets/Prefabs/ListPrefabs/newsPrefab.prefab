@@ -361,46 +361,32 @@ MonoBehaviour:
   - Title: "\uB538\uAE30\uC758 \uC9C4\uC9DC \uC5F4\uB9E4\uB294 \uB530\uB85C \uC788\uB2E4?"
     reward: 
     isDone_c: 0
-    isUnlock_n: 1
-    Exp_n: 
-    Gauge_c: 0
+    Exp_news: "\uC544\uBB34\uB9D0"
   - Title: "\uD604\uB300 \uB538\uAE30\uC758 \uC2DC\uCD08, 1712\uB144"
     reward: 
     isDone_c: 0
-    isUnlock_n: 1
-    Exp_n: 
-    Gauge_c: 0
+    Exp_news: "\u3147\u3134\u3134\u3147\u3134\u3147\u3139\u3134\u3139\u3147\u3136\u3139\u3137\u3134\u3137\u3139\u3134\u3137\u3139"
   - Title: "\uD55C\uAD6D \uB538\uAE30 \uD488\uC885\uC758 85%\uB294 \uC774\uAC83"
     reward: 
     isDone_c: 0
-    isUnlock_n: 1
-    Exp_n: 
-    Gauge_c: 0
+    Exp_news: "\u3148\u314E\u314E\u3148\u3137\u314E\u3148\u314E\u3148\u3137"
   - Title: "\uC800\uD0C8\uB85C\uB9AC \uACE0\uBE44\uD0C0\uBBFC \uB538\uAE30!"
     reward: 
     isDone_c: 0
-    isUnlock_n: 0
-    Exp_n: 
-    Gauge_c: 0
+    Exp_news: "\u3148\u314E\u3137\u3131\u314E\u3139\u3147\u3136\u3148\u3131\u3148\u3131\u314E\u3134\u3137\u314E"
   - Title: "\uC77C\uBCF4\uB124 \uB0BC \uBED4\uD55C \uB538\uAE30 \uB85C\uC5F4\uD2F0
       30\uC5B5"
     reward: 
     isDone_c: 0
-    isUnlock_n: 0
-    Exp_n: 
-    Gauge_c: 0
+    Exp_news: "\u314E\u3148\u3148\u3137\u3148\u3137\u314E\u3148\u314E"
   - Title: "\uC81C\uBAA94"
     reward: 
     isDone_c: 0
-    isUnlock_n: 0
-    Exp_n: 
-    Gauge_c: 0
+    Exp_news: 
   - Title: "\uC81C\uBAA94"
     reward: 
     isDone_c: 0
-    isUnlock_n: 0
-    Exp_n: 
-    Gauge_c: 0
+    Exp_news: 
   titleText: {fileID: 30754148979034878}
   countText_News: {fileID: 7077524546287068990}
   lock_News: {fileID: 6485077750042053454}
@@ -453,7 +439,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 0}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6835106990083521364}
+        m_TargetAssemblyTypeName: ChallengeNews, Assembly-CSharp
+        m_MethodName: Explantion
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6485077750042053454
 GameObject:
   m_ObjectHideFlags: 0
