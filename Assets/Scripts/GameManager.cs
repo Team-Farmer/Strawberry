@@ -66,7 +66,8 @@ public class GameManager : MonoBehaviour
     [Header("------------[Check/Settings Panel]")]
     public GameObject SettingsPanel;
     public GameObject CheckPanel;
-
+    public bool isblackPanelOn = false;
+    
     [Header("------------[Check/Day List]")]
     public bool[] Today;
     public ObjectArray[] Front = new ObjectArray[7];
@@ -306,6 +307,7 @@ public class GameManager : MonoBehaviour
     public void DisableObjColliderAll() // 모든 오브젝트의 collider 비활성화
     {
         BoxCollider2D coll;
+        isblackPanelOn = true;
         for (int i = 0; i < farmList.Count; i++)
         {
             coll = farmList[i].GetComponent<BoxCollider2D>();
@@ -320,17 +322,18 @@ public class GameManager : MonoBehaviour
     public void EnableObjColliderAll() // 모든 오브젝트의 collider 활성화
     {
         BoxCollider2D coll;
+        isblackPanelOn = false;
         for (int i = 0; i < farmList.Count; i++)
         {
-            if (!DataController.instance.gameData.berryFieldData[i].isPlant && !DataController.instance.gameData.berryFieldData[i].hasWeed) // 잡초가 없을 때만 밭의 Collider활성화
-            {
-                coll = farmList[i].GetComponent<BoxCollider2D>();
+            coll = farmList[i].GetComponent<BoxCollider2D>();
+            if (!DataController.instance.gameData.berryFieldData[i].isPlant && !DataController.instance.gameData.berryFieldData[i].hasWeed) // 잡초가 없을 때만 빈 밭의 Collider활성화
+            {              
+                coll.enabled = true;
+            }          
+            if (!DataController.instance.gameData.berryFieldData[i].hasBug && !DataController.instance.gameData.berryFieldData[i].hasWeed && DataController.instance.gameData.berryFieldData[i].createTime >= 20.0f) // (4)의 상황, 즉 벌레와 잡초 둘 다 없을 때 다 자란 딸기밭의 콜라이더를 켜준다.
+            {              
                 coll.enabled = true;
             }
-            /*if (!DataController.instance.gameData.berryFieldData[i].hasBug && !DataController.instance.gameData.berryFieldData[i].hasWeed) // (4)의 상황, 즉 벌레와 잡초 둘 다 없을 때
-            {
-                DataController.instance.gameData.berryFieldData[i].canGrow = true;
-            }*/
             bugList[i].GetComponent<CircleCollider2D>().enabled = true;
             farmList[i].weed.GetComponent<CapsuleCollider2D>().enabled = true; // 잡초의 Collider 활성화
             //farmList[i].canGrowWeed = true;

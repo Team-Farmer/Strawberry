@@ -96,7 +96,8 @@ public class Stem : MonoBehaviour
         else if (DataController.instance.gameData.berryFieldData[stemIdx].createTime >= 20.0f)
         {            
             DataController.instance.gameData.berryFieldData[stemIdx].canGrow = false;
-            GameManager.instance.farmList[stemIdx].GetComponent<BoxCollider2D>().enabled = true; // 밭의 콜라이더 다시 활성화
+            if(!GameManager.instance.isblackPanelOn)
+                GameManager.instance.farmList[stemIdx].GetComponent<BoxCollider2D>().enabled = true; // 밭의 콜라이더 다시 활성화
 
             SetAnim(4);
         }
