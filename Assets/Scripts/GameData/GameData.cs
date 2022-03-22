@@ -38,7 +38,8 @@ public class GameData
     public bool[] isNewsUnlock=new bool[7];
 
     //마지막 출석 날짜 저장.
-    public DateTime Lastday = new DateTime(2022, 3, 14);
+    public DateTime Lastday = new DateTime();
+    public DateTime Today = new DateTime();
     //출석 일 수
     public int days=0;
     //오늘 출석 여부 판단

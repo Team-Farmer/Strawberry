@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using System;
+using UnityEngine.Networking;
 
 [System.Serializable]
 public class ObjectArray //GameObject의 다차원 배열 만들기 위해 MonoBehaviour 외부에서 선언
@@ -71,13 +72,17 @@ public class GameManager : MonoBehaviour
     [Header("------------[Check/Day List]")]
     public bool[] Today;
     public ObjectArray[] Front = new ObjectArray[7];
+    public string url = "";
 
     #endregion
 
     #region 기본
     void Awake()
     {
+        //출석 관련 호출.
+        StartCoroutine(WebCheck());
         Attendance();
+        CheckTime();
 
             Application.targetFrameRate = 60;
         instance = this; // 게임 매니저의 싱글턴 패턴화 >> GameManager.instance.~~ 로 호출                               
@@ -448,15 +453,41 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region 출석
+
+    #region 출석 메인 기능
+
+    IEnumerator WebCheck() //인터넷 시간 가져오기.
+    {
+        UnityWebRequest request = new UnityWebRequest();
+        using (request = UnityWebRequest.Get(url))
+        {
+            yield return request.SendWebRequest();
+
+            if (request.result == UnityWebRequest.Result.ConnectionError)
+            {
+                Debug.Log(request.error);
+            }
+            else
+            {
+                string date = request.GetResponseHeader("date");
+                DateTime dateTime = DateTime.Parse(date);
+                DataController.instance.gameData.Today = dateTime;
+            }
+        }
+    }
+
     public void Attendance()
     {
-        DateTime today = DateTime.Now;
+        DateTime today = DataController.instance.gameData.Today;
         DateTime lastday = DataController.instance.gameData.Lastday; //지난 날짜 받아오기
-        bool isAttendance = DataController.instance.gameData.attendance;
-        int days = DataController.instance.gameData.days;
-        int weeks;
+        bool isAttendance = DataController.instance.gameData.attendance; //출석 여부 판단 bool 값
+        int days = DataController.instance.gameData.days; // 출석 누적 날짜.
+        int weeks; //주차 구분
+        //lastday = DateTime.Parse("2022-03-12"); //테스트용
+        //days = 6; //테스트 용.
 
-        // days = 6; 출석 기능 테스트 용. 누적 날짜 조정.
+        TimeSpan ts = today - lastday; //날짜 차이 계산
+        int DaysCompare = ts.Days; //Days 정보만 추출.
 
         if (isAttendance == false)
         {
@@ -478,171 +509,162 @@ public class GameManager : MonoBehaviour
             }
             else if (days == 0)
             {
-                days += 1;
                 weeks = days;
+                //Week 1 로 텍스트 설정
             }
             else
             {
                 weeks = days;
                 //Week 1 로 텍스트 설정
             }
-
-            if (DateTime.Compare(today, lastday) > 0) //오늘 날짜가 지난번 출석 날짜보다 미래면
+            if (DaysCompare==1) //오늘 날짜가 지난번 출석 날짜보다 하루 미래면
             {
                 //days에 맞는 버튼 활성화
-                //
                 switch (weeks)
                 {
+                    case 0:
+                        selectDay(weeks);
+                        break;
                     case 1:
-                        selectDay1();
+                        selectDay(weeks);
                         break;
                     case 2:
-                        selectDay2();
+                        selectDay(weeks);
                         break;
                     case 3:
-                        selectDay3();
+                        selectDay(weeks);
                         break;
                     case 4:
-                        selectDay4();
+                        selectDay(weeks);
                         break;
                     case 5:
-                        selectDay5();
+                        selectDay(weeks);
                         break;
                     case 6:
-                        selectDay6();
-                        break;
-                    case 7:
-                        selectDay7();
+                        selectDay(weeks);
                         break;
                 }
             }
-            else // 과거면
+            else if (DateTime.Compare(today, lastday) < 0) //오늘이 과거인 경우는 없지만, 오류 방지용
             {
                 //days 1으로 초기화 후 day1버튼 활성화, week 1로 변경.
                 DataController.instance.gameData.days = 0;
-                selectDay1();
+                selectDay(0);
                 //week 1 텍스트 변경.
+            }
+            else //연속출석이 아닌경우
+            {
+                //days 1으로 초기화 후 day1버튼 활성화, week 1로 변경.
+                DataController.instance.gameData.days = 0;
+                selectDay(0);
+                //week 1 텍스트 변경.
+            }
+        }
+        else //출석을 이미 한 상태다
+        {
+            if (days > 7)
+            {
+                weeks = days % 7;
+                switch (weeks)
+                {
+                    //주차별로 Week 텍스트 설정 추후 추가예정.
+                    case 1:
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        break;
+                    case 4:
+                        break;
+                }
+            }
+            else
+            {
+                weeks = days;
+                //Week 1 로 텍스트 설정
+            }
+            for (int i = 0; i < weeks; i++) //출석완료 버튼 활성화
+            {
+                Front[i].Behind[1].SetActive(true);
             }
         }
     }
 
-    public void selectDay1()
+    #endregion
+
+    #region 날짜 선택
+
+    public void selectDay(int day)
     {
-        Front[0].Behind[2].SetActive(true);
-    }
-    public void selectDay2()
-    {
-        Front[0].Behind[1].SetActive(true);
-        Front[1].Behind[2].SetActive(true);
-    }
-    public void selectDay3()
-    {
-        Front[0].Behind[1].SetActive(true);
-        Front[1].Behind[1].SetActive(true);
-        Front[2].Behind[2].SetActive(true);
-    }
-    public void selectDay4()
-    {
-        Front[0].Behind[1].SetActive(true);
-        Front[1].Behind[1].SetActive(true);
-        Front[2].Behind[1].SetActive(true);
-        Front[3].Behind[2].SetActive(true);
-    }
-    public void selectDay5()
-    {
-        Front[0].Behind[1].SetActive(true);
-        Front[1].Behind[1].SetActive(true);
-        Front[2].Behind[1].SetActive(true);
-        Front[3].Behind[1].SetActive(true);
-        Front[4].Behind[2].SetActive(true);
-    }
-    public void selectDay6()
-    {
-        Front[0].Behind[1].SetActive(true);
-        Front[1].Behind[1].SetActive(true);
-        Front[2].Behind[1].SetActive(true);
-        Front[3].Behind[1].SetActive(true);
-        Front[4].Behind[1].SetActive(true);
-        Front[5].Behind[2].SetActive(true);
-    }
-    public void selectDay7()
-    {
-        Front[0].Behind[1].SetActive(true);
-        Front[1].Behind[1].SetActive(true);
-        Front[2].Behind[1].SetActive(true);
-        Front[3].Behind[1].SetActive(true);
-        Front[4].Behind[1].SetActive(true);
-        Front[5].Behind[1].SetActive(true);
-        Front[6].Behind[2].SetActive(true);
+        if (day != 0)
+        {
+            for (int i = 0; i < day; i++)
+            {
+                Front[i].Behind[1].SetActive(true);
+            }
+        }
+        Front[day].Behind[2].SetActive(true);
     }
 
+    #endregion
+
+    #region 출석 정보 저장
+
+    public void AttandanceSave(int number)
+    {
+        //출석 정보 저장.
+        Front[number].Behind[1].SetActive(true);
+        Front[number].Behind[2].SetActive(false);
+        DataController.instance.gameData.days += 1;
+        DataController.instance.gameData.attendance = true;
+        DataController.instance.gameData.Lastday = DataController.instance.gameData.Today;
+    }
+
+    #endregion
+
+    #region 출석 스프라이트 클릭
 
     public void clickDay1()
     {
-        Front[0].Behind[1].SetActive(true);
-        Front[0].Behind[2].SetActive(false);
-        DataController.instance.gameData.days += 1;
-        DataController.instance.gameData.attendance = true;
-        DataController.instance.gameData.Lastday = DateTime.Now;
+        AttandanceSave(0);
     }
     public void clickDay2()
     {
-        Front[1].Behind[1].SetActive(true);
-        Front[1].Behind[2].SetActive(false);
-        DataController.instance.gameData.days += 1;
-        DataController.instance.gameData.attendance = true;
-        DataController.instance.gameData.Lastday = DateTime.Now;
+        AttandanceSave(1);
     }
     public void clickDay3()
     {
-        Front[2].Behind[1].SetActive(true);
-        Front[2].Behind[2].SetActive(false);
-        DataController.instance.gameData.days += 1;
-        DataController.instance.gameData.attendance = true;
-        DataController.instance.gameData.Lastday = DateTime.Now;
+        AttandanceSave(2);
     }
     public void clickDay4()
     {
-        Front[3].Behind[1].SetActive(true);
-        Front[3].Behind[2].SetActive(false);
-        DataController.instance.gameData.days += 1;
-        DataController.instance.gameData.attendance = true;
-        DataController.instance.gameData.Lastday = DateTime.Now;
+        AttandanceSave(3);
     }
     public void clickDay5()
     {
-        Front[4].Behind[1].SetActive(true);
-        Front[4].Behind[2].SetActive(false);
-        DataController.instance.gameData.days += 1;
-        DataController.instance.gameData.attendance = true;
-        DataController.instance.gameData.Lastday = DateTime.Now;
+        AttandanceSave(4);
     }
     public void clickDay6()
     {
-        Front[5].Behind[1].SetActive(true);
-        Front[5].Behind[2].SetActive(false);
-        DataController.instance.gameData.days += 1;
-        DataController.instance.gameData.attendance = true;
-        DataController.instance.gameData.Lastday = DateTime.Now;
+        AttandanceSave(5);
     }
     public void clickDay7()
     {
-        Front[6].Behind[1].SetActive(true);
-        Front[6].Behind[2].SetActive(false);
-        DataController.instance.gameData.days += 1;
-        DataController.instance.gameData.attendance = true;
-        DataController.instance.gameData.Lastday = DateTime.Now;
+        AttandanceSave(6);
     }
 
+    #endregion
+
+    #region 자정 체크 및 정보갱신
 
     public void CheckTime()
     {
         //플레이 도중 자정이 넘어갈 경우 출석 가능
         // 자정시간 구하기.
-        DateTime target = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+        DateTime target = new DateTime(DataController.instance.gameData.Today.Year, DataController.instance.gameData.Today.Month, DataController.instance.gameData.Today.Day);
         target = target.AddDays(1);
         // 자정시간 - 현재시간
-        TimeSpan ts = target - DateTime.Now;
+        TimeSpan ts = target - DataController.instance.gameData.Today;
         // 남은시간 만큼 대기 후 OnTimePass 함수 호출.
         Invoke("OnTimePass", (float)ts.TotalSeconds);
     }
@@ -653,6 +675,8 @@ public class GameManager : MonoBehaviour
         DataController.instance.gameData.attendance = false;
         Attendance();
     }
+
+    #endregion
 
     #endregion
 
