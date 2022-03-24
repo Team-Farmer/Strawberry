@@ -307,6 +307,24 @@ public class GameManager : MonoBehaviour
             CoinText.text = show.ToString() + " C";
         }
     }
+
+    public void UseCoin(int cost) // 코인 사용 함수 (마이너스 방지 위함)
+    {
+        int mycoin = DataController.instance.gameData.coin;
+        if (mycoin >= cost)
+            DataController.instance.gameData.coin -= cost; // mycoin -= cost; 이건 안될..걸
+        else
+            Debug.Log("코인이 부족합니다."); //경고 패널 등장
+    }
+
+    public void UseHeart(int cost) // 하트 사용 함수 (마이너스 방지 위함)
+    {
+        int myHeart = DataController.instance.gameData.heart;
+        if (myHeart >= cost)
+            DataController.instance.gameData.heart -= cost;
+        else
+            Debug.Log("하트가 부족합니다."); //경고 패널 등장
+    }
     #endregion
 
     #region 콜라이더

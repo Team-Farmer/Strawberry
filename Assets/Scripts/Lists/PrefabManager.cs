@@ -123,6 +123,7 @@ public class PrefabManager : MonoBehaviour
         //GameManager.instance.coin -= Info[prefabnum].Price;
         //GameManager.instance.ShowCoinText(GameManager.instance.coin);
         DataController.instance.gameData.coin -= Info[prefabnum].Price;
+        //GameManager.instance.UseCoin(Info[prefabnum].Price); // ÇÔ¼ö·Î ¹Ù²ãº½
         GameManager.instance.ShowCoinText();
 
 
