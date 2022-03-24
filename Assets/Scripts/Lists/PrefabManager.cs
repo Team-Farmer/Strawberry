@@ -17,12 +17,11 @@ public class PrefabManager : MonoBehaviour
         public bool isEmployed;
 
 
-        public PrefabStruct(string Name,string Explanation, int Price, int Level, Sprite Picture, Sprite FacePicture, bool isEmployed, bool exist)
+        public PrefabStruct(string Name,string Explanation, int Price, Sprite Picture, Sprite FacePicture, bool isEmployed, bool exist)
         {
             this.Name = Name;
             this.Explanation = Explanation;
             this.Price = Price;
-            //this.Level = Level;
             this.Picture = Picture;
             this.FacePicture = FacePicture;
             this.isEmployed=isEmployed;
@@ -82,16 +81,18 @@ public class PrefabManager : MonoBehaviour
     //coin 버튼 -> 연구 레벨, 코인 변화
     public void clickCoin_Research() {
 
-        //레벨이 올라간다.
-        DataController.instance.gameData.researchLevel[prefabnum]++;
-        levelNum.GetComponent<Text>().text = DataController.instance.gameData.researchLevel[prefabnum].ToString();
-
+        if (DataController.instance.gameData.researchLevel[prefabnum] < 25)//레벨 25로 한계두기
+        {
+            //레벨이 올라간다.
+            DataController.instance.gameData.researchLevel[prefabnum]++;
+            levelNum.GetComponent<Text>().text = DataController.instance.gameData.researchLevel[prefabnum].ToString();
+        
         //해당 금액의 코인이 감소된다.
         //GameManager.instance.coin -= Info[prefabnum].Price;
         DataController.instance.gameData.coin -= Info[prefabnum].Price;
         //GameManager.instance.ShowCoinText(GameManager.instance.coin);
         GameManager.instance.ShowCoinText();
-
+        }
     }
 
 

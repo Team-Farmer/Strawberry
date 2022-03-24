@@ -9,15 +9,17 @@ public class ChallengeNews : MonoBehaviour
     [Serializable]
     public class ChallengeNewsStruct
     {
-        public string Title;
-        public int[] reward;
-        public string Exp_news;
+        public string Title;//제목
+        public int[] reward_challenge;//보상 = [0]메달 / [1]하트
+        public int condition_challenge;
+        public string Exp_news;//뉴스 내용
 
 
-        public ChallengeNewsStruct(string Title, int[] reward, bool isUnlock_n, string Exp_news, int Gauge_c)
+        public ChallengeNewsStruct(string Title, int[] reward_challenge,int condition_challenge, string Exp_news)
         {
             this.Title = Title;
-            this.reward = reward;
+            this.reward_challenge = reward_challenge;
+            this.condition_challenge = condition_challenge;
             this.Exp_news = Exp_news;
         }
     }
@@ -34,9 +36,10 @@ public class ChallengeNews : MonoBehaviour
     private GameObject lock_News;
     public GameObject doneButton_Challenge;
 
-
     [SerializeField]
-    private GameObject gaugeText_Challenge;
+    private GameObject gaugeConditionText_Challenge;//도전과제 달성 조건 텍스트
+    [SerializeField]
+    private GameObject gaugeText_Challenge;//현재 도전과제 달성 수치 텍스트
     [SerializeField]
     private GameObject Btn_Challenge;
 
@@ -98,14 +101,14 @@ public class ChallengeNews : MonoBehaviour
                 doneButton_Challenge.SetActive(true);//더이상 버튼 누르지못하게하기(위에 완료 버튼 이미지 넣어서)
             }
 
-            if (DataController.instance.gameData.challengeGauge[prefabnum] == 30)//도전과제 완료, 30은 변수로 나중에 바꿀것
-            {
-                
+            if (DataController.instance.gameData.challengeGauge[prefabnum] == Info[prefabnum].condition_challenge)//도전과제 완료
+            {                
                 Btn_Challenge.GetComponent<Image>().sprite = BtnImage_Challenge[1];
-                
             }
-            //도전과제 게이지 수치
-            Gauge_Challenge.GetComponent<Image>().fillAmount = (float)DataController.instance.gameData.challengeGauge[prefabnum] / 30;
+            //도전과제 게이지 달성 조건
+            gaugeConditionText_Challenge.GetComponent<Text>().text = "/"+Info[prefabnum].condition_challenge.ToString();
+            //도전과제 게이지 수치 이미지
+            Gauge_Challenge.GetComponent<Image>().fillAmount = (float)DataController.instance.gameData.challengeGauge[prefabnum] / Info[prefabnum].condition_challenge;
             //도전과제 게이지 수치 문자
             gaugeText_Challenge.GetComponent<Text>().text = DataController.instance.gameData.challengeGauge[prefabnum].ToString();
             
@@ -126,13 +129,13 @@ public class ChallengeNews : MonoBehaviour
 
     //도전과제 달성후 완료 버튼 누를시
     public void ChallengeSuccess() {
-        if (DataController.instance.gameData.challengeGauge[prefabnum] == 30)
+        if (DataController.instance.gameData.challengeGauge[prefabnum] == Info[prefabnum].condition_challenge)
         {
             //메달==================================================
-            DataController.instance.gameData.medal += 3;//보상 추가
+            DataController.instance.gameData.medal += Info[prefabnum].reward_challenge[0];//보상 추가
             medalText.GetComponent<Text>().text = DataController.instance.gameData.medal.ToString();//메달 현황 텍스트로 띄우기
             //하트==================================================
-            DataController.instance.gameData.heart += 3;//보상 추가
+            DataController.instance.gameData.heart += Info[prefabnum].reward_challenge[1];//보상 추가
             
             DataController.instance.gameData.challengeEnd[prefabnum] = true;//보상받았다는것 표시
             doneButton_Challenge.SetActive(true);//더이상 버튼 누르지못하게하기(위에 완료 버튼 이미지 넣어서)

@@ -364,37 +364,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Info:
   - Title: "\uB538\uAE30 \uC218\uC9D1\uD558\uAE30"
-    reward: 
-    isDone_c: 0
+    reward_challenge: 0300000003000000
+    condition_challenge: 30
     Exp_news: 
   - Title: "\uB204\uC801 \uCF54\uC778"
-    reward: 
-    isDone_c: 0
+    reward_challenge: 0400000004000000
+    condition_challenge: 10
     Exp_news: 
   - Title: "\uD558\uD2B8"
-    reward: 
-    isDone_c: 0
+    reward_challenge: 0500000005000000
+    condition_challenge: 20
     Exp_news: 
   - Title: "\uC784\uC2DC"
-    reward: 
-    isDone_c: 0
+    reward_challenge: 0600000006000000
+    condition_challenge: 30
     Exp_news: 
   - Title: "\uC784\uC2DC"
-    reward: 
-    isDone_c: 0
+    reward_challenge: 0700000007000000
+    condition_challenge: 30
     Exp_news: 
   - Title: "\uC784\uC2DC"
-    reward: 
-    isDone_c: 0
+    reward_challenge: 0800000008000000
+    condition_challenge: 10
     Exp_news: 
   - Title: "\uC784\uC2DC"
-    reward: 
-    isDone_c: 0
+    reward_challenge: 0900000009000000
+    condition_challenge: 10
     Exp_news: 
   titleText: {fileID: 527783996456215474}
   countText_News: {fileID: 0}
   lock_News: {fileID: 0}
   doneButton_Challenge: {fileID: 6844077706645152247}
+  gaugeConditionText_Challenge: {fileID: 527783997037598283}
   gaugeText_Challenge: {fileID: 527783996540281741}
   Btn_Challenge: {fileID: 527783997747247045}
   GaugeContainer_Challenge: {fileID: 527783996351974104}
