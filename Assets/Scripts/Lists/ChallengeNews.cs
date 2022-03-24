@@ -128,8 +128,12 @@ public class ChallengeNews : MonoBehaviour
     public void ChallengeSuccess() {
         if (DataController.instance.gameData.challengeGauge[prefabnum] == 30)
         {
-            DataController.instance.gameData.medal += 3;//메달 값 증가
+            //메달==================================================
+            DataController.instance.gameData.medal += 3;//보상 추가
             medalText.GetComponent<Text>().text = DataController.instance.gameData.medal.ToString();//메달 현황 텍스트로 띄우기
+            //하트==================================================
+            DataController.instance.gameData.heart += 3;//보상 추가
+            
             DataController.instance.gameData.challengeEnd[prefabnum] = true;//보상받았다는것 표시
             doneButton_Challenge.SetActive(true);//더이상 버튼 누르지못하게하기(위에 완료 버튼 이미지 넣어서)
         }

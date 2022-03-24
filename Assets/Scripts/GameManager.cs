@@ -44,9 +44,10 @@ public class GameManager : MonoBehaviour
     public GameObject ResearchList;
     public GameObject BerryList;
     public GameObject PanelBlack;
-    public GameObject panelBlack_Exp;
-    internal object count;
-    public GameObject[] working;
+    //public GameObject panelBlack_Exp;
+    public GameObject workingCountText;//일하는사람들 숫자 띄우기
+    //internal object count;
+    public GameObject[] working;//일하는자들 상단에 띄우기
 
     //새로운딸기 관련========================================
     [Header("OBJECT")]
@@ -347,7 +348,7 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region 리스트
-    //활성화 비활성화
+    //활성화 비활성화로 창 끄고 켜고
     public void turnOff(GameObject Obj)
     {
         if (Obj.activeSelf == true)
@@ -355,6 +356,7 @@ public class GameManager : MonoBehaviour
         else
         { Obj.SetActive(true); }
     }
+    //PTJ
     public void workingApply(List<Sprite> workingList) 
     {
         for (int i = 0; i < 3; i++)
@@ -370,6 +372,9 @@ public class GameManager : MonoBehaviour
             catch{ Debug.Log("error test"); }
         }
     }
+    //PTJ몇명 고용했는지
+    public void workingCount(int employCount) { workingCountText.GetComponent<Text>().text = employCount.ToString() + "/3"; }
+    //새로운 딸기 관련 정보
     public void updateInfo(int index)
     {
 
@@ -395,7 +400,7 @@ public class GameManager : MonoBehaviour
         catch
         {            Debug.Log("다음 레벨 정보 없음");        }
     }
-    //버튼을 누르면
+    //새로운 딸기 버튼을 누르면
     public void newBerryAdd()
     {
         //타이머가 0 이라면 

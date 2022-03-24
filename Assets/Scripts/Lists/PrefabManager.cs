@@ -136,6 +136,7 @@ public class PrefabManager : MonoBehaviour
 
 
         ++employCount;
+        GameManager.instance.workingCount(employCount);
     }
     private void fire() 
     {
@@ -150,7 +151,7 @@ public class PrefabManager : MonoBehaviour
         workingList.Remove(Info[prefabnum].FacePicture);
         workingList.Add(null);
         GameManager.instance.workingApply(workingList);
-        
+        GameManager.instance.workingCount(employCount);
 
     }
 
