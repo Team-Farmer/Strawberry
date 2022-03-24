@@ -96,10 +96,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1623f1a85948efd45a0dfed04582153b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  berryName: PermenantSnow
+  berryName: "\uB9CC\uB144\uC124"
   berrykindProb: 100
-  berryExplain: 
-  berryIdx: 0
+  berryExplain: "\uC5F0\uBD84\uD64D\uBE5B\uC744 \uB744\uC5B4 \uB9CC\uB144\uC124\uCC98\uB7FC
+    \uD76C\uB2E4 \uD558\uC5EC \uB9CC\uB144\uC124\uC774\uB77C \uBD88\uB9AC\uC6B0\uB294
+    \uB538\uAE30\uC774\uB2E4. \uBE68\uAC04 \uB538\uAE30\uC5D0 \uBE44\uD574 \uB2F9\uB3C4\uAC00
+    \uB192\uC544 \uD2B9\uC720\uC758 \uB2EC\uCF64\uD55C \uB9DB\uC744 \uC990\uAE38
+    \uC218 \uC788\uB2E4."
+  berryIdx: 64
   berryRank: 1
 --- !u!95 &8238155578764226143
 Animator:

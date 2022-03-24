@@ -96,10 +96,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1623f1a85948efd45a0dfed04582153b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  berryName: Rainbow
+  berryName: "\uBB34\uC9C0\uAC1C \uB538\uAE30"
   berrykindProb: 100
-  berryExplain: 
-  berryIdx: 0
+  berryExplain: "\uBB34\uC9C0\uAC2F\uBE5B\uC774 \uB098\uB294 \uB538\uAE30\uC774\uB2E4.
+    \uB9DB\uB3C4 \uBB34\uC9C0\uAC1C \uB9DB\uC774 \uB09C\uB2E4\uACE0 \uD558\uB294\uB370,
+    \uD55C\uBC88 \uBA39\uC5B4\uBCF4\uBA74 \uADF8 \uB9DB\uC744 \uC78A\uC744 \uC218
+    \uC5C6\uB2E4\uB098 \uBB50\uB77C\uB098."
+  berryIdx: 129
   berryRank: 2
 --- !u!95 &8238155578764226143
 Animator:

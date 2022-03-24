@@ -96,10 +96,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1623f1a85948efd45a0dfed04582153b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  berryName: Tanghulu
+  berryName: "\uD0D5\uD478\uB8E8 \uB538\uAE30"
   berrykindProb: 100
-  berryExplain: 
-  berryIdx: 0
+  berryExplain: "\uB728\uAC70\uC6B4 \uC124\uD0D5 \uCF54\uD305\uC744 \uACAC\uB518
+    \uC6A9\uB9F9\uD55C \uB538\uAE30. \uACE0\uC9C4\uAC10\uB798\uB77C \uD588\uB358\uAC00,
+    \uC774\uC81C \uB538\uAE30\uB294 \uBE5B\uB098\uACE0 \uB2EC\uCF64\uD55C \uD2BC\uD2BC\uD55C
+    \uC124\uD0D5 \uAC11\uC637\uC744 \uC785\uAC8C \uB418\uC5C8\uB2E4. "
+  berryIdx: 131
   berryRank: 2
 --- !u!95 &8238155578764226143
 Animator:

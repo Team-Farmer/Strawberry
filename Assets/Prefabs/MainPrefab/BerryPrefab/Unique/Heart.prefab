@@ -96,10 +96,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1623f1a85948efd45a0dfed04582153b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  berryName: Heart
+  berryName: "\uD558\uD2B8 \uB538\uAE30"
   berrykindProb: 100
-  berryExplain: 
-  berryIdx: 0
+  berryExplain: "\uC644\uBCBD\uD55C \uD558\uD2B8 \uBAA8\uC591\uC758 \uD551\uD06C\uBE5B
+    \uB538\uAE30\uC774\uB2E4\uB9CC, \uC660\uC9C0 \uBAA8\uB974\uAC8C \uC74C\uD749\uD55C
+    \uD45C\uC815\uC744 \uC9D3\uACE0 \uC788\uB2E4."
+  berryIdx: 130
   berryRank: 2
 --- !u!95 &8238155578764226143
 Animator:

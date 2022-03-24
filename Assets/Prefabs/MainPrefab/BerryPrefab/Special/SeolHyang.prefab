@@ -96,10 +96,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1623f1a85948efd45a0dfed04582153b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  berryName: SeolHyang
+  berryName: "\uC124\uD5A5"
   berrykindProb: 100
-  berryExplain: 
-  berryIdx: 0
+  berryExplain: "\uAD6D\uB0B4 \uB538\uAE30\uC758 \uC57D 85%\uB97C \uCC28\uC9C0\uD558\uB294
+    \uC6B0\uB9AC\uAC00 \uC544\uB294 \uADF8 \uB538\uAE30\uC774\uB2E4. \uD0A4\uC6B0\uAE30
+    \uC27D\uACE0 \uACA8\uC6B8 \uC7AC\uBC30\uAC00 \uAC00\uB2A5\uD574\uC9C4 \uD488\uC885\uC774\uB77C\uB294
+    \uB73B\uC73C\uB85C \uB208 \uC124(\u96EA)\uC790\uB97C \uBD99\uC600\uB2E4. \uD0A4\uC6B0\uAE30
+    \uC27D\uACE0 \uC218\uB7C9\uB3C4 \uB9CE\uB2E4."
+  berryIdx: 64
   berryRank: 1
 --- !u!95 &8238155578764226143
 Animator:

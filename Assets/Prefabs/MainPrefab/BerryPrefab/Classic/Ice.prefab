@@ -96,10 +96,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1623f1a85948efd45a0dfed04582153b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  berryName: Ice
+  berryName: "\uB0C9\uB3D9 \uB538\uAE30"
   berrykindProb: 100
-  berryExplain: 
-  berryIdx: 0
+  berryExplain: "\uAC15\uD55C \uCD94\uC704\uC5D0 \uAF41\uAF41 \uC5BC\uC5B4\uBC84\uB9B0
+    \uB538\uAE30\uC774\uB2E4. \uCD94\uC704\uB97C \uACAC\uB518 \uB538\uAE30\uB294
+    \uC544\uD320\uB358 \uB9CC\uD07C\uC774\uB2E4 \uB2E8\uB2E8\uD574\uC84C\uB2E4."
+  berryIdx: 6
   berryRank: 0
 --- !u!95 &8238155578764226143
 Animator:

@@ -96,10 +96,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1623f1a85948efd45a0dfed04582153b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  berryName: AriHyang
+  berryName: "\uC544\uB9AC\uD5A5"
   berrykindProb: 100
-  berryExplain: 
-  berryIdx: 0
+  berryExplain: "\uD0B9\uC2A4\uBCA0\uB9AC\uC5D0 \uC9C0\uC9C0 \uC54A\uB294 \uD06C\uAE30\uC758
+    \uC18C\uC720\uC790. \uC0C8\uCF64\uB2EC\uCF64\uD55C \uB9DB\uC774 \uC9C4\uD558\uBA70
+    \uACFC\uC2E4\uC758 \uD06C\uAE30\uAC00 \uD06C\uACE0 \uB2E8\uB2E8\uD558\uB2E4."
+  berryIdx: 69
   berryRank: 1
 --- !u!95 &8238155578764226143
 Animator:

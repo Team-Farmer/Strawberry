@@ -42,6 +42,7 @@ public class ChallengeNews : MonoBehaviour
     private GameObject gaugeText_Challenge;//현재 도전과제 달성 수치 텍스트
     [SerializeField]
     private GameObject Btn_Challenge;
+    public GameObject bangMark_Challenge;
 
     [Header("==========Gauge==========")]
     [SerializeField]
@@ -79,6 +80,15 @@ public class ChallengeNews : MonoBehaviour
         medalText.GetComponent<Text>().text = DataController.instance.gameData.medal.ToString();//메달 현황 텍스트로 띄우기
         InfoUpdate();
     }
+
+
+
+
+
+
+
+
+
     public void InfoUpdate() {
 
         //!!!!!!!!!!!!!!주의!!!!!!!!!!!!!숫자 프리팹 숫자와 관련되어 있다!!! 같이 조절해야함
@@ -95,15 +105,18 @@ public class ChallengeNews : MonoBehaviour
         
         if (isChallenge == true) //CHALLENGE=============================
         {
-            //도전과제 완료해서 보상까지 받았으면
-            if (DataController.instance.gameData.challengeEnd[prefabnum] == true)
-            {
-                doneButton_Challenge.SetActive(true);//더이상 버튼 누르지못하게하기(위에 완료 버튼 이미지 넣어서)
-            }
+            
 
             if (DataController.instance.gameData.challengeGauge[prefabnum] == Info[prefabnum].condition_challenge)//도전과제 완료
             {                
                 Btn_Challenge.GetComponent<Image>().sprite = BtnImage_Challenge[1];
+                bangMark_Challenge.SetActive(true);//느낌표 띄우기
+            }
+            //도전과제 완료해서 보상까지 받았으면
+            if (DataController.instance.gameData.challengeEnd[prefabnum] == true)
+            {
+                doneButton_Challenge.SetActive(true);//더이상 버튼 누르지못하게하기(위에 완료 버튼 이미지 넣어서)
+                bangMark_Challenge.SetActive(false);//느낌표 지우기
             }
             //도전과제 게이지 달성 조건
             gaugeConditionText_Challenge.GetComponent<Text>().text = "/"+Info[prefabnum].condition_challenge.ToString();
@@ -139,6 +152,8 @@ public class ChallengeNews : MonoBehaviour
             
             DataController.instance.gameData.challengeEnd[prefabnum] = true;//보상받았다는것 표시
             doneButton_Challenge.SetActive(true);//더이상 버튼 누르지못하게하기(위에 완료 버튼 이미지 넣어서)
+
+            bangMark_Challenge.SetActive(false);//느낌표 지우기
         }
     }
 

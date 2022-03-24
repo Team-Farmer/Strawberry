@@ -96,9 +96,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1623f1a85948efd45a0dfed04582153b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  berryName: General
+  berryName: "\uD3C9\uBC94\uD55C \uB538\uAE30"
   berrykindProb: 100
-  berryExplain: 
+  berryExplain: "\uC27D\uAC8C \uBCFC \uC218 \uC788\uB294 \uD3C9\uBC94\uD55C \uB538\uAE30\uC774\uB2E4.
+    \uD3C9\uBC94\uD558\uB2E4\uB294 \uAC83\uC740, \uC758\uC678\uB85C \uC5B4\uB824\uC6B4
+    \uC77C\uC774\uB2E4."
   berryIdx: 0
   berryRank: 0
 --- !u!95 &8238155578764226143

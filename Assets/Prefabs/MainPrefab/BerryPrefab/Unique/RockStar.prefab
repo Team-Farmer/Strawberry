@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1623f1a85948efd45a0dfed04582153b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  berryName: RockStar
+  berryName: "\uB77D\uC2A4\uD0C0 \uB538\uAE30"
   berrykindProb: 100
   berryExplain: 
   berryIdx: 0
