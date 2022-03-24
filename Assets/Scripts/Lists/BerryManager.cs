@@ -24,7 +24,6 @@ public class BerryManager : MonoBehaviour
     public GameObject[] berryPrefabs;
 
 
-
     //베리 설명 관련
     GameObject berryExp;
     GameObject ExpChildren;
@@ -57,28 +56,30 @@ public class BerryManager : MonoBehaviour
     public void Explanation()
     {
 
-            ExpChildren = berryExp.transform.GetChild(0).transform.gameObject;//berryExp
-            ExpChildren2 = ExpChildren.transform.GetChild(1).transform.gameObject;//berryExpImage
+   
 
-            try
-            {
-            //if (berryInfo[prefabnum].exist == true)
-            if (DataController.instance.gameData.isBerryUnlock[prefabnum] == true)
-            {
-                    //검정창 띄운다.
-                    //설명창이 뜬다.
-                    ExpChildren.SetActive(true);
-                    //Explanation 내용을 채운다.
-                    ExpChildren2.transform.GetChild(0).transform.gameObject.GetComponentInChildren<Image>().sprite = berryPrefabs[prefabnum].GetComponent<SpriteRenderer>().sprite;//이미지 설정
-                    ExpChildren2.transform.GetChild(1).transform.gameObject.GetComponentInChildren<Text>().text = berryPrefabs[prefabnum].GetComponent<Berry>().berryName;//이름 설정
-                    ExpChildren2.transform.GetChild(2).transform.gameObject.GetComponentInChildren<Text>().text = berryPrefabs[prefabnum].GetComponent<Berry>().berryExplain;//설명 설정
-                }
+        ExpChildren = berryExp.transform.GetChild(0).transform.gameObject;//berryExp
+        ExpChildren2 = ExpChildren.transform.GetChild(1).transform.gameObject;//berryExpImage
+
+        try
+        {
+        //if (berryInfo[prefabnum].exist == true)
+        if (DataController.instance.gameData.isBerryUnlock[prefabnum] == true)
+        {
+                //검정창 띄운다.
+                //설명창이 뜬다.
+                ExpChildren.SetActive(true);
+                //Explanation 내용을 채운다.
+                ExpChildren2.transform.GetChild(0).transform.gameObject.GetComponentInChildren<Image>().sprite = berryPrefabs[prefabnum].GetComponent<SpriteRenderer>().sprite;//이미지 설정
+                ExpChildren2.transform.GetChild(1).transform.gameObject.GetComponentInChildren<Text>().text = berryPrefabs[prefabnum].GetComponent<Berry>().berryName;//이름 설정
+                ExpChildren2.transform.GetChild(2).transform.gameObject.GetComponentInChildren<Text>().text = berryPrefabs[prefabnum].GetComponent<Berry>().berryExplain;//설명 설정
             }
-            catch
-            {
-                //ExpChildren.SetActive(false);
-                Debug.Log("여기에 해당하는 베리는 아직 없다");
-            }
+        }
+        catch
+        {
+            //ExpChildren.SetActive(false);
+            Debug.Log("여기에 해당하는 베리는 아직 없다");
+        }
 
 
     }
