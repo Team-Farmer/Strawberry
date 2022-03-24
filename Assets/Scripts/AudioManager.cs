@@ -5,8 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
+    public bool isPlayAudio;
+
     public AudioSource bgSound;
-    public AudioClip[] bglist;
+    public AudioClip[] bglist;//배경음 리스트
     public static AudioManager instance;
     private void Awake()
     {
@@ -14,15 +16,17 @@ public class AudioManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(instance);
-            SceneManager.sceneLoaded += OnSceneLoaded;
+            SceneManager.sceneLoaded += OnSceneLoaded;//씬 시작시 실행
         }
         else { Destroy(gameObject); }
     }
+
+    //씬에 따라 배경음 변경
     private void OnSceneLoaded(Scene arg0,LoadSceneMode arg1) {
         for (int i = 0; i < bglist.Length; i++) {
-            if (arg0.name == bglist[i].name)
+            if (arg0.name == bglist[i].name)//씬이름과 같은 배경음 틀기
             {
-                BgSoundPlay(bglist[i]);
+                BgSoundPlay(bglist[i]);//재생
             }
         }
     
@@ -46,13 +50,12 @@ public class AudioManager : MonoBehaviour
     */
 
     public void BgSoundPlay(AudioClip clip) {
-
-        bgSound.clip = clip;
-        bgSound.loop = true;
-        bgSound.volume = 0.1f;
-        bgSound.Play();
-
-
-    
+        if (isPlayAudio == true)
+        {
+            bgSound.clip = clip;
+            bgSound.loop = false;
+            bgSound.volume = 0.1f;
+            bgSound.Play();
+        }
     }
 }
