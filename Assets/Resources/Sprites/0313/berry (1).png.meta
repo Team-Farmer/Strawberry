@@ -253,27 +253,6 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: berry (1)_12
-      rect:
-        serializedVersion: 2
-        x: 279
-        y: 2022
-        width: 214
-        height: 184
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3339b1911ea5b36c0800000000000000
-      internalID: -4162633507738512589
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: berry (1)_13
       rect:
         serializedVersion: 2
@@ -316,27 +295,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: berry (1)_21
-      rect:
-        serializedVersion: 2
-        x: 279
-        y: 1756
-        width: 214
-        height: 183
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4dd61cd2ca0382860800000000000000
-      internalID: 7505302295073091028
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: berry (1)_22
       rect:
         serializedVersion: 2
@@ -353,27 +311,6 @@ TextureImporter:
       bones: []
       spriteID: 2449f7e8545b19160800000000000000
       internalID: 7030599803650151490
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: berry (1)_24
-      rect:
-        serializedVersion: 2
-        x: 282
-        y: 1498
-        width: 208
-        height: 185
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c7c6eda316f283450800000000000000
-      internalID: 6068652592527731836
       vertices: []
       indices: 
       edges: []
@@ -400,69 +337,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: berry (1)_28
-      rect:
-        serializedVersion: 2
-        x: 74
-        y: 1408
-        width: 66
-        height: 34
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1025d3731c6153c40800000000000000
-      internalID: 5491320339759452673
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: berry (1)_29
-      rect:
-        serializedVersion: 2
-        x: 142
-        y: 1408
-        width: 32
-        height: 34
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5b942e8aab1e1d840800000000000000
-      internalID: 5247223232676907445
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: berry (1)_30
-      rect:
-        serializedVersion: 2
-        x: 282
-        y: 1211
-        width: 209
-        height: 196
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e7514bf4add5a0000800000000000000
-      internalID: 2917941988562302
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: berry (1)_31
       rect:
         serializedVersion: 2
@@ -479,27 +353,6 @@ TextureImporter:
       bones: []
       spriteID: be6a244cae9c0ab10800000000000000
       internalID: 1990813045449991915
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: berry (1)_33
-      rect:
-        serializedVersion: 2
-        x: 282
-        y: 957
-        width: 208
-        height: 184
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 51617538e34107090800000000000000
-      internalID: -8038903076132284907
       vertices: []
       indices: 
       edges: []
@@ -526,111 +379,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: berry (1)_36
-      rect:
-        serializedVersion: 2
-        x: 73
-        y: 906
-        width: 936
-        height: 7
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b436b9495f829c3b0800000000000000
-      internalID: -5491813235376299189
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: berry (1)_37
-      rect:
-        serializedVersion: 2
-        x: 74
-        y: 856
-        width: 34
-        height: 35
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c4ba485a3f5740ea0800000000000000
-      internalID: -5907467121888810164
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: berry (1)_38
-      rect:
-        serializedVersion: 2
-        x: 110
-        y: 856
-        width: 29
-        height: 35
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f0671374cd07e0560800000000000000
-      internalID: 7281881738894210575
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: berry (1)_39
-      rect:
-        serializedVersion: 2
-        x: 141
-        y: 861
-        width: 33
-        height: 29
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a850e98759e8f6ce0800000000000000
-      internalID: -1409751385718782582
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: berry (1)_40
-      rect:
-        serializedVersion: 2
-        x: 274
-        y: 694
-        width: 223
-        height: 184
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e6c62a23b46bef0d0800000000000000
-      internalID: -3387069435647726482
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: berry (1)_41
       rect:
         serializedVersion: 2
@@ -647,27 +395,6 @@ TextureImporter:
       bones: []
       spriteID: 9bef515d7bb6bb8b0800000000000000
       internalID: -5135392512787743047
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: berry (1)_44
-      rect:
-        serializedVersion: 2
-        x: 272
-        y: 414
-        width: 228
-        height: 185
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6bc9d2ad5c84df870800000000000000
-      internalID: 8718204468265327798
       vertices: []
       indices: 
       edges: []
@@ -694,69 +421,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: berry (1)_46
-      rect:
-        serializedVersion: 2
-        x: 728
-        y: 389
-        width: 46
-        height: 24
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6568a308ff789b930800000000000000
-      internalID: 4159505262291093078
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: berry (1)_47
-      rect:
-        serializedVersion: 2
-        x: 778
-        y: 389
-        width: 45
-        height: 24
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 94dd53378d35e3970800000000000000
-      internalID: 8736512516256292169
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: berry (1)_48
-      rect:
-        serializedVersion: 2
-        x: 282
-        y: 137
-        width: 208
-        height: 185
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5fdb3b5ccf032ceb0800000000000000
-      internalID: -4701141198814593547
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: berry (1)_49
       rect:
         serializedVersion: 2
@@ -773,48 +437,6 @@ TextureImporter:
       bones: []
       spriteID: fa240d86554091e00800000000000000
       internalID: 1015847955825967791
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: berry (1)_50
-      rect:
-        serializedVersion: 2
-        x: 720
-        y: 111
-        width: 103
-        height: 24
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: afa31a1af45c05b50800000000000000
-      internalID: 6579976001393081082
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: berry (1)_51
-      rect:
-        serializedVersion: 2
-        x: 824
-        y: 111
-        width: 6
-        height: 24
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 48ad9cced0840a380800000000000000
-      internalID: -8962084033822860668
       vertices: []
       indices: 
       edges: []
