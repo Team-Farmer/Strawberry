@@ -19,7 +19,6 @@ public class Truck : MonoBehaviour
     {
         anim = GetComponent<Animator>();        
     }
-    
     void FixedUpdate()
     {
         if(0 <= DataController.instance.gameData.berryCnt && DataController.instance.gameData.berryCnt < 16)

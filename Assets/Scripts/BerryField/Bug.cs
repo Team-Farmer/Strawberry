@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Bug : MonoBehaviour
 {    
-    private Animator anim; 
-    
+    private Animator anim;   
     public int bugIdx;
       
     void Awake()

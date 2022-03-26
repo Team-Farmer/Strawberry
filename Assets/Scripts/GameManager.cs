@@ -29,7 +29,15 @@ public class GameManager : MonoBehaviour
     public List<Farm> farmList = new List<Farm>();
     public List<Stem> stemList = new List<Stem>();
     public List<Bug> bugList = new List<Bug>();
-   
+
+    public GameObject classicBerry;
+    public GameObject speicalBerry;
+    public GameObject uniqueBerry;
+
+    private BerryManager classicBerryManager;
+    private BerryManager specialBerryManager;
+    private BerryManager uniqueBerryManager;
+
     public List<GameObject> berryPrefabListAll = new List<GameObject>();   
     public List<GameObject> berryPrefabListUnlock = new List<GameObject>();
     public List<GameObject> berryPrefabListlock = new List<GameObject>();
@@ -80,15 +88,16 @@ public class GameManager : MonoBehaviour
     #region 기본
     void Awake()
     {
+        Application.targetFrameRate = 60;
+        instance = this; // 게임 매니저의 싱글턴 패턴화 >> GameManager.instance.~~ 로 호출                               
+        target = TruckObj.GetComponent<Transform>();
+        
+        //for(int i = 0; i < )
         //출석 관련 호출.
         StartCoroutine(WebCheck());
         Attendance();
         CheckTime();
-
-            Application.targetFrameRate = 60;
-        instance = this; // 게임 매니저의 싱글턴 패턴화 >> GameManager.instance.~~ 로 호출                               
-        target = TruckObj.GetComponent<Transform>();
-        
+              
         SetBerryPrice();
         InitDataInGM();
     }

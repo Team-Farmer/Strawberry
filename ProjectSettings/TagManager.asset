@@ -10,6 +10,7 @@ TagManager:
   - berry_classic
   - Bug
   - Weed
+  - Rain
   layers:
   - Default
   - TransparentFX

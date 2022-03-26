@@ -16,11 +16,14 @@ public class Stem : MonoBehaviour
 
     public int stemIdx;
     public Berry instantBerry;
+
+    RainCtrl rainCtrl;
     void Awake()
     {
         anim = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
-        stemBug = GameManager.instance.bugList[stemIdx];       
+        stemBug = GameManager.instance.bugList[stemIdx];
+        rainCtrl = GameObject.FindGameObjectWithTag("Rain").GetComponent<RainCtrl>();
     }
     private void OnEnable()
     {       
@@ -65,9 +68,9 @@ public class Stem : MonoBehaviour
     }
     void Update() // 시간에 따라 딸기 성장
     {
-        if (DataController.instance.gameData.berryFieldData[stemIdx].canGrow) // 잡초가 자랐거나 벌레가 자란 줄기는 불러오기가 안되네 >>  해결
+        if (DataController.instance.gameData.berryFieldData[stemIdx].canGrow) 
         {
-            DataController.instance.gameData.berryFieldData[stemIdx].createTime += Time.deltaTime;
+            DataController.instance.gameData.berryFieldData[stemIdx].createTime += Time.deltaTime * rainCtrl.mult;
             updateStem();
         }
     }

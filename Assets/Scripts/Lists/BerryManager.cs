@@ -55,9 +55,6 @@ public class BerryManager : MonoBehaviour
     //=====================================================================================================
     public void Explanation()
     {
-
-   
-
         ExpChildren = berryExp.transform.GetChild(0).transform.gameObject;//berryExp
         ExpChildren2 = ExpChildren.transform.GetChild(1).transform.gameObject;//berryExpImage
 
