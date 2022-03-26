@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8238155578764226140}
   - component: {fileID: 8238155578764226143}
   m_Layer: 0
-  m_Name: Bited
+  m_Name: 3_Bited
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

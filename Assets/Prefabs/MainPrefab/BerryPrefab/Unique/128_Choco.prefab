@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8238155578764226140}
   - component: {fileID: 8238155578764226143}
   m_Layer: 0
-  m_Name: Tanghulu
+  m_Name: 128_Choco
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: -1274572085
   m_SortingLayer: 1
   m_SortingOrder: 2
-  m_Sprite: {fileID: -5135392512787743047, guid: 7e3931d7486c37f408a0ed8159bd123a, type: 3}
+  m_Sprite: {fileID: 4163286833491349941, guid: 9514129d6406c864ca06a22fea2e150f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -96,13 +96,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1623f1a85948efd45a0dfed04582153b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  berryName: "\uD0D5\uD478\uB8E8 \uB538\uAE30"
+  berryName: "\uCD08\uCF54 \uB538\uAE30"
   berrykindProb: 100
-  berryExplain: "\uB728\uAC70\uC6B4 \uC124\uD0D5 \uCF54\uD305\uC744 \uACAC\uB518
-    \uC6A9\uB9F9\uD55C \uB538\uAE30. \uACE0\uC9C4\uAC10\uB798\uB77C \uD588\uB358\uAC00,
-    \uC774\uC81C \uB538\uAE30\uB294 \uBE5B\uB098\uACE0 \uB2EC\uCF64\uD55C \uD2BC\uD2BC\uD55C
-    \uC124\uD0D5 \uAC11\uC637\uC744 \uC785\uAC8C \uB418\uC5C8\uB2E4. "
-  berryIdx: 131
+  berryExplain: "\uCD08\uCF54 \uD401\uB4C0\uC5D0 \uB2F4\uAC14\uB2E4 \uBE80, \uCD08\uCF5C\uB9BF\uC774
+    \uBB3B\uC740 \uB538\uAE30\uC774\uB2E4. \uB450 \uBC30\uB85C \uB2EC\uCF64\uD574\uC84C\uC73C\uB2C8
+    \uBA39\uC73C\uBA74 \uAE30\uBD84\uB3C4 \uB450 \uBC30\uB85C \uC88B\uC544\uC9C8
+    \uAC83\uB9CC \uAC19\uB2E4."
+  berryIdx: 128
   berryRank: 2
 --- !u!95 &8238155578764226143
 Animator:

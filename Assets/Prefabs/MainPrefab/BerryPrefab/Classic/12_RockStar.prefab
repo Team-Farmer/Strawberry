@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8238155578764226140}
   - component: {fileID: 8238155578764226143}
   m_Layer: 0
-  m_Name: Rainbow
+  m_Name: 12_RockStar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: -1274572085
   m_SortingLayer: 1
   m_SortingOrder: 2
-  m_Sprite: {fileID: 8072210295801945290, guid: 9514129d6406c864ca06a22fea2e150f, type: 3}
+  m_Sprite: {fileID: 1015847955825967791, guid: 7e3931d7486c37f408a0ed8159bd123a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -96,14 +96,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1623f1a85948efd45a0dfed04582153b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  berryName: "\uBB34\uC9C0\uAC1C \uB538\uAE30"
+  berryName: "\uB77D\uC2A4\uD0C0 \uB538\uAE30"
   berrykindProb: 100
-  berryExplain: "\uBB34\uC9C0\uAC2F\uBE5B\uC774 \uB098\uB294 \uB538\uAE30\uC774\uB2E4.
-    \uB9DB\uB3C4 \uBB34\uC9C0\uAC1C \uB9DB\uC774 \uB09C\uB2E4\uACE0 \uD558\uB294\uB370,
-    \uD55C\uBC88 \uBA39\uC5B4\uBCF4\uBA74 \uADF8 \uB9DB\uC744 \uC78A\uC744 \uC218
-    \uC5C6\uB2E4\uB098 \uBB50\uB77C\uB098."
-  berryIdx: 129
-  berryRank: 2
+  berryExplain: "\uBA4B\uC9C4 \uD5E4\uB4DC\uBC45\uC789\uC744 \uC704\uD574 \uBA38\uB9AC\uB97C
+    \uAE30\uB974\uACE0 \uC788\uB294 \uC774 \uB538\uAE30\uC758 \uB9C8\uC74C\uC18D\uC5D4
+    \uC5B8\uC81C\uB098 \uB85D\uC774 \uD750\uB974\uACE0 \uC788\uB2E4."
+  berryIdx: 12
+  berryRank: 0
 --- !u!95 &8238155578764226143
 Animator:
   serializedVersion: 3

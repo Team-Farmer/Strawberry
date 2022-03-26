@@ -29,19 +29,7 @@ public class GameManager : MonoBehaviour
     public List<Farm> farmList = new List<Farm>();
     public List<Stem> stemList = new List<Stem>();
     public List<Bug> bugList = new List<Bug>();
-
-    public GameObject classicBerry;
-    public GameObject speicalBerry;
-    public GameObject uniqueBerry;
-
-    private BerryManager classicBerryManager;
-    private BerryManager specialBerryManager;
-    private BerryManager uniqueBerryManager;
-
-    public List<GameObject> berryPrefabListAll = new List<GameObject>();   
-    public List<GameObject> berryPrefabListUnlock = new List<GameObject>();
-    public List<GameObject> berryPrefabListlock = new List<GameObject>();
-
+            
     [Header("------------[Truck List]")]
     public GameObject TruckObj;
     public GameObject TruckPanel;        

@@ -136,7 +136,7 @@ public class Stem : MonoBehaviour
         {          
             transform.position = new Vector2(stemPos.x - 0.15f, stemPos.y + 0.35f);
             instantBerry.gameObject.SetActive(true);
-            instantBerry.GetComponent<SpriteRenderer>().sprite = GameManager.instance.berryPrefabListUnlock[DataController.instance.gameData.berryFieldData[stemIdx].berryPrefabNowIdx].GetComponent<SpriteRenderer>().sprite;
+            instantBerry.GetComponent<SpriteRenderer>().sprite = Globalvariable.instance.berryListAll[DataController.instance.gameData.berryFieldData[stemIdx].berryPrefabNowIdx].GetComponent<SpriteRenderer>().sprite;
             instantBerry.GetComponent<Animator>().SetInteger("berryLevel", level);
             instantBerry.transform.position = new Vector2(transform.position.x + 0.32f, transform.position.y + 0.06f);
         }
@@ -144,29 +144,35 @@ public class Stem : MonoBehaviour
     void DefineBerry() // 누적 확률변수로 랜덤한 딸기 생성
     {
         int cumulative = 0, probSum = 0;
-        int len = GameManager.instance.berryPrefabListUnlock.Count;
+        int len = Globalvariable.instance.berryListAll.Count;
 
         for (int i = 0; i < len; i++)
         {
-            probSum += GameManager.instance.berryPrefabListUnlock[i].GetComponent<Berry>().berrykindProb; // 해금된 딸기에서 딸기의 발생확률을 가져옴
+            if(Globalvariable.instance.berryListAll[i] != null)
+            {
+                probSum += Globalvariable.instance.berryListAll[i].GetComponent<Berry>().berrykindProb; // 해금된 딸기에서 딸기의 발생확률을 가져옴
+            }           
         }
         int berryRandomChance = Random.Range(0, probSum + 1);
 
         for (int i = 0; i < len; i++)
         {
-            cumulative += GameManager.instance.berryPrefabListUnlock[i].GetComponent<Berry>().berrykindProb;
-            if (berryRandomChance <= cumulative)
+            if (Globalvariable.instance.berryListAll[i] != null)
             {
-                DataController.instance.gameData.berryFieldData[stemIdx].berryPrefabNowIdx = i;               
-                break;
-            }
+                cumulative += Globalvariable.instance.berryListAll[i].GetComponent<Berry>().berrykindProb; // 해금된 딸기에서 딸기의 발생확률을 가져옴
+                if (berryRandomChance <= cumulative)
+                {
+                    DataController.instance.gameData.berryFieldData[stemIdx].berryPrefabNowIdx = i;
+                    break;
+                }
+            }                       
         }
     }
     void MakeBerry() // 딸기 생성
     {
         // 로드될때는 없어졌으니깐 로드 클래스에서 다시 생성해야됨(MakeBerry() 호출하면 됨)
-        GameObject instantBerryObj = Instantiate(GameManager.instance.berryPrefabListUnlock[DataController.instance.gameData.berryFieldData[stemIdx].berryPrefabNowIdx], this.transform);
-        instantBerryObj.name = GameManager.instance.berryPrefabListUnlock[DataController.instance.gameData.berryFieldData[stemIdx].berryPrefabNowIdx].name;
+        GameObject instantBerryObj = Instantiate(Globalvariable.instance.berryListAll[DataController.instance.gameData.berryFieldData[stemIdx].berryPrefabNowIdx], this.transform);
+        instantBerryObj.name = Globalvariable.instance.berryListAll[DataController.instance.gameData.berryFieldData[stemIdx].berryPrefabNowIdx].name;
 
         instantBerry = instantBerryObj.GetComponent<Berry>();
         instantBerry.transform.position = new Vector3(transform.position.x + 0.22f, transform.position.y - 0.01f, transform.position.z);

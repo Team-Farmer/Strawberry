@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8238155578764226140}
   - component: {fileID: 8238155578764226143}
   m_Layer: 0
-  m_Name: MaeHyang
+  m_Name: 8_Dried
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: -1274572085
   m_SortingLayer: 1
   m_SortingOrder: 2
-  m_Sprite: {fileID: 3380624379705996926, guid: 9514129d6406c864ca06a22fea2e150f, type: 3}
+  m_Sprite: {fileID: -7904929171827588422, guid: bb28d6ea8a052d94998e0bd45096d66a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -96,15 +96,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1623f1a85948efd45a0dfed04582153b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  berryName: "\uB9E4\uD5A5"
+  berryName: "\uAC74\uC870 \uB538\uAE30"
   berrykindProb: 100
-  berryExplain: "\uC218\uB7C9\uC774 \uC801\uACE0 \uD0A4\uC6B0\uAE30 \uAE4C\uB2E4\uB86D\uC9C0\uB9CC
-    \uB9DB\uC774 \uC88B\uACE0 \uACFC\uC2E4\uC774 \uB2E8\uB2E8\uD55C \uB538\uAE30\uC774\uB2E4.
-    \uC800\uC7A5\uC131\uACFC \uC6B4\uBC18\uC131\uC774 \uC88B\uC544 \uC7A5\uAC70\uB9AC
-    \uC774\uB3D9\uC5D0 \uC720\uB9AC\uD574 \uC218\uCD9C\uC6A9\uC73C\uB85C \uAC01\uAD11\uBC1B\uB294
-    \uD574\uC678\uD30C \uB538\uAE30\uC774\uB2E4."
-  berryIdx: 65
-  berryRank: 1
+  berryExplain: "\uD0DC\uC591\uC744 \uC9DD\uC0AC\uB791\uD55C \uB538\uAE30\uC774\uB2E4.
+    \uB538\uAE30\uB294 \uD0DC\uC591\uC744 \uBC14\uB77C\uBCFC\uC218\uB85D \uC790\uAFB8\uB9CC
+    \uC790\uB77C \uC218\uD655\uB420\uAE4C \uAC71\uC815\uC774\uC5C8\uC9C0\uB9CC, \uAC74\uC870\uB41C
+    \uC9C0\uAE08\uC740 \uB9C8\uC74C \uB193\uACE0 \uD558\uB8E8 \uC885\uC77C \uBC14\uB77C\uBCFC
+    \uC218 \uC788\uAC8C \uB418\uC5C8\uB2E4."
+  berryIdx: 8
+  berryRank: 0
 --- !u!95 &8238155578764226143
 Animator:
   serializedVersion: 3

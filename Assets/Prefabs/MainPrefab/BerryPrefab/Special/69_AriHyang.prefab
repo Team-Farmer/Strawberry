@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8238155578764226140}
   - component: {fileID: 8238155578764226143}
   m_Layer: 0
-  m_Name: KingsBerry
+  m_Name: 69_AriHyang
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: -1274572085
   m_SortingLayer: 1
   m_SortingOrder: 2
-  m_Sprite: {fileID: 6148513765739363964, guid: 9514129d6406c864ca06a22fea2e150f, type: 3}
+  m_Sprite: {fileID: 1990813045449991915, guid: 7e3931d7486c37f408a0ed8159bd123a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -96,13 +96,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1623f1a85948efd45a0dfed04582153b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  berryName: "\uD0B9\uC2A4\uBCA0\uB9AC"
+  berryName: "\uC544\uB9AC\uD5A5"
   berrykindProb: 100
-  berryExplain: "\uC774\uB984\uCC98\uB7FC \uD06C\uAE30\uAC00 \uB300\uB2E8\uD55C \uC190\uBC14\uB2E5\uB9CC\uD55C
-    \uB538\uAE30\uC774\uB2E4. \uACFC\uC999\uC774 \uB9CE\uACE0 \uACFC\uC721\uC774
-    \uBD80\uB4DC\uB7EC\uC6B0\uBA70, \uC740\uC740\uD55C \uBCF5\uC22D\uC544 \uD5A5\uC744
-    \uD48D\uAE34\uB2E4."
-  berryIdx: 66
+  berryExplain: "\uD0B9\uC2A4\uBCA0\uB9AC\uC5D0 \uC9C0\uC9C0 \uC54A\uB294 \uD06C\uAE30\uC758
+    \uC18C\uC720\uC790. \uC0C8\uCF64\uB2EC\uCF64\uD55C \uB9DB\uC774 \uC9C4\uD558\uBA70
+    \uACFC\uC2E4\uC758 \uD06C\uAE30\uAC00 \uD06C\uACE0 \uB2E8\uB2E8\uD558\uB2E4."
+  berryIdx: 69
   berryRank: 1
 --- !u!95 &8238155578764226143
 Animator:

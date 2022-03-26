@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8238155578764226140}
   - component: {fileID: 8238155578764226143}
   m_Layer: 0
-  m_Name: General
+  m_Name: 133_WhippedCream
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: -1274572085
   m_SortingLayer: 1
   m_SortingOrder: 2
-  m_Sprite: {fileID: -7654921708714474363, guid: 9514129d6406c864ca06a22fea2e150f, type: 3}
+  m_Sprite: {fileID: 266045358689404642, guid: bb28d6ea8a052d94998e0bd45096d66a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -96,13 +96,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1623f1a85948efd45a0dfed04582153b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  berryName: "\uD3C9\uBC94\uD55C \uB538\uAE30"
+  berryName: "\uC0DD\uD06C\uB9BC \uB538\uAE30"
   berrykindProb: 100
-  berryExplain: "\uC27D\uAC8C \uBCFC \uC218 \uC788\uB294 \uD3C9\uBC94\uD55C \uB538\uAE30\uC774\uB2E4.
-    \uD3C9\uBC94\uD558\uB2E4\uB294 \uAC83\uC740, \uC758\uC678\uB85C \uC5B4\uB824\uC6B4
-    \uC77C\uC774\uB2E4."
-  berryIdx: 0
-  berryRank: 0
+  berryExplain: "\uC5B4\uB9B0 \uC2DC\uC808 \uAD6C\uB984\uC774 \uB418\uACE0 \uC2F6\uC5C8\uB358
+    \uB538\uAE30\uB294, \uC0C8\uCF64\uB2EC\uCF64\uD55C \uB538\uAE30\uC640 \uC798
+    \uC5B4\uC6B8\uB9AC\uB294 \uD3ED\uC2E0\uD55C \uC0DD\uD06C\uB9BC\uC744 \uB9CC\uB098
+    \uD589\uBCF5\uD574\uC84C\uB2E4\uACE0 \uD55C\uB2E4."
+  berryIdx: 133
+  berryRank: 2
 --- !u!95 &8238155578764226143
 Animator:
   serializedVersion: 3

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8238155578764226140}
   - component: {fileID: 8238155578764226143}
   m_Layer: 0
-  m_Name: PermenantSnow
+  m_Name: 129_Rainbow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: -1274572085
   m_SortingLayer: 1
   m_SortingOrder: 2
-  m_Sprite: {fileID: -7443522304575854791, guid: 9514129d6406c864ca06a22fea2e150f, type: 3}
+  m_Sprite: {fileID: 8072210295801945290, guid: 9514129d6406c864ca06a22fea2e150f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -96,15 +96,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1623f1a85948efd45a0dfed04582153b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  berryName: "\uB9CC\uB144\uC124"
+  berryName: "\uBB34\uC9C0\uAC1C \uB538\uAE30"
   berrykindProb: 100
-  berryExplain: "\uC5F0\uBD84\uD64D\uBE5B\uC744 \uB744\uC5B4 \uB9CC\uB144\uC124\uCC98\uB7FC
-    \uD76C\uB2E4 \uD558\uC5EC \uB9CC\uB144\uC124\uC774\uB77C \uBD88\uB9AC\uC6B0\uB294
-    \uB538\uAE30\uC774\uB2E4. \uBE68\uAC04 \uB538\uAE30\uC5D0 \uBE44\uD574 \uB2F9\uB3C4\uAC00
-    \uB192\uC544 \uD2B9\uC720\uC758 \uB2EC\uCF64\uD55C \uB9DB\uC744 \uC990\uAE38
-    \uC218 \uC788\uB2E4."
-  berryIdx: 64
-  berryRank: 1
+  berryExplain: "\uBB34\uC9C0\uAC2F\uBE5B\uC774 \uB098\uB294 \uB538\uAE30\uC774\uB2E4.
+    \uB9DB\uB3C4 \uBB34\uC9C0\uAC1C \uB9DB\uC774 \uB09C\uB2E4\uACE0 \uD558\uB294\uB370,
+    \uD55C\uBC88 \uBA39\uC5B4\uBCF4\uBA74 \uADF8 \uB9DB\uC744 \uC78A\uC744 \uC218
+    \uC5C6\uB2E4\uB098 \uBB50\uB77C\uB098."
+  berryIdx: 129
+  berryRank: 2
 --- !u!95 &8238155578764226143
 Animator:
   serializedVersion: 3

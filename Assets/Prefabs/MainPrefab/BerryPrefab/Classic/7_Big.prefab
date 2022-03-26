@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8238155578764226140}
   - component: {fileID: 8238155578764226143}
   m_Layer: 0
-  m_Name: Rotten
+  m_Name: 7_Big
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: -1274572085
   m_SortingLayer: 1
   m_SortingOrder: 2
-  m_Sprite: {fileID: 4225813182123211461, guid: 7e3931d7486c37f408a0ed8159bd123a, type: 3}
+  m_Sprite: {fileID: -2859026804355858437, guid: bb28d6ea8a052d94998e0bd45096d66a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -96,14 +96,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1623f1a85948efd45a0dfed04582153b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  berryName: "\uAC74\uC870 \uB538\uAE30"
+  berryName: "\uD070 \uB538\uAE30"
   berrykindProb: 100
-  berryExplain: "\uD0DC\uC591\uC744 \uC9DD\uC0AC\uB791\uD55C \uB538\uAE30\uC774\uB2E4.
-    \uB538\uAE30\uB294 \uD0DC\uC591\uC744 \uBC14\uB77C\uBCFC\uC218\uB85D \uC790\uAFB8\uB9CC
-    \uC790\uB77C \uC218\uD655\uB420\uAE4C \uAC71\uC815\uC774\uC5C8\uC9C0\uB9CC, \uAC74\uC870\uB41C
-    \uC9C0\uAE08\uC740 \uB9C8\uC74C \uB193\uACE0 \uD558\uB8E8 \uC885\uC77C \uBC14\uB77C\uBCFC
-    \uC218 \uC788\uAC8C \uB418\uC5C8\uB2E4."
-  berryIdx: 10
+  berryExplain: "\uB2E4\uB978 \uB538\uAE30\uBCF4\uB2E4 \uC870\uAE08 \uD070 \uB538\uAE30\uC774\uB2E4.
+    \uBC25 \uBA39\uC5B4\uC57C \uD0A4 \uD070\uB2E4\uB294 \uC5C4\uB9C8 \uB538\uAE30\uC758
+    \uB9D0\uB300\uB85C \uC5F4\uC2EC\uD788 \uBC25\uC744 \uBA39\uC5C8\uC9C0\uB9CC \uC0DD\uAC01\uBCF4\uB2E4
+    \uC606\uC73C\uB85C \uC790\uB790\uB2E4."
+  berryIdx: 7
   berryRank: 0
 --- !u!95 &8238155578764226143
 Animator:
