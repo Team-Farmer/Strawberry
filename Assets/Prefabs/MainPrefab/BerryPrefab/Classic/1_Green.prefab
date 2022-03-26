@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1623f1a85948efd45a0dfed04582153b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  berryName: "\uBCA0\uC5B4\uBA39\uD78C \uB538\uAE30"
+  berryName: "\uCD08\uB85D\uB538\uAE30"
   berrykindProb: 100
   berryExplain: "\uC601\uC591\uBD84\uC744 \uC798 \uBC1B\uC9C0 \uBABB\uD574 \uBC18\uCBE4
     \uD478\uB978, \uC544\uC9C1 \uB35C \uC775\uC740 \uB538\uAE30\uC774\uB2E4. \uB290\uB9B0

@@ -111,13 +111,14 @@ public class BerryManager : MonoBehaviour
         
         for (int i = 0; i < berryPrefabs.Length; i++)
         {
-            if (prefabnum == i && DataController.instance.gameData.isBerryUnlock[startNum] == true)
+            if (prefabnum == i && DataController.instance.gameData.isBerryUnlock[startNum] == true)//베리 unlock상태 라면
             {
-                this.transform.GetComponent<Image>().sprite = yesBerryImage;
-                berryImagePanel.transform.GetComponent<Image>().color = new Color(1f,1f,1f,1f);
-                berryImagePanel.GetComponent<Image>().sprite = berryPrefabs[i].GetComponent<SpriteRenderer>().sprite;
+                this.transform.GetComponent<Image>().sprite = yesBerryImage;//배경 이미지 변경
+                berryImagePanel.transform.GetComponent<Image>().color = new Color(1f,1f,1f,1f);//투명 -> 불투명
+                //berryImagePanel.GetComponent<Image>().sprite = berryPrefabs[i].GetComponent<SpriteRenderer>().sprite;//베리 이미지 보이기
+                berryImagePanel.GetComponent<Image>().sprite = Globalvariable.instance.berryListAll[i].GetComponent<SpriteRenderer>().sprite;
 
-                
+
             }
             startNum++;
         }
