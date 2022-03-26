@@ -41,11 +41,16 @@ public class AudioManager : MonoBehaviour
     }
 
 
-    public void BGSoundVolume(float val) {
+    public void BGSoundVolume() {
 
-        //음량변화
-        //mixer.SetFloat("BGSoundVolume",Mathf.Log10(val)* 20);
+        //배경음 음량변화
         mixer.SetFloat("BGSoundVolume", Mathf.Log10(BGSoundSlider.GetComponent<Slider>().value) * 20);
+
+    }
+
+    public void SFXVolume() {
+        //효과음 음량변화
+        mixer.SetFloat("SFXVolume", Mathf.Log10(SFXSoundSlider.GetComponent<Slider>().value) * 20);
 
     }
     //효과음
@@ -75,7 +80,7 @@ public class AudioManager : MonoBehaviour
             bgSound.outputAudioMixerGroup = mixer.FindMatchingGroups("BGSound")[0];
             bgSound.clip = clip;
             bgSound.loop = false;
-            bgSound.volume = 0.1f;
+            bgSound.volume = 0.2f;
             bgSound.Play();
         }
     }

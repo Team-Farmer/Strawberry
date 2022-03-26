@@ -25,16 +25,16 @@ public class GameManager : MonoBehaviour
     [Header("------------[ Object ]")]
     public GameObject stemPrefab; // 프리팹
     public GameObject bugPrefab;
-      
+
     public List<Farm> farmList = new List<Farm>();
     public List<Stem> stemList = new List<Stem>();
     public List<Bug> bugList = new List<Bug>();
-            
+
     [Header("------------[Truck List]")]
     public GameObject TruckObj;
-    public GameObject TruckPanel;        
+    public GameObject TruckPanel;
     Transform target;
-    
+
     [Header("------------[PartTime/Search/Berry List]")]
     public GameObject PartTimeList;
     public GameObject ResearchList;
@@ -44,6 +44,9 @@ public class GameManager : MonoBehaviour
     public GameObject workingCountText;//일하는사람들 숫자 띄우기
     //internal object count;
     public GameObject[] working;//일하는자들 상단에 띄우기
+
+    [Header("------------[Audio]")]
+    public AudioClip SFXclip;
 
     //새로운딸기 관련========================================
     [Header("OBJECT")]
@@ -65,7 +68,7 @@ public class GameManager : MonoBehaviour
     public GameObject SettingsPanel;
     public GameObject CheckPanel;
     public bool isblackPanelOn = false;
-    
+
     [Header("------------[Check/Day List]")]
     public bool[] Today;
     public ObjectArray[] Front = new ObjectArray[7];
@@ -79,13 +82,13 @@ public class GameManager : MonoBehaviour
         Application.targetFrameRate = 60;
         instance = this; // 게임 매니저의 싱글턴 패턴화 >> GameManager.instance.~~ 로 호출                               
         target = TruckObj.GetComponent<Transform>();
-        
+
         //for(int i = 0; i < )
         //출석 관련 호출.
         StartCoroutine(WebCheck());
         Attendance();
         CheckTime();
-              
+
         SetBerryPrice();
         InitDataInGM();
     }
@@ -147,9 +150,9 @@ public class GameManager : MonoBehaviour
     #region 딸기밭
     void ClickedFarm(GameObject obj)
     {
-        
+
         Farm farm = obj.GetComponent<Farm>();
-        
+
         if (!DataController.instance.gameData.berryFieldData[farm.farmIdx].isPlant)
         {
             Stem st = GetStem(farm.farmIdx);
@@ -224,9 +227,9 @@ public class GameManager : MonoBehaviour
         Vector2 pos = stem.transform.position; ;
         stem.instantBerry.Explosion(pos, target.position, 0.5f);
         stem.instantBerry.GetComponent<SpriteRenderer>().sortingOrder = 4;
-                
+
         StartCoroutine(HarvestRoutine(farm, stem)); // 연속으로 딸기가 심어지는 현상을 방지
-       
+
     }
     GameObject ClickObj() // 클릭당한 오브젝트를 반환
     {
@@ -238,7 +241,7 @@ public class GameManager : MonoBehaviour
         return hit.collider.gameObject;
     }
     IEnumerator HarvestRoutine(Farm farm, Stem stem)
-    {       
+    {
         farm.GetComponent<BoxCollider2D>().enabled = false; // 밭을 잠시 비활성화
 
         yield return new WaitForSeconds(0.75f); // 0.75초 뒤에
@@ -252,11 +255,11 @@ public class GameManager : MonoBehaviour
         if (!DataController.instance.gameData.berryFieldData[farm.farmIdx].hasWeed) // 잡초가 없다면
         {
             farm.GetComponent<BoxCollider2D>().enabled = true; // 밭을 다시 활성화 
-        }     
+        }
     }
     void UpdateBerryCnt()
-    {       
-        if(DataController.instance.gameData.berryCnt < 48)
+    {
+        if (DataController.instance.gameData.berryCnt < 48)
         {
             DataController.instance.gameData.berryCnt += 1;
         }
@@ -348,11 +351,11 @@ public class GameManager : MonoBehaviour
         {
             coll = farmList[i].GetComponent<BoxCollider2D>();
             if (!DataController.instance.gameData.berryFieldData[i].isPlant && !DataController.instance.gameData.berryFieldData[i].hasWeed) // 잡초가 없을 때만 빈 밭의 Collider활성화
-            {              
+            {
                 coll.enabled = true;
-            }          
+            }
             if (!DataController.instance.gameData.berryFieldData[i].hasBug && !DataController.instance.gameData.berryFieldData[i].hasWeed && DataController.instance.gameData.berryFieldData[i].createTime >= 20.0f) // (4)의 상황, 즉 벌레와 잡초 둘 다 없을 때 다 자란 딸기밭의 콜라이더를 켜준다.
-            {              
+            {
                 coll.enabled = true;
             }
             bugList[i].GetComponent<CircleCollider2D>().enabled = true;
@@ -372,7 +375,7 @@ public class GameManager : MonoBehaviour
         { Obj.SetActive(true); }
     }
     //PTJ
-    public void workingApply(List<Sprite> workingList) 
+    public void workingApply(List<Sprite> workingList)
     {
         for (int i = 0; i < 3; i++)
         {
@@ -381,10 +384,10 @@ public class GameManager : MonoBehaviour
                 if (workingList[i] == null) { working[i].SetActive(false); }
                 else {
                     working[i].SetActive(true);
-                    working[i].transform.GetChild(0).transform.GetComponent<Image>().sprite = workingList[i]; 
+                    working[i].transform.GetChild(0).transform.GetComponent<Image>().sprite = workingList[i];
                 }
             }
-            catch{ Debug.Log("error test"); }
+            catch { Debug.Log("error test"); }
         }
     }
     //PTJ몇명 고용했는지
@@ -413,7 +416,7 @@ public class GameManager : MonoBehaviour
 
         }
         catch
-        {            Debug.Log("다음 레벨 정보 없음");        }
+        { Debug.Log("다음 레벨 정보 없음"); }
     }
     //새로운 딸기 버튼을 누르면
     public void newBerryAdd()
@@ -427,7 +430,7 @@ public class GameManager : MonoBehaviour
 
             //금액이 빠져나간다.
             //GameManager.instance.coin -= price_newBerry[index_newBerry];
-            DataController.instance.gameData.coin-= price_newBerry[index_newBerry];
+            DataController.instance.gameData.coin -= price_newBerry[index_newBerry];
             //GameManager.instance.ShowCoinText(GameManager.instance.coin);
             ShowCoinText();
 
@@ -445,6 +448,9 @@ public class GameManager : MonoBehaviour
             isStart_newBerry = true;
         }
     }
+
+
+    public void SFXAudioPlay() { AudioManager.instance.SFXPlay("ButtonSFX", SFXclip); }
     public string TimeForm(int time)
     {
         int M = 0, S = 0;//M,S 계산용

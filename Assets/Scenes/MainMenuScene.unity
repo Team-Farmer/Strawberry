@@ -1159,7 +1159,7 @@ Transform:
   m_Children:
   - {fileID: 435427872}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &109862327
 GameObject:
@@ -1575,7 +1575,7 @@ Transform:
   m_Children:
   - {fileID: 274168414}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &144414837 stripped
 MonoBehaviour:
@@ -3323,7 +3323,7 @@ RectTransform:
   - {fileID: 1505212292}
   - {fileID: 1363630427}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3632,7 +3632,7 @@ RectTransform:
   m_Children:
   - {fileID: 1999629606}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -5457,6 +5457,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 496606690}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: SFXAudioPlay
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1 &496606689
 GameObject:
   m_ObjectHideFlags: 0
@@ -5553,6 +5565,7 @@ MonoBehaviour:
   - {fileID: 1297610195}
   - {fileID: 1160523579}
   - {fileID: 641708685}
+  SFXclip: {fileID: 8300000, guid: 573b0c07504e2014d9849507007ad69f, type: 3}
   priceText_newBerry: {fileID: 1295824419}
   timeText_newBerry: {fileID: 2120615085}
   startBtn_newBerry: {fileID: 787233744}
@@ -5877,6 +5890,18 @@ MonoBehaviour:
       - m_Target: {fileID: 41530273}
         m_TargetAssemblyTypeName: PanelAnimation, Assembly-CSharp
         m_MethodName: Fadein
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 496606690}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: SFXAudioPlay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7579,14 +7604,14 @@ MonoBehaviour:
   m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 909940711}
         m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: BGSoundVolume
-        m_Mode: 4
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -8881,7 +8906,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 12, y: 59.996136}
+  m_AnchoredPosition: {x: 12, y: 59.996037}
   m_SizeDelta: {x: 103, y: 95.000015}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &755967742
@@ -11655,7 +11680,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -11752,7 +11777,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &909940711
 MonoBehaviour:
@@ -11766,14 +11791,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b170ec3444a73a47b0e7345a3e7b36b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlayAudio: 0
+  isPlayAudio: 1
   BGSoundSlider: {fileID: 649835577}
   SFXSoundSlider: {fileID: 1349655535}
   mixer: {fileID: 24100000, guid: 61b1ac8c39cbb0541ab8ce6a71e1bd09, type: 2}
   bgSound: {fileID: 909940709}
   bglist:
-  - {fileID: 8300000, guid: 6e1ab4f88ebc05a41928e34398bf14cc, type: 3}
-  - {fileID: 8300000, guid: 3fc8cc6a63d687e46921608f029b7655, type: 3}
+  - {fileID: 8300000, guid: 8b5d46ef36ff1d143b2459eea8658b1b, type: 3}
+  - {fileID: 8300000, guid: 3d2b6dee22b3c33448d6dfa1026e65a4, type: 3}
 --- !u!1 &914576164
 GameObject:
   m_ObjectHideFlags: 0
@@ -12395,6 +12420,18 @@ MonoBehaviour:
       - m_Target: {fileID: 496606690}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: DisableObjColliderAll
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 496606690}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: SFXAudioPlay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13764,7 +13801,7 @@ RectTransform:
   m_Children:
   - {fileID: 1426541477}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -14814,6 +14851,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 496606690}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: SFXAudioPlay
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1 &1125391600
 GameObject:
   m_ObjectHideFlags: 0
@@ -14878,7 +14927,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1135104783 stripped
 MonoBehaviour:
@@ -15162,6 +15211,18 @@ MonoBehaviour:
       - m_Target: {fileID: 41530273}
         m_TargetAssemblyTypeName: PanelAnimation, Assembly-CSharp
         m_MethodName: Fadein
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 496606690}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: SFXAudioPlay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -16671,6 +16732,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 1
           m_CallState: 2
+        - m_Target: {fileID: 496606690}
+          m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+          m_MethodName: SFXAudioPlay
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
 --- !u!1 &1248610251
 GameObject:
   m_ObjectHideFlags: 0
@@ -17906,10 +17979,22 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 909940711}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: SFXVolume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1356729584
 GameObject:
   m_ObjectHideFlags: 0
@@ -19164,6 +19249,18 @@ MonoBehaviour:
       - m_Target: {fileID: 41530273}
         m_TargetAssemblyTypeName: PanelAnimation, Assembly-CSharp
         m_MethodName: Fadein
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 496606690}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: SFXAudioPlay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -20792,7 +20889,7 @@ RectTransform:
   m_Children:
   - {fileID: 271674905}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -21091,7 +21188,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -110.5, y: 59.996136}
+  m_AnchoredPosition: {x: -110.5, y: 59.996037}
   m_SizeDelta: {x: 97.46, y: 94.57}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1629387834
@@ -25125,6 +25222,18 @@ MonoBehaviour:
       - m_Target: {fileID: 41530273}
         m_TargetAssemblyTypeName: PanelAnimation, Assembly-CSharp
         m_MethodName: Fadein
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 496606690}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: SFXAudioPlay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
