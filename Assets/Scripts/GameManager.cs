@@ -387,7 +387,7 @@ public class GameManager : MonoBehaviour
                     working[i].transform.GetChild(0).transform.GetComponent<Image>().sprite = workingList[i];
                 }
             }
-            catch { Debug.Log("error test"); }
+            catch {}//여기 에러??????
         }
     }
     //PTJ몇명 고용했는지

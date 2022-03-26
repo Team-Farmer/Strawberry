@@ -9,12 +9,12 @@ public class PTJResearch : MonoBehaviour
     [Serializable]
     public class PrefabStruct
     {
-        public string Name;
-        public Sprite Picture;
-        public Sprite FacePicture;
-        public string Explanation;
-        public int Price;
-        public bool isEmployed;
+        public string Name;//알바생 이름, 연구 제목
+        public Sprite Picture;//사진
+        public Sprite FacePicture;//알바생 얼굴 사진
+        public string Explanation;//설명
+        public int Price;//가격
+        public bool isEmployed;//고용 중 인가
 
 
         public PrefabStruct(string Name,string Explanation, int Price, Sprite Picture, Sprite FacePicture, bool isEmployed, bool exist)
@@ -32,7 +32,7 @@ public class PTJResearch : MonoBehaviour
 
     [Header("==========INFO STRUCT==========")]
     [SerializeField]
-    PrefabStruct[] Info;
+    PrefabStruct[] Info;//구조체
 
     //Research Info  적용할 것들
     [Header("==========INFO 적용할 대상=========")]
@@ -45,7 +45,8 @@ public class PTJResearch : MonoBehaviour
     public GameObject levelNum;
 
     [Header("==========Research Or PTJ===========")]
-    public bool PTJ;
+    public bool PTJ;//지금 알바생인가 확인
+
     [Header("==========select PTJ===========")]
     [SerializeField]
     private Sprite selectPTJSprite;
@@ -71,10 +72,6 @@ public class PTJResearch : MonoBehaviour
     {
         InfoUpdate();
     }
-    void Update()
-    {
-       
-    }
 
     //===================================================================================================
     
@@ -87,10 +84,8 @@ public class PTJResearch : MonoBehaviour
             DataController.instance.gameData.researchLevel[prefabnum]++;
             levelNum.GetComponent<Text>().text = DataController.instance.gameData.researchLevel[prefabnum].ToString();
         
-        //해당 금액의 코인이 감소된다.
-        //GameManager.instance.coin -= Info[prefabnum].Price;
-        DataController.instance.gameData.coin -= Info[prefabnum].Price;
-        //GameManager.instance.ShowCoinText(GameManager.instance.coin);
+        //해당 금액의 코인이 감소
+        GameManager.instance.UseCoin(Info[prefabnum].Price);
         GameManager.instance.ShowCoinText();
         }
     }
@@ -99,47 +94,43 @@ public class PTJResearch : MonoBehaviour
     //coin 버튼 -> 알바 고용 여부
     public void clickCoin_PTJ() 
     {
-        if (PTJ == true)//그냥 한번더 확인
+
+        if (employCount < 3)//3명 이하일 때
         {
-            if (employCount < 3)//3명 이하일 때
-            {
-                if (Info[prefabnum].isEmployed == false) //고용중아니면 고용           
-                {   hire();   }
-                else //고용중이면 고용해제
-                {   fire();   }
-            }
-            else //3명 이상일 때
-            {
-                if (Info[prefabnum].isEmployed == true)//고용중이면 고용해제
-                {   fire();   }
-            }
+            if (Info[prefabnum].isEmployed == false) //고용중아니면 고용           
+            {   hire();   }
+            else //고용중이면 고용해제
+            {   fire();   }
+        }
+        else //3명 이상일 때
+        {
+            if (Info[prefabnum].isEmployed == true)//고용중이면 고용해제
+            {   fire();   }
         }
     }
 
 
     private void hire()  //의문점 = 왜 prefabnum말로 0을 넣어도 되는가
     {
-        //해당 금액의 코인이 감소된다.
-        //GameManager.instance.coin -= Info[prefabnum].Price;
-        //GameManager.instance.ShowCoinText(GameManager.instance.coin);
-        DataController.instance.gameData.coin -= Info[prefabnum].Price;
-        //GameManager.instance.UseCoin(Info[prefabnum].Price); // 함수로 바꿔봄
+        //해당 금액의 코인이 감소
+        GameManager.instance.UseCoin(Info[prefabnum].Price);
         GameManager.instance.ShowCoinText();
 
 
         Info[prefabnum].isEmployed = true;//고용
         levelNum.GetComponent<Text>().text = "고용 중";//고용중으로 표시
         levelNum.GetComponent<Text>().color = new Color32(245, 71, 71, 255);//#F54747 글자색 변경
-        PTJBackground.transform.GetComponent<Image>().sprite = selectPTJSprite;//배경스프라이트 눌림으로 변경
+        PTJBackground.transform.GetComponent<Image>().sprite = selectPTJSprite;//배경 스프라이트 눌린 이미지로 변경
 
         workingList.Remove(null);
-        workingList.Add(Info[prefabnum].FacePicture);//해당 얼굴 리스트에 추가
-        GameManager.instance.workingApply(workingList);//GameManager workingApply에 고용중인 사진 list 보냄
+        workingList.Add(Info[prefabnum].FacePicture);//해당 알바생 얼굴 리스트에 추가
+        GameManager.instance.workingApply(workingList);//GameManager workingApply에 고용 list 보냄
 
 
-        ++employCount;
-        GameManager.instance.workingCount(employCount);
+        ++employCount;//고용중인 알바생 숫자 증가
+        GameManager.instance.workingCount(employCount);//알바생 숫자 보여준다
     }
+
     private void fire() 
     {
         
@@ -168,17 +159,18 @@ public class PTJResearch : MonoBehaviour
 
 
         //타이틀, 설명, 코인값, 레벨, 고용여부 텍스트에 표시
-        titleText.GetComponent<Text>().text = Info[Prefabcount].Name;
+        titleText.GetComponent<Text>().text = Info[Prefabcount].Name;//제목(이름) 표시
         if (Info[Prefabcount].Picture != null)
         {
-            facePicture.GetComponent<Image>().sprite = Info[Prefabcount].Picture;
+            facePicture.GetComponent<Image>().sprite = Info[Prefabcount].Picture;//그림 표시
         }
-        explanationText.GetComponent<Text>().text = Info[Prefabcount].Explanation;
-        coinNum.GetComponent<Text>().text = Info[Prefabcount].Price.ToString()+"A";
+        explanationText.GetComponent<Text>().text = Info[Prefabcount].Explanation;//설명 텍스트 표시
+        coinNum.GetComponent<Text>().text = Info[Prefabcount].Price.ToString()+"A";//비용 표시
         
-        if (PTJ==true)
+
+        if (PTJ==true)//알바
         {    levelNum.GetComponent<Text>().text = "고용 전";    }
-        else
+        else//연구
         {    levelNum.GetComponent<Text>().text = DataController.instance.gameData.researchLevel[prefabnum].ToString();    }
 
 
