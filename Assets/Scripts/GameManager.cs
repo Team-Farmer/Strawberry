@@ -387,7 +387,7 @@ public class GameManager : MonoBehaviour
                     working[i].transform.GetChild(0).transform.GetComponent<Image>().sprite = workingList[i];
                 }
             }
-            catch {}//여기 에러??????
+            catch {}//여기 에러
         }
     }
     //PTJ몇명 고용했는지
@@ -428,10 +428,8 @@ public class GameManager : MonoBehaviour
             Debug.Log("새로운 딸기!!");
 
 
-            //금액이 빠져나간다.
-            //GameManager.instance.coin -= price_newBerry[index_newBerry];
-            DataController.instance.gameData.coin -= price_newBerry[index_newBerry];
-            //GameManager.instance.ShowCoinText(GameManager.instance.coin);
+            //코인 소비
+            UseCoin(price_newBerry[index_newBerry]);
             ShowCoinText();
 
             //업스레이드 레벨 상승 -> 그 다음 업그레이드 금액이 보인다.
@@ -451,7 +449,8 @@ public class GameManager : MonoBehaviour
 
 
     public void SFXAudioPlay() { AudioManager.instance.SFXPlay("ButtonSFX", SFXclip); }
-    public string TimeForm(int time)
+
+    public string TimeForm(int time)//이거 내장 함수 있을것 같음 찾아볼것 
     {
         int M = 0, S = 0;//M,S 계산용
         string Minutes, Seconds;//M,S 텍스트 적용용

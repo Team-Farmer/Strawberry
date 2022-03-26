@@ -46,6 +46,7 @@ public class BerryManager : MonoBehaviour
         prefabnum = Prefabcount;
         Prefabcount++;
 
+        //가지고 있는 베리들을 보인다.
         berryImageChange();
 
     }
@@ -63,18 +64,33 @@ public class BerryManager : MonoBehaviour
         //if (berryInfo[prefabnum].exist == true)
         if (DataController.instance.gameData.isBerryUnlock[prefabnum] == true)
         {
-                //검정창 띄운다.
-                //설명창이 뜬다.
+
+                //설명창 띄운다
                 ExpChildren.SetActive(true);
+
                 //Explanation 내용을 채운다.
-                ExpChildren2.transform.GetChild(0).transform.gameObject.GetComponentInChildren<Image>().sprite = berryPrefabs[prefabnum].GetComponent<SpriteRenderer>().sprite;//이미지 설정
-                ExpChildren2.transform.GetChild(1).transform.gameObject.GetComponentInChildren<Text>().text = berryPrefabs[prefabnum].GetComponent<Berry>().berryName;//이름 설정
-                ExpChildren2.transform.GetChild(2).transform.gameObject.GetComponentInChildren<Text>().text = berryPrefabs[prefabnum].GetComponent<Berry>().berryExplain;//설명 설정
+                /*
+                ExpChildren2.transform.GetChild(0).transform.gameObject.GetComponentInChildren<Image>().sprite 
+                    = berryPrefabs[prefabnum].GetComponent<SpriteRenderer>().sprite;//이미지 설정
+
+                ExpChildren2.transform.GetChild(1).transform.gameObject.GetComponentInChildren<Text>().text 
+                    = berryPrefabs[prefabnum].GetComponent<Berry>().berryName;//이름 설정
+
+                ExpChildren2.transform.GetChild(2).transform.gameObject.GetComponentInChildren<Text>().text 
+                    = berryPrefabs[prefabnum].GetComponent<Berry>().berryExplain;//설명 설정
+                */
+
+                //prefabNum변경필요
+                ExpChildren2.transform.GetChild(0).transform.gameObject.GetComponentInChildren<Image>().sprite
+                    = Globalvariable.instance.berryListAll[prefabnum].GetComponent<SpriteRenderer>().sprite;
+                ExpChildren2.transform.GetChild(1).transform.gameObject.GetComponentInChildren<Text>().text
+                    = Globalvariable.instance.berryListAll[prefabnum].GetComponent<Berry>().berryName;
+                ExpChildren2.transform.GetChild(2).transform.gameObject.GetComponentInChildren<Text>().text
+                    = Globalvariable.instance.berryListAll[prefabnum].GetComponent<Berry>().berryExplain;
             }
         }
         catch
         {
-            //ExpChildren.SetActive(false);
             Debug.Log("여기에 해당하는 베리는 아직 없다");
         }
 
