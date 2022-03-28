@@ -89,7 +89,7 @@ public class GameManager : MonoBehaviour
         Attendance();
         CheckTime();
 
-        SetBerryPrice();
+        //SetBerryPrice();
         InitDataInGM();
     }
     void InitDataInGM()
@@ -184,26 +184,7 @@ public class GameManager : MonoBehaviour
     {
         DataController.instance.gameData.berryCnt = 0;
     }
-    /*void MakeStemAndBug() // ÁÙ±â »ý¼º
-    {
-        GameObject instantStemObj = Instantiate(stemPrefab, stemGroup);
-        instantStemObj.name = "stem " + stemList.Count;
-
-        Stem instantStem = instantStemObj.GetComponent<Stem>();
-        instantStem.stemIdx = stemList.Count;
-
-        instantStem.gameObject.SetActive(false);
-        stemList.Add(instantStem);
-
-        GameObject instantBugObj = Instantiate(bugPrefab, instantStemObj.transform);
-        instantBugObj.name = "Bug " + bugList.Count;
-
-        Bug instantBug = instantBugObj.GetComponent<Bug>();
-        instantBug.bugIdx = bugList.Count;
-
-        instantBug.gameObject.SetActive(false); // ³ÀµÖ
-        bugList.Add(instantBug);
-    }*/
+    
     Stem GetStem(int idx)
     {
         if (DataController.instance.gameData.berryFieldData[idx].isPlant) return null;
@@ -268,7 +249,7 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region ÀçÈ­
-    void SetBerryPrice()
+    /*void SetBerryPrice()
     {
         BerryPrice[0] = 10;     // Å¬·¡½ÄÀÇ 0¹ø µþ±â
         BerryPrice[64] = 20;    // ½ºÆä¼ÈÀÇ 0¹ø µþ±â
@@ -287,7 +268,7 @@ public class GameManager : MonoBehaviour
         //Debug.Log("µþ±â°¡Ä¡ ¼¼ÆÃ ¿Ï·á");
         //Debug.Log(BerryPrice[0] + " " + BerryPrice[64] + " " + BerryPrice[128] + " ");
         //Debug.Log(BerryPrice[9] + " " + BerryPrice[73] + " " + BerryPrice[137] + " ");
-    }
+    }*/
 
     public void ShowCoinText()
     {

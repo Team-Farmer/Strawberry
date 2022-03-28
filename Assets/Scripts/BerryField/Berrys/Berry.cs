@@ -5,12 +5,6 @@ using UnityEngine;
 using DG.Tweening;
 using Random = UnityEngine.Random;
 
-public enum BerryRank
-{
-    Classic,
-    Special,
-    Unique
-} // 이 아이의 위치는 어디여야 할까?
 public class Berry : MonoBehaviour
 {         
     //여기에 public으로 딸기 정보 기입.
@@ -18,7 +12,8 @@ public class Berry : MonoBehaviour
     public int berrykindProb;
     public string berryExplain;
     public int berryIdx;
-    public BerryRank berryRank;
+    public int berryPrice;
+    public Globalvariable.BerryRank berryRank;
     
     public void Explosion(Vector2 from, Vector2 to, float exploRange) // DOTWeen 효과
     {
