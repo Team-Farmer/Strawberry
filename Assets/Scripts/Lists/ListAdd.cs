@@ -27,14 +27,12 @@ public class ListAdd : MonoBehaviour
             {
                 for (int j = 0; j < content.Length; j++)//layer °¹¼ö¸¸Å­
                 {
-                    for (int i = 0; i < 16; i++)//content °¹¼ö¸¸Å­
+                    for (int i = 0; i < 16; i++)//content ³» °¹¼ö¸¸Å­
                     {
                         AddElement(content[j]);
                     }
                 }
-
             }
-
         }
         else
         {

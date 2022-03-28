@@ -6557,8 +6557,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   elementPrefab: {fileID: 5274030419520564147, guid: 89552374ac89cd24c848dcc5746ba2eb, type: 3}
-  content1: {fileID: 1416352139}
-  content2: {fileID: 0}
+  content:
+  - {fileID: 1416352139}
   count: 7
   isBerry: 0
 --- !u!114 &529438798
@@ -6574,8 +6574,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   elementPrefab: {fileID: 527783997503068518, guid: b38c325a7c4259442b192ff7cce5a789, type: 3}
-  content1: {fileID: 322382196}
-  content2: {fileID: 0}
+  content:
+  - {fileID: 322382196}
   count: 7
   isBerry: 0
 --- !u!1001 &564871549
@@ -7685,8 +7685,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   elementPrefab: {fileID: 3705786545946922626, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
-  content1: {fileID: 1179187197}
-  content2: {fileID: 0}
+  content:
+  - {fileID: 1179187197}
   count: 6
   isBerry: 0
 --- !u!114 &642284039
@@ -8460,11 +8460,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 698710643}
-  - component: {fileID: 698710646}
-  - component: {fileID: 698710645}
-  - component: {fileID: 698710644}
   - component: {fileID: 698710650}
   - component: {fileID: 698710647}
+  - component: {fileID: 698710644}
   m_Layer: 5
   m_Name: BerryList
   m_TagString: Untagged
@@ -8505,49 +8503,18 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 698710642}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 37f5d238c6e305e42a847cb03afe81f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  elementPrefab: {fileID: 5586810261264398575, guid: 3cc2f8fae1bc28b41b41a0de174f3797, type: 3}
-  content1: {fileID: 638177079}
-  content2: {fileID: 1862953772}
-  count: 32
-  isBerry: 1
---- !u!114 &698710645
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 698710642}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37f5d238c6e305e42a847cb03afe81f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  elementPrefab: {fileID: 4627074309705252755, guid: d66f38991a9038346a2a5b39f5e59948, type: 3}
-  content1: {fileID: 638177079}
-  content2: {fileID: 1862953772}
-  count: 32
-  isBerry: 1
---- !u!114 &698710646
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 698710642}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37f5d238c6e305e42a847cb03afe81f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  elementPrefab: {fileID: 5225169736592362495, guid: 78a1f0bab626483409bc5cd16f265701, type: 3}
-  content1: {fileID: 638177079}
-  content2: {fileID: 1862953772}
-  count: 32
+  elementPrefab: {fileID: 2850393128073872034, guid: d7ec4633af607e245ad0e447da31e7c3, type: 3}
+  content:
+  - {fileID: 638177079}
+  - {fileID: 1862953772}
+  - {fileID: 2103272845}
+  - {fileID: 302096628}
+  count: 1
   isBerry: 1
 --- !u!114 &698710647
 MonoBehaviour:
@@ -8556,16 +8523,17 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 698710642}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c18bcd307b3e42f449bffd310879ab06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   elementPrefab: {fileID: 2850393128073872034, guid: d7ec4633af607e245ad0e447da31e7c3, type: 3}
-  content1: {fileID: 638177079}
-  content2: {fileID: 1862953772}
-  content3: {fileID: 2103272845}
-  content4: {fileID: 302096628}
+  content:
+  - {fileID: 638177079}
+  - {fileID: 1862953772}
+  - {fileID: 2103272845}
+  - {fileID: 302096628}
 --- !u!114 &698710650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13384,8 +13352,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   elementPrefab: {fileID: 7523383970360610591, guid: de05a49ceb67bea458e80dea1ba61d6e, type: 3}
-  content1: {fileID: 1427270974}
-  content2: {fileID: 0}
+  content:
+  - {fileID: 1427270974}
   count: 6
   isBerry: 0
 --- !u!114 &969289840
