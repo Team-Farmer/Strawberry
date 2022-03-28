@@ -5642,8 +5642,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 496606690}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 909940711}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: SFXAudioPlay
         m_Mode: 1
         m_Arguments:
@@ -5741,20 +5741,12 @@ MonoBehaviour:
   - {fileID: 328274928}
   TruckObj: {fileID: 1218476147}
   TruckPanel: {fileID: 3459070}
-  PartTimeList: {fileID: 642284036}
-  ResearchList: {fileID: 969289837}
-  BerryList: {fileID: 698710642}
-  PanelBlack: {fileID: 41530268}
   workingCountText: {fileID: 922995694}
   working:
   - {fileID: 1297610195}
   - {fileID: 1160523579}
   - {fileID: 641708685}
   berryExp: {fileID: 576054017}
-  berryExpImage: {fileID: 1530563009}
-  berryExpName: {fileID: 2078171038}
-  berryExpTxt: {fileID: 1934114410}
-  SFXclip: {fileID: 8300000, guid: 573b0c07504e2014d9849507007ad69f, type: 3}
   priceText_newBerry: {fileID: 1295824419}
   timeText_newBerry: {fileID: 2120615085}
   startBtn_newBerry: {fileID: 787233744}
@@ -6088,8 +6080,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 496606690}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 909940711}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: SFXAudioPlay
         m_Mode: 1
         m_Arguments:
@@ -11801,6 +11793,7 @@ MonoBehaviour:
   bglist:
   - {fileID: 8300000, guid: 8b5d46ef36ff1d143b2459eea8658b1b, type: 3}
   - {fileID: 8300000, guid: 3d2b6dee22b3c33448d6dfa1026e65a4, type: 3}
+  SFXclip: {fileID: 8300000, guid: 573b0c07504e2014d9849507007ad69f, type: 3}
 --- !u!1 &914576164
 GameObject:
   m_ObjectHideFlags: 0
@@ -12431,8 +12424,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 496606690}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 909940711}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: SFXAudioPlay
         m_Mode: 1
         m_Arguments:
@@ -14853,8 +14846,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 496606690}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 909940711}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: SFXAudioPlay
         m_Mode: 1
         m_Arguments:
@@ -15222,8 +15215,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 496606690}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 909940711}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: SFXAudioPlay
         m_Mode: 1
         m_Arguments:
@@ -16824,8 +16817,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 1
           m_CallState: 2
-        - m_Target: {fileID: 496606690}
-          m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        - m_Target: {fileID: 909940711}
+          m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
           m_MethodName: SFXAudioPlay
           m_Mode: 1
           m_Arguments:
@@ -19377,8 +19370,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 496606690}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 909940711}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: SFXAudioPlay
         m_Mode: 1
         m_Arguments:
@@ -25535,8 +25528,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 496606690}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 909940711}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: SFXAudioPlay
         m_Mode: 1
         m_Arguments:

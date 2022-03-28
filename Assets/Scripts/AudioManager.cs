@@ -17,6 +17,7 @@ public class AudioManager : MonoBehaviour
     public AudioMixer mixer;
     public AudioSource bgSound;
     public AudioClip[] bglist;//배경음 리스트
+    public AudioClip SFXclip;
     public static AudioManager instance;
     private void Awake()
     {
@@ -73,6 +74,9 @@ public class AudioManager : MonoBehaviour
     public AudioClip clip;
     AudioManager.instance.SFXPlay("Hook",clip);
     */
+    public void SFXAudioPlay() //버튼 효과음
+    { SFXPlay("ButtonSFX", SFXclip); }
+
 
     public void BgSoundPlay(AudioClip clip) {
         if (isPlayAudio == true)

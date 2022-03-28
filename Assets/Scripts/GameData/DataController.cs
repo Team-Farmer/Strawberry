@@ -107,6 +107,7 @@ public class DataController : MonoBehaviour
         for (int i = 0; i < 7; i++) {
             gameData.isNewsUnlock[i]=false;
         }
+        gameData.newBerryResearch = 0;
     }
     void OnApplicationQuit()
     {

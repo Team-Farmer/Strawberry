@@ -24,7 +24,8 @@ public class GameData
     //List를 사용하거나 Linq사용해야 함
     public bool[] isBerryUnlock = new bool[192];
 
-
+    //새로운 딸기 개발
+    public int newBerryResearch;
 
     //연구 레벨
     public int[] researchLevel=new int[7];

@@ -38,26 +38,14 @@ public class GameManager : MonoBehaviour
 
 
     [Header("------------[PartTime/Search/Berry List]")]
-    public GameObject PartTimeList;
-    public GameObject ResearchList;
-    public GameObject BerryList;
-    public GameObject PanelBlack;
+    //PTJ 알바
+    public GameObject workingCountText;//고용 중인 동물 수
+    public GameObject[] working;//고용 중인 동물 리스트 상단에
 
-    public GameObject workingCountText;//일하는사람들 숫자 띄우기
-    public GameObject[] working;//일하는자들 상단에 띄우기
-
+    //베리 설명창
     public GameObject berryExp;
-    public GameObject berryExpImage;
-    public GameObject berryExpName;
-    public GameObject berryExpTxt;
 
-    [Header("------------[Audio]")]
-    public AudioClip SFXclip;
-
-
-
-
-    //새로운딸기 관련========================================
+    //새로운딸기
     [Header("OBJECT")]
     public GameObject priceText_newBerry;
     public GameObject timeText_newBerry;
@@ -72,6 +60,8 @@ public class GameManager : MonoBehaviour
 
     private int index_newBerry = 0; //현재 인덱스
     private bool isStart_newBerry = false; //시작을 눌렀는가
+
+
 
     [Header("------------[Check/Settings Panel]")]
     public GameObject SettingsPanel;
@@ -396,9 +386,9 @@ public class GameManager : MonoBehaviour
         {
             if (isStart_newBerry == true)
             {
-                if (GameManager.instance.time_newBerry[index] > 0) //시간이 0보다 크면 1초씩 감소
+                if (time_newBerry[index] > 0) //시간이 0보다 크면 1초씩 감소
                 {
-                    GameManager.instance.time_newBerry[index] -= Time.deltaTime;
+                    time_newBerry[index] -= Time.deltaTime;
                     startBtn_newBerry.GetComponent<Image>().sprite = ingImg;
                 }
                 else
@@ -408,7 +398,7 @@ public class GameManager : MonoBehaviour
             }
             //현재 price와 time text를 보인다.
             priceText_newBerry.GetComponent<Text>().text = price_newBerry[index].ToString();
-            timeText_newBerry.GetComponent<Text>().text = TimeForm(Mathf.CeilToInt(GameManager.instance.time_newBerry[index])); //정수부분만 출력한다.
+            timeText_newBerry.GetComponent<Text>().text = TimeForm(Mathf.CeilToInt(time_newBerry[index])); //정수부분만 출력한다.
 
         }
         catch
@@ -418,7 +408,7 @@ public class GameManager : MonoBehaviour
     public void newBerryAdd()
     {
         //타이머가 0 이라면 
-        if (GameManager.instance.time_newBerry[index_newBerry] < 0.9)
+        if (time_newBerry[index_newBerry] < 0.9)
         {
             int newBerryIndex=0;
             //없는 베리중에 랜덤으로 하나 결정(임의로 0~10)
@@ -462,6 +452,10 @@ public class GameManager : MonoBehaviour
                 //설명창 띄운다
                 berryExp.SetActive(true);
 
+                GameObject berryExpImage = berryExp.transform.GetChild(2).gameObject;
+                GameObject berryExpName = berryExp.transform.GetChild(3).gameObject;
+                GameObject berryExpTxt = berryExp.transform.GetChild(4).gameObject;
+
                 //Explanation 내용을 채운다.
                 berryExpImage.GetComponentInChildren<Image>().sprite
                     = berry.GetComponent<SpriteRenderer>().sprite;//이미지 설정
@@ -482,9 +476,9 @@ public class GameManager : MonoBehaviour
     }
 
     #endregion
-    public void SFXAudioPlay() { AudioManager.instance.SFXPlay("ButtonSFX", SFXclip); }
+    
 
-    public string TimeForm(int time)//이거 내장 함수 있을것 같음 찾아볼것 
+    public string TimeForm(int time)//초단위 시간을 분:초로 변경
     {
         int M = 0, S = 0;//M,S 계산용
         string Minutes, Seconds;//M,S 텍스트 적용용
