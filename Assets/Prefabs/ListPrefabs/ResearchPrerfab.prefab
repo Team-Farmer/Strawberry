@@ -687,7 +687,7 @@ GameObject:
   - component: {fileID: 940502465822309899}
   - component: {fileID: 551554344734381312}
   m_Layer: 5
-  m_Name: ResearchElement
+  m_Name: ResearchPrerfab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -27,18 +27,20 @@ public class Strawberry : MonoBehaviour
     GameObject ExpChildren2;
     */
 
-    List<GameObject> BERRY=Globalvariable.instance.berryListAll;
+    List<GameObject> BERRY;
 
     //=====================================================================================================
     void Start()
     {
         //berryExp = GameObject.Find("berryExplanation");//이거 과부화 위험. 다른 방법은 없을까
+        BERRY = Globalvariable.instance.berryListAll;
+
 
         //프리팹들에게 번호를 붙여 주자 0~96
         prefabnum = Prefabcount;
         Prefabcount++;
 
-        //가지고 있는 베리들을 보인다.
+        //베리들을 보인다.
         berryImageChange();
 
     }
@@ -49,20 +51,16 @@ public class Strawberry : MonoBehaviour
     {
 
         //classic=0~31  special=32~63   unique=64~95
-
-
-        //if (prefabnum == i && DataController.instance.gameData.isBerryUnlock[i] == true)//베리 unlock상태 라면
-        if (BERRY[prefabnum] != null)
+        if (BERRY[prefabnum] == null) {
+            berryImagePanel.transform.GetComponent<Image>().color = new Color(0f, 0f, 0f, 1f);//투명 -> 불투명
+        }
+        else
         {
             this.transform.GetComponent<Image>().sprite = yesBerryImage;//배경 이미지 변경
             berryImagePanel.transform.GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f);//투명 -> 불투명
 
-
             berryImagePanel.GetComponent<Image>().sprite = BERRY[prefabnum].GetComponent<SpriteRenderer>().sprite;//해당 베리 이미지 보이기
         }
-            
-        
-
     }
 
 

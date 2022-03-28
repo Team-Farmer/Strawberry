@@ -396,7 +396,7 @@ GameObject:
   - component: {fileID: 7570710879033552976}
   - component: {fileID: 4640965026082384919}
   m_Layer: 5
-  m_Name: PTJElement
+  m_Name: PTJPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

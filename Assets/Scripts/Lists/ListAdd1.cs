@@ -22,16 +22,17 @@ public class ListAdd1 : MonoBehaviour
     //===================================================================================
     private void Start()
     {
-
+        for (int t = 0; t < 3; t++)
+        {
             for (int i = 0; i < 16; i++)
             {
                 AddElement(content1);
-
             }
             for (int i = 0; i < 16; i++)
             {
                 AddElement(content2);
             }
+        }
 
     }
 

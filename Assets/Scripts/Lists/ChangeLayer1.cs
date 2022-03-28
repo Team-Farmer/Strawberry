@@ -6,9 +6,8 @@ using System;
 
 public class ChangeLayer1 : MonoBehaviour
 {
-	public bool isChallengeNews;
 
-	public GameObject[] berryPrefabs;
+
 	[Header("====Buttons====")]
 	[SerializeField]
 	private GameObject[] tagButtons;
@@ -67,23 +66,19 @@ public class ChangeLayer1 : MonoBehaviour
 	}
 	void Start()
 	{
-		if (isChallengeNews == true) { }
-		else
-		{
-			//처음에는 berry classic
-			selectBerryTag("berry_classic");
 
-			// 처음 시작할 때 0번 페이지 보인다.
-			SetScrollBarValue(0);
-		}
+		//처음에는 berry classic
+		selectBerryTag("berry_classic");
+
+		// 처음 시작할 때 0번 페이지 보인다.
+		SetScrollBarValue(0);
+
 
 	}
 
 	private void Update()
 	{
-		if (isChallengeNews == false)
-		{ UpdateInput(); }
-
+		UpdateInput();
 	}
 
 	//===========================================================================================================
@@ -231,6 +226,9 @@ public class ChangeLayer1 : MonoBehaviour
 		isSwipeMode = false;
 	}
 
+
+	//========================================================================================================
+
 	public void TagImageChange(int index)
 	{
 
@@ -244,10 +242,12 @@ public class ChangeLayer1 : MonoBehaviour
 		tagButtons[index].GetComponent<Image>().sprite = tagButtons_selectImage[index];
 
 	}
+
 	public void TurnOn(GameObject obj) 
 	{ content1.SetActive(false); content2.SetActive(false); obj.SetActive(true); }
 
-	//버튼을 눌렀을 때 해당 분류의 딸기를 보인다.name=tag이름
+
+	//버튼을 눌렀을 때 해당 분류의 딸기를 보인다
 	public void selectBerryTag(string name)
 	{
 
@@ -267,6 +267,26 @@ public class ChangeLayer1 : MonoBehaviour
 
 	}
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	public void inActive(string name)
 	{
 		int index = 0;
@@ -278,9 +298,15 @@ public class ChangeLayer1 : MonoBehaviour
 		}
 
 		//비활성화
-		for (int i = index; i < index + 32; i++)
+		for (int i = index; i < index + 16; i++)
 		{
-			berryPrefabs[i].SetActive(false);
+			Transform trChild = content1.transform.GetChild(i);
+			trChild.gameObject.SetActive(false);
+		}
+		for (int i = index; i < index + 16; i++)
+		{
+			Transform trChild = content2.transform.GetChild(i);
+			trChild.gameObject.SetActive(false);
 		}
 
 	}
@@ -309,10 +335,17 @@ public class ChangeLayer1 : MonoBehaviour
 			case "berry_unique": index = 64; break;
 		}
 
+
 		//그 오브젝트를 활성화한다.
-		for (int i = index; i < index+32; i++)
+		for (int i = index; i < index+16; i++)
 		{
-			berryPrefabs[i].SetActive(true);
+			Transform trChild = content1.transform.GetChild(i);
+			trChild.gameObject.SetActive(true);
+		}
+		for (int i = index; i < index+16; i++)
+		{
+			Transform trChild = content2.transform.GetChild(i);
+			trChild.gameObject.SetActive(true);
 		}
 
 	}
