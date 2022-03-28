@@ -10,39 +10,40 @@ public class ListAdd : MonoBehaviour
     private GameObject elementPrefab = null;//프리팹
     
     [SerializeField]
-    private Transform content1 = null;//프리팹이 들어갈 콘텐트
-    [SerializeField]
-    private Transform content2 = null;
+    private Transform[] content = null;//프리팹이 들어갈 콘텐트
 
     [SerializeField]
     private int count=0;//프리팹 갯수
 
     [SerializeField]
-    private bool isBerry;//베리 리스트인가?
-
+    private bool isBerry;
 
     //===================================================================================
     private void Start()
     {
-        if (isBerry == true)//베리 리스트는 반으로 나눠서 담는다. swipe 관련
+        if (isBerry == true) 
         {
-            for (int i = 0; i < count/2; i++)
+            for (int t = 0; t < 3; t++)//classic, special unique 3개
             {
-                AddElement(content1);
-                
+                for (int j = 0; j < content.Length; j++)//layer 갯수만큼
+                {
+                    for (int i = 0; i < 16; i++)//content 갯수만큼
+                    {
+                        AddElement(content[j]);
+                    }
+                }
+
             }
-            for (int i = 0; i < count / 2; i++)
-            {
-                AddElement(content2);
-            }
+
         }
-        else//그 외 리스트들은 그냥 담는다.
+        else
         {
             for (int i = 0; i < count; i++)
             {
-                AddElement(content1);
+                AddElement(content[0]);
             }
         }
+
     }
 
     public void AddElement(Transform content) 

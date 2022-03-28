@@ -10,11 +10,7 @@ public class ListAdd1 : MonoBehaviour
     private GameObject elementPrefab = null;//프리팹
 
     [SerializeField]
-    private Transform content1 = null;//프리팹이 들어갈 콘텐트
-    [SerializeField]
-    private Transform content2 = null;
-    public Transform content3 = null;
-    public Transform content4 = null;
+    private Transform[] content = null;//프리팹이 들어갈 콘텐트
 
 
 
@@ -22,24 +18,16 @@ public class ListAdd1 : MonoBehaviour
     //===================================================================================
     private void Start()
     {
-        for (int t = 0; t < 3; t++)
+        for (int t = 0; t < 3; t++)//classic, special unique 3개
         {
-            for (int i = 0; i < 16; i++)
+            for (int j = 0; j < content.Length; j++)//layer 갯수만큼
             {
-                AddElement(content1);
+                for (int i = 0; i < 16; i++)//content 갯수만큼
+                {
+                    AddElement(content[j]);
+                }
             }
-            for (int i = 0; i < 16; i++)
-            {
-                AddElement(content2);
-            }
-            for (int i = 0; i < 16; i++)
-            {
-                AddElement(content3);
-            }
-            for (int i = 0; i < 16; i++)
-            {
-                AddElement(content4);
-            }
+
         }
 
     }

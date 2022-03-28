@@ -438,7 +438,6 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("새로운 딸기를 위해 조금 더 기다리세요");
             isStart_newBerry = true;
         }
     }
