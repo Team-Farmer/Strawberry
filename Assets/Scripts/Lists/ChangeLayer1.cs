@@ -20,7 +20,10 @@ public class ChangeLayer1 : MonoBehaviour
 	private GameObject content1;
 	[SerializeField]
 	private GameObject content2;
-
+	[SerializeField]
+	private GameObject content3;
+	[SerializeField]
+	private GameObject content4;
 
 	private GameObject[] target_berry;
 
@@ -229,6 +232,7 @@ public class ChangeLayer1 : MonoBehaviour
 
 	//========================================================================================================
 
+	//버튼 누르는 효과
 	public void TagImageChange(int index)
 	{
 
@@ -243,16 +247,20 @@ public class ChangeLayer1 : MonoBehaviour
 
 	}
 
+	//얘는 왜 만들었더라
 	public void TurnOn(GameObject obj) 
 	{ content1.SetActive(false); content2.SetActive(false); obj.SetActive(true); }
 
 
-	//버튼을 눌렀을 때 해당 분류의 딸기를 보인다
+
+
+	//버튼을 눌렀을 때
+	//해당 분류의 딸기를 보인다
 	public void selectBerryTag(string name)
 	{
 
-		//선택 베리들 보이게 활성화
-		Active(name);
+		//모든 베리들 보이게 활성화
+		Active();
 
 		//다른 베리들 안보이게 비활성화
 		switch (name)
@@ -280,21 +288,14 @@ public class ChangeLayer1 : MonoBehaviour
 
 
 
-
-
-
-
-
-
-
 	public void inActive(string name)
 	{
 		int index = 0;
 		switch (name)
 		{
 			case "berry_classic": index = 0; break;
-			case "berry_special": index = 32; break;
-			case "berry_unique": index = 64; break;
+			case "berry_special": index = 16; break;
+			case "berry_unique": index = 32; break;
 		}
 
 		//비활성화
@@ -308,44 +309,41 @@ public class ChangeLayer1 : MonoBehaviour
 			Transform trChild = content2.transform.GetChild(i);
 			trChild.gameObject.SetActive(false);
 		}
-
+		for (int i = index; i < index + 16; i++)
+		{
+			Transform trChild = content3.transform.GetChild(i);
+			trChild.gameObject.SetActive(false);
+		}
+		for (int i = index; i < index + 16; i++)
+		{
+			Transform trChild = content4.transform.GetChild(i);
+			trChild.gameObject.SetActive(false);
+		}
 	}
 
-	public void Active(string name)
+
+	public void Active()
 	{
 		//모든 베리 오브젝트 활성화
-		int iCount = content1.transform.childCount;
-		for (int i = 0; i < iCount; i++)
+		for (int i = 0; i < content1.transform.childCount; i++)
 		{
 			Transform trChild = content1.transform.GetChild(i);
 			trChild.gameObject.SetActive(true);
 		}
-		int iCount2 = content2.transform.childCount;
-		for (int i = 0; i < iCount2; i++)
+		for (int i = 0; i < content2.transform.childCount; i++)
 		{
 			Transform trChild2 = content2.transform.GetChild(i);
 			trChild2.gameObject.SetActive(true);
 		}
-
-		int index=0;
-		switch (name)
+		for (int i = 0; i < content3.transform.childCount; i++)
 		{
-			case "berry_classic": index = 0; break;
-			case "berry_special": index = 32; break;
-			case "berry_unique": index = 64; break;
-		}
-
-
-		//그 오브젝트를 활성화한다.
-		for (int i = index; i < index+16; i++)
-		{
-			Transform trChild = content1.transform.GetChild(i);
+			Transform trChild = content3.transform.GetChild(i);
 			trChild.gameObject.SetActive(true);
 		}
-		for (int i = index; i < index+16; i++)
+		for (int i = 0; i < content4.transform.childCount; i++)
 		{
-			Transform trChild = content2.transform.GetChild(i);
-			trChild.gameObject.SetActive(true);
+			Transform trChild2 = content4.transform.GetChild(i);
+			trChild2.gameObject.SetActive(true);
 		}
 
 	}

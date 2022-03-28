@@ -13,9 +13,9 @@ public class ListAdd1 : MonoBehaviour
     private Transform content1 = null;//ÇÁ¸®ÆÕÀÌ µé¾î°¥ ÄÜÅÙÆ®
     [SerializeField]
     private Transform content2 = null;
+    public Transform content3 = null;
+    public Transform content4 = null;
 
-    [SerializeField]
-    private int count = 0;//ÇÁ¸®ÆÕ °¹¼ö
 
 
 
@@ -31,6 +31,14 @@ public class ListAdd1 : MonoBehaviour
             for (int i = 0; i < 16; i++)
             {
                 AddElement(content2);
+            }
+            for (int i = 0; i < 16; i++)
+            {
+                AddElement(content3);
+            }
+            for (int i = 0; i < 16; i++)
+            {
+                AddElement(content4);
             }
         }
 
