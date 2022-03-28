@@ -420,8 +420,14 @@ public class GameManager : MonoBehaviour
         //타이머가 0 이라면 
         if (GameManager.instance.time_newBerry[index_newBerry] < 0.9)
         {
+            int newBerryIndex=0;
+            //없는 베리중에 랜덤으로 하나 결정(임의로 0~10)
+            while (DataController.instance.gameData.isBerryUnlock[newBerryIndex] == true) 
+            {
+                newBerryIndex = UnityEngine.Random.Range(0, 11);
+            }
             //새로운 딸기가 추가된다.
-            Debug.Log("새로운 딸기!!");
+            DataController.instance.gameData.isBerryUnlock[newBerryIndex] = true;
 
 
             //코인 소비

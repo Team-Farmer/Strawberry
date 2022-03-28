@@ -38,7 +38,11 @@ public class Strawberry : MonoBehaviour
         berryImageChange();
 
     }
-
+    private void Update()
+    {
+        //베리들을 보인다.
+        berryImageChange();
+    }
 
     //베리 리스트에 이미지를 보인다.===========================================================================
     public void berryImageChange()
