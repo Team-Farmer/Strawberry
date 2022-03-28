@@ -260,7 +260,7 @@ public class ChangeLayer1 : MonoBehaviour
 	{
 
 		//모든 베리들 보이게 활성화
-		Active();
+		AllActive();
 
 		//다른 베리들 안보이게 비활성화
 		switch (name)
@@ -269,7 +269,7 @@ public class ChangeLayer1 : MonoBehaviour
 			case "berry_special": inActive("berry_classic"); inActive("berry_unique"); break;
 			case "berry_unique": inActive("berry_special"); inActive("berry_classic"); break;
 		}
-
+		Debug.Log(name);
 
 		SetScrollBarValue(0);
 
@@ -319,10 +319,12 @@ public class ChangeLayer1 : MonoBehaviour
 			Transform trChild = content4.transform.GetChild(i);
 			trChild.gameObject.SetActive(false);
 		}
+
+		Debug.Log("test");
 	}
 
 
-	public void Active()
+	public void AllActive()
 	{
 		//모든 베리 오브젝트 활성화
 		for (int i = 0; i < content1.transform.childCount; i++)
@@ -345,6 +347,68 @@ public class ChangeLayer1 : MonoBehaviour
 			Transform trChild2 = content4.transform.GetChild(i);
 			trChild2.gameObject.SetActive(true);
 		}
+
+	}
+
+	public void Active(string name) {
+
+		int index = 0;
+		switch (name)
+		{
+			case "berry_classic": index = 0; break;
+			case "berry_special": index = 16; break;
+			case "berry_unique": index = 32; break;
+		}
+
+		//비활성화
+		for (int i = index; i < index + 16; i++)
+		{
+			Transform trChild = content1.transform.GetChild(i);
+			trChild.gameObject.SetActive(true);
+		}
+		for (int i = index; i < index + 16; i++)
+		{
+			Transform trChild = content2.transform.GetChild(i);
+			trChild.gameObject.SetActive(true);
+		}
+		for (int i = index; i < index + 16; i++)
+		{
+			Transform trChild = content3.transform.GetChild(i);
+			trChild.gameObject.SetActive(true);
+		}
+		for (int i = index; i < index + 16; i++)
+		{
+			Transform trChild = content4.transform.GetChild(i);
+			trChild.gameObject.SetActive(true);
+		}
+
+
+
+	}
+	public void AllInActive() {
+
+		//모든 베리 오브젝트 비활성화
+		for (int i = 0; i < content1.transform.childCount; i++)
+		{
+			Transform trChild = content1.transform.GetChild(i);
+			trChild.gameObject.SetActive(false);
+		}
+		for (int i = 0; i < content2.transform.childCount; i++)
+		{
+			Transform trChild2 = content2.transform.GetChild(i);
+			trChild2.gameObject.SetActive(false);
+		}
+		for (int i = 0; i < content3.transform.childCount; i++)
+		{
+			Transform trChild = content3.transform.GetChild(i);
+			trChild.gameObject.SetActive(false);
+		}
+		for (int i = 0; i < content4.transform.childCount; i++)
+		{
+			Transform trChild2 = content4.transform.GetChild(i);
+			trChild2.gameObject.SetActive(false);
+		}
+
 
 	}
 

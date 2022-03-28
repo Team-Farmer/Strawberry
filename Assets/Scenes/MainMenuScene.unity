@@ -4016,8 +4016,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 135233325}
-        m_TargetAssemblyTypeName: changeLayer, Assembly-CSharp
+      - m_Target: {fileID: 135233324}
+        m_TargetAssemblyTypeName: ChangeLayer1, Assembly-CSharp
         m_MethodName: selectBerryTag
         m_Mode: 5
         m_Arguments:
@@ -9140,7 +9140,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 12, y: 59.99587}
+  m_AnchoredPosition: {x: 12, y: 59.995827}
   m_SizeDelta: {x: 103, y: 95.000015}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &755967742
@@ -13590,8 +13590,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 135233325}
-        m_TargetAssemblyTypeName: changeLayer, Assembly-CSharp
+      - m_Target: {fileID: 135233324}
+        m_TargetAssemblyTypeName: ChangeLayer1, Assembly-CSharp
         m_MethodName: selectBerryTag
         m_Mode: 5
         m_Arguments:
@@ -16549,7 +16549,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 131.1, y: 61.999958}
+  m_AnchoredPosition: {x: 131.1, y: 61.999916}
   m_SizeDelta: {x: 103, y: 95.000015}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1199950768
@@ -17484,8 +17484,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 135233325}
-        m_TargetAssemblyTypeName: changeLayer, Assembly-CSharp
+      - m_Target: {fileID: 135233324}
+        m_TargetAssemblyTypeName: ChangeLayer1, Assembly-CSharp
         m_MethodName: selectBerryTag
         m_Mode: 5
         m_Arguments:
@@ -21621,7 +21621,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -110.5, y: 59.99587}
+  m_AnchoredPosition: {x: -110.5, y: 59.995827}
   m_SizeDelta: {x: 97.46, y: 94.57}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1629387834
@@ -24863,7 +24863,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 238.9, y: 60.89996}
+  m_AnchoredPosition: {x: 238.9, y: 60.899918}
   m_SizeDelta: {x: 103, y: 95.000015}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1888960442

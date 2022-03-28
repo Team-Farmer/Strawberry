@@ -52,11 +52,11 @@ public class Strawberry : MonoBehaviour
 
         //classic=0~31  special=32~63   unique=64~95
         if (BERRY[prefabnum] == null) {
-            berryImagePanel.transform.GetComponent<Image>().color = new Color(0f, 1f, 0f, 1f);//투명 -> 불투명
+            
         }
         else
         {
-            this.transform.GetComponent<Image>().sprite = yesBerryImage;//배경 이미지 변경
+            this.transform.GetChild(0).GetComponent<Image>().sprite = yesBerryImage;//배경 이미지 변경
             berryImagePanel.transform.GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f);//투명 -> 불투명
 
             berryImagePanel.GetComponent<Image>().sprite = BERRY[prefabnum].GetComponent<SpriteRenderer>().sprite;//해당 베리 이미지 보이기
