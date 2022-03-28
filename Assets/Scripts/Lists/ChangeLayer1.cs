@@ -40,7 +40,7 @@ public class ChangeLayer1 : MonoBehaviour
 	private float[] scrollPageValues;           // 각 페이지의 위치 값 [0.0 - 1.0]
 	private float valueDistance = 0;            // 각 페이지 사이의 거리
 	private int currentPage = 0;            // 현재 페이지
-	private int maxPage = 2;                // 최대 페이지 2로 설정
+	private int maxPage = 4;                // 최대 페이지 2로 설정
 
 	private float startTouchX;              // 터치 시작 위치
 	private float endTouchX;                    // 터치 종료 위치
@@ -55,7 +55,7 @@ public class ChangeLayer1 : MonoBehaviour
 	private void Awake()
 	{
 		// 스크롤 되는 페이지의 각 value 값을 저장하는 배열 메모리 할당
-		scrollPageValues = new float[2];
+		scrollPageValues = new float[4];
 
 		// 스크롤 되는 페이지 사이의 거리
 		valueDistance = 1f / (scrollPageValues.Length - 1f);
@@ -101,7 +101,7 @@ public class ChangeLayer1 : MonoBehaviour
 				if (currentPage == 0) return;
 				// 왼쪽으로 이동. 현재 페이지를 1 감소
 				currentPage--;
-				SetScrollBarValue(0);
+				SetScrollBarValue(currentPage);
 
 				break;
 
@@ -110,7 +110,8 @@ public class ChangeLayer1 : MonoBehaviour
 				if (currentPage == maxPage - 1) return;
 				// 오른쪽으로 이동. 현재 페이지를 1 증가
 				currentPage++;
-				SetScrollBarValue(1);
+				SetScrollBarValue(currentPage);
+
 				break;
 
 		}
@@ -269,7 +270,7 @@ public class ChangeLayer1 : MonoBehaviour
 			case "berry_special": inActive("berry_classic"); inActive("berry_unique"); break;
 			case "berry_unique": inActive("berry_special"); inActive("berry_classic"); break;
 		}
-		Debug.Log(name);
+
 
 		SetScrollBarValue(0);
 
@@ -320,7 +321,7 @@ public class ChangeLayer1 : MonoBehaviour
 			trChild.gameObject.SetActive(false);
 		}
 
-		Debug.Log("test");
+
 	}
 
 

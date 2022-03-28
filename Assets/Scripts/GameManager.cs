@@ -35,18 +35,27 @@ public class GameManager : MonoBehaviour
     public GameObject TruckPanel;
     Transform target;
 
+
+
     [Header("------------[PartTime/Search/Berry List]")]
     public GameObject PartTimeList;
     public GameObject ResearchList;
     public GameObject BerryList;
     public GameObject PanelBlack;
-    //public GameObject panelBlack_Exp;
+
     public GameObject workingCountText;//일하는사람들 숫자 띄우기
-    //internal object count;
     public GameObject[] working;//일하는자들 상단에 띄우기
+
+    public GameObject berryExp;
+    public GameObject berryExpImage;
+    public GameObject berryExpName;
+    public GameObject berryExpTxt;
 
     [Header("------------[Audio]")]
     public AudioClip SFXclip;
+
+
+
 
     //새로운딸기 관련========================================
     [Header("OBJECT")]
@@ -355,6 +364,9 @@ public class GameManager : MonoBehaviour
         else
         { Obj.SetActive(true); }
     }
+
+    #region PTJ
+
     //PTJ
     public void workingApply(List<Sprite> workingList)
     {
@@ -373,6 +385,9 @@ public class GameManager : MonoBehaviour
     }
     //PTJ몇명 고용했는지
     public void workingCount(int employCount) { workingCountText.GetComponent<Text>().text = employCount.ToString() + "/3"; }
+    #endregion
+
+    #region New Berry Add
     //새로운 딸기 관련 정보
     public void updateInfo(int index)
     {
@@ -428,7 +443,40 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    #endregion
 
+    #region Berry Explanation
+    public void Explanation(GameObject berry,int prefabnum)
+    {
+
+        try
+        {
+            if (DataController.instance.gameData.isBerryUnlock[prefabnum] == true)
+            {
+
+                //설명창 띄운다
+                berryExp.SetActive(true);
+
+                //Explanation 내용을 채운다.
+                berryExpImage.GetComponentInChildren<Image>().sprite
+                    = berry.GetComponent<SpriteRenderer>().sprite;//이미지 설정
+
+                berryExpName.gameObject.GetComponentInChildren<Text>().text
+                    = berry.GetComponent<Berry>().berryName;//이름 설정
+
+                berryExpTxt.transform.gameObject.GetComponentInChildren<Text>().text
+                    = berry.GetComponent<Berry>().berryExplain;//설명 설정
+            }
+        }
+        catch
+        {
+            Debug.Log("여기에 해당하는 베리는 아직 없다");
+        }
+
+
+    }
+
+    #endregion
     public void SFXAudioPlay() { AudioManager.instance.SFXPlay("ButtonSFX", SFXclip); }
 
     public string TimeForm(int time)//이거 내장 함수 있을것 같음 찾아볼것 
