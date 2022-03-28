@@ -1533,7 +1533,7 @@ MonoBehaviour:
   - {fileID: 2103272844}
   - {fileID: 302096627}
   scrollBar: {fileID: 896976377}
-  swipeTime: 0
+  swipeTime: 0.1
   swipeDistance: 30
 --- !u!1 &139806053
 GameObject:
@@ -3986,8 +3986,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 135233324}
-        m_TargetAssemblyTypeName: ChangeLayer1, Assembly-CSharp
-        m_MethodName: selectBerryTag
+        m_TargetAssemblyTypeName: ChangeLayer, Assembly-CSharp
+        m_MethodName: swipeButton
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3997,8 +3997,8 @@ MonoBehaviour:
           m_StringArgument: berry_unique
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: changeLayer, Assembly-CSharp
+      - m_Target: {fileID: 135233324}
+        m_TargetAssemblyTypeName: ChangeLayer, Assembly-CSharp
         m_MethodName: TagImageChange
         m_Mode: 3
         m_Arguments:
@@ -8166,7 +8166,6 @@ GameObject:
   m_Component:
   - component: {fileID: 698710643}
   - component: {fileID: 698710650}
-  - component: {fileID: 698710647}
   - component: {fileID: 698710644}
   m_Layer: 5
   m_Name: BerryList
@@ -8221,24 +8220,6 @@ MonoBehaviour:
   - {fileID: 302096628}
   count: 1
   isBerry: 1
---- !u!114 &698710647
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 698710642}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18bcd307b3e42f449bffd310879ab06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  elementPrefab: {fileID: 2850393128073872034, guid: d7ec4633af607e245ad0e447da31e7c3, type: 3}
-  content:
-  - {fileID: 638177079}
-  - {fileID: 1862953772}
-  - {fileID: 2103272845}
-  - {fileID: 302096628}
 --- !u!114 &698710650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8480,25 +8461,25 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1882881321}
-        m_TargetAssemblyTypeName: ChangeLayer1, Assembly-CSharp
-        m_MethodName: TagImageChange
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1882881321}
+      - m_Target: {fileID: 1882881319}
         m_TargetAssemblyTypeName: ChangeLayer, Assembly-CSharp
         m_MethodName: TurnOn
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 660919301}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1882881319}
+        m_TargetAssemblyTypeName: ChangeLayer, Assembly-CSharp
+        m_MethodName: TagImageChange
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -11610,8 +11591,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1882881321}
-        m_TargetAssemblyTypeName: ChangeLayer1, Assembly-CSharp
+      - m_Target: {fileID: 1882881319}
+        m_TargetAssemblyTypeName: ChangeLayer, Assembly-CSharp
         m_MethodName: TagImageChange
         m_Mode: 3
         m_Arguments:
@@ -11622,8 +11603,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1882881321}
-        m_TargetAssemblyTypeName: ChangeLayer1, Assembly-CSharp
+      - m_Target: {fileID: 1882881319}
+        m_TargetAssemblyTypeName: ChangeLayer, Assembly-CSharp
         m_MethodName: TurnOn
         m_Mode: 2
         m_Arguments:
@@ -13271,8 +13252,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 135233324}
-        m_TargetAssemblyTypeName: ChangeLayer1, Assembly-CSharp
-        m_MethodName: selectBerryTag
+        m_TargetAssemblyTypeName: ChangeLayer, Assembly-CSharp
+        m_MethodName: swipeButton
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13282,8 +13263,8 @@ MonoBehaviour:
           m_StringArgument: berry_special
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: changeLayer, Assembly-CSharp
+      - m_Target: {fileID: 135233324}
+        m_TargetAssemblyTypeName: ChangeLayer, Assembly-CSharp
         m_MethodName: TagImageChange
         m_Mode: 3
         m_Arguments:
@@ -17165,7 +17146,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 135233324}
-        m_TargetAssemblyTypeName: ChangeLayer1, Assembly-CSharp
+        m_TargetAssemblyTypeName: ChangeLayer, Assembly-CSharp
         m_MethodName: selectBerryTag
         m_Mode: 5
         m_Arguments:
@@ -17176,8 +17157,8 @@ MonoBehaviour:
           m_StringArgument: berry_classic
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: changeLayer, Assembly-CSharp
+      - m_Target: {fileID: 135233324}
+        m_TargetAssemblyTypeName: ChangeLayer, Assembly-CSharp
         m_MethodName: TagImageChange
         m_Mode: 3
         m_Arguments:
@@ -24280,7 +24261,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1882881320}
-  - component: {fileID: 1882881321}
+  - component: {fileID: 1882881319}
   m_Layer: 5
   m_Name: changeLayerManager
   m_TagString: Untagged
@@ -24288,26 +24269,7 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &1882881320
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1882881318}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 529438795}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1882881321
+--- !u!114 &1882881319
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -24335,6 +24297,25 @@ MonoBehaviour:
   scrollBar: {fileID: 0}
   swipeTime: 0.1
   swipeDistance: 1
+--- !u!224 &1882881320
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1882881318}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 529438795}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1883974185 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4316598845666827044, guid: 8b8a276901ef2ed4e9bfa2b611e4e826, type: 3}
@@ -25207,7 +25188,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 135233324}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ChangeLayer, Assembly-CSharp
         m_MethodName: swipeButton
         m_Mode: 5
@@ -27077,7 +27058,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 135233324}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ChangeLayer, Assembly-CSharp
         m_MethodName: swipeButton
         m_Mode: 5
