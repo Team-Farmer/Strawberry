@@ -1154,7 +1154,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 94618281}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.9809696, y: 0.81669647, z: 1835.9308}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 435427872}
@@ -1514,21 +1514,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bc6a9a62eb908e499927be8152e1eea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isBerry: 0
-  tagButtons: []
-  tagButtons_Image: []
-  tagButtons_selectImage: []
-  content: []
-  scrollBar: {fileID: 0}
-  swipeTime: 0.1
-  swipeDistance: 1
-  scrollPageValues: []
-  valueDistance: 0
-  currentPage: 0
-  maxPage: 4
-  startTouchX: 0
-  endTouchX: 0
-  isSwipeMode: 0
 --- !u!1 &139806053
 GameObject:
   m_ObjectHideFlags: 0
@@ -9171,6 +9156,42 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 496606690}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: EnableObjColliderAll
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 41530273}
+        m_TargetAssemblyTypeName: PanelAnimation, Assembly-CSharp
+        m_MethodName: FadeOut
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3459074}
+        m_TargetAssemblyTypeName: PanelAnimation, Assembly-CSharp
+        m_MethodName: CloseScale
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &766781380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12301,7 +12322,7 @@ GameObject:
   - component: {fileID: 926323870}
   m_Layer: 5
   m_Name: Panel
-  m_TagString: Untagged
+  m_TagString: Store
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16652,7 +16673,7 @@ GameObject:
   - component: {fileID: 1218476153}
   m_Layer: 5
   m_Name: Panel
-  m_TagString: Untagged
+  m_TagString: Truck
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19074,7 +19095,7 @@ GameObject:
   - component: {fileID: 1426541478}
   m_Layer: 5
   m_Name: Image
-  m_TagString: Untagged
+  m_TagString: BG
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24281,21 +24302,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bc6a9a62eb908e499927be8152e1eea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isBerry: 0
-  tagButtons: []
-  tagButtons_Image: []
-  tagButtons_selectImage: []
-  content: []
-  scrollBar: {fileID: 0}
-  swipeTime: 0.1
-  swipeDistance: 1
-  scrollPageValues: []
-  valueDistance: 0
-  currentPage: 0
-  maxPage: 4
-  startTouchX: 0
-  endTouchX: 0
-  isSwipeMode: 0
 --- !u!224 &1882881320
 RectTransform:
   m_ObjectHideFlags: 0
@@ -25832,27 +25838,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 518175885998587222, guid: 4c430f901d7b5ba448644219770afe62, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.004166667
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 518175885998587222, guid: 4c430f901d7b5ba448644219770afe62, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.004166667
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 518175885998587222, guid: 4c430f901d7b5ba448644219770afe62, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.004166667
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 518175885998587222, guid: 4c430f901d7b5ba448644219770afe62, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.9809696
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 518175885998587222, guid: 4c430f901d7b5ba448644219770afe62, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.81669647
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 518175885998587222, guid: 4c430f901d7b5ba448644219770afe62, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1745.0308
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 518175885998587222, guid: 4c430f901d7b5ba448644219770afe62, type: 3}
       propertyPath: m_LocalRotation.w
@@ -25881,6 +25887,18 @@ PrefabInstance:
     - target: {fileID: 518175885998587222, guid: 4c430f901d7b5ba448644219770afe62, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 518175885998587223, guid: 4c430f901d7b5ba448644219770afe62, type: 3}
+      propertyPath: uniqueBerryList.Array.size
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 518175885998587223, guid: 4c430f901d7b5ba448644219770afe62, type: 3}
+      propertyPath: classicBerryList.Array.size
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 518175885998587223, guid: 4c430f901d7b5ba448644219770afe62, type: 3}
+      propertyPath: specialBerryList.Array.size
+      value: 64
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c430f901d7b5ba448644219770afe62, type: 3}

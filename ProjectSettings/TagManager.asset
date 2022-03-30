@@ -11,6 +11,9 @@ TagManager:
   - Bug
   - Weed
   - Rain
+  - Truck
+  - Store
+  - BG
   layers:
   - Default
   - TransparentFX
