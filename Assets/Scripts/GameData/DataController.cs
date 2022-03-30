@@ -80,8 +80,9 @@ public class DataController : MonoBehaviour
         gameData.heart = 500;
         gameData.coin = 150000;
         gameData.medal = 0;
+        gameData.totalBerryCnt = 0;
         //Truck
-        gameData.berryCnt = 0;
+        gameData.truckBerryCnt = 0;
 
         //Research
         for (int i = 0; i < gameData.researchLevel.Length; i++) 

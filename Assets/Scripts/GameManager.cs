@@ -17,12 +17,12 @@ public class GameManager : MonoBehaviour
     #region 인스펙터
     public static GameManager instance;
 
-    [Header("------------[ Money ]")]
+    [Header("[ Money ]")]
     public Text CoinText;
     public Text HeartText;
     public int[] BerryPrice = new int[192];
 
-    [Header("------------[ Object ]")]
+    [Header("[ Object ]")]
     public GameObject stemPrefab; // 프리팹
     public GameObject bugPrefab;
 
@@ -30,14 +30,24 @@ public class GameManager : MonoBehaviour
     public List<Stem> stemList = new List<Stem>();
     public List<Bug> bugList = new List<Bug>();
 
-    [Header("------------[Truck List]")]
+    [Header("[Truck]")]
     public GameObject TruckObj;
     public GameObject TruckPanel;
     Transform target;
+    public Text truckCoinText;
 
+    public const float STEM_LEVEL_0 = Globalvariable.STEM_LEVEL_0;
+    public const float STEM_LEVEL_1 = Globalvariable.STEM_LEVEL_1;
+    public const float STEM_LEVEL_2 = Globalvariable.STEM_LEVEL_2;
+    public const float STEM_LEVEL_3 = Globalvariable.STEM_LEVEL_3;
+    public const float STEM_LEVEL_MAX = Globalvariable.STEM_LEVEL_MAX;
 
+    public const int TRUCK_CNT_LEVEL_0 = Globalvariable.TRUCK_CNT_LEVEL_0;
+    public const int TRUCK_CNT_LEVEL_1 = Globalvariable.TRUCK_CNT_LEVEL_1;
+    public const int TRUCK_CNT_LEVEL_2 = Globalvariable.TRUCK_CNT_LEVEL_2;
+    public const int TRUCK_CNT_LEVEL_MAX = Globalvariable.TRUCK_CNT_LEVEL_MAX;
 
-    [Header("------------[PartTime/Search/Berry List]")]
+    [Header("[PartTime/Search/Berry List]")]
     //PTJ 알바
     public GameObject workingCountText;//고용 중인 동물 수
     public GameObject[] working;//고용 중인 동물 리스트 상단에
@@ -60,8 +70,6 @@ public class GameManager : MonoBehaviour
 
     private int index_newBerry = 0; //현재 인덱스
     private bool isStart_newBerry = false; //시작을 눌렀는가
-
-
 
     [Header("------------[Check/Settings Panel]")]
     public GameObject SettingsPanel;
@@ -108,7 +116,7 @@ public class GameManager : MonoBehaviour
                 bugList[i].gameObject.SetActive(true);
             }
             float creatTimeTemp = DataController.instance.gameData.berryFieldData[i].createTime;
-            if ((0 < creatTimeTemp && creatTimeTemp < 20) || DataController.instance.gameData.berryFieldData[i].hasWeed)
+            if ((0 < creatTimeTemp && creatTimeTemp < STEM_LEVEL_MAX) || DataController.instance.gameData.berryFieldData[i].hasWeed)
             {
                 farmList[i].GetComponent<BoxCollider2D>().enabled = false;
             }
@@ -141,7 +149,7 @@ public class GameManager : MonoBehaviour
     void LateUpdate()
     {
         //CoinText.text = coin.ToString() + " A";
-        ShowCoinText();
+        ShowCoinText(CoinText, DataController.instance.gameData.coin); // 트럭코인 나타낼 때 같이쓰려고 매개변수로 받게 수정했어요 - 신희규
         HeartText.text = DataController.instance.gameData.heart.ToString();
     }
     #endregion
@@ -181,7 +189,7 @@ public class GameManager : MonoBehaviour
     }
     public void ClickedTruck()
     {
-        DataController.instance.gameData.berryCnt = 0;
+        ShowCoinText(truckCoinText, DataController.instance.gameData.truckCoin);               
     }
     
     Stem GetStem(int idx)
@@ -226,7 +234,7 @@ public class GameManager : MonoBehaviour
 
         yield return new WaitForSeconds(0.75f); // 0.75초 뒤에
 
-        UpdateBerryCnt();
+        UpdateTruckState(stem);
         stem.gameObject.SetActive(false);
 
         yield return new WaitForSeconds(0.25f); // 0.25초 뒤에
@@ -237,11 +245,12 @@ public class GameManager : MonoBehaviour
             farm.GetComponent<BoxCollider2D>().enabled = true; // 밭을 다시 활성화 
         }
     }
-    void UpdateBerryCnt()
+    void UpdateTruckState(Stem stem)
     {
-        if (DataController.instance.gameData.berryCnt < 48)
+        if (DataController.instance.gameData.truckBerryCnt < TRUCK_CNT_LEVEL_MAX)
         {
-            DataController.instance.gameData.berryCnt += 1;
+            DataController.instance.gameData.truckBerryCnt += 1;
+            DataController.instance.gameData.truckCoin += stem.instantBerry.berryPrice;
         }
     }
 
@@ -269,22 +278,22 @@ public class GameManager : MonoBehaviour
         //Debug.Log(BerryPrice[9] + " " + BerryPrice[73] + " " + BerryPrice[137] + " ");
     }*/
 
-    public void ShowCoinText()
+    public void ShowCoinText(Text coinText, int coin)
     {
-        int show = DataController.instance.gameData.coin;
-        if (show <= 9999)           // 0~9999까지 A
+        //int coin = DataController.instance.gameData.coin;
+        if (coin <= 9999)           // 0~9999까지 A
         {
-            CoinText.text = show.ToString() + " A";
+            coinText.text = coin.ToString() + " A";
         }
-        else if (show <= 9999999)   // 10000~9999999(=9999B)까지 B
+        else if (coin <= 9999999)   // 10000~9999999(=9999B)까지 B
         {
-            show /= 1000;
-            CoinText.text = show.ToString() + " B";
+            coin /= 1000;
+            coinText.text = coin.ToString() + " B";
         }
         else                        // 그 외 C (최대 2100C)
         {
-            show /= 1000000;
-            CoinText.text = show.ToString() + " C";
+            coin /= 1000000;
+            coinText.text = coin.ToString() + " C";
         }
     }
 
@@ -334,7 +343,7 @@ public class GameManager : MonoBehaviour
             {
                 coll.enabled = true;
             }
-            if (!DataController.instance.gameData.berryFieldData[i].hasBug && !DataController.instance.gameData.berryFieldData[i].hasWeed && DataController.instance.gameData.berryFieldData[i].createTime >= 20.0f) // (4)의 상황, 즉 벌레와 잡초 둘 다 없을 때 다 자란 딸기밭의 콜라이더를 켜준다.
+            if (!DataController.instance.gameData.berryFieldData[i].hasBug && !DataController.instance.gameData.berryFieldData[i].hasWeed && DataController.instance.gameData.berryFieldData[i].createTime >= STEM_LEVEL_MAX) // (4)의 상황, 즉 벌레와 잡초 둘 다 없을 때 다 자란 딸기밭의 콜라이더를 켜준다.
             {
                 coll.enabled = true;
             }
@@ -422,7 +431,7 @@ public class GameManager : MonoBehaviour
 
             //코인 소비
             UseCoin(price_newBerry[index_newBerry]);
-            ShowCoinText();
+            //ShowCoinText(CoinText, DataController.instance.gameData.coin); // 트럭코인 나타낼 때 같이쓰려고 매개변수로 받게 수정했어요 - 신희규 
 
             //업스레이드 레벨 상승 -> 그 다음 업그레이드 금액이 보인다.
             index_newBerry++;

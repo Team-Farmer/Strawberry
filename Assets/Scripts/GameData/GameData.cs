@@ -14,7 +14,11 @@ public class GameData
     public int medal;
 
     //Truck
-    public int berryCnt; // 트럭 딸기 개수
+    public int truckBerryCnt; // 트럭 딸기 개수
+    public int truckCoin;
+
+    //여태까지 모은 딸기 총 개수
+    public int totalBerryCnt;
 
     //딸기 밭 데이터 생성
     public BerryFieldData[] berryFieldData = new BerryFieldData[16];

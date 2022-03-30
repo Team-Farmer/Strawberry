@@ -17,6 +17,12 @@ public class Stem : MonoBehaviour
     public int stemIdx;
     public Berry instantBerry;
 
+    public const float STEM_LEVEL_0 = Globalvariable.STEM_LEVEL_0;
+    public const float STEM_LEVEL_1 = Globalvariable.STEM_LEVEL_1;
+    public const float STEM_LEVEL_2 = Globalvariable.STEM_LEVEL_2;
+    public const float STEM_LEVEL_3 = Globalvariable.STEM_LEVEL_3;
+    public const float STEM_LEVEL_MAX = Globalvariable.STEM_LEVEL_MAX;
+
     RainCtrl rainCtrl;
     void Awake()
     {
@@ -29,7 +35,7 @@ public class Stem : MonoBehaviour
     {       
         DataController.instance.gameData.berryFieldData[stemIdx].isStemEnable = true;
 
-        if (DataController.instance.gameData.berryFieldData[stemIdx].createTime >= 5.0f)
+        if (DataController.instance.gameData.berryFieldData[stemIdx].createTime >= STEM_LEVEL_1)
         {
             sprite.sortingOrder = 0;
         }
@@ -44,7 +50,7 @@ public class Stem : MonoBehaviour
             return;
         }  
         
-        DataController.instance.gameData.berryFieldData[stemIdx].randomTime = Random.Range(7.0f, 18.0f);
+        DataController.instance.gameData.berryFieldData[stemIdx].randomTime = Random.Range(STEM_LEVEL_1 + 2.0f, STEM_LEVEL_MAX - 2.0f);
         DefineBerry();
         MakeBerry();
         SetAnim(0);
@@ -81,22 +87,22 @@ public class Stem : MonoBehaviour
             stemBug.GenerateBug();
             DataController.instance.gameData.berryFieldData[stemIdx].randomTime = 200f;
         }
-        if (5.0f <= DataController.instance.gameData.berryFieldData[stemIdx].createTime && DataController.instance.gameData.berryFieldData[stemIdx].createTime < 10.0f)
+        if (STEM_LEVEL_1 <= DataController.instance.gameData.berryFieldData[stemIdx].createTime && DataController.instance.gameData.berryFieldData[stemIdx].createTime < STEM_LEVEL_2)
         {
             if (seedAnimLevel == 1) return;
             SetAnim(1);
         }
-        else if (10.0f <= DataController.instance.gameData.berryFieldData[stemIdx].createTime && DataController.instance.gameData.berryFieldData[stemIdx].createTime < 15.0f)
+        else if (STEM_LEVEL_2 <= DataController.instance.gameData.berryFieldData[stemIdx].createTime && DataController.instance.gameData.berryFieldData[stemIdx].createTime < STEM_LEVEL_3)
         {
             if (seedAnimLevel == 2) return;
             SetAnim(2);
         }
-        else if (15.0f <= DataController.instance.gameData.berryFieldData[stemIdx].createTime && DataController.instance.gameData.berryFieldData[stemIdx].createTime < 20.0f)
+        else if (STEM_LEVEL_3 <= DataController.instance.gameData.berryFieldData[stemIdx].createTime && DataController.instance.gameData.berryFieldData[stemIdx].createTime < STEM_LEVEL_MAX)
         {
             if (seedAnimLevel == 3) return;
             SetAnim(3);
         }
-        else if (DataController.instance.gameData.berryFieldData[stemIdx].createTime >= 20.0f)
+        else if (DataController.instance.gameData.berryFieldData[stemIdx].createTime >= STEM_LEVEL_MAX)
         {            
             DataController.instance.gameData.berryFieldData[stemIdx].canGrow = false;
             if(!GameManager.instance.isblackPanelOn)

@@ -4,23 +4,17 @@ using UnityEngine;
 
 public class Weed : MonoBehaviour
 {
-    public int weedIdx;
-
-    public float weedProb = 20f; // 옮김
-    public float xPos = 0f;   // 옮김   
+    public int weedIdx;  
+    public float xPos = 0f;   
     public int weedSpriteNum; // 옮김
-    public bool isWeedEnable; // true면은 있었던거니까 켜주고 false면은 없던거니깐 건들지말고
-
+    
     private Farm farm;
-    private Stem stem;
     private Animator anim;
     private BoxCollider2D farmColl;
     void Awake()
     {        
         anim = GetComponent<Animator>();
-        farm = transform.parent.gameObject.GetComponent<Farm>();
-
-        stem = GameManager.instance.stemList[farm.farmIdx];
+        farm = transform.parent.gameObject.GetComponent<Farm>();        
         farmColl = farm.GetComponent<BoxCollider2D>();       
     }
     void OnEnable()
@@ -64,7 +58,7 @@ public class Weed : MonoBehaviour
         this.gameObject.SetActive(false); // 잡초 비활성화
 
         float creatTime = DataController.instance.gameData.berryFieldData[weedIdx].createTime; // 딸기가 생성된 시간변수 참조
-        if (creatTime == 0f || creatTime >= 20f) // 맨 땅이거나 딸기가 수확가능한 상태라면
+        if (creatTime == 0f || creatTime >= Globalvariable.STEM_LEVEL_MAX) // 맨 땅이거나 딸기가 수확가능한 상태라면
         {
             farmColl.enabled = true; // 밭의 Collider를 켠다.
         }

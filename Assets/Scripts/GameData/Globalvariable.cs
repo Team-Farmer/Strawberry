@@ -19,6 +19,17 @@ public class Globalvariable : MonoBehaviour
         Unique
     }
 
+    public const int TRUCK_CNT_LEVEL_0 = 0;
+    public const int TRUCK_CNT_LEVEL_1 = 16;
+    public const int TRUCK_CNT_LEVEL_2 = 32;
+    public const int TRUCK_CNT_LEVEL_MAX = 48;
+
+    public const float STEM_LEVEL_0 = 0f;
+    public const float STEM_LEVEL_1 = 5f;
+    public const float STEM_LEVEL_2 = 10f;
+    public const float STEM_LEVEL_3 = 15f;
+    public const float STEM_LEVEL_MAX = 20f;
+
     void Awake()
     {
         instance = this;

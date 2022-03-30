@@ -86,7 +86,7 @@ public class PTJResearch : MonoBehaviour
         
         //해당 금액의 코인이 감소
         GameManager.instance.UseCoin(Info[prefabnum].Price);
-        GameManager.instance.ShowCoinText();
+        
         }
     }
 
@@ -114,9 +114,7 @@ public class PTJResearch : MonoBehaviour
     {
         //해당 금액의 코인이 감소
         GameManager.instance.UseCoin(Info[prefabnum].Price);
-        GameManager.instance.ShowCoinText();
-
-
+        
         Info[prefabnum].isEmployed = true;//고용
         levelNum.GetComponent<Text>().text = "고용 중";//고용중으로 표시
         levelNum.GetComponent<Text>().color = new Color32(245, 71, 71, 255);//#F54747 글자색 변경
