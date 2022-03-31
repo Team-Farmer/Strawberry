@@ -77,10 +77,18 @@ public class DataController : MonoBehaviour
 
     public void InitData()
     {
+        // 재화 변수
         gameData.heart = 500;
         gameData.coin = 150000;
         gameData.medal = 0;
-        gameData.totalBerryCnt = 0;
+        // 누적 변수
+        gameData.unlockBerryCnt = 0;
+        gameData.harvBerryCnt = 0;
+        gameData.accCoin = 0;
+        gameData.accHeart = 0;
+        gameData.accAttendance = 0;
+        gameData.mgPlayCnt = 0;
+
         //Truck
         gameData.truckBerryCnt = 0;
 

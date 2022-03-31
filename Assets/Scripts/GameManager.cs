@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     [Header("[ Money ]")]
     public Text CoinText;
     public Text HeartText;
-    public int[] BerryPrice = new int[192];
+    // public int[] BerryPrice = new int[192];
 
     [Header("[ Object ]")]
     public GameObject stemPrefab; // 프리팹
@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
     public List<Stem> stemList = new List<Stem>();
     public List<Bug> bugList = new List<Bug>();
 
-    [Header("[Truck]")]
+    [Header("[ Truck ]")]
     public GameObject TruckObj;
     public GameObject TruckPanel;
     Transform target;
@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
     public const int TRUCK_CNT_LEVEL_2 = Globalvariable.TRUCK_CNT_LEVEL_2;
     public const int TRUCK_CNT_LEVEL_MAX = Globalvariable.TRUCK_CNT_LEVEL_MAX;
 
-    [Header("[PartTime/Search/Berry List]")]
+    [Header("[ PartTime/Search/Berry List ]")]
     //PTJ 알바
     public GameObject workingCountText;//고용 중인 동물 수
     public GameObject[] working;//고용 중인 동물 리스트 상단에
@@ -56,14 +56,14 @@ public class GameManager : MonoBehaviour
     public GameObject berryExp;
 
     //새로운딸기
-    [Header("OBJECT")]
+    [Header("[ OBJECT ]")]
     public GameObject priceText_newBerry;
     public GameObject timeText_newBerry;
     public GameObject startBtn_newBerry;
-    [Header("INFO")]
+    [Header("[ INFO ]")]
     public float[] time_newBerry;
     public int[] price_newBerry;
-    [Header("SPRITE")]
+    [Header("[ SPRITE ]")]
     public Sprite startImg;
     public Sprite doneImg;
     public Sprite ingImg;
@@ -71,12 +71,12 @@ public class GameManager : MonoBehaviour
     private int index_newBerry = 0; //현재 인덱스
     private bool isStart_newBerry = false; //시작을 눌렀는가
 
-    [Header("------------[Check/Settings Panel]")]
+    [Header("[ Check/Settings Panel ]")]
     public GameObject SettingsPanel;
     public GameObject CheckPanel;
     public bool isblackPanelOn = false;
 
-    [Header("------------[Check/Day List]")]
+    [Header("[ Check/Day List ]")]
     public bool[] Today;
     public ObjectArray[] Front = new ObjectArray[7];
     public string url = "";
@@ -297,22 +297,34 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void GetCoin(int cost) // 코인 획득 함수
+    {
+        DataController.instance.gameData.coin += cost; // 현재 코인 +
+        DataController.instance.gameData.accCoin += cost; // 누적 코인 +
+    }
+
     public void UseCoin(int cost) // 코인 사용 함수 (마이너스 방지 위함)
     {
         int mycoin = DataController.instance.gameData.coin;
         if (mycoin >= cost)
-            DataController.instance.gameData.coin -= cost; // mycoin -= cost; 이건 안될..걸
+            DataController.instance.gameData.coin -= cost;
         else
-            Debug.Log("코인이 부족합니다."); //경고 패널 등장
+            Debug.Log("코인이 부족해요!"); //경고 패널 등장
     }
 
-    public void UseHeart(int cost) // 하트 사용 함수 (마이너스 방지 위함)
+    public void GetHeart(int cost) // 하트 획득 함수
+    {
+        DataController.instance.gameData.heart += cost; // 현재 하트 +
+        DataController.instance.gameData.accHeart += cost; // 누적 하트 +
+    }
+
+    public void UseHeart(int cost) // 하트 획득 함수 (마이너스 방지 위함)
     {
         int myHeart = DataController.instance.gameData.heart;
         if (myHeart >= cost)
             DataController.instance.gameData.heart -= cost;
         else
-            Debug.Log("하트가 부족합니다."); //경고 패널 등장
+            Debug.Log("하트가 부족해요!"); //경고 패널 등장
     }
     #endregion
 

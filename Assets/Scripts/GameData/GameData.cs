@@ -17,9 +17,6 @@ public class GameData
     public int truckBerryCnt; // 트럭 딸기 개수
     public int truckCoin;
 
-    //여태까지 모은 딸기 총 개수
-    public int totalBerryCnt;
-
     //딸기 밭 데이터 생성
     public BerryFieldData[] berryFieldData = new BerryFieldData[16];
 
@@ -38,6 +35,16 @@ public class GameData
     public int[] challengeGauge = new int[7];
     //도전과제 보상 받은 여부
     public bool[] challengeEnd = new bool[7];
+
+    //도전과제를 위한 누적 저장 변수 (누적 : accumulate)
+    public int unlockBerryCnt; // 해금 딸기 개수 (누적)
+    public int harvBerryCnt; // 수확 딸기 개수 (누적)
+    public int accCoin; // 누적 코인
+    public int accHeart; // 누적 하트
+    public int accAttendance; // 누적 출석
+    public int mgPlayCnt; // 미니게임 플레이 횟수
+    //여태까지 모은 딸기 총 개수
+    //public int totalBerryCnt; => 이게 수확한거 맞죠?
 
     //뉴스
     public bool[] isNewsUnlock=new bool[7];
