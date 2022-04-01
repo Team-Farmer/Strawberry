@@ -129,15 +129,16 @@ public class GameManager : MonoBehaviour
             GameObject obj = ClickObj(); // 클릭당한 옵젝을 가져온다
             if (obj != null)
             {
-                if (obj.GetComponent<Farm>() != null)
+                
+                if (obj.CompareTag("Farm"))
                 {
                     ClickedFarm(obj);
                 }
-                else if (obj.GetComponent<Bug>() != null)
+                else if (obj.CompareTag("Bug"))
                 {
                     ClickedBug(obj);
                 }
-                else if (obj.GetComponent<Weed>() != null)
+                else if (obj.CompareTag("Weed"))
                 {
                     ClickedWeed(obj);
                 }

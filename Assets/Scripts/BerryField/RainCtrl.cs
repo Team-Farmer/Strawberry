@@ -29,10 +29,10 @@ public class RainCtrl : MonoBehaviour
         rainTime = 0;
         rainParticle.Play();
         
-        Color bgColor = GameObject.FindGameObjectWithTag("BG").GetComponent<Image>().color;
-        bgColor.a = 200/255f;
-        Debug.Log(bgColor.a);
-        GameObject.FindGameObjectWithTag("BG").GetComponent<Image>().color = bgColor;
+        //Color bgColor = GameObject.FindGameObjectWithTag("BG").GetComponent<Image>().color;
+        //bgColor.a = 200/255f;
+        //Debug.Log(bgColor.a);
+        //GameObject.FindGameObjectWithTag("BG").GetComponent<Image>().color = bgColor;
     }
     IEnumerator RainingRoutine()
     {        
