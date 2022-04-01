@@ -12554,6 +12554,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8b5d46ef36ff1d143b2459eea8658b1b, type: 3}
   - {fileID: 8300000, guid: 3d2b6dee22b3c33448d6dfa1026e65a4, type: 3}
   SFXclip: {fileID: 8300000, guid: 573b0c07504e2014d9849507007ad69f, type: 3}
+  HarvestClip: {fileID: 8300000, guid: 2083be458872fa54e9a0288e12f6e33a, type: 3}
 --- !u!1 &914576164
 GameObject:
   m_ObjectHideFlags: 0

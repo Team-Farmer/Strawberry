@@ -208,6 +208,8 @@ public class GameManager : MonoBehaviour
     }
     void Harvest(Stem stem)
     {
+        AudioManager.instance.HarvestAudioPlay();//딸기 수확할때 효과음
+
         Farm farm = farmList[stem.stemIdx];
         if (DataController.instance.gameData.berryFieldData[stem.stemIdx].isHarvest) return;
 
