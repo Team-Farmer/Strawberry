@@ -48,6 +48,7 @@ public class GameData
 
     //뉴스
     public bool[] isNewsUnlock=new bool[7];
+    public bool[] NewsEnd = new bool[7];
 
     //마지막 출석 날짜 저장.
     public DateTime Lastday = new DateTime();

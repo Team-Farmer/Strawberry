@@ -16,10 +16,15 @@ public class AudioManager : MonoBehaviour
     [Header("Sound")]
     public AudioMixer mixer;
     public AudioSource bgSound;
-    public AudioClip[] bglist;//배경음 리스트
+    //배경음 오디오(오디오 이름과 씬이름이 같을경우 플레이 해줍니다)
+    public AudioClip[] bglist;
+    //효과음 오디오
     public AudioClip SFXclip;
     public AudioClip HarvestClip;
+
+
     public static AudioManager instance;
+
     private void Awake()
     {
         if (instance == null)
@@ -71,14 +76,16 @@ public class AudioManager : MonoBehaviour
         Destroy(go, clip.length);//효과음 재생 후(clip.length 시간 지난후) 파괴
     
     }
-    /*다른스크립트에 적용
-    public AudioClip clip;
-    AudioManager.instance.SFXPlay("Hook",clip);
-    */
+
+
+
+    //얘네 다른 스크립트에서하면 줄일수있긴한데 너무 분산될까봐 이렇게
     public void SFXAudioPlay() //버튼 효과음
     { SFXPlay("ButtonSFX", SFXclip); }
-    public void HarvestAudioPlay() 
+    public void HarvestAudioPlay() //수확 효과음
     { SFXPlay("HarvestSFX", HarvestClip); }
+
+
 
     public void BgSoundPlay(AudioClip clip) {
         if (isPlayAudio == true)

@@ -33,7 +33,10 @@ public class ChallengeNews : MonoBehaviour
     [SerializeField]
     private GameObject countText_News;
     [SerializeField]
-    private GameObject lock_News;
+    private GameObject lock_News;//뉴스 잠금
+    [SerializeField]
+    private GameObject unlock_News;//뉴스 잠금 해제 가능
+
     public GameObject doneButton_Challenge;
 
     [SerializeField]
@@ -61,8 +64,11 @@ public class ChallengeNews : MonoBehaviour
     [SerializeField]
     private bool isChallenge;
 
+
+
     //추가 된 Prefab 수
     static int Prefabcount = 0;
+
     //자신이 몇번째 Prefab인지
     int prefabnum;
 
@@ -131,12 +137,16 @@ public class ChallengeNews : MonoBehaviour
             gaugeText_Challenge.GetComponent<Text>().text = DataController.instance.gameData.challengeGauge[prefabnum].ToString();
             
 
-            }
+        }
         else //NEWS=======================================================
         {
             //뉴스 lock상태이면 가리기
-            if (DataController.instance.gameData.isNewsUnlock[prefabnum] == false) 
+            if (DataController.instance.gameData.isNewsUnlock[prefabnum] == false)
             { lock_News.SetActive(true); }
+            //뉴스 unlock상태이고 구매하지 않았으면
+            else if (DataController.instance.gameData.NewsEnd[prefabnum]==false) { unlock_News.SetActive(true); }
+
+            
             //뉴스 숫자
             countText_News.GetComponent<Text>().text = "0" + (prefabnum+1);
         }
@@ -171,12 +181,19 @@ public class ChallengeNews : MonoBehaviour
 
 
 
+    public void UnlockNews() 
+    {
+        //메달 감소
+        DataController.instance.gameData.medal--;
+        Destroy(unlock_News); 
+    }
 
 
-
-    //뉴스 설명창 띄우기
+    //뉴스 설명창
     public void Explantion() {
 
+        
+        
         newsExp = newsExplanation.transform.GetChild(0).transform.gameObject;//newsExp
 
         newsExp.SetActive(true);
