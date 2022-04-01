@@ -64,12 +64,14 @@ public class PTJResearch : MonoBehaviour
     static int employCount = 0;
 
     static List<Sprite> workingList = new List<Sprite>();
-    
 
+
+    private GameObject PTJExplanation;
 
     //===================================================================================================
     void Start()
     {
+        PTJExplanation = GameObject.Find("PTJExplanation");//gameManager로 뺴면 FInd필요없음 근데 너무 음
         InfoUpdate();
     }
 
@@ -176,5 +178,30 @@ public class PTJResearch : MonoBehaviour
         Prefabcount++;
     }
 
+    public void Explanation() {
+
+        GameObject PTJExp = PTJExplanation.transform.GetChild(0).gameObject;
+
+        PTJExp.SetActive(true);
+        try
+        {
+            //Explanation 내용을 채운다.
+            PTJExp.transform.GetChild(2).transform.gameObject.GetComponentInChildren<Image>().sprite
+                = Info[prefabnum].Picture;//얼굴 사진
+
+            PTJExp.transform.GetChild(3).transform.gameObject.GetComponentInChildren<Text>().text 
+                = Info[prefabnum].Name;//이름 텍스트
+
+            PTJExp.transform.GetChild(4).transform.gameObject.GetComponentInChildren<Text>().text 
+                = Info[prefabnum].Explanation;//설명 텍스트 
+
+        }
+        catch
+        {
+            Debug.Log("PTJExplanation 인덱스");
+        }
+
+
+    }
 
 }

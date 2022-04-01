@@ -464,7 +464,7 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
-    #region Berry Explanation
+    #region Explanation
     public void Explanation(GameObject berry,int prefabnum)
     {
 
@@ -489,14 +489,14 @@ public class GameManager : MonoBehaviour
 
                 berryExpTxt.transform.gameObject.GetComponentInChildren<Text>().text
                     = berry.GetComponent<Berry>().berryExplain;//설명 설정
+
+                
             }
         }
         catch
         {
             Debug.Log("여기에 해당하는 베리는 아직 없다");
         }
-
-
     }
 
     #endregion

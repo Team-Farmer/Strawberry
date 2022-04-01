@@ -193,8 +193,6 @@ public class ChallengeNews : MonoBehaviour
     //뉴스 설명창
     public void Explantion() {
 
-        
-        
         newsExp = newsExplanation.transform.GetChild(0).transform.gameObject;//newsExp
 
         newsExp.SetActive(true);
@@ -204,16 +202,14 @@ public class ChallengeNews : MonoBehaviour
             {
                 //Explanation 내용을 채운다.
                 newsExp.transform.GetChild(2).transform.gameObject.GetComponentInChildren<Text>().text = Info[prefabnum].Title;//이름 설정 newsName
-                newsExp.transform.GetChild(3).transform.gameObject.GetComponentInChildren<Text>().text = Info[prefabnum].Exp_news;//설명 설정 newsTxt
-                
+                newsExp.transform.GetChild(3).transform.gameObject.GetComponentInChildren<Text>().text = Info[prefabnum].Exp_news;//설명 설정 newsTxt 
             }
         }
         catch
         {
-            //ExpChildren.SetActive(false);
             Debug.Log("ChallengeNews 인덱스 오류");
         }
-
-
     }
+
+   
 }
