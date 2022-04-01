@@ -185,6 +185,7 @@ public class ChallengeNews : MonoBehaviour
     {
         //메달 감소
         DataController.instance.gameData.medal--;
+        DataController.instance.gameData.NewsEnd[prefabnum] = true;
         Destroy(unlock_News); 
     }
 
