@@ -238,6 +238,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(0.75f); // 0.75초 뒤에
 
         UpdateTruckState(stem);
+        DataController.instance.gameData.totalHarvBerryCnt++; // 수확한 딸기의 총 개수 업데이트
         stem.gameObject.SetActive(false);
 
         yield return new WaitForSeconds(0.25f); // 0.25초 뒤에

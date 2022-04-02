@@ -1514,6 +1514,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bc6a9a62eb908e499927be8152e1eea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isBerry: 0
+  tagButtons: []
+  tagButtons_Image: []
+  tagButtons_selectImage: []
+  content: []
+  scrollBar: {fileID: 0}
+  swipeTime: 0.1
+  swipeDistance: 1
 --- !u!1 &139806053
 GameObject:
   m_ObjectHideFlags: 0
@@ -1713,7 +1721,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.27450982}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -7015,6 +7023,30 @@ PrefabInstance:
     - target: {fileID: 5195618960899090889, guid: c809c797aedd4c245bd650a8a6c1be51, type: 3}
       propertyPath: looping
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5195618960899090889, guid: c809c797aedd4c245bd650a8a6c1be51, type: 3}
+      propertyPath: SubModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5195618960899090889, guid: c809c797aedd4c245bd650a8a6c1be51, type: 3}
+      propertyPath: SubModule.subEmitters.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5195618960899090889, guid: c809c797aedd4c245bd650a8a6c1be51, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.a
+      value: 0.5882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 5195618960899090889, guid: c809c797aedd4c245bd650a8a6c1be51, type: 3}
+      propertyPath: InitialModule.startColor.minColor.a
+      value: 0.5882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 5195618960899090889, guid: c809c797aedd4c245bd650a8a6c1be51, type: 3}
+      propertyPath: SubModule.subEmitters.Array.data[0].type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5195618960899090889, guid: c809c797aedd4c245bd650a8a6c1be51, type: 3}
+      propertyPath: SubModule.subEmitters.Array.data[0].emitter
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5195618960899090894, guid: c809c797aedd4c245bd650a8a6c1be51, type: 3}
       propertyPath: m_SortingOrder
@@ -26573,6 +26605,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bc6a9a62eb908e499927be8152e1eea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isBerry: 0
+  tagButtons: []
+  tagButtons_Image: []
+  tagButtons_selectImage: []
+  content: []
+  scrollBar: {fileID: 0}
+  swipeTime: 0.1
+  swipeDistance: 1
 --- !u!224 &1882881320
 RectTransform:
   m_ObjectHideFlags: 0
