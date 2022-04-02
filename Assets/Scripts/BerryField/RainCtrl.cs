@@ -5,7 +5,10 @@ using UnityEngine.UI;
 
 public class RainCtrl : MonoBehaviour
 {
-    ParticleSystem rainParticle;
+    public GameObject rainPanel;
+
+    private ParticleSystem rainParticle;
+   
     public float rainPeriod;
     public int mult;
     public float rainTime;
@@ -25,6 +28,8 @@ public class RainCtrl : MonoBehaviour
     }
     void Raining()
     {
+        rainPanel.gameObject.SetActive(true);
+        rainPanel.GetComponent<PanelAnimation>().Fadein();
         mult = 3;
         rainTime = 0;
         rainParticle.Play();
@@ -37,6 +42,7 @@ public class RainCtrl : MonoBehaviour
     IEnumerator RainingRoutine()
     {        
         yield return new WaitForSeconds(rainParticle.main.duration);
+        rainPanel.GetComponent<PanelAnimation>().FadeOut();
         mult = 1;
     }
 }
