@@ -99,7 +99,7 @@ public class PTJResearch : MonoBehaviour
     //coin 버튼 -> 알바 고용
     public void clickCoin_PTJ(bool isSeveral) 
     {
-
+        
         if (employCount < 3)//3명 이하일 때
         {
             if (Info[prefabnum].isEmployed == false) //고용중아니면 고용           
@@ -108,6 +108,8 @@ public class PTJResearch : MonoBehaviour
                 { hire(Info[prefabnum].Price * (int)PTJSlider.GetComponent<Slider>().value); }
                 else//한 번만 고용하기
                 { hire(Info[prefabnum].Price); }
+
+                ExplanationUpdate((int)PTJSlider.GetComponent<Slider>().value);
             }
             else //고용중이면 고용해제
             {   fire();   }
@@ -139,6 +141,7 @@ public class PTJResearch : MonoBehaviour
         //알바생 숫자=============================================
         ++employCount;//고용중인 알바생 숫자 증가
         GameManager.instance.workingCount(employCount);//알바생 숫자 보여준다
+
     }
 
     private void fire() 
@@ -155,12 +158,13 @@ public class PTJResearch : MonoBehaviour
         workingList.Add(null);
         GameManager.instance.workingApply(workingList);
         GameManager.instance.workingCount(employCount);
+        ExplanationUpdate((int)PTJSlider.GetComponent<Slider>().value);
 
     }
-
+    //=============================================================================================================================
     public void InfoUpdate()
     {
-        //!!!!!!!!!!!!!!주의!!!!!!!!!!!!!숫자 7은 프리팹 숫자와 관련되어 있다!!! 같이 조절해야함
+        //!!!!!!!!!!!!!!주의!!!!!!!!!!!!!숫자 6은 프리팹 숫자와 관련되어 있다!!! 같이 조절 . 변수설정하기
         
         //프리팹들에게 고유 번호 붙이기
         if (Prefabcount >= 6)
@@ -188,13 +192,10 @@ public class PTJResearch : MonoBehaviour
         Prefabcount++;
     }
 
+    //=============================================================================================================================
     public void Explanation() {
 
-        
-        
- 
-
-        PTJExp.SetActive(true);
+        PTJExp.SetActive(true);//설명창 띄우기
         try
         {
             //Explanation 내용을 채운다.
@@ -207,10 +208,12 @@ public class PTJResearch : MonoBehaviour
             PTJExp.transform.GetChild(4).transform.gameObject.GetComponentInChildren<Text>().text 
                 = Info[prefabnum].Explanation;//설명 텍스트 
 
-            PTJExp.transform.GetChild(5).transform.GetComponent<Button>().onClick.AddListener(()=>clickCoin_PTJ(true));//결제 버튼 누를시
+            PTJExp.transform.GetChild(5).transform.GetComponent<Button>().onClick.AddListener
+                (delegate { clickCoin_PTJ(true); });//결제 버튼 누를시
 
             ExplanationUpdate(1);
-            PTJSlider.transform.GetComponent<Slider>().onValueChanged.AddListener(delegate { ExplanationUpdate((int)PTJSlider.GetComponent<Slider>().value); });
+            PTJSlider.transform.GetComponent<Slider>().onValueChanged.AddListener
+                (delegate { ExplanationUpdate((int)PTJSlider.GetComponent<Slider>().value); });//슬라이더 값 바뀔때마다
 
 
         }
@@ -220,14 +223,26 @@ public class PTJResearch : MonoBehaviour
         }
     }
 
+
+
     public void ExplanationUpdate(int value) 
     {
-        PTJExp.transform.GetChild(6).transform.gameObject.GetComponentInChildren<Text>().text
-            = (Info[prefabnum].Price * value).ToString() + "A";//결제할 가격 보이기
-
-        PTJExp.transform.GetChild(5).transform.GetChild(0).GetComponent<Text>().text
-            = value.ToString() + "번 고용";//몇번 고용하는지
-
+        if (workingList.Contains(Info[prefabnum].FacePicture))//이미 고용중이라면 (고용 리스트에 이미 알바생이 있으면)
+        {
+            //고용해제 버튼
+            PTJExp.transform.GetChild(6).transform.gameObject.GetComponentInChildren<Text>().text
+                = "";
+            PTJExp.transform.GetChild(5).transform.GetChild(0).GetComponent<Text>().text
+                = "고용해제";
+        }
+        else//고용 중이 아니라면
+        {
+            //고용 정보 보이기
+            PTJExp.transform.GetChild(6).transform.gameObject.GetComponentInChildren<Text>().text
+                = (Info[prefabnum].Price * value).ToString() + "A";//결제할 가격 보이기
+            PTJExp.transform.GetChild(5).transform.GetChild(0).GetComponent<Text>().text
+           = value.ToString() + "번 고용";//몇번 고용하는지
+        }
     }
 
 
