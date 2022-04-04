@@ -78,22 +78,9 @@ public class PTJResearch : MonoBehaviour
 
         InfoUpdate();
     }
-    private void Update()
-    {
-        if (PTJExplanation.activeSelf == true) //설명창 띄운상태라면
-        {
-
-            PTJExp.transform.GetChild(6).transform.gameObject.GetComponentInChildren<Text>().text
-                = (Info[prefabnum].Price * (PTJSlider.GetComponent<Slider>().value)).ToString()+"A";//결제할 가격 보이기
-
-            PTJExp.transform.GetChild(5).transform.GetChild(0).GetComponent<Text>().text
-                = (PTJSlider.GetComponent<Slider>().value ).ToString() + "번 고용";//몇번 고용하는지
-
-        }
-    }
     //===================================================================================================
 
-    //coin 버튼 -> 연구 레벨, 코인 변화
+    //coin 버튼 -> 연구 레벨, 코인
     public void clickCoin_Research() {
 
         if (DataController.instance.gameData.researchLevel[prefabnum] < 25)//레벨 25로 한계두기
@@ -109,17 +96,18 @@ public class PTJResearch : MonoBehaviour
     }
 
 
-    //coin 버튼 -> 알바 고용 여부
+    //coin 버튼 -> 알바 고용
     public void clickCoin_PTJ(bool isSeveral) 
     {
 
         if (employCount < 3)//3명 이하일 때
         {
             if (Info[prefabnum].isEmployed == false) //고용중아니면 고용           
-            {   if (isSeveral == true)
-                    hire(Info[prefabnum].Price* (int)PTJSlider.GetComponent<Slider>().value);
-                else
-                    hire(Info[prefabnum].Price);
+            {
+                if (isSeveral == true)//여러번 고용하기
+                { hire(Info[prefabnum].Price * (int)PTJSlider.GetComponent<Slider>().value); }
+                else//한 번만 고용하기
+                { hire(Info[prefabnum].Price); }
             }
             else //고용중이면 고용해제
             {   fire();   }
@@ -137,16 +125,18 @@ public class PTJResearch : MonoBehaviour
         //해당 금액의 코인이 감소
         GameManager.instance.UseCoin(price);
         
+        //고용상태로 보이기=======================================
         Info[prefabnum].isEmployed = true;//고용
         levelNum.GetComponent<Text>().text = "고용 중";//고용중으로 표시
         levelNum.GetComponent<Text>().color = new Color32(245, 71, 71, 255);//#F54747 글자색 변경
         PTJBackground.transform.GetComponent<Image>().sprite = selectPTJSprite;//배경 스프라이트 눌린 이미지로 변경
 
+        //main game에 고용중인 알바생 보이기======================
         workingList.Remove(null);
         workingList.Add(Info[prefabnum].FacePicture);//해당 알바생 얼굴 리스트에 추가
         GameManager.instance.workingApply(workingList);//GameManager workingApply에 고용 list 보냄
 
-
+        //알바생 숫자=============================================
         ++employCount;//고용중인 알바생 숫자 증가
         GameManager.instance.workingCount(employCount);//알바생 숫자 보여준다
     }
@@ -219,6 +209,8 @@ public class PTJResearch : MonoBehaviour
 
             PTJExp.transform.GetChild(5).transform.GetComponent<Button>().onClick.AddListener(()=>clickCoin_PTJ(true));//결제 버튼 누를시
 
+            ExplanationUpdate(1);
+            PTJSlider.transform.GetComponent<Slider>().onValueChanged.AddListener(delegate { ExplanationUpdate((int)PTJSlider.GetComponent<Slider>().value); });
 
 
         }
@@ -228,6 +220,15 @@ public class PTJResearch : MonoBehaviour
         }
     }
 
+    public void ExplanationUpdate(int value) 
+    {
+        PTJExp.transform.GetChild(6).transform.gameObject.GetComponentInChildren<Text>().text
+            = (Info[prefabnum].Price * value).ToString() + "A";//결제할 가격 보이기
+
+        PTJExp.transform.GetChild(5).transform.GetChild(0).GetComponent<Text>().text
+            = value.ToString() + "번 고용";//몇번 고용하는지
+
+    }
 
 
 }
