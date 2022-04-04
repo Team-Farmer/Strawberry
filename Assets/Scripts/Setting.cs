@@ -15,7 +15,7 @@ public class Setting : MonoBehaviour
         SetVersionInfo();
     }
 
-    public void SetVersionInfo() // 버전 정보 세팅
+    private void SetVersionInfo() // 버전 정보 세팅
     {
         versionDate_text.text = "22.04.04";
         version_text.text = "V 1.0.1";
