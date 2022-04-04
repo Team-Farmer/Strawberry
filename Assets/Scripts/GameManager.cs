@@ -20,7 +20,6 @@ public class GameManager : MonoBehaviour
     [Header("[ Money ]")]
     public Text CoinText;
     public Text HeartText;
-    // public int[] BerryPrice = new int[192];
 
     [Header("[ Object ]")]
     public GameObject stemPrefab; // 프리팹
@@ -391,7 +390,7 @@ public class GameManager : MonoBehaviour
         }
     }
     //PTJ몇명 고용했는지
-    public void workingCount(int employCount) { workingCountText.GetComponent<Text>().text = employCount.ToString() + "/3"; }
+    public void workingCount(int employCount) { workingCountText.GetComponent<Text>().text = employCount.ToString(); } // + "/3"
     #endregion
 
     #region New Berry Add
@@ -424,6 +423,19 @@ public class GameManager : MonoBehaviour
     //새로운 딸기 버튼을 누르면
     public void newBerryAdd()
     {
+        if (startBtn_newBerry.GetComponent<Image>().sprite == startImg) // 시작 버튼 클릭
+        {
+            Debug.Log("^_^");
+        }
+        if (startBtn_newBerry.GetComponent<Image>().sprite == ingImg) // 진행중 버튼 클릭
+        {
+            Debug.Log("하트로 시간 줄이겠냐는 패널 등장");
+        }
+        if (startBtn_newBerry.GetComponent<Image>().sprite == doneImg) // 완료 버튼 클릭
+        {
+            Debug.Log("새 딸기 설명 패널 등장 && 짜잔 효과음");
+        }
+
         //타이머가 0 이라면 
         if (time_newBerry[index_newBerry] < 0.9)
         {

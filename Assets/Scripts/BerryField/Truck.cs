@@ -49,7 +49,9 @@ public class Truck : MonoBehaviour
     }
     public void ReceiveCoinNormal()
     {
-        DataController.instance.gameData.coin += DataController.instance.gameData.truckCoin;
+        //DataController.instance.gameData.coin += DataController.instance.gameData.truckCoin;
+        GameManager.instance.GetCoin(DataController.instance.gameData.truckCoin);
+        //Debug.Log(DataController.instance.gameData.accCoin);      // 누적 코인 테스트
         DataController.instance.gameData.truckBerryCnt = 0;
         DataController.instance.gameData.truckCoin = 0;
     }
