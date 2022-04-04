@@ -72,10 +72,12 @@ public class PTJResearch : MonoBehaviour
     //===================================================================================================
     void Start()
     {
-        PTJExplanation = GameObject.Find("PTJExplanation");//gameManager로 빼면 FInd필요없음 근데 너무 음
-        PTJExp = PTJExplanation.transform.GetChild(0).gameObject;
-        PTJSlider = PTJExp.transform.GetChild(7).transform.gameObject;
-
+        if (PTJ == true)
+        {
+            PTJExplanation = GameObject.Find("PTJExplanation");//gameManager로 빼면 FInd필요없음 근데 너무 음
+            PTJExp = PTJExplanation.transform.GetChild(0).gameObject;
+            PTJSlider = PTJExp.transform.GetChild(7).transform.gameObject;
+        }
         InfoUpdate();
     }
     //===================================================================================================
@@ -207,14 +209,14 @@ public class PTJResearch : MonoBehaviour
 
             PTJExp.transform.GetChild(4).transform.gameObject.GetComponentInChildren<Text>().text 
                 = Info[prefabnum].Explanation;//설명 텍스트 
-
+            
+            //n번 고용 구현================================================================================================
             PTJExp.transform.GetChild(5).transform.GetComponent<Button>().onClick.AddListener
-                (delegate { clickCoin_PTJ(true); });//결제 버튼 누를시
+                (delegate { clickCoin_PTJ(true); });//결제 버튼 누름
 
-            ExplanationUpdate(1);
+            ExplanationUpdate(1);//처음에는 1번 고용으로 보임
             PTJSlider.transform.GetComponent<Slider>().onValueChanged.AddListener
                 (delegate { ExplanationUpdate((int)PTJSlider.GetComponent<Slider>().value); });//슬라이더 값 바뀔때마다
-
 
         }
         catch
