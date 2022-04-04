@@ -609,6 +609,8 @@ public class GameManager : MonoBehaviour
             if (DaysCompare==1) //오늘 날짜가 지난번 출석 날짜보다 하루 미래면
             {
                 //days에 맞는 버튼 활성화
+                selectDay(weeks);
+                /*
                 switch (weeks)
                 {
                     case 0:
@@ -633,6 +635,7 @@ public class GameManager : MonoBehaviour
                         selectDay(weeks);
                         break;
                 }
+                */
             }
             else if (DateTime.Compare(today, lastday) < 0) //오늘이 과거인 경우는 없지만, 오류 방지용
             {
@@ -707,12 +710,17 @@ public class GameManager : MonoBehaviour
         DataController.instance.gameData.days += 1;
         DataController.instance.gameData.attendance = true;
         DataController.instance.gameData.Lastday = DataController.instance.gameData.Today;
+
+        DataController.instance.gameData.accAttendance += 1; // 누적 출석 증가
+        GameManager.instance.GetHeart(10*(number+1)); // 10*날짜*주수
+        // Debug.Log("누적 출석 : " + DataController.instance.gameData.accAttendance);
+        // Debug.Log("누적 하트 : " + DataController.instance.gameData.accHeart);
     }
 
     #endregion
-
+    /*
     #region 출석 스프라이트 클릭
-
+    
     public void clickDay1()
     {
         AttandanceSave(0);
@@ -741,8 +749,8 @@ public class GameManager : MonoBehaviour
     {
         AttandanceSave(6);
     }
-
     #endregion
+     */
 
     #region 자정 체크 및 정보갱신
 
