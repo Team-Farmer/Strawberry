@@ -67,16 +67,32 @@ public class PTJResearch : MonoBehaviour
 
 
     private GameObject PTJExplanation;
-
+    private GameObject PTJExp;
+    private GameObject PTJSlider;
     //===================================================================================================
     void Start()
     {
-        PTJExplanation = GameObject.Find("PTJExplanation");//gameManager로 뺴면 FInd필요없음 근데 너무 음
+        PTJExplanation = GameObject.Find("PTJExplanation");//gameManager로 빼면 FInd필요없음 근데 너무 음
+        PTJExp = PTJExplanation.transform.GetChild(0).gameObject;
+        PTJSlider = PTJExp.transform.GetChild(7).transform.gameObject;
+
         InfoUpdate();
     }
+    private void Update()
+    {
+        if (PTJExplanation.activeSelf == true) //설명창 띄운상태라면
+        {
 
+            PTJExp.transform.GetChild(6).transform.gameObject.GetComponentInChildren<Text>().text
+                = (Info[prefabnum].Price * (PTJSlider.GetComponent<Slider>().value)).ToString()+"A";//결제할 가격 보이기
+
+            PTJExp.transform.GetChild(5).transform.GetChild(0).GetComponent<Text>().text
+                = (PTJSlider.GetComponent<Slider>().value ).ToString() + "번 고용";//몇번 고용하는지
+
+        }
+    }
     //===================================================================================================
-    
+
     //coin 버튼 -> 연구 레벨, 코인 변화
     public void clickCoin_Research() {
 
@@ -94,13 +110,17 @@ public class PTJResearch : MonoBehaviour
 
 
     //coin 버튼 -> 알바 고용 여부
-    public void clickCoin_PTJ() 
+    public void clickCoin_PTJ(bool isSeveral) 
     {
 
         if (employCount < 3)//3명 이하일 때
         {
             if (Info[prefabnum].isEmployed == false) //고용중아니면 고용           
-            {   hire();   }
+            {   if (isSeveral == true)
+                    hire(Info[prefabnum].Price* (int)PTJSlider.GetComponent<Slider>().value);
+                else
+                    hire(Info[prefabnum].Price);
+            }
             else //고용중이면 고용해제
             {   fire();   }
         }
@@ -112,10 +132,10 @@ public class PTJResearch : MonoBehaviour
     }
 
 
-    private void hire()  //의문점 = 왜 prefabnum말로 0을 넣어도 되는가
+    private void hire(int price)
     {
         //해당 금액의 코인이 감소
-        GameManager.instance.UseCoin(Info[prefabnum].Price);
+        GameManager.instance.UseCoin(price);
         
         Info[prefabnum].isEmployed = true;//고용
         levelNum.GetComponent<Text>().text = "고용 중";//고용중으로 표시
@@ -180,7 +200,9 @@ public class PTJResearch : MonoBehaviour
 
     public void Explanation() {
 
-        GameObject PTJExp = PTJExplanation.transform.GetChild(0).gameObject;
+        
+        
+ 
 
         PTJExp.SetActive(true);
         try
@@ -195,13 +217,17 @@ public class PTJResearch : MonoBehaviour
             PTJExp.transform.GetChild(4).transform.gameObject.GetComponentInChildren<Text>().text 
                 = Info[prefabnum].Explanation;//설명 텍스트 
 
+            PTJExp.transform.GetChild(5).transform.GetComponent<Button>().onClick.AddListener(()=>clickCoin_PTJ(true));//결제 버튼 누를시
+
+
+
         }
         catch
         {
             Debug.Log("PTJExplanation 인덱스");
         }
-
-
     }
+
+
 
 }

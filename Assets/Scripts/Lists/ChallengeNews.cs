@@ -201,8 +201,12 @@ public class ChallengeNews : MonoBehaviour
             if (DataController.instance.gameData.isNewsUnlock[prefabnum] == true)
             {
                 //Explanation 내용을 채운다.
-                newsExp.transform.GetChild(2).transform.gameObject.GetComponentInChildren<Text>().text = Info[prefabnum].Title;//이름 설정 newsName
-                newsExp.transform.GetChild(3).transform.gameObject.GetComponentInChildren<Text>().text = Info[prefabnum].Exp_news;//설명 설정 newsTxt 
+                newsExp.transform.GetChild(2).transform.gameObject.GetComponentInChildren<Text>().text 
+                    = Info[prefabnum].Title;//이름 설정 newsName
+                newsExp.transform.GetChild(3).transform.gameObject.GetComponentInChildren<Text>().text 
+                    = Info[prefabnum].Exp_news;//설명 설정 newsTxt 
+
+
             }
         }
         catch
@@ -211,5 +215,5 @@ public class ChallengeNews : MonoBehaviour
         }
     }
 
-   
+
 }

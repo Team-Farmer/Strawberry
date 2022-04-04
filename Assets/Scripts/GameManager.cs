@@ -371,14 +371,6 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region 리스트
-    //활성화 비활성화로 창 끄고 켜고
-    public void turnOff(GameObject Obj)
-    {
-        if (Obj.activeSelf == true)
-        { Obj.SetActive(false); }
-        else
-        { Obj.SetActive(true); }
-    }
 
     #region PTJ
 
@@ -501,8 +493,15 @@ public class GameManager : MonoBehaviour
     }
 
     #endregion
-    
 
+    //활성화 비활성화로 창 끄고 켜고
+    public void turnOff(GameObject Obj)
+    {
+        if (Obj.activeSelf == true)
+        { Obj.SetActive(false); }
+        else
+        { Obj.SetActive(true); }
+    }
     public string TimeForm(int time)//초단위 시간을 분:초로 변경
     {
         int M = 0, S = 0;//M,S 계산용

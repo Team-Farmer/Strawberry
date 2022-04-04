@@ -756,7 +756,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4640965026082384919}
-        m_TargetAssemblyTypeName: PrefabManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: PTJResearch, Assembly-CSharp
         m_MethodName: clickCoin_PTJ
         m_Mode: 1
         m_Arguments:
