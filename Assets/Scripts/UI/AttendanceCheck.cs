@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using DG.Tweening;
 using System;
 using UnityEngine.Networking;
+using TMPro;
 
 
 [System.Serializable]
@@ -15,21 +16,19 @@ public class ObjectArray
 
 public class AttendanceCheck : MonoBehaviour
 {
-    #region 인스펙터
+    #region 인스펙터 및 변수 생성
 
     public ObjectArray[] Front = new ObjectArray[7];
     public Image[] image = new Image[7];
+    public Text[] text = new Text[7];
+    public TextMeshProUGUI text_mesh;
     public GameObject icon;
-    int count;
+    public GameObject Tag;
+
     int days;
+    String weeks_text;
 
     #endregion
-
-    private void Start()
-    {
-        count = 0;
-        
-    }
 
     #region 출석 메인 기능
 
@@ -41,46 +40,45 @@ public class AttendanceCheck : MonoBehaviour
         days = DataController.instance.gameData.days; // 출석 누적 날짜.
         int weeks; //주차 구분
 
+
         //테스트용
-        //lastday = DateTime.Parse("2022-04-05");
-        //days = 6;
-        //isAttendance = false;
-  
+        lastday = DateTime.Parse("2022-04-05");
+        days = 70;
+        isAttendance = false;
+ 
 
         TimeSpan ts = today - lastday; //날짜 차이 계산
         int DaysCompare = ts.Days; //Days 정보만 추출.
 
+
+        if (days > 7)
+        {
+            weeks = days / 7;
+            if (weeks > 9)
+            {
+                weeks = 9;
+            }
+            weeks_text = weeks.ToString();
+            text_mesh.text = weeks_text;
+
+            days %= 7;
+
+            for (int i = 0; i < text.Length; i++)
+            {
+                text[i].text = weeks_text;
+            }
+
+            Tag.SetActive(true);
+        }
+
+
         if (isAttendance == false)
         {
             icon.SetActive(true);
-            if (days > 7)
-            {
-                weeks = days % 7;
-                switch (weeks)
-                {
-                    //주차별로 Week 텍스트 설정 추후 추가예정.
-                    case 1:
-                        break;
-                    case 2:
-                        break;
-                    case 3:
-                        break;
-                    case 4:
-                        break;
-                }
-            }
-            else if (days == 0)
-            {
-                weeks = days;
-            }
-            else
-            {
-                weeks = days;
-            }
 
             if (DaysCompare == 1) //오늘 날짜가 지난번 출석 날짜보다 하루 미래면
             {
-                selectDay(weeks);
+                selectDay(days);
             }
             else if (DateTime.Compare(today, lastday) < 0) //오늘이 과거인 경우는 없지만, 오류 방지용
             {
@@ -96,27 +94,7 @@ public class AttendanceCheck : MonoBehaviour
         }
         else //출석을 이미 한 상태다
         {
-            if (days > 7)
-            {
-                weeks = days % 7;
-                switch (weeks)
-                {
-                    //주차별로 Week 텍스트 설정 추후 추가예정.
-                    case 1:
-                        break;
-                    case 2:
-                        break;
-                    case 3:
-                        break;
-                    case 4:
-                        break;
-                }
-            }
-            else
-            {
-                weeks = days;
-            }
-            for (int i = 0; i < weeks; i++) //출석완료 버튼 활성화
+            for (int i = 0; i < days; i++) //출석완료 버튼 활성화
             {
                 image[i].sprite = Front[i].Behind[1];
             }
@@ -137,7 +115,6 @@ public class AttendanceCheck : MonoBehaviour
             }
         }
         image[day].sprite = Front[day].Behind[0];
-        count = day;
     }
 
     #endregion
