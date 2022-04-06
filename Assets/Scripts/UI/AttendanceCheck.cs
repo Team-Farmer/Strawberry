@@ -43,7 +43,7 @@ public class AttendanceCheck : MonoBehaviour
 
         //테스트용
         lastday = DateTime.Parse("2022-04-05");
-        days = 70;
+        days = 5;
         isAttendance = false;
  
 
@@ -69,6 +69,15 @@ public class AttendanceCheck : MonoBehaviour
             }
 
             Tag.SetActive(true);
+        }
+        else 
+        {
+            weeks = 1;
+            weeks_text = weeks.ToString();
+            for (int i = 0; i < text.Length; i++)
+            {
+                text[i].text = weeks_text;
+            }
         }
 
 
