@@ -1,9 +1,9 @@
 {
-    "m_SelectedDeviceId": "52003dbfc0875583",
+    "m_SelectedDeviceId": "R3CNC07DVPN",
     "m_SelectedPackage": {
-        "deviceId": "52003dbfc0875583",
+        "deviceId": "R3CNC07DVPN",
         "name": "com.teamfarmer.strawberryfarm",
-        "processId": 27477,
+        "processId": 17409,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -48,6 +48,24 @@
             "deviceId": "52003dbfc0875583",
             "name": "com.teamfarmer.strawberryfarm",
             "processId": 27477,
+            "exited": false
+        },
+        {
+            "deviceId": "R3CNC07DVPN",
+            "name": "com.teamfarmer.strawberryfarm",
+            "processId": 17758,
+            "exited": true
+        },
+        {
+            "deviceId": "R3CNC07DVPN",
+            "name": "com.teamfarmer.strawberryfarm",
+            "processId": 15417,
+            "exited": true
+        },
+        {
+            "deviceId": "R3CNC07DVPN",
+            "name": "com.teamfarmer.strawberryfarm",
+            "processId": 17409,
             "exited": false
         }
     ],

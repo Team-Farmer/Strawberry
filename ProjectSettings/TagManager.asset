@@ -15,6 +15,7 @@ TagManager:
   - Store
   - BG
   - UI
+  - Global
   layers:
   - Default
   - TransparentFX
