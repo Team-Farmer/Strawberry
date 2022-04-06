@@ -8,6 +8,9 @@ using System;
 
 public class GameData
 {
+    //클라우드 저장 날짜
+    public DateTime cloudSaveTime;
+
     //재화
     public int coin;
     public int heart;

@@ -50,13 +50,13 @@ public class BannerAd : MonoBehaviour
 
     void OnBannerLoaded()
     {
-        Debug.Log("Banner loaded");
+        Debug.Log("배너광고 로드");
         Advertisement.Banner.Show(adUnitId);
     }
 
     void OnBannerError(string message)
     {
-        Debug.Log($"Banner Error:{message}");
+        Debug.Log($"배너광고 로드 실패:{message}");
     }
 
     /*void OnDestroy()

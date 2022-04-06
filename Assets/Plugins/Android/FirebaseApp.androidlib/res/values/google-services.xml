@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:keep="@string/gcm_defaultSenderId,@string/google_storage_bucket,@string/project_id,@string/google_api_key,@string/google_crash_reporting_api_key,@string/google_app_id,@string/default_android_client_id,@string/default_web_client_id">
+  <string name="gcm_defaultSenderId" translatable="false">76945944410</string>
+  <string name="google_storage_bucket" translatable="false">strawberry-2c582.appspot.com</string>
+  <string name="project_id" translatable="false">strawberry-2c582</string>
+  <string name="google_api_key" translatable="false">AIzaSyB0GP4qmPvG3OMaNt4hTstXD59u9ByJd1w</string>
+  <string name="google_crash_reporting_api_key" translatable="false">AIzaSyB0GP4qmPvG3OMaNt4hTstXD59u9ByJd1w</string>
+  <string name="google_app_id" translatable="false">1:76945944410:android:931fcdd723b681252f4d63</string>
+  <string name="default_android_client_id" translatable="false">76945944410-8071fppes54bfeuqlpd0pi48s7okhf2i.apps.googleusercontent.com</string>
+  <string name="default_web_client_id" translatable="false">76945944410-t208otgi7aic3l9hr82e56p13093vm9t.apps.googleusercontent.com</string>
+</resources>

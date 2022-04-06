@@ -1,5 +1,5 @@
 Assets/AssemblyInfo.cs
-Assets/Plugins/Android/GooglePlayGamesManifest.androidlib/project.properties
+Assets/GooglePlayGames/anifest.androidlib/project.properties
 Assets/Settings.StyleCop
 Assets/ExternalDependencyManager/Editor/README.md
 Assets/ExternalDependencyManager/Editor/Google.VersionHandler.dll.mdb

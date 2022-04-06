@@ -141,6 +141,13 @@ public class GameManager : MonoBehaviour
         }
 
         updateInfo(index_newBerry);
+
+        //폰에서 뒤로가기 버튼 눌렀을 때/에디터에서ESC버튼 눌렀을 때 게임 종료
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            DataController.instance.SaveData();
+            Application.Quit();
+        }
     }
     void LateUpdate()
     {
