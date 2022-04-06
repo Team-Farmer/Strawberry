@@ -72,11 +72,12 @@ public class DataController : MonoBehaviour
         //로컬에 저장
         File.WriteAllText(filePath, jsonData);
 
-        Debug.Log("저장 완료 경로 : "+filePath);
+        Debug.Log("로컬 저장 완료 경로 : "+filePath);
     }
 
     public void InitData()
     {
+        gameData.cloudSaveTime = new System.DateTime();
         // 재화 변수
         gameData.heart = 500;
         gameData.coin = 150000;
@@ -99,11 +100,11 @@ public class DataController : MonoBehaviour
         }
         
         //BerryFieldData
-
         for(int i = 0; i < gameData.berryFieldData.Length; i++)
         {
             gameData.berryFieldData[i] = new BerryFieldData();                       
-        }        
+        } 
+        
         //isBerryUnlock
         for(int i = 0; i < 192; i++)
         {

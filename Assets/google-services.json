@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "76945944410",
+    "project_id": "strawberry-2c582",
+    "storage_bucket": "strawberry-2c582.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:76945944410:android:931fcdd723b681252f4d63",
+        "android_client_info": {
+          "package_name": "com.teamfarmer.strawberryfarm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "76945944410-8071fppes54bfeuqlpd0pi48s7okhf2i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.teamfarmer.strawberryfarm",
+            "certificate_hash": "71e64d1d94df84bf11a5557ca7858442ff0b13c0"
+          }
+        },
+        {
+          "client_id": "76945944410-t208otgi7aic3l9hr82e56p13093vm9t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB0GP4qmPvG3OMaNt4hTstXD59u9ByJd1w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "76945944410-t208otgi7aic3l9hr82e56p13093vm9t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

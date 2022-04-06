@@ -2,17 +2,40 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Networking;
 
 public class Setting : MonoBehaviour
 {
     #region
     public Text versionDate_text;
     public Text version_text;
+    public Text saveDate_text;
+    public Button cloudLoad_btn;
     #endregion
 
     void Awake()
     {
         SetVersionInfo();
+    }
+
+    void Start()
+    {
+        SetCloudSave();
+        GPGSManager.instance.OnSaveSucceed += SetCloudSave;
+    }
+
+    public void SetCloudSave()
+    {
+        if (DataController.instance.gameData.cloudSaveTime == System.DateTime.MinValue)
+        {
+            cloudLoad_btn.interactable = false;
+            saveDate_text.text = "저장기록 없음";
+        }
+        else
+        {
+            cloudLoad_btn.interactable = true;
+            saveDate_text.text = "마지막 저장 날짜\n"+DataController.instance.gameData.cloudSaveTime.ToString("yyyy년 MM월 dd일 HH:mm:ss");
+        }
     }
 
     private void SetVersionInfo() // 버전 정보 세팅
@@ -44,7 +67,7 @@ public class Setting : MonoBehaviour
 
     private string EscapeURL(string url)
     {
-        return WWW.EscapeURL(url).Replace("+", "%20");
+        return UnityWebRequest.EscapeURL(url).Replace("+", "%20");
     }
 
     public void Instagram() // 공식 인스타 계정

@@ -56,7 +56,7 @@ public class RewardAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListe
 
     public void OnUnityAdsFailedToLoad(string placementId, UnityAdsLoadError error, string message)
     {
-        Debug.Log($"광고 로드 실패: {error.ToString()}-{message}");
+        Debug.Log($"광고 로드 실패: {error}-{message}");
 
     }
 
@@ -64,14 +64,17 @@ public class RewardAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListe
     {
         if (adUnitId == placementId && showCompletionState.Equals(UnityAdsCompletionState.COMPLETED))
         {
-            //리워드 구현
+            //리워드 구현 - 다른보상 추가되면 코드 수정해야 함
             showAdButton.interactable = true;
+            GameManager.instance.GetCoin(DataController.instance.gameData.truckCoin*3);
+            DataController.instance.gameData.truckBerryCnt = 0;
+            DataController.instance.gameData.truckCoin = 0;
         }
     }
 
     public void OnUnityAdsShowFailure(string placementId, UnityAdsShowError error, string message)
     {
-        Debug.Log($"Error : {error.ToString()}-{message}");
+        Debug.Log($"광고 보여주기 Error : {error}-{message}");
     }
 
     public void OnUnityAdsShowClick(string placementId) { }
