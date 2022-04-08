@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     public GameObject stemPrefab; // 프리팹
     public GameObject bugPrefab;
 
+    public List<GameObject> farmObjList = new List<GameObject>();
     public List<Farm> farmList = new List<Farm>();
     public List<Stem> stemList = new List<Stem>();
     public List<Bug> bugList = new List<Bug>();
@@ -201,7 +202,7 @@ public class GameManager : MonoBehaviour
 
         return stemList[idx];
     }
-    void PlantStrawBerry(Stem stem, GameObject obj)
+    public void PlantStrawBerry(Stem stem, GameObject obj)
     {
         BoxCollider2D coll = obj.GetComponent<BoxCollider2D>();
         //stem.transform.position = obj.transform.position; ; // 밭의 Transform에 딸기를 심는다
@@ -214,10 +215,9 @@ public class GameManager : MonoBehaviour
 
         Farm farm = farmList[stem.stemIdx];
         if (DataController.instance.gameData.berryFieldData[stem.stemIdx].isHarvest) return;
-
-        DataController.instance.gameData.berryFieldData[stem.stemIdx].isPlant = false; // 밭을 비워준다
+       
         DataController.instance.gameData.berryFieldData[stem.stemIdx].isHarvest = true;
-        Vector2 pos = stem.transform.position; ;
+        Vector2 pos = stem.transform.position;
         stem.instantBerry.Explosion(pos, target.position, 0.5f);
         stem.instantBerry.GetComponent<SpriteRenderer>().sortingOrder = 4;
 
@@ -241,10 +241,11 @@ public class GameManager : MonoBehaviour
 
         UpdateTruckState(stem);
         DataController.instance.gameData.totalHarvBerryCnt++; // 수확한 딸기의 총 개수 업데이트
-        stem.gameObject.SetActive(false);
+        
 
         yield return new WaitForSeconds(0.25f); // 0.25초 뒤에
-
+        DataController.instance.gameData.berryFieldData[stem.stemIdx].isPlant = false; // 밭을 비워준다
+        stem.gameObject.SetActive(false);
         DataController.instance.gameData.berryFieldData[farm.farmIdx].isHarvest = false; // 수확이 끝남              
         if (!DataController.instance.gameData.berryFieldData[farm.farmIdx].hasWeed) // 잡초가 없다면
         {
