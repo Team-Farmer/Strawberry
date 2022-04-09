@@ -32,7 +32,7 @@ public class Strawberry : MonoBehaviour
         Prefabcount++;
 
         //베리 정보 가져오기
-        BERRY = Globalvariable.instance.berryListAll;
+        BERRY = Globalvariable.instance.berryListAll;//이거 변경!!!!!!!!!!!!!!!!!!!!
 
         //베리들을 보인다.
         berryImageChange();
@@ -41,7 +41,7 @@ public class Strawberry : MonoBehaviour
     private void Update()
     {
         //베리들을 보인다.
-        berryImageChange();
+        berryImageChange();//이럴필요가있나
     }
 
     //베리 리스트에 이미지를 보인다.===========================================================================
@@ -53,7 +53,8 @@ public class Strawberry : MonoBehaviour
             this.transform.GetChild(0).GetComponent<Image>().sprite = yesBerryImage;//배경 이미지 변경
             berryImagePanel.transform.GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f);//투명 -> 불투명
 
-            berryImagePanel.GetComponent<Image>().sprite = BERRY[prefabnum].GetComponent<SpriteRenderer>().sprite;//해당 베리 이미지 보이기
+            berryImagePanel.GetComponent<Image>().sprite 
+                = BERRY[prefabnum].GetComponent<SpriteRenderer>().sprite;//해당 베리 이미지 보이기
         }
     }
 

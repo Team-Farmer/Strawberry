@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
     //베리 설명창
     public GameObject berryExp;
 
-    //새로운딸기
+    //새로운딸기================================
     [Header("[ OBJECT ]")]
     public GameObject priceText_newBerry;
     public GameObject timeText_newBerry;
@@ -63,9 +63,14 @@ public class GameManager : MonoBehaviour
     public Sprite startImg;
     public Sprite doneImg;
     public Sprite ingImg;
+    [Header("[ NEW BERRY ]")]
+    public GameObject newBerryTimeReuce;
+    public GameObject newBerryAcheive;
 
     private int index_newBerry = 0; //현재 인덱스
     private bool isStart_newBerry = false; //시작을 눌렀는가
+    
+    //===========================================
 
     [Header("[ Check/Settings Panel ]")]
     public GameObject SettingsPanel;
@@ -376,8 +381,6 @@ public class GameManager : MonoBehaviour
     #region 리스트
 
     #region PTJ
-
-    //PTJ
     public void workingApply(List<Sprite> workingList)
     {
         for (int i = 0; i < 3; i++)
@@ -390,15 +393,16 @@ public class GameManager : MonoBehaviour
                     working[i].transform.GetChild(0).transform.GetComponent<Image>().sprite = workingList[i];
                 }
             }
-            catch {}//여기 에러
+            catch {}//여기 에러?
         }
     }
     //PTJ몇명 고용했는지
-    public void workingCount(int employCount) { workingCountText.GetComponent<Text>().text = employCount.ToString(); } // + "/3"
+    public void workingCount(int employCount) 
+    { workingCountText.GetComponent<Text>().text = employCount.ToString(); } // + "/3"
     #endregion
 
     #region New Berry Add
-    //새로운 딸기 관련 정보
+    //새로운 딸기 추가
     public void updateInfo(int index)
     {
 
@@ -409,55 +413,64 @@ public class GameManager : MonoBehaviour
                 if (time_newBerry[index] > 0) //시간이 0보다 크면 1초씩 감소
                 {
                     time_newBerry[index] -= Time.deltaTime;
-                    startBtn_newBerry.GetComponent<Image>().sprite = ingImg;
+                    startBtn_newBerry.GetComponent<Image>().sprite = ingImg;//진행중 이미지
                 }
                 else
-                { startBtn_newBerry.GetComponent<Image>().sprite = doneImg; }
-
-
+                { 
+                    startBtn_newBerry.GetComponent<Image>().sprite = doneImg; //완료 이미지
+                }
             }
-            //현재 price와 time text를 보인다.
-            priceText_newBerry.GetComponent<Text>().text = price_newBerry[index].ToString();
-            timeText_newBerry.GetComponent<Text>().text = TimeForm(Mathf.CeilToInt(time_newBerry[index])); //정수부분만 출력한다.
 
+            //현재 price와 time text를 보인다.
+            priceText_newBerry.GetComponent<Text>().text 
+                = price_newBerry[index].ToString();
+            timeText_newBerry.GetComponent<Text>().text 
+                = TimeForm(Mathf.CeilToInt(time_newBerry[index])); //정수부분만 출력
         }
         catch
         { Debug.Log("다음 레벨 정보 없음"); }
     }
+
+
+
     //새로운 딸기 버튼을 누르면
     public void newBerryAdd()
     {
         if (startBtn_newBerry.GetComponent<Image>().sprite == startImg) // 시작 버튼 클릭
         {
             Debug.Log("^_^");
+            Time.timeScale = 0;
+            newBerryTimeReuce.SetActive(true);//하트로 시간 줄이겠냐는 패널
         }
-        if (startBtn_newBerry.GetComponent<Image>().sprite == ingImg) // 진행중 버튼 클릭
-        {
-            Debug.Log("하트로 시간 줄이겠냐는 패널 등장");
-        }
-        if (startBtn_newBerry.GetComponent<Image>().sprite == doneImg) // 완료 버튼 클릭
-        {
-            Debug.Log("새 딸기 설명 패널 등장 && 짜잔 효과음");
-        }
-
-        //타이머가 0 이라면 
+        else { Time.timeScale = 1; }
+        //타이머가 0 이라면 (=타이머 끝나서 베리 얻을 수 있음)
         if (time_newBerry[index_newBerry] < 0.9)
         {
-            int newBerryIndex=0;
-            //없는 베리중에 랜덤으로 하나 결정(임의로 0~10)
-            while (DataController.instance.gameData.isBerryUnlock[newBerryIndex] == true) 
+
+            int newBerryIndex = 0;
+            while (DataController.instance.gameData.isBerryUnlock[newBerryIndex] == true)
             {
+                //아직 없는 베리 찾아서 true로 변경
+                //없는 베리중에 랜덤으로 하나 결정(임의로 0~10)
                 newBerryIndex = UnityEngine.Random.Range(0, 11);
             }
             //새로운 딸기가 추가된다.
             DataController.instance.gameData.isBerryUnlock[newBerryIndex] = true;
 
+            //딸기 얻음 효과음(짜잔)
+            AudioManager.instance.TadaAudioPlay();
+
+            //얻은 딸기 설명창
+            newBerryAcheive.SetActive(true);
+
+
+
+
 
             //코인 소비
             UseCoin(price_newBerry[index_newBerry]);
-            //ShowCoinText(CoinText, DataController.instance.gameData.coin); // 트럭코인 나타낼 때 같이쓰려고 매개변수로 받게 수정했어요 - 신희규 
 
-            //업스레이드 레벨 상승 -> 그 다음 업그레이드 금액이 보인다.
+            //업그레이드 레벨 상승 -> 그 다음 업그레이드 내용, 금액 보인다
             index_newBerry++;
             updateInfo(index_newBerry);
 
@@ -465,10 +478,12 @@ public class GameManager : MonoBehaviour
             startBtn_newBerry.GetComponent<Image>().sprite = startImg;
             isStart_newBerry = false;
         }
+        //타이머 0이 아니라면 타이머를 시작한다.
         else
         {
             isStart_newBerry = true;
         }
+
     }
 
     #endregion
@@ -517,6 +532,11 @@ public class GameManager : MonoBehaviour
         { Obj.SetActive(false); }
         else
         { Obj.SetActive(true); }
+    }
+    public void turnOffAll() {//테스트중
+        berryExp.SetActive(false);
+        newBerryTimeReuce.SetActive(false);
+        newBerryAcheive.SetActive(false);
     }
     public string TimeForm(int time)//초단위 시간을 분:초로 변경
     {

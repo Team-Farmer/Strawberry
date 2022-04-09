@@ -21,7 +21,7 @@ public class AudioManager : MonoBehaviour
     //효과음 오디오
     public AudioClip SFXclip;
     public AudioClip HarvestClip;
-
+    public AudioClip TadaClip;
 
     public static AudioManager instance;
 
@@ -69,6 +69,7 @@ public class AudioManager : MonoBehaviour
         //오디오 재생
         AudioSource audioSource = go.AddComponent<AudioSource>();//그 오브젝트에 오디오 소스 컴포넌트 추가
         audioSource.clip = clip;//오디오 소스 클립 추가
+        audioSource.loop = false;
         audioSource.Play();//재생
 
         audioSource.outputAudioMixerGroup = mixer.FindMatchingGroups("SFX")[0];
@@ -84,7 +85,8 @@ public class AudioManager : MonoBehaviour
     { SFXPlay("ButtonSFX", SFXclip); }
     public void HarvestAudioPlay() //수확 효과음
     { SFXPlay("HarvestSFX", HarvestClip); }
-
+    public void TadaAudioPlay() 
+    { SFXPlay("TadaSFX", TadaClip); }
 
 
     public void BgSoundPlay(AudioClip clip) {
