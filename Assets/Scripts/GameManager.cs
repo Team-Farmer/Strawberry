@@ -439,10 +439,12 @@ public class GameManager : MonoBehaviour
         if (startBtn_newBerry.GetComponent<Image>().sprite == startImg) // 시작 버튼 클릭
         {
             Debug.Log("^_^");
-            Time.timeScale = 0;
-            newBerryTimeReuce.SetActive(true);//하트로 시간 줄이겠냐는 패널
+            Time.timeScale = 0;//선택하기 전까지 시간 멈춤
+            newBerryTimeReuce.SetActive(true);//하트로 시간 줄이겠냐는 패널 띄우기
         }
         else { Time.timeScale = 1; }
+
+
         //타이머가 0 이라면 (=타이머 끝나서 베리 얻을 수 있음)
         if (time_newBerry[index_newBerry] < 0.9)
         {
@@ -462,6 +464,10 @@ public class GameManager : MonoBehaviour
 
             //얻은 딸기 설명창
             newBerryAcheive.SetActive(true);
+            newBerryAcheive.transform.GetChild(0).GetComponent<Image>().sprite 
+                = Globalvariable.instance.berryListAll[newBerryIndex].GetComponent<SpriteRenderer>().sprite;
+            newBerryAcheive.transform.GetChild(1).GetComponent<Text>().text
+                = Globalvariable.instance.berryListAll[newBerryIndex].GetComponent<Berry>().berryName;
 
 
 
