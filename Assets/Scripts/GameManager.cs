@@ -543,6 +543,8 @@ public class GameManager : MonoBehaviour
         berryExp.SetActive(false);
         newBerryTimeReuce.SetActive(false);
         newBerryAcheive.SetActive(false);
+        //berryPanelBlack.SetActive(false);
+        Time.timeScale = 1;
     }
     public string TimeForm(int time)//초단위 시간을 분:초로 변경
     {
