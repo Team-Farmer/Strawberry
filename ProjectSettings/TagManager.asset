@@ -16,6 +16,9 @@ TagManager:
   - BG
   - UI
   - Global
+  - PTJExplanation
+  - NewsExplanation
+  - medalCount
   layers:
   - Default
   - TransparentFX

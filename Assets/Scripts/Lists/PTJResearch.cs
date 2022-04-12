@@ -74,7 +74,7 @@ public class PTJResearch : MonoBehaviour
     {
         if (PTJ == true)
         {
-            PTJExplanation = GameObject.Find("PTJExplanation");//gameManager로 빼면 FInd필요없음 근데 너무 음
+            PTJExplanation = GameObject.FindGameObjectWithTag("PTJExplanation");
             PTJExp = PTJExplanation.transform.GetChild(0).gameObject;
             PTJSlider = PTJExp.transform.GetChild(7).transform.gameObject;
         }

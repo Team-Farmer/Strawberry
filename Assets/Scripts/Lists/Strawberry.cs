@@ -20,19 +20,21 @@ public class Strawberry : MonoBehaviour
     [SerializeField]
     private GameObject berryImagePanel;//이미지를 보일 오브젝트 대상
 
+    //베리 설명창
+    private GameObject berryExp;
 
-    
 
     //=====================================================================================================
     void Start()
     {
-
+        berryExp = GameObject.FindGameObjectWithTag("BerryExplanation");
+        berryExp = berryExp.transform.GetChild(0).gameObject;
         //프리팹들에게 번호를 붙여 주자
         prefabnum = Prefabcount;
         Prefabcount++;
 
         //베리 정보 가져오기
-        BERRY = Globalvariable.instance.berryListAll;//이거 변경!!!!!!!!!!!!!!!!!!!!
+        BERRY = GameObject.FindGameObjectWithTag("Global").GetComponent<Globalvariable>().berryListAll;
 
         //베리들을 보인다.
         berryImageChange();
@@ -62,8 +64,38 @@ public class Strawberry : MonoBehaviour
     //베리 설명창 띄우기========================================================================================
     public void BerryExplanation() {
 
-        GameManager.instance.Explanation(BERRY[prefabnum],prefabnum);
-    
+        //GameManager.instance.Explanation(BERRY[prefabnum],prefabnum);
+        try
+        {
+
+            if (DataController.instance.gameData.isBerryUnlock[prefabnum] == true)
+            {
+                
+                //설명창 띄운다
+                berryExp.SetActive(true);
+                Debug.Log("test");
+                GameObject berryExpImage = berryExp.transform.GetChild(2).gameObject;
+                GameObject berryExpName = berryExp.transform.GetChild(3).gameObject;
+                GameObject berryExpTxt = berryExp.transform.GetChild(4).gameObject;
+
+                //Explanation 내용을 채운다.
+                berryExpImage.GetComponentInChildren<Image>().sprite
+                    = BERRY[prefabnum].GetComponent<SpriteRenderer>().sprite;//이미지 설정
+
+                berryExpName.gameObject.GetComponentInChildren<Text>().text
+                    = BERRY[prefabnum].GetComponent<Berry>().berryName;//이름 설정
+
+                berryExpTxt.transform.gameObject.GetComponentInChildren<Text>().text
+                    = BERRY[prefabnum].GetComponent<Berry>().berryExplain;//설명 설정
+
+
+            }
+        }
+        catch
+        {
+            Debug.Log("여기에 해당하는 베리는 아직 없다");
+        }
+
     }
 
 }

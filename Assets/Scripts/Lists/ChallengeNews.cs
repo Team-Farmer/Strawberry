@@ -80,19 +80,12 @@ public class ChallengeNews : MonoBehaviour
     private void Start()
     {
         
-        newsExplanation = GameObject.Find("newsExplanation");//얘네들 find 따로 스크립트로 빼서 할까 고민해볼것
-        medalText = GameObject.Find("medalCount");
+        newsExplanation = GameObject.FindGameObjectWithTag("NewsExplanation");
+        medalText = GameObject.FindGameObjectWithTag("medalCount");
 
         medalText.GetComponent<Text>().text = DataController.instance.gameData.medal.ToString();//메달 현황 텍스트로 띄우기
         InfoUpdate();
     }
-
-
-
-
-
-
-
 
 
     public void InfoUpdate() {

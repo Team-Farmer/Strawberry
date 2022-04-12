@@ -48,9 +48,6 @@ public class GameManager : MonoBehaviour
     public GameObject workingCountText;//고용 중인 동물 수
     public GameObject[] working;//고용 중인 동물 리스트 상단에
 
-    //베리 설명창
-    public GameObject berryExp;
-
     //새로운딸기================================
     [Header("[ OBJECT ]")]
     public GameObject priceText_newBerry;
@@ -507,43 +504,6 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
-    #region Explanation
-    public void Explanation(GameObject berry,int prefabnum)
-    {
-
-        try
-        {
-            if (DataController.instance.gameData.isBerryUnlock[prefabnum] == true)
-            {
-
-                //설명창 띄운다
-                berryExp.SetActive(true);
-
-                GameObject berryExpImage = berryExp.transform.GetChild(2).gameObject;
-                GameObject berryExpName = berryExp.transform.GetChild(3).gameObject;
-                GameObject berryExpTxt = berryExp.transform.GetChild(4).gameObject;
-
-                //Explanation 내용을 채운다.
-                berryExpImage.GetComponentInChildren<Image>().sprite
-                    = berry.GetComponent<SpriteRenderer>().sprite;//이미지 설정
-
-                berryExpName.gameObject.GetComponentInChildren<Text>().text
-                    = berry.GetComponent<Berry>().berryName;//이름 설정
-
-                berryExpTxt.transform.gameObject.GetComponentInChildren<Text>().text
-                    = berry.GetComponent<Berry>().berryExplain;//설명 설정
-
-                
-            }
-        }
-        catch
-        {
-            Debug.Log("여기에 해당하는 베리는 아직 없다");
-        }
-    }
-
-    #endregion
-
     //활성화 비활성화로 창 끄고 켜고
     public void turnOff(GameObject Obj)
     {
@@ -552,8 +512,7 @@ public class GameManager : MonoBehaviour
         else
         { Obj.SetActive(true); }
     }
-    public void turnOffAll() {//테스트중
-        berryExp.SetActive(false);
+    public void turnOffAll() {//테스트중 
         newBerryTimeReuce.SetActive(false);
         newBerryAcheive.SetActive(false);
         //berryPanelBlack.SetActive(false);

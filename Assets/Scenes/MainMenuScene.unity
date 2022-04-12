@@ -292,7 +292,7 @@ GameObject:
   - component: {fileID: 33325698}
   m_Layer: 5
   m_Name: medalCount
-  m_TagString: Untagged
+  m_TagString: medalCount
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12134,7 +12134,7 @@ GameObject:
   - component: {fileID: 854978631}
   m_Layer: 5
   m_Name: PTJExplanation
-  m_TagString: Untagged
+  m_TagString: PTJExplanation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24446,7 +24446,7 @@ GameObject:
   - component: {fileID: 1606089877}
   m_Layer: 5
   m_Name: newsExplanation
-  m_TagString: Untagged
+  m_TagString: NewsExplanation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
