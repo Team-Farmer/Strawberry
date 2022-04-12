@@ -1945,6 +1945,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1960532229223420410, guid: 2cfd907148d0b4f49b367715f9f94d8a, type: 3}
   m_PrefabInstance: {fileID: 149320958}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &152644590
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 152644591}
+  m_Layer: 5
+  m_Name: BerryExplanation
+  m_TagString: BerryExplanation
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &152644591
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 152644590}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 576054018}
+  m_Father: {fileID: 698710643}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &154427229
 GameObject:
   m_ObjectHideFlags: 0
@@ -6724,7 +6755,6 @@ MonoBehaviour:
   - {fileID: 1297610195}
   - {fileID: 1160523579}
   - {fileID: 641708685}
-  berryExp: {fileID: 576054017}
   priceText_newBerry: {fileID: 1295824419}
   timeText_newBerry: {fileID: 2120615085}
   startBtn_newBerry: {fileID: 787233744}
@@ -7640,8 +7670,8 @@ Transform:
   - {fileID: 2078171039}
   - {fileID: 1934114411}
   - {fileID: 1802891352}
-  m_Father: {fileID: 698710643}
-  m_RootOrder: 7
+  m_Father: {fileID: 152644591}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &576367891
 GameObject:
@@ -9469,7 +9499,7 @@ RectTransform:
   - {fileID: 2095064781}
   - {fileID: 780609667}
   - {fileID: 1177823554}
-  - {fileID: 576054018}
+  - {fileID: 152644591}
   - {fileID: 892981152}
   - {fileID: 1437819311}
   m_Father: {fileID: 2075785727}

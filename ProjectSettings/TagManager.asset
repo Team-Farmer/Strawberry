@@ -19,6 +19,7 @@ TagManager:
   - PTJExplanation
   - NewsExplanation
   - medalCount
+  - BerryExplanation
   layers:
   - Default
   - TransparentFX
