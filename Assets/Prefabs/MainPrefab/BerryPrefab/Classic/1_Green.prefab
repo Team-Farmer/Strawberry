@@ -103,6 +103,7 @@ MonoBehaviour:
     \uB9CC\uD07C \uB354 \uB2EC\uCF64\uD574\uC9C0\uB9AC\uB77C\uACE0 \uB538\uAE30\uB294
     \uBBFF\uB294\uB2E4."
   berryIdx: 1
+  berryPrice: 13
   berryRank: 0
 --- !u!95 &8238155578764226143
 Animator:

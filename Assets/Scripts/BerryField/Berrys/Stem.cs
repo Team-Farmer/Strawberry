@@ -35,7 +35,7 @@ public class Stem : MonoBehaviour
 
         rainCtrl = GameObject.FindGameObjectWithTag("Rain").GetComponent<RainCtrl>();
         global = GameObject.FindGameObjectWithTag("Global").GetComponent<Globalvariable>();
-        farmPos = new Vector3(GetComponentInParent<Farm>().transform.position.x, GetComponentInParent<Farm>().transform.position.y, 0);
+        //farmPos = new Vector3(GetComponentInParent<Farm>().transform.position.x, GetComponentInParent<Farm>().transform.position.y, 0);
     }
     private void OnEnable()
     {       
@@ -73,7 +73,7 @@ public class Stem : MonoBehaviour
         DataController.instance.gameData.berryFieldData[stemIdx].randomTime = 0f;
 
         // µþ±â Æ®·£½ºÆû ÃÊ±âÈ­
-        transform.localPosition = Vector3.zero;
+        //transform.localPosition = Vector3.zero;
         transform.localRotation = Quaternion.identity;
 
         sprite.sortingOrder = 2;        
@@ -125,29 +125,29 @@ public class Stem : MonoBehaviour
 
         if (this.seedAnimLevel == 0)
         {
-            transform.position = new Vector2(farmPos.x, farmPos.y + 0.02f);
+            //transform.position = new Vector2(farmPos.x, farmPos.y + 0.02f);
         }
         else if (this.seedAnimLevel == 1)
         {
             sprite.sortingOrder = 0;
-            transform.position = new Vector2(farmPos.x - 0.12f, farmPos.y + 0.24f);
+            //transform.position = new Vector2(farmPos.x - 0.12f, farmPos.y + 0.24f);
         }
         else if (this.seedAnimLevel == 2)
         {           
-            transform.position = new Vector2(farmPos.x - 0.15f, farmPos.y + 0.27f);
+            //transform.position = new Vector2(farmPos.x - 0.15f, farmPos.y + 0.27f);
             instantBerry.gameObject.SetActive(true);
             instantBerry.GetComponent<Animator>().SetInteger("berryLevel", level);            
         }
         else if (this.seedAnimLevel == 3)
         {            
-            transform.position = new Vector2(farmPos.x - 0.15f, farmPos.y + 0.29f);
+            //transform.position = new Vector2(farmPos.x - 0.15f, farmPos.y + 0.29f);
             instantBerry.gameObject.SetActive(true);
             instantBerry.GetComponent<Animator>().SetInteger("berryLevel", level);
             instantBerry.transform.position = new Vector3(transform.position.x + 0.29f, transform.position.y, transform.position.z);
         }
         else if (this.seedAnimLevel == 4)
         {          
-            transform.position = new Vector2(farmPos.x - 0.15f, farmPos.y + 0.35f);
+            //transform.position = new Vector2(farmPos.x - 0.15f, farmPos.y + 0.35f);
             instantBerry.gameObject.SetActive(true);
             instantBerry.GetComponent<SpriteRenderer>().sprite = global.berryListAll[DataController.instance.gameData.berryFieldData[stemIdx].berryPrefabNowIdx].GetComponent<SpriteRenderer>().sprite;
             instantBerry.GetComponent<Animator>().SetInteger("berryLevel", level);
