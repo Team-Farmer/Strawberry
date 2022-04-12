@@ -8,7 +8,9 @@ public class Rachel: MonoBehaviour
     {
         for(int i = 0; i < GameManager.instance.farmList.Count; i++)
         {
-            if(!DataController.instance.gameData.berryFieldData[i].isPlant)
+            if(!DataController.instance.gameData.berryFieldData[i].isPlant &&
+                !DataController.instance.gameData.berryFieldData[i].hasWeed &&
+                !DataController.instance.gameData.berryFieldData[i].hasBug)
             {
                 GameManager.instance.PlantStrawBerry(GameManager.instance.stemList[i], GameManager.instance.farmObjList[i]); // 심는다                            
                 DataController.instance.gameData.berryFieldData[i].isPlant = true; // 체크 변수 갱신

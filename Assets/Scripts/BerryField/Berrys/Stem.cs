@@ -129,28 +129,25 @@ public class Stem : MonoBehaviour
         }
         else if (this.seedAnimLevel == 1)
         {
-            sprite.sortingOrder = 0;
-            //transform.position = new Vector2(farmPos.x - 0.12f, farmPos.y + 0.24f);
+            sprite.sortingOrder = 0;       
         }
         else if (this.seedAnimLevel == 2)
-        {           
-            //transform.position = new Vector2(farmPos.x - 0.15f, farmPos.y + 0.27f);
-            instantBerry.gameObject.SetActive(true);
-            instantBerry.GetComponent<Animator>().SetInteger("berryLevel", level);            
-        }
-        else if (this.seedAnimLevel == 3)
-        {            
-            //transform.position = new Vector2(farmPos.x - 0.15f, farmPos.y + 0.29f);
+        {                      
             instantBerry.gameObject.SetActive(true);
             instantBerry.GetComponent<Animator>().SetInteger("berryLevel", level);
-            instantBerry.transform.position = new Vector3(transform.position.x + 0.29f, transform.position.y, transform.position.z);
+            instantBerry.transform.position = new Vector3(transform.position.x + 0.3f, transform.position.y - 0.1f, transform.position.z);
+        }
+        else if (this.seedAnimLevel == 3)
+        {                      
+            instantBerry.gameObject.SetActive(true);
+            instantBerry.GetComponent<Animator>().SetInteger("berryLevel", level);
+            instantBerry.transform.position = new Vector3(transform.position.x + 0.3f, transform.position.y - 0.06f, transform.position.z);
         }
         else if (this.seedAnimLevel == 4)
         {          
-            //transform.position = new Vector2(farmPos.x - 0.15f, farmPos.y + 0.35f);
             instantBerry.gameObject.SetActive(true);
             instantBerry.GetComponent<SpriteRenderer>().sprite = global.berryListAll[DataController.instance.gameData.berryFieldData[stemIdx].berryPrefabNowIdx].GetComponent<SpriteRenderer>().sprite;
-            instantBerry.GetComponent<Animator>().SetInteger("berryLevel", level);
+            instantBerry.GetComponent<Animator>().SetInteger("berryLevel", level);        
             instantBerry.transform.position = new Vector2(transform.position.x + 0.32f, transform.position.y + 0.06f);
         }
     }
@@ -189,7 +186,6 @@ public class Stem : MonoBehaviour
         instantBerryObj.name = global.berryListAll[DataController.instance.gameData.berryFieldData[stemIdx].berryPrefabNowIdx].name;
 
         instantBerry = instantBerryObj.GetComponent<Berry>();
-        instantBerry.transform.position = new Vector3(transform.position.x + 0.22f, transform.position.y - 0.01f, transform.position.z);
         instantBerry.gameObject.SetActive(false);
     }
 }

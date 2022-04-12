@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8238155578764226131}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.10252914, y: -0.21718092, z: -1.546643}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -104,6 +104,7 @@ MonoBehaviour:
     \uB73B\uC73C\uB85C \uB208 \uC124(\u96EA)\uC790\uB97C \uBD99\uC600\uB2E4. \uD0A4\uC6B0\uAE30
     \uC27D\uACE0 \uC218\uB7C9\uB3C4 \uB9CE\uB2E4."
   berryIdx: 64
+  berryPrice: 20
   berryRank: 1
 --- !u!95 &8238155578764226143
 Animator:
