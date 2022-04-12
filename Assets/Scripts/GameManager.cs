@@ -218,10 +218,10 @@ public class GameManager : MonoBehaviour
     public void Harvest(Stem stem)
     {       
         Farm farm = farmList[stem.stemIdx];
-        if (DataController.instance.gameData.berryFieldData[stem.stemIdx].isHarvest) return;
+        if (farm.isHarvest) return;
 
         AudioManager.instance.HarvestAudioPlay();//딸기 수확할때 효과음
-        DataController.instance.gameData.berryFieldData[stem.stemIdx].isHarvest = true;
+        farm.isHarvest = true;
         Vector2 pos = stem.transform.position;
         stem.instantBerry.Explosion(pos, target.position, 0.5f);
         stem.instantBerry.GetComponent<SpriteRenderer>().sortingOrder = 4;
@@ -245,13 +245,12 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(0.75f); // 0.75초 뒤에
 
         UpdateTruckState(stem);
-        DataController.instance.gameData.totalHarvBerryCnt++; // 수확한 딸기의 총 개수 업데이트
-        
 
-        yield return new WaitForSeconds(0.25f); // 0.25초 뒤에
+        DataController.instance.gameData.totalHarvBerryCnt++; // 수확한 딸기의 총 개수 업데이트            
         DataController.instance.gameData.berryFieldData[stem.stemIdx].isPlant = false; // 밭을 비워준다
+
         stem.gameObject.SetActive(false);
-        DataController.instance.gameData.berryFieldData[farm.farmIdx].isHarvest = false; // 수확이 끝남              
+        farm.isHarvest = false; // 수확이 끝남              
         if (!DataController.instance.gameData.berryFieldData[farm.farmIdx].hasWeed) // 잡초가 없다면
         {
             farm.GetComponent<BoxCollider2D>().enabled = true; // 밭을 다시 활성화 

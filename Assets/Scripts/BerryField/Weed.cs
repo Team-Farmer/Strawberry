@@ -54,9 +54,7 @@ public class Weed : MonoBehaviour
     IEnumerator DisableWeed(float time)
     {
         yield return new WaitForSeconds(time);
-
-        this.gameObject.SetActive(false); // 잡초 비활성화
-
+     
         float creatTime = DataController.instance.gameData.berryFieldData[weedIdx].createTime; // 딸기가 생성된 시간변수 참조
         if (creatTime == 0f || creatTime >= Globalvariable.STEM_LEVEL_MAX) // 맨 땅이거나 딸기가 수확가능한 상태라면
         {
@@ -71,5 +69,6 @@ public class Weed : MonoBehaviour
         {
             DataController.instance.gameData.berryFieldData[weedIdx].canGrow = true; // 딸기는 다시 자랄 수 있다.
         }
+        this.gameObject.SetActive(false); // 잡초 비활성화
     }
 }

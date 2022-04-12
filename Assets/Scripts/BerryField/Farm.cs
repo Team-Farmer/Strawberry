@@ -6,7 +6,7 @@ public class Farm : MonoBehaviour
 {
     public Weed weed;
     public int farmIdx;
-          
+    public bool isHarvest = false;
     void Update()
     {
         if (DataController.instance.gameData.berryFieldData[farmIdx].hasWeed || !DataController.instance.gameData.berryFieldData[farmIdx].canGrowWeed) return;

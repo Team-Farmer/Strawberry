@@ -16,13 +16,12 @@ public class BerryFieldData
     public bool isWeedEnable = false; // true면은 있었던거니까 켜주고 false면은 없던거니깐 건들지말고
 
     //Farm
-    public bool isPlant = false;   
-    public bool isHarvest = false;
+    public bool isPlant = false;       
 
     public bool hasWeed = false;
     public bool canGrowWeed = true;
     public float weedTime = 0f;
-    public float period = 60f; // 임의로 초기화 시킨 변수임
+    public float period = 20f; // 임의로 초기화 시킨 변수임
 
     //Stem
     public float createTime = 0f;
