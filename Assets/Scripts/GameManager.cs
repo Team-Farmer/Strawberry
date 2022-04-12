@@ -338,6 +338,19 @@ public class GameManager : MonoBehaviour
         else
             Debug.Log("하트가 부족해요!"); //경고 패널 등장
     }
+    public void GetMedal(int cost) // 하트 획득 함수
+    {
+        DataController.instance.gameData.medal += cost; //메달 +
+        //누적 메달 필요하면
+    }
+    public void UseMedal(int cost)//메달 획득 함수
+    {
+        int myMedal = DataController.instance.gameData.medal;
+        if (myMedal >= cost)
+            DataController.instance.gameData.medal -= cost;
+        else
+            Debug.Log("메달이 부족해요!");//경고 패널
+    }
     #endregion
 
     #region 콜라이더
