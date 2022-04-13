@@ -32,12 +32,6 @@ public class GameManager : MonoBehaviour
     Transform target;
     public Text truckCoinText;
 
-    public const float STEM_LEVEL_0 = Globalvariable.STEM_LEVEL_0;
-    public const float STEM_LEVEL_1 = Globalvariable.STEM_LEVEL_1;
-    public const float STEM_LEVEL_2 = Globalvariable.STEM_LEVEL_2;
-    public const float STEM_LEVEL_3 = Globalvariable.STEM_LEVEL_3;
-    public const float STEM_LEVEL_MAX = Globalvariable.STEM_LEVEL_MAX;
-
     public const int TRUCK_CNT_LEVEL_0 = Globalvariable.TRUCK_CNT_LEVEL_0;
     public const int TRUCK_CNT_LEVEL_1 = Globalvariable.TRUCK_CNT_LEVEL_1;
     public const int TRUCK_CNT_LEVEL_2 = Globalvariable.TRUCK_CNT_LEVEL_2;
@@ -117,7 +111,7 @@ public class GameManager : MonoBehaviour
                 bugList[i].gameObject.SetActive(true);
             }
             float creatTimeTemp = DataController.instance.gameData.berryFieldData[i].createTime;
-            if ((0 < creatTimeTemp && creatTimeTemp < STEM_LEVEL_MAX) || DataController.instance.gameData.berryFieldData[i].hasWeed)
+            if ((0 < creatTimeTemp && creatTimeTemp < DataController.instance.gameData.stemLevel[4]) || DataController.instance.gameData.berryFieldData[i].hasWeed)
             {
                 farmList[i].GetComponent<BoxCollider2D>().enabled = false;
             }
@@ -366,7 +360,7 @@ public class GameManager : MonoBehaviour
             {
                 coll.enabled = true;
             }
-            if (!DataController.instance.gameData.berryFieldData[i].hasBug && !DataController.instance.gameData.berryFieldData[i].hasWeed && DataController.instance.gameData.berryFieldData[i].createTime >= STEM_LEVEL_MAX) // (4)의 상황, 즉 벌레와 잡초 둘 다 없을 때 다 자란 딸기밭의 콜라이더를 켜준다.
+            if (!DataController.instance.gameData.berryFieldData[i].hasBug && !DataController.instance.gameData.berryFieldData[i].hasWeed && DataController.instance.gameData.berryFieldData[i].createTime >= DataController.instance.gameData.stemLevel[4]) // (4)의 상황, 즉 벌레와 잡초 둘 다 없을 때 다 자란 딸기밭의 콜라이더를 켜준다.
             {
                 coll.enabled = true;
             }

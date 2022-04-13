@@ -23157,9 +23157,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1467007737}
-  - component: {fileID: 1467007739}
   - component: {fileID: 1467007738}
-  - component: {fileID: 1467007740}
   m_Layer: 0
   m_Name: Aribeit
   m_TagString: Untagged
@@ -23190,33 +23188,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1467007736}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52e0afb4847f68042b630bdb51c209de, type: 3}
+  m_Script: {fileID: 11500000, guid: 695fe9e1cdec3ac438011835a9a1245c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1467007739
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1467007736}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e13d750befc12ee43a74ce101ed1e54a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1467007740
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1467007736}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06d6d9b35015e9c47aded81f13b18fda, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  OnRachel: 0
+  OnThomson: 0
+  OnHamsworth: 0
+  OnFubo: 0
 --- !u!114 &1496827595 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4035880483817675464, guid: 7472d0e0e33818244bfbde2fe34e734e, type: 3}

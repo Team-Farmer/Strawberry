@@ -43,8 +43,11 @@ public class Bug : MonoBehaviour
     public void DieBug()
     {
         SetAnim("isDie", true);
-        
-        StartCoroutine(DisableBug(0.25f));        
+
+        if(this.gameObject.activeSelf)
+        {
+            StartCoroutine(DisableBug(0.25f));
+        }           
     }
     void SetAnim(string name, bool b)
     {

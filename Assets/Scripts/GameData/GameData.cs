@@ -20,6 +20,9 @@ public class GameData
     public int truckBerryCnt; // 트럭 딸기 개수
     public int truckCoin;
 
+    // 딸기 성장 시간
+    public float[] stemLevel = { 0f, 30f, 60f, 90f, 120f};
+
     //딸기 밭 데이터 생성
     public BerryFieldData[] berryFieldData = new BerryFieldData[16];
 

@@ -90,6 +90,9 @@ public class DataController : MonoBehaviour
         gameData.accAttendance = 0;
         gameData.mgPlayCnt = 0;
 
+        // 딸기 성장 시간
+
+
         //Truck
         gameData.truckBerryCnt = 0;
 
