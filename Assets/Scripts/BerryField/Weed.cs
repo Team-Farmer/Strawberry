@@ -49,7 +49,10 @@ public class Weed : MonoBehaviour
     {
         anim.SetTrigger("Delete");
 
-        StartCoroutine(DisableWeed(0.25f)); // 애니메이션이 끝난 후 비활성화
+        if (this.gameObject.activeSelf)
+        {
+            StartCoroutine(DisableWeed(0.25f)); // 애니메이션이 끝난 후 비활성화
+        }      
     }
     IEnumerator DisableWeed(float time)
     {
