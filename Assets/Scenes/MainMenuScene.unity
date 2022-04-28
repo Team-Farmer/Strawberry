@@ -819,6 +819,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PTJPrefab (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+      propertyPath: PTJExp
+      value: 
+      objectReference: {fileID: 1263203544}
     - target: {fileID: 4889772765070719696, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -7398,6 +7402,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3680021550775499645, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
   m_PrefabInstance: {fileID: 1281108582}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &555083243 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3680021551288638446, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
+  m_PrefabInstance: {fileID: 864301827}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &564871549
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9186,6 +9201,18 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
+    - target: {fileID: 3680021551288638447, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
+      propertyPath: m_TargetGraphic
+      value: 
+      objectReference: {fileID: 1886901448}
+    - target: {fileID: 3680021551288638447, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 496606690}
+    - target: {fileID: 3680021551288638447, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1263203544}
     - target: {fileID: 3680021551511234445, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
       propertyPath: m_TargetGraphic
       value: 
@@ -11974,6 +12001,18 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
+    - target: {fileID: 3680021551288638447, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
+      propertyPath: m_TargetGraphic
+      value: 
+      objectReference: {fileID: 555083243}
+    - target: {fileID: 3680021551288638447, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 496606690}
+    - target: {fileID: 3680021551288638447, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1061275672}
     - target: {fileID: 3680021551511234445, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
       propertyPath: m_TargetGraphic
       value: 
@@ -14512,6 +14551,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PTJPrefab (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+      propertyPath: PTJExp
+      value: 
+      objectReference: {fileID: 1678538216}
     - target: {fileID: 4889772765070719696, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -15600,6 +15643,18 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
+    - target: {fileID: 3680021551288638447, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
+      propertyPath: m_TargetGraphic
+      value: 
+      objectReference: {fileID: 1886901448}
+    - target: {fileID: 3680021551288638447, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 496606690}
+    - target: {fileID: 3680021551288638447, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 879329611}
     - target: {fileID: 3680021551511234445, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
       propertyPath: m_TargetGraphic
       value: 
@@ -19788,6 +19843,18 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
+    - target: {fileID: 3680021551288638447, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
+      propertyPath: m_TargetGraphic
+      value: 
+      objectReference: {fileID: 1886901448}
+    - target: {fileID: 3680021551288638447, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 496606690}
+    - target: {fileID: 3680021551288638447, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1678538216}
     - target: {fileID: 3680021551511234445, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
       propertyPath: m_TargetGraphic
       value: 
@@ -19921,6 +19988,18 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
+    - target: {fileID: 3680021551288638447, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
+      propertyPath: m_TargetGraphic
+      value: 
+      objectReference: {fileID: 1886901448}
+    - target: {fileID: 3680021551288638447, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 496606690}
+    - target: {fileID: 3680021551288638447, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 536301512}
     - target: {fileID: 3680021551511234445, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
       propertyPath: m_TargetGraphic
       value: 
@@ -20479,6 +20558,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PTJPrefab (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+      propertyPath: PTJExp
+      value: 
+      objectReference: {fileID: 879329611}
     - target: {fileID: 4889772765070719696, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -24530,10 +24613,42 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1179187197}
     m_Modifications:
+    - target: {fileID: 1349541812454805739, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1349541812454805739, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1349541812454805739, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1349541812454805739, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1349541812454805739, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1349541812454805739, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: PTJResearch, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1349541812454805739, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3705786545946922626, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
       propertyPath: m_Name
       value: PTJPrefab
       objectReference: {fileID: 0}
+    - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+      propertyPath: PTJExp
+      value: 
+      objectReference: {fileID: 1881020256}
     - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
       propertyPath: PTJExplanation
       value: 
@@ -27495,6 +27610,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PTJPrefab (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+      propertyPath: PTJExp
+      value: 
+      objectReference: {fileID: 1061275672}
     - target: {fileID: 4889772765070719696, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -28372,6 +28491,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1880048067}
   m_CullTransparentMesh: 1
+--- !u!1 &1881020256 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3680021550775499645, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
+  m_PrefabInstance: {fileID: 3680021549972155421}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1882519344
 GameObject:
   m_ObjectHideFlags: 0
@@ -29253,6 +29377,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PTJPrefab (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+      propertyPath: PTJExp
+      value: 
+      objectReference: {fileID: 536301512}
     - target: {fileID: 4889772765070719696, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

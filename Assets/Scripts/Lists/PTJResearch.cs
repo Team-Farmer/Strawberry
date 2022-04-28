@@ -52,7 +52,8 @@ public class PTJResearch : MonoBehaviour
     private Sprite selectPTJSprite;
     [SerializeField]
     private Sprite originalPTJSprite;
-
+    [Header("==========PTJ EXP===========")]
+    public GameObject PTJExp;
 
     //추가 된 Prefab 수
     static int Prefabcount = 0;
@@ -65,20 +66,12 @@ public class PTJResearch : MonoBehaviour
     //고용중인 알바생 명단
     static List<Sprite> workingList = new List<Sprite>();
 
-    private GameObject PTJExplanations;
-    private GameObject PTJExplanation;
-    private GameObject PTJExp;
+  
+    
     //===================================================================================================
     void Start()
     {
-        InfoUpdate();
-        if (PTJ == true)
-        {
-            PTJExplanations = GameObject.FindGameObjectWithTag("PTJExplanation");
-            PTJExplanation = PTJExplanations.transform.GetChild(prefabnum).gameObject;
-            PTJExp = PTJExplanation.transform.GetChild(0).gameObject;
-        }
-        
+        InfoUpdate();        
     }
     //===================================================================================================
     //=============================================================================================================================
@@ -133,7 +126,17 @@ public class PTJResearch : MonoBehaviour
     public void ActiveExplanation() 
     {
         PTJExp.SetActive(true);
-
+        //PICTURE
+        PTJExp.transform.GetChild(2).transform.GetComponent<Image>().sprite 
+            = Info[prefabnum].Picture;
+        //NAME
+        PTJExp.transform.GetChild(3).transform.GetComponent<Text>().text 
+            = Info[prefabnum].Name;
+        //Explanation
+        PTJExp.transform.GetChild(4).transform.GetComponent<Text>().text
+            = Info[prefabnum].Explanation;
+        //EmployButton
+        //Slider
     }
 
 
