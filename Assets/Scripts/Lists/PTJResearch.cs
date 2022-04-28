@@ -66,7 +66,7 @@ public class PTJResearch : MonoBehaviour
     //고용중인 알바생 명단
     static List<Sprite> workingList = new List<Sprite>();
 
-  
+    private GameObject PTJSlider;
     
     //===================================================================================================
     void Start()
@@ -135,8 +135,28 @@ public class PTJResearch : MonoBehaviour
         //Explanation
         PTJExp.transform.GetChild(4).transform.GetComponent<Text>().text
             = Info[prefabnum].Explanation;
+
         //EmployButton
-        //Slider
+        //n번 고용, 얼마 주고 고용할지 혹은 고용해제 텍스트 보이기
+
+        PTJSlider = PTJExp.transform.GetChild(7).transform.gameObject;//PTJSlider
+        PTJExp.transform.GetChild(5).transform.GetChild(0).transform.GetComponent<Text>().text
+            = "1번 고용";
+        PTJExp.transform.GetChild(6).transform.GetComponent<Text>().text= Info[prefabnum].Price.ToString();
+        PTJSlider.transform.GetComponent<Slider>().onValueChanged.AddListener
+            (delegate { EmployButton((int)(PTJSlider.GetComponent<Slider>().value)); });
+        
+    }
+
+    public void EmployButton(int SliderNum) 
+    {
+        
+        PTJExp.transform.GetChild(5).transform.GetChild(0).transform.GetComponent<Text>().text
+            = SliderNum.ToString() + "번 고용";
+        //PRICE
+        PTJExp.transform.GetChild(6).transform.GetComponent<Text>().text
+           = (SliderNum * Info[prefabnum].Price).ToString();
+        //slider값 받아와서
     }
 
 
