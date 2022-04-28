@@ -99,18 +99,16 @@ public class PTJResearch : MonoBehaviour
 
 
     //coin 버튼 -> 알바 고용
-    public void clickCoin_PTJ(bool isSeveral) 
+    public void clickCoin_PTJ(int ID, int num) 
     {
-        
+        Debug.Log("ID="+ID+"  num="+num);
+        DataController.instance.gameData.PTJNum[ID] = num;//해당 ID가 n번 고용되었는지 저장
+
         if (employCount < 3)//3명 이하일 때
         {
             if (Info[prefabnum].isEmployed == false) //고용중아니면 고용           
             {
-                if (isSeveral == true)//여러번 고용하기
-                { hire(Info[prefabnum].Price * (int)PTJSlider.GetComponent<Slider>().value); }
-                else//한 번만 고용하기
-                { hire(Info[prefabnum].Price); }
-
+                hire(Info[prefabnum].Price);
                 ExplanationUpdate((int)PTJSlider.GetComponent<Slider>().value);
             }
             else //고용중이면 고용해제
@@ -210,14 +208,17 @@ public class PTJResearch : MonoBehaviour
             PTJExp.transform.GetChild(4).transform.gameObject.GetComponentInChildren<Text>().text 
                 = Info[prefabnum].Explanation;//설명 텍스트 
             
-            //n번 고용 구현================================================================================================
-            PTJExp.transform.GetChild(5).transform.GetComponent<Button>().onClick.AddListener
-                (delegate { clickCoin_PTJ(true); });//결제 버튼 누름
+            
+            
 
             ExplanationUpdate(1);//처음에는 1번 고용으로 보임
             PTJSlider.transform.GetComponent<Slider>().onValueChanged.AddListener
                 (delegate { ExplanationUpdate((int)PTJSlider.GetComponent<Slider>().value); });//슬라이더 값 바뀔때마다
 
+            PTJExp.transform.GetChild(5).transform.GetComponent<Button>().onClick.AddListener
+                (delegate { clickCoin_PTJ(prefabnum, (int)PTJSlider.GetComponent<Slider>().value); });//결제 버튼 누름
+
+            //여기까지는 정상적
         }
         catch
         {

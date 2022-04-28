@@ -121,6 +121,9 @@ public class DataController : MonoBehaviour
             gameData.isNewsUnlock[i]=false;
             gameData.NewsEnd[i] = false;
         }
+        //PTJ
+        for (int i = 0; i < 6; i++) { gameData.PTJNum[i] = 0; }
+
         gameData.newBerryResearch = 0;
     }
     void OnApplicationQuit()

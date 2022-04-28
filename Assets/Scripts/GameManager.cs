@@ -391,7 +391,7 @@ public class GameManager : MonoBehaviour
     }
     //PTJ몇명 고용했는지
     public void workingCount(int employCount) 
-    { workingCountText.GetComponent<Text>().text = employCount.ToString(); } // + "/3"
+    { workingCountText.GetComponent<Text>().text = employCount.ToString(); }
     #endregion
 
     #region New Berry Add

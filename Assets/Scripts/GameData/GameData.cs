@@ -29,6 +29,7 @@ public class GameData
     //해금된 딸기
     //배열 크기 조절 안되는건 원래 C#배열의 특성이다.
     //List를 사용하거나 Linq사용해야 함
+    //=====================================================================================
     public bool[] isBerryUnlock = new bool[192];
 
     //새로운 딸기 개발
@@ -55,6 +56,12 @@ public class GameData
     //뉴스
     public bool[] isNewsUnlock=new bool[7];
     public bool[] NewsEnd = new bool[7];
+
+    //PTJ
+    public int[] PTJNum = new int[6];
+
+    //=====================================================================================
+
 
     //마지막 출석 날짜 저장.
     public DateTime Lastday = new DateTime();
