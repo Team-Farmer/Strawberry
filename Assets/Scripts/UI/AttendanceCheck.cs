@@ -41,11 +41,11 @@ public class AttendanceCheck : MonoBehaviour
         int weeks; //주차 구분
 
 
-        //테스트용
-        lastday = DateTime.Parse("2022-04-05");
+/*        //테스트용
+        lastday = DateTime.Parse("2022-04-28");
         days = 5;
-        isAttendance = false;
- 
+        isAttendance = false;*/
+
 
         TimeSpan ts = today - lastday; //날짜 차이 계산
         int DaysCompare = ts.Days; //Days 정보만 추출.
