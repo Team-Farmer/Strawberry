@@ -681,7 +681,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 4640965026082384919}
         m_TargetAssemblyTypeName: PTJResearch, Assembly-CSharp
-        m_MethodName: clickCoin_PTJ
+        m_MethodName: ActiveExplanation
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

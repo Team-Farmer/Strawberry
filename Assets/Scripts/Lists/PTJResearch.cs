@@ -53,7 +53,6 @@ public class PTJResearch : MonoBehaviour
     [SerializeField]
     private Sprite originalPTJSprite;
 
-    private GameObject PTJExplanations;
 
     //추가 된 Prefab 수
     static int Prefabcount = 0;
@@ -66,18 +65,20 @@ public class PTJResearch : MonoBehaviour
     //고용중인 알바생 명단
     static List<Sprite> workingList = new List<Sprite>();
 
-
+    private GameObject PTJExplanations;
     private GameObject PTJExplanation;
     private GameObject PTJExp;
-    private GameObject PTJSlider;
     //===================================================================================================
     void Start()
     {
+        InfoUpdate();
         if (PTJ == true)
         {
-
+            PTJExplanations = GameObject.FindGameObjectWithTag("PTJExplanation");
+            PTJExplanation = PTJExplanations.transform.GetChild(prefabnum).gameObject;
+            PTJExp = PTJExplanation.transform.GetChild(0).gameObject;
         }
-        InfoUpdate();
+        
     }
     //===================================================================================================
     //=============================================================================================================================
@@ -127,9 +128,13 @@ public class PTJResearch : MonoBehaviour
         }
     }
 
+    //=============================================================================================================================
 
-    
-    
+    public void ActiveExplanation() 
+    {
+        PTJExp.SetActive(true);
+
+    }
 
 
 }
