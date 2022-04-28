@@ -14,17 +14,17 @@ public class PTJResearch : MonoBehaviour
         public Sprite FacePicture;//알바생 얼굴 사진
         public string Explanation;//설명
         public int Price;//가격
-        public bool isEmployed;//고용 중 인가
 
 
-        public PrefabStruct(string Name,string Explanation, int Price, Sprite Picture, Sprite FacePicture, bool isEmployed, bool exist)
+
+        public PrefabStruct(string Name,string Explanation, int Price, Sprite Picture, Sprite FacePicture, bool exist)
         {
             this.Name = Name;
             this.Explanation = Explanation;
             this.Price = Price;
             this.Picture = Picture;
             this.FacePicture = FacePicture;
-            this.isEmployed=isEmployed;
+
 
             
         }
@@ -71,7 +71,27 @@ public class PTJResearch : MonoBehaviour
     //===================================================================================================
     void Start()
     {
-        InfoUpdate();        
+        InfoUpdate();
+
+        if (PTJ == true) 
+        {
+            //이미 고용중이면
+            if (DataController.instance.gameData.PTJNum[prefabnum] != 0) 
+            {
+                //고용중 상태로 이미지 변화
+                levelNum.GetComponent<Text>().text = "고용 중";
+                levelNum.GetComponent<Text>().color = new Color32(245, 71, 71, 255);//#F54747
+                PTJBackground.transform.GetComponent<Image>().sprite = selectPTJSprite;
+
+                
+                employCount++;
+                GameManager.instance.workingCount(employCount);
+                
+                //main game
+                workingList.Add(Info[prefabnum].FacePicture);
+                GameManager.instance.workingApply(workingList);
+            }
+        }
     }
     //===================================================================================================
     //===================================================================================================
@@ -194,7 +214,7 @@ public class PTJResearch : MonoBehaviour
         if (employCount < 3)
         {
             //고용중이 아니면
-            if (Info[prefabnum].isEmployed == false) 
+            if (DataController.instance.gameData.PTJNum[prefabnum]==0) 
             { Hire(prefabnum, (int)(PTJSlider.GetComponent<Slider>().value)); }
             //이미 고용중이면
             else 
@@ -204,9 +224,11 @@ public class PTJResearch : MonoBehaviour
         else 
         {
             //고용중이 아니면
-            if (Info[prefabnum].isEmployed == false) { Debug.Log("3명을 이미 고용중입니다."); }
+            if (DataController.instance.gameData.PTJNum[prefabnum] == 0) 
+            { Debug.Log("3명을 이미 고용중입니다."); }
             //이미 고용중이면
-            else { Fire(prefabnum); }
+            else 
+            { Fire(prefabnum); }
         }
     }
 
@@ -214,11 +236,9 @@ public class PTJResearch : MonoBehaviour
     {
 
         GameManager.instance.UseCoin(Info[ID].Price);
-
         DataController.instance.gameData.PTJNum[ID] = num;
 
-        
-        Info[ID].isEmployed = true;
+        //고용중 이미지
         levelNum.GetComponent<Text>().text = "고용 중";
         levelNum.GetComponent<Text>().color = new Color32(245, 71, 71, 255);//#F54747
         PTJBackground.transform.GetComponent<Image>().sprite = selectPTJSprite;
@@ -232,19 +252,19 @@ public class PTJResearch : MonoBehaviour
         GameManager.instance.workingCount(employCount);
 
         EmployButton(1);
-
         DataController.instance.gameData.PTJNum[ID] = num;
     }
     private void Fire(int ID) 
     {
         DataController.instance.gameData.PTJNum[ID] = 0;
-        Info[ID].isEmployed = false;
+
+        //고용해제 이미지
         levelNum.GetComponent<Text>().text = "고용 전";
         levelNum.GetComponent<Text>().color = new Color32(164, 164, 164, 255);
         PTJBackground.transform.GetComponent<Image>().sprite = originalPTJSprite;
 
+        //main game
         --employCount;
-
         workingList.Remove(Info[ID].FacePicture);
         workingList.Add(null);
         GameManager.instance.workingApply(workingList);
