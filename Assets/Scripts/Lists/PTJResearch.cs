@@ -74,7 +74,7 @@ public class PTJResearch : MonoBehaviour
         InfoUpdate();        
     }
     //===================================================================================================
-    //=============================================================================================================================
+    //===================================================================================================
     public void InfoUpdate()
     {
         //!!!!!!!!!!!!!!주의!!!!!!!!!!!!!숫자 6은 프리팹 숫자와 관련되어 있다!!! 같이 조절 . 변수설정하기
@@ -112,19 +112,28 @@ public class PTJResearch : MonoBehaviour
 
         if (DataController.instance.gameData.researchLevel[prefabnum] < 25)//레벨 25로 한계두기
         {
-            //레벨이 올라간다.
-            DataController.instance.gameData.researchLevel[prefabnum]++;
-            levelNum.GetComponent<Text>().text = DataController.instance.gameData.researchLevel[prefabnum].ToString();
-        
+            
             //해당 금액의 코인이 감소
             GameManager.instance.UseCoin(Info[prefabnum].Price);
+
+            //해당 금액이 지금 가진 코인보다 적으면
+            if (DataController.instance.gameData.coin >= Info[prefabnum].Price)
+            {
+                //레벨이 올라간다.
+                DataController.instance.gameData.researchLevel[prefabnum]++;
+                levelNum.GetComponent<Text>().text = DataController.instance.gameData.researchLevel[prefabnum].ToString();
+            }
+            
         }
     }
 
     //=============================================================================================================================
 
+    //PTJ설명창 띄운다
     public void ActiveExplanation() 
     {
+        
+
         PTJExp.SetActive(true);
         //PICTURE
         PTJExp.transform.GetChild(2).transform.GetComponent<Image>().sprite 
@@ -137,27 +146,112 @@ public class PTJResearch : MonoBehaviour
             = Info[prefabnum].Explanation;
 
         //EmployButton
-        //n번 고용, 얼마 주고 고용할지 혹은 고용해제 텍스트 보이기
 
         PTJSlider = PTJExp.transform.GetChild(7).transform.gameObject;//PTJSlider
-        PTJExp.transform.GetChild(5).transform.GetChild(0).transform.GetComponent<Text>().text
-            = "1번 고용";
+
+        EmployButton(1);
+        //슬라이드 첫번째로
+        PTJSlider.GetComponent<Slider>().value = 1;
+
+        PTJExp.transform.GetChild(5).transform.GetChild(0).transform.GetComponent<Text>().text = "1번 고용";
         PTJExp.transform.GetChild(6).transform.GetComponent<Text>().text= Info[prefabnum].Price.ToString();
+        
+        //Slider값 변경될때 마다
         PTJSlider.transform.GetComponent<Slider>().onValueChanged.AddListener
             (delegate { EmployButton((int)(PTJSlider.GetComponent<Slider>().value)); });
         
     }
 
+    //고용 버튼 상태 변경
     public void EmployButton(int SliderNum) 
     {
+        Debug.Log("TEST = "+ DataController.instance.gameData.PTJNum[prefabnum]);
+        //고용중이 아니면
+        if (DataController.instance.gameData.PTJNum[prefabnum]==0) 
+        {
+            //n번 고용
+            PTJExp.transform.GetChild(5).transform.GetChild(0).transform.GetComponent<Text>().text
+                = SliderNum.ToString() + "번 고용";
+            //PRICE
+            PTJExp.transform.GetChild(6).transform.GetComponent<Text>().text
+               = (SliderNum * Info[prefabnum].Price).ToString();
+        }
+        else //이미 고용중이면
+        {
+            //n번 고용 -> 고용 해제
+            PTJExp.transform.GetChild(5).transform.GetChild(0).transform.GetComponent<Text>().text
+                = "고용 해제";
+            //PRICE -> 빈칸
+            PTJExp.transform.GetChild(6).transform.GetComponent<Text>().text
+                = "";
+        }
         
-        PTJExp.transform.GetChild(5).transform.GetChild(0).transform.GetComponent<Text>().text
-            = SliderNum.ToString() + "번 고용";
-        //PRICE
-        PTJExp.transform.GetChild(6).transform.GetComponent<Text>().text
-           = (SliderNum * Info[prefabnum].Price).ToString();
-        //slider값 받아와서
+    }
+    //============================================================================================================
+    public void HireFire() {
+        
+        //3명 아래로 고용중이면
+        if (employCount < 3)
+        {
+            //고용중이 아니면
+            if (Info[prefabnum].isEmployed == false) 
+            { Hire(prefabnum, (int)(PTJSlider.GetComponent<Slider>().value)); }
+            //이미 고용중이면
+            else 
+            { Fire(prefabnum); }
+        }
+        //이미 3명이상 고용중이면
+        else 
+        {
+            //고용중이 아니면
+            if (Info[prefabnum].isEmployed == false) { Debug.Log("3명을 이미 고용중입니다."); }
+            //이미 고용중이면
+            else { Fire(prefabnum); }
+        }
     }
 
+    private void Hire(int ID,int num) 
+    {
+
+        GameManager.instance.UseCoin(Info[ID].Price);
+
+        DataController.instance.gameData.PTJNum[ID] = num;
+
+        
+        Info[ID].isEmployed = true;
+        levelNum.GetComponent<Text>().text = "고용 중";
+        levelNum.GetComponent<Text>().color = new Color32(245, 71, 71, 255);//#F54747
+        PTJBackground.transform.GetComponent<Image>().sprite = selectPTJSprite;
+
+        //main game
+        workingList.Remove(null);
+        workingList.Add(Info[ID].FacePicture);
+        GameManager.instance.workingApply(workingList);
+
+        ++employCount;
+        GameManager.instance.workingCount(employCount);
+
+        EmployButton(1);
+
+        DataController.instance.gameData.PTJNum[ID] = num;
+    }
+    private void Fire(int ID) 
+    {
+        DataController.instance.gameData.PTJNum[ID] = 0;
+        Info[ID].isEmployed = false;
+        levelNum.GetComponent<Text>().text = "고용 전";
+        levelNum.GetComponent<Text>().color = new Color32(164, 164, 164, 255);
+        PTJBackground.transform.GetComponent<Image>().sprite = originalPTJSprite;
+
+        --employCount;
+
+        workingList.Remove(Info[ID].FacePicture);
+        workingList.Add(null);
+        GameManager.instance.workingApply(workingList);
+        GameManager.instance.workingCount(employCount);
+
+        EmployButton(1);
+        DataController.instance.gameData.PTJNum[ID] = 0;
+    }
 
 }
