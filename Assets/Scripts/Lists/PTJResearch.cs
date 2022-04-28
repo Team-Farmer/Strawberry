@@ -132,9 +132,10 @@ public class PTJResearch : MonoBehaviour
     //PTJ설명창 띄운다
     public void ActiveExplanation() 
     {
-        
-
+        //창을 띄운다.
         PTJExp.SetActive(true);
+
+        //불변 내용 =======================================================
         //PICTURE
         PTJExp.transform.GetChild(2).transform.GetComponent<Image>().sprite 
             = Info[prefabnum].Picture;
@@ -145,16 +146,13 @@ public class PTJResearch : MonoBehaviour
         PTJExp.transform.GetChild(4).transform.GetComponent<Text>().text
             = Info[prefabnum].Explanation;
 
-        //EmployButton
-
-        PTJSlider = PTJExp.transform.GetChild(7).transform.gameObject;//PTJSlider
-
-        EmployButton(1);
-        //슬라이드 첫번째로
+        //가변 내용========================================================
+        
+        PTJSlider = PTJExp.transform.GetChild(7).transform.gameObject;//PTJSlider gameobject
         PTJSlider.GetComponent<Slider>().value = 1;
-
-        PTJExp.transform.GetChild(5).transform.GetChild(0).transform.GetComponent<Text>().text = "1번 고용";
-        PTJExp.transform.GetChild(6).transform.GetComponent<Text>().text= Info[prefabnum].Price.ToString();
+        
+        //EmployButton
+        EmployButton(1);
         
         //Slider값 변경될때 마다
         PTJSlider.transform.GetComponent<Slider>().onValueChanged.AddListener
@@ -165,7 +163,7 @@ public class PTJResearch : MonoBehaviour
     //고용 버튼 상태 변경
     public void EmployButton(int SliderNum) 
     {
-        Debug.Log("TEST = "+ DataController.instance.gameData.PTJNum[prefabnum]);
+        Debug.Log("ID = "+prefabnum+" / TEST = "+ DataController.instance.gameData.PTJNum[prefabnum]);
         //고용중이 아니면
         if (DataController.instance.gameData.PTJNum[prefabnum]==0) 
         {
@@ -178,6 +176,8 @@ public class PTJResearch : MonoBehaviour
         }
         else //이미 고용중이면
         {
+            //슬라이드 첫번째
+            PTJSlider.GetComponent<Slider>().value = 1;
             //n번 고용 -> 고용 해제
             PTJExp.transform.GetChild(5).transform.GetChild(0).transform.GetComponent<Text>().text
                 = "고용 해제";
