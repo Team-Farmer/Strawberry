@@ -73,7 +73,6 @@ public class Strawberry : MonoBehaviour
                 
                 //설명창 띄운다
                 berryExp.SetActive(true);
-                Debug.Log("test");
                 GameObject berryExpImage = berryExp.transform.GetChild(2).gameObject;
                 GameObject berryExpName = berryExp.transform.GetChild(3).gameObject;
                 GameObject berryExpTxt = berryExp.transform.GetChild(4).gameObject;
