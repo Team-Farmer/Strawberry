@@ -9173,6 +9173,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PTJExplanation (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3680021549658315867, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
 --- !u!224 &684931917 stripped
@@ -11836,6 +11840,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 839beefd1d19c0847a65014edf0a0c83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &854978630 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3680021549658315867, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
+  m_PrefabInstance: {fileID: 3680021549972155421}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &854978631 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3680021549658315866, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
@@ -11935,6 +11944,10 @@ PrefabInstance:
     - target: {fileID: 3680021549658315867, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
       propertyPath: m_Name
       value: PTJExplanation (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3680021549658315867, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
@@ -15532,6 +15545,10 @@ PrefabInstance:
     - target: {fileID: 3680021549658315867, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
       propertyPath: m_Name
       value: PTJExplanation (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3680021549658315867, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
@@ -19691,6 +19708,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PTJExplanation (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3680021549658315867, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
 --- !u!224 &1269413143 stripped
@@ -19803,6 +19824,10 @@ PrefabInstance:
     - target: {fileID: 3680021549658315867, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
       propertyPath: m_Name
       value: PTJExplanation (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3680021549658315867, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
@@ -24379,6 +24404,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: PTJPrefab
       objectReference: {fileID: 0}
+    - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+      propertyPath: PTJExplanation
+      value: 
+      objectReference: {fileID: 854978630}
+    - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+      propertyPath: PTJExplanations
+      value: 
+      objectReference: {fileID: 1981296080}
     - target: {fileID: 4889772765070719696, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -29694,7 +29727,7 @@ GameObject:
   - component: {fileID: 1981296081}
   m_Layer: 5
   m_Name: PTJExplanations
-  m_TagString: Untagged
+  m_TagString: PTJExplanation
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32485,6 +32518,10 @@ PrefabInstance:
     - target: {fileID: 3680021549658315867, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
       propertyPath: m_Name
       value: PTJExplanation
+      objectReference: {fileID: 0}
+    - target: {fileID: 3680021549658315867, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 3680021551288638447, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
       propertyPath: m_TargetGraphic
