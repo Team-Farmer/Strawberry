@@ -75,6 +75,15 @@ public class GameManager : MonoBehaviour
     public GameObject AttendanceCheck;
     public string url = "";
 
+    [Header("[ Panel List ]")]
+    public Text panelCoinText;
+    public Text panelHearText;
+    public GameObject NoCoinPanel;
+    public GameObject NoHeartPanel;
+    public GameObject BP;
+
+
+
     #endregion
 
     #region 기본
@@ -93,6 +102,7 @@ public class GameManager : MonoBehaviour
 
         //SetBerryPrice();
         InitDataInGM();
+
     }
     void InitDataInGM()
     {
@@ -258,7 +268,6 @@ public class GameManager : MonoBehaviour
             DataController.instance.gameData.truckCoin += stem.instantBerry.berryPrice;
         }
     }
-
     #endregion
 
     #region 재화
@@ -314,7 +323,13 @@ public class GameManager : MonoBehaviour
         if (mycoin >= cost)
             DataController.instance.gameData.coin -= cost;
         else
-            Debug.Log("코인이 부족해요!"); //경고 패널 등장
+        {
+            //경고 패널 등장
+            ShowCoinText(panelCoinText, DataController.instance.gameData.coin);
+            BP.SetActive(true);
+            NoCoinPanel.SetActive(true);
+            NoCoinPanel.GetComponent<PanelAnimation>().OpenScale();
+        }
     }
 
     public void GetHeart(int cost) // 하트 획득 함수
@@ -329,7 +344,13 @@ public class GameManager : MonoBehaviour
         if (myHeart >= cost)
             DataController.instance.gameData.heart -= cost;
         else
-            Debug.Log("하트가 부족해요!"); //경고 패널 등장
+        {
+            //경고 패널 등장
+            panelHearText.text = DataController.instance.gameData.heart.ToString()+"개";
+            BP.SetActive(true);
+            NoHeartPanel.SetActive(true);
+            NoHeartPanel.GetComponent<PanelAnimation>().OpenScale();
+        }
     }
     #endregion
 

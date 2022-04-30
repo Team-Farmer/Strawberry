@@ -16,8 +16,6 @@ public class PTJResearch : MonoBehaviour
         public string Explanation;//설명
         public int Price;//가격
 
-
-
         public PrefabStruct(string Name, string Explanation, int Price, Sprite Picture, Sprite FacePicture, bool exist)
         {
             this.Name = Name;
@@ -25,9 +23,6 @@ public class PTJResearch : MonoBehaviour
             this.Price = Price;
             this.Picture = Picture;
             this.FacePicture = FacePicture;
-
-
-
         }
     }
 
@@ -56,11 +51,16 @@ public class PTJResearch : MonoBehaviour
     [Header("==========PTJ EXP===========")]
     public GameObject PTJExp;
 
+    [Header("==========PTJ Warning Panel===========")]
+    public GameObject PTJwarningPanel;
+    public GameObject NoCoinPanel;
+    public GameObject PTJBP;
+    public Text panelCoinText;
+
     //추가 된 Prefab 수
     static int Prefabcount = 0;
     //자신이 몇번째 Prefab인지
     int prefabnum;
-
 
     //몇명 고용중인지 확인
     static int employCount = 0;
@@ -154,6 +154,13 @@ public class PTJResearch : MonoBehaviour
                 DataController.instance.gameData.researchLevel[prefabnum]++;
                 levelNum.GetComponent<Text>().text = DataController.instance.gameData.researchLevel[prefabnum].ToString();
             }
+            else if (DataController.instance.gameData.coin < Info[prefabnum].Price)
+            {
+                GameManager.instance.ShowCoinText(panelCoinText, DataController.instance.gameData.coin);
+                PTJBP.SetActive(true);
+                NoCoinPanel.SetActive(true);
+                NoCoinPanel.GetComponent<PanelAnimation>().OpenScale();
+            }
 
         }
     }
@@ -243,7 +250,11 @@ public class PTJResearch : MonoBehaviour
         {
             //고용중이 아니면
             if (DataController.instance.gameData.PTJNum[prefabnum] == 0)
-            { Debug.Log("3명을 이미 고용중입니다."); }
+            { //Debug.Log("3명을 이미 고용중입니다.");
+                PTJBP.SetActive(true);
+                PTJwarningPanel.SetActive(true);
+                PTJwarningPanel.GetComponent<PanelAnimation>().OpenScale();
+            }
             //이미 고용중이면
             else
             { Fire(prefabnum); }
@@ -309,10 +320,5 @@ public class PTJResearch : MonoBehaviour
             isTenToggle = true;
             PTJSlider.GetComponent<Slider>().maxValue = 10;
         }
-        
-
-        
-
     }
-
 }
