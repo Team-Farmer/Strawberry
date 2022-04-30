@@ -19,6 +19,9 @@ public class Strawberry : MonoBehaviour
     private Sprite yesBerryImage;//베리 있을 시 배경 이미지
     [SerializeField]
     private GameObject berryImagePanel;//이미지를 보일 오브젝트 대상
+    [SerializeField]
+    private GameObject ExclamationMark;
+
 
     //베리 설명창
     private GameObject berryExp;
@@ -58,6 +61,12 @@ public class Strawberry : MonoBehaviour
             berryImagePanel.GetComponent<Image>().sprite 
                 = BERRY[prefabnum].GetComponent<SpriteRenderer>().sprite;//해당 베리 이미지 보이기
         }
+
+        //베리 아직 한번도 확인하지 않았다면 느낌표 표시. 이미 한 번 봤으면 없애기
+        if (DataController.instance.gameData.isBerryEM[prefabnum] == true)
+        { ExclamationMark.SetActive(true); }
+        else { ExclamationMark.SetActive(false); }
+
     }
 
 
@@ -67,6 +76,9 @@ public class Strawberry : MonoBehaviour
         //GameManager.instance.Explanation(BERRY[prefabnum],prefabnum);
         try
         {
+
+            if (DataController.instance.gameData.isBerryEM[prefabnum] == true) 
+            { DataController.instance.gameData.isBerryEM[prefabnum] = false; }
 
             if (DataController.instance.gameData.isBerryUnlock[prefabnum] == true)
             {
