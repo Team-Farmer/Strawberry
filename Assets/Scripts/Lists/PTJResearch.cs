@@ -154,8 +154,9 @@ public class PTJResearch : MonoBehaviour
                 DataController.instance.gameData.researchLevel[prefabnum]++;
                 levelNum.GetComponent<Text>().text = DataController.instance.gameData.researchLevel[prefabnum].ToString();
             }
-            else if (DataController.instance.gameData.coin < Info[prefabnum].Price)
+            else if (DataController.instance.gameData.coin < Info[prefabnum].Price) //해당 금액이 지금 가진 코인보다 많으면
             {
+                //재화 부족 경고 패널 등장
                 GameManager.instance.ShowCoinText(panelCoinText, DataController.instance.gameData.coin);
                 PTJBP.SetActive(true);
                 NoCoinPanel.SetActive(true);
@@ -250,7 +251,9 @@ public class PTJResearch : MonoBehaviour
         {
             //고용중이 아니면
             if (DataController.instance.gameData.PTJNum[prefabnum] == 0)
-            { //Debug.Log("3명을 이미 고용중입니다.");
+            {
+                //Debug.Log("3명을 이미 고용중입니다.");
+                //경고 패널 등장
                 PTJBP.SetActive(true);
                 PTJwarningPanel.SetActive(true);
                 PTJwarningPanel.GetComponent<PanelAnimation>().OpenScale();
