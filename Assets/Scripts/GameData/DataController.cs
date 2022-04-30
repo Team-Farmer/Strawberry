@@ -128,7 +128,6 @@ public class DataController : MonoBehaviour
         for (int i = 0; i < 7; i++) 
         { 
             gameData.isNewsEM[i] = false;
-            gameData.isChallengeEM[i] = false;
         }
         for (int i = 0; i < 192; i++)
         {

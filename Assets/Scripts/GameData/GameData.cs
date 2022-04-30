@@ -63,7 +63,6 @@ public class GameData
     //새로운거 느낌표 !
     public bool[] isBerryEM=new bool[192];
     public bool[] isNewsEM = new bool[7];
-    public bool[] isChallengeEM = new bool[7];
 
     //=====================================================================================
 
