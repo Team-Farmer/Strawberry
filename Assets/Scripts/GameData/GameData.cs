@@ -60,6 +60,11 @@ public class GameData
     //PTJ
     public int[] PTJNum = new int[6];
 
+    //새로운거 느낌표 !
+    public bool[] isBerryEM=new bool[192];
+    public bool[] isNewsEM = new bool[7];
+    public bool[] isChallengeEM = new bool[7];
+
     //=====================================================================================
 
 

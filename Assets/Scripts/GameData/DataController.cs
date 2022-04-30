@@ -124,6 +124,17 @@ public class DataController : MonoBehaviour
         //PTJ
         for (int i = 0; i < 6; i++) { gameData.PTJNum[i] = 0; }
 
+        //´À³¦Ç¥ !!
+        for (int i = 0; i < 7; i++) 
+        { 
+            gameData.isNewsEM[i] = false;
+            gameData.isChallengeEM[i] = false;
+        }
+        for (int i = 0; i < 192; i++)
+        {
+            gameData.isBerryEM[i] = false;
+        }
+
         gameData.newBerryResearch = 0;
     }
     void OnApplicationQuit()

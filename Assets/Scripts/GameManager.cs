@@ -451,6 +451,8 @@ public class GameManager : MonoBehaviour
             }
             //새로운 딸기가 추가된다.
             DataController.instance.gameData.isBerryUnlock[newBerryIndex] = true;
+            //느낌표 표시
+            DataController.instance.gameData.isBerryEM[newBerryIndex] = true;
 
             //딸기 얻음 효과음(짜잔)
             AudioManager.instance.TadaAudioPlay();
