@@ -979,9 +979,25 @@ PrefabInstance:
       value: PTJPrefab (2)
       objectReference: {fileID: 0}
     - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+      propertyPath: PTJBP
+      value: 
+      objectReference: {fileID: 638678300}
+    - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
       propertyPath: PTJExp
       value: 
       objectReference: {fileID: 1263203544}
+    - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+      propertyPath: NoCoinPanel
+      value: 
+      objectReference: {fileID: 953116436}
+    - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+      propertyPath: panelCoinText
+      value: 
+      objectReference: {fileID: 15140178}
+    - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+      propertyPath: PTJwarningPanel
+      value: 
+      objectReference: {fileID: 1079203487}
     - target: {fileID: 4889772765070719696, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -15317,9 +15333,25 @@ PrefabInstance:
       value: PTJPrefab (1)
       objectReference: {fileID: 0}
     - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+      propertyPath: PTJBP
+      value: 
+      objectReference: {fileID: 638678300}
+    - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
       propertyPath: PTJExp
       value: 
       objectReference: {fileID: 1678538216}
+    - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+      propertyPath: NoCoinPanel
+      value: 
+      objectReference: {fileID: 953116436}
+    - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+      propertyPath: panelCoinText
+      value: 
+      objectReference: {fileID: 15140178}
+    - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+      propertyPath: PTJwarningPanel
+      value: 
+      objectReference: {fileID: 1079203487}
     - target: {fileID: 4889772765070719696, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -21916,9 +21948,25 @@ PrefabInstance:
       value: PTJPrefab (3)
       objectReference: {fileID: 0}
     - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+      propertyPath: PTJBP
+      value: 
+      objectReference: {fileID: 638678300}
+    - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
       propertyPath: PTJExp
       value: 
       objectReference: {fileID: 879329611}
+    - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+      propertyPath: NoCoinPanel
+      value: 
+      objectReference: {fileID: 953116436}
+    - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+      propertyPath: panelCoinText
+      value: 
+      objectReference: {fileID: 15140178}
+    - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+      propertyPath: PTJwarningPanel
+      value: 
+      objectReference: {fileID: 1079203487}
     - target: {fileID: 4889772765070719696, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -25771,9 +25819,21 @@ PrefabInstance:
       value: PTJPrefab
       objectReference: {fileID: 0}
     - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+      propertyPath: PTJBP
+      value: 
+      objectReference: {fileID: 638678300}
+    - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
       propertyPath: PTJExp
       value: 
       objectReference: {fileID: 1881020256}
+    - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+      propertyPath: NoCoinPanel
+      value: 
+      objectReference: {fileID: 953116436}
+    - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+      propertyPath: panelCoinText
+      value: 
+      objectReference: {fileID: 15140178}
     - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
       propertyPath: PTJExplanation
       value: 
@@ -25782,6 +25842,10 @@ PrefabInstance:
       propertyPath: PTJExplanations
       value: 
       objectReference: {fileID: 1981296080}
+    - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+      propertyPath: PTJwarningPanel
+      value: 
+      objectReference: {fileID: 1079203487}
     - target: {fileID: 4889772765070719696, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -28747,9 +28811,25 @@ PrefabInstance:
       value: PTJPrefab (5)
       objectReference: {fileID: 0}
     - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+      propertyPath: PTJBP
+      value: 
+      objectReference: {fileID: 638678300}
+    - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
       propertyPath: PTJExp
       value: 
       objectReference: {fileID: 1061275672}
+    - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+      propertyPath: NoCoinPanel
+      value: 
+      objectReference: {fileID: 953116436}
+    - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+      propertyPath: panelCoinText
+      value: 
+      objectReference: {fileID: 15140178}
+    - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+      propertyPath: PTJwarningPanel
+      value: 
+      objectReference: {fileID: 1079203487}
     - target: {fileID: 4889772765070719696, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -30358,9 +30438,25 @@ PrefabInstance:
       value: PTJPrefab (4)
       objectReference: {fileID: 0}
     - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+      propertyPath: PTJBP
+      value: 
+      objectReference: {fileID: 638678300}
+    - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
       propertyPath: PTJExp
       value: 
       objectReference: {fileID: 536301512}
+    - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+      propertyPath: NoCoinPanel
+      value: 
+      objectReference: {fileID: 953116436}
+    - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+      propertyPath: panelCoinText
+      value: 
+      objectReference: {fileID: 15140178}
+    - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+      propertyPath: PTJwarningPanel
+      value: 
+      objectReference: {fileID: 1079203487}
     - target: {fileID: 4889772765070719696, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
