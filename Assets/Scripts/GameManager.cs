@@ -325,6 +325,7 @@ public class GameManager : MonoBehaviour
         else
         {
             //경고 패널 등장
+            GameManager.instance.DisableObjColliderAll();
             ShowCoinText(panelCoinText, DataController.instance.gameData.coin);
             BP.SetActive(true);
             NoCoinPanel.SetActive(true);
@@ -346,6 +347,7 @@ public class GameManager : MonoBehaviour
         else
         {
             //경고 패널 등장
+            GameManager.instance.DisableObjColliderAll();
             panelHearText.text = DataController.instance.gameData.heart.ToString()+"개";
             BP.SetActive(true);
             NoHeartPanel.SetActive(true);
