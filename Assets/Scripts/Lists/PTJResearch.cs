@@ -44,11 +44,14 @@ public class PTJResearch : MonoBehaviour
     public bool PTJ;//지금 알바생인가 확인
 
     [Header("==========select PTJ===========")]
+    //PTJ고용중여부 보일 스프라이트
     [SerializeField]
     private Sprite selectPTJSprite;
     [SerializeField]
     private Sprite originalPTJSprite;
+
     [Header("==========PTJ EXP===========")]
+    //PTJ 설명창
     public GameObject PTJExp;
 
     [Header("==========PTJ Warning Panel===========")]
@@ -57,57 +60,46 @@ public class PTJResearch : MonoBehaviour
     public GameObject PTJBP;
     public Text panelCoinText;
 
-    //추가 된 Prefab 수
+
+    //Prefab별로 숫자 부여
     static int Prefabcount = 0;
-    //자신이 몇번째 Prefab인지
     int prefabnum;
+
 
     //몇명 고용중인지 확인
     static int employCount = 0;
+
     //고용중인 알바생 명단
     static List<Sprite> workingList = new List<Sprite>();
 
+    //PTJ Exp의 슬라이드 관련
     private GameObject PTJSlider;
     private GameObject PTJSlider10;
     private GameObject PTJToggle;
-    private bool isTenToggle=false;
-    //===================================================================================================
-    //10단위로 하는거 구현
+    private bool isTenToggle=true;
 
+
+    //===================================================================================================
+    //===================================================================================================
     void Start()
     {
         InfoUpdate();
 
         if (PTJ == true)
         {
-            PTJSlider = PTJExp.transform.GetChild(8).transform.gameObject;//PTJSlider gameobject
-            PTJSlider10= PTJExp.transform.GetChild(9).transform.gameObject;
-            PTJToggle= PTJExp.transform.GetChild(7).transform.gameObject;
+            PTJSlider = PTJExp.transform.GetChild(8).transform.gameObject;//1단위 슬라이더
+            PTJSlider10= PTJExp.transform.GetChild(9).transform.gameObject;//10단위 슬라이더
+            PTJToggle= PTJExp.transform.GetChild(7).transform.gameObject;//10단위 체크 토글
 
-            TenToggle();
-
-            //이 아래 Hire이랑 연결해서 처리 가능 줄일것
+            //Init Slider =(10단위 슬라이더만 보인다)
+            PTJSlider.SetActive(false);
+            PTJSlider10.SetActive(true);
+            EmployButton(1);
+            
+            //고용중이라면 고용중 상태로
             if (DataController.instance.gameData.PTJNum[prefabnum] != 0)
-            {
-                //고용중 상태로 이미지 변화
-                levelNum.GetComponent<Text>().text = "고용 중";
-                levelNum.GetComponent<Text>().color = new Color32(245, 71, 71, 255);//#F54747
-                PTJBackground.transform.GetComponent<Image>().sprite = selectPTJSprite;
+            {  HireInit(prefabnum, DataController.instance.gameData.PTJNum[prefabnum]);  }
 
-
-                employCount++;
-                GameManager.instance.workingCount(employCount);
-
-                //main game
-                workingList.Add(Info[prefabnum].FacePicture);
-                GameManager.instance.workingApply(workingList);
-
-                PTJSlider.SetActive(false);
-                PTJSlider10.SetActive(false);
-
-                PTJExp.transform.GetChild(11).gameObject.SetActive(true);
-                PTJExp.transform.GetChild(11).transform.GetComponent<Text>().text = DataController.instance.gameData.PTJNum[prefabnum].ToString() + "번 고용중이다.";
-            }
         }
     }
     //===================================================================================================
@@ -181,7 +173,6 @@ public class PTJResearch : MonoBehaviour
         //창을 띄운다.
         PTJExp.SetActive(true);
 
-        //불변 내용 =======================================================
         //PICTURE
         PTJExp.transform.GetChild(2).transform.GetComponent<Image>().sprite
             = Info[prefabnum].Picture;
@@ -192,49 +183,52 @@ public class PTJResearch : MonoBehaviour
         PTJExp.transform.GetChild(4).transform.GetComponent<Text>().text
             = Info[prefabnum].Explanation;
 
-        //가변 내용========================================================
-        //EmployButton
+        //EmployButton Init
         EmployButton(1);
 
-        //Slider값 변경될때 마다
-
+        //Slider값 변경될때 마다 -> n번고용, 비용에 반영
         PTJSlider.transform.GetComponent<Slider>().onValueChanged.AddListener
-            (delegate
-            { EmployButton((int)(PTJSlider.GetComponent<Slider>().value)); });
-
+            (delegate { EmployButton((int)(PTJSlider.GetComponent<Slider>().value)); });
         PTJSlider10.transform.GetComponent<Slider>().onValueChanged.AddListener
-            (delegate
-            { EmployButton((int)(PTJSlider10.GetComponent<Slider>().value) * 10); });
+            (delegate { EmployButton((int)(PTJSlider10.GetComponent<Slider>().value) * 10); });
 
     }
 
     //고용 버튼 상태 변경
     public void EmployButton(int SliderNum)
     {
+
+        //1값을 받아오면 슬라이더 초기화
+
+        if (SliderNum == 1)
+        {
+            PTJSlider.GetComponent<Slider>().value = 1;
+            PTJSlider10.GetComponent<Slider>().value = 1;
+        }
+
+        //Debug.Log("ID = " + prefabnum + " / TEST = " + DataController.instance.gameData.PTJNum[prefabnum]);
         
-        PTJSlider.GetComponent<Slider>().value = SliderNum;
-        Debug.Log("ID = " + prefabnum + " / TEST = " + DataController.instance.gameData.PTJNum[prefabnum]);
+        
         //고용중이 아니면
         if (DataController.instance.gameData.PTJNum[prefabnum] == 0)
         {
-            //n번 고용
+            //EmployButton 텍스트를 "n번 고용"으로
             PTJExp.transform.GetChild(5).transform.GetChild(0).transform.GetComponent<Text>().text
                 = SliderNum.ToString() + "번 고용";
-            //PRICE
+            //PRICE 텍스트
             PTJExp.transform.GetChild(6).transform.GetComponent<Text>().text
                = (SliderNum * Info[prefabnum].Price).ToString();
         }
         else //이미 고용중이면
         {
             //슬라이드 첫번째
-            PTJSlider.GetComponent<Slider>().value = 1;
-            PTJSlider10.GetComponent<Slider>().value = 1;
-            //n번 고용 -> 고용 해제
-            PTJExp.transform.GetChild(5).transform.GetChild(0).transform.GetComponent<Text>().text
-                = "고용 해제";
-            //PRICE -> 빈칸
-            PTJExp.transform.GetChild(6).transform.GetComponent<Text>().text
-                = "";
+            //PTJSlider.GetComponent<Slider>().value = 1;
+            //PTJSlider10.GetComponent<Slider>().value = 10;
+            
+            //EmployButton 텍스트를 "고용 해제"로
+            PTJExp.transform.GetChild(5).transform.GetChild(0).transform.GetComponent<Text>().text= "고용 해제";
+            //PRICE 텍스트를 빈칸으로
+            PTJExp.transform.GetChild(6).transform.GetComponent<Text>().text = "";
         }
 
     }
@@ -247,9 +241,9 @@ public class PTJResearch : MonoBehaviour
             //고용중이 아니면
             if (DataController.instance.gameData.PTJNum[prefabnum] == 0)
             {
+                //HIRE
                 if (isTenToggle == true) { Hire(prefabnum, (int)(PTJSlider10.GetComponent<Slider>().value)*10); }
-                else { Hire(prefabnum, (int)(PTJSlider.GetComponent<Slider>().value)); }
-                 
+                else { Hire(prefabnum, (int)(PTJSlider.GetComponent<Slider>().value)); } 
             }
             //이미 고용중이면
             else
@@ -261,8 +255,7 @@ public class PTJResearch : MonoBehaviour
             //고용중이 아니면
             if (DataController.instance.gameData.PTJNum[prefabnum] == 0)
             {
-                //Debug.Log("3명을 이미 고용중입니다.");
-                //경고 패널 등장
+                //3명이상 고용중이라는 경고 패널 등장
                 GameManager.instance.DisableObjColliderAll();
                 PTJBP.SetActive(true);
                 PTJwarningPanel.SetActive(true);
@@ -277,33 +270,42 @@ public class PTJResearch : MonoBehaviour
     private void Hire(int ID, int num)
     {
 
-
+        //코인사용
         GameManager.instance.UseCoin(Info[ID].Price);
+        //n번고용 한다고 저장
         DataController.instance.gameData.PTJNum[ID] = num;
+      
+
+        HireInit(ID,num);
+    }
+
+    private void HireInit(int ID,int num) 
+    {
+        EmployButton(1);
 
         //고용중 이미지
         levelNum.GetComponent<Text>().text = "고용 중";
         levelNum.GetComponent<Text>().color = new Color32(245, 71, 71, 255);//#F54747
         PTJBackground.transform.GetComponent<Image>().sprite = selectPTJSprite;
 
-        //main game
-        workingList.Remove(null);
-        workingList.Add(Info[ID].FacePicture);
-        GameManager.instance.workingApply(workingList);
-
+        //고용중인 동물 수 증가
         ++employCount;
         GameManager.instance.workingCount(employCount);
 
-        EmployButton(1);
-        DataController.instance.gameData.PTJNum[ID] = num;
+        //main game
+        workingList.Add(Info[ID].FacePicture);
+        GameManager.instance.workingApply(workingList);
 
+        //슬라이더,토글
         PTJSlider.SetActive(false);
         PTJSlider10.SetActive(false);
         PTJToggle.SetActive(false);
 
+        //n번고용중임을 표시
         PTJExp.transform.GetChild(11).gameObject.SetActive(true);
         PTJExp.transform.GetChild(11).transform.GetComponent<Text>().text = num.ToString() + "번 고용중이다.";
     }
+
     private void Fire(int ID)
     {
         PTJSlider.SetActive(true);
@@ -326,7 +328,11 @@ public class PTJResearch : MonoBehaviour
         EmployButton(1);
         DataController.instance.gameData.PTJNum[ID] = 0;
 
-        PTJExp.transform.GetChild(9).gameObject.SetActive(false);
+        PTJToggle.GetComponent<Toggle>().isOn = true;
+        isTenToggle = true;
+        PTJExp.transform.GetChild(9).gameObject.SetActive(true);//10단위 슬라이더 활성화
+        PTJExp.transform.GetChild(8).gameObject.SetActive(false);//1단위 슬라이더 비활성화
+        PTJExp.transform.GetChild(11).gameObject.SetActive(false);// n번 고용중이라는것을 비활성화
     }
 
     public void TenToggle()
@@ -345,6 +351,7 @@ public class PTJResearch : MonoBehaviour
             PTJSlider.SetActive(false); 
             PTJSlider10.SetActive(true);
         }
+
     }
 
     
