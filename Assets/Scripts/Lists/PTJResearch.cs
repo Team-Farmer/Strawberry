@@ -68,6 +68,7 @@ public class PTJResearch : MonoBehaviour
     static List<Sprite> workingList = new List<Sprite>();
 
     private GameObject PTJSlider;
+    private GameObject PTJSlider10;
     private bool isTenToggle=false;
     //===================================================================================================
     //10단위로 하는거 구현
@@ -78,8 +79,8 @@ public class PTJResearch : MonoBehaviour
 
         if (PTJ == true)
         {
-            PTJSlider = PTJExp.transform.GetChild(7).transform.gameObject;//PTJSlider gameobject
-
+            PTJSlider = PTJExp.transform.GetChild(8).transform.gameObject;//PTJSlider gameobject
+            PTJSlider10= PTJExp.transform.GetChild(9).transform.gameObject;
 
             //이 아래 Hire이랑 연결해서 처리 가능 줄일것
             if (DataController.instance.gameData.PTJNum[prefabnum] != 0)
@@ -98,9 +99,10 @@ public class PTJResearch : MonoBehaviour
                 GameManager.instance.workingApply(workingList);
 
                 PTJSlider.SetActive(false);
+                PTJSlider10.SetActive(false);
 
-                PTJExp.transform.GetChild(9).gameObject.SetActive(true);
-                PTJExp.transform.GetChild(9).transform.GetComponent<Text>().text = DataController.instance.gameData.PTJNum[prefabnum].ToString() + "번 고용중이다.";
+                PTJExp.transform.GetChild(11).gameObject.SetActive(true);
+                PTJExp.transform.GetChild(11).transform.GetComponent<Text>().text = DataController.instance.gameData.PTJNum[prefabnum].ToString() + "번 고용중이다.";
             }
         }
     }
@@ -193,11 +195,12 @@ public class PTJResearch : MonoBehaviour
         //Slider값 변경될때 마다
 
         PTJSlider.transform.GetComponent<Slider>().onValueChanged.AddListener
-            (delegate 
-            { 
-                if (isTenToggle == true) { EmployButton((int)(PTJSlider.GetComponent<Slider>().value)*10); } 
-                else { EmployButton((int)(PTJSlider.GetComponent<Slider>().value)); }
-            });
+            (delegate
+            { EmployButton((int)(PTJSlider.GetComponent<Slider>().value)); });
+
+        PTJSlider10.transform.GetComponent<Slider>().onValueChanged.AddListener
+            (delegate
+            { EmployButton((int)(PTJSlider10.GetComponent<Slider>().value) * 10); });
 
     }
 
@@ -221,6 +224,7 @@ public class PTJResearch : MonoBehaviour
         {
             //슬라이드 첫번째
             PTJSlider.GetComponent<Slider>().value = 1;
+            PTJSlider10.GetComponent<Slider>().value = 1;
             //n번 고용 -> 고용 해제
             PTJExp.transform.GetChild(5).transform.GetChild(0).transform.GetComponent<Text>().text
                 = "고용 해제";
@@ -239,7 +243,7 @@ public class PTJResearch : MonoBehaviour
             //고용중이 아니면
             if (DataController.instance.gameData.PTJNum[prefabnum] == 0)
             {
-                if (isTenToggle == true) { Hire(prefabnum, (int)(PTJSlider.GetComponent<Slider>().value)*10); }
+                if (isTenToggle == true) { Hire(prefabnum, (int)(PTJSlider10.GetComponent<Slider>().value)*10); }
                 else { Hire(prefabnum, (int)(PTJSlider.GetComponent<Slider>().value)); }
                  
             }
@@ -290,9 +294,10 @@ public class PTJResearch : MonoBehaviour
         DataController.instance.gameData.PTJNum[ID] = num;
 
         PTJSlider.SetActive(false);
+        PTJSlider10.SetActive(false);
 
-        PTJExp.transform.GetChild(9).gameObject.SetActive(true);
-        PTJExp.transform.GetChild(9).transform.GetComponent<Text>().text = num.ToString() + "번 고용중이다.";
+        PTJExp.transform.GetChild(11).gameObject.SetActive(true);
+        PTJExp.transform.GetChild(11).transform.GetComponent<Text>().text = num.ToString() + "번 고용중이다.";
     }
     private void Fire(int ID)
     {
@@ -320,10 +325,15 @@ public class PTJResearch : MonoBehaviour
 
     public void TenToggle()
     {
-        if (isTenToggle == true) { isTenToggle = false; PTJSlider.GetComponent<Slider>().maxValue = 100; }
-        else { 
+        if (isTenToggle == true) 
+        { 
+            isTenToggle = false; 
+            PTJSlider.SetActive(true);PTJSlider10.SetActive(false); 
+        }
+        else 
+        { 
             isTenToggle = true;
-            PTJSlider.GetComponent<Slider>().maxValue = 10;
+            PTJSlider.SetActive(false); PTJSlider10.SetActive(true);
         }
     }
 }

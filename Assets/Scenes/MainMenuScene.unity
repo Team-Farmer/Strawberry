@@ -9981,6 +9981,34 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 1263203544}
+    - target: {fileID: 5541508698025957538, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5541508698025957538, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5541508698025957538, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 149575472}
+    - target: {fileID: 5541508698025957538, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5541508698025957538, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TenToggle
+      objectReference: {fileID: 0}
+    - target: {fileID: 5541508698025957538, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PTJResearch, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5541508698025957538, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
 --- !u!224 &684931917 stripped
@@ -12849,6 +12877,34 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 1061275672}
+    - target: {fileID: 5541508698025957538, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5541508698025957538, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5541508698025957538, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1750263597}
+    - target: {fileID: 5541508698025957538, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5541508698025957538, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TenToggle
+      objectReference: {fileID: 0}
+    - target: {fileID: 5541508698025957538, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PTJResearch, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5541508698025957538, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
 --- !u!224 &864301828 stripped
@@ -16883,6 +16939,34 @@ PrefabInstance:
     - target: {fileID: 3680021549658315867, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
       propertyPath: m_TagString
       value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 3680021550286288218, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3680021550286288218, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3680021550286288218, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 222642597}
+    - target: {fileID: 3680021550286288218, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3680021550286288218, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TenToggle
+      objectReference: {fileID: 0}
+    - target: {fileID: 3680021550286288218, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PTJResearch, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3680021550286288218, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 3680021550901773035, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -21538,6 +21622,34 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 1678538216}
+    - target: {fileID: 5541508698025957538, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5541508698025957538, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5541508698025957538, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1104698902}
+    - target: {fileID: 5541508698025957538, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5541508698025957538, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TenToggle
+      objectReference: {fileID: 0}
+    - target: {fileID: 5541508698025957538, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PTJResearch, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5541508698025957538, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
 --- !u!224 &1269413143 stripped
@@ -21711,6 +21823,34 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 536301512}
+    - target: {fileID: 5541508698025957538, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5541508698025957538, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5541508698025957538, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 632829321}
+    - target: {fileID: 5541508698025957538, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5541508698025957538, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TenToggle
+      objectReference: {fileID: 0}
+    - target: {fileID: 5541508698025957538, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PTJResearch, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5541508698025957538, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
 --- !u!224 &1281108583 stripped
@@ -34618,5 +34758,33 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 496606690}
+    - target: {fileID: 5541508698025957538, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5541508698025957538, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5541508698025957538, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1418010716}
+    - target: {fileID: 5541508698025957538, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5541508698025957538, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TenToggle
+      objectReference: {fileID: 0}
+    - target: {fileID: 5541508698025957538, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PTJResearch, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5541508698025957538, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dee7b4d1bffd9674eafe7f950c7b810e, type: 3}
