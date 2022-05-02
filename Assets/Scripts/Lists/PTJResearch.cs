@@ -96,7 +96,7 @@ public class PTJResearch : MonoBehaviour
             PTJSlider10.SetActive(false);
             InitSlider();
             
-            //고용중이라면 고용중 상태로
+            //고용중이라면 고용중 상태로 보이기
             if (DataController.instance.gameData.PTJNum[prefabnum] != 0)
             {  HireInit(prefabnum, DataController.instance.gameData.PTJNum[prefabnum]);  }
 
@@ -269,6 +269,11 @@ public class PTJResearch : MonoBehaviour
         DataController.instance.gameData.PTJNum[ID] = num;
 
         HireInit(ID,num);
+
+        for (int i = 0; i < 6; i++)
+        {
+            Debug.Log(DataController.instance.gameData.PTJNum[i]);
+        }
     }
 
     private void HireInit(int ID,int num) 
