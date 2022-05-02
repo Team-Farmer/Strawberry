@@ -415,6 +415,14 @@ public class GameManager : MonoBehaviour
     //PTJ몇명 고용했는지
     public void workingCount(int employCount) 
     { workingCountText.GetComponent<Text>().text = employCount.ToString(); }
+
+    public void CatCoolTime(bool isCatEmploy)
+    {
+        float catTime = 180;
+        if (isCatEmploy==true) { catTime -= Time.deltaTime; }
+        if (catTime == 0) { isCatEmploy = false; catTime = 180; }
+    
+    }
     #endregion
 
     #region New Berry Add
@@ -549,6 +557,7 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
+    #region 기타
     //활성화 비활성화로 창 끄고 켜고
     public void turnOff(GameObject Obj)
     {
@@ -589,6 +598,8 @@ public class GameManager : MonoBehaviour
         return Minutes + " : " + Seconds;
 
     }
+    #endregion
+
     #endregion
 
     #region 출석

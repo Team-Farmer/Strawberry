@@ -69,6 +69,7 @@ public class PTJResearch : MonoBehaviour
 
     private GameObject PTJSlider;
     private GameObject PTJSlider10;
+    private GameObject PTJToggle;
     private bool isTenToggle=false;
     //===================================================================================================
     //10단위로 하는거 구현
@@ -81,6 +82,9 @@ public class PTJResearch : MonoBehaviour
         {
             PTJSlider = PTJExp.transform.GetChild(8).transform.gameObject;//PTJSlider gameobject
             PTJSlider10= PTJExp.transform.GetChild(9).transform.gameObject;
+            PTJToggle= PTJExp.transform.GetChild(7).transform.gameObject;
+
+            TenToggle();
 
             //이 아래 Hire이랑 연결해서 처리 가능 줄일것
             if (DataController.instance.gameData.PTJNum[prefabnum] != 0)
@@ -295,6 +299,7 @@ public class PTJResearch : MonoBehaviour
 
         PTJSlider.SetActive(false);
         PTJSlider10.SetActive(false);
+        PTJToggle.SetActive(false);
 
         PTJExp.transform.GetChild(11).gameObject.SetActive(true);
         PTJExp.transform.GetChild(11).transform.GetComponent<Text>().text = num.ToString() + "번 고용중이다.";
@@ -302,6 +307,7 @@ public class PTJResearch : MonoBehaviour
     private void Fire(int ID)
     {
         PTJSlider.SetActive(true);
+        PTJToggle.SetActive(true);
 
         DataController.instance.gameData.PTJNum[ID] = 0;
 
@@ -325,15 +331,21 @@ public class PTJResearch : MonoBehaviour
 
     public void TenToggle()
     {
+        //10단위 해제
         if (isTenToggle == true) 
         { 
             isTenToggle = false; 
-            PTJSlider.SetActive(true);PTJSlider10.SetActive(false); 
+            PTJSlider.SetActive(true);
+            PTJSlider10.SetActive(false); 
         }
+        //10단위 체크
         else 
         { 
             isTenToggle = true;
-            PTJSlider.SetActive(false); PTJSlider10.SetActive(true);
+            PTJSlider.SetActive(false); 
+            PTJSlider10.SetActive(true);
         }
     }
+
+    
 }
