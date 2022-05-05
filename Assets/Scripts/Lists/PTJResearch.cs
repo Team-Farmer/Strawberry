@@ -230,7 +230,7 @@ public class PTJResearch : MonoBehaviour
         //3명 아래로 고용중이면
         if (employCount < 3)
         {
-            //고용중이 아니면
+            //고용중이 아니면 hire
             if (DataController.instance.gameData.PTJNum[prefabnum] == 0)
             {
                 //HIRE
@@ -239,14 +239,14 @@ public class PTJResearch : MonoBehaviour
                 else 
                 { Hire(prefabnum, (int)(PTJSlider.GetComponent<Slider>().value)); } 
             }
-            //이미 고용중이면
+            //이미 고용중이면 fire
             else
             { Fire(prefabnum); }
         }
         //이미 3명이상 고용중이면
         else
         {
-            //고용중이 아니면
+            //고용중이 아니면 no
             if (DataController.instance.gameData.PTJNum[prefabnum] == 0)
             {
                 //3명이상 고용중이라는 경고 패널 등장
@@ -255,7 +255,7 @@ public class PTJResearch : MonoBehaviour
                 PTJwarningPanel.SetActive(true);
                 PTJwarningPanel.GetComponent<PanelAnimation>().OpenScale();
             }
-            //이미 고용중이면
+            //이미 고용중이면 fire
             else
             { Fire(prefabnum); }
         }
@@ -288,6 +288,7 @@ public class PTJResearch : MonoBehaviour
         GameManager.instance.workingCount(employCount);
 
         //main game
+        workingList.Remove(null);
         workingList.Add(Info[ID].FacePicture);
         GameManager.instance.workingApply(workingList);
 
@@ -305,7 +306,7 @@ public class PTJResearch : MonoBehaviour
 
     private void Fire(int ID)
     {
-
+        FireCat();
         PTJToggle.GetComponent<Toggle>().isOn = false;
 
         //토글 활성화/n번고용중 정보 비활성화
@@ -329,7 +330,14 @@ public class PTJResearch : MonoBehaviour
 
         InitSlider();        
     }
-
+    private void FireCat() 
+    {
+        if (Info[prefabnum].Name == "고양이") 
+        {
+            //쿨타임 돌기 시작
+            GameManager.instance.isCatTime=true;
+        }
+    }
 
     public void InitSlider() 
     {

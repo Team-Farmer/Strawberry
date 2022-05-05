@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
     //PTJ 알바
     public GameObject workingCountText;//고용 중인 동물 수
     public GameObject[] working;//고용 중인 동물 리스트 상단에
-
+    
     //베리 설명창
     public GameObject berryExp;
 
@@ -64,6 +64,10 @@ public class GameManager : MonoBehaviour
     private int index_newBerry = 0; //현재 인덱스
     private bool isStart_newBerry = false; //시작을 눌렀는가
     
+    //고양이 쿨타임 관련
+    [NonSerialized]
+    public bool isCatTime = false;
+    private float catTime = 180;//3분(180초)
     //===========================================
 
     [Header("[ Check/Settings Panel ]")]
@@ -151,6 +155,7 @@ public class GameManager : MonoBehaviour
         }
 
         updateInfo(index_newBerry);
+        CatCoolTime();
 
         //폰에서 뒤로가기 버튼 눌렀을 때/에디터에서ESC버튼 눌렀을 때 게임 종료
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -416,13 +421,26 @@ public class GameManager : MonoBehaviour
     public void workingCount(int employCount) 
     { workingCountText.GetComponent<Text>().text = employCount.ToString(); }
 
-    public void CatCoolTime(bool isCatEmploy)
+    public void CatCoolTime()
     {
-        float catTime = 180;
-        if (isCatEmploy==true) { catTime -= Time.deltaTime; }
-        if (catTime == 0) { isCatEmploy = false; catTime = 180; }
-    
+        //고양이 쿨타임 시작
+        if (isCatTime==true) 
+        { 
+            catTime -= Time.deltaTime; 
+            //고용 불가능하게
+        }
+
+        //고양이 쿨타임 시간 현황 보이기(미완)
+        Debug.Log("cat cool time=" + TimeForm((int)catTime));
+
+        //쿨타임 끝나면 초기화
+        if (catTime < 0.1) 
+        { 
+            isCatTime = false; catTime = 180; 
+            //고용가능하게
+        }
     }
+
     #endregion
 
     #region New Berry Add
