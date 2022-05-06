@@ -63,12 +63,14 @@ public class GameManager : MonoBehaviour
 
     private int index_newBerry = 0; //현재 인덱스
     private bool isStart_newBerry = false; //시작을 눌렀는가
-    
+    //===========================================
+
     //고양이 쿨타임 관련
     [NonSerialized]
     public bool isCatTime = false;
     private float catTime = 180;//3분(180초)
-    //===========================================
+    [Header("[Cat Cool Time]")]
+    public GameObject coolTimePanel;
 
     [Header("[ Check/Settings Panel ]")]
     public GameObject SettingsPanel;
@@ -426,18 +428,18 @@ public class GameManager : MonoBehaviour
         //고양이 쿨타임 시작
         if (isCatTime==true) 
         { 
-            catTime -= Time.deltaTime; 
-            //고용 불가능하게
+            catTime -= Time.deltaTime;
+            coolTimePanel.SetActive(true);
+            //고양이 쿨타임 시간 현황
+            coolTimePanel.transform.GetChild(0).transform.GetComponent<Text>().text
+            = "쿨타임 " + TimeForm((int)catTime);
         }
-
-        //고양이 쿨타임 시간 현황 보이기(미완)
-        Debug.Log("cat cool time=" + TimeForm((int)catTime));
 
         //쿨타임 끝나면 초기화
         if (catTime < 0.1) 
         { 
-            isCatTime = false; catTime = 180; 
-            //고용가능하게
+            isCatTime = false; catTime = 180;
+            coolTimePanel.SetActive(false);
         }
     }
 
