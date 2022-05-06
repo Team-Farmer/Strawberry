@@ -269,11 +269,6 @@ public class PTJResearch : MonoBehaviour
         DataController.instance.gameData.PTJNum[ID] = num;
 
         HireInit(ID,num);
-
-        for (int i = 0; i < 6; i++)
-        {
-            Debug.Log(DataController.instance.gameData.PTJNum[i]);
-        }
     }
 
     private void HireInit(int ID,int num) 

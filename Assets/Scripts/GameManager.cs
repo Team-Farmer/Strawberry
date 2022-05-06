@@ -446,6 +446,9 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region New Berry Add
+
+    //NewBerryAdd State = beforeStart, useHeart, Start, Timer, Done, Achieve ->다음 딸기 획득 비용
+    //
     //새로운 딸기 추가
     public void updateInfo(int index)
     {
@@ -482,7 +485,6 @@ public class GameManager : MonoBehaviour
     {
         if (startBtn_newBerry.GetComponent<Image>().sprite == startImg) // 시작 버튼 클릭
         {
-            Debug.Log("^_^");
             Time.timeScale = 0;//선택하기 전까지 시간 멈춤
             newBerryTimeReuce.SetActive(true);//하트로 시간 줄이겠냐는 패널 띄우기
         }
@@ -497,8 +499,8 @@ public class GameManager : MonoBehaviour
             while (DataController.instance.gameData.isBerryUnlock[newBerryIndex] == true)
             {
                 //아직 없는 베리 찾아서 true로 변경
-                //없는 베리중에 랜덤으로 하나 결정(임의로 0~10)
-                newBerryIndex = UnityEngine.Random.Range(0, 11);
+                //없는 베리중에 랜덤으로 하나 결정(임의로 0~9)
+                newBerryIndex = UnityEngine.Random.Range(0, 9);
             }
             //새로운 딸기가 추가된다.
             DataController.instance.gameData.isBerryUnlock[newBerryIndex] = true;
