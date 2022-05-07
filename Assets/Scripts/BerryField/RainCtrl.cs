@@ -30,8 +30,7 @@ public class RainCtrl : MonoBehaviour
         }
     }
     void Raining()
-    {
-        Debug.Log(rainParticle.time);
+    {       
         rainPanel.gameObject.SetActive(true);
         rainPanel.GetComponent<Image>().DOFade(0.3f, 0.3f);        
         mult = 3;

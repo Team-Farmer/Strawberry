@@ -266,7 +266,7 @@ public class GameManager : MonoBehaviour
 
         stem.gameObject.SetActive(false);
         farm.isHarvest = false; // 수확이 끝남              
-        if (!DataController.instance.gameData.berryFieldData[farm.farmIdx].hasWeed) // 잡초가 없다면
+        if (!DataController.instance.gameData.berryFieldData[farm.farmIdx].hasWeed && !BP.activeSelf) // 잡초가 없다면
         {
             farm.GetComponent<BoxCollider2D>().enabled = true; // 밭을 다시 활성화 
         }
@@ -282,27 +282,7 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region 재화
-    /*void SetBerryPrice()
-    {
-        BerryPrice[0] = 10;     // 클래식의 0번 딸기
-        BerryPrice[64] = 20;    // 스페셜의 0번 딸기
-        BerryPrice[128] = 30;   // 유니크의 0번 딸기
-
-        for (int i = 0; i < 192; i++)
-        {
-            if (i < 64)
-                BerryPrice[i] = BerryPrice[0] + i * 3;
-            else if (i < 128)
-                BerryPrice[i] = BerryPrice[64] + (i - 64) * 5;
-            else
-                BerryPrice[i] = BerryPrice[128] + (i - 128) * 7;
-        }
-
-        //Debug.Log("딸기가치 세팅 완료");
-        //Debug.Log(BerryPrice[0] + " " + BerryPrice[64] + " " + BerryPrice[128] + " ");
-        //Debug.Log(BerryPrice[9] + " " + BerryPrice[73] + " " + BerryPrice[137] + " ");
-    }*/
-
+    
     public void ShowCoinText(Text coinText, int coin)
     {
         //int coin = DataController.instance.gameData.coin;

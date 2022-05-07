@@ -43,20 +43,20 @@ public class Globalvariable : MonoBehaviour
     {
         instance = this;     
     }
-
+    /*
     void Start()
     {
-        /*
+        
         IncreaseBerryPrice();
         DecreaseBerryGrowTime();
         DecreaseBugGenerateProb();
         DecreaseWeedGenerateProb();
-        */
+        
     }
     public void IncreaseBerryPrice()
-    {            
+    {
         float researchCoeffi = (DataController.instance.gameData.researchLevel[0] - 1) * coeffi;
-       
+
         for (int i = 0; i < 192; i++)
         {
             if (berryListAll[i] == null) continue;
@@ -70,12 +70,12 @@ public class Globalvariable : MonoBehaviour
             else
                 berryListAll[i].GetComponent<Berry>().berryPrice
                     = (int)((UNIQUE_FIRST + (i - 128) * 7) * (1 + researchCoeffi));
-        }       
+        }
     }
     public void DecreaseBerryGrowTime()
     {
         float researchCoeffi = (DataController.instance.gameData.researchLevel[1] - 1) * coeffi;
-      
+
         for (int i = 0; i < DataController.instance.gameData.stemLevel.Length; i++)
         {
             DataController.instance.gameData.stemLevel[i] = STEM_LEVEL[i] * (1 - researchCoeffi);
@@ -94,6 +94,6 @@ public class Globalvariable : MonoBehaviour
     public void IncreaseRainDuration()
     {
         float researchCoeffi = (DataController.instance.gameData.researchLevel[1] - 1) * coeffi;
-        
-    }
+
+    }*/
 }
