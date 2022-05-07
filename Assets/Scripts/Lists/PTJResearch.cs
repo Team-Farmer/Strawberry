@@ -141,7 +141,6 @@ public class PTJResearch : MonoBehaviour
 
         if (DataController.instance.gameData.researchLevel[prefabnum] < 25)//레벨 25로 한계두기
         {
-
             //해당 금액의 코인이 감소
             GameManager.instance.UseCoin(Info[prefabnum].Price);
 
@@ -161,10 +160,51 @@ public class PTJResearch : MonoBehaviour
                 NoCoinPanel.SetActive(true);
                 NoCoinPanel.GetComponent<PanelAnimation>().OpenScale();
             }
-
         }
     }
+    public void IncreaseBerryPrice()
+    {
+        float researchCoeffi = (DataController.instance.gameData.researchLevel[0] - 1) * Globalvariable.instance.coeffi;
 
+        for (int i = 0; i < 192; i++)
+        {
+            if (Globalvariable.instance.berryListAll[i] == null) continue;
+
+            if (i < 64)
+                Globalvariable.instance.berryListAll[i].GetComponent<Berry>().berryPrice
+                    = (int)((Globalvariable.CLASSIC_FIRST + i * 3) * (1 + researchCoeffi));
+            else if (i < 128)
+                Globalvariable.instance.berryListAll[i].GetComponent<Berry>().berryPrice
+                    = (int)((Globalvariable.SPECIAL_FIRST + (i - 64) * 5) * (1 + researchCoeffi));
+            else
+                Globalvariable.instance.berryListAll[i].GetComponent<Berry>().berryPrice
+                    = (int)((Globalvariable.UNIQUE_FIRST + (i - 128) * 7) * (1 + researchCoeffi));
+        }
+    }
+    /*public void DecreaseBerryGrowTime()
+    {
+        float researchCoeffi = (DataController.instance.gameData.researchLevel[1] - 1) * coeffi;
+
+        for (int i = 0; i < DataController.instance.gameData.stemLevel.Length; i++)
+        {
+            DataController.instance.gameData.stemLevel[i] = STEM_LEVEL[i] * (1 - researchCoeffi);
+        }
+    }
+    public void DecreaseBugGenerateProb()
+    {
+        float researchCoeffi = (DataController.instance.gameData.researchLevel[1] - 1) * coeffi;
+        DataController.instance.gameData.bugProb = BUG_PROB * (1 - researchCoeffi);
+    }
+    public void DecreaseWeedGenerateProb()
+    {
+        float researchCoeffi = (DataController.instance.gameData.researchLevel[1] - 1) * coeffi;
+        DataController.instance.gameData.weedProb = WEED_PROB * (1 - researchCoeffi);
+    }
+    public void IncreaseRainDuration()
+    {
+        float researchCoeffi = (DataController.instance.gameData.researchLevel[1] - 1) * coeffi;
+
+    }*/
     //=============================================================================================================================
 
     //PTJ설명창 띄운다
