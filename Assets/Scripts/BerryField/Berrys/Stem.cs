@@ -162,7 +162,7 @@ public class Stem : MonoBehaviour
 
         for (int i = 0; i < len; i++)
         {
-            if(global.berryListAll[i] != null)
+            if(DataController.instance.gameData.isBerryUnlock[i])
             {
                 probSum += global.berryListAll[i].GetComponent<Berry>().berrykindProb; // 해금된 딸기에서 딸기의 발생확률을 가져옴
             }           
@@ -171,7 +171,7 @@ public class Stem : MonoBehaviour
 
         for (int i = 0; i < len; i++)
         {
-            if (global.berryListAll[i] != null)
+            if (DataController.instance.gameData.isBerryUnlock[i])
             {
                 cumulative += global.berryListAll[i].GetComponent<Berry>().berrykindProb; // 해금된 딸기에서 딸기의 발생확률을 가져옴
                 if (berryRandomChance <= cumulative)
