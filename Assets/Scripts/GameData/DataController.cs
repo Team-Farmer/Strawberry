@@ -99,7 +99,7 @@ public class DataController : MonoBehaviour
         //Research
         for (int i = 0; i < gameData.researchLevel.Length; i++) 
         {
-            gameData.researchLevel[i] = 1;
+            gameData.researchLevel[i] = 0;
         }
         
         //BerryFieldData

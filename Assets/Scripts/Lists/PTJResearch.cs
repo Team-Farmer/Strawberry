@@ -144,7 +144,7 @@ public class PTJResearch : MonoBehaviour
             switch (Info[prefabnum].Name)
             {
                 case "딸기 가치 상승": IncreaseBerryPrice(); break;
-                case "딸기 성장시간 감소": DecreaseBerryGrowTime(); break;
+                case "딸기 성장기간 감소": DecreaseBerryGrowTime(); break;
                 case "트럭 수익 상승": break;
                 case "벌레 확률 감소": DecreaseBugGenerateProb(); break;
                 case "잡초 확률 감소": DecreaseWeedGenerateProb(); break;
@@ -174,7 +174,7 @@ public class PTJResearch : MonoBehaviour
     }
     public void IncreaseBerryPrice()
     {
-        float researchCoeffi = (DataController.instance.gameData.researchLevel[0] - 1) * Globalvariable.instance.coeffi;
+        float researchCoeffi = (DataController.instance.gameData.researchLevel[0]) * Globalvariable.instance.coeffi;
 
         for (int i = 0; i < 192; i++)
         {
@@ -193,26 +193,28 @@ public class PTJResearch : MonoBehaviour
     }
     public void DecreaseBerryGrowTime()
     {
-        float researchCoeffi = (DataController.instance.gameData.researchLevel[1] - 1) * Globalvariable.instance.coeffi;
+        
+        float researchCoeffi = (DataController.instance.gameData.researchLevel[1]) * Globalvariable.instance.coeffi;
 
         for (int i = 0; i < DataController.instance.gameData.stemLevel.Length; i++)
         {
             DataController.instance.gameData.stemLevel[i] = (Globalvariable.instance.STEM_LEVEL[i] * (1 - researchCoeffi));
         }
+
     }
     public void DecreaseBugGenerateProb()
     {
-        float researchCoeffi = (DataController.instance.gameData.researchLevel[1] - 1) * Globalvariable.instance.coeffi;
+        float researchCoeffi = (DataController.instance.gameData.researchLevel[3]) * Globalvariable.instance.coeffi;
         DataController.instance.gameData.bugProb = (Globalvariable.BUG_PROB * (1 - researchCoeffi));
     }
     public void DecreaseWeedGenerateProb()
     {
-        float researchCoeffi = (DataController.instance.gameData.researchLevel[1] - 1) * Globalvariable.instance.coeffi;
+        float researchCoeffi = (DataController.instance.gameData.researchLevel[4]) * Globalvariable.instance.coeffi;
         DataController.instance.gameData.weedProb = Globalvariable.WEED_PROB * (1 - researchCoeffi);
     }
     public void IncreaseRainDuration()
     {
-        float researchCoeffi = (DataController.instance.gameData.researchLevel[1] - 1) * Globalvariable.instance.coeffi;
+        float researchCoeffi = (DataController.instance.gameData.researchLevel[5]) * Globalvariable.instance.coeffi;
 
     }
     //=============================================================================================================================

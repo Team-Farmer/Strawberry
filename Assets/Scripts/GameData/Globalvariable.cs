@@ -46,10 +46,12 @@ public class Globalvariable : MonoBehaviour
 
     void Start()
     {
+        /*
         IncreaseBerryPrice();
         DecreaseBerryGrowTime();
         DecreaseBugGenerateProb();
         DecreaseWeedGenerateProb();
+        */
     }
     public void IncreaseBerryPrice()
     {            
