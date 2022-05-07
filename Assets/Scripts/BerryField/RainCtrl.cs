@@ -16,7 +16,7 @@ public class RainCtrl : MonoBehaviour
     private bool isRaining;
     void Awake()
     {
-        rainParticle = GetComponent<ParticleSystem>();       
+        rainParticle = GetComponent<ParticleSystem>();        
     }
     void Update()
     {
@@ -31,12 +31,12 @@ public class RainCtrl : MonoBehaviour
     }
     void Raining()
     {
+        Debug.Log(rainParticle.time);
         rainPanel.gameObject.SetActive(true);
         rainPanel.GetComponent<Image>().DOFade(0.3f, 0.3f);        
         mult = 3;
         rainTime = 0;
-        rainParticle.Play();
-               
+        rainParticle.Play();            
     }
     IEnumerator RainingRoutine()
     {        

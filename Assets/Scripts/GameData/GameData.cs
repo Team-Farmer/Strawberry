@@ -20,8 +20,13 @@ public class GameData
     public int truckBerryCnt; // 트럭 딸기 개수
     public int truckCoin;
 
+    //밭, 딸기
+
     // 딸기 성장 시간
     public float[] stemLevel = { 0f, 15f, 30f, 45f, 60f};
+    public float bugProb = 20f;
+    public float weedProb = 20f; // // 임의로 초기화 시킨 변수임
+    public float period = 60f; //이거 바꾸려면 연구에서 직접 접근해서 바꿔야됨 여기는 초기화부분
 
     //딸기 밭 데이터 생성
     public BerryFieldData[] berryFieldData = new BerryFieldData[16];

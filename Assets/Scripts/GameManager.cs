@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
     Transform target;
     public Text truckCoinText;
     public Text truckCoinBonusText;
+    public int bonusTruckCoin;
 
     public const int TRUCK_CNT_LEVEL_0 = Globalvariable.TRUCK_CNT_LEVEL_0;
     public const int TRUCK_CNT_LEVEL_1 = Globalvariable.TRUCK_CNT_LEVEL_1;
@@ -210,9 +211,10 @@ public class GameManager : MonoBehaviour
     }
     public void ClickedTruck()
     {
+        bonusTruckCoin = (int)(DataController.instance.gameData.truckCoin *
+            DataController.instance.gameData.researchLevel[2] * Globalvariable.instance.coeffi);
         ShowCoinText(truckCoinText, DataController.instance.gameData.truckCoin);
-        ShowCoinText(truckCoinBonusText, (int)(DataController.instance.gameData.truckCoin *
-            DataController.instance.gameData.researchLevel[2] * Globalvariable.instance.coeffi));
+        ShowCoinText(truckCoinBonusText, bonusTruckCoin);
     }
     
     Stem GetStem(int idx)
@@ -306,17 +308,17 @@ public class GameManager : MonoBehaviour
         //int coin = DataController.instance.gameData.coin;
         if (coin <= 9999)           // 0~9999까지 A
         {
-            coinText.text = coin.ToString() + " A";
+            coinText.text = coin.ToString() + "A";
         }
         else if (coin <= 9999999)   // 10000~9999999(=9999B)까지 B
         {
             coin /= 1000;
-            coinText.text = coin.ToString() + " B";
+            coinText.text = coin.ToString() + "B";
         }
         else                        // 그 외 C (최대 2100C)
         {
             coin /= 1000000;
-            coinText.text = coin.ToString() + " C";
+            coinText.text = coin.ToString() + "C";
         }
     }
 

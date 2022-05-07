@@ -12,6 +12,8 @@ public class Globalvariable : MonoBehaviour
     public List<GameObject> specialBerryList;
     public List<GameObject> uniqueBerryList;
 
+    public ParticleSystem rainParticle;
+
     public enum BerryRank
     {
         Classic,
@@ -31,7 +33,11 @@ public class Globalvariable : MonoBehaviour
     public const int UNIQUE_FIRST = 200;
 
     public readonly float[] STEM_LEVEL = { 0f, 15f, 30f, 45f, 60f };
-    
+
+    public const float BUG_PROB = 20f;
+    public const float WEED_PROB = 20f;
+
+    public const float Rain_Duration = 5f;
 
     void Awake()
     {
@@ -40,14 +46,15 @@ public class Globalvariable : MonoBehaviour
 
     void Start()
     {
-        UpdateBerryPrice();
-        UpdateBerryGrowTime();
+        IncreaseBerryPrice();
+        DecreaseBerryGrowTime();
+        DecreaseBugGenerateProb();
+        DecreaseWeedGenerateProb();
     }
-    void UpdateBerryPrice()
+    public void IncreaseBerryPrice()
     {            
         float researchCoeffi = (DataController.instance.gameData.researchLevel[0] - 1) * coeffi;
-
-        Debug.Log(coeffi + " " + researchCoeffi);
+       
         for (int i = 0; i < 192; i++)
         {
             if (berryListAll[i] == null) continue;
@@ -63,14 +70,28 @@ public class Globalvariable : MonoBehaviour
                     = (int)((UNIQUE_FIRST + (i - 128) * 7) * (1 + researchCoeffi));
         }       
     }
-    void UpdateBerryGrowTime()
+    public void DecreaseBerryGrowTime()
     {
         float researchCoeffi = (DataController.instance.gameData.researchLevel[1] - 1) * coeffi;
-
-        Debug.Log(coeffi + " " + researchCoeffi);
+      
         for (int i = 0; i < DataController.instance.gameData.stemLevel.Length; i++)
         {
             DataController.instance.gameData.stemLevel[i] = STEM_LEVEL[i] * (1 - researchCoeffi);
         }
+    }
+    public void DecreaseBugGenerateProb()
+    {
+        float researchCoeffi = (DataController.instance.gameData.researchLevel[1] - 1) * coeffi;
+        DataController.instance.gameData.bugProb = BUG_PROB * (1 - researchCoeffi);
+    }
+    public void DecreaseWeedGenerateProb()
+    {
+        float researchCoeffi = (DataController.instance.gameData.researchLevel[1] - 1) * coeffi;
+        DataController.instance.gameData.weedProb = WEED_PROB * (1 - researchCoeffi);
+    }
+    public void IncreaseRainDuration()
+    {
+        float researchCoeffi = (DataController.instance.gameData.researchLevel[1] - 1) * coeffi;
+        
     }
 }

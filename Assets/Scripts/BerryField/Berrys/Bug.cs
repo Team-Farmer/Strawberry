@@ -35,7 +35,7 @@ public class Bug : MonoBehaviour
     {      
         float prob = Random.Range(0, 100);
         DataController.instance.gameData.berryFieldData[bugIdx].scale = Random.Range(1.2f, 1.5f);
-        if (prob < DataController.instance.gameData.berryFieldData[bugIdx].bugProb)
+        if (prob < DataController.instance.gameData.bugProb)
         {           
             this.gameObject.SetActive(true);            
         }

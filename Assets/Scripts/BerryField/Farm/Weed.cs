@@ -33,7 +33,7 @@ public class Weed : MonoBehaviour
         float prob = Random.Range(0, 100);
         
         //scale = Random.Range(1.3f, 1.8f);
-        if (prob < DataController.instance.gameData.berryFieldData[weedIdx].weedProb)
+        if (prob < DataController.instance.gameData.weedProb)
         {
             this.gameObject.SetActive(true); // 나 자신(잡초)를 활성화
 

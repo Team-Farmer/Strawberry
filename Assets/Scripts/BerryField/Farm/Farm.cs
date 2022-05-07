@@ -11,7 +11,7 @@ public class Farm : MonoBehaviour
     {
         if (DataController.instance.gameData.berryFieldData[farmIdx].hasWeed || !DataController.instance.gameData.berryFieldData[farmIdx].canGrowWeed) return;
 
-        if (DataController.instance.gameData.berryFieldData[farmIdx].weedTime <= DataController.instance.gameData.berryFieldData[farmIdx].period)
+        if (DataController.instance.gameData.berryFieldData[farmIdx].weedTime <= DataController.instance.gameData.period)
         {
             DataController.instance.gameData.berryFieldData[farmIdx].weedTime += Time.deltaTime;
         }
