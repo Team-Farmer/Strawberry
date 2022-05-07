@@ -21,7 +21,7 @@ public class GameData
     public int truckCoin;
 
     // 딸기 성장 시간
-    public float[] stemLevel = { 0f, 30f, 60f, 90f, 120f};
+    public float[] stemLevel = { 0f, 15f, 30f, 45f, 60f};
 
     //딸기 밭 데이터 생성
     public BerryFieldData[] berryFieldData = new BerryFieldData[16];
@@ -36,7 +36,7 @@ public class GameData
     public int newBerryResearch;
 
     //연구 레벨
-    public int[] researchLevel=new int[7];
+    public int[] researchLevel=new int[7]; // 이미 있네..?
 
     //도전과제 달성 수치
     public int[] challengeGauge = new int[7];
@@ -65,7 +65,6 @@ public class GameData
     public bool[] isNewsEM = new bool[7];
 
     //=====================================================================================
-
 
     //마지막 출석 날짜 저장.
     public DateTime Lastday = new DateTime();

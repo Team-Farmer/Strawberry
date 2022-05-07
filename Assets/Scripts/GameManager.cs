@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     public GameObject TruckPanel;
     Transform target;
     public Text truckCoinText;
+    public Text truckCoinBonusText;
 
     public const int TRUCK_CNT_LEVEL_0 = Globalvariable.TRUCK_CNT_LEVEL_0;
     public const int TRUCK_CNT_LEVEL_1 = Globalvariable.TRUCK_CNT_LEVEL_1;
@@ -107,8 +108,7 @@ public class GameManager : MonoBehaviour
         CheckTime();
 
         //SetBerryPrice();
-        InitDataInGM();
-
+        InitDataInGM();       
     }
     void InitDataInGM()
     {
@@ -210,7 +210,9 @@ public class GameManager : MonoBehaviour
     }
     public void ClickedTruck()
     {
-        ShowCoinText(truckCoinText, DataController.instance.gameData.truckCoin);               
+        ShowCoinText(truckCoinText, DataController.instance.gameData.truckCoin);
+        ShowCoinText(truckCoinBonusText, (int)(DataController.instance.gameData.truckCoin *
+            DataController.instance.gameData.researchLevel[2] * Globalvariable.instance.coeffi));
     }
     
     Stem GetStem(int idx)
