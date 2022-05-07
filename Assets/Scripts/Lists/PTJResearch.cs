@@ -278,7 +278,7 @@ public class PTJResearch : MonoBehaviour
     }
     //============================================================================================================
     public void HireFire() {
-
+        Debug.Log("============prefabnum="+prefabnum);
         //3명 아래로 고용중이면
         if (employCount < 3)
         {
