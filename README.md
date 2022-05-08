@@ -19,7 +19,7 @@
 
 | 이름 |  역할  |   담당    | Contact    |
 | :--: | :----: | :-------: | :------ |
-| 정우연 | 기획 | 기획, PM                     | [블로그](https://blog.naver.com/jenny1257) |
+| 정우연 | 기획자 | 기획, PM                     | [블로그](https://blog.naver.com/jenny1257) |
 | 신희규 | 프로그래머 | 딸기 밭 시스템 개발         | [블로그](https://velog.io/@wjawksl) |
 | 이시원 | 프로그래머 | 애니메이션 및 미니게임 구현  |      |
 | 정예림 | 프로그래머 | 3rd Party Library 적용        | [블로그](https://blog.naver.com/mms0801) |
