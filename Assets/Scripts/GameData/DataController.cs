@@ -113,6 +113,7 @@ public class DataController : MonoBehaviour
         {
             gameData.isBerryUnlock[i] = false;
         }
+        gameData.isBerryUnlock[0] = true;
         for (int i = 0; i < 7; i++) {
             gameData.challengeGauge[i] = 0;
             gameData.challengeEnd[i] = false;
