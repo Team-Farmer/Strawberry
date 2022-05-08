@@ -20,11 +20,11 @@
 | 이름 |  역할  |   담당    | Contact    |
 | :--: | :----: | :-------: | :------ |
 | 정우연 | 기획 | 기획, PM                     | [블로그](https://blog.naver.com/jenny1257) |
-| 신희규 | 프로그래머 | 딸기 밭 시스템 개발         |[블로그](https://blog.naver.com/jihun4748) |
+| 신희규 | 프로그래머 | 딸기 밭 시스템 개발         | [블로그](https://velog.io/@wjawksl) |
 | 이시원 | 프로그래머 | 애니메이션 및 미니게임 구현  |      |
 | 정예림 | 프로그래머 | 3rd Party Library 적용        | [블로그](https://blog.naver.com/mms0801) |
 | 허윤지 | 프로그래머 | 연구, 알바, 도전과제 시스템 개발 |        |
-| 김지현 | UI 디자이너 | UI 디자인 제작 |                 |
+| 김지현 | UI 디자이너 | UI 디자인 제작 | [블로그](https://blog.naver.com/jihun4748) |
 | 이아현 | 일러스트레이터 | 일러스트 제작 |              |
 
 *made by Team Farmer* 
