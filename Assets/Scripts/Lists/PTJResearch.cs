@@ -78,6 +78,8 @@ public class PTJResearch : MonoBehaviour
     private GameObject PTJToggle;
 
 
+    //고용횟수
+    private int PTJ_NUM_NOW;
 
     //===================================================================================================
     //===================================================================================================
@@ -101,6 +103,22 @@ public class PTJResearch : MonoBehaviour
             {  HireInit(prefabnum, DataController.instance.gameData.PTJNum[prefabnum]);  }
 
         }
+    }
+    private void Update()
+    {
+        //PTJNumNow = DataController.instance.gameData.PTJNum[prefabnum];
+    }
+    int PTJNumNow
+    {
+        set
+        {
+            if (PTJ_NUM_NOW == value) return;
+            PTJ_NUM_NOW = value;
+            Debug.Log("=============현재 고용횟수=" + PTJ_NUM_NOW);
+            //if (PTJ_NUM_NOW == 0) { HireFire(); }
+        }
+        get { return PTJ_NUM_NOW; }
+
     }
     //===================================================================================================
     //===================================================================================================
@@ -219,6 +237,7 @@ public class PTJResearch : MonoBehaviour
     }
     //=============================================================================================================================
 
+
     //PTJ설명창 띄운다
     public void ActiveExplanation()
     {
@@ -237,6 +256,8 @@ public class PTJResearch : MonoBehaviour
 
         //EmployButton Init
         InitSlider();
+
+
 
         //Slider값 변경될때 마다 -> n번고용, 비용에 반영
         PTJSlider.transform.GetComponent<Slider>().onValueChanged.AddListener
@@ -278,7 +299,6 @@ public class PTJResearch : MonoBehaviour
     }
     //============================================================================================================
     public void HireFire() {
-        Debug.Log("============prefabnum="+prefabnum);
         //3명 아래로 고용중이면
         if (employCount < 3)
         {
@@ -425,9 +445,15 @@ public class PTJResearch : MonoBehaviour
         {
             EmployButtonFire();
         }
-
     }
 
-    
-    
+
+
+    //https://gall.dcinside.com/mgallery/board/view/?id=game_dev&no=45878
+    //옵저버패턴 https://ansohxxn.github.io/design%20pattern/chapter12/
+    //이벤트핸들러 https://bloodstrawberry.tistory.com/630
+
+
+
+
 }
