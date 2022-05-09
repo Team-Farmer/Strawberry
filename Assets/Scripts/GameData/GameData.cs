@@ -41,6 +41,9 @@ public class GameData
     //새로운 딸기 개발
     public int newBerryResearch;
 
+    //베리 개발 가능 구역
+    public int newBerryResearchAble;//0이면 classic만 개발가능 1이면 unique까지 2이면 전부 개발가능
+
     //연구 레벨
     public int[] researchLevel=new int[7]; // 이미 있네..?
 

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
+
 public class ChangeLayer2 : MonoBehaviour
 {
 	[SerializeField]
@@ -27,7 +29,9 @@ public class ChangeLayer2 : MonoBehaviour
 	[SerializeField]
 	private float swipeDistance = 1.0f;        // 페이지가 Swipe되기 위해 움직여야 하는 최소 거리
 
-
+	[Header("=====Berry Lock=====")]
+	public GameObject berryLockSpecial;
+	public GameObject berryLockUnique;
 	//============================================================================
 	//SWIPE 변수들
 
@@ -41,7 +45,7 @@ public class ChangeLayer2 : MonoBehaviour
 
 	private bool isSwipeMode = false;       // 현재 Swipe가 되고 있는지 체크
 
-
+	//===========================================================================================================
 	//===========================================================================================================
 	private void Awake()
 	{
@@ -70,14 +74,13 @@ public class ChangeLayer2 : MonoBehaviour
 			// 처음 시작할 때 0번 페이지 보인다.
 			SetScrollBarValue(0);
 		}
-
 	}
 
 	private void Update()
 	{
 		if (isBerry == true) UpdateInput();
 	}
-
+	//===========================================================================================================
 	//===========================================================================================================
 
 	#region SWIPE
@@ -203,18 +206,17 @@ public class ChangeLayer2 : MonoBehaviour
 		scrollBar.value = scrollPageValues[index];
 	}
 
+	//좌우에 있는 세모 모양 스와이프 버튼
 	public void swipeButton(string value)
 	{
 		switch (value)
 		{
-
 			case "left":
 				// 현재 페이지가 왼쪽 끝이면 종료
 				if (currentPage == 0) return;
 
 				currentPage--;// 왼쪽으로 이동 = 현재 페이지 1 감소
 				SetScrollBarValue(currentPage);
-
 				break;
 
 			case "right":
@@ -224,17 +226,9 @@ public class ChangeLayer2 : MonoBehaviour
 				// 오른쪽으로 이동 = 현재 페이지 1 증가
 				currentPage++;
 				SetScrollBarValue(currentPage);
-
 				break;
-
 		}
-
 	}
-
-
-
-
-
 
 
 	//버튼 누르는 효과
@@ -266,25 +260,45 @@ public class ChangeLayer2 : MonoBehaviour
 	//해당 분류의 딸기를 보인다
 	public void selectBerryTag(string name)
 	{
-
+		
 		//모든 베리들 보이게 활성화
 		AllActive();
 
-		//다른 베리들 안보이게 비활성화
+		//다른 베리들 안보이게 비활성화  /  Lock 걸기
 		switch (name)
 		{
-			case "berry_classic": inActive("berry_special"); inActive("berry_unique"); break;
-			case "berry_special": inActive("berry_classic"); inActive("berry_unique"); break;
-			case "berry_unique": inActive("berry_special"); inActive("berry_classic"); break;
+			case "berry_classic":
+				berryLockSpecial.SetActive(false); 
+				berryLockUnique.SetActive(false);
+				inActive("berry_special"); inActive("berry_unique"); break;
+
+
+			case "berry_special":
+				berryLockUnique.SetActive(false);
+				switch (DataController.instance.gameData.newBerryResearchAble)
+				{
+					case 0: berryLockSpecial.SetActive(true); break;
+					case 1:	berryLockSpecial.SetActive(true); break;
+					case 2:	berryLockSpecial.SetActive(false); break;
+				}
+				inActive("berry_classic"); inActive("berry_unique"); break;
+
+
+			case "berry_unique":
+				berryLockSpecial.SetActive(false);
+				switch (DataController.instance.gameData.newBerryResearchAble)
+				{
+					case 0: berryLockUnique.SetActive(true);	break;
+					case 1:	berryLockUnique.SetActive(true);	break;
+					case 2:	berryLockUnique.SetActive(false);	break;
+				}
+				inActive("berry_special"); inActive("berry_classic"); break;
 		}
 
 
 		SetScrollBarValue(0);
 
 	}
-
-
-
 
 
 	public void inActive(string name)
