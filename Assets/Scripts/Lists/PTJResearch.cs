@@ -106,6 +106,7 @@ public class PTJResearch : MonoBehaviour
     }
     private void Update()
     {
+        //PTJNumNow 값이 변경된다면 set get실행된다.
         PTJNumNow = DataController.instance.gameData.PTJNum[prefabnum];
     }
     int PTJNumNow
@@ -115,8 +116,35 @@ public class PTJResearch : MonoBehaviour
             if (PTJ_NUM_NOW == value) return;
             PTJ_NUM_NOW = value;
 
+            //변경된 값이 0(즉 알바를 끝냈다면)이면 아래를 실행
             if (PTJ_NUM_NOW == 0) 
-            {    Fire(prefabnum);   }
+            {
+                //Fire() 과 유사하지만 employment수때문에 중복
+                //=================================
+                PTJToggle.GetComponent<Toggle>().isOn = false;
+
+                //토글 활성화/n번고용중 정보 비활성화
+                PTJToggle.SetActive(true);
+                PTJExp.transform.GetChild(11).gameObject.SetActive(false);
+
+                //고용 해제
+                DataController.instance.gameData.PTJNum[prefabnum] = 0;
+
+                //고용해제 상태 이미지
+                levelNum.GetComponent<Text>().text = "고용 전";
+                levelNum.GetComponent<Text>().color = new Color32(164, 164, 164, 255);
+                PTJBackground.transform.GetComponent<Image>().sprite = originalPTJSprite;
+
+                //main game에 현황 적용
+                --employCount;//중복되면안되는디
+                workingList.Remove(Info[prefabnum].FacePicture);
+                workingList.Add(null);
+                GameManager.instance.workingApply(workingList);
+                GameManager.instance.workingCount(employCount);
+
+                InitSlider();
+
+            }
         }
         get { return PTJ_NUM_NOW; }
     }
@@ -389,7 +417,7 @@ public class PTJResearch : MonoBehaviour
         PTJBackground.transform.GetComponent<Image>().sprite = originalPTJSprite;
 
         //main game에 현황 적용
-        --employCount;
+        if (DataController.instance.gameData.PTJNum[prefabnum] != 0){  --employCount;}
         workingList.Remove(Info[ID].FacePicture);
         workingList.Add(null);
         GameManager.instance.workingApply(workingList);
