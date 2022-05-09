@@ -106,7 +106,7 @@ public class PTJResearch : MonoBehaviour
     }
     private void Update()
     {
-        //PTJNumNow = DataController.instance.gameData.PTJNum[prefabnum];
+        PTJNumNow = DataController.instance.gameData.PTJNum[prefabnum];
     }
     int PTJNumNow
     {
@@ -114,11 +114,11 @@ public class PTJResearch : MonoBehaviour
         {
             if (PTJ_NUM_NOW == value) return;
             PTJ_NUM_NOW = value;
-            Debug.Log("=============현재 고용횟수=" + PTJ_NUM_NOW);
-            //if (PTJ_NUM_NOW == 0) { HireFire(); }
+
+            if (PTJ_NUM_NOW == 0) 
+            {    Fire(prefabnum);   }
         }
         get { return PTJ_NUM_NOW; }
-
     }
     //===================================================================================================
     //===================================================================================================
@@ -373,7 +373,7 @@ public class PTJResearch : MonoBehaviour
 
     private void Fire(int ID)
     {
-        FireCat();
+
         PTJToggle.GetComponent<Toggle>().isOn = false;
 
         //토글 활성화/n번고용중 정보 비활성화
@@ -397,14 +397,7 @@ public class PTJResearch : MonoBehaviour
 
         InitSlider();        
     }
-    private void FireCat() 
-    {
-        if (Info[prefabnum].Name == "고양이") 
-        {
-            //쿨타임 돌기 시작
-            GameManager.instance.isCatTime=true;
-        }
-    }
+
 
     public void InitSlider() 
     {
@@ -449,9 +442,7 @@ public class PTJResearch : MonoBehaviour
 
 
 
-    //https://gall.dcinside.com/mgallery/board/view/?id=game_dev&no=45878
-    //옵저버패턴 https://ansohxxn.github.io/design%20pattern/chapter12/
-    //이벤트핸들러 https://bloodstrawberry.tistory.com/630
+
 
 
 
