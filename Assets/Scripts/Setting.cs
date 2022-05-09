@@ -40,7 +40,7 @@ public class Setting : MonoBehaviour
 
     private void SetVersionInfo() // 버전 정보 세팅
     {
-        versionDate_text.text = "22.04.04";
+        versionDate_text.text = "22-05-09";
         version_text.text = "V 1.0.1";
     }
 
