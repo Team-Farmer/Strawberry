@@ -34,6 +34,7 @@ public class GameData
     //해금된 딸기
     //배열 크기 조절 안되는건 원래 C#배열의 특성이다.
     //List를 사용하거나 Linq사용해야 함
+
     //=====================================================================================
     public bool[] isBerryUnlock = new bool[192];
 
@@ -43,10 +44,21 @@ public class GameData
     //연구 레벨
     public int[] researchLevel=new int[7]; // 이미 있네..?
 
-    //도전과제 달성 수치
-    public int[] challengeGauge = new int[7];
-    //도전과제 보상 받은 여부
-    public bool[] challengeEnd = new bool[7];
+    //도전과제
+    public int[] challengeGauge = new int[7];//현재 달성 수치
+    public bool[] challengeEnd = new bool[7];//도전과제 보상 받은 여부
+
+    //뉴스
+    public bool[] isNewsUnlock = new bool[7];
+    public bool[] NewsEnd = new bool[7];
+
+    //PTJ 알바생의 현재 고용횟수
+    public int[] PTJNum = new int[6];
+
+    //느낌표 !
+    public bool[] isBerryEM = new bool[192];
+    public bool[] isNewsEM = new bool[7];
+    //=====================================================================================
 
     //도전과제를 위한 누적 저장 변수 (누적 : accumulate)
     public int unlockBerryCnt; // 해금 딸기 개수 (누적)
@@ -58,18 +70,7 @@ public class GameData
     //여태까지 모은 딸기 총 개수
     //public int totalBerryCnt; => 이게 수확한거 맞죠?
 
-    //뉴스
-    public bool[] isNewsUnlock=new bool[7];
-    public bool[] NewsEnd = new bool[7];
-
-    //PTJ
-    public int[] PTJNum = new int[6];
-
-    //새로운거 느낌표 !
-    public bool[] isBerryEM=new bool[192];
-    public bool[] isNewsEM = new bool[7];
-
-    //=====================================================================================
+    
 
     //마지막 출석 날짜 저장.
     public DateTime Lastday = new DateTime();

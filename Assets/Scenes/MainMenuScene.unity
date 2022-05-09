@@ -7108,20 +7108,20 @@ MonoBehaviour:
   priceText_newBerry: {fileID: 1295824419}
   timeText_newBerry: {fileID: 2120615085}
   startBtn_newBerry: {fileID: 787233744}
-  time_newBerry:
-  - 3
-  - 10
-  - 5
-  - 2
-  - 2
-  - 2
-  price_newBerry: e8030000d00700002c01000090010000f4010000c8000000
+  newBerryTimeReuce: {fileID: 892981151}
+  newBerryAcheive: {fileID: 1437819310}
   startImg: {fileID: -6424938521615686402, guid: ba7797cf61411834084b3f3a7b9464b4, type: 3}
   doneImg: {fileID: -765015418919943096, guid: d7462a2db557512448ed8c9a9d1c7db0, type: 3}
   ingImg: {fileID: -7943917676593969559, guid: d7462a2db557512448ed8c9a9d1c7db0, type: 3}
-  newBerryTimeReuce: {fileID: 892981151}
-  newBerryAcheive: {fileID: 1437819310}
-  coolTimePanel: {fileID: 0}
+  time_newBerry:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  price_newBerry: 64000000c80000002c01000090010000f401000058020000bc020000
   SettingsPanel: {fileID: 2031592367}
   CheckPanel: {fileID: 1334959770}
   isblackPanelOn: 0
@@ -34041,49 +34041,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2119959384}
   m_CullTransparentMesh: 1
---- !u!1 &2120443014
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2120443016}
-  - component: {fileID: 2120443015}
-  m_Layer: 0
-  m_Name: TEST
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2120443015
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2120443014}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3cb1ab994004d2408f201f51f55c191, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &2120443016
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2120443014}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.25807315, y: -0.56429434, z: 337.74503}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 13
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2120615085
 GameObject:
   m_ObjectHideFlags: 0

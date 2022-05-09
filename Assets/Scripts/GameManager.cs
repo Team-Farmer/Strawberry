@@ -48,33 +48,28 @@ public class GameManager : MonoBehaviour
     public GameObject berryExp;
 
     //새로운딸기================================
+    [Header("======[ NEW BERRY ]======")]
     [Header("[ OBJECT ]")]
     public GameObject priceText_newBerry;
     public GameObject timeText_newBerry;
     public GameObject startBtn_newBerry;
-    [Header("[ INFO ]")]
-    public float[] time_newBerry;
-    public int[] price_newBerry;
+    public GameObject newBerryTimeReuce;
+    public GameObject newBerryAcheive;
+
     [Header("[ SPRITE ]")]
     public Sprite startImg;
     public Sprite doneImg;
     public Sprite ingImg;
-    [Header("[ NEW BERRY ]")]
-    public GameObject newBerryTimeReuce;
-    public GameObject newBerryAcheive;
 
-    private int index_newBerry = 0; //현재 인덱스
+    [Header("[ NEW BERRY INFO ]")]
+    public float[] time_newBerry;
+    public int[] price_newBerry;
+
     private bool isStart_newBerry = false; //시작을 눌렀는가
-    //===========================================
+    private int newBerryResearchIndex;
+   //===========================================
 
-    //고양이 쿨타임 관련
-    [NonSerialized]
-    public bool isCatTime = false;
-    private float catTime = 180;//3분(180초)
-    [Header("[Cat Cool Time]")]
-    public GameObject coolTimePanel;
-
-    [Header("[ Check/Settings Panel ]")]
+   [Header("[ Check/Settings Panel ]")]
     public GameObject SettingsPanel;
     public GameObject CheckPanel;
     public bool isblackPanelOn = false;
@@ -136,6 +131,10 @@ public class GameManager : MonoBehaviour
     }
     void Update()
     {
+        //새로운 베리 개발
+        newBerryResearchIndex = DataController.instance.gameData.newBerryResearch; //현재 인덱스
+        updateInfo(newBerryResearchIndex);
+
         if (Input.GetMouseButton(0)) // 마우스 왼쪽 버튼으로
         {
             GameObject obj = ClickObj(); // 클릭당한 옵젝을 가져온다
@@ -156,9 +155,6 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
-
-        updateInfo(index_newBerry);
-        CatCoolTime();
 
         //폰에서 뒤로가기 버튼 눌렀을 때/에디터에서ESC버튼 눌렀을 때 게임 종료
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -407,26 +403,6 @@ public class GameManager : MonoBehaviour
     public void workingCount(int employCount) 
     { workingCountText.GetComponent<Text>().text = employCount.ToString(); }
 
-    public void CatCoolTime()
-    {
-        //고양이 쿨타임 시작
-        if (isCatTime==true) 
-        { 
-            catTime -= Time.deltaTime;
-            coolTimePanel.SetActive(true);
-            //고양이 쿨타임 시간 현황
-            coolTimePanel.transform.GetChild(0).transform.GetComponent<Text>().text
-            = "쿨타임 " + TimeForm((int)catTime);
-        }
-
-        //쿨타임 끝나면 초기화
-        if (catTime < 0.1) 
-        { 
-            isCatTime = false; catTime = 180;
-            coolTimePanel.SetActive(false);
-        }
-    }
-
     #endregion
 
     #region New Berry Add
@@ -447,16 +423,12 @@ public class GameManager : MonoBehaviour
                     startBtn_newBerry.GetComponent<Image>().sprite = ingImg;//진행중 이미지
                 }
                 else
-                { 
-                    startBtn_newBerry.GetComponent<Image>().sprite = doneImg; //완료 이미지
-                }
+                {  startBtn_newBerry.GetComponent<Image>().sprite = doneImg; }//완료 이미지
             }
 
             //현재 price와 time text를 보인다.
-            priceText_newBerry.GetComponent<Text>().text 
-                = price_newBerry[index].ToString();
-            timeText_newBerry.GetComponent<Text>().text 
-                = TimeForm(Mathf.CeilToInt(time_newBerry[index])); //정수부분만 출력
+            priceText_newBerry.GetComponent<Text>().text = price_newBerry[index].ToString();
+            timeText_newBerry.GetComponent<Text>().text = TimeForm(Mathf.CeilToInt(time_newBerry[index]));
         }
         catch
         { Debug.Log("다음 레벨 정보 없음"); }
@@ -476,7 +448,7 @@ public class GameManager : MonoBehaviour
 
 
         //타이머가 0 이라면 (=타이머 끝나서 베리 얻을 수 있음)
-        if (time_newBerry[index_newBerry] < 0.9)
+        if (time_newBerry[newBerryResearchIndex] < 0.9)
         {
 
             int newBerryIndex = 0;
@@ -506,11 +478,11 @@ public class GameManager : MonoBehaviour
 
 
             //코인 소비
-            UseCoin(price_newBerry[index_newBerry]);
+            UseCoin(price_newBerry[newBerryResearchIndex]);
 
             //업그레이드 레벨 상승 -> 그 다음 업그레이드 내용, 금액 보인다
-            index_newBerry++;
-            updateInfo(index_newBerry);
+            DataController.instance.gameData.newBerryResearch++ ;
+            updateInfo(newBerryResearchIndex);
 
             //시작버튼으로 변경
             startBtn_newBerry.GetComponent<Image>().sprite = startImg;
