@@ -9,12 +9,18 @@ public class ArbeitMgr : MonoBehaviour
     public bool OnHamsworth;
     public bool OnFubo;
 
+    private float delay;
     void FixedUpdate()
     {
-        Rachel();
-        Thomson();
-        Fubo();
-        Hamsworth();
+        delay += Time.deltaTime;
+        if(delay >= 0.5f)
+        {
+            delay = 0f;
+            Rachel();
+            Thomson();
+            Fubo();
+            Hamsworth();
+        }
     }
     void Rachel()
     {
@@ -29,6 +35,7 @@ public class ArbeitMgr : MonoBehaviour
                 DataController.instance.gameData.berryFieldData[i].isPlant = true; // Ã¼Å© º¯¼ö °»½Å
                 DataController.instance.gameData.PTJNum[0]--;
                 Debug.Log("·¹ÀÌÃ¿ ³²Àº È½¼ö: " + DataController.instance.gameData.PTJNum[0]);
+                break;
             }
         }
     }
@@ -45,6 +52,7 @@ public class ArbeitMgr : MonoBehaviour
                 GameManager.instance.Harvest(GameManager.instance.stemList[i]); // ¼öÈ®ÇÑ´Ù
                 DataController.instance.gameData.PTJNum[1]--;
                 Debug.Log("Åè½¼ ³²Àº È½¼ö: " + DataController.instance.gameData.PTJNum[1]);
+                break;
             }
         }
     }   
@@ -59,6 +67,7 @@ public class ArbeitMgr : MonoBehaviour
                 DataController.instance.gameData.PTJNum[3]--;
                 Debug.Log("Çªº¸ ³²Àº È½¼ö: " + DataController.instance.gameData.PTJNum[3]);
                 StartCoroutine(DeleteBugByFubo(GameManager.instance.bugList[i]));
+                break;
             }
         }
     }
@@ -79,6 +88,7 @@ public class ArbeitMgr : MonoBehaviour
                 DataController.instance.gameData.PTJNum[4]--;
                 Debug.Log("ÇÜ½º¿ö½º ³²Àº È½¼ö: " + DataController.instance.gameData.PTJNum[4]);
                 StartCoroutine(DeleteWeedByHamsworth(GameManager.instance.farmList[i]));
+                break;
             }
         }
     }
