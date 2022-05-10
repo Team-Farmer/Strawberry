@@ -139,20 +139,20 @@ public class Stem : MonoBehaviour
         {                      
             instantBerry.gameObject.SetActive(true);
             instantBerry.GetComponent<Animator>().SetInteger("berryLevel", level);
-            instantBerry.transform.position = new Vector3(transform.position.x + 0.3f, transform.position.y - 0.1f, transform.position.z);
+            instantBerry.transform.localPosition = new Vector3(transform.localPosition.x + 0.3f, transform.localPosition.y - 0.5f, transform.localPosition.z);
         }
         else if (this.seedAnimLevel == 3)
         {                      
             instantBerry.gameObject.SetActive(true);
             instantBerry.GetComponent<Animator>().SetInteger("berryLevel", level);
-            instantBerry.transform.position = new Vector3(transform.position.x + 0.3f, transform.position.y - 0.06f, transform.position.z);
+            instantBerry.transform.localPosition = new Vector3(transform.localPosition.x + 0.3f, transform.localPosition.y - 0.48f, transform.localPosition.z);
         }
         else if (this.seedAnimLevel == 4)
         {          
             instantBerry.gameObject.SetActive(true);
             instantBerry.GetComponent<SpriteRenderer>().sprite = global.berryListAll[DataController.instance.gameData.berryFieldData[stemIdx].berryPrefabNowIdx].GetComponent<SpriteRenderer>().sprite;
             instantBerry.GetComponent<Animator>().SetInteger("berryLevel", level);        
-            instantBerry.transform.position = new Vector2(transform.position.x + 0.32f, transform.position.y + 0.06f);
+            instantBerry.transform.localPosition = new Vector2(transform.localPosition.x + 0.32f, transform.localPosition.y - 0.32f);
         }
     }
     void DefineBerry() // ´©Àû È®·üº¯¼ö·Î ·£´ýÇÑ µþ±â »ý¼º
