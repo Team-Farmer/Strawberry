@@ -34,7 +34,7 @@ public class ArbeitMgr : MonoBehaviour
                 GameManager.instance.PlantStrawBerry(GameManager.instance.stemList[i], GameManager.instance.farmObjList[i]); // ½É´Â´Ù                            
                 DataController.instance.gameData.berryFieldData[i].isPlant = true; // Ã¼Å© º¯¼ö °»½Å
                 DataController.instance.gameData.PTJNum[0]--;
-                Debug.Log("·¹ÀÌÃ¿ ³²Àº È½¼ö: " + DataController.instance.gameData.PTJNum[0]);
+                //Debug.Log("·¹ÀÌÃ¿ ³²Àº È½¼ö: " + DataController.instance.gameData.PTJNum[0]);
                 break;
             }
         }
@@ -51,7 +51,7 @@ public class ArbeitMgr : MonoBehaviour
             {
                 GameManager.instance.Harvest(GameManager.instance.stemList[i]); // ¼öÈ®ÇÑ´Ù
                 DataController.instance.gameData.PTJNum[1]--;
-                Debug.Log("Åè½¼ ³²Àº È½¼ö: " + DataController.instance.gameData.PTJNum[1]);
+                //Debug.Log("Åè½¼ ³²Àº È½¼ö: " + DataController.instance.gameData.PTJNum[1]);
                 break;
             }
         }
@@ -65,7 +65,7 @@ public class ArbeitMgr : MonoBehaviour
             {
                 DataController.instance.gameData.berryFieldData[i].hasBug = false;
                 DataController.instance.gameData.PTJNum[4]--;
-                Debug.Log("Çªº¸ ³²Àº È½¼ö: " + DataController.instance.gameData.PTJNum[4]);
+                //Debug.Log("Çªº¸ ³²Àº È½¼ö: " + DataController.instance.gameData.PTJNum[4]);
                 StartCoroutine(DeleteBugByFubo(GameManager.instance.bugList[i]));
                 break;
             }
@@ -86,7 +86,7 @@ public class ArbeitMgr : MonoBehaviour
             {
                 DataController.instance.gameData.berryFieldData[i].hasWeed = false;
                 DataController.instance.gameData.PTJNum[3]--;
-                Debug.Log("ÇÜ½º¿ö½º ³²Àº È½¼ö: " + DataController.instance.gameData.PTJNum[3]);
+                //Debug.Log("ÇÜ½º¿ö½º ³²Àº È½¼ö: " + DataController.instance.gameData.PTJNum[3]);
                 StartCoroutine(DeleteWeedByHamsworth(GameManager.instance.farmList[i]));
                 break;
             }

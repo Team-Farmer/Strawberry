@@ -388,7 +388,7 @@ public class GameManager : MonoBehaviour
     #region PTJ
     public void workingApply(List<Sprite> workingList)
     {
-        for (int i = 0; i < 3; i++)//칸 3개
+        for (int i = 0; i < 3; i++)
         {
             try
             {
@@ -402,6 +402,7 @@ public class GameManager : MonoBehaviour
             catch { Debug.Log("ERRORORRORO"); }
         }
     }
+
     //PTJ몇명 고용했는지
     public void workingCount(int employCount) 
     { workingCountText.GetComponent<Text>().text = employCount.ToString(); }
