@@ -38,17 +38,23 @@ public class GameManager : MonoBehaviour
     public const int TRUCK_CNT_LEVEL_1 = Globalvariable.TRUCK_CNT_LEVEL_1;
     public const int TRUCK_CNT_LEVEL_2 = Globalvariable.TRUCK_CNT_LEVEL_2;
     public const int TRUCK_CNT_LEVEL_MAX = Globalvariable.TRUCK_CNT_LEVEL_MAX;
+    
 
     [Header("[ PartTime/Search/Berry List ]")]
     //PTJ 알바
     public GameObject workingCountText;//고용 중인 동물 수
     public GameObject[] working;//고용 중인 동물 리스트 상단에
-    //베리 설명창
-    public GameObject berryExp;
+    [NonSerialized]
+    public List<int> workingID = new List<int>();//지금 일하고 있는 알바생 Id
+    //[NonSerialized]
+    //public List<int> workingIDPosition = new List<int>();//알바생들의 상단바에서의 위치
+    
+    public GameObject berryExp;//베리 설명창
 
     //새로운딸기================================
-    [Header("======[ NEW BERRY ]======")]
     [Header("[ OBJECT ]")]
+    [Header("[ ==============NEW BERRY============== ]")]
+    
     public GameObject priceText_newBerry;
     public GameObject timeText_newBerry;
     public GameObject startBtn_newBerry;
@@ -65,12 +71,13 @@ public class GameManager : MonoBehaviour
     [Header("[ NEW BERRY INFO ]")]
     public float[] time_newBerry;
     public int[] price_newBerry;
-
+    
     private bool isStart_newBerry = false; //시작을 눌렀는가
     private int newBerryResearchIndex;
-   //===========================================
+   
+    //===========================================
 
-   [Header("[ Check/Settings Panel ]")]
+    [Header("[ Check/Settings Panel ]")]
     public GameObject SettingsPanel;
     public GameObject CheckPanel;
     public bool isblackPanelOn = false;
@@ -135,6 +142,8 @@ public class GameManager : MonoBehaviour
         //새로운 베리 개발
         newBerryResearchIndex = DataController.instance.gameData.newBerryResearch; //현재 인덱스
         updateInfo(newBerryResearchIndex);
+
+        workinCountApply();
 
         if (Input.GetMouseButton(0)) // 마우스 왼쪽 버튼으로
         {
@@ -385,7 +394,7 @@ public class GameManager : MonoBehaviour
     #region 리스트
 
     #region PTJ
-    public void workingApply(List<Sprite> workingList)
+    public void workingApply(List<Sprite> workingList,int ID)
     {
         for (int i = 0; i < workingList.Count; i++)
         {
@@ -396,9 +405,25 @@ public class GameManager : MonoBehaviour
                 {
                     working[i].SetActive(true); //활성화
                     working[i].transform.GetChild(0).transform.GetComponent<Image>().sprite = workingList[i];//얼굴 이미지 넣기
+
                 }
             }
-            catch { Debug.Log("ERRORORRORO"); }
+            catch { }
+        }
+    }
+    public void workinCountApply() 
+    {
+        //지금 알바중인 알바생들의 남은 고용횟수
+        //엉망진창코드
+        for (int i = 0; i < 3; i++)
+        {
+            if (working[i].activeSelf == true)
+            {
+                working[i].transform.GetChild(1).transform.GetComponent<Text>().text
+                    = DataController.instance.gameData.PTJNum[workingID[i]].ToString();
+                if (DataController.instance.gameData.PTJNum[workingID[i]] == 0)
+                { working[i].SetActive(false); }
+            }
         }
     }
 

@@ -71,6 +71,7 @@ public class PTJResearch : MonoBehaviour
 
     //고용중인 알바생 명단
     static List<Sprite> workingList = new List<Sprite>();
+    
 
     //PTJ Exp의 슬라이드 관련
     private GameObject PTJSlider;
@@ -108,6 +109,10 @@ public class PTJResearch : MonoBehaviour
     {
         //PTJNumNow 값이 변경된다면 set get실행된다.
         PTJNumNow = DataController.instance.gameData.PTJNum[prefabnum];
+
+        //n번고용중인 현황을 보인다.
+        PTJExp.transform.GetChild(11).transform.GetComponent<Text>().text 
+            = DataController.instance.gameData.PTJNum[prefabnum].ToString() + "번 고용중이다.";
     }
     int PTJNumNow
     {
@@ -135,16 +140,19 @@ public class PTJResearch : MonoBehaviour
                 levelNum.GetComponent<Text>().color = new Color32(164, 164, 164, 255);
                 PTJBackground.transform.GetComponent<Image>().sprite = originalPTJSprite;
 
-                //main game에 현황 적용
+                //main game에 현황 적용 엉망진창 나중에 손보디
                 --employCount;
                 workingList.Remove(Info[prefabnum].FacePicture);
                 workingList.Add(null);
-                GameManager.instance.workingApply(workingList);
+                GameManager.instance.workingApply(workingList,prefabnum);
                 workingList.Remove(null);
-                GameManager.instance.workingApply(workingList);
+                GameManager.instance.workingApply(workingList,prefabnum);
                 GameManager.instance.workingCount(employCount);
 
+                GameManager.instance.workingID.Remove(prefabnum);
 
+
+                //슬라이더 초기화
                 InitSlider();
 
             }
@@ -388,8 +396,9 @@ public class PTJResearch : MonoBehaviour
         //main game
         workingList.Remove(null);
         workingList.Add(Info[ID].FacePicture);
-        GameManager.instance.workingApply(workingList);
+        GameManager.instance.workingApply(workingList, prefabnum);
 
+        GameManager.instance.workingID.Add(prefabnum);
 
         //슬라이더,토글
         PTJSlider.SetActive(false);
@@ -398,7 +407,7 @@ public class PTJResearch : MonoBehaviour
 
         //n번고용중임을 표시
         PTJExp.transform.GetChild(11).gameObject.SetActive(true);
-        PTJExp.transform.GetChild(11).transform.GetComponent<Text>().text = num.ToString() + "번 고용중이다.";
+        //PTJExp.transform.GetChild(11).transform.GetComponent<Text>().text = num.ToString() + "번 고용중이다.";
 
         EmployButtonFire();
     }
@@ -424,10 +433,12 @@ public class PTJResearch : MonoBehaviour
         if (DataController.instance.gameData.PTJNum[prefabnum] != 0){  --employCount;}
         workingList.Remove(Info[ID].FacePicture);
         workingList.Add(null);
-        GameManager.instance.workingApply(workingList);
+        GameManager.instance.workingApply(workingList, prefabnum);
         workingList.Remove(null);
-        GameManager.instance.workingApply(workingList);
+        GameManager.instance.workingApply(workingList, prefabnum);
         GameManager.instance.workingCount(employCount);
+
+        GameManager.instance.workingID.Remove(prefabnum);
 
         InitSlider();        
     }
