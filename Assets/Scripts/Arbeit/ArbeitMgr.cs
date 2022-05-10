@@ -22,7 +22,7 @@ public class ArbeitMgr : MonoBehaviour
             Hamsworth();
         }
     }
-    void Rachel()
+    void Rachel()//Åä³¢ 0
     {
         for (int i = 0; i < GameManager.instance.farmList.Count; i++)
         {
@@ -39,7 +39,7 @@ public class ArbeitMgr : MonoBehaviour
             }
         }
     }
-    void Thomson()
+    void Thomson()//°õ 1
     {
         for (int i = 0; i < GameManager.instance.farmList.Count; i++)
         {
@@ -56,16 +56,16 @@ public class ArbeitMgr : MonoBehaviour
             }
         }
     }   
-    void Fubo()
+    void Fubo()//°­¾ÆÁö 4
     {
         for (int i = 0; i < GameManager.instance.farmList.Count; i++)
         {
             if (DataController.instance.gameData.berryFieldData[i].hasBug &&
-                DataController.instance.gameData.PTJNum[3] > 0)
+                DataController.instance.gameData.PTJNum[4] > 0)
             {
                 DataController.instance.gameData.berryFieldData[i].hasBug = false;
-                DataController.instance.gameData.PTJNum[3]--;
-                Debug.Log("Çªº¸ ³²Àº È½¼ö: " + DataController.instance.gameData.PTJNum[3]);
+                DataController.instance.gameData.PTJNum[4]--;
+                Debug.Log("Çªº¸ ³²Àº È½¼ö: " + DataController.instance.gameData.PTJNum[4]);
                 StartCoroutine(DeleteBugByFubo(GameManager.instance.bugList[i]));
                 break;
             }
@@ -77,16 +77,16 @@ public class ArbeitMgr : MonoBehaviour
         bug.DieBug();
         
     }
-    void Hamsworth()
+    void Hamsworth()//ÇÜ½ºÅÍ 3
     {
         for (int i = 0; i < GameManager.instance.farmList.Count; i++)
         {
             if (DataController.instance.gameData.berryFieldData[i].hasWeed &&
-                DataController.instance.gameData.PTJNum[4] > 0)
+                DataController.instance.gameData.PTJNum[3] > 0)
             {
                 DataController.instance.gameData.berryFieldData[i].hasWeed = false;
-                DataController.instance.gameData.PTJNum[4]--;
-                Debug.Log("ÇÜ½º¿ö½º ³²Àº È½¼ö: " + DataController.instance.gameData.PTJNum[4]);
+                DataController.instance.gameData.PTJNum[3]--;
+                Debug.Log("ÇÜ½º¿ö½º ³²Àº È½¼ö: " + DataController.instance.gameData.PTJNum[3]);
                 StartCoroutine(DeleteWeedByHamsworth(GameManager.instance.farmList[i]));
                 break;
             }

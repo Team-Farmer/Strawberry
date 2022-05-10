@@ -388,17 +388,18 @@ public class GameManager : MonoBehaviour
     #region PTJ
     public void workingApply(List<Sprite> workingList)
     {
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 3; i++)//칸 3개
         {
             try
             {
-                if (workingList[i] == null) { working[i].SetActive(false); }
-                else {
-                    working[i].SetActive(true);
-                    working[i].transform.GetChild(0).transform.GetComponent<Image>().sprite = workingList[i];
+                if (workingList[i] == null) { working[i].SetActive(false); } //알바중인 사람 없으면 비활성화
+                else //알바중 있으면
+                {
+                    working[i].SetActive(true); //활성화
+                    working[i].transform.GetChild(0).transform.GetComponent<Image>().sprite = workingList[i];//얼굴 이미지 넣기
                 }
             }
-            catch {}//여기 에러?
+            catch { Debug.Log("ERRORORRORO"); }
         }
     }
     //PTJ몇명 고용했는지

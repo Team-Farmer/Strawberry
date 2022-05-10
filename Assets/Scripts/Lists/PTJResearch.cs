@@ -136,7 +136,7 @@ public class PTJResearch : MonoBehaviour
                 PTJBackground.transform.GetComponent<Image>().sprite = originalPTJSprite;
 
                 //main game에 현황 적용
-                --employCount;//중복되면안되는디
+                --employCount;
                 workingList.Remove(Info[prefabnum].FacePicture);
                 workingList.Add(null);
                 GameManager.instance.workingApply(workingList);
