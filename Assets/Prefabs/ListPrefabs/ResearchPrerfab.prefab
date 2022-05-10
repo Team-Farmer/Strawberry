@@ -740,44 +740,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Info:
-  - Name: "\uB538\uAE30 \uAC00\uCE58 \uC0C1\uC2B9"
+  - Name: "\uB538\uAE30 \uAC12\uC774 \uAE08\uAC12"
     Picture: {fileID: 4797985456115717453, guid: 4a782c50b2bb02a4a81b18e13d67cb90, type: 3}
     FacePicture: {fileID: 4797985456115717453, guid: 4a782c50b2bb02a4a81b18e13d67cb90, type: 3}
-    Explanation: "\uB538\uAE30\uC758 \uAC00\uCE58\uAC00 5%->10% \uB192\uC544\uC9C4\uB2E4"
+    Explanation: "\uB538\uAE30\uC758 \uAC00\uCE58\uAC00 0%\u21925% \uB192\uC544\uC838\uC694."
     Price: 100
-    isEmployed: 0
-  - Name: "\uB538\uAE30 \uC131\uC7A5\uAE30\uAC04 \uAC10\uC18C"
+  - Name: "\uB538\uAE30\uAC00 \uC465\uC465"
     Picture: {fileID: -7122343688644831495, guid: 4a782c50b2bb02a4a81b18e13d67cb90, type: 3}
     FacePicture: {fileID: -7122343688644831495, guid: 4a782c50b2bb02a4a81b18e13d67cb90, type: 3}
-    Explanation: "\uB538\uAE30\uC758 \uC131\uC7A5\uC2DC\uAC04\uC774 5%->10% \uAC10\uC18C\uD55C\uB2E4"
-    Price: 200
-    isEmployed: 0
-  - Name: "\uD2B8\uB7ED \uC218\uC775 \uC0C1\uC2B9"
+    Explanation: "\uB538\uAE30\uC758 \uC131\uC7A5\uC2DC\uAC04\uC774 0%\u21925% \uAC10\uC18C\uD574\uC694."
+    Price: 100
+  - Name: "\uBD80\uB974\uB294 \uAC8C \uAC12"
     Picture: {fileID: -5804490749463610629, guid: 4a782c50b2bb02a4a81b18e13d67cb90, type: 3}
     FacePicture: {fileID: -5804490749463610629, guid: 4a782c50b2bb02a4a81b18e13d67cb90, type: 3}
     Explanation: "\uD2B8\uB7ED\uC73C\uB85C \uB538\uAE30\uB97C \uD310\uB9E4\uD560
-      \uB54C 5%->10% \uB192\uC740 \uAC00\uACA9\uC73C\uB85C \uD310\uB9E4\uD55C\uB2E4"
-    Price: 300
-    isEmployed: 0
-  - Name: "\uBC8C\uB808 \uD655\uB960 \uAC10\uC18C"
+      \uB54C 0%\u21925% \uB192\uC740 \uAC00\uACA9\uC73C\uB85C \uD310\uB9E4\uD574\uC694."
+    Price: 100
+  - Name: "\uB3C4\uC640\uC918\uC694 \uC138\uC2A4\uCF54"
     Picture: {fileID: -2640173872217149559, guid: 4a782c50b2bb02a4a81b18e13d67cb90, type: 3}
     FacePicture: {fileID: -2640173872217149559, guid: 4a782c50b2bb02a4a81b18e13d67cb90, type: 3}
-    Explanation: "\uBC8C\uB808\uAC00 \uC0DD\uAE38 \uD655\uB960\uC774 0%\u21925% \uAC10\uC18C\uD55C\uB2E4."
-    Price: 400
-    isEmployed: 0
-  - Name: "\uC7A1\uCD08 \uD655\uB960 \uAC10\uC18C"
+    Explanation: "\uBC8C\uB808\uAC00 \uC0DD\uAE38 \uD655\uB960\uC774 0%\u21925% \uAC10\uC18C\uD574\uC694."
+    Price: 100
+  - Name: "\uC7A1\uCD08 \uBC14\uC774\uBC14\uC774"
     Picture: {fileID: -7908086550202134589, guid: 4a782c50b2bb02a4a81b18e13d67cb90, type: 3}
     FacePicture: {fileID: -7908086550202134589, guid: 4a782c50b2bb02a4a81b18e13d67cb90, type: 3}
-    Explanation: "\uC7A1\uCD08\uAC00 \uC0DD\uAE38 \uD655\uB960\uC774 0%\u21925% \uAC10\uC18C\uD55C\uB2E4."
-    Price: 500
-    isEmployed: 0
-  - Name: "\uC18C\uB098\uAE30 \uD655\uB960 \uC99D"
+    Explanation: "\uC7A1\uCD08\uAC00 \uC0DD\uAE38 \uD655\uB960\uC774 0%\u21925% \uAC10\uC18C\uD574\uC694."
+    Price: 100
+  - Name: "\uC2DC\uC6D0\uD55C \uC18C\uB098\uAE30"
     Picture: {fileID: -1716160622732779056, guid: 4a782c50b2bb02a4a81b18e13d67cb90, type: 3}
     FacePicture: {fileID: -1716160622732779056, guid: 4a782c50b2bb02a4a81b18e13d67cb90, type: 3}
-    Explanation: "\uC18C\uB098\uAE30\uAC00 \uB0B4\uB9B4 \uD655\uB960\uC774 5%->10%
-      \uC99D\uAC00\uD55C\uB2E4"
-    Price: 600
-    isEmployed: 0
+    Explanation: "\uC18C\uB098\uAE30 \uC9C0\uC18D \uC2DC\uAC04\uC774 0%\u21925% \uC99D\uAC00\uD574\uC694."
+    Price: 100
   PTJBackground: {fileID: 0}
   titleText: {fileID: 1015919002668168413}
   facePicture: {fileID: 3456816838606078675}
@@ -787,6 +780,11 @@ MonoBehaviour:
   PTJ: 0
   selectPTJSprite: {fileID: 0}
   originalPTJSprite: {fileID: 0}
+  PTJExp: {fileID: 0}
+  PTJwarningPanel: {fileID: 0}
+  NoCoinPanel: {fileID: 0}
+  PTJBP: {fileID: 0}
+  panelCoinText: {fileID: 0}
 --- !u!1 &7782225767939862393
 GameObject:
   m_ObjectHideFlags: 0

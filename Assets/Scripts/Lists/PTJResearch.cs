@@ -107,12 +107,15 @@ public class PTJResearch : MonoBehaviour
     }
     private void Update()
     {
-        //PTJNumNow 값이 변경된다면 set get실행된다.
-        PTJNumNow = DataController.instance.gameData.PTJNum[prefabnum];
+        if (PTJ == true)
+        {
+            //PTJNumNow 값이 변경된다면 set get실행된다.
+            PTJNumNow = DataController.instance.gameData.PTJNum[prefabnum];
 
-        //n번고용중인 현황을 보인다.
-        PTJExp.transform.GetChild(11).transform.GetComponent<Text>().text 
-            = DataController.instance.gameData.PTJNum[prefabnum].ToString() + "번 고용중이다.";
+            //n번고용중인 현황을 보인다.
+            PTJExp.transform.GetChild(11).transform.GetComponent<Text>().text
+                = DataController.instance.gameData.PTJNum[prefabnum].ToString() + "번 고용중이다.";
+        }
     }
     int PTJNumNow
     {
