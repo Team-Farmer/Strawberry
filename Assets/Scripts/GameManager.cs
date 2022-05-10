@@ -43,7 +43,8 @@ public class GameManager : MonoBehaviour
     //PTJ 알바
     public GameObject workingCountText;//고용 중인 동물 수
     public GameObject[] working;//고용 중인 동물 리스트 상단에
-    
+    //PTJ 알바생 얼굴 스프라이트
+    //public Sprite[] workingPicture;
     //베리 설명창
     public GameObject berryExp;
 
@@ -388,7 +389,7 @@ public class GameManager : MonoBehaviour
     #region PTJ
     public void workingApply(List<Sprite> workingList)
     {
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < workingList.Count; i++)
         {
             try
             {

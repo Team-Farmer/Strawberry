@@ -108,7 +108,6 @@ public class PTJResearch : MonoBehaviour
     {
         //PTJNumNow 값이 변경된다면 set get실행된다.
         PTJNumNow = DataController.instance.gameData.PTJNum[prefabnum];
-        Debug.Log("workinglist 길이="+workingList.Count);
     }
     int PTJNumNow
     {
@@ -139,7 +138,7 @@ public class PTJResearch : MonoBehaviour
                 //main game에 현황 적용
                 --employCount;
                 workingList.Remove(Info[prefabnum].FacePicture);
-                //workingList.Add(null);
+                workingList.Add(null);
                 GameManager.instance.workingApply(workingList);
                 GameManager.instance.workingCount(employCount);
 
@@ -388,6 +387,7 @@ public class PTJResearch : MonoBehaviour
         workingList.Add(Info[ID].FacePicture);
         GameManager.instance.workingApply(workingList);
 
+
         //슬라이더,토글
         PTJSlider.SetActive(false);
         PTJSlider10.SetActive(false);
@@ -420,9 +420,9 @@ public class PTJResearch : MonoBehaviour
         //main game에 현황 적용
         if (DataController.instance.gameData.PTJNum[prefabnum] != 0){  --employCount;}
         workingList.Remove(Info[ID].FacePicture);
-        //workingList.Add(null);
-        Debug.Log("tesst==="+workingList.Remove(Info[ID].FacePicture));
+        workingList.Add(null);
         GameManager.instance.workingApply(workingList);
+        
         GameManager.instance.workingCount(employCount);
 
         InitSlider();        
