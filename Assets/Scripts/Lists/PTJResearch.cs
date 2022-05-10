@@ -140,7 +140,10 @@ public class PTJResearch : MonoBehaviour
                 workingList.Remove(Info[prefabnum].FacePicture);
                 workingList.Add(null);
                 GameManager.instance.workingApply(workingList);
+                workingList.Remove(null);
+                GameManager.instance.workingApply(workingList);
                 GameManager.instance.workingCount(employCount);
+
 
                 InitSlider();
 
@@ -422,7 +425,8 @@ public class PTJResearch : MonoBehaviour
         workingList.Remove(Info[ID].FacePicture);
         workingList.Add(null);
         GameManager.instance.workingApply(workingList);
-        
+        workingList.Remove(null);
+        GameManager.instance.workingApply(workingList);
         GameManager.instance.workingCount(employCount);
 
         InitSlider();        
