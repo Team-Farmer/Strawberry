@@ -246,8 +246,8 @@ public class GameManager : MonoBehaviour
         AudioManager.instance.HarvestAudioPlay();//딸기 수확할때 효과음
         farm.isHarvest = true;
         Vector2 pos = stem.transform.position;
-        stem.instantBerry.Explosion(pos, target.position, 0.5f);
-        stem.instantBerry.GetComponent<SpriteRenderer>().sortingOrder = 4;
+        stem.getInstantBerryObj().GetComponent<Berry>().Explosion(pos, target.position, 0.5f);
+        stem.getInstantBerryObj().GetComponent<SpriteRenderer>().sortingOrder = 4;
 
         StartCoroutine(HarvestRoutine(farm, stem)); // 연속으로 딸기가 심어지는 현상을 방지
 
@@ -284,7 +284,7 @@ public class GameManager : MonoBehaviour
         if (DataController.instance.gameData.truckBerryCnt < TRUCK_CNT_LEVEL_MAX)
         {
             DataController.instance.gameData.truckBerryCnt += 1;
-            DataController.instance.gameData.truckCoin += stem.instantBerry.berryPrice;
+            DataController.instance.gameData.truckCoin += stem.getInstantBerryObj().GetComponent<Berry>().berryPrice;
         }
     }
     #endregion

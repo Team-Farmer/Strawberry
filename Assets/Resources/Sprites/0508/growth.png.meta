@@ -1,7 +1,79 @@
 fileFormatVersion: 2
 guid: 0990028a8dc3bb542a5a72a5e2dd920f
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 6014301334660670223
+    second: growth_0
+  - first:
+      213: 2294204801877065548
+    second: growth_1
+  - first:
+      213: 5120636911143964092
+    second: growth_2
+  - first:
+      213: 849143963214638146
+    second: growth_3
+  - first:
+      213: -4392970834765132845
+    second: growth_4
+  - first:
+      213: 1269193872730421438
+    second: growth_5
+  - first:
+      213: -8668441013062241898
+    second: growth_6
+  - first:
+      213: 1165370631885296921
+    second: growth_7
+  - first:
+      213: 1026382822485745591
+    second: growth_8
+  - first:
+      213: 3616745554256821679
+    second: growth_9
+  - first:
+      213: 1576033793512352004
+    second: growth_10
+  - first:
+      213: -2371479752988393032
+    second: growth_11
+  - first:
+      213: -8591795404237454389
+    second: growth_12
+  - first:
+      213: 768753691747700099
+    second: growth_13
+  - first:
+      213: -2925660109266659523
+    second: growth_14
+  - first:
+      213: -9175074839865386243
+    second: growth_15
+  - first:
+      213: 2813745188888940608
+    second: growth_16
+  - first:
+      213: -822090380258597099
+    second: growth_17
+  - first:
+      213: -6592420387211748778
+    second: growth_18
+  - first:
+      213: -8046953669472814805
+    second: growth_19
+  - first:
+      213: 6967665385384334184
+    second: growth_20
+  - first:
+      213: -6169391853119170511
+    second: growth_21
+  - first:
+      213: -6328241094895468474
+    second: growth_22
+  - first:
+      213: 2372928834916957936
+    second: growth_23
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -46,7 +118,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 185
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -113,7 +185,511 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: growth_0
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 907
+        width: 85
+        height: 110
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f036b90e237177350800000000000000
+      internalID: 6014301334660670223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: growth_1
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 900
+        width: 85
+        height: 110
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4fb0e1bc17a6df10800000000000000
+      internalID: 2294204801877065548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: growth_2
+      rect:
+        serializedVersion: 2
+        x: 458
+        y: 897
+        width: 85
+        height: 110
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbd4d70f328201740800000000000000
+      internalID: 5120636911143964092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: growth_3
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 894
+        width: 85
+        height: 110
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24c63928fe3c8cb00800000000000000
+      internalID: 849143963214638146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: growth_4
+      rect:
+        serializedVersion: 2
+        x: 859
+        y: 888
+        width: 85
+        height: 110
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3db4c2dfc480903c0800000000000000
+      internalID: -4392970834765132845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: growth_5
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 678
+        width: 85
+        height: 110
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb8f23f4a151d9110800000000000000
+      internalID: 1269193872730421438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: growth_6
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 669
+        width: 85
+        height: 110
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6917ff373d283b780800000000000000
+      internalID: -8668441013062241898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: growth_7
+      rect:
+        serializedVersion: 2
+        x: 426
+        y: 653
+        width: 125
+        height: 179
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91512315a6a3c2010800000000000000
+      internalID: 1165370631885296921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: growth_8
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 646
+        width: 125
+        height: 179
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7bf53d13db17e3e00800000000000000
+      internalID: 1026382822485745591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: growth_9
+      rect:
+        serializedVersion: 2
+        x: 832
+        y: 639
+        width: 125
+        height: 179
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fad73745be2413230800000000000000
+      internalID: 3616745554256821679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: growth_10
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 433
+        width: 125
+        height: 179
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 409a05092623fd510800000000000000
+      internalID: 1576033793512352004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: growth_11
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 432
+        width: 125
+        height: 179
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b18813babfc61fd0800000000000000
+      internalID: -2371479752988393032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: growth_12
+      rect:
+        serializedVersion: 2
+        x: 430
+        y: 433
+        width: 125
+        height: 179
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc3c793e99fc3c880800000000000000
+      internalID: -8591795404237454389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: growth_13
+      rect:
+        serializedVersion: 2
+        x: 628
+        y: 432
+        width: 125
+        height: 179
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38d446cd8692baa00800000000000000
+      internalID: 768753691747700099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: growth_14
+      rect:
+        serializedVersion: 2
+        x: 815
+        y: 429
+        width: 163
+        height: 185
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3751a5a1a7f567d0800000000000000
+      internalID: -2925660109266659523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: growth_15
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 232
+        width: 163
+        height: 185
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfa13367b069ba080800000000000000
+      internalID: -9175074839865386243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: growth_16
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 232
+        width: 163
+        height: 185
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0409038675e6c0720800000000000000
+      internalID: 2813745188888940608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: growth_17
+      rect:
+        serializedVersion: 2
+        x: 403
+        y: 230
+        width: 163
+        height: 185
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 517ab6f97295794f0800000000000000
+      internalID: -822090380258597099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: growth_18
+      rect:
+        serializedVersion: 2
+        x: 575
+        y: 235
+        width: 210
+        height: 185
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65a533206940384a0800000000000000
+      internalID: -6592420387211748778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: growth_19
+      rect:
+        serializedVersion: 2
+        x: 795
+        y: 245
+        width: 180
+        height: 157
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b29fb0fa54a735090800000000000000
+      internalID: -8046953669472814805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: growth_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 46
+        width: 180
+        height: 157
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8635e9170ce12b060800000000000000
+      internalID: 6967665385384334184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: growth_21
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 45
+        width: 180
+        height: 157
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13894a2ebcae16aa0800000000000000
+      internalID: -6169391853119170511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: growth_22
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 50
+        width: 180
+        height: 157
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6400abda0429d28a0800000000000000
+      internalID: -6328241094895468474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: growth_23
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 68
+        width: 117
+        height: 111
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0feb18af3365ee020800000000000000
+      internalID: 2372928834916957936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
