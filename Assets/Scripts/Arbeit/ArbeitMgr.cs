@@ -55,46 +55,71 @@ public class ArbeitMgr : MonoBehaviour
                 break;
             }
         }
-    }   
-    void Fubo()//°­¾ÆÁö 4
-    {
-        for (int i = 0; i < GameManager.instance.farmList.Count; i++)
-        {
-            if (DataController.instance.gameData.berryFieldData[i].hasBug &&
-                DataController.instance.gameData.PTJNum[4] > 0)
-            {
-                DataController.instance.gameData.berryFieldData[i].hasBug = false;
-                DataController.instance.gameData.PTJNum[4]--;
-                //Debug.Log("Çªº¸ ³²Àº È½¼ö: " + DataController.instance.gameData.PTJNum[4]);
-                StartCoroutine(DeleteBugByFubo(GameManager.instance.bugList[i]));
-                break;
-            }
-        }
     }
-    IEnumerator DeleteBugByFubo(Bug bug)
+    public float Pigma() // µÅÁö 2
     {
-        yield return new WaitForSeconds(0.75f);
-        bug.DieBug();
-        
+        if (DataController.instance.gameData.PTJNum[2] > 0)
+        {
+            float coEffi = Random.Range(0.7f, 1.8f);
+            DataController.instance.gameData.PTJNum[2]--;
+
+            Debug.Log(coEffi);
+            return coEffi;
+        }
+        else return 1.0f;
     }
     void Hamsworth()//ÇÜ½ºÅÍ 3
     {
         for (int i = 0; i < GameManager.instance.farmList.Count; i++)
         {
-            if (DataController.instance.gameData.berryFieldData[i].hasWeed &&
+            if (DataController.instance.gameData.berryFieldData[i].hasBug &&
                 DataController.instance.gameData.PTJNum[3] > 0)
             {
-                DataController.instance.gameData.berryFieldData[i].hasWeed = false;
+                DataController.instance.gameData.berryFieldData[i].hasBug = false;
                 DataController.instance.gameData.PTJNum[3]--;
-                //Debug.Log("ÇÜ½º¿ö½º ³²Àº È½¼ö: " + DataController.instance.gameData.PTJNum[3]);
-                StartCoroutine(DeleteWeedByHamsworth(GameManager.instance.farmList[i]));
+                //Debug.Log("Çªº¸ ³²Àº È½¼ö: " + DataController.instance.gameData.PTJNum[4]);
+                StartCoroutine(DeleteBugByHamsworth(GameManager.instance.bugList[i]));
                 break;
             }
         }
     }
-    IEnumerator DeleteWeedByHamsworth(Farm farm)
+    IEnumerator DeleteBugByHamsworth(Bug bug)
     {
         yield return new WaitForSeconds(0.75f);
-        farm.weed.DeleteWeed();               
+        bug.DieBug();
+    }
+
+    void Fubo()//°­¾ÆÁö 4
+    {
+        for (int i = 0; i < GameManager.instance.farmList.Count; i++)
+        {
+            if (DataController.instance.gameData.berryFieldData[i].hasWeed &&
+                DataController.instance.gameData.PTJNum[4] > 0)
+            {
+                DataController.instance.gameData.berryFieldData[i].hasWeed = false;
+                DataController.instance.gameData.PTJNum[4]--;
+                //Debug.Log("ÇÜ½º¿ö½º ³²Àº È½¼ö: " + DataController.instance.gameData.PTJNum[3]);
+                StartCoroutine(DeleteWeedByFubo(GameManager.instance.farmList[i]));
+                break;
+            }
+        }
+    }
+    IEnumerator DeleteWeedByFubo(Farm farm)
+    {
+        yield return new WaitForSeconds(0.75f);
+        farm.weed.DeleteWeed();
+    }
+    
+    public int lluvia() // °í¾çÀÌ 5
+    {
+        if (DataController.instance.gameData.PTJNum[5] > 0)
+        {
+            DataController.instance.gameData.PTJNum[5]--;           
+            return 4;
+        }
+        else
+        {           
+            return 2;
+        }
     }
 }

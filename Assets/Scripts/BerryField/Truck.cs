@@ -7,8 +7,9 @@ public class Truck : MonoBehaviour
 {
     public GameObject MaxPanel;    
     //public int berryCnt = 0; // 옮김
-    private Animator anim;   
-    
+    private Animator anim;
+    private ArbeitMgr arbeit;
+
     public const int CNT_LEVEL_0 = Globalvariable.TRUCK_CNT_LEVEL_0;
     public const int CNT_LEVEL_1 = Globalvariable.TRUCK_CNT_LEVEL_1;
     public const int CNT_LEVEL_2 = Globalvariable.TRUCK_CNT_LEVEL_2;
@@ -16,7 +17,8 @@ public class Truck : MonoBehaviour
 
     void Awake()
     {
-        anim = GetComponent<Animator>();          
+        anim = GetComponent<Animator>();
+        arbeit = GameObject.FindGameObjectWithTag("Arbeit").GetComponent<ArbeitMgr>();
     }
     void FixedUpdate()
     {
@@ -50,8 +52,13 @@ public class Truck : MonoBehaviour
     public void ReceiveCoinNormal()
     {
         //DataController.instance.gameData.coin += DataController.instance.gameData.truckCoin;
-        GameManager.instance
-            .GetCoin(DataController.instance.gameData.truckCoin + GameManager.instance.bonusTruckCoin);
+        float coEffi = arbeit.Pigma();
+        float totalCoin = (DataController.instance.gameData.truckCoin
+            + GameManager.instance.bonusTruckCoin) * coEffi;
+
+        Debug.Log(totalCoin);
+        GameManager.instance.GetCoin((int)totalCoin);
+
         //Debug.Log("누적 출석 : " + DataController.instance.gameData.accCoin);      // 누적 코인 테스트
         DataController.instance.gameData.truckBerryCnt = 0;
         DataController.instance.gameData.truckCoin = 0;

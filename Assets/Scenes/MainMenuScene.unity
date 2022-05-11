@@ -21225,7 +21225,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000061035156, y: -2.6000977}
+  m_AnchoredPosition: {x: 0.00012207031, y: -2.6000977}
   m_SizeDelta: {x: -0.00012207, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1166646938
@@ -27108,8 +27108,8 @@ GameObject:
   - component: {fileID: 1467007737}
   - component: {fileID: 1467007738}
   m_Layer: 0
-  m_Name: Aribeit
-  m_TagString: Untagged
+  m_Name: Arbeit
+  m_TagString: Arbeit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

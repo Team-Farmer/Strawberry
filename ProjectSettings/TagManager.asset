@@ -20,6 +20,7 @@ TagManager:
   - NewsExplanation
   - medalCount
   - BerryExplanation
+  - Arbeit
   layers:
   - Default
   - TransparentFX
