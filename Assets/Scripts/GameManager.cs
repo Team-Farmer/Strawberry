@@ -487,11 +487,17 @@ public class GameManager : MonoBehaviour
             {
 
                 int newBerryIndex = 0;
-                while (DataController.instance.gameData.isBerryUnlock[newBerryIndex] == true)
+                while (DataController.instance.gameData.isBerryUnlock[newBerryIndex] == true
+                    || Globalvariable.instance.berryListAll[newBerryIndex] ==null)
                 {
-                    //아직 없는 베리 찾아서 true로 변경
-                    //없는 베리중에 랜덤으로 하나 결정(임의로 0~9)
-                    newBerryIndex = UnityEngine.Random.Range(0, 9);
+                    switch (DataController.instance.gameData.newBerryResearchAble) 
+                    {
+                        case 0: newBerryIndex = UnityEngine.Random.Range(0, 64); break;
+                        case 1: newBerryIndex = UnityEngine.Random.Range(0, 128); break;
+                        case 2: newBerryIndex = UnityEngine.Random.Range(0, 192); break;
+                    }
+                    //아직 unlock되지 않은 베리 중에서 존재하는 베리를 고르기
+                    
                 }
                 //새로운 딸기가 추가된다.
                 DataController.instance.gameData.isBerryUnlock[newBerryIndex] = true;

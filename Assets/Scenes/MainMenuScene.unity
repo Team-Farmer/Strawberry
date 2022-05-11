@@ -1861,7 +1861,7 @@ MonoBehaviour:
   - {fileID: 302096627}
   scrollBar: {fileID: 896976377}
   swipeTime: 0.1
-  swipeDistance: 1
+  swipeDistance: 100
   berryLockSpecial: {fileID: 655529759}
   berryLockUnique: {fileID: 153615610}
   berryLockPanel: {fileID: 882306121}
@@ -7900,7 +7900,23 @@ MonoBehaviour:
   - 3
   - 4
   - 5
-  price_newBerry: 64000000c80000002c01000090010000f4010000
+  - 6
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  price_newBerry: 64000000c80000002c01000090010000f401000058020000640000006400000064000000640000006400000064000000640000006400000064000000640000006400000064000000640000006400000064000000
   SettingsPanel: {fileID: 2031592367}
   CheckPanel: {fileID: 1334959770}
   isblackPanelOn: 0
