@@ -259,7 +259,7 @@ public class ChangeLayer2 : MonoBehaviour
 	//challenge News 창 변경
 	public void TurnOn(GameObject obj)
 	{
-		for (int i = 0; i < content.Length; i++) { content[i].SetActive(false); } //challenge, news 둘 다 비활성화
+		for (int i = 0; i < content.Length; i++) { content[i].SetActive(false); } //challenge, news , content 다 비활성화
 		obj.SetActive(true); //해당 창만 활성화
 	}
 

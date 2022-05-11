@@ -113,14 +113,18 @@ public class DataController : MonoBehaviour
         {
             gameData.isBerryUnlock[i] = false;
         }
-        gameData.isBerryUnlock[0] = true;
+        gameData.isBerryUnlock[0] = true;//첫번째 기본베리는 존재
+
+        //도전과제
         for (int i = 0; i < 7; i++) {
             gameData.challengeGauge[i] = 0;
             gameData.challengeEnd[i] = false;
         }
+        //뉴스,수집
         for (int i = 0; i < 7; i++) {
             gameData.isNewsUnlock[i]=false;
             gameData.NewsEnd[i] = false;
+            gameData.isCollectionDone[i] = false;
         }
         //PTJ
         for (int i = 0; i < 6; i++) { gameData.PTJNum[i] = 0; }

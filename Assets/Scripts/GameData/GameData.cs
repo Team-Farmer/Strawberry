@@ -55,6 +55,9 @@ public class GameData
     public bool[] isNewsUnlock = new bool[7];
     public bool[] NewsEnd = new bool[7];
 
+    //수집
+    public bool[] isCollectionDone = new bool[7];
+
     //PTJ 알바생의 현재 고용횟수
     public int[] PTJNum = new int[6];
 

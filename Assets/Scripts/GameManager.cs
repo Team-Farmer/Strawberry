@@ -63,6 +63,8 @@ public class GameManager : MonoBehaviour
     public GameObject newBerryTimeReuce;
     public GameObject newBerryAcheive;
 
+    public GameObject noNewBerry;
+
     [Header("[ SPRITE ]")]
     public Sprite startImg;
     public Sprite doneImg;
@@ -460,8 +462,7 @@ public class GameManager : MonoBehaviour
         }
         catch
         {
-            priceText_newBerry.GetComponent<Text>().text = "no berry";
-            timeText_newBerry.GetComponent<Text>().text = "no berry";
+            noNewBerry.SetActive(true);
         }
     }
 
@@ -492,7 +493,7 @@ public class GameManager : MonoBehaviour
                 {
                     switch (DataController.instance.gameData.newBerryResearchAble) 
                     {
-                        case 0: newBerryIndex = UnityEngine.Random.Range(0, 64); break;
+                        case 0: newBerryIndex = UnityEngine.Random.Range(0, 64); break;//확률적용하기
                         case 1: newBerryIndex = UnityEngine.Random.Range(0, 128); break;
                         case 2: newBerryIndex = UnityEngine.Random.Range(0, 192); break;
                     }
