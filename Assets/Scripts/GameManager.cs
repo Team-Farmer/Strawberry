@@ -576,10 +576,12 @@ public class GameManager : MonoBehaviour
     //활성화 비활성화로 창 끄고 켜고
     public void turnOff(GameObject Obj)
     {
+
         if (Obj.activeSelf == true)
         { Obj.SetActive(false); }
         else
         { Obj.SetActive(true); }
+  
     }
 
     public string TimeForm(int time)//초단위 시간을 분:초로 변경

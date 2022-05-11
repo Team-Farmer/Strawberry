@@ -9,6 +9,7 @@ public class ChangeLayer2 : MonoBehaviour
 {
 	[SerializeField]
 	private bool isBerry;
+
 	[Header("====Buttons====")]
 	[SerializeField]
 	private GameObject[] tagButtons;//버튼 gameObject
@@ -29,9 +30,16 @@ public class ChangeLayer2 : MonoBehaviour
 	[SerializeField]
 	private float swipeDistance = 1.0f;        // 페이지가 Swipe되기 위해 움직여야 하는 최소 거리
 
+
 	[Header("=====Berry Lock=====")]
 	public GameObject berryLockSpecial;
 	public GameObject berryLockUnique;
+	public GameObject berryLockPanel;
+	private GameObject NoButton;//개발 조건이 안되면 클릭을 막을 버튼
+	[Header("=====Panel Black=====")]
+	[SerializeField]
+	private GameObject panelBlack;
+
 	//============================================================================
 	//SWIPE 변수들
 
@@ -73,6 +81,8 @@ public class ChangeLayer2 : MonoBehaviour
 
 			// 처음 시작할 때 0번 페이지 보인다.
 			SetScrollBarValue(0);
+
+			NoButton = berryLockPanel.transform.GetChild(2).gameObject;
 		}
 	}
 
@@ -253,9 +263,55 @@ public class ChangeLayer2 : MonoBehaviour
 		obj.SetActive(true); //해당 창만 활성화
 	}
 
+	public void DevelopButton1(int index) 
+	{
 
+		panelBlack.SetActive(true);
+		NoButton.SetActive(true);
+		//기본 패널 띄우기
+		berryLockPanel.SetActive(true);
 
+		//패널 내용 index 0=special / index 1=unique
+		switch (index) 
+		{
+			case 0: //special
+				berryLockPanel.transform.GetChild(1).GetComponent<Text>().text
+					= "스페셜 딸기를 개발하겠습니까? \n n레벨이상 개발 가능";
+				if (DataController.instance.gameData.heart >= 10) //조건을 충족하면 개발 버튼 누를 수 있게. 뭐가 기준인지 몰라서 일단 하트로 함
+				{ NoButton.SetActive(false); }
+				break;
+			case 1: //unique 
+				berryLockPanel.transform.GetChild(1).GetComponent<Text>().text
+					= "유니크 딸기를 개발하겠습니까? \n nn레벨이상 개발 가능";
+				if (DataController.instance.gameData.heart >= 600) 
+				{ NoButton.SetActive(false); }
+				break;
+		}
+	
+	}
+	//조건이 충족되어서 유니크,스페셜 딸기 개발 버튼을 누르면
+	public void DevelopButton2() 
+	{
+		switch (DataController.instance.gameData.newBerryResearchAble) 
+		{
+			case 0:
+				//현재 클래식만 개발가능
+				DataController.instance.gameData.newBerryResearchAble++;
+				berryLockSpecial.SetActive(false);
+				break;
+			case 1:
+				//현재 클래식, 스페셜 개발가능
+				DataController.instance.gameData.newBerryResearchAble++;
+				berryLockUnique.SetActive(false);
+				break;
+		}
+		berryLockPanel.SetActive(false);
+		panelBlack.SetActive(false);
+	}
 
+	//=================================================================================================
+	//=================================================================================================
+	//[분류별 베리 띄우기]
 	//버튼을 눌렀을 때
 	//해당 분류의 딸기를 보인다
 	public void selectBerryTag(string name)
@@ -278,7 +334,7 @@ public class ChangeLayer2 : MonoBehaviour
 				switch (DataController.instance.gameData.newBerryResearchAble)
 				{
 					case 0: berryLockSpecial.SetActive(true); break;
-					case 1:	berryLockSpecial.SetActive(true); break;
+					case 1:	berryLockSpecial.SetActive(false); break;
 					case 2:	berryLockSpecial.SetActive(false); break;
 				}
 				inActive("berry_classic"); inActive("berry_unique"); break;

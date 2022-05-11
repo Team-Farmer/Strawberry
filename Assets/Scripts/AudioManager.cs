@@ -35,7 +35,13 @@ public class AudioManager : MonoBehaviour
         }
         else { Destroy(gameObject); }
     }
-
+    private void Start()
+    {
+        BGSoundSlider.GetComponent<Slider>().value = 0.5f;
+        SFXSoundSlider.GetComponent<Slider>().value = 0.5f;
+        BGSoundVolume();
+        SFXVolume();
+    }
     //씬에 따라 배경음 변경
     private void OnSceneLoaded(Scene arg0,LoadSceneMode arg1) {
         for (int i = 0; i < bglist.Length; i++) {
