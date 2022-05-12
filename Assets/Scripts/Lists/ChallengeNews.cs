@@ -75,15 +75,14 @@ public class ChallengeNews : MonoBehaviour
     GameObject newsExplanation;
     GameObject newsExp;
 
-    GameObject medalText;
 
     private void Start()
     {
         
         newsExplanation = GameObject.FindGameObjectWithTag("NewsExplanation");
-        medalText = GameObject.FindGameObjectWithTag("medalCount");
-
-        medalText.GetComponent<Text>().text = DataController.instance.gameData.medal.ToString();//메달 현황 텍스트로 띄우기
+        //medalText = GameObject.FindGameObjectWithTag("medalCount");
+        //medalText.GetComponent<Text>().text = DataController.instance.gameData.medal.ToString();//메달 현황 텍스트로 띄우기
+        GameManager.instance.ShowMedalText();//현재 메달을 보인다.
         InfoUpdate();
     }
 
@@ -155,10 +154,13 @@ public class ChallengeNews : MonoBehaviour
         if (DataController.instance.gameData.challengeGauge[prefabnum] == Info[prefabnum].condition_challenge)
         {
             //메달==================================================
-            DataController.instance.gameData.medal += Info[prefabnum].reward_challenge[0];//보상 추가
-            medalText.GetComponent<Text>().text = DataController.instance.gameData.medal.ToString();//메달 현황 텍스트로 띄우기
+            GameManager.instance.GetMedal(Info[prefabnum].reward_challenge[0]);//보상 추가
+            //DataController.instance.gameData.medal += ;
+            //medalText.GetComponent<Text>().text = DataController.instance.gameData.medal.ToString();//메달 현황 텍스트로 띄우기
+
             //하트==================================================
-            DataController.instance.gameData.heart += Info[prefabnum].reward_challenge[1];//보상 추가
+            GameManager.instance.GetHeart(Info[prefabnum].reward_challenge[1]);//보상 추가
+            //DataController.instance.gameData.heart += ;
 
 
 
@@ -176,10 +178,15 @@ public class ChallengeNews : MonoBehaviour
 
     public void UnlockNews() 
     {
-        //메달 감소
-        DataController.instance.gameData.medal--;
-        DataController.instance.gameData.NewsEnd[prefabnum] = true;
-        Destroy(unlock_News); 
+        //DataController.instance.gameData.medal--;
+        if (DataController.instance.gameData.medal >= 1)
+        {
+            //메달 감소
+            GameManager.instance.UseMedal(1);//메달을 하나 사용한다.
+            DataController.instance.gameData.NewsEnd[prefabnum] = true;
+            Destroy(unlock_News);
+        }
+         
     }
 
 

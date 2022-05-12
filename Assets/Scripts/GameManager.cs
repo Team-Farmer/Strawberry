@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     [Header("[ Money ]")]
     public Text CoinText;
     public Text HeartText;
+    public Text MedalText;
 
     [Header("[ Object ]")]
     public GameObject stemPrefab; // 프리팹
@@ -46,8 +47,7 @@ public class GameManager : MonoBehaviour
     public GameObject[] working;//고용 중인 동물 리스트 상단에
     [NonSerialized]
     public List<int> workingID = new List<int>();//지금 일하고 있는 알바생 Id
-    //[NonSerialized]
-    //public List<int> workingIDPosition = new List<int>();//알바생들의 상단바에서의 위치
+    public GameObject PTJList;
     
     public GameObject berryExp;//베리 설명창
 
@@ -115,6 +115,10 @@ public class GameManager : MonoBehaviour
 
         //SetBerryPrice();
         InitDataInGM();       
+    }
+    private void Start()
+    {
+        PTJList.SetActive(true);
     }
     void InitDataInGM()
     {
@@ -353,6 +357,30 @@ public class GameManager : MonoBehaviour
             NoHeartPanel.GetComponent<PanelAnimation>().OpenScale();
         }
     }
+
+    public void GetMedal(int cost)
+    {
+        DataController.instance.gameData.medal+=cost;
+        ShowMedalText();
+    }
+
+    public void UseMedal(int cost)
+    {
+        int myMedal = DataController.instance.gameData.medal;
+        if (myMedal >= cost)
+        {
+            DataController.instance.gameData.medal -= cost;
+            ShowMedalText();
+        }
+        else
+        {
+            //메달이 모자를때 뜨는 경고
+        }
+    }
+    public void ShowMedalText() 
+    {
+        MedalText.GetComponent<Text>().text = DataController.instance.gameData.medal.ToString();
+    }
     #endregion
 
     #region 콜라이더
@@ -494,8 +522,8 @@ public class GameManager : MonoBehaviour
                     switch (DataController.instance.gameData.newBerryResearchAble) 
                     {
                         case 0: newBerryIndex = UnityEngine.Random.Range(0, 64); break;//확률적용하기
-                        case 1: newBerryIndex = UnityEngine.Random.Range(0, 128); break;
-                        case 2: newBerryIndex = UnityEngine.Random.Range(0, 192); break;
+                        case 1: newBerryIndex = berryPercantage(128);  break;
+                        case 2: newBerryIndex = berryPercantage(192);  break;
                     }
                     //아직 unlock되지 않은 베리 중에서 존재하는 베리를 고르기
                     
@@ -540,6 +568,39 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private int berryPercantage(int endIndex) 
+    {
+        /*
+        int cumulative = 0;//누적
+        int probSum = 0;
+        int len = global.berryListAll.Count;
+
+        for (int i = 0; i < len; i++)
+        {
+            if (DataController.instance.gameData.isBerryUnlock[i])
+            {
+                probSum += global.berryListAll[i].GetComponent<Berry>().berrykindProb; // 해금된 딸기에서 딸기의 발생확률을 가져옴
+            }
+        }
+        int berryRandomChance = UnityEngine.Random.Range(0, probSum + 1);
+
+        for (int i = 0; i < len; i++)
+        {
+            if (DataController.instance.gameData.isBerryUnlock[i])
+            {
+                cumulative += global.berryListAll[i].GetComponent<Berry>().berrykindProb; // 해금된 딸기에서 딸기의 발생확률을 가져옴
+                if (berryRandomChance <= cumulative)
+                {
+                    DataController.instance.gameData.berryFieldData[stemIdx].berryPrefabNowIdx = i;
+                    break;
+                }
+            }
+        }
+        */
+
+        return UnityEngine.Random.Range(0, endIndex);
+    }
+
     #endregion
 
     #region Explanation
@@ -566,9 +627,7 @@ public class GameManager : MonoBehaviour
                     = berry.GetComponent<Berry>().berryName;//이름 설정
 
                 berryExpTxt.transform.gameObject.GetComponentInChildren<Text>().text
-                    = berry.GetComponent<Berry>().berryExplain;//설명 설정
-
-                
+                    = berry.GetComponent<Berry>().berryExplain;//설명 설정    
             }
         }
         catch

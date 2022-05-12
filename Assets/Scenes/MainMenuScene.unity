@@ -420,7 +420,7 @@ GameObject:
   - component: {fileID: 33325699}
   - component: {fileID: 33325698}
   m_Layer: 5
-  m_Name: medalCount
+  m_Name: medalText
   m_TagString: medalCount
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8298,6 +8298,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CoinText: {fileID: 1846183568}
   HeartText: {fileID: 905899711}
+  MedalText: {fileID: 33325698}
   stemPrefab: {fileID: 4035880483817675467, guid: 7472d0e0e33818244bfbde2fe34e734e, type: 3}
   bugPrefab: {fileID: 4167642119444128896, guid: 8b8a276901ef2ed4e9bfa2b611e4e826, type: 3}
   farmObjList:
@@ -8378,6 +8379,7 @@ MonoBehaviour:
   - {fileID: 1297610195}
   - {fileID: 1160523579}
   - {fileID: 641708685}
+  PTJList: {fileID: 642284036}
   berryExp: {fileID: 0}
   priceText_newBerry: {fileID: 1295824419}
   timeText_newBerry: {fileID: 2120615085}

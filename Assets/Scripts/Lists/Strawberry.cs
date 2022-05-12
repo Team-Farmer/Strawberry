@@ -46,7 +46,7 @@ public class Strawberry : MonoBehaviour
     private void Update()
     {
         //베리들을 보인다.
-        berryImageChange();//이럴필요가있나
+        berryImageChange();//gameManager에서 newBerry추가될때마다 갱신하는 방법도 있다.
     }
 
     //베리 리스트에 이미지를 보인다.===========================================================================

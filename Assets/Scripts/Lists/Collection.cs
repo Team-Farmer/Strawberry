@@ -102,11 +102,12 @@ public class Collection : MonoBehaviour
 
     public void collectionBtnClick() 
     {
-        if (collectionBtn.GetComponent<Image>().sprite == collectionBtnSprite) 
+        if (collectionBtn.GetComponent<Image>().sprite == collectionBtnSprite) //지금 버튼 스프라이트가 완료 버튼이면
         {
             //하트 획득
-            
+            GameManager.instance.GetHeart(Info[prefabnum].rewardHeart);
             //메달 획득
+            GameManager.instance.GetMedal(Info[prefabnum].rewardMedal);
             
             //버튼 더이상 못누르게
             collectionNoBtn.SetActive(true);
