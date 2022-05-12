@@ -30,7 +30,7 @@
 | 정예림 | 프로그래머 | 3rd Party Library 적용 및 미니게임 구현 |<a href="https://www.instagram.com/yerrrrrimy/"><img src="https://img.shields.io/badge/Insta-E8466F?style=flat&logo=instagram&logoColor=white"/></a>  <a href="https://blog.naver.com/mms0801"><img src="https://img.shields.io/badge/blog-32B44A?style=flat&logo=instagram&logoColor=white"/></a> |
 | 허윤지 | 프로그래머 | 연구, 알바, 도전과제 시스템 개발 |<a href="https://www.instagram.com/yunji378mm/"><img src="https://img.shields.io/badge/Insta-E8466F?style=flat&logo=instagram&logoColor=white"/></a>  |
 | 김지현 | UI 디자이너 | UI 디자인 제작 | <a href="https://www.instagram.com/j_h_08.23_/"><img src="https://img.shields.io/badge/Insta-E8466F?style=flat&logo=instagram&logoColor=white"/></a> <a href="https://blog.naver.com/jihun4748"><img src="https://img.shields.io/badge/blog-32B44A?style=flat&logo=instagram&logoColor=white"/></a> |
-| 이아현 | 일러스트레이터 | 일러스트 제작 | <a href="https://www.instagram.com/yileeya/"><img src="https://img.shields.io/badge/Insta-E8466F?style=flat&logo=instagram&logoColor=white"/></a>  |
+| 이아현 | 일러스트레이터 | 일러스트 제작 | <a href="https://www.instagram.com/yileeya/"><img src="https://img.shields.io/badge/Insta-E8466F?style=flat&logo=instagram&logoColor=white"/></a> <a href="https://blog.naver.com/dldkgus4979"><img src="https://img.shields.io/badge/blog-32B44A?style=flat&logo=instagram&logoColor=white"/></a> |
 
 
 *made by Team Farmer* 
