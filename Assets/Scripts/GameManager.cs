@@ -569,38 +569,43 @@ public class GameManager : MonoBehaviour
     }
 
     private int berryPercantage(int endIndex) 
-    {
-        /*
-        int cumulative = 0;//누적
-        int probSum = 0;
-        int len = global.berryListAll.Count;
+    { 
+        int randomNum=0;
+        int newBerryIndex = 0;
 
-        for (int i = 0; i < len; i++)
-        {
-            if (DataController.instance.gameData.isBerryUnlock[i])
-            {
-                probSum += global.berryListAll[i].GetComponent<Berry>().berrykindProb; // 해금된 딸기에서 딸기의 발생확률을 가져옴
-            }
-        }
-        int berryRandomChance = UnityEngine.Random.Range(0, probSum + 1);
+        //RANDOM NUM -> classic(45)=0~44  special(35)=45~79  unique(20)=80~101
+        if (endIndex == 128) { randomNum = UnityEngine.Random.Range(0, 80); }//지금 클래식이랑 스페셜만 가능하면
+        else if (endIndex == 192) { randomNum = UnityEngine.Random.Range(0, 100 + 1); }//지금 전부다 가능하면
 
-        for (int i = 0; i < len; i++)
-        {
-            if (DataController.instance.gameData.isBerryUnlock[i])
-            {
-                cumulative += global.berryListAll[i].GetComponent<Berry>().berrykindProb; // 해금된 딸기에서 딸기의 발생확률을 가져옴
-                if (berryRandomChance <= cumulative)
-                {
-                    DataController.instance.gameData.berryFieldData[stemIdx].berryPrefabNowIdx = i;
-                    break;
-                }
-            }
-        }
-        */
 
-        return UnityEngine.Random.Range(0, endIndex);
+        //classic special unique딸기 갯수 차이가 많이 나면 제일 조금있는 딸기를 선택한다.
+        //if (berryCountComparision() == 3)
+        //{
+            if (randomNum < 45) { newBerryIndex = UnityEngine.Random.Range(0, 64); }//classic
+            else if (randomNum < 80) { newBerryIndex = UnityEngine.Random.Range(64, 128); }//special
+            else if (randomNum <= 100) { newBerryIndex = UnityEngine.Random.Range(128, 192); }//unique
+        //}
+
+        return newBerryIndex;
     }
+    private int berryCountComparision() //<-문제.
+    {
+        int classicCnt = 0, specialCnt = 0, uniqueCnt = 0;
 
+        for (int i = 0; i < Globalvariable.instance.classicBerryList.Count; i++)
+        { if (Globalvariable.instance.classicBerryList[i] == true) { classicCnt++; } }
+        for (int i = 0; i < Globalvariable.instance.specialBerryList.Count; i++)
+        { if (Globalvariable.instance.specialBerryList[i] == true) { specialCnt++; } }
+        for (int i = 0; i < Globalvariable.instance.uniqueBerryList.Count; i++)
+        { if (Globalvariable.instance.uniqueBerryList[i] == true) { uniqueCnt++; } }
+
+        if (Mathf.Abs(classicCnt - specialCnt) > 10 ||
+            Mathf.Abs(classicCnt - uniqueCnt) > 10 ||
+            Math.Abs(specialCnt - uniqueCnt) > 10)
+        { return Mathf.Min(classicCnt, specialCnt, uniqueCnt); }
+        else 
+        { return 3; }// 적절하게 베리들이 있으므로 완전랜덤으로
+    }
     #endregion
 
     #region Explanation
