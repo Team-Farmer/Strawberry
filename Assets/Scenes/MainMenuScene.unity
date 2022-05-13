@@ -19788,6 +19788,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollbar: {fileID: 2187328}
   count_txt: {fileID: 1034574241}
+  score_txt: {fileID: 141875253}
+  quiz_img: {fileID: 2075429934}
+  quizIndex: 0
+  answer_img:
+  - {fileID: 1435204365}
+  - {fileID: 264904952}
+  - {fileID: 1159452344}
+  - {fileID: 246599392}
+  answerIndex: 00000000000000000000000000000000
+  O: {fileID: 1533644483}
+  X: {fileID: 1049452226}
+  answer_btn:
+  - {fileID: 395513124}
+  - {fileID: 1616458512}
+  - {fileID: 1893976862}
+  - {fileID: 563925978}
+  pause_btn: {fileID: 1527013220}
+  exit_btn: {fileID: 1203144634}
 --- !u!1 &1049452226
 GameObject:
   m_ObjectHideFlags: 0
