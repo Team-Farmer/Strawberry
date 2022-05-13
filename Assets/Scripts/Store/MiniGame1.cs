@@ -18,10 +18,12 @@ public class MiniGame1 : MonoBehaviour
     public Button pause_btn;   //일시정지 버튼
     public Button exit_btn;    //나가기 버튼
 
+    public GameObject resultPanel;
+
 
     float size;                           //스크롤바 사이즈
     int time = 63;                        //초
-    int score;                            //점수
+    int score=0;                          //점수
     List<int> unlockList=new List<int>(); //해금된 딸기 번호 리스트
 
     void Start()
@@ -77,7 +79,7 @@ public class MiniGame1 : MonoBehaviour
         yield return new WaitForSeconds(1);
         scrollbar.size -= size;
         time -= 1;
-        if (time == 0)
+        if (time <= 0)
         {
             StopGame();
         }
@@ -91,9 +93,9 @@ public class MiniGame1 : MonoBehaviour
     {
         //퀴즈딸기 만들고 이미지 배치
         quizIndex = Random.Range(0, unlockList.Count);
-        quiz_img.sprite = Globalvariable.instance.berryListAll[quizIndex].GetComponent<Sprite>();
+        quiz_img.sprite = Globalvariable.instance.berryListAll[quizIndex].GetComponent<SpriteRenderer>().sprite;
 
-        //정답딸기 만들고 이미지 배치
+        //랜덤의 정답딸기 인덱스(0~4)에 퀴즈딸기 배치
         int randomAnswerIndex = Random.Range(0, 4);
         for (int i = 0; i < 4; i++)
         {
@@ -104,14 +106,25 @@ public class MiniGame1 : MonoBehaviour
             }
             else
             {
+                //정답인덱스나 다른 정답딸기들이랑 다른 딸기번호 나올때까지 랜덤번호로 뽑아서 정답딸기에 배치
                 answerIndex[i] = Random.Range(0, unlockList.Count);
-                //정답인덱스나 다른 정답딸기들이랑 다른 딸기번호 나올때까지 랜덤번호로 뽑기
-                while (answerIndex[i] == quizIndex)
+                while (CheckIndex(i))
                 {
                     answerIndex[i] = Random.Range(0, unlockList.Count);
                 }
-                answer_img[i].sprite = Globalvariable.instance.berryListAll[answerIndex[i]].GetComponent<Sprite>();
+                answer_img[i].sprite = Globalvariable.instance.berryListAll[answerIndex[i]].GetComponent<SpriteRenderer>().sprite;
             }
+        }
+
+        bool CheckIndex(int idx)
+        {
+            if (answerIndex[idx] == quizIndex) return true;
+            for(int i = 0; i < 4; i++)
+            {
+                if (i == idx) continue;
+                if (answerIndex[idx] == answerIndex[i]) return true;
+            }
+            return false;
         }
     }
 
@@ -146,11 +159,16 @@ public class MiniGame1 : MonoBehaviour
 
     void StopGame()
     {
-        Debug.Log("게임 끝");
+        //결과패널
+        resultPanel.SetActive(true);
+        DataController.instance.gameData.heart += score / 10;
+    }
 
-        //시간초기화, 리스트초기화, 하트획득
+    public void ReStart()
+    {
+        score = 0;
         time = 63;
         unlockList.Clear();
-        DataController.instance.gameData.heart += score / 10;
+        StartGame();
     }
 }
