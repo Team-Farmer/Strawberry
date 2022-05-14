@@ -331,7 +331,6 @@ public class GameManager : MonoBehaviour
             GameManager.instance.DisableObjColliderAll();
             ShowCoinText(panelCoinText, DataController.instance.gameData.coin);
             BP.SetActive(true);
-            NoCoinPanel.SetActive(true);
             NoCoinPanel.GetComponent<PanelAnimation>().OpenScale();
         }
     }
@@ -353,7 +352,6 @@ public class GameManager : MonoBehaviour
             GameManager.instance.DisableObjColliderAll();
             panelHearText.text = DataController.instance.gameData.heart.ToString()+"°³";
             BP.SetActive(true);
-            NoHeartPanel.SetActive(true);
             NoHeartPanel.GetComponent<PanelAnimation>().OpenScale();
         }
     }

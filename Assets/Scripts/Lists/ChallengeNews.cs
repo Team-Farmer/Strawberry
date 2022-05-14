@@ -64,7 +64,11 @@ public class ChallengeNews : MonoBehaviour
     [SerializeField]
     private bool isChallenge;
 
+    [Header("==========패널==========")]
 
+    public GameObject warnningPanel;
+    public GameObject confirmPanel;
+    public GameObject BP;
 
     //추가 된 Prefab 수
     static int Prefabcount = 0;
@@ -74,6 +78,8 @@ public class ChallengeNews : MonoBehaviour
 
     GameObject newsExplanation;
     GameObject newsExp;
+
+   
 
 
     private void Start()
@@ -144,7 +150,6 @@ public class ChallengeNews : MonoBehaviour
         }
 
 
-
         Prefabcount++;
 
     }
@@ -172,10 +177,6 @@ public class ChallengeNews : MonoBehaviour
     }
 
 
-
-
-
-
     public void UnlockNews() 
     {
         //DataController.instance.gameData.medal--;
@@ -185,8 +186,17 @@ public class ChallengeNews : MonoBehaviour
             GameManager.instance.UseMedal(1);//메달을 하나 사용한다.
             DataController.instance.gameData.NewsEnd[prefabnum] = true;
             Destroy(unlock_News);
+            BP.SetActive(true);
+            confirmPanel.GetComponent<PanelAnimation>().ScriptTxt.text = "뉴스가 해금되었어요!";
+            confirmPanel.GetComponent<PanelAnimation>().OpenScale();
         }
-         
+        else
+        {
+            //메달이 부족할 시
+            warnningPanel.GetComponent<PanelAnimation>().ScriptTxt.text = "뱃지가 부족해요!";
+            BP.SetActive(true);
+            warnningPanel.GetComponent<PanelAnimation>().OpenScale();
+        }
     }
 
 

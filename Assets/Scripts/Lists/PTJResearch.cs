@@ -55,9 +55,10 @@ public class PTJResearch : MonoBehaviour
     public GameObject PTJExp;
 
     [Header("==========PTJ Warning Panel===========")]
-    public GameObject PTJwarningPanel;
-    public GameObject NoCoinPanel;
-    public GameObject PTJBP;
+    public GameObject warningPanel;
+    public GameObject noCoinPanel;
+    public GameObject blackPanel;
+    public GameObject confirmPanel;
     public Text panelCoinText;
 
 
@@ -226,9 +227,8 @@ public class PTJResearch : MonoBehaviour
                 //재화 부족 경고 패널 등장
                 GameManager.instance.DisableObjColliderAll();
                 GameManager.instance.ShowCoinText(panelCoinText, DataController.instance.gameData.coin);
-                PTJBP.SetActive(true);
-                NoCoinPanel.SetActive(true);
-                NoCoinPanel.GetComponent<PanelAnimation>().OpenScale();
+                blackPanel.SetActive(true);
+                noCoinPanel.GetComponent<PanelAnimation>().OpenScale();
             }
         }
     }
@@ -351,7 +351,11 @@ public class PTJResearch : MonoBehaviour
                 if (PTJToggle.GetComponent<Toggle>().isOn == true) 
                 { Hire(prefabnum, (int)(PTJSlider10.GetComponent<Slider>().value)*10); }
                 else 
-                { Hire(prefabnum, (int)(PTJSlider.GetComponent<Slider>().value)); } 
+                { Hire(prefabnum, (int)(PTJSlider.GetComponent<Slider>().value)); }
+
+                blackPanel.SetActive(true);
+                confirmPanel.GetComponent<PanelAnimation>().ScriptTxt.text = "고용되었어요!";
+                confirmPanel.GetComponent<PanelAnimation>().OpenScale();
             }
             //이미 고용중이면 fire
             else
@@ -364,10 +368,9 @@ public class PTJResearch : MonoBehaviour
             if (DataController.instance.gameData.PTJNum[prefabnum] == 0)
             {
                 //3명이상 고용중이라는 경고 패널 등장
-                GameManager.instance.DisableObjColliderAll();
-                PTJBP.SetActive(true);
-                PTJwarningPanel.SetActive(true);
-                PTJwarningPanel.GetComponent<PanelAnimation>().OpenScale();
+                warningPanel.GetComponent<PanelAnimation>().ScriptTxt.text = "고용 가능한 알바 수를\n넘어섰어요!";
+                blackPanel.SetActive(true);
+                warningPanel.GetComponent<PanelAnimation>().OpenScale();
             }
             //이미 고용중이면 fire
             else

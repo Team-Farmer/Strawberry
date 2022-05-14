@@ -8,6 +8,9 @@ public class PanelAnimation : MonoBehaviour
 {
     public int UpPosition;
     public int DownPosition;
+    public Text ScriptTxt;
+
+    #region 애니메이션
 
     public void OpenUP()
     {
@@ -68,5 +71,17 @@ public class PanelAnimation : MonoBehaviour
         RectTransform rt = GetComponent<RectTransform>();
         rt.transform.DOScale(new Vector3(0f, 0f, 1f), 0.3f);
         Invoke("ActiveOff", 0.2f);
+    }
+
+    #endregion
+
+    public void ChangeTextCloudLoad()
+    {
+        ScriptTxt.text = "저장된 내용을 불러올까요?";
+    }
+
+    public void ChangeTextCloudSave()
+    {
+        ScriptTxt.text = "진행사항을 저장할까요?";
     }
 }
