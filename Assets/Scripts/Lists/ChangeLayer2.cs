@@ -305,6 +305,7 @@ public class ChangeLayer2 : MonoBehaviour
 				berryLockUnique.SetActive(false);
 				break;
 		}
+		GameManager.instance.NewBerryUpdate();
 		berryLockPanel.SetActive(false);
 		panelBlack.SetActive(false);
 	}
