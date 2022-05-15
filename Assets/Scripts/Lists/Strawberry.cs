@@ -88,6 +88,7 @@ public class Strawberry : MonoBehaviour
                 GameObject berryExpImage = berryExp.transform.GetChild(2).gameObject;
                 GameObject berryExpName = berryExp.transform.GetChild(3).gameObject;
                 GameObject berryExpTxt = berryExp.transform.GetChild(4).gameObject;
+                GameObject berryExpPrice= berryExp.transform.GetChild(5).gameObject;
 
                 //Explanation 내용을 채운다.
                 berryExpImage.GetComponentInChildren<Image>().sprite
@@ -98,6 +99,9 @@ public class Strawberry : MonoBehaviour
 
                 berryExpTxt.transform.gameObject.GetComponentInChildren<Text>().text
                     = BERRY[prefabnum].GetComponent<Berry>().berryExplain;//설명 설정
+
+                berryExpPrice.transform.gameObject.GetComponentInChildren<Text>().text
+                    = BERRY[prefabnum].GetComponent<Berry>().berryPrice.ToString()+"A";//설명 설정
 
 
             }

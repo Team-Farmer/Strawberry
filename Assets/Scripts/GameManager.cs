@@ -119,6 +119,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         PTJList.SetActive(true);
+        InitNewBerryInfo();
     }
     void InitDataInGM()
     {
@@ -462,9 +463,6 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region New Berry Add
-
-    //NewBerryAdd State = beforeStart, useHeart, Start, Timer, Done, Achieve ->다음 딸기 획득 비용
-    //
     //새로운 딸기 추가
     public void updateInfo(int index)
     {
@@ -492,7 +490,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
+    private void InitNewBerryInfo() 
+    { 
+        for(int i = 0; i < 15; i++)
+        {
+            price_newBerry[i] = 100 * (i+1);//새로운 딸기 개발 비용
+            time_newBerry[i] = i + 1;//새로운 딸기 개발 시간
+        }
+    }
 
     //새로운 딸기 버튼을 누르면
     public void newBerryAdd()

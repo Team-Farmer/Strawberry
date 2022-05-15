@@ -42,10 +42,11 @@ public class GameData
     public int newBerryResearch;
 
     //베리 개발 가능 구역
-    public int newBerryResearchAble;//0이면 classic만 개발가능 1이면 unique까지 2이면 전부 개발가능
+    //0이면 classic만, 1이면 unique까지, 2이면 전부 개발가능
+    public int newBerryResearchAble;
 
     //연구 레벨
-    public int[] researchLevel=new int[7]; // 이미 있네..?
+    public int[] researchLevel=new int[7];
 
     //도전과제
     public int[] challengeGauge = new int[7];//현재 달성 수치
