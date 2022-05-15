@@ -97,7 +97,7 @@ public class ChallengeNews : MonoBehaviour
 
         //!!!!!!!!!!!!!!주의!!!!!!!!!!!!!숫자 프리팹 숫자와 관련되어 있다!!! 같이 조절해야함
         //프리팹들에게 고유 번호 붙이기
-        if (Prefabcount >= 7)
+        if (Prefabcount >= 6)
         { Prefabcount =0; }
         prefabnum = Prefabcount;
 

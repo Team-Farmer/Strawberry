@@ -364,32 +364,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Info:
-  - Title: "\uB538\uAE30 \uC218\uC9D1\uD558\uAE30"
+  - Title: "\uB538\uAE30 \uC218\uC9D1"
     reward_challenge: 0300000003000000
     condition_challenge: 30
     Exp_news: 
-  - Title: "\uB204\uC801 \uCF54\uC778"
+  - Title: "\uB538\uAE30 \uC218\uD655"
     reward_challenge: 0400000004000000
     condition_challenge: 10
     Exp_news: 
-  - Title: "\uD558\uD2B8"
+  - Title: "\uB204\uC801 \uCF54\uC778"
     reward_challenge: 0500000005000000
     condition_challenge: 20
     Exp_news: 
-  - Title: "\uC784\uC2DC"
+  - Title: "\uB204\uC801 \uD558\uD2B8"
     reward_challenge: 0600000006000000
     condition_challenge: 30
     Exp_news: 
-  - Title: "\uC784\uC2DC"
+  - Title: "\uB204\uC801 \uD558\uD2B8"
     reward_challenge: 0700000007000000
     condition_challenge: 30
     Exp_news: 
-  - Title: "\uC784\uC2DC"
+  - Title: "\uBBF8\uB2C8\uAC8C\uC784 \uD50C\uB808\uC774"
     reward_challenge: 0800000008000000
-    condition_challenge: 10
-    Exp_news: 
-  - Title: "\uC784\uC2DC"
-    reward_challenge: 0900000009000000
     condition_challenge: 10
     Exp_news: 
   titleText: {fileID: 527783996456215474}
@@ -407,6 +403,9 @@ MonoBehaviour:
   - {fileID: -7943917676593969559, guid: d7462a2db557512448ed8c9a9d1c7db0, type: 3}
   - {fileID: -765015418919943096, guid: d7462a2db557512448ed8c9a9d1c7db0, type: 3}
   isChallenge: 1
+  warnningPanel: {fileID: 0}
+  confirmPanel: {fileID: 0}
+  BP: {fileID: 0}
 --- !u!1 &527783997747247045
 GameObject:
   m_ObjectHideFlags: 0

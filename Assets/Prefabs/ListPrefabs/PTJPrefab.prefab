@@ -382,27 +382,28 @@ MonoBehaviour:
   - Name: "\uD1B0\uC2A8"
     Picture: {fileID: 3445332486847661990, guid: bac779e1f038d5e40bbe137bcb8ace25, type: 3}
     FacePicture: {fileID: -8090365562718305141, guid: bac779e1f038d5e40bbe137bcb8ace25, type: 3}
-    Explanation: " \uB538\uAE30\uB4E4\uC744 \uC218\uD655\uD574\uC904\uAC8C!"
+    Explanation: "\uBC2D\uC5D0 \uC5F4\uB9B0 \uB538\uAE30\uB4E4\uC744 \uC218\uD655\uD574\uC904\uAC8C"
     Price: 20
-  - Name: "\uD53C\uADF8"
-    Picture: {fileID: 5377859178988851676, guid: bac779e1f038d5e40bbe137bcb8ace25, type: 3}
-    FacePicture: {fileID: 7456334905099763947, guid: bac779e1f038d5e40bbe137bcb8ace25, type: 3}
-    Explanation: "\uB538\uAE30\uB97C \uBE44\uC2F8\uAC8C \uD314\uC544\uC8FC\uC9C0"
-    Price: 0
   - Name: "\uD584\uC2A4\uC6CC\uC2A4"
     Picture: {fileID: -5725962078152895296, guid: bac779e1f038d5e40bbe137bcb8ace25, type: 3}
     FacePicture: {fileID: 7152930139536384079, guid: bac779e1f038d5e40bbe137bcb8ace25, type: 3}
-    Explanation: "\uBC8C\uB808\uB97C \uB2E4 \uBA39\uC5B4 \uCE58\uC6CC\uACA0\uC5B4"
+    Explanation: "\uBC8C\uB808\uB4E4\uC744 \uB2E4 \uBA39\uC5B4 \uCE58\uC6B0\uACA0\uC5B4"
     Price: 30
   - Name: "\uD478\uBCF4"
     Picture: {fileID: 679739729869728943, guid: bac779e1f038d5e40bbe137bcb8ace25, type: 3}
     FacePicture: {fileID: -6835189599539173722, guid: bac779e1f038d5e40bbe137bcb8ace25, type: 3}
-    Explanation: "\uBA4D\uBA4D \uBF51\uB294\uB2E4 \uC7A1\uCD08"
+    Explanation: "\uC7A1\uCD08\uB294 \uB098\uC5D0\uAC8C \uB9E1\uACA8"
     Price: 30
+  - Name: "\uD53C\uADF8\uB9C8"
+    Picture: {fileID: 5377859178988851676, guid: bac779e1f038d5e40bbe137bcb8ace25, type: 3}
+    FacePicture: {fileID: 7456334905099763947, guid: bac779e1f038d5e40bbe137bcb8ace25, type: 3}
+    Explanation: "\uB538\uAE30\uB97C \uBE44\uC2F8\uAC8C \uD314\uC544\uC904\uAC8C~
+      \uC544\uB9C8\uB3C4! "
+    Price: 400
   - Name: "\uB8E8\uBE44\uC544"
     Picture: {fileID: 4620578802948863353, guid: bac779e1f038d5e40bbe137bcb8ace25, type: 3}
     FacePicture: {fileID: -4124168217499134943, guid: bac779e1f038d5e40bbe137bcb8ace25, type: 3}
-    Explanation: "\uB354 \uAC15\uD55C \uBE44\uB97C!!!!!!!"
+    Explanation: "\uB354\uC6B1 \uAC15\uB825\uD55C \uBE44\uB97C \uC6D0\uD558\uB2C8?"
     Price: 300
   PTJBackground: {fileID: 3464224768173057888}
   titleText: {fileID: 9018496231175234831}
@@ -414,9 +415,10 @@ MonoBehaviour:
   selectPTJSprite: {fileID: -2656170823701886835, guid: 1f095c0873d7a934c8dcc85dab8ee983, type: 3}
   originalPTJSprite: {fileID: -567519917004074384, guid: 1f095c0873d7a934c8dcc85dab8ee983, type: 3}
   PTJExp: {fileID: 0}
-  PTJwarningPanel: {fileID: 0}
-  NoCoinPanel: {fileID: 0}
-  PTJBP: {fileID: 0}
+  warningPanel: {fileID: 0}
+  noCoinPanel: {fileID: 0}
+  warningBlackPanel: {fileID: 0}
+  confirmPanel: {fileID: 0}
   panelCoinText: {fileID: 0}
 --- !u!114 &1349541812454805739
 MonoBehaviour:
