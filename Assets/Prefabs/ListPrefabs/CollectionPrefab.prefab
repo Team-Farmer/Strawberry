@@ -324,31 +324,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Info:
   - Name: "\uBA4B\uC9C4 \uD5E4\uC5B4\uC2A4\uD0C0\uC77C"
-    berryClassify: 000000000000000000000000
+    berryClassify: 0a0000000b0000000c000000
     rewardMedal: 10
     rewardHeart: 10
   - Name: "\uC2E0\uAE30\uD558\uAC8C \uC0DD\uACBC\uB2E4\uB124"
-    berryClassify: 000000000000000000000000
+    berryClassify: 100000001100000012000000
     rewardMedal: 20
     rewardHeart: 20
   - Name: "\uAC70\uB300 \uB538\uAE30\uB4E4"
-    berryClassify: 030000000000000000000000
+    berryClassify: 0300000005000000
     rewardMedal: 30
     rewardHeart: 30
   - Name: "\uD558\uC580 \uB538\uAE30\uB4E4"
-    berryClassify: 040000000100000002000000
+    berryClassify: 040000000b000000
     rewardMedal: 30
     rewardHeart: 30
   - Name: "\uD574\uD53C \uD560\uB85C\uC708"
-    berryClassify: 080000000100000002000000
+    berryClassify: 08000000090000000a000000
     rewardMedal: 30
     rewardHeart: 30
   - Name: "\uB538\uAE30 \uCE5C\uAD6C\uB4E4"
-    berryClassify: 000000000000000000000000
+    berryClassify: 0c0000000d000000
     rewardMedal: 30
     rewardHeart: 30
   - Name: "\uB098\uB294 \uD2B9\uBCC4\uD55C \uB538\uAE30 \u2605"
-    berryClassify: 000000000000000000000000
+    berryClassify: 0e0000000f00000010000000
     rewardMedal: 30
     rewardHeart: 30
   collectionName: {fileID: 1476324555848526793}
@@ -356,6 +356,7 @@ MonoBehaviour:
   collectionNoBtn: {fileID: 5179378678102735793}
   collectionNow: {fileID: 5826314664937963886}
   collectionBtnSprite: {fileID: -765015418919943096, guid: d7462a2db557512448ed8c9a9d1c7db0, type: 3}
+  berryClassifyNum: 0
 --- !u!1 &4911162250941680714
 GameObject:
   m_ObjectHideFlags: 0

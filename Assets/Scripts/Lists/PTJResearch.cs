@@ -182,7 +182,11 @@ public class PTJResearch : MonoBehaviour
         {
             facePicture.GetComponent<Image>().sprite = Info[Prefabcount].Picture;//그림 표시
         }
-        explanationText.GetComponent<Text>().text = Info[Prefabcount].Explanation;//설명 텍스트 표시
+        
+        explanationText.GetComponent<Text>().text = Info[Prefabcount].Explanation+"\n"+
+            ((DataController.instance.gameData.researchLevel[prefabnum]*2) + "%"+"→"+ 
+            (DataController.instance.gameData.researchLevel[prefabnum]+1)*2 + "%");//설명 텍스트 표시
+        
         coinNum.GetComponent<Text>().text = Info[Prefabcount].Price.ToString() + "A";//비용 표시
 
 
@@ -222,6 +226,11 @@ public class PTJResearch : MonoBehaviour
                 //레벨이 올라간다.
                 DataController.instance.gameData.researchLevel[prefabnum]++;
                 levelNum.GetComponent<Text>().text = DataController.instance.gameData.researchLevel[prefabnum].ToString();
+
+                explanationText.GetComponent<Text>().text = Info[prefabnum].Explanation + "\n" +
+                ((DataController.instance.gameData.researchLevel[prefabnum] * 2) + "%" + "→" +
+                (DataController.instance.gameData.researchLevel[prefabnum] + 1) * 2 + "%");//설명 텍스트 표시
+
             }
             else if (DataController.instance.gameData.coin < Info[prefabnum].Price) //해당 금액이 지금 가진 코인보다 많으면
             {
