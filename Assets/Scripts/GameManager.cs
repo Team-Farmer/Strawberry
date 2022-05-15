@@ -70,11 +70,19 @@ public class GameManager : MonoBehaviour
     public Sprite doneImg;
     public Sprite ingImg;
 
-    [Header("[ NEW BERRY INFO ]")]
-    public float[] time_newBerry;
-    public int[] price_newBerry;
+    public event EventHandler TimerStart;
+
+    private bool _isTimerStart=false;
+    public bool isTimerStart 
+    {
+        get => _isTimerStart;
+        set { _isTimerStart = value; TimerStart?.Invoke(this, EventArgs.Empty); }
+    }
+
+    private float[] time_newBerry=new float[15];
+    private int[] price_newBerry=new int[15];
     
-    private bool isStart_newBerry = false; //시작을 눌렀는가
+    private bool isStart_newBerry = false; //시작을 눌렀는가 이거 삭제?
     private int newBerryResearchIndex;
    
     //===========================================
@@ -114,8 +122,13 @@ public class GameManager : MonoBehaviour
         CheckTime();
 
         //SetBerryPrice();
-        InitDataInGM();       
+        InitDataInGM();
+
+        TimerStart += Instance_TimerStart;
     }
+
+    
+
     private void Start()
     {
         PTJList.SetActive(true);
@@ -146,11 +159,14 @@ public class GameManager : MonoBehaviour
     }
     void Update()
     {
+        //NEW BERRY
         //새로운 베리 개발
         newBerryResearchIndex = DataController.instance.gameData.newBerryResearch; //현재 인덱스
         updateInfo(newBerryResearchIndex);
 
+        //PTJ
         workinCountApply();
+
 
         if (Input.GetMouseButton(0)) // 마우스 왼쪽 버튼으로
         {
@@ -186,6 +202,7 @@ public class GameManager : MonoBehaviour
         ShowCoinText(CoinText, DataController.instance.gameData.coin); // 트럭코인 나타낼 때 같이쓰려고 매개변수로 받게 수정했어요 - 신희규
         HeartText.text = DataController.instance.gameData.heart.ToString();
     }
+    
     #endregion
 
     #region 딸기밭
@@ -463,6 +480,15 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region New Berry Add
+
+    //isTimerStart 변수 값이 변할때마다 아래의 함수를 실행시킨다.
+    private void Instance_TimerStart(object sender, EventArgs e)
+    {
+        //throw new NotImplementedException();
+        
+
+    }
+
     //새로운 딸기 추가
     public void updateInfo(int index)
     {
@@ -489,6 +515,7 @@ public class GameManager : MonoBehaviour
             noNewBerry.SetActive(true);
         }
     }
+
 
     private void InitNewBerryInfo() 
     { 
