@@ -39,7 +39,8 @@ public class GameData
     public bool[] isBerryUnlock = new bool[192];
 
     //새로운 딸기 개발
-    public int newBerryResearch;
+    public int newBerryResearch;//인덱스
+    public int newBerryBtnState;//딸기 개발 버튼 상태
 
     //베리 개발 가능 구역
     //0이면 classic만, 1이면 unique까지, 2이면 전부 개발가능

@@ -141,6 +141,7 @@ public class DataController : MonoBehaviour
 
         gameData.newBerryResearch = 0;
         gameData.newBerryResearchAble = 0;
+        gameData.newBerryBtnState = 0;
     }
     void OnApplicationQuit()
     {

@@ -9259,30 +9259,12 @@ MonoBehaviour:
   priceText_newBerry: {fileID: 1295824419}
   timeText_newBerry: {fileID: 2120615085}
   startBtn_newBerry: {fileID: 787233744}
-  stopBtn_newBerry: {fileID: 0}
-  newBerryTimeReuce: {fileID: 892981151}
-  newBerryAcheive: {fileID: 1437819310}
-  noNewBerry: {fileID: 1757692680}
-  startImg: {fileID: -6424938521615686402, guid: ba7797cf61411834084b3f3a7b9464b4, type: 3}
-  doneImg: {fileID: -765015418919943096, guid: d7462a2db557512448ed8c9a9d1c7db0, type: 3}
-  ingImg: {fileID: -7943917676593969559, guid: d7462a2db557512448ed8c9a9d1c7db0, type: 3}
-  time_newBerry:
-  - 1
-  - 2
-  - 3
-  - 4
-  - 5
-  - 6
-  - 1
-  - 1
-  - 1
-  - 1
-  - 1
-  - 1
-  - 1
-  - 1
-  - 1
-  price_newBerry: 64000000c80000002c01000090010000f401000058020000640000006400000064000000640000006400000064000000640000006400000064000000
+  TimeReucePanel_newBerry: {fileID: 892981151}
+  AcheivePanel_newBerry: {fileID: 1437819310}
+  NoPanel_newBerry: {fileID: 1757692680}
+  StartImg: {fileID: -6424938521615686402, guid: ba7797cf61411834084b3f3a7b9464b4, type: 3}
+  DoneImg: {fileID: -765015418919943096, guid: d7462a2db557512448ed8c9a9d1c7db0, type: 3}
+  IngImg: {fileID: -7943917676593969559, guid: d7462a2db557512448ed8c9a9d1c7db0, type: 3}
   SettingsPanel: {fileID: 2031592367}
   CheckPanel: {fileID: 1334959770}
   isblackPanelOn: 0
@@ -13656,7 +13638,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -169.1, y: -205}
+  m_AnchoredPosition: {x: -161, y: -254}
   m_SizeDelta: {x: 277.3, y: 95.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &720320626
@@ -13705,15 +13687,15 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 496606690}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: turnOff
-        m_Mode: 2
+        m_MethodName: TimeReduce
+        m_Mode: 6
         m_Arguments:
-          m_ObjectArgument: {fileID: 892981151}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &720320627
 MonoBehaviour:
@@ -15086,7 +15068,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 496606690}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: newBerryAdd
+        m_MethodName: NewBerryButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -16896,20 +16878,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 496606690}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: turnOff
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 892981151}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 496606690}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: newBerryAdd
-        m_Mode: 1
+        m_MethodName: TimeReduce
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -23486,7 +23456,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -277.3, y: 4.8}
+  m_AnchoredPosition: {x: -326.65, y: 4.8}
   m_SizeDelta: {x: 60.9, y: 63.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1146217379
@@ -23509,7 +23479,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -6740917926237830969, guid: d7462a2db557512448ed8c9a9d1c7db0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -34681,7 +34651,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 169.1, y: -205}
+  m_AnchoredPosition: {x: 177.20001, y: -253.99994}
   m_SizeDelta: {x: 277.3, y: 95.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1690740547
@@ -34730,20 +34700,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 496606690}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: turnOff
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 892981151}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 496606690}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: newBerryAdd
-        m_Mode: 1
+        m_MethodName: TimeReduce
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -42865,8 +42823,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 36.8, y: -26.15}
-  m_SizeDelta: {x: 541.9, y: 117.1}
+  m_AnchoredPosition: {x: 40.1, y: -79.6}
+  m_SizeDelta: {x: 672.6, y: 224.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2143065546
 MonoBehaviour:

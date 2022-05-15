@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
     public const int TRUCK_CNT_LEVEL_1 = Globalvariable.TRUCK_CNT_LEVEL_1;
     public const int TRUCK_CNT_LEVEL_2 = Globalvariable.TRUCK_CNT_LEVEL_2;
     public const int TRUCK_CNT_LEVEL_MAX = Globalvariable.TRUCK_CNT_LEVEL_MAX;
-    
+
 
     [Header("[ PartTime/Search/Berry List ]")]
     //PTJ 알바
@@ -48,43 +48,43 @@ public class GameManager : MonoBehaviour
     [NonSerialized]
     public List<int> workingID = new List<int>();//지금 일하고 있는 알바생 Id
     public GameObject PTJList;
-    
+
     public GameObject berryExp;//베리 설명창
 
     //새로운딸기================================
     [Header("[ OBJECT ]")]
     [Header("[ ==============NEW BERRY============== ]")]
-    
+
     public GameObject priceText_newBerry;
     public GameObject timeText_newBerry;
     public GameObject startBtn_newBerry;
-    public GameObject stopBtn_newBerry;
 
-    public GameObject newBerryTimeReuce;
-    public GameObject newBerryAcheive;
+    public GameObject TimeReucePanel_newBerry;
+    public GameObject AcheivePanel_newBerry;
 
-    public GameObject noNewBerry;
+    public GameObject NoPanel_newBerry;
 
     [Header("[ SPRITE ]")]
-    public Sprite startImg;
-    public Sprite doneImg;
-    public Sprite ingImg;
+    public Sprite StartImg;
+    public Sprite DoneImg;
+    public Sprite IngImg;
 
+    //=================================
     public event EventHandler TimerStart;
-
-    private bool _isTimerStart=false;
-    public bool isTimerStart 
+    private bool _isTimerStart = false;
+    public bool isTimerStart
     {
         get => _isTimerStart;
         set { _isTimerStart = value; TimerStart?.Invoke(this, EventArgs.Empty); }
     }
+    //=================================
 
-    private float[] time_newBerry=new float[15];
-    private int[] price_newBerry=new int[15];
-    
+    private float[] time_newBerry = new float[15];
+    private int[] price_newBerry = new int[15];
+
     private bool isStart_newBerry = false; //시작을 눌렀는가 이거 삭제?
-    private int newBerryResearchIndex;
-   
+    private int Index_newBerry;
+    private string BtnState;//지금 버튼 상태
     //===========================================
 
     [Header("[ Check/Settings Panel ]")]
@@ -124,15 +124,23 @@ public class GameManager : MonoBehaviour
         //SetBerryPrice();
         InitDataInGM();
 
-        TimerStart += Instance_TimerStart;
+        //TimerStart += Instance_TimerStart;
     }
 
-    
+
 
     private void Start()
     {
         PTJList.SetActive(true);
-        InitNewBerryInfo();
+
+        //NEW BERRY관련 변수 설정
+        for (int i = 0; i < 15; i++)
+        {
+            price_newBerry[i] = 100 * (i + 1);//새로운 딸기 개발 비용
+            time_newBerry[i] = i + 1;//새로운 딸기 개발 시간
+        }
+
+        NewBerryUpdate();
     }
     void InitDataInGM()
     {
@@ -159,21 +167,23 @@ public class GameManager : MonoBehaviour
     }
     void Update()
     {
-        //NEW BERRY
-        //새로운 베리 개발
-        newBerryResearchIndex = DataController.instance.gameData.newBerryResearch; //현재 인덱스
-        updateInfo(newBerryResearchIndex);
-
         //PTJ
         workinCountApply();
 
+        //NEW BERRY 개발
+        //이부분 시간들이면 없앨 수있음. 일단 지금은 시간없으니까 이렇게 하고 나중에 없애는게 나으면 말해주세요
+        switch (DataController.instance.gameData.newBerryBtnState) { 
+            case 0:BtnState = "start"; startBtn_newBerry.GetComponent<Image>().sprite = StartImg; break;
+            case 1: BtnState = "ing"; startBtn_newBerry.GetComponent<Image>().sprite = IngImg; break;
+            case 2: BtnState = "done"; startBtn_newBerry.GetComponent<Image>().sprite = DoneImg; break;
+        }
 
         if (Input.GetMouseButton(0)) // 마우스 왼쪽 버튼으로
         {
             GameObject obj = ClickObj(); // 클릭당한 옵젝을 가져온다
             if (obj != null)
             {
-                
+
                 if (obj.CompareTag("Farm"))
                 {
                     ClickedFarm(obj);
@@ -202,7 +212,7 @@ public class GameManager : MonoBehaviour
         ShowCoinText(CoinText, DataController.instance.gameData.coin); // 트럭코인 나타낼 때 같이쓰려고 매개변수로 받게 수정했어요 - 신희규
         HeartText.text = DataController.instance.gameData.heart.ToString();
     }
-    
+
     #endregion
 
     #region 딸기밭
@@ -246,7 +256,7 @@ public class GameManager : MonoBehaviour
         ShowCoinText(truckCoinText, DataController.instance.gameData.truckCoin);
         ShowCoinText(truckCoinBonusText, bonusTruckCoin);
     }
-    
+
     Stem GetStem(int idx)
     {
         if (DataController.instance.gameData.berryFieldData[idx].isPlant) return null;
@@ -261,7 +271,7 @@ public class GameManager : MonoBehaviour
         coll.enabled = false; // 밭의 콜라이더를 비활성화 (잡초와 충돌 방지)
     }
     public void Harvest(Stem stem)
-    {       
+    {
         Farm farm = farmList[stem.stemIdx];
         if (farm.isHarvest) return;
 
@@ -312,7 +322,7 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region 재화
-    
+
     public void ShowCoinText(Text coinText, int coin)
     {
         //int coin = DataController.instance.gameData.coin;
@@ -368,7 +378,7 @@ public class GameManager : MonoBehaviour
         {
             //경고 패널 등장
             GameManager.instance.DisableObjColliderAll();
-            panelHearText.text = DataController.instance.gameData.heart.ToString()+"개";
+            panelHearText.text = DataController.instance.gameData.heart.ToString() + "개";
             BP.SetActive(true);
             NoHeartPanel.GetComponent<PanelAnimation>().OpenScale();
         }
@@ -376,7 +386,7 @@ public class GameManager : MonoBehaviour
 
     public void GetMedal(int cost)
     {
-        DataController.instance.gameData.medal+=cost;
+        DataController.instance.gameData.medal += cost;
         ShowMedalText();
     }
 
@@ -393,7 +403,7 @@ public class GameManager : MonoBehaviour
             //메달이 모자를때 뜨는 경고
         }
     }
-    public void ShowMedalText() 
+    public void ShowMedalText()
     {
         MedalText.GetComponent<Text>().text = DataController.instance.gameData.medal.ToString();
     }
@@ -440,7 +450,7 @@ public class GameManager : MonoBehaviour
     #region 리스트
 
     #region PTJ
-    public void workingApply(List<Sprite> workingList,int ID)
+    public void workingApply(List<Sprite> workingList, int ID)
     {
         for (int i = 0; i < workingList.Count; i++)
         {
@@ -457,7 +467,7 @@ public class GameManager : MonoBehaviour
             catch { }
         }
     }
-    public void workinCountApply() 
+    public void workinCountApply()
     {
         //지금 알바중인 알바생들의 남은 고용횟수
         //엉망진창코드
@@ -474,56 +484,197 @@ public class GameManager : MonoBehaviour
     }
 
     //PTJ몇명 고용했는지
-    public void workingCount(int employCount) 
+    public void workingCount(int employCount)
     { workingCountText.GetComponent<Text>().text = employCount.ToString(); }
 
     #endregion
 
     #region New Berry Add
+    private void NewBerryUpdate()
+    {
+        //현재 새 딸기 개발 레벨
+        Index_newBerry = DataController.instance.gameData.newBerryResearch;
 
+        if (isNewBerryAble() == true)
+        {
+            //이번 새딸기 개발에 필요한 가격과 시간
+            priceText_newBerry.GetComponent<Text>().text = price_newBerry[Index_newBerry].ToString();
+            timeText_newBerry.GetComponent<Text>().text = TimeForm(Mathf.CeilToInt(time_newBerry[Index_newBerry]));
+
+        }
+        else { NoPanel_newBerry.SetActive(true); Debug.Log("개발가능한 딸기없음"); }
+    }
+
+    private bool isNewBerryAble()
+    {
+        //지금 새딸기를 개발 할 수 있나?
+        switch (DataController.instance.gameData.newBerryResearchAble)
+        {
+            case 0://classic 개발가능
+                if (BerryCount("classic") == Index_newBerry) { return false; }
+                break;
+            case 1://classic, special 개발가능
+                if (BerryCount("classic") + BerryCount("special") == Index_newBerry) { return false; }
+                break;
+            case 3: //classic, special, unique 개발가능
+                if (BerryCount("classic") + BerryCount("special") + BerryCount("unique") == Index_newBerry)
+                { return false; }
+                break;
+        }
+        return true;
+    }
+
+
+    //현재 딸기 분류별 가지고 있는 값들을 반환한다.
+    private int BerryCount(string berryClssify)
+    {
+        int count = 0;
+        switch (berryClssify)
+        {
+            case "classic":
+                for (int i = 0; i < Globalvariable.instance.classicBerryList.Count; i++)
+                { if (Globalvariable.instance.classicBerryList[i] == true) { count++; } }
+                break;
+            case "special":
+                for (int i = 0; i < Globalvariable.instance.specialBerryList.Count; i++)
+                { if (Globalvariable.instance.specialBerryList[i] == true) { count++; } }
+                break;
+            case "unique":
+                for (int i = 0; i < Globalvariable.instance.uniqueBerryList.Count; i++)
+                { if (Globalvariable.instance.uniqueBerryList[i] == true) { count++; } }
+                break;
+        }
+        return count;
+    }
+
+
+
+
+
+
+
+
+
+
+    //새로운 딸기 개발 버튼 누르면
+    public void NewBerryButton()
+    {
+        
+        switch (BtnState)
+        {
+            case "start":
+                //시간 감소여부 묻는 패널을 띄운다.
+                TimeReucePanel_newBerry.SetActive(true);
+                //패널안의 정보를 채운다.
+                TimeReucePanel_newBerry.transform.GetChild(2).GetComponent<Text>().text
+                    = "하트 10개로 시간을 줄이시겠습니까?\n" + TimeForm((int)time_newBerry[Index_newBerry]) + "→" + "00:02";//임시
+                break;
+            case "ing": /*진행중에는 누를 수 없다.*/ break;
+            case "done": /*딸기 개발*/GetNewBerry(); break;
+            //default:Debug.Log("NowButton이름이 잘못됬습니다."); break;
+        }
+    }
+
+    //TimeReucePanel_newBerry
+    //하트 써서 시간을 줄일건가요? 패널
+    public void TimeReduce(bool isTimeReduce)
+    {
+        //하트 써서 시간을 줄일거면
+        if (isTimeReduce == true)
+        {
+            //시간을 줄여준다.
+            time_newBerry[Index_newBerry] = 2;
+            timeText_newBerry.GetComponent<Text>().text = TimeForm(Mathf.CeilToInt(time_newBerry[Index_newBerry]));
+            //하트를 소비한다.
+            UseHeart(10);
+        }
+
+        //버튼상태는 ing로
+        DataController.instance.gameData.newBerryBtnState = 1;
+        //NewBerryUpdate();
+
+        //창 끄기
+        TimeReucePanel_newBerry.SetActive(false);
+
+        //타이머 시작
+        StartCoroutine("Timer");
+    }
+
+    IEnumerator Timer()
+    {
+        //1초씩 감소
+        yield return new WaitForSeconds(1f);
+        time_newBerry[Index_newBerry]--;
+        //감소하는 시간 보이기
+        timeText_newBerry.GetComponent<Text>().text = TimeForm(Mathf.CeilToInt(time_newBerry[Index_newBerry]));
+        
+        //타이머 끝나면
+        if (time_newBerry[Index_newBerry] < 0.1f) 
+        {
+            DataController.instance.gameData.newBerryBtnState =2;//Done상태로
+            NewBerryButton();//==GetNewBerry()
+            StopCoroutine("Timer");  
+        }
+        else { StartCoroutine("Timer"); }
+        
+    }
+
+
+
+
+
+    private void GetNewBerry()
+    {
+        Debug.Log("새로운딸기 획득");
+        DataController.instance.gameData.newBerryBtnState = 0;
+        Index_newBerry = DataController.instance.gameData.newBerryResearch++;
+        NewBerryUpdate();
+    }
+    /*
     //isTimerStart 변수 값이 변할때마다 아래의 함수를 실행시킨다.
     private void Instance_TimerStart(object sender, EventArgs e)
     {
-        //throw new NotImplementedException();
-        
+        if (isTimerStart == true)
+        {//타이머 시작
+
+            if (time_newBerry[newBerryResearchIndex] > 0) //시간이 0보다 크면 1초씩 감소
+            {
+                time_newBerry[newBerryResearchIndex] -= Time.deltaTime;
+                startBtn_newBerry.GetComponent<Image>().sprite = ingImg;//진행중 이미지
+            }
+            else
+            { startBtn_newBerry.GetComponent<Image>().sprite = doneImg; //완료 이미지
+                isTimerStart = false;
+            }
+        }
 
     }
 
-    //새로운 딸기 추가
-    public void updateInfo(int index)
+    public void updateInfo()
     {
+        //만약에 더이상 개발할 수 있는 베리가 없으면
+        noNewBerry.SetActive(true);
+        //아니라면 현재 price와 time text를 보인다.
+        priceText_newBerry.GetComponent<Text>().text = price_newBerry[newBerryResearchIndex].ToString();
+        timeText_newBerry.GetComponent<Text>().text = TimeForm(Mathf.CeilToInt(time_newBerry[newBerryResearchIndex]));
         //감소하고있는 타이머 + 현재의 비용을 보인다.
-        try
-        {
-            if (isStart_newBerry == true)
-            {
-                if (time_newBerry[index] > 0) //시간이 0보다 크면 1초씩 감소
-                {
-                    time_newBerry[index] -= Time.deltaTime;
-                    startBtn_newBerry.GetComponent<Image>().sprite = ingImg;//진행중 이미지
-                }
-                else
-                {  startBtn_newBerry.GetComponent<Image>().sprite = doneImg; }//완료 이미지
-            }
 
-            //현재 price와 time text를 보인다.
-            priceText_newBerry.GetComponent<Text>().text = price_newBerry[index].ToString();
-            timeText_newBerry.GetComponent<Text>().text = TimeForm(Mathf.CeilToInt(time_newBerry[index]));
-        }
-        catch
-        {
-            noNewBerry.SetActive(true);
-        }
     }
 
 
     private void InitNewBerryInfo() 
-    { 
-        for(int i = 0; i < 15; i++)
+    {
+        //현재 새 딸기 개발 레벨
+        newBerryResearchIndex = DataController.instance.gameData.newBerryResearch;
+
+        for (int i = 0; i < 15; i++)
         {
             price_newBerry[i] = 100 * (i+1);//새로운 딸기 개발 비용
             time_newBerry[i] = i + 1;//새로운 딸기 개발 시간
         }
+
+        //정보 갱신
+        updateInfo();
     }
 
     //새로운 딸기 버튼을 누르면
@@ -580,7 +731,7 @@ public class GameManager : MonoBehaviour
 
                 //업그레이드 레벨 상승 -> 그 다음 업그레이드 내용, 금액 보인다
                 DataController.instance.gameData.newBerryResearch++;
-                updateInfo(newBerryResearchIndex);
+                updateInfo();
 
                 //시작버튼으로 변경
                 startBtn_newBerry.GetComponent<Image>().sprite = startImg;
@@ -636,6 +787,7 @@ public class GameManager : MonoBehaviour
         else 
         { return 3; }// 적절하게 베리들이 있으므로 완전랜덤으로
     }
+    */
     #endregion
 
     #region Explanation
@@ -670,7 +822,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("여기에 해당하는 베리는 아직 없다");
         }
     }
-
+    
     #endregion
 
     #region 기타
