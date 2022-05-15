@@ -1169,6 +1169,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 953116436}
     - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+      propertyPath: noCoinPanel
+      value: 
+      objectReference: {fileID: 953116436}
+    - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+      propertyPath: confirmPanel
+      value: 
+      objectReference: {fileID: 604087749}
+    - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+      propertyPath: warningPanel
+      value: 
+      objectReference: {fileID: 1079203487}
+    - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
       propertyPath: panelCoinText
       value: 
       objectReference: {fileID: 15140178}
@@ -1176,6 +1188,10 @@ PrefabInstance:
       propertyPath: PTJwarningPanel
       value: 
       objectReference: {fileID: 1079203487}
+    - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+      propertyPath: warningBlackPanel
+      value: 
+      objectReference: {fileID: 638678300}
     - target: {fileID: 4889772765070719696, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -10095,7 +10111,7 @@ RectTransform:
   - {fileID: 2118730661}
   - {fileID: 1606089877}
   m_Father: {fileID: 990759457}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -19188,6 +19204,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 953116436}
     - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+      propertyPath: noCoinPanel
+      value: 
+      objectReference: {fileID: 953116436}
+    - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+      propertyPath: confirmPanel
+      value: 
+      objectReference: {fileID: 604087749}
+    - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+      propertyPath: warningPanel
+      value: 
+      objectReference: {fileID: 1079203487}
+    - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
       propertyPath: panelCoinText
       value: 
       objectReference: {fileID: 15140178}
@@ -19195,6 +19223,10 @@ PrefabInstance:
       propertyPath: PTJwarningPanel
       value: 
       objectReference: {fileID: 1079203487}
+    - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+      propertyPath: warningBlackPanel
+      value: 
+      objectReference: {fileID: 638678300}
     - target: {fileID: 4889772765070719696, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -20179,8 +20211,8 @@ RectTransform:
   - {fileID: 1818730642}
   - {fileID: 3459073}
   - {fileID: 1426705492}
-  - {fileID: 529438795}
   - {fileID: 1922965541}
+  - {fileID: 529438795}
   - {fileID: 2075785727}
   - {fileID: 737534896}
   m_Father: {fileID: 1999629606}
@@ -23452,7 +23484,7 @@ GameObject:
   - component: {fileID: 1161273365}
   - component: {fileID: 1161273364}
   m_Layer: 5
-  m_Name: Image
+  m_Name: HireCountText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27208,6 +27240,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 953116436}
     - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+      propertyPath: noCoinPanel
+      value: 
+      objectReference: {fileID: 953116436}
+    - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+      propertyPath: confirmPanel
+      value: 
+      objectReference: {fileID: 604087749}
+    - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+      propertyPath: warningPanel
+      value: 
+      objectReference: {fileID: 1079203487}
+    - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
       propertyPath: panelCoinText
       value: 
       objectReference: {fileID: 15140178}
@@ -27215,6 +27259,10 @@ PrefabInstance:
       propertyPath: PTJwarningPanel
       value: 
       objectReference: {fileID: 1079203487}
+    - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+      propertyPath: warningBlackPanel
+      value: 
+      objectReference: {fileID: 638678300}
     - target: {fileID: 4889772765070719696, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -32202,6 +32250,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 953116436}
     - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+      propertyPath: noCoinPanel
+      value: 
+      objectReference: {fileID: 953116436}
+    - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+      propertyPath: confirmPanel
+      value: 
+      objectReference: {fileID: 604087749}
+    - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+      propertyPath: warningPanel
+      value: 
+      objectReference: {fileID: 1079203487}
+    - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
       propertyPath: panelCoinText
       value: 
       objectReference: {fileID: 15140178}
@@ -32217,6 +32277,10 @@ PrefabInstance:
       propertyPath: PTJwarningPanel
       value: 
       objectReference: {fileID: 1079203487}
+    - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+      propertyPath: warningBlackPanel
+      value: 
+      objectReference: {fileID: 638678300}
     - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
       propertyPath: Info.Array.data[3].Name
       value: "\uD584\uC2A4\uD130"
@@ -36121,9 +36185,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1061275672}
     - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+      propertyPath: blackPanel
+      value: 
+      objectReference: {fileID: 638678300}
+    - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
       propertyPath: NoCoinPanel
       value: 
       objectReference: {fileID: 953116436}
+    - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+      propertyPath: noCoinPanel
+      value: 
+      objectReference: {fileID: 953116436}
+    - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+      propertyPath: confirmPanel
+      value: 
+      objectReference: {fileID: 604087749}
+    - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+      propertyPath: warningPanel
+      value: 
+      objectReference: {fileID: 1079203487}
     - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
       propertyPath: panelCoinText
       value: 
@@ -36132,6 +36212,10 @@ PrefabInstance:
       propertyPath: PTJwarningPanel
       value: 
       objectReference: {fileID: 1079203487}
+    - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+      propertyPath: warningBlackPanel
+      value: 
+      objectReference: {fileID: 638678300}
     - target: {fileID: 4889772765070719696, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -38132,7 +38216,7 @@ RectTransform:
   m_Children:
   - {fileID: 2031592368}
   m_Father: {fileID: 990759457}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -38168,6 +38252,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 953116436}
     - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+      propertyPath: noCoinPanel
+      value: 
+      objectReference: {fileID: 953116436}
+    - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+      propertyPath: confirmPanel
+      value: 
+      objectReference: {fileID: 604087749}
+    - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+      propertyPath: warningPanel
+      value: 
+      objectReference: {fileID: 1079203487}
+    - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
       propertyPath: panelCoinText
       value: 
       objectReference: {fileID: 15140178}
@@ -38175,6 +38271,10 @@ PrefabInstance:
       propertyPath: PTJwarningPanel
       value: 
       objectReference: {fileID: 1079203487}
+    - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+      propertyPath: warningBlackPanel
+      value: 
+      objectReference: {fileID: 638678300}
     - target: {fileID: 4889772765070719696, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

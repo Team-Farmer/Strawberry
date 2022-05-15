@@ -54,10 +54,11 @@ public class PTJResearch : MonoBehaviour
     //PTJ 설명창
     public GameObject PTJExp;
 
+
     [Header("==========PTJ Warning Panel===========")]
     public GameObject warningPanel;
     public GameObject noCoinPanel;
-    public GameObject blackPanel;
+    public GameObject warningBlackPanel;
     public GameObject confirmPanel;
     public Text panelCoinText;
 
@@ -227,7 +228,7 @@ public class PTJResearch : MonoBehaviour
                 //재화 부족 경고 패널 등장
                 GameManager.instance.DisableObjColliderAll();
                 GameManager.instance.ShowCoinText(panelCoinText, DataController.instance.gameData.coin);
-                blackPanel.SetActive(true);
+                warningBlackPanel.SetActive(true);
                 noCoinPanel.GetComponent<PanelAnimation>().OpenScale();
             }
         }
@@ -353,7 +354,7 @@ public class PTJResearch : MonoBehaviour
                 else 
                 { Hire(prefabnum, (int)(PTJSlider.GetComponent<Slider>().value)); }
 
-                blackPanel.SetActive(true);
+                warningBlackPanel.SetActive(true);
                 confirmPanel.GetComponent<PanelAnimation>().ScriptTxt.text = "고용되었어요!";
                 confirmPanel.GetComponent<PanelAnimation>().OpenScale();
             }
@@ -369,7 +370,7 @@ public class PTJResearch : MonoBehaviour
             {
                 //3명이상 고용중이라는 경고 패널 등장
                 warningPanel.GetComponent<PanelAnimation>().ScriptTxt.text = "고용 가능한 알바 수를\n넘어섰어요!";
-                blackPanel.SetActive(true);
+                warningBlackPanel.SetActive(true);
                 warningPanel.GetComponent<PanelAnimation>().OpenScale();
             }
             //이미 고용중이면 fire

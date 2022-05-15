@@ -1852,10 +1852,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: EnableObjColliderAll
-        m_Mode: 1
+      - m_Target: {fileID: 3680021550775499645}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1890,6 +1890,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UpPosition: 0
   DownPosition: 0
+  ScriptTxt: {fileID: 0}
 --- !u!1 &5804224978219774296
 GameObject:
   m_ObjectHideFlags: 0
