@@ -87,6 +87,7 @@ public class ChallengeNews : MonoBehaviour
 
 
     private int level;
+    private int realLevel;//이 레벨에 가야지 보상을 다 받은거다.
 
     private int[] ChallengeValue = new int[6];
     private int[] ChallengeValue_ = new int[6];
@@ -115,7 +116,11 @@ public class ChallengeNews : MonoBehaviour
 
             //0~29,0
             ChallengeValue_[prefabnum] = ChallengeValue[prefabnum] % 30;
-
+            
+            
+            //보상을 받았다면 이 레벨이여야 한다.
+            realLevel = ChallengeValue[prefabnum] / 30;
+            if (realLevel %30== 0) { realLevel--; }
         }
         InfoUpdate();
     }
@@ -156,26 +161,32 @@ public class ChallengeNews : MonoBehaviour
         {
             titleText.GetComponent<Text>().text = Info[prefabnum].Title + " " + ChallengeValue[prefabnum];//제목+누적 수
             levelText.GetComponent<Text>().text ="Lv."+ (1+DataController.instance.gameData.challengeLevel[prefabnum]).ToString();//레벨
-
-
-
-            //도전과제 게이지 증가
-            Gauge_Challenge.GetComponent<Image>().fillAmount 
-                = (float)(ChallengeValue[prefabnum]% Info[prefabnum].clearCriterion )/ Info[prefabnum].clearCriterion;
-
-            //도전과제 게이지 달성 조건 숫자
-            gaugeConditionText_Challenge.GetComponent<Text>().text 
+                                                                                                                                  //도전과제 게이지 달성 조건 숫자
+            gaugeConditionText_Challenge.GetComponent<Text>().text
                 = "/" + Info[prefabnum].clearCriterion.ToString();
 
-            //도전과제 게이지 현재값
-            gaugeText_Challenge.GetComponent<Text>().text 
-                = (ChallengeValue[prefabnum] % Info[prefabnum].clearCriterion).ToString();
-
-
-
-            //도전과제 달성하면
-            if (ChallengeValue[prefabnum]/ 30==DataController.instance.gameData.challengeLevel[prefabnum]+1)
+            if (realLevel <= DataController.instance.gameData.challengeLevel[prefabnum])
             {
+                //도전과제 게이지 증가
+                Gauge_Challenge.GetComponent<Image>().fillAmount
+                    = (float)(ChallengeValue[prefabnum] % Info[prefabnum].clearCriterion) / Info[prefabnum].clearCriterion;
+                //도전과제 게이지 현재값
+                gaugeText_Challenge.GetComponent<Text>().text
+                    = (ChallengeValue[prefabnum] % Info[prefabnum].clearCriterion).ToString();
+
+                //도전과제 달성하면
+                if (ChallengeValue[prefabnum] / 30 == DataController.instance.gameData.challengeLevel[prefabnum] + 1)
+                {
+                    //가득 찬 상태로
+                    Gauge_Challenge.GetComponent<Image>().fillAmount = 1;
+                    gaugeText_Challenge.GetComponent<Text>().text = "30";
+
+                    Btn_Challenge.GetComponent<Image>().sprite = DoneButton;//도전과제 버튼 이미지 변경
+                    bangMark_Challenge.SetActive(true);//느낌표!! 띄우기 (획득 가능한 도전과제 있다)
+                }
+            }
+            else
+            { 
                 //가득 찬 상태로
                 Gauge_Challenge.GetComponent<Image>().fillAmount = 1;
                 gaugeText_Challenge.GetComponent<Text>().text = "30";
@@ -183,6 +194,8 @@ public class ChallengeNews : MonoBehaviour
                 Btn_Challenge.GetComponent<Image>().sprite = DoneButton;//도전과제 버튼 이미지 변경
                 bangMark_Challenge.SetActive(true);//느낌표!! 띄우기 (획득 가능한 도전과제 있다)
             }
+
+            
             
         }
         else //NEWS=============================
@@ -206,7 +219,8 @@ public class ChallengeNews : MonoBehaviour
     //도전과제 달성후 완료 버튼 누를시
 
     public void ChallengeSuccess() {
-        if (ChallengeValue[prefabnum] / 30 == DataController.instance.gameData.challengeLevel[prefabnum] + 1)
+        if (ChallengeValue[prefabnum] / 30 == DataController.instance.gameData.challengeLevel[prefabnum] + 1
+            ||realLevel>DataController.instance.gameData.challengeLevel[prefabnum])
         {
             //메달 보상 획득
             GameManager.instance.GetMedal(Info[prefabnum].rewardMedal);
