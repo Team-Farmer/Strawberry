@@ -200,6 +200,7 @@ public class ChallengeNews : MonoBehaviour
         }
         else //NEWS=============================
         {
+            /*
             //뉴스 lock상태이면 가리기
             if (DataController.instance.gameData.isNewsUnlock[prefabnum] == false)
             { lock_News.SetActive(true); }
@@ -209,6 +210,7 @@ public class ChallengeNews : MonoBehaviour
             
             //뉴스 숫자
             countText_News.GetComponent<Text>().text = "0" + (prefabnum+1);
+            */
         }
 
     }
@@ -245,7 +247,7 @@ public class ChallengeNews : MonoBehaviour
         {
             //메달 하나 사용
             GameManager.instance.UseMedal(1);
-            DataController.instance.gameData.NewsEnd[prefabnum] = true;
+            //DataController.instance.gameData.NewsEnd[prefabnum] = true;
             Destroy(unlock_News);
             BP.SetActive(true);
             confirmPanel.GetComponent<PanelAnimation>().ScriptTxt.text = "뉴스가 해금되었어요!";
@@ -263,7 +265,7 @@ public class ChallengeNews : MonoBehaviour
 
     //뉴스 설명창
     public void Explantion() {
-
+        /*
         newsExp = newsExplanation.transform.GetChild(0).transform.gameObject;//newsExp
 
         newsExp.SetActive(true);
@@ -284,6 +286,7 @@ public class ChallengeNews : MonoBehaviour
         {
             Debug.Log("ChallengeNews 인덱스 오류");
         }
+        */
     }
 
 

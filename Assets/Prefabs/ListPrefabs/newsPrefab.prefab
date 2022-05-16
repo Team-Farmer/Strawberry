@@ -287,7 +287,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.24007656, g: 0.59169066, b: 0.7830189, a: 0.49019608}
+  m_Color: {r: 0.9811321, g: 0.7136213, b: 0, a: 0.49019608}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -316,7 +316,7 @@ GameObject:
   - component: {fileID: 6852906468614672426}
   - component: {fileID: 3489798787574967873}
   m_Layer: 5
-  m_Name: background
+  m_Name: Bg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -390,7 +390,7 @@ GameObject:
   - component: {fileID: 1707955089521193554}
   - component: {fileID: 6641879152860320024}
   m_Layer: 5
-  m_Name: unlock
+  m_Name: Unlockable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -461,7 +461,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6835106990083521364}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ChallengeNews, Assembly-CSharp
         m_MethodName: UnlockNews
         m_Mode: 1
@@ -482,8 +482,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1438378544847758592}
-  - component: {fileID: 6835106990083521364}
-  - component: {fileID: 8938965709312176127}
+  - component: {fileID: 7646024753290363577}
+  - component: {fileID: 2017595215185295240}
   m_Layer: 5
   m_Name: newsPrefab
   m_TagString: Untagged
@@ -515,7 +515,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &6835106990083521364
+--- !u!114 &7646024753290363577
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -524,53 +524,32 @@ MonoBehaviour:
   m_GameObject: {fileID: 5274030419520564147}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d45a489afef1336469fbed3473cbfe51, type: 3}
+  m_Script: {fileID: 11500000, guid: b64617470c0050242b49c467fe2b677b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Info:
-  - Title: "\uB538\uAE30\uC758 \uC9C4\uC9DC \uC5F4\uB9E4\uB294 \uB530\uB85C \uC788\uB2E4?"
-    reward_challenge: 
-    condition_challenge: 0
-    Exp_news: "\uC544\uBB34\uB9D0"
-  - Title: "\uD604\uB300 \uB538\uAE30\uC758 \uC2DC\uCD08, 1712\uB144"
-    reward_challenge: 
-    condition_challenge: 0
-    Exp_news: "\u3147\u3134\u3134\u3147\u3134\u3147\u3139\u3134\u3139\u3147\u3136\u3139\u3137\u3134\u3137\u3139\u3134\u3137\u3139"
-  - Title: "\uD55C\uAD6D \uB538\uAE30 \uD488\uC885\uC758 85%\uB294 \uC774\uAC83"
-    reward_challenge: 
-    condition_challenge: 0
-    Exp_news: "\u3148\u314E\u314E\u3148\u3137\u314E\u3148\u314E\u3148\u3137"
-  - Title: "\uC800\uD0C8\uB85C\uB9AC \uACE0\uBE44\uD0C0\uBBFC \uB538\uAE30!"
-    reward_challenge: 
-    condition_challenge: 0
-    Exp_news: "\u3148\u314E\u3137\u3131\u314E\u3139\u3147\u3136\u3148\u3131\u3148\u3131\u314E\u3134\u3137\u314E"
-  - Title: "\uC77C\uBCF4\uB124 \uB0BC \uBED4\uD55C \uB538\uAE30 \uB85C\uC5F4\uD2F0
-      30\uC5B5"
-    reward_challenge: 
-    condition_challenge: 0
-    Exp_news: "\u314E\u3148\u3148\u3137\u3148\u3137\u314E\u3148\u314E"
-  - Title: "\uC81C\uBAA94"
-    reward_challenge: 
-    condition_challenge: 0
-    Exp_news: 
-  - Title: "\uC81C\uBAA94"
-    reward_challenge: 
-    condition_challenge: 0
-    Exp_news: 
-  titleText: {fileID: 30754148979034878}
-  countText_News: {fileID: 7077524546287068990}
-  lock_News: {fileID: 6485077750042053454}
-  unlock_News: {fileID: 4051272939523890010}
-  doneButton_Challenge: {fileID: 0}
-  gaugeConditionText_Challenge: {fileID: 0}
-  gaugeText_Challenge: {fileID: 0}
-  Btn_Challenge: {fileID: 0}
-  bangMark_Challenge: {fileID: 0}
-  GaugeContainer_Challenge: {fileID: 0}
-  Gauge_Challenge: {fileID: 0}
-  BtnImage_Challenge: []
-  isChallenge: 0
---- !u!114 &8938965709312176127
+  - Title: "\uB274\uC2A41"
+    Exp: "\uB274\uC2A4\uC124\uBA851"
+  - Title: "\uB274\uC2A42"
+    Exp: "\uB274\uC2A4\uC124\uBA852"
+  - Title: "\uB274\uC2A43"
+    Exp: "\uB274\uC2A4\uC124\uBA853"
+  - Title: "\uB274\uC2A44"
+    Exp: "\uB274\uC2A4\uC124\uBA854"
+  - Title: "\uB274\uC2A45"
+    Exp: "\uB274\uC2A4\uC124\uBA855"
+  - Title: "\uB274\uC2A46"
+    Exp: "\uB274\uC2A4\uC124\uBA856"
+  - Title: "\uB274\uC2A47"
+    Exp: "\uB274\uC2A4\uC124\uBA857"
+  TitleText: {fileID: 30754148979034878}
+  CountText: {fileID: 7077524546287068990}
+  Lock: {fileID: 6485077750042053454}
+  Unlockable: {fileID: 4051272939523890010}
+  warnningPanel: {fileID: 0}
+  confirmPanel: {fileID: 0}
+  BP: {fileID: 0}
+--- !u!114 &2017595215185295240
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -614,21 +593,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6835106990083521364}
-        m_TargetAssemblyTypeName: ChallengeNews, Assembly-CSharp
-        m_MethodName: Explantion
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 6835106990083521364}
-        m_TargetAssemblyTypeName: ChallengeNews, Assembly-CSharp
-        m_MethodName: UnlockNews
+      - m_Target: {fileID: 7646024753290363577}
+        m_TargetAssemblyTypeName: News, Assembly-CSharp
+        m_MethodName: NewsButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -648,7 +615,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4439088185015276722}
   m_Layer: 5
-  m_Name: lock
+  m_Name: Lock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -687,7 +654,7 @@ GameObject:
   - component: {fileID: 7960926332626066228}
   - component: {fileID: 3301528933904447931}
   m_Layer: 5
-  m_Name: count
+  m_Name: Count
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -812,7 +779,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.11249555, g: 0.2348714, b: 0.3018868, a: 1}
+  m_Color: {r: 0.3018868, g: 0.21258822, b: 0.081167676, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

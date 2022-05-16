@@ -121,10 +121,10 @@ public class DataController : MonoBehaviour
         }
         //뉴스,수집
         for (int i = 0; i < 7; i++) {
-            gameData.isNewsUnlock[i]=false;
-            gameData.NewsEnd[i] = false;
+            gameData.newsState[i] = 0;
             gameData.isCollectionDone[i] = false;
         }
+        gameData.newsState[0] = 1;
         //PTJ
         for (int i = 0; i < 6; i++) { gameData.PTJNum[i] = 0; }
 

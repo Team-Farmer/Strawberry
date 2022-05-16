@@ -54,8 +54,7 @@ public class GameData
 
 
     //뉴스
-    public bool[] isNewsUnlock = new bool[7];
-    public bool[] NewsEnd = new bool[7];
+    public int[] newsState = new int[7];//0=Lock, 1=Unlock Able 2=Unlock
 
     //수집
     public bool[] isCollectionDone = new bool[7];
