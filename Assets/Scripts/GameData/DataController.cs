@@ -108,35 +108,31 @@ public class DataController : MonoBehaviour
             gameData.berryFieldData[i] = new BerryFieldData();                       
         } 
         
+
+        //여기 아래 정리 필요
         //isBerryUnlock
         for(int i = 0; i < 192; i++)
-        {
-            gameData.isBerryUnlock[i] = false;
-        }
+        {   gameData.isBerryUnlock[i] = false;   }
         gameData.isBerryUnlock[0] = true;//첫번째 기본베리는 존재
 
         //도전과제
-        for (int i = 0; i < 7; i++) {
-            gameData.challengeLevel[i] = 0;
-        }
-        //뉴스,수집
-        for (int i = 0; i < 7; i++) {
-            gameData.newsState[i] = 0;
-            gameData.isCollectionDone[i] = false;
-        }
+        for (int i = 0; i < 7; i++) {   gameData.challengeLevel[i] = 0;   }
+
+        //뉴스
+        for (int i = 0; i < 7; i++) {   gameData.newsState[i] = 0;  }
         gameData.newsState[0] = 1;
+
+        //수집
+        for (int i = 0; i < 7; i++){   gameData.isCollectionDone[i] = false;   }
+
         //PTJ
         for (int i = 0; i < 6; i++) { gameData.PTJNum[i] = 0; }
 
         //느낌표 !!
         for (int i = 0; i < 7; i++) 
-        { 
-            gameData.isNewsEM[i] = false;
-        }
+        {    gameData.isNewsEM[i] = false;   }
         for (int i = 0; i < 192; i++)
-        {
-            gameData.isBerryEM[i] = false;
-        }
+        {    gameData.isBerryEM[i] = false;    }
 
         gameData.newBerryResearch = 0;
         gameData.newBerryResearchAble = 0;

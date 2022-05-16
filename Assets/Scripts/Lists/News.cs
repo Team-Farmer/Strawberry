@@ -63,18 +63,22 @@ public class News : MonoBehaviour
 
         //제목
         TitleText.GetComponent<Text>().text = Info[prefabnum].Title;
+        //뉴스 숫자
+        CountText.GetComponent<Text>().text = "0" + (prefabnum + 1);
 
         //뉴스 상태 업데이트
         InfoUpdate();
     }
-
+    private void Update()
+    {
+        InfoUpdate();//그 다음 뉴스 가 unlockable상태로 보이기 위해 한건데 없앨방법찾긴
+    }
     //==================================================================================================================
     //==================================================================================================================
 
     public void InfoUpdate()
     {
-        
-
+        //뉴스 상태에 따라서 lock, unlockable,unlock으로 보이기 
         switch (DataController.instance.gameData.newsState[prefabnum]) 
         {
             case 0://LOCK
@@ -91,8 +95,6 @@ public class News : MonoBehaviour
                 break;
         }
 
-        //뉴스 숫자
-        CountText.GetComponent<Text>().text = "0" + (prefabnum + 1);
     }
 
 
@@ -111,7 +113,7 @@ public class News : MonoBehaviour
                     Unlockable.SetActive(false);
                     DataController.instance.gameData.newsState[prefabnum] = 2;//잠금해제
                     DataController.instance.gameData.newsState[prefabnum + 1] = 1;//다음거 잠금 해제 가능
-                    InfoUpdate();
+  
                     //안내창
                     /*
                     BP.SetActive(true);
@@ -140,8 +142,8 @@ public class News : MonoBehaviour
                 break;
         }
 
-       
-        
+        InfoUpdate();
+
 
 
     }
@@ -150,18 +152,14 @@ public class News : MonoBehaviour
     //뉴스 설명창
     private void Explantion()
     {
-        //검정 패널띄운다.
-
         //설명창을 띄운다.
         newsExp.SetActive(true);
         //내용을 채운다.
-
-        /*
         newsExp.transform.GetChild(2).transform.gameObject.GetComponentInChildren<Text>().text
             = Info[prefabnum].Title;//제목
         newsExp.transform.GetChild(3).transform.gameObject.GetComponentInChildren<Text>().text
             = Info[prefabnum].Exp;//설명
-        */
+
     }
 
 }

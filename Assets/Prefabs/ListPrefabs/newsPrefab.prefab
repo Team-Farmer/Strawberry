@@ -461,9 +461,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ChallengeNews, Assembly-CSharp
-        m_MethodName: UnlockNews
+      - m_Target: {fileID: 7646024753290363577}
+        m_TargetAssemblyTypeName: News, Assembly-CSharp
+        m_MethodName: NewsButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
