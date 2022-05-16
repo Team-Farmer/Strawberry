@@ -87,7 +87,8 @@ public class ChallengeNews : MonoBehaviour
     
     private int[] ChallengeValue = new int[6];
 
-
+    //=======================================================================================================================
+    //=======================================================================================================================
     private void Start()
     {
         newsExplanation = GameObject.FindGameObjectWithTag("NewsExplanation");
@@ -108,8 +109,8 @@ public class ChallengeNews : MonoBehaviour
 
             for (int i = 0; i < ChallengeValue.Length; i++)
             {
-                if (ChallengeValue[i] % 30 == 0&& 
-                    ChallengeValue[i] == Info[prefabnum].clearCriterion * DataController.instance.gameData.challengeLevel[prefabnum] + 1) 
+                if (ChallengeValue[i] % 30 == 0 && 
+                    ChallengeValue[i] == Info[i].clearCriterion * (DataController.instance.gameData.challengeLevel[prefabnum] + 1)) 
                 { ChallengeValue[i] = 30; }
                 else { ChallengeValue[i] %= 30; }
             }
@@ -144,15 +145,16 @@ public class ChallengeNews : MonoBehaviour
                 case 4: Info[prefabnum].rewardHeart = Info[prefabnum].clearCriterion/6; break;
                 case 5: Info[prefabnum].rewardHeart = Info[prefabnum].clearCriterion/10; break;
             }
-            
-        }
-
-        
+        } 
     }
+
     public void InfoUpdate() {
 
         if (isChallenge == true) //CHALLENGE=============================
         {
+            titleText.GetComponent<Text>().text = Info[prefabnum].Title + " " 
+                + (ChallengeValue[prefabnum]+30*(DataController.instance.gameData.challengeLevel[prefabnum]));//제목표시
+
             levelText.GetComponent<Text>().text ="Lv."+ (1+DataController.instance.gameData.challengeLevel[prefabnum]).ToString();
 
             //도전과제 게이지 증가
@@ -163,8 +165,7 @@ public class ChallengeNews : MonoBehaviour
             gaugeText_Challenge.GetComponent<Text>().text = ChallengeValue[prefabnum].ToString();
 
             //도전과제 달성하면
-            if (ChallengeValue[prefabnum] 
-                == Info[prefabnum].clearCriterion*DataController.instance.gameData.challengeLevel[prefabnum]+1)
+            if (ChallengeValue[prefabnum] == 30)
             {
                 Btn_Challenge.GetComponent<Image>().sprite = DoneButton;//도전과제 버튼 이미지 변경
                 bangMark_Challenge.SetActive(true);//느낌표!! 띄우기 (획득 가능한 도전과제 있다)
