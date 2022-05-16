@@ -10247,7 +10247,7 @@ MonoBehaviour:
   elementPrefab: {fileID: 527783997503068518, guid: b38c325a7c4259442b192ff7cce5a789, type: 3}
   content:
   - {fileID: 322382196}
-  count: 7
+  count: 6
   isBerry: 0
 --- !u!1 &536301512 stripped
 GameObject:

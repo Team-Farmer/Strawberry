@@ -57,13 +57,17 @@ public class AudioManager : MonoBehaviour
     public void BGSoundVolume() {
 
         //배경음 음량변화
+        if (BGSoundSlider.GetComponent<Slider>().value == 0)
+        { mixer.SetFloat("BGSoundVolume", -80); }
         mixer.SetFloat("BGSoundVolume", Mathf.Log10(BGSoundSlider.GetComponent<Slider>().value) * 20);
 
     }
 
     public void SFXVolume() {
         //효과음 음량변화
-        mixer.SetFloat("SFXVolume", Mathf.Log10(SFXSoundSlider.GetComponent<Slider>().value) * 20);
+        if (SFXSoundSlider.GetComponent<Slider>().value == 0) 
+        { mixer.SetFloat("SFXVolume", -80); }
+        else { mixer.SetFloat("SFXVolume", Mathf.Log10(SFXSoundSlider.GetComponent<Slider>().value) * 20); }
 
     }
     //효과음

@@ -117,8 +117,7 @@ public class DataController : MonoBehaviour
 
         //도전과제
         for (int i = 0; i < 7; i++) {
-            gameData.challengeGauge[i] = 0;
-            gameData.challengeEnd[i] = false;
+            gameData.challengeLevel[i] = 0;
         }
         //뉴스,수집
         for (int i = 0; i < 7; i++) {

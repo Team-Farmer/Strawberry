@@ -1,5 +1,84 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &24569728808626950
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7416502599645009302}
+  - component: {fileID: 6135887785519356247}
+  - component: {fileID: 9100482966945195504}
+  m_Layer: 5
+  m_Name: LevelText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7416502599645009302
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 24569728808626950}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 527783998005169601}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 293, y: 89.996}
+  m_SizeDelta: {x: 130.7, y: 39.99}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &6135887785519356247
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 24569728808626950}
+  m_CullTransparentMesh: 1
+--- !u!114 &9100482966945195504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 24569728808626950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: fffcb38c5316eb843924a2af66e3bd38, type: 3}
+    m_FontSize: 24
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 48
+    m_Alignment: 3
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Level
 --- !u!1 &527783996351974105
 GameObject:
   m_ObjectHideFlags: 0
@@ -87,7 +166,7 @@ GameObject:
   - component: {fileID: 527783996456215487}
   - component: {fileID: 527783996456215484}
   m_Layer: 5
-  m_Name: Title
+  m_Name: TitleText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -365,29 +444,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Info:
   - Title: "\uB538\uAE30 \uC218\uC9D1"
-    reward_challenge: 0300000003000000
+    rewardMedal: 0
+    rewardHeart: 0
     condition_challenge: 30
     Exp_news: 
+    clearCriterion: 0
   - Title: "\uB538\uAE30 \uC218\uD655"
-    reward_challenge: 0400000004000000
+    rewardMedal: 0
+    rewardHeart: 0
     condition_challenge: 10
     Exp_news: 
+    clearCriterion: 0
   - Title: "\uB204\uC801 \uCF54\uC778"
-    reward_challenge: 0500000005000000
+    rewardMedal: 0
+    rewardHeart: 0
     condition_challenge: 20
     Exp_news: 
+    clearCriterion: 0
   - Title: "\uB204\uC801 \uD558\uD2B8"
-    reward_challenge: 0600000006000000
+    rewardMedal: 0
+    rewardHeart: 0
     condition_challenge: 30
     Exp_news: 
-  - Title: "\uB204\uC801 \uD558\uD2B8"
-    reward_challenge: 0700000007000000
+    clearCriterion: 0
+  - Title: "\uB204\uC801 \uCD9C\uC11D"
+    rewardMedal: 0
+    rewardHeart: 0
     condition_challenge: 30
     Exp_news: 
+    clearCriterion: 0
   - Title: "\uBBF8\uB2C8\uAC8C\uC784 \uD50C\uB808\uC774"
-    reward_challenge: 0800000008000000
+    rewardMedal: 0
+    rewardHeart: 0
     condition_challenge: 10
     Exp_news: 
+    clearCriterion: 0
+  levelText: {fileID: 24569728808626950}
   titleText: {fileID: 527783996456215474}
   countText_News: {fileID: 0}
   lock_News: {fileID: 0}
@@ -397,11 +489,9 @@ MonoBehaviour:
   gaugeText_Challenge: {fileID: 527783996540281741}
   Btn_Challenge: {fileID: 527783997747247045}
   bangMark_Challenge: {fileID: 4238743068461004202}
-  GaugeContainer_Challenge: {fileID: 527783996351974104}
   Gauge_Challenge: {fileID: 8123540764124747059}
-  BtnImage_Challenge:
-  - {fileID: -7943917676593969559, guid: d7462a2db557512448ed8c9a9d1c7db0, type: 3}
-  - {fileID: -765015418919943096, guid: d7462a2db557512448ed8c9a9d1c7db0, type: 3}
+  IngButton: {fileID: -7943917676593969559, guid: d7462a2db557512448ed8c9a9d1c7db0, type: 3}
+  DoneButton: {fileID: -765015418919943096, guid: d7462a2db557512448ed8c9a9d1c7db0, type: 3}
   isChallenge: 1
   warnningPanel: {fileID: 0}
   confirmPanel: {fileID: 0}
@@ -649,6 +739,7 @@ RectTransform:
   - {fileID: 527783997037598282}
   - {fileID: 527783997747247044}
   - {fileID: 2911658881347657346}
+  - {fileID: 7416502599645009302}
   m_Father: {fileID: 527783997503068513}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

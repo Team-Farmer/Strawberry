@@ -50,8 +50,8 @@ public class GameData
     public int[] researchLevel=new int[7];
 
     //도전과제
-    public int[] challengeGauge = new int[7];//현재 달성 수치
-    public bool[] challengeEnd = new bool[7];//도전과제 보상 받은 여부
+    public int[] challengeLevel = new int[7];//현재 달성 수치
+
 
     //뉴스
     public bool[] isNewsUnlock = new bool[7];
@@ -77,8 +77,8 @@ public class GameData
     public int mgPlayCnt; // 미니게임 플레이 횟수
     //여태까지 모은 딸기 총 개수
     //public int totalBerryCnt; => 이게 수확한거 맞죠?
+    //=====================================================================================
 
-    
 
     //마지막 출석 날짜 저장.
     public DateTime Lastday = new DateTime();
