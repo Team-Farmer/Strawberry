@@ -55,9 +55,6 @@ public class ChallengeNews : MonoBehaviour
     [SerializeField]
     private RectTransform Gauge_Challenge;
 
-
-
-
     [Header("==========SPRITE==========")]
     [SerializeField]
     private Sprite IngButton;
@@ -73,6 +70,10 @@ public class ChallengeNews : MonoBehaviour
     public GameObject confirmPanel;
     public GameObject BP;
 
+
+
+
+
     //추가 된 Prefab 수
     static int Prefabcount = 0;
     //자신이 몇번째 Prefab인지
@@ -84,9 +85,11 @@ public class ChallengeNews : MonoBehaviour
     GameObject newsExplanation;
     GameObject newsExp;
 
-    
-    private int[] ChallengeValue = new int[6];
 
+    private int level;
+
+    private int[] ChallengeValue = new int[6];
+    private int[] ChallengeValue_ = new int[6];
     //=======================================================================================================================
     //=======================================================================================================================
     private void Start()
@@ -100,6 +103,8 @@ public class ChallengeNews : MonoBehaviour
     {
         if (isChallenge == true)
         {
+            level = DataController.instance.gameData.challengeLevel[prefabnum];
+
             ChallengeValue[0] = DataController.instance.gameData.unlockBerryCnt;
             ChallengeValue[1] = DataController.instance.gameData.totalHarvBerryCnt;
             ChallengeValue[2] = DataController.instance.gameData.accCoin;
@@ -107,13 +112,10 @@ public class ChallengeNews : MonoBehaviour
             ChallengeValue[4] = DataController.instance.gameData.accAttendance;
             ChallengeValue[5] = DataController.instance.gameData.mgPlayCnt;
 
-            for (int i = 0; i < ChallengeValue.Length; i++)
-            {
-                if (ChallengeValue[i] % 30 == 0 && 
-                    ChallengeValue[i] == Info[i].clearCriterion * (DataController.instance.gameData.challengeLevel[prefabnum] + 1)) 
-                { ChallengeValue[i] = 30; }
-                else { ChallengeValue[i] %= 30; }
-            }
+
+            //0~29,0
+            ChallengeValue_[prefabnum] = ChallengeValue[prefabnum] % 30;
+
         }
         InfoUpdate();
     }
@@ -152,26 +154,35 @@ public class ChallengeNews : MonoBehaviour
 
         if (isChallenge == true) //CHALLENGE=============================
         {
-            titleText.GetComponent<Text>().text = Info[prefabnum].Title + " " 
-                + (ChallengeValue[prefabnum]+30*(DataController.instance.gameData.challengeLevel[prefabnum]));//제목표시
+            titleText.GetComponent<Text>().text = Info[prefabnum].Title + " " + ChallengeValue[prefabnum];//제목+누적 수
+            levelText.GetComponent<Text>().text ="Lv."+ (1+DataController.instance.gameData.challengeLevel[prefabnum]).ToString();//레벨
 
-            levelText.GetComponent<Text>().text ="Lv."+ (1+DataController.instance.gameData.challengeLevel[prefabnum]).ToString();
+
 
             //도전과제 게이지 증가
-            Gauge_Challenge.GetComponent<Image>().fillAmount = (float)ChallengeValue[prefabnum]/ Info[prefabnum].clearCriterion;
+            Gauge_Challenge.GetComponent<Image>().fillAmount 
+                = (float)(ChallengeValue[prefabnum]% Info[prefabnum].clearCriterion )/ Info[prefabnum].clearCriterion;
+
             //도전과제 게이지 달성 조건 숫자
-            gaugeConditionText_Challenge.GetComponent<Text>().text = "/" + Info[prefabnum].clearCriterion.ToString();
+            gaugeConditionText_Challenge.GetComponent<Text>().text 
+                = "/" + Info[prefabnum].clearCriterion.ToString();
+
             //도전과제 게이지 현재값
-            gaugeText_Challenge.GetComponent<Text>().text = ChallengeValue[prefabnum].ToString();
+            gaugeText_Challenge.GetComponent<Text>().text 
+                = (ChallengeValue[prefabnum] % Info[prefabnum].clearCriterion).ToString();
+
+
 
             //도전과제 달성하면
-            if (ChallengeValue[prefabnum] == 30)
+            if (ChallengeValue[prefabnum]/ 30==DataController.instance.gameData.challengeLevel[prefabnum]+1)
             {
+                //가득 찬 상태로
+                Gauge_Challenge.GetComponent<Image>().fillAmount = 1;
+                gaugeText_Challenge.GetComponent<Text>().text = "30";
+
                 Btn_Challenge.GetComponent<Image>().sprite = DoneButton;//도전과제 버튼 이미지 변경
                 bangMark_Challenge.SetActive(true);//느낌표!! 띄우기 (획득 가능한 도전과제 있다)
             }
-            
-            
             
         }
         else //NEWS=============================
@@ -195,7 +206,7 @@ public class ChallengeNews : MonoBehaviour
     //도전과제 달성후 완료 버튼 누를시
 
     public void ChallengeSuccess() {
-        if (ChallengeValue[prefabnum] == Info[prefabnum].clearCriterion)
+        if (ChallengeValue[prefabnum] / 30 == DataController.instance.gameData.challengeLevel[prefabnum] + 1)
         {
             //메달 보상 획득
             GameManager.instance.GetMedal(Info[prefabnum].rewardMedal);
