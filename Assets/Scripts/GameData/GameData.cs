@@ -23,7 +23,7 @@ public class GameData
     //밭, 딸기
 
     // 딸기 성장 시간
-    public float[] stemLevel = { 0f, 15f, 30f, 45f, 60f };
+    public float[] stemLevel = { 0f, 5f, 10f, 15f, 20f };
 
     //이거 바꾸려면 연구에서 직접 접근해서 바꿔야됨 여기는 초기화부분
     public float bugProb = 20f;
