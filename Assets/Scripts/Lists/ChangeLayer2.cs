@@ -87,6 +87,7 @@ public class ChangeLayer2 : MonoBehaviour
 
 			// 처음 시작할 때 0번 페이지 보인다.
 			SetScrollBarValue(0);
+			TagImageChange(0);
 
 			NoButton = berryLockPanel.transform.GetChild(2).gameObject;
 		}
