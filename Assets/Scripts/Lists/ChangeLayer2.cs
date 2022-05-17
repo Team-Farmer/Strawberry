@@ -255,6 +255,8 @@ public class ChangeLayer2 : MonoBehaviour
 		tagButtons[index].GetComponent<Image>().sprite = tagButtons_selectImage[index];
 
 	}
+	//=================================================================================================
+	//=================================================================================================
 
 	//challenge News 창 변경
 	public void TurnOn(GameObject obj)
@@ -263,6 +265,9 @@ public class ChangeLayer2 : MonoBehaviour
 		obj.SetActive(true); //해당 창만 활성화
 	}
 
+	//=================================================================================================
+	//=================================================================================================
+	//스페셜, 유니크 잠금해제
 	public void DevelopButton1(int index) 
 	{
 
@@ -324,8 +329,7 @@ public class ChangeLayer2 : MonoBehaviour
 	//=================================================================================================
 	//=================================================================================================
 	//[분류별 베리 띄우기]
-	//버튼을 눌렀을 때
-	//해당 분류의 딸기를 보인다
+	//버튼을 눌렀을 때 해당 분류의 딸기를 보인다
 	public void selectBerryTag(string name)
 	{
 		
@@ -380,7 +384,6 @@ public class ChangeLayer2 : MonoBehaviour
 
 	public void inActive(string name)
 	{
-		Debug.Log("inActive=" + name);
 		int index = 0;
 		switch (name)
 		{
@@ -398,8 +401,6 @@ public class ChangeLayer2 : MonoBehaviour
 				trChild.gameObject.SetActive(false);
 			}
 		}
-
-
 
 	}
 

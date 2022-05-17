@@ -26,12 +26,13 @@ public class Strawberry : MonoBehaviour
     //베리 설명창
     private GameObject berryExp;
 
-
+    //=====================================================================================================
     //=====================================================================================================
     void Start()
     {
         berryExp = GameObject.FindGameObjectWithTag("BerryExplanation");
         berryExp = berryExp.transform.GetChild(0).gameObject;
+        
         //프리팹들에게 번호를 붙여 주자
         prefabnum = Prefabcount;
         Prefabcount++;
@@ -46,10 +47,14 @@ public class Strawberry : MonoBehaviour
     private void Update()
     {
         //베리들을 보인다.
-        berryImageChange();//gameManager에서 newBerry추가될때마다 갱신하는 방법도 있다.
+        berryImageChange();
+        //이거 없애기
+        //gameManager에서 newBerry추가될때마다 갱신하는 방법도 있다.
     }
 
-    //베리 리스트에 이미지를 보인다.===========================================================================
+    //=====================================================================================================
+    //=====================================================================================================
+    //베리 리스트에 이미지를 보인다
     public void berryImageChange()
     { 
         //베리 정보가 존재하고 && 베리가 unlock 되었다면 
@@ -70,10 +75,9 @@ public class Strawberry : MonoBehaviour
     }
 
 
-    //베리 설명창 띄우기========================================================================================
+    //베리 설명창 띄우기
     public void BerryExplanation() {
 
-        //GameManager.instance.Explanation(BERRY[prefabnum],prefabnum);
         try
         {
 

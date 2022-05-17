@@ -282,7 +282,7 @@ GameObject:
   - component: {fileID: 5474233424034022186}
   - component: {fileID: 3098229058394462695}
   m_Layer: 5
-  m_Name: QuestionMark
+  m_Name: BangMark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
