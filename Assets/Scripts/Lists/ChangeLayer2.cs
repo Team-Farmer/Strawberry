@@ -336,12 +336,16 @@ public class ChangeLayer2 : MonoBehaviour
 		switch (name)
 		{
 			case "berry_classic":
+				//LOCK
 				berryLockSpecial.SetActive(false); 
 				berryLockUnique.SetActive(false);
-				inActive("berry_special"); inActive("berry_unique"); break;
+				//BERRY
+				inActive("berry_special"); inActive("berry_unique"); 
+				break;
 
 
 			case "berry_special":
+				//LOCK
 				berryLockUnique.SetActive(false);
 				switch (DataController.instance.gameData.newBerryResearchAble)
 				{
@@ -349,10 +353,13 @@ public class ChangeLayer2 : MonoBehaviour
 					case 1:	berryLockSpecial.SetActive(false); break;
 					case 2:	berryLockSpecial.SetActive(false); break;
 				}
-				inActive("berry_classic"); inActive("berry_unique"); break;
+				//BERRY
+				inActive("berry_classic"); inActive("berry_unique"); 
+				break;
 
 
 			case "berry_unique":
+				//LOCK
 				berryLockSpecial.SetActive(false);
 				switch (DataController.instance.gameData.newBerryResearchAble)
 				{
@@ -360,7 +367,9 @@ public class ChangeLayer2 : MonoBehaviour
 					case 1:	berryLockUnique.SetActive(true);	break;
 					case 2:	berryLockUnique.SetActive(false);	break;
 				}
-				inActive("berry_special"); inActive("berry_classic"); break;
+				//BERRY
+				inActive("berry_special"); inActive("berry_classic"); 
+				break;
 		}
 
 
@@ -371,6 +380,7 @@ public class ChangeLayer2 : MonoBehaviour
 
 	public void inActive(string name)
 	{
+		Debug.Log("inActive=" + name);
 		int index = 0;
 		switch (name)
 		{
@@ -404,7 +414,6 @@ public class ChangeLayer2 : MonoBehaviour
 				Transform trChild = content[j].transform.GetChild(i);
 				trChild.gameObject.SetActive(true);
 			}
-
 		}
 	}
 }

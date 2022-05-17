@@ -130,7 +130,6 @@ public class GameManager : MonoBehaviour
         //price_newBerry = new int[BerryCount("classic",false)+ BerryCount("special", false) + BerryCount("unique", false)];
         
         //for (int i = 0; i < 15; i++){    price_newBerry[i] = 100 * (i + 1); }//새로운 딸기 개발 비용
-        time_newBerry = 0;//새로운 딸기 개발 시간
         NewBerryUpdate();
     }
     void InitDataInGM()
@@ -511,8 +510,7 @@ public class GameManager : MonoBehaviour
 
     private bool isNewBerryAble()
     {
-        Debug.Log("Index_newBerry=" + Index_newBerry+"\n"
-            +"berry count="+ (BerryCount("classic", false) + BerryCount("special", false) + BerryCount("unique", false)));
+
         //지금 새딸기를 개발 할 수 있나?
         switch (DataController.instance.gameData.newBerryResearchAble)
         {
@@ -525,7 +523,7 @@ public class GameManager : MonoBehaviour
                 { return false; }
                 break;
             case 2: //classic, special, unique 개발가능
-                if (BerryCount("classic", false) + BerryCount("special", false) + BerryCount("unique", false)-2 == Index_newBerry)
+                if (BerryCount("classic", false) + BerryCount("special", false) + BerryCount("unique", false)-1 == Index_newBerry)
                 { return false; }
                 break;
         }
@@ -660,14 +658,11 @@ public class GameManager : MonoBehaviour
         {
             switch (DataController.instance.gameData.newBerryResearchAble)
             {
-                case 0: newBerryIndex = UnityEngine.Random.Range(0, 64);
-                    time_newBerry = 10;
+                case 0: newBerryIndex = UnityEngine.Random.Range(1, 64);
                     break;
                 case 1: newBerryIndex = berryPercantage(128);
-                    time_newBerry = 20;
                     break;
-                case 2: newBerryIndex = berryPercantage(192);
-                    time_newBerry = 30;
+                case 2: newBerryIndex = berryPercantage(192); 
                     break;
             }
             //아직 unlock되지 않은 베리 중에서 존재하는 베리를 고르기
@@ -713,23 +708,21 @@ public class GameManager : MonoBehaviour
         else if (endIndex == 192) { randomNum = UnityEngine.Random.Range(0, 100 + 1); }//지금 전부다 가능하면
 
 
-        //classic special unique딸기 갯수 차이가 많이 나면 제일 조금있는 딸기를 선택한다.
         //if (berryCountComparision() == 3)
         //{
-            if (randomNum < 45) { newBerryIndex = UnityEngine.Random.Range(0, 64); }//classic
-            else if (randomNum < 80) { newBerryIndex = UnityEngine.Random.Range(64, 128); }//special
-            else if (randomNum <= 100) { newBerryIndex = UnityEngine.Random.Range(128, 192); }//unique
+        if (randomNum < 45) { newBerryIndex = UnityEngine.Random.Range(0, 64); time_newBerry = 10; }//classic
+        else if (randomNum < 80) { newBerryIndex = UnityEngine.Random.Range(64, 128); time_newBerry = 20; }//special
+        else if (randomNum <= 100) { newBerryIndex = UnityEngine.Random.Range(128, 192); time_newBerry = 30; }//unique
         //}
 
         return newBerryIndex;
     }
     private int berryCountComparision() //<-문제.
     {
-        int classicCnt = 0, specialCnt = 0, uniqueCnt = 0;
 
-        classicCnt = BerryCount("classic", true);
-        specialCnt = BerryCount("special", true);
-        uniqueCnt = BerryCount("unique", true);
+        int classicCnt = BerryCount("classic", true);
+        int specialCnt = BerryCount("special", true);
+        int uniqueCnt = BerryCount("unique", true);
 
         if (Mathf.Abs(classicCnt - specialCnt) > 10 ||
             Mathf.Abs(classicCnt - uniqueCnt) > 10 ||

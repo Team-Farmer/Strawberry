@@ -21,6 +21,7 @@ public class ListAdd : MonoBehaviour
     //===================================================================================
     private void Start()
     {
+        //베리
         if (isBerry == true) 
         {
             for (int t = 0; t < 3; t++)//classic, special unique 3개
@@ -34,6 +35,7 @@ public class ListAdd : MonoBehaviour
                 }
             }
         }
+        //그 외
         else
         {
             for (int i = 0; i < count; i++)
