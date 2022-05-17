@@ -529,7 +529,7 @@ public class GameManager : MonoBehaviour
     }
 
 
-    //현재 값이 존재하는 딸기 갯수들을 반환 / 현재 unlock된 딸기 갯수들을 반환한다.
+    //isUnlock-> false=현재 값이 존재하는 딸기 갯수들을 반환 / true=현재 unlock된 딸기 갯수들을 반환한다.
     private int BerryCount(string berryClssify, bool isUnlock)
     {
         int count = 0;
@@ -719,12 +719,9 @@ public class GameManager : MonoBehaviour
     {
         int classicCnt = 0, specialCnt = 0, uniqueCnt = 0;
 
-        for (int i = 0; i < Globalvariable.instance.classicBerryList.Count; i++)
-        { if (Globalvariable.instance.classicBerryList[i] == true) { classicCnt++; } }
-        for (int i = 0; i < Globalvariable.instance.specialBerryList.Count; i++)
-        { if (Globalvariable.instance.specialBerryList[i] == true) { specialCnt++; } }
-        for (int i = 0; i < Globalvariable.instance.uniqueBerryList.Count; i++)
-        { if (Globalvariable.instance.uniqueBerryList[i] == true) { uniqueCnt++; } }
+        classicCnt = BerryCount("classic", true);
+        specialCnt = BerryCount("special", true);
+        uniqueCnt = BerryCount("unique", true);
 
         if (Mathf.Abs(classicCnt - specialCnt) > 10 ||
             Mathf.Abs(classicCnt - uniqueCnt) > 10 ||

@@ -46,14 +46,15 @@ public class News : MonoBehaviour
     int prefabnum;
 
     GameObject newsExp;
-
+    GameObject newsContent;
 
     //=======================================================================================================================
     //=======================================================================================================================
     private void Start()
     {
         newsExp = GameObject.FindGameObjectWithTag("NewsExplanation").transform.GetChild(0).gameObject;
-        
+        newsContent = GameObject.FindGameObjectWithTag("NewsContent");
+
         //메달
         GameManager.instance.ShowMedalText();
 
@@ -68,10 +69,6 @@ public class News : MonoBehaviour
 
         //뉴스 상태 업데이트
         InfoUpdate();
-    }
-    private void Update()
-    {
-        InfoUpdate();//그 다음 뉴스 가 unlockable상태로 보이기 위해 한건데 없앨방법찾긴
     }
     //==================================================================================================================
     //==================================================================================================================
@@ -112,8 +109,17 @@ public class News : MonoBehaviour
                     //unlock상태
                     Unlockable.SetActive(false);
                     DataController.instance.gameData.newsState[prefabnum] = 2;//잠금해제
-                    DataController.instance.gameData.newsState[prefabnum + 1] = 1;//다음거 잠금 해제 가능
-  
+
+                    //만약 다음게 있다면
+                    if (prefabnum+1 != newsContent.transform.GetChildCount())
+                    {
+                        DataController.instance.gameData.newsState[prefabnum + 1] = 1;//다음거 잠금 해제 가능하게
+
+                        newsContent.transform.GetChild(prefabnum + 1).//다음거 찾아서
+                            transform.GetChild(4).gameObject.SetActive(true);//잠금해제 이미지로 변경
+                        newsContent.transform.GetChild(prefabnum + 1).
+                            transform.GetChild(3).gameObject.SetActive(false);//잠금이미지 지우기
+                    }
                     //안내창
                     /*
                     BP.SetActive(true);
