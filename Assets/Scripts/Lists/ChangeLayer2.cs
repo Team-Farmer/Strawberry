@@ -73,9 +73,9 @@ public class ChangeLayer2 : MonoBehaviour
 
 			// 스크롤 되는 페이지의 각 value 위치 설정 [0 <= value <= 1]
 			for (int i = 0; i < scrollPageValues.Length; ++i)
-			{
-				scrollPageValues[i] = valueDistance * i;
-			}
+			{	scrollPageValues[i] = valueDistance * i;	}
+
+			
 		}
 	}
 	void Start()
@@ -83,11 +83,14 @@ public class ChangeLayer2 : MonoBehaviour
 		if (isBerry == true)
 		{
 			//처음에는 berry classic
+			
+			selectBerryTag("berry_special");
 			selectBerryTag("berry_classic");
+			TagImageChange(0);
 
 			// 처음 시작할 때 0번 페이지 보인다.
 			SetScrollBarValue(0);
-			TagImageChange(0);
+			
 
 			NoButton = berryLockPanel.transform.GetChild(2).gameObject;
 		}
@@ -95,7 +98,7 @@ public class ChangeLayer2 : MonoBehaviour
 
 	private void Update()
 	{
-		if (isBerry == true) UpdateInput();
+		if (isBerry == true) UpdateInput();//스와이프 관련
 	}
 
     #endregion

@@ -77,10 +77,10 @@ public class Strawberry : MonoBehaviour
 
     //베리 설명창 띄우기
     public void BerryExplanation() {
-
+        
         try
         {
-
+            
             if (DataController.instance.gameData.isBerryEM[prefabnum] == true) 
             { DataController.instance.gameData.isBerryEM[prefabnum] = false; }
 
