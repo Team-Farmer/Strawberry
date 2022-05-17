@@ -492,7 +492,7 @@ public class GameManager : MonoBehaviour
     {
         //현재 새 딸기 개발 레벨
         Index_newBerry = DataController.instance.gameData.newBerryResearch;
-        Debug.Log("새딸기를 더 개발할 수 있나?" + isNewBerryAble());
+
         if (isNewBerryAble() == true)
         {
             //얻을딸기가 정해진다.->시간,값도 정해진다.
@@ -524,13 +524,13 @@ public class GameManager : MonoBehaviour
                 if (BerryCount("classic",false) + BerryCount("special", false)-1 == Index_newBerry) 
                 { return false; }
                 break;
-            case 3: //classic, special, unique 개발가능
-                if (BerryCount("classic", false) + BerryCount("special", false) + BerryCount("unique", false) <= Index_newBerry)
+            case 2: //classic, special, unique 개발가능
+                if (BerryCount("classic", false) + BerryCount("special", false) + BerryCount("unique", false)-2 == Index_newBerry)
                 { return false; }
                 break;
         }
         return true;
-        //Index_newBerry-1==지금가지고 있는 딸기 갯수
+        //Index_newBerry+1==지금가지고 있는 딸기 갯수
     }
 
 
@@ -562,7 +562,7 @@ public class GameManager : MonoBehaviour
                     if (Globalvariable.instance.uniqueBerryList[i] == true) { count++; } 
                 }
                 break;
-            default:Debug.Log("잘못된 값 받았다");break;
+            //default:Debug.Log("잘못된 값 받았다");break;
         }
 
 
@@ -595,8 +595,7 @@ public class GameManager : MonoBehaviour
                 break;
             case "ing": /*진행중에는 누를 수 없다.*/ break;
             case "done": /*딸기 개발*/
-                if (isNewBerryAble() == true) { GetNewBerry(); }
-                else { Debug.Log("여기"); }
+                GetNewBerry();
                 break;
                 //default:Debug.Log("NowButton이름이 잘못됬습니다."); break;
         }
