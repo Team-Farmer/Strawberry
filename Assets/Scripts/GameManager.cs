@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     public GameObject bugPrefab;
 
     public List<GameObject> farmObjList = new List<GameObject>();
+    public List<GameObject> stemObjList = new List<GameObject>();
     public List<Farm> farmList = new List<Farm>();
     public List<Stem> stemList = new List<Stem>();
     public List<Bug> bugList = new List<Bug>();
@@ -242,7 +243,7 @@ public class GameManager : MonoBehaviour
     public void ClickedTruck()
     {
         bonusTruckCoin = (int)(DataController.instance.gameData.truckCoin *
-            DataController.instance.gameData.researchLevel[2] * Globalvariable.instance.coeffi);
+            DataController.instance.gameData.researchLevel[2] * Globalvariable.instance.getEffi());
         ShowCoinText(truckCoinText, DataController.instance.gameData.truckCoin);
         ShowCoinText(truckCoinBonusText, bonusTruckCoin);
     }
@@ -294,7 +295,14 @@ public class GameManager : MonoBehaviour
         DataController.instance.gameData.totalHarvBerryCnt++; // 수확한 딸기의 총 개수 업데이트            
         DataController.instance.gameData.berryFieldData[stem.stemIdx].isPlant = false; // 밭을 비워준다
 
+        //줄기에 페이드 아웃 적용
+        Animator anim = stemObjList[stem.stemIdx].GetComponent<Animator>();
+        anim.SetInteger("Seed", 5);
+
+        yield return new WaitForSeconds(0.3f); // 0.3초 뒤에
+
         stem.gameObject.SetActive(false);
+
         farm.isHarvest = false; // 수확이 끝남              
         if (!DataController.instance.gameData.berryFieldData[farm.farmIdx].hasWeed && !BP.activeSelf) // 잡초가 없다면
         {

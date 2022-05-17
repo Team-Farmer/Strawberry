@@ -16,6 +16,8 @@ public class DataController : MonoBehaviour
     //[HideInInspector]
     public GameData gameData;
 
+    private ParticleSystem rainParticle;
+
     void Awake()
     {
         if (instance == null)
@@ -31,7 +33,7 @@ public class DataController : MonoBehaviour
             //새로운 씬의 게임오브젝트 제거
             Destroy(this.gameObject);
         }
-
+        rainParticle = GameObject.FindGameObjectWithTag("Rain").GetComponent<ParticleSystem>();
         LoadData();
     }
 
@@ -48,6 +50,10 @@ public class DataController : MonoBehaviour
             //역직렬화
             gameData =JsonConvert.DeserializeObject<GameData>(jsonData);
             //gameData = JsonUtility.FromJson<GameData>(jsonData);
+
+            // 비 지속시간 로드
+            var main = rainParticle.main;
+            main.duration = gameData.rainDuration;
 
             Debug.Log("데이터를 로드했습니다");
         }
@@ -106,12 +112,29 @@ public class DataController : MonoBehaviour
         for(int i = 0; i < gameData.berryFieldData.Length; i++)
         {
             gameData.berryFieldData[i] = new BerryFieldData();                       
-        } 
-        
+        }
+        //초기 딸기 가격 설정
+        for (int i = 0; i < 192; i++)
+        {
+            if (Globalvariable.instance.berryListAll[i] == null) continue;
+
+            if (i < 64)
+                Globalvariable.instance.berryListAll[i].GetComponent<Berry>().berryPrice
+                    = (int)((Globalvariable.CLASSIC_FIRST + i * 3));
+            else if (i < 128)
+                Globalvariable.instance.berryListAll[i].GetComponent<Berry>().berryPrice
+                    = (int)((Globalvariable.SPECIAL_FIRST + (i - 64) * 5));
+            else
+                Globalvariable.instance.berryListAll[i].GetComponent<Berry>().berryPrice
+                    = (int)((Globalvariable.UNIQUE_FIRST + (i - 128) * 7));
+        }
+        // 비 지속시간 초기화
+        var main = rainParticle.main;
+        main.duration = 5.0f;
 
         //여기 아래 정리 필요
         //isBerryUnlock
-        for(int i = 0; i < 192; i++)
+        for (int i = 0; i < 192; i++)
         {   gameData.isBerryUnlock[i] = false;   }
         gameData.isBerryUnlock[0] = true;//첫번째 기본베리는 존재
 

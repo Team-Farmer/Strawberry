@@ -14,10 +14,13 @@ public class RainCtrl : MonoBehaviour
     public int mult;
     public float rainTime;
     private bool isRaining;
-    void Awake()
+    void Start()
     {
         rainParticle = GetComponent<ParticleSystem>();
         arbeit = GameObject.FindGameObjectWithTag("Arbeit").GetComponent<ArbeitMgr>();
+
+        var main = rainParticle.main;
+        main.duration = DataController.instance.gameData.rainDuration;
     }
     void Update()
     {
@@ -35,8 +38,10 @@ public class RainCtrl : MonoBehaviour
         rainPanel.gameObject.SetActive(true);
         rainPanel.GetComponent<Image>().DOFade(0.3f, 0.3f);        
         mult = arbeit.lluvia();
-        Debug.Log(mult);
+        Debug.Log("mult: " + mult);
         rainTime = 0;
+      
+        Debug.Log("duration: " + rainParticle.main.duration);
         rainParticle.Play();            
     }
     IEnumerator RainingRoutine()
