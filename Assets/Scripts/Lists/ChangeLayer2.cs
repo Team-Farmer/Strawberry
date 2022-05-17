@@ -386,7 +386,7 @@ public class ChangeLayer2 : MonoBehaviour
 					case 2:	berryLockUnique.SetActive(false);	break;
 				}
 				//BERRY
-				inActive("berry_special"); inActive("berry_classic"); 
+				inActive("berry_special"); inActive("berry_classic");
 				break;
 		}
 

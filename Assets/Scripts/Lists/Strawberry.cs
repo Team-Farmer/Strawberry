@@ -28,14 +28,17 @@ public class Strawberry : MonoBehaviour
 
     //=====================================================================================================
     //=====================================================================================================
+
+    private void Awake()
+    {
+        //프리팹들에게 번호를 붙여 주자
+        prefabnum = Prefabcount;
+        Prefabcount++;
+    }
     void Start()
     {
         berryExp = GameObject.FindGameObjectWithTag("BerryExplanation");
         berryExp = berryExp.transform.GetChild(0).gameObject;
-        
-        //프리팹들에게 번호를 붙여 주자
-        prefabnum = Prefabcount;
-        Prefabcount++;
 
         //베리 정보 가져오기
         BERRY = GameObject.FindGameObjectWithTag("Global").GetComponent<Globalvariable>().berryListAll;
