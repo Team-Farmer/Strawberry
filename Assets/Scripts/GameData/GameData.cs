@@ -54,7 +54,7 @@ public class GameData
     public int newBerryResearchAble;
 
     //연구 레벨
-    public int[] researchLevel=new int[7];
+    public int[] researchLevel=new int[6];
 
     //도전과제
     public int[] challengeLevel = new int[7];//현재 달성 수치

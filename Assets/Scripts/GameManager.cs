@@ -521,7 +521,7 @@ public class GameManager : MonoBehaviour
                 if (BerryCount("classic",false) + BerryCount("special", false)-1 == Index_newBerry) { return false; }
                 break;
             case 3: //classic, special, unique 개발가능
-                if (BerryCount("classic", false) + BerryCount("special", false) + BerryCount("unique", true)-1 == Index_newBerry)
+                if (BerryCount("classic", false) + BerryCount("special", false) + BerryCount("unique", false)-2 == Index_newBerry)
                 { return false; }
                 break;
         }

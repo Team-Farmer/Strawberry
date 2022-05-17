@@ -276,17 +276,28 @@ public class ChangeLayer2 : MonoBehaviour
 		{
 			case 0: //special
 				berryLockPanel.transform.GetChild(1).GetComponent<Text>().text
-					= "스페셜 딸기를 개발하겠습니까? \n n레벨이상 개발 가능";
-				if (DataController.instance.gameData.heart >= 10) //조건을 충족하면 개발 버튼 누를 수 있게. 뭐가 기준인지 몰라서 일단 하트로 함
+					= "스페셜 딸기를 개발하겠습니까? \n 모든 연구레벨이 5이상이면 개발 가능";				
+				if (ResearchLevelCheck(5)) //조건을 충족하면 개발 버튼 누를 수 있게된다.
 				{ NoButton.SetActive(false); }
 				break;
+
 			case 1: //unique 
 				berryLockPanel.transform.GetChild(1).GetComponent<Text>().text
-					= "유니크 딸기를 개발하겠습니까? \n nn레벨이상 개발 가능";
-				if (DataController.instance.gameData.heart >= 600) 
+					= "유니크 딸기를 개발하겠습니까? \n 모든 연구레벨이 15이상이면 개발 가능";				
+				if (ResearchLevelCheck(15)) //조건을 충족하면 개발 버튼 누를 수 있게된다.
 				{ NoButton.SetActive(false); }
 				break;
+		}	
+	}
+
+	private bool ResearchLevelCheck(int level) 
+	{
+		for (int i = 0; i < DataController.instance.gameData.researchLevel.Length; i++)
+		{
+			if (DataController.instance.gameData.researchLevel[i] < level) 
+			{ return false; }
 		}
+		return true;//모든 연구가 level이상이면 true를 반환한다.
 	
 	}
 	//조건이 충족되어서 유니크,스페셜 딸기 개발 버튼을 누르면
