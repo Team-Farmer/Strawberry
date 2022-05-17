@@ -32,7 +32,7 @@ public class Globalvariable : MonoBehaviour
     public const int SPECIAL_FIRST = 100;
     public const int UNIQUE_FIRST = 200;
 
-    public readonly float[] STEM_LEVEL = { 0f, 15f, 30f, 45f, 60f };
+    public readonly float[] STEM_LEVEL = { 0f, 5f, 10f, 15f, 20f };
 
     public const float BUG_PROB = 20f;
     public const float WEED_PROB = 20f;
