@@ -79,6 +79,81 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: title
+--- !u!1 &1318725716593155634
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2373408154773940883}
+  - component: {fileID: 3321329352328508428}
+  - component: {fileID: 4872863398729653731}
+  m_Layer: 5
+  m_Name: unlockImg
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2373408154773940883
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1318725716593155634}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1707955089521193554}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 338, y: 0.01}
+  m_SizeDelta: {x: 77.2, y: 75.64}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &3321329352328508428
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1318725716593155634}
+  m_CullTransparentMesh: 1
+--- !u!114 &4872863398729653731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1318725716593155634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 528b0807dc77c7445a96d97d4d988059, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &1473698404366124344
 GameObject:
   m_ObjectHideFlags: 0
@@ -188,8 +263,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 323.075, y: 0}
-  m_SizeDelta: {x: -43.150024, y: -31.64}
+  m_AnchoredPosition: {x: 328.82, y: -0.34}
+  m_SizeDelta: {x: -44.8, y: -30.97}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7704414465975414344
 CanvasRenderer:
@@ -241,7 +316,7 @@ GameObject:
   - component: {fileID: 1749050469481862614}
   - component: {fileID: 1639202345165744815}
   m_Layer: 5
-  m_Name: Image
+  m_Name: unlockBg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -287,7 +362,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9811321, g: 0.7136213, b: 0, a: 0.49019608}
+  m_Color: {r: 0.9811321, g: 0.7136213, b: 0, a: 0.33333334}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -409,6 +484,7 @@ RectTransform:
   m_Children:
   - {fileID: 7817596048673292768}
   - {fileID: 3219795402557721605}
+  - {fileID: 2373408154773940883}
   m_Father: {fileID: 1438378544847758592}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -530,18 +606,25 @@ MonoBehaviour:
   Info:
   - Title: "\uB274\uC2A41"
     Exp: "\uB274\uC2A4\uC124\uBA851"
+    Price: 1
   - Title: "\uB274\uC2A42"
     Exp: "\uB274\uC2A4\uC124\uBA852"
+    Price: 2
   - Title: "\uB274\uC2A43"
     Exp: "\uB274\uC2A4\uC124\uBA853"
+    Price: 3
   - Title: "\uB274\uC2A44"
     Exp: "\uB274\uC2A4\uC124\uBA854"
+    Price: 4
   - Title: "\uB274\uC2A45"
     Exp: "\uB274\uC2A4\uC124\uBA855"
+    Price: 5
   - Title: "\uB274\uC2A46"
     Exp: "\uB274\uC2A4\uC124\uBA856"
+    Price: 6
   - Title: "\uB274\uC2A47"
     Exp: "\uB274\uC2A4\uC124\uBA857"
+    Price: 7
   TitleText: {fileID: 30754148979034878}
   CountText: {fileID: 7077524546287068990}
   Lock: {fileID: 6485077750042053454}
@@ -799,4 +882,4 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uBA54\uB2EC 1\uAC1C\uB85C \uD574\uAE08"
+  m_Text: "\uBA54\uB2EC\uB85C \uC7A0\uAE08 \uD574\uC81C"

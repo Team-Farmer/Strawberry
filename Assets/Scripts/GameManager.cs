@@ -74,7 +74,6 @@ public class GameManager : MonoBehaviour
     private float time_newBerry;
     private int price_newBerry;
 
-    private int Index_newBerry;//이번에 개발되는 값, 시간
     private string BtnState;//지금 버튼 상태
     private int newBerryIndex;//이번에 개발되는 베리 넘버
     //===========================================
@@ -113,7 +112,7 @@ public class GameManager : MonoBehaviour
         AttendanceCheck.GetComponent<AttendanceCheck>().Attendance();
         CheckTime();
 
-        //SetBerryPrice();
+
         InitDataInGM();
 
         //TimerStart += Instance_TimerStart;
@@ -126,10 +125,6 @@ public class GameManager : MonoBehaviour
         PTJList.SetActive(true);
 
         //NEW BERRY
-        //지금 존재하는 베리 수 만큼의 배열 크기설정
-        //price_newBerry = new int[BerryCount("classic",false)+ BerryCount("special", false) + BerryCount("unique", false)];
-        
-        //for (int i = 0; i < 15; i++){    price_newBerry[i] = 100 * (i + 1); }//새로운 딸기 개발 비용
         NewBerryUpdate();
     }
     void InitDataInGM()
@@ -490,12 +485,11 @@ public class GameManager : MonoBehaviour
     public void NewBerryUpdate()
     {
         //현재 새 딸기 개발 레벨
-        Index_newBerry = DataController.instance.gameData.newBerryResearch;
-
+        
         if (isNewBerryAble() == true)
         {
             //얻을딸기가 정해진다.->시간,값도 정해진다.
-            price_newBerry = 100 * (Index_newBerry + 1);
+            price_newBerry = 100 * (BerryCount("classic", true) + BerryCount("special", true) + BerryCount("unique", true));
             selectBerry();
 
             //이번 새딸기 개발에 필요한 가격과 시간
@@ -515,27 +509,28 @@ public class GameManager : MonoBehaviour
         switch (DataController.instance.gameData.newBerryResearchAble)
         {
             case 0://classic 개발가능
-                if (BerryCount("classic",false)-1 == Index_newBerry) 
+                if (BerryCount("classic",false) == BerryCount("classic", true)) 
                 { return false; }
                 break;
             case 1://classic, special 개발가능
-                if (BerryCount("classic",false) + BerryCount("special", false)-1 == Index_newBerry) 
+                if (BerryCount("classic",false) + BerryCount("special", false) == 
+                    BerryCount("classic", true) + BerryCount("special", true)) 
                 { return false; }
                 break;
             case 2: //classic, special, unique 개발가능
-                if (BerryCount("classic", false) + BerryCount("special", false) + BerryCount("unique", false)-1 == Index_newBerry)
+                if (BerryCount("classic", false) + BerryCount("special", false) + BerryCount("unique", false) == 
+                    BerryCount("classic", true) + BerryCount("special", true) + BerryCount("unique", true))
                 { return false; }
                 break;
         }
         return true;
-        //Index_newBerry+1==지금가지고 있는 딸기 갯수
     }
 
 
     //isUnlock-> false=현재 값이 존재하는 딸기 갯수들을 반환 / true=현재 unlock된 딸기 갯수들을 반환한다.
     private int BerryCount(string berryClssify, bool isUnlock)
     {
-        int count = 0;
+        int countIsExsist = 0;
         int countIsUnlock = 0;
         switch (berryClssify)
         {
@@ -543,22 +538,22 @@ public class GameManager : MonoBehaviour
                 for (int i = 0; i < Globalvariable.instance.classicBerryList.Count; i++)
                 {
                     if (DataController.instance.gameData.isBerryUnlock[i]==true) { countIsUnlock++; }
-                    if (Globalvariable.instance.classicBerryList[i] == true) { count++; } 
+                    if (Globalvariable.instance.classicBerryList[i] == true) { countIsExsist++; } 
                 }
                 break;
+
             case "special":
                 for (int i = 0; i < Globalvariable.instance.specialBerryList.Count; i++)
-                {
-                    if (DataController.instance.gameData.isBerryUnlock[i] == true) { countIsUnlock++; }
-                    if (Globalvariable.instance.specialBerryList[i] == true) { count++; } 
-                }
+                { if (Globalvariable.instance.specialBerryList[i] == true) { countIsExsist++; } }
+                for (int i = 64; i < 64+64; i++)
+                {if (DataController.instance.gameData.isBerryUnlock[i] == true) { countIsUnlock++; } }
                 break;
+
             case "unique":
                 for (int i = 0; i < Globalvariable.instance.uniqueBerryList.Count; i++)
-                {
-                    if (DataController.instance.gameData.isBerryUnlock[i] == true) { countIsUnlock++; }
-                    if (Globalvariable.instance.uniqueBerryList[i] == true) { count++; } 
-                }
+                { if (Globalvariable.instance.uniqueBerryList[i] == true) { countIsExsist++; } }
+                for (int i = 128; i < 128+64; i++)
+                { if (DataController.instance.gameData.isBerryUnlock[i] == true) { countIsUnlock++; } }
                 break;
             //default:Debug.Log("잘못된 값 받았다");break;
         }
@@ -566,7 +561,7 @@ public class GameManager : MonoBehaviour
 
         if (isUnlock == true)
         { return countIsUnlock; }
-        else { return count; }
+        else { return countIsExsist; }
     }
 
 
@@ -659,6 +654,7 @@ public class GameManager : MonoBehaviour
             switch (DataController.instance.gameData.newBerryResearchAble)
             {
                 case 0: newBerryIndex = UnityEngine.Random.Range(1, 64);
+                    time_newBerry = 10;
                     break;
                 case 1: newBerryIndex = berryPercantage(128);
                     break;
@@ -693,7 +689,7 @@ public class GameManager : MonoBehaviour
 
 
         DataController.instance.gameData.newBerryBtnState = 0;
-        Index_newBerry = DataController.instance.gameData.newBerryResearch++;
+
         NewBerryUpdate();
 
     }

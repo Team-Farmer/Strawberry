@@ -157,7 +157,6 @@ public class DataController : MonoBehaviour
         for (int i = 0; i < 192; i++)
         {    gameData.isBerryEM[i] = false;    }
 
-        gameData.newBerryResearch = 0;
         gameData.newBerryResearchAble = 0;
         gameData.newBerryBtnState = 0;
     }
