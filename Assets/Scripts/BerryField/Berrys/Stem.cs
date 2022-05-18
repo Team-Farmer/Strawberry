@@ -17,13 +17,7 @@ public class Stem : MonoBehaviour
 
     public int stemIdx;
     private GameObject instantBerryObj;
-
-    /*public const float STEM_LEVEL_0 = Globalvariable.STEM_LEVEL_0;
-    public const float STEM_LEVEL_1 = Globalvariable.STEM_LEVEL_1;
-    public const float STEM_LEVEL_2 = Globalvariable.STEM_LEVEL_2;
-    public const float STEM_LEVEL_3 = Globalvariable.STEM_LEVEL_3;
-    public const float STEM_LEVEL_MAX = Globalvariable.STEM_LEVEL_MAX;*/
-
+  
     RainCtrl rainCtrl;
     Globalvariable global;
     void Awake()
@@ -35,7 +29,6 @@ public class Stem : MonoBehaviour
 
         rainCtrl = GameObject.FindGameObjectWithTag("Rain").GetComponent<RainCtrl>();
         global = GameObject.FindGameObjectWithTag("Global").GetComponent<Globalvariable>();
-        //farmPos = new Vector3(GetComponentInParent<Farm>().transform.localPosition.x, GetComponentInParent<Farm>().transform.localPosition.y, 0);
     }
     private void OnEnable()
     {       
@@ -79,9 +72,8 @@ public class Stem : MonoBehaviour
 
         sprite.sortingOrder = 2;
         Destroy(instantBerryObj);
-        //instantBerryObj = null;
     }
-    void Update() // 시간에 따라 딸기 성장
+    void Update() // 시간에 따라 딸기 성장 // 여기에 미니게임 중인지 확인하는 변수 추가 할수도?
     {       
         if (DataController.instance.gameData.berryFieldData[stemIdx].canGrow) 
         {

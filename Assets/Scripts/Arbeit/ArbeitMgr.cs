@@ -12,6 +12,7 @@ public class ArbeitMgr : MonoBehaviour
     private float delay;
     void FixedUpdate()
     {
+        // 여기에 미니게임 중인지 확인하는 변수 추가 할수도?
         delay += Time.deltaTime;
         if(delay >= 0.5f)
         {
