@@ -11,11 +11,12 @@ public class News : MonoBehaviour
     {
         public string Title;//제목
         public string Exp;//뉴스 내용
-
-        public NewsStruct(string Title, string Exp)
+        public int Price;
+        public NewsStruct(string Title, string Exp,int Price)
         {
             this.Title = Title;
             this.Exp = Exp;
+            this.Price = Price;
         }
     }
     [Header("==========INFO STRUCT==========")]
@@ -47,14 +48,14 @@ public class News : MonoBehaviour
 
     GameObject newsExp;
     GameObject newsContent;
-
+    GameObject YNPanel;
     //=======================================================================================================================
     //=======================================================================================================================
     private void Start()
     {
         newsExp = GameObject.FindGameObjectWithTag("NewsExplanation").transform.GetChild(0).gameObject;
         newsContent = GameObject.FindGameObjectWithTag("NewsContent");
-
+        YNPanel= GameObject.FindGameObjectWithTag("YNPanel");
         //메달
         GameManager.instance.ShowMedalText();
 
@@ -103,43 +104,7 @@ public class News : MonoBehaviour
                 //lock상태는 누를 수 없다.
                 break;
             case 1://UNLOCK ABLE
-                if (DataController.instance.gameData.medal >= 1)
-                {
-                    GameManager.instance.UseMedal(1);//메달 소비
-                    //unlock상태
-                    Unlockable.SetActive(false);
-                    DataController.instance.gameData.newsState[prefabnum] = 2;//잠금해제
-
-                    //만약 다음게 있다면
-                    if (prefabnum+1 != newsContent.transform.GetChildCount())
-                    {
-                        DataController.instance.gameData.newsState[prefabnum + 1] = 1;//다음거 잠금 해제 가능하게
-
-                        newsContent.transform.GetChild(prefabnum + 1).//다음거 찾아서
-                            transform.GetChild(4).gameObject.SetActive(true);//잠금해제 이미지로 변경
-                        newsContent.transform.GetChild(prefabnum + 1).
-                            transform.GetChild(3).gameObject.SetActive(false);//잠금이미지 지우기
-                    }
-                    //안내창
-                    /*
-                    BP.SetActive(true);
-                    confirmPanel.GetComponent<PanelAnimation>().ScriptTxt.text = "뉴스가 해금되었어요!";
-                    confirmPanel.GetComponent<PanelAnimation>().OpenScale();
-                    */
-
-                    //5의 배수이면 딸기를 얻는다.
-                    if ((prefabnum + 1) % 5 == 0)
-                    { Debug.Log("딸기.."); }
-                }
-                else
-                {
-                    /*
-                    //메달이 부족할 시
-                    warnningPanel.GetComponent<PanelAnimation>().ScriptTxt.text = "뱃지가 부족해요!";
-                    BP.SetActive(true);
-                    warnningPanel.GetComponent<PanelAnimation>().OpenScale();
-                    */
-                }
+                NewsUnlock();
 
                 break;
             case 2://UNLOCK
@@ -149,11 +114,58 @@ public class News : MonoBehaviour
         }
 
         InfoUpdate();
-
-
-
     }
 
+    //뉴스 해금?
+    public void NewsUnlock() 
+    {
+        if (DataController.instance.gameData.medal >= Info[prefabnum].Price)
+        {
+            GameManager.instance.UseMedal(Info[prefabnum].Price);//메달 소비
+            
+            //unlock상태로 변경
+            Unlockable.SetActive(false);
+            DataController.instance.gameData.newsState[prefabnum] = 2;
+
+
+            //만약 다음 뉴스 있다면
+            if (prefabnum + 1 != newsContent.transform.GetChildCount())
+            {
+                DataController.instance.gameData.newsState[prefabnum + 1] = 1;//다음거 잠금 해제 가능하게
+
+                newsContent.transform.GetChild(prefabnum + 1).//다음거 찾아서
+                    transform.GetChild(4).gameObject.SetActive(true);//잠금해제 이미지로 변경
+                newsContent.transform.GetChild(prefabnum + 1).
+                    transform.GetChild(3).gameObject.SetActive(false);//잠금이미지 지우기
+            }
+            //딸기 획득??
+            int RandomNum = UnityEngine.Random.Range(0, 100);
+            if (RandomNum <= Info[prefabnum].Price * 10) //price*10%확률로
+            {
+                //딸기 획득
+                GameManager.instance.newsBerry();
+            }
+
+
+            //안내창
+            /*
+            BP.SetActive(true);
+            confirmPanel.GetComponent<PanelAnimation>().ScriptTxt.text = "뉴스가 해금되었어요!";
+            confirmPanel.GetComponent<PanelAnimation>().OpenScale();
+            */
+
+        }
+        else
+        {
+            /*
+            //메달이 부족할 시
+            warnningPanel.GetComponent<PanelAnimation>().ScriptTxt.text = "뱃지가 부족해요!";
+            BP.SetActive(true);
+            warnningPanel.GetComponent<PanelAnimation>().OpenScale();
+            */
+        }
+
+    }
 
     //뉴스 설명창
     private void Explantion()

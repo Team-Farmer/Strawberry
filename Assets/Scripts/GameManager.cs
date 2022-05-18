@@ -727,6 +727,37 @@ public class GameManager : MonoBehaviour
         else 
         { return 3; }// 적절하게 베리들이 있으므로 완전랜덤으로
     }
+
+
+    public void newsBerry()
+    {
+        if (isNewBerryAble())
+        {
+            selectBerry();//새딸기 개발이랑 뉴스 해금 동시에 했는데 같은 딸기 얻으려고 하면 문제생길수도 있음
+            
+            //새로운 딸기가 추가된다.
+            DataController.instance.gameData.isBerryUnlock[newBerryIndex] = true;
+            //느낌표 표시
+            DataController.instance.gameData.isBerryEM[newBerryIndex] = true;
+
+            //딸기 얻음 효과음(짜잔)
+            AudioManager.instance.TadaAudioPlay();
+
+            //얻은 딸기 설명창
+            /*
+            AcheivePanel_newBerry.SetActive(true);
+            AcheivePanel_newBerry.transform.GetChild(0).GetComponent<Image>().sprite
+                = Globalvariable.instance.berryListAll[newBerryIndex].GetComponent<SpriteRenderer>().sprite;
+            AcheivePanel_newBerry.transform.GetChild(1).GetComponent<Text>().text
+                = Globalvariable.instance.berryListAll[newBerryIndex].GetComponent<Berry>().berryName;
+            */
+            //검정창 띄우기
+            //BlackPanel_newBerry.SetActive(true);
+
+        }
+        else { Debug.Log("더이상 개발가능한 딸기 없음. 꽝"); }
+    
+    }
     
     #endregion
 
