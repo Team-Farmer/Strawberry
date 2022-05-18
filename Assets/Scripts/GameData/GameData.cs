@@ -93,4 +93,7 @@ public class GameData
     //오늘 출석 여부 판단
     public bool attendance = false;
 
+    //가게&미니게임
+    public bool isStoreOpend;
+    public int[] highScore=new int[4];
 }
