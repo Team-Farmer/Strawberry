@@ -1,7 +1,136 @@
 fileFormatVersion: 2
 guid: 81b03b2fd4095c74e811e61b9bab0489
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 8811144997395433162
+    second: shopSummary_0
+  - first:
+      213: -6789697685162246499
+    second: Info
+  - first:
+      213: 1920857417887461133
+    second: shopSummary_2
+  - first:
+      213: -8655716475761495634
+    second: shopSummary_3
+  - first:
+      213: 1795111687806445177
+    second: shopSummary_4
+  - first:
+      213: 839248314200067426
+    second: Balloon
+  - first:
+      213: -1432243617770418309
+    second: Daram
+  - first:
+      213: 9099962209817028979
+    second: shopSummary_7
+  - first:
+      213: 5430403419968030389
+    second: shopSummary_8
+  - first:
+      213: -5335837281939842412
+    second: shopSummary_9
+  - first:
+      213: -2865077493630622179
+    second: shopSummary_10
+  - first:
+      213: 3096376641764727354
+    second: shopSummary_11
+  - first:
+      213: -2643454762305818222
+    second: shopSummary_12
+  - first:
+      213: 4462915007449310749
+    second: shopSummary_13
+  - first:
+      213: -5216460261851343935
+    second: shopSummary_14
+  - first:
+      213: 6665918680319523828
+    second: shopSummary_15
+  - first:
+      213: -6834831244993462650
+    second: shopSummary_16
+  - first:
+      213: 7026252331470887972
+    second: shopSummary_17
+  - first:
+      213: 392894662457056002
+    second: shopSummary_18
+  - first:
+      213: 8168142806199471386
+    second: shopSummary_19
+  - first:
+      213: 3492028794520709421
+    second: shopSummary_20
+  - first:
+      213: -1748604541075342382
+    second: shopSummary_21
+  - first:
+      213: 3954348645967032982
+    second: shopSummary_22
+  - first:
+      213: -3484092323932242361
+    second: shopSummary_23
+  - first:
+      213: 8193335488407006290
+    second: shopSummary_24
+  - first:
+      213: -6044754433230103510
+    second: shopSummary_25
+  - first:
+      213: -4563520551117123988
+    second: shopSummary_26
+  - first:
+      213: -6444612824427427929
+    second: shopSummary_27
+  - first:
+      213: -2146050181086955307
+    second: shopSummary_28
+  - first:
+      213: 1408002165184455048
+    second: shopSummary_29
+  - first:
+      213: 1609813512391829855
+    second: shopSummary_30
+  - first:
+      213: 8641099997310099126
+    second: shopSummary_31
+  - first:
+      213: 8766580214097051479
+    second: shopSummary_32
+  - first:
+      213: -5699548688965392316
+    second: shopSummary_33
+  - first:
+      213: 1276574114296975425
+    second: shopSummary_34
+  - first:
+      213: -2393641298168565266
+    second: shopSummary_35
+  - first:
+      213: 7470557276777727562
+    second: shopSummary_36
+  - first:
+      213: -5825071510596511149
+    second: shopSummary_37
+  - first:
+      213: -2666526582825839562
+    second: shopSummary_38
+  - first:
+      213: 5399496998771289963
+    second: shopSummary_39
+  - first:
+      213: 831027617214555588
+    second: Box
+  - first:
+      213: 929930287024449771
+    second: StartBtn
+  - first:
+      213: -8254092438320978287
+    second: shopSummary_42
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -41,7 +170,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -75,9 +204,171 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Info
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 1832
+        width: 421
+        height: 156
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9ebc9fbde526c1a0800000000000000
+      internalID: -6789697685162246499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Balloon
+      rect:
+        serializedVersion: 2
+        x: 1550
+        y: 2434
+        width: 567
+        height: 284
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26d8d3e25eb95ab00800000000000000
+      internalID: 839248314200067426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Daram
+      rect:
+        serializedVersion: 2
+        x: 2449
+        y: 2358
+        width: 311
+        height: 380
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7f49fa9406af1ce0800000000000000
+      internalID: -1432243617770418309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Box
+      rect:
+        serializedVersion: 2
+        x: 1621
+        y: 1249
+        width: 988
+        height: 462
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c5ec920737688b00800000000000000
+      internalID: 831027617214555588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StartBtn
+      rect:
+        serializedVersion: 2
+        x: 1745
+        y: 854
+        width: 732
+        height: 184
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be828f74ba6c7ec00800000000000000
+      internalID: 929930287024449771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shopSummary_42
+      rect:
+        serializedVersion: 2
+        x: 2013
+        y: 411
+        width: 197
+        height: 180
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 196e3aec8a2937d80800000000000000
+      internalID: -8254092438320978287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
