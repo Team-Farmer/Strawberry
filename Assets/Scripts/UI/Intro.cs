@@ -26,7 +26,7 @@ public class Intro : MonoBehaviour
 
         Invoke("FadeIn", 0.5f); 
         Invoke("ActiveOff", 2.0f);
-        Invoke("ActiveOn", 2.0f); 
+        Invoke("ActiveOn", 3.0f); 
  
     }
 
