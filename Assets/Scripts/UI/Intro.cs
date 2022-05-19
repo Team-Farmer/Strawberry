@@ -25,8 +25,8 @@ public class Intro : MonoBehaviour
         StartCoroutine(ShowReady());
 
         Invoke("FadeIn", 0.5f); 
-        Invoke("ActiveOff", 4.0f);
-        Invoke("ActiveOn", 4.0f); 
+        Invoke("ActiveOff", 2.0f);
+        Invoke("ActiveOn", 2.0f); 
  
     }
 
