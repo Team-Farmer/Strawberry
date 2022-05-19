@@ -106,8 +106,9 @@ public class Collection : MonoBehaviour
                 collectionNow.transform.GetChild(i).transform.GetComponent<Image>().sprite
                     = Global.GetComponent<Globalvariable>().
                     berryListAll[Info[prefabnum].berryClassify[i]].GetComponent<SpriteRenderer>().sprite;
+                collectionNow.transform.GetChild(i).transform.GetComponent<Image>().color = new Color(0f, 0f, 0f);
             }
-            collectionNow.transform.GetChild(i).transform.GetComponent<Image>().color = new Color(0f, 0f, 0f);
+            
         }
         if (berryClassifyNum ==2) 
         { collectionNow.transform.GetChild(2).gameObject.SetActive(false); }
