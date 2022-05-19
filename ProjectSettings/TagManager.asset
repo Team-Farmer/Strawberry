@@ -23,6 +23,7 @@ TagManager:
   - medalCount
   - NewsContent
   - YNPanel
+  - WarningPanel
   layers:
   - Default
   - TransparentFX

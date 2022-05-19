@@ -52,6 +52,9 @@ public class GameManager : MonoBehaviour
 
     public GameObject berryExp;//베리 설명창
 
+    //NEWS
+    [NonSerialized]
+    public int NewsPrefabNum;
     //새로운딸기================================
     [Header("[ OBJECT ]")]
     [Header("[ ==============NEW BERRY============== ]")]
@@ -65,7 +68,6 @@ public class GameManager : MonoBehaviour
 
     public GameObject NoPanel_newBerry;
     public GameObject BlackPanel_newBerry;
-    public GameObject CoinTimeLock;
 
     [Header("[ SPRITE ]")]
     public Sprite StartImg;
@@ -495,12 +497,11 @@ public class GameManager : MonoBehaviour
             price_newBerry = 100 * (BerryCount("classic", true) + BerryCount("special", true) + BerryCount("unique", true));
             selectBerry();
 
-            //이번 새딸기 개발에 필요한 가격과 시간
-            priceText_newBerry.GetComponent<Text>().text = price_newBerry.ToString();
-            timeText_newBerry.GetComponent<Text>().text = TimeForm(Mathf.CeilToInt(time_newBerry));
+            //가격 시간 아직 미공개라 ?
+            priceText_newBerry.GetComponent<Text>().text = "?";
+            timeText_newBerry.GetComponent<Text>().text = "?";
 
-            //시간이랑 코인 안보이게
-            CoinTimeLock.SetActive(true);
+
             //베리 없음 지우기
             NoPanel_newBerry.SetActive(false);
         }
@@ -585,9 +586,10 @@ public class GameManager : MonoBehaviour
         switch (BtnState)
         {
             case "start":
-                //시간을 보인다.
-                CoinTimeLock.SetActive(false);
-                
+                //이번 새딸기 개발에 필요한 가격과 시간
+                priceText_newBerry.GetComponent<Text>().text = price_newBerry.ToString();
+                timeText_newBerry.GetComponent<Text>().text = TimeForm(Mathf.CeilToInt(time_newBerry));
+
                 //시간 감소여부 묻는 패널을 띄운다.
                 TimeReucePanel_newBerry.SetActive(true);
                 TimeReucePanel_newBerry.transform.GetChild(2).GetComponent<Text>().text
@@ -804,8 +806,13 @@ public class GameManager : MonoBehaviour
             Debug.Log("여기에 해당하는 베리는 아직 없다");
         }
     }
-    
+
     #endregion
+
+    public void NewsUnlock() 
+    {
+        News.instance.NewsUnlock(NewsPrefabNum);
+    }
 
     #region 기타
     //활성화 비활성화로 창 끄고 켜고

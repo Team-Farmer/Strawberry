@@ -143,7 +143,6 @@ public class DataController : MonoBehaviour
 
         //뉴스
         for (int i = 0; i < 7; i++) {   gameData.newsState[i] = 0;  }
-        gameData.newsState[0] = 1;
 
         //수집
         for (int i = 0; i < 7; i++){   gameData.isCollectionDone[i] = false;   }
