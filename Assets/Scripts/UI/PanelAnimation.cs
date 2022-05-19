@@ -10,6 +10,7 @@ public class PanelAnimation : MonoBehaviour
     public int DownPosition;
     public Text ScriptTxt;
 
+
     #region 애니메이션
 
     public void OpenUP()

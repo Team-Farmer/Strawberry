@@ -116,6 +116,8 @@ public class GameManager : MonoBehaviour
         InitDataInGM();
 
         //TimerStart += Instance_TimerStart;
+
+        DisableObjColliderAll();
     }
 
 
