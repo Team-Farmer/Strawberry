@@ -25,8 +25,13 @@ public class AttendanceCheck : MonoBehaviour
     public GameObject icon;
     public GameObject Tag;
 
+    public bool isAtd;
+
     int days;
     String weeks_text;
+
+
+
 
     #endregion
 
@@ -51,9 +56,11 @@ public class AttendanceCheck : MonoBehaviour
         int DaysCompare = ts.Days; //Days 정보만 추출.
 
 
-        if (days > 7)
+        if (days > 6)
         {
-            weeks = days / 7;
+            weeks = 1+(days / 7);
+            days %= 7;
+
             if (weeks > 9)
             {
                 weeks = 9;
@@ -61,13 +68,10 @@ public class AttendanceCheck : MonoBehaviour
             weeks_text = weeks.ToString();
             text_mesh.text = weeks_text;
 
-            days %= 7;
-
             for (int i = 0; i < text.Length; i++)
             {
                 text[i].text = weeks_text;
             }
-
             Tag.SetActive(true);
         }
         else 
@@ -133,7 +137,7 @@ public class AttendanceCheck : MonoBehaviour
     public void AttandanceSave(int number)
     {
         
-        if (number == days)
+        if (number == days&& DataController.instance.gameData.attendance==false)
         {
             image[number].sprite = Front[number].Behind[1];
             icon.SetActive(false);
@@ -156,3 +160,5 @@ public class AttendanceCheck : MonoBehaviour
     }
 }
     #endregion
+
+
