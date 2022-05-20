@@ -9,10 +9,10 @@ public class Stem : MonoBehaviour
 {
     private Animator anim;
     private SpriteRenderer sprite;
-    //private Vector2 stemPos;
+
+    
     [SerializeField]
-    private Vector3 farmPos;
-    private int seedAnimLevel;   
+    private Vector3 farmPos; 
     private Bug stemBug;
 
     public int stemIdx;
@@ -21,8 +21,7 @@ public class Stem : MonoBehaviour
     RainCtrl rainCtrl;
     Globalvariable global;
     void Awake()
-    {
-        seedAnimLevel = 0;
+    {       
         anim = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
         stemBug = GameManager.instance.bugList[stemIdx];
@@ -75,7 +74,7 @@ public class Stem : MonoBehaviour
     }
     void Update() // 시간에 따라 딸기 성장 // 여기에 미니게임 중인지 확인하는 변수 추가 할수도?
     {       
-        if (DataController.instance.gameData.berryFieldData[stemIdx].canGrow) 
+        if (GameManager.instance.isGameRunning && DataController.instance.gameData.berryFieldData[stemIdx].canGrow) 
         {
             DataController.instance.gameData.berryFieldData[stemIdx].createTime += Time.deltaTime * rainCtrl.mult;
             updateStem();
@@ -91,21 +90,21 @@ public class Stem : MonoBehaviour
         if (DataController.instance.gameData.stemLevel[1] <= DataController.instance.gameData.berryFieldData[stemIdx].createTime
             && DataController.instance.gameData.berryFieldData[stemIdx].createTime < DataController.instance.gameData.stemLevel[2])
         {
-            if (seedAnimLevel == 1) return; // seedAnimLevel도 저장해서 하면 될듯???
+            if (DataController.instance.gameData.berryFieldData[stemIdx].seedAnimLevel == 1) return; // seedAnimLevel도 저장해서 하면 될듯???
             transform.localPosition = new Vector3(0, 0.5f, 0);
             SetAnim(1);
         }
         else if (DataController.instance.gameData.stemLevel[2] <= DataController.instance.gameData.berryFieldData[stemIdx].createTime 
             && DataController.instance.gameData.berryFieldData[stemIdx].createTime < DataController.instance.gameData.stemLevel[3])
         {
-            if (seedAnimLevel == 2) return;
+            if (DataController.instance.gameData.berryFieldData[stemIdx].seedAnimLevel == 2) return;
             transform.localPosition = new Vector3(0, 0.45f, 0);
             SetAnim(2);
         }
         else if (DataController.instance.gameData.stemLevel[3] <= DataController.instance.gameData.berryFieldData[stemIdx].createTime
             && DataController.instance.gameData.berryFieldData[stemIdx].createTime < DataController.instance.gameData.stemLevel[4])
         {
-            if (seedAnimLevel == 3) return;
+            if (DataController.instance.gameData.berryFieldData[stemIdx].seedAnimLevel == 3) return;
             transform.localPosition = new Vector3(0, 0.47f, 0);
             SetAnim(3);
         }
@@ -120,30 +119,30 @@ public class Stem : MonoBehaviour
     }
     public void SetAnim(int level)
     {
-        this.seedAnimLevel = level;
-        anim.SetInteger("Seed", seedAnimLevel);
+        DataController.instance.gameData.berryFieldData[stemIdx].seedAnimLevel = level;
+        anim.SetInteger("Seed", DataController.instance.gameData.berryFieldData[stemIdx].seedAnimLevel);
 
-        if (this.seedAnimLevel == 0)
+        if (DataController.instance.gameData.berryFieldData[stemIdx].seedAnimLevel == 0)
         {
             //transform.position = new Vector2(farmPos.x, farmPos.y + 0.02f);
         }
-        else if (this.seedAnimLevel == 1)
+        else if (DataController.instance.gameData.berryFieldData[stemIdx].seedAnimLevel == 1)
         {
             sprite.sortingOrder = 0;       
         }
-        else if (this.seedAnimLevel == 2)
+        else if (DataController.instance.gameData.berryFieldData[stemIdx].seedAnimLevel == 2)
         {                      
             //instantBerry.gameObject.SetActive(true);
             //instantBerry.GetComponent<Animator>().SetInteger("berryLevel", level);
             //instantBerry.transform.localPosition = new Vector3(transform.localPosition.x + 0.3f, transform.localPosition.y - 0.5f, transform.localPosition.z);
         }
-        else if (this.seedAnimLevel == 3)
+        else if (DataController.instance.gameData.berryFieldData[stemIdx].seedAnimLevel == 3)
         {                      
             //instantBerry.gameObject.SetActive(true);
             //instantBerry.GetComponent<Animator>().SetInteger("berryLevel", level);
             //instantBerry.transform.localPosition = new Vector3(transform.localPosition.x + 0.3f, transform.localPosition.y - 0.48f, transform.localPosition.z);
         }
-        else if (this.seedAnimLevel == 4)
+        else if (DataController.instance.gameData.berryFieldData[stemIdx].seedAnimLevel == 4)
         {
             instantBerryObj.gameObject.SetActive(true);
             instantBerryObj.GetComponent<SpriteRenderer>().sprite = global.berryListAll[DataController.instance.gameData.berryFieldData[stemIdx].berryPrefabNowIdx].GetComponent<SpriteRenderer>().sprite;

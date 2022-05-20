@@ -39,7 +39,7 @@ public class Globalvariable : MonoBehaviour
 
     public const float RAIN_DURATION = 5f;
 
-    void Awake()
+    void Start()
     {
         instance = this;     
     }

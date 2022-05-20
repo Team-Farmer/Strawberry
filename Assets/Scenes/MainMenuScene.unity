@@ -5753,7 +5753,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &279432230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10280,6 +10280,7 @@ MonoBehaviour:
   StartImg: {fileID: -6424938521615686402, guid: ba7797cf61411834084b3f3a7b9464b4, type: 3}
   DoneImg: {fileID: -765015418919943096, guid: d7462a2db557512448ed8c9a9d1c7db0, type: 3}
   IngImg: {fileID: -7943917676593969559, guid: d7462a2db557512448ed8c9a9d1c7db0, type: 3}
+  stemLevelSprites: []
   SettingsPanel: {fileID: 2031592367}
   CheckPanel: {fileID: 1334959770}
   isblackPanelOn: 0
@@ -10290,6 +10291,7 @@ MonoBehaviour:
   NoCoinPanel: {fileID: 953116436}
   NoHeartPanel: {fileID: 1317138558}
   BP: {fileID: 638678300}
+  isGameRunning: 0
 --- !u!4 &496606691
 Transform:
   m_ObjectHideFlags: 0
@@ -10649,6 +10651,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5195618960899090889, guid: c809c797aedd4c245bd650a8a6c1be51, type: 3}
+      propertyPath: lengthInSec
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5195618960899090889, guid: c809c797aedd4c245bd650a8a6c1be51, type: 3}
       propertyPath: SubModule.enabled
       value: 0
       objectReference: {fileID: 0}
@@ -10674,7 +10680,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5195618960899090894, guid: c809c797aedd4c245bd650a8a6c1be51, type: 3}
       propertyPath: m_SortingOrder
-      value: 8
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5195618960899090895, guid: c809c797aedd4c245bd650a8a6c1be51, type: 3}
       propertyPath: m_Name
@@ -11608,6 +11614,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 496606690}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: GameStart
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -31530,6 +31548,10 @@ PrefabInstance:
     - target: {fileID: 1960532229223420410, guid: 2cfd907148d0b4f49b367715f9f94d8a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1985811897232663696, guid: 2cfd907148d0b4f49b367715f9f94d8a, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5471392258496989000, guid: 2cfd907148d0b4f49b367715f9f94d8a, type: 3}
       propertyPath: farmIdx

@@ -73,6 +73,7 @@ public class GameManager : MonoBehaviour
     public Sprite StartImg;
     public Sprite DoneImg;
     public Sprite IngImg;
+    public SpriteRenderer[] stemLevelSprites;
 
     private float time_newBerry;
     private int price_newBerry;
@@ -97,12 +98,13 @@ public class GameManager : MonoBehaviour
     public GameObject NoHeartPanel;
     public GameObject BP;
 
-
+    [Header("[ Game Flag ]")]
+    public bool isGameRunning;
 
     #endregion
 
     #region 기본
-    void Awake()
+    void Start()
     {
         Application.targetFrameRate = 60;
         instance = this; // 게임 매니저의 싱글턴 패턴화 >> GameManager.instance.~~ 로 호출
@@ -120,18 +122,24 @@ public class GameManager : MonoBehaviour
 
         //TimerStart += Instance_TimerStart;
 
-        DisableObjColliderAll();
-    }
-
-
-
-    private void Start()
-    {
+        DisableObjColliderAll();       
         PTJList.SetActive(true);
 
         //NEW BERRY
         NewBerryUpdate();
     }
+
+    public void GameStart()
+    {
+        isGameRunning = true;
+    }
+    /*private void Start()
+    {
+        PTJList.SetActive(true);
+
+        //NEW BERRY
+        NewBerryUpdate();
+    }*/
     void InitDataInGM()
     {
         for (int i = 0; i < 16; i++)
@@ -269,7 +277,7 @@ public class GameManager : MonoBehaviour
         farm.isHarvest = true;
         Vector2 pos = stem.transform.position;
         stem.getInstantBerryObj().GetComponent<Berry>().Explosion(pos, target.position, 0.5f);
-        stem.getInstantBerryObj().GetComponent<SpriteRenderer>().sortingOrder = 4;
+        //stem.getInstantBerryObj().GetComponent<SpriteRenderer>().sortingOrder = 3;
 
         StartCoroutine(HarvestRoutine(farm, stem)); // 연속으로 딸기가 심어지는 현상을 방지
 
@@ -608,7 +616,7 @@ public class GameManager : MonoBehaviour
                     = "하트 10개로 시간을 10분으로 줄이시겠습니까?\n";//지금은 1초. 임시
                 break;
             case "done": /*딸기 개발*/
-                GetNewBerry();
+    GetNewBerry();
                 break;
                 //default:Debug.Log("NowButton이름이 잘못됬습니다."); break;
         }
