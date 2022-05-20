@@ -10,18 +10,32 @@ public class AudioManager : MonoBehaviour
     public bool isPlayAudio;
 
     [Header("object")]
+    //소리 조절 슬라이더
     public GameObject BGSoundSlider;
     public GameObject SFXSoundSlider;
 
     [Header("Sound")]
-    public AudioMixer mixer;
-    public AudioSource bgSound;
+    public AudioMixer mixer;//오디오 믹서
+    public AudioSource bgSound;//오디오 매니저
+
     //배경음 오디오(오디오 이름과 씬이름이 같을경우 플레이 해줍니다)
     public AudioClip[] bglist;
+
     //효과음 오디오
     public AudioClip SFXclip;
+    public AudioClip SowClip;
     public AudioClip HarvestClip;
+    public AudioClip Cute1Clip;
+    public AudioClip BlopClip;
+    public AudioClip Cute2Clip;
+    public AudioClip Cute4Clip;
     public AudioClip TadaClip;
+    public AudioClip RainClip;
+    public AudioClip RightClip;
+    public AudioClip WrongClip;
+    public AudioClip DoorOpenClip;
+    public AudioClip DoorCloseClip;
+
 
     public static AudioManager instance;
 
@@ -98,6 +112,11 @@ public class AudioManager : MonoBehaviour
     public void TadaAudioPlay() 
     { SFXPlay("TadaSFX", TadaClip); }
 
+    //직접 오디오 넣는 함수
+    public void SFXPlayButton(AudioClip clip) 
+    {
+        SFXPlay("", clip);
+    }
 
     public void BgSoundPlay(AudioClip clip) {
         if (isPlayAudio == true)
