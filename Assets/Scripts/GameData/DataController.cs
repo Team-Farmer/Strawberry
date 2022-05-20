@@ -113,21 +113,21 @@ public class DataController : MonoBehaviour
         {
             gameData.berryFieldData[i] = new BerryFieldData();                       
         }
-        //초기 딸기 가격 설정
-        for (int i = 0; i < 192; i++)
-        {
-            if (Globalvariable.instance.berryListAll[i] == null) continue;
+        ////초기 딸기 가격 설정
+        //for (int i = 0; i < 192; i++)
+        //{
+        //    if (Globalvariable.instance.berryListAll[i] == null) continue;
 
-            if (i < 64)
-                Globalvariable.instance.berryListAll[i].GetComponent<Berry>().berryPrice
-                    = (int)((Globalvariable.CLASSIC_FIRST + i * 3));
-            else if (i < 128)
-                Globalvariable.instance.berryListAll[i].GetComponent<Berry>().berryPrice
-                    = (int)((Globalvariable.SPECIAL_FIRST + (i - 64) * 5));
-            else
-                Globalvariable.instance.berryListAll[i].GetComponent<Berry>().berryPrice
-                    = (int)((Globalvariable.UNIQUE_FIRST + (i - 128) * 7));
-        }
+        //    if (i < 64)
+        //        Globalvariable.instance.berryListAll[i].GetComponent<Berry>().berryPrice
+        //            = (int)((Globalvariable.CLASSIC_FIRST + i * 3));
+        //    else if (i < 128)
+        //        Globalvariable.instance.berryListAll[i].GetComponent<Berry>().berryPrice
+        //            = (int)((Globalvariable.SPECIAL_FIRST + (i - 64) * 5));
+        //    else
+        //        Globalvariable.instance.berryListAll[i].GetComponent<Berry>().berryPrice
+        //            = (int)((Globalvariable.UNIQUE_FIRST + (i - 128) * 7));
+        //}
         // 비 지속시간 초기화
         var main = rainParticle.main;
         main.duration = 5.0f;

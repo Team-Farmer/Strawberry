@@ -5,24 +5,28 @@ using UnityEngine.UI;
 
 public class MiniGame1 : MonoBehaviour
 {
+    [Header("Game")]
     public Scrollbar scrollbar;//스크롤바
-    public Text count_txt;     //3초 텍스트
     public Text score_txt;     //점수
     public Image quiz_img;     //퀴즈딸기 이미지
     public int quizIndex;      //퀴즈딸기 인덱스
+    public Button[] answer_btn;//정답딸기 버튼(4개)
     public Image[] answer_img; //정답딸기 이미지(4개)
     public int[] answerIndex;  //정답딸기 인덱스(4개)
     public GameObject O;       //O 이미지
     public GameObject X;       //X 이미지
-    public Button[] answer_btn;//정답딸기 버튼(4개)
+
+
+    [Header("UI")]
+    public GameObject countImgs;//카운트 이미지
     public Button pause_btn;   //일시정지 버튼
     public Button exit_btn;    //나가기 버튼
-
-    public GameObject resultPanel;
+    public GameObject resultPanel;//결과패널
+    public Text result_txt;    //결과 텍스트
 
 
     float size;                           //스크롤바 사이즈
-    int time = 63;                        //초
+    int time = 64;                        //초
     int score=0;                          //점수
     List<int> unlockList=new List<int>(); //해금된 딸기 번호 리스트
 
@@ -52,25 +56,29 @@ public class MiniGame1 : MonoBehaviour
             }
         }
 
-        //3초 카운트
-        count_txt.gameObject.SetActive(true);
-        StartCoroutine(Count3Second());
+        //4초 카운트
+        StartCoroutine(Count4Second());
     }
 
-    IEnumerator Count3Second()
+    IEnumerator Count4Second()
     {
-        count_txt.text = (time - 60).ToString();
+        countImgs.transform.GetChild(time - 61).gameObject.SetActive(true);
         yield return new WaitForSeconds(1);
+        countImgs.transform.GetChild(time - 61).gameObject.SetActive(false);
         time -= 1;
         if (time <= 60)
         {
-            count_txt.gameObject.SetActive(false);
+            quiz_img.gameObject.SetActive(true);
+            for(int i = 0; i < 4; i++){ 
+                answer_img[i].gameObject.SetActive(true);
+                answer_btn[i].enabled = true;
+            }
             StartCoroutine(Timer());
             MakeQuiz();
         }
         else
         {
-            StartCoroutine(Count3Second());
+            StartCoroutine(Count4Second());
         }
     }
 
@@ -81,7 +89,7 @@ public class MiniGame1 : MonoBehaviour
         time -= 1;
         if (time <= 0)
         {
-            StopGame();
+            FinishGame();
         }
         else
         {
@@ -157,17 +165,36 @@ public class MiniGame1 : MonoBehaviour
         MakeQuiz();
     }
 
-    void StopGame()
+    void FinishGame()
     {
+        //딸기 안보이게
+        quiz_img.gameObject.SetActive(false);
+        for (int i = 0; i < 4; i++) { 
+            answer_img[i].gameObject.SetActive(false);
+            answer_btn[i].enabled=false;
+        }
+
+        //최고기록 저장
+        if (DataController.instance.gameData.highScore[0] < score)
+        {
+            DataController.instance.gameData.highScore[0] = score;
+        }
+
         //결과패널
         resultPanel.SetActive(true);
+        result_txt.text = "최고기록 : " + DataController.instance.gameData.highScore[0] + "\n현재점수 : " + score;
+
+        //하트지급
         DataController.instance.gameData.heart += score / 10;
+
+        //미니게임 플레이 횟수 증가
+        DataController.instance.gameData.mgPlayCnt++;
     }
 
     public void ReStart()
     {
         score = 0;
-        time = 63;
+        time = 64;
         unlockList.Clear();
         StartGame();
     }

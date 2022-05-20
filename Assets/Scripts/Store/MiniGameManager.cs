@@ -40,6 +40,7 @@ public class MiniGameManager : MonoBehaviour
                     {
                         open_yes_btn.enabled = false;
                         open_yes_btn.GetComponent<Image>().color = Color.gray;
+                        //flag = false;
                         break;
                     }
                 }
