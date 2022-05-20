@@ -60,7 +60,9 @@ public class PTJResearch : MonoBehaviour
     public GameObject noCoinPanel;
     public GameObject warningBlackPanel;
     public GameObject confirmPanel;
+    public GameObject FirePanel;
     public Text panelCoinText;
+    public Button btn;
 
 
     //Prefab별로 숫자 부여
@@ -113,6 +115,8 @@ public class PTJResearch : MonoBehaviour
         }
         rainParticle = GameObject.FindGameObjectWithTag("Rain").GetComponent<ParticleSystem>();
         globalVar = GameObject.FindGameObjectWithTag("Global").GetComponent<Globalvariable>();
+
+        btn.onClick.AddListener(BtnListener);
     }
     private void Update()
     {
@@ -243,7 +247,6 @@ public class PTJResearch : MonoBehaviour
             {
                 //재화 부족 경고 패널 등장
                 AudioManager.instance.Cute4AudioPlay();
-                GameManager.instance.DisableObjColliderAll();
                 GameManager.instance.ShowCoinText(panelCoinText, DataController.instance.gameData.coin);
                 warningBlackPanel.SetActive(true);
                 noCoinPanel.GetComponent<PanelAnimation>().OpenScale();
@@ -379,7 +382,9 @@ public class PTJResearch : MonoBehaviour
             }
             //이미 고용중이면 fire
             else
-            { Fire(prefabnum); }
+            { 
+                FireConfirm(); 
+            }
         }
         //이미 3명이상 고용중이면
         else
@@ -388,16 +393,17 @@ public class PTJResearch : MonoBehaviour
             if (DataController.instance.gameData.PTJNum[prefabnum] == 0)
             {
                 //3명이상 고용중이라는 경고 패널 등장
-                AudioManager.instance.Cute4AudioPlay();//에러 경고음
                 warningPanel.GetComponent<PanelAnimation>().ScriptTxt.text = "고용 가능한 알바 수를\n넘어섰어요!";
                 warningBlackPanel.SetActive(true);
                 warningPanel.GetComponent<PanelAnimation>().OpenScale();
             }
             //이미 고용중이면 fire
             else
-            { Fire(prefabnum); }
+            { FireConfirm(); }
         }
     }
+
+
 
     private void Hire(int ID, int num)
     {
@@ -520,11 +526,20 @@ public class PTJResearch : MonoBehaviour
         }
     }
 
+    private void FireConfirm() //시원 건드림
+    {
+        //3명이상 고용중이라는 경고 패널 등장
+        warningBlackPanel.SetActive(true);
+        FirePanel.GetComponent<PanelAnimation>().OpenScale();
+    }
+     
+    private void BtnListener() //시원 건드림
+    {
+        //confirmPanel.GetComponent<PanelAnimation>().ScriptTxt.text = "해고했어요 ㅠㅠ";
+        //confirmPanel.GetComponent<PanelAnimation>().OpenScale();
+        Fire(prefabnum);
+        warningBlackPanel.SetActive(false);
+        FirePanel.GetComponent<PanelAnimation>().CloseScale();
 
-
-
-
-
-
-
+    }
 }

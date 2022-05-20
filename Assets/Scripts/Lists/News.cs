@@ -21,6 +21,7 @@ public class News : MonoBehaviour
             this.Price = Price;
         }
     }
+
     [Header("==========INFO STRUCT==========")]
     [SerializeField]
     NewsStruct[] Info;
@@ -34,7 +35,6 @@ public class News : MonoBehaviour
     private GameObject Lock;//뉴스 잠금
     [SerializeField]
     private GameObject Unlockable;//뉴스 잠금 해제 가능
-
 
 
     //추가 된 Prefab 수
@@ -169,6 +169,9 @@ public class News : MonoBehaviour
             if (RandomNum <= Info[ID].Price * 10) //price*10%확률로
             {
                 //딸기 획득
+                WarningPanelBlack.SetActive(true);
+                ConfirmPanel.GetComponent<PanelAnimation>().ScriptTxt.text = "딸기가 해금되었어요!";
+                ConfirmPanel.GetComponent<PanelAnimation>().OpenScale();
                 GameManager.instance.newsBerry();
             }
             

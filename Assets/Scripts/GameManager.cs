@@ -51,6 +51,12 @@ public class GameManager : MonoBehaviour
     public GameObject PTJList;
 
     public GameObject berryExp;//베리 설명창
+    public GameObject berryExp_BlackPanel;//베리 설명창
+    public GameObject berryExp_Panel;//베리 설명창
+
+    public GameObject berryExpImage;
+    public GameObject berryExpName;
+    public GameObject berryExpTxt;
 
     //NEWS
     [NonSerialized]
@@ -63,8 +69,12 @@ public class GameManager : MonoBehaviour
     public GameObject timeText_newBerry;
     public GameObject startBtn_newBerry;
 
-    public GameObject TimeReucePanel_newBerry;
+    public GameObject TimeReuce_newBerry;
+    public GameObject TimeReduceBlackPanel_newBerry;
+    public GameObject TimeReducePanel_newBerry;
+    public Text TimeReduceText_newBerry;
     public GameObject AcheivePanel_newBerry;
+
 
     public GameObject NoPanel_newBerry;
     public GameObject BlackPanel_newBerry;
@@ -601,8 +611,9 @@ public class GameManager : MonoBehaviour
                 timeText_newBerry.GetComponent<Text>().text = TimeForm(Mathf.CeilToInt(time_newBerry));
 
                 //시간 감소여부 묻는 패널을 띄운다.
-                TimeReucePanel_newBerry.SetActive(true);
-                TimeReucePanel_newBerry.transform.GetChild(2).GetComponent<Text>().text
+                TimeReduceBlackPanel_newBerry.SetActive(true); //시원 건드림
+                TimeReducePanel_newBerry.GetComponent<PanelAnimation>().OpenScale(); //시원 건드림
+                TimeReduceText_newBerry.GetComponent<Text>().text //시원 건드림
                     = "하트 10개로 시간을 10분으로 줄이시겠습니까?\n";//지금은 1초. 임시
 
                 //버튼상태 ing로
@@ -613,8 +624,9 @@ public class GameManager : MonoBehaviour
                 break;
             case "ing":
                 //시간 감소여부 묻는 패널을 띄운다.
-                TimeReucePanel_newBerry.SetActive(true);
-                TimeReucePanel_newBerry.transform.GetChild(2).GetComponent<Text>().text
+                TimeReduceBlackPanel_newBerry.SetActive(true);
+                TimeReducePanel_newBerry.GetComponent<PanelAnimation>().OpenScale();
+                TimeReduceText_newBerry.GetComponent<Text>().text
                     = "하트 10개로 시간을 10분으로 줄이시겠습니까?\n";//지금은 1초. 임시
                 break;
             case "done": /*딸기 개발*/
@@ -640,9 +652,9 @@ public class GameManager : MonoBehaviour
         }
 
         //창 끄기
-        TimeReucePanel_newBerry.SetActive(false);
+        TimeReduceBlackPanel_newBerry.SetActive(false);
+        TimeReducePanel_newBerry.GetComponent<PanelAnimation>().CloseScale();
 
-        
     }
 
     IEnumerator Timer()
@@ -794,11 +806,13 @@ public class GameManager : MonoBehaviour
             {
 
                 //설명창 띄운다
-                berryExp.SetActive(true);
+                berryExp_BlackPanel.SetActive(true); //시원 건드림
+                berryExp_Panel.GetComponent<PanelAnimation>().OpenScale(); //시원 건드림
 
-                GameObject berryExpImage = berryExp.transform.GetChild(2).gameObject;
-                GameObject berryExpName = berryExp.transform.GetChild(3).gameObject;
-                GameObject berryExpTxt = berryExp.transform.GetChild(4).gameObject;
+/*                GameObject berryExpImage = berryExp.transform.GetChild(1).GetChild(1).gameObject; //시원 건드림
+                GameObject berryExpName = berryExp.transform.GetChild(1).GetChild(2).gameObject; //시원 건드림
+                GameObject berryExpTxt = berryExp.transform.GetChild(1).GetChild(3).gameObject; //시원 건드림*/
+
 
                 //Explanation 내용을 채운다.
                 berryExpImage.GetComponentInChildren<Image>().sprite
