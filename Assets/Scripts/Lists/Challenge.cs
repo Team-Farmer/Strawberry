@@ -171,9 +171,11 @@ public class Challenge : MonoBehaviour
     //도전과제 달성후 완료 버튼 누를시
 
     public void ChallengeSuccess() {
+
         if (ChallengeValue[prefabnum] / 30 == DataController.instance.gameData.challengeLevel[prefabnum] + 1
-            ||realLevel>DataController.instance.gameData.challengeLevel[prefabnum])
+            || realLevel > DataController.instance.gameData.challengeLevel[prefabnum])
         {
+            AudioManager.instance.Cute1AudioPlay();
             //메달 보상 획득
             GameManager.instance.GetMedal(Info[prefabnum].rewardMedal);
             //하트 보상 획득
@@ -185,6 +187,7 @@ public class Challenge : MonoBehaviour
             DataController.instance.gameData.challengeLevel[prefabnum]++;//레벨증가
 
         }
+
     }
 
 

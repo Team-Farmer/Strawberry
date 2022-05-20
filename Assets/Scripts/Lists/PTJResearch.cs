@@ -207,7 +207,7 @@ public class PTJResearch : MonoBehaviour
 
     //연구 레벨
     public void clickCoin_Research() {
-
+        AudioManager.instance.Cute1AudioPlay();
         if (DataController.instance.gameData.researchLevel[prefabnum] < 25)//레벨 25로 한계두기
         {         
             //해당 금액이 지금 가진 코인보다 적으면
@@ -238,6 +238,7 @@ public class PTJResearch : MonoBehaviour
             else if (DataController.instance.gameData.coin < Info[prefabnum].Price) //해당 금액이 지금 가진 코인보다 많으면
             {
                 //재화 부족 경고 패널 등장
+                AudioManager.instance.Cute4AudioPlay();
                 GameManager.instance.DisableObjColliderAll();
                 GameManager.instance.ShowCoinText(panelCoinText, DataController.instance.gameData.coin);
                 warningBlackPanel.SetActive(true);
@@ -297,6 +298,7 @@ public class PTJResearch : MonoBehaviour
     //PTJ설명창 띄운다
     public void ActiveExplanation()
     {
+        AudioManager.instance.Cute1AudioPlay();
         //창을 띄운다.
         PTJExp.SetActive(true);
 
@@ -326,7 +328,6 @@ public class PTJResearch : MonoBehaviour
     //고용 버튼 상태 변경
     public void EmployButtonHire(int SliderNum)
     {
-        //Debug.Log("ID = " + prefabnum + " / TEST = " + DataController.instance.gameData.PTJNum[prefabnum]);
         
         if (PTJToggle.GetComponent<Toggle>().isOn == true) 
         { SliderNum *= 10; }//10단위이면 10을 곱해준다.
@@ -355,6 +356,7 @@ public class PTJResearch : MonoBehaviour
     }
     //============================================================================================================
     public void HireFire() {
+        AudioManager.instance.Cute1AudioPlay();
         //3명 아래로 고용중이면
         if (employCount < 3)
         {
@@ -382,6 +384,7 @@ public class PTJResearch : MonoBehaviour
             if (DataController.instance.gameData.PTJNum[prefabnum] == 0)
             {
                 //3명이상 고용중이라는 경고 패널 등장
+                AudioManager.instance.Cute4AudioPlay();//에러 경고음
                 warningPanel.GetComponent<PanelAnimation>().ScriptTxt.text = "고용 가능한 알바 수를\n넘어섰어요!";
                 warningBlackPanel.SetActive(true);
                 warningPanel.GetComponent<PanelAnimation>().OpenScale();

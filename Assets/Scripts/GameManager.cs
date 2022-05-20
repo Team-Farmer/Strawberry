@@ -225,7 +225,8 @@ public class GameManager : MonoBehaviour
             Stem st = GetStem(farm.farmIdx);
             if (st != null)
             {
-                PlantStrawBerry(st, obj); // 심는다                            
+                PlantStrawBerry(st, obj); // 심는다
+                AudioManager.instance.SowAudioPlay();
                 DataController.instance
                     .gameData.berryFieldData[farm.farmIdx].isPlant = true; // 체크 변수 갱신
             }

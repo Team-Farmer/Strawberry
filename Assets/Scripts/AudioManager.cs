@@ -38,7 +38,8 @@ public class AudioManager : MonoBehaviour
 
 
     public static AudioManager instance;
-
+    //========================================================================================================
+    //========================================================================================================
     private void Awake()
     {
         if (instance == null)
@@ -49,6 +50,8 @@ public class AudioManager : MonoBehaviour
         }
         else { Destroy(gameObject); }
     }
+
+
     private void Start()
     {
         BGSoundSlider.GetComponent<Slider>().value = 0.5f;
@@ -56,7 +59,11 @@ public class AudioManager : MonoBehaviour
         BGSoundVolume();
         SFXVolume();
     }
-    //씬에 따라 배경음 변경
+
+    //========================================================================================================
+    //========================================================================================================
+    
+    //배경음 변경(새로운 씬 안가져오니까 이거 변경할것)
     private void OnSceneLoaded(Scene arg0,LoadSceneMode arg1) {
         for (int i = 0; i < bglist.Length; i++) {
             if (arg0.name == bglist[i].name)//씬이름과 같은 배경음 틀기
@@ -84,6 +91,9 @@ public class AudioManager : MonoBehaviour
         else { mixer.SetFloat("SFXVolume", Mathf.Log10(SFXSoundSlider.GetComponent<Slider>().value) * 20); }
 
     }
+
+
+
     //효과음
     //이거 미완성
     public void SFXPlay(string sfxName,AudioClip clip) {
@@ -104,13 +114,40 @@ public class AudioManager : MonoBehaviour
 
 
 
-    //얘네 다른 스크립트에서하면 줄일수있긴한데 너무 분산될까봐 이렇게
-    public void SFXAudioPlay() //버튼 효과음
-    { SFXPlay("ButtonSFX", SFXclip); }
+    //얘네 줄일수있긴한데 그러면 오디오 수작ㅇ업으로 넣어야하는데 ..
+
+    public void SowAudioPlay()//씨뿌리기 효과음
+    { SFXPlay("SowSFX", SowClip); }
     public void HarvestAudioPlay() //수확 효과음
     { SFXPlay("HarvestSFX", HarvestClip); }
-    public void TadaAudioPlay() 
+
+
+
+    public void SFXAudioPlay() //X버튼 blop
+    { SFXPlay("ButtonSFX", SFXclip); }
+    public void Cute1AudioPlay() //버튼 효과음
+    { SFXPlay("Cute1SFX", Cute1Clip); }
+    public void Cute2AudioPlay()//패널 등장
+    { SFXPlay("Cute2SFX", Cute2Clip); }
+    public void Cute4AudioPlay()//에러패널
+    { SFXPlay("Cute4SFX", Cute4Clip); }
+    public void TadaAudioPlay() //딸기 획득 효과음 
     { SFXPlay("TadaSFX", TadaClip); }
+    public void RainAudioPlay() //비 효과음
+    { SFXPlay("RainSFX", RainClip); }
+    public void RightAudioPlay() //맞았아요 
+    { SFXPlay("RightSFX", RightClip); }
+    public void WrongAudioPlay() //틀렸어요 
+    { SFXPlay("WrongSFX", WrongClip); }
+
+
+
+    public void DoorOpenAudioPlay() //문열기
+    { SFXPlay("DoorOpenSFX", DoorOpenClip); }
+    public void DoorCloseAudioPlay() //문닫기 
+    { SFXPlay("DoorCloseSFX", DoorCloseClip); }
+
+
 
     //직접 오디오 넣는 함수
     public void SFXPlayButton(AudioClip clip) 
@@ -118,7 +155,9 @@ public class AudioManager : MonoBehaviour
         SFXPlay("", clip);
     }
 
-    public void BgSoundPlay(AudioClip clip) {
+
+    public void BgSoundPlay(AudioClip clip) 
+    {
         if (isPlayAudio == true)
         {
             bgSound.outputAudioMixerGroup = mixer.FindMatchingGroups("BGSound")[0];

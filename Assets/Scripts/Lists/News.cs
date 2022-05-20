@@ -108,7 +108,7 @@ public class News : MonoBehaviour
 
     public void NewsButton()
     {
-        
+        AudioManager.instance.Cute1AudioPlay();
         switch (DataController.instance.gameData.newsState[prefabnum])
         {
             case 0://LOCK

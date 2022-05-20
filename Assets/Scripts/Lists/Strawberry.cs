@@ -49,10 +49,8 @@ public class Strawberry : MonoBehaviour
     }
     private void Update()
     {
-        //베리들을 보인다.
+        //베리들을 보인다. 이거 없앨수있ㄴ
         berryImageChange();
-        //이거 없애기
-        //gameManager에서 newBerry추가될때마다 갱신하는 방법도 있다.
     }
 
     //=====================================================================================================
@@ -89,7 +87,8 @@ public class Strawberry : MonoBehaviour
 
             if (DataController.instance.gameData.isBerryUnlock[prefabnum] == true)
             {
-                
+                AudioManager.instance.Cute1AudioPlay();
+
                 //설명창 띄운다
                 berryExp.SetActive(true);
                 GameObject berryExpImage = berryExp.transform.GetChild(2).gameObject;
