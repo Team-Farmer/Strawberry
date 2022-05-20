@@ -17,7 +17,7 @@ public class DataController : MonoBehaviour
     public GameData gameData;
 
     private ParticleSystem rainParticle;
-
+    private Globalvariable globalVar;
     void Awake()
     {
         if (instance == null)
@@ -34,9 +34,9 @@ public class DataController : MonoBehaviour
             Destroy(this.gameObject);
         }
         rainParticle = GameObject.FindGameObjectWithTag("Rain").GetComponent<ParticleSystem>();
+        globalVar = GameObject.FindGameObjectWithTag("Global").GetComponent<Globalvariable>();
         LoadData();
-    }
-
+    }   
     public void LoadData()
     {
         string filePath = Application.persistentDataPath + gameDataFileName;
@@ -113,24 +113,13 @@ public class DataController : MonoBehaviour
         {
             gameData.berryFieldData[i] = new BerryFieldData();                       
         }
-        ////초기 딸기 가격 설정
-        //for (int i = 0; i < 192; i++)
-        //{
-        //    if (Globalvariable.instance.berryListAll[i] == null) continue;
-
-        //    if (i < 64)
-        //        Globalvariable.instance.berryListAll[i].GetComponent<Berry>().berryPrice
-        //            = (int)((Globalvariable.CLASSIC_FIRST + i * 3));
-        //    else if (i < 128)
-        //        Globalvariable.instance.berryListAll[i].GetComponent<Berry>().berryPrice
-        //            = (int)((Globalvariable.SPECIAL_FIRST + (i - 64) * 5));
-        //    else
-        //        Globalvariable.instance.berryListAll[i].GetComponent<Berry>().berryPrice
-        //            = (int)((Globalvariable.UNIQUE_FIRST + (i - 128) * 7));
-        //}
+        
         // 비 지속시간 초기화
         var main = rainParticle.main;
         main.duration = 5.0f;
+
+        //초기 딸기 가격 설정
+        InitBerryPrice();
 
         //여기 아래 정리 필요
         //isBerryUnlock
@@ -162,6 +151,23 @@ public class DataController : MonoBehaviour
         //가게관련변수
         gameData.isStoreOpend = false;
         for (int i = 0; i < 4; i++) { gameData.highScore[i] = 0; }
+    }
+    void InitBerryPrice()
+    {      
+        for (int i = 0; i < 192; i++)
+        {
+            if (globalVar.berryListAll[i] == null) continue;
+
+            if (i < 64)
+                globalVar.berryListAll[i].GetComponent<Berry>().berryPrice
+                    = (int)((globalVar.CLASSIC_FIRST + i * 3));
+            else if (i < 128)
+                globalVar.berryListAll[i].GetComponent<Berry>().berryPrice
+                    = (int)((globalVar.SPECIAL_FIRST + (i - 64) * 5));
+            else
+                globalVar.berryListAll[i].GetComponent<Berry>().berryPrice
+                    = (int)((globalVar.UNIQUE_FIRST + (i - 128) * 7));
+        }
     }
     void OnApplicationQuit()
     {

@@ -28,9 +28,9 @@ public class Globalvariable : MonoBehaviour
     public const int TRUCK_CNT_LEVEL_2 = 32;
     public const int TRUCK_CNT_LEVEL_MAX = 48;
 
-    public const int CLASSIC_FIRST = 6;
-    public const int SPECIAL_FIRST = 100;
-    public const int UNIQUE_FIRST = 200;
+    public readonly int CLASSIC_FIRST = 6;
+    public readonly int SPECIAL_FIRST = 100;
+    public readonly int UNIQUE_FIRST = 200;
 
     public readonly float[] STEM_LEVEL = { 0f, 5f, 10f, 15f, 20f };
 

@@ -85,6 +85,9 @@ public class PTJResearch : MonoBehaviour
 
     //비 파티클
     private ParticleSystem rainParticle;
+
+    // 글로벌 변수
+    private Globalvariable globalVar;
     //===================================================================================================
     //===================================================================================================
     void Start()
@@ -109,6 +112,7 @@ public class PTJResearch : MonoBehaviour
 
         }
         rainParticle = GameObject.FindGameObjectWithTag("Rain").GetComponent<ParticleSystem>();
+        globalVar = GameObject.FindGameObjectWithTag("Global").GetComponent<Globalvariable>();
     }
     private void Update()
     {
@@ -248,20 +252,20 @@ public class PTJResearch : MonoBehaviour
     }
     public void IncreaseBerryPrice()
     {
-        float researchCoeffi = (DataController.instance.gameData.researchLevel[0]) * Globalvariable.instance.getEffi();     
+        float researchCoeffi = (DataController.instance.gameData.researchLevel[0]) * globalVar.getEffi();     
         for (int i = 0; i < 192; i++)
         {
-            if (Globalvariable.instance.berryListAll[i] == null) continue;
+            if (globalVar.berryListAll[i] == null) continue;
 
             if (i < 64)
-                Globalvariable.instance.berryListAll[i].GetComponent<Berry>().berryPrice
-                    = (int)((Globalvariable.CLASSIC_FIRST + i * 3) * (1 + researchCoeffi));
+                globalVar.berryListAll[i].GetComponent<Berry>().berryPrice
+                    = (int)((globalVar.CLASSIC_FIRST + i * 3) * (1 + researchCoeffi));
             else if (i < 128)
-                Globalvariable.instance.berryListAll[i].GetComponent<Berry>().berryPrice
-                    = (int)((Globalvariable.SPECIAL_FIRST + (i - 64) * 5) * (1 + researchCoeffi));
+                globalVar.berryListAll[i].GetComponent<Berry>().berryPrice
+                    = (int)((globalVar.SPECIAL_FIRST + (i - 64) * 5) * (1 + researchCoeffi));
             else
-                Globalvariable.instance.berryListAll[i].GetComponent<Berry>().berryPrice
-                    = (int)((Globalvariable.UNIQUE_FIRST + (i - 128) * 7) * (1 + researchCoeffi));
+                globalVar.berryListAll[i].GetComponent<Berry>().berryPrice
+                    = (int)((globalVar.UNIQUE_FIRST + (i - 128) * 7) * (1 + researchCoeffi));
         }
     }
     public void DecreaseBerryGrowTime()
