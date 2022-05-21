@@ -30,6 +30,7 @@ public class ChangeLayer2 : MonoBehaviour
 	private float swipeTime = 0.1f;         // 페이지가 Swipe 되는 시간
 	[SerializeField]
 	private float swipeDistance = 1.0f;        // 페이지가 Swipe되기 위해 움직여야 하는 최소 거리
+	public Button[] swipeBtn;
 
 	[Header("=====Berry Lock=====")]
 	public GameObject berryLockSpecial;
@@ -89,7 +90,8 @@ public class ChangeLayer2 : MonoBehaviour
 
 			// 처음 시작할 때 0번 페이지 보인다.
 			SetScrollBarValue(0);
-		
+			swipeBtn[0].interactable = false;
+			swipeBtn[1].interactable = true;
 		}
 	}
 
@@ -97,8 +99,9 @@ public class ChangeLayer2 : MonoBehaviour
 	{
 		if (isBerry == true)
         {
-			UpdateInput();//스와이프 관련
+			UpdateInput(); //스와이프 관련
 
+			// 잠금해제 버튼
 			if (berryLockSpecial.activeInHierarchy && ResearchLevelCheck(4))
 			{
 				LockSpecialBtn.GetComponent<Button>().interactable = true;
@@ -107,6 +110,23 @@ public class ChangeLayer2 : MonoBehaviour
 			{
 				LockUniqueBtn.GetComponent<Button>().interactable = true;
 			}
+
+			// 스와이프 버튼
+			if (currentPage == 0)
+			{
+				swipeBtn[0].interactable = false;
+				swipeBtn[1].interactable = true;
+			}
+			else if (currentPage == maxPage - 1)
+			{
+				swipeBtn[1].interactable = false;
+			}
+			else
+			{
+				swipeBtn[0].interactable = true;
+				swipeBtn[1].interactable = true;
+			}
+				
 		}
 		
 	}
@@ -247,18 +267,17 @@ public class ChangeLayer2 : MonoBehaviour
 		{
 			case "left":
 				// 현재 페이지가 왼쪽 끝이면 종료
-				if (currentPage == 0) return;
-
-				currentPage--;// 왼쪽으로 이동 = 현재 페이지 1 감소
+				if (currentPage == 0)
+					return;
+				currentPage--;	// 왼쪽으로 이동 = 현재 페이지 1 감소
 				SetScrollBarValue(currentPage);
 				break;
 
 			case "right":
 				// 현재 페이지가 오른쪽 끝이면 종료
-				if (currentPage == maxPage - 1) return;
-
-				// 오른쪽으로 이동 = 현재 페이지 1 증가
-				currentPage++;
+				if (currentPage == maxPage - 1)
+					return;
+				currentPage++;	// 오른쪽으로 이동 = 현재 페이지 1 증가
 				SetScrollBarValue(currentPage);
 				break;
 		}

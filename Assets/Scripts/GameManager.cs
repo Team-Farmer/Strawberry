@@ -520,7 +520,7 @@ public class GameManager : MonoBehaviour
 
             //가격 시간 아직 미공개라 ?
             priceText_newBerry.GetComponent<Text>().text = price_newBerry.ToString();
-            timeText_newBerry.GetComponent<Text>().text = "?";
+            timeText_newBerry.GetComponent<Text>().text = "??:??";
 
 
             //베리 없음 지우기
@@ -590,13 +590,6 @@ public class GameManager : MonoBehaviour
         { return countIsUnlock; }
         else { return countIsExsist; }
     }
-
-
-
-
-
-
-
 
 
 

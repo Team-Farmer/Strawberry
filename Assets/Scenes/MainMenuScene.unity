@@ -2559,6 +2559,9 @@ MonoBehaviour:
   scrollBar: {fileID: 896976377}
   swipeTime: 0.1
   swipeDistance: 100
+  swipeBtn:
+  - {fileID: 2088960233}
+  - {fileID: 1960802707}
   berryLockSpecial: {fileID: 655529759}
   LockSpecialBtn: {fileID: 170176987}
   berryLockUnique: {fileID: 153615610}
@@ -42143,6 +42146,7 @@ MonoBehaviour:
   scrollBar: {fileID: 0}
   swipeTime: 0.1
   swipeDistance: 1
+  swipeBtn: []
   berryLockSpecial: {fileID: 0}
   LockSpecialBtn: {fileID: 0}
   berryLockUnique: {fileID: 0}
