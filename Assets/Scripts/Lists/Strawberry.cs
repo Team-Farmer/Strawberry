@@ -39,6 +39,8 @@ public class Strawberry : MonoBehaviour
     {
         berryExp = GameObject.FindGameObjectWithTag("BerryExplanation");
         berryExp = berryExp.transform.GetChild(0).gameObject;
+        berryExp.SetActive(true);
+        berryExp = berryExp.transform.GetChild(1).gameObject;
 
         //베리 정보 가져오기
         BERRY = GameObject.FindGameObjectWithTag("Global").GetComponent<Globalvariable>().berryListAll;
@@ -90,11 +92,12 @@ public class Strawberry : MonoBehaviour
                 AudioManager.instance.Cute1AudioPlay();
 
                 //설명창 띄운다
-                berryExp.SetActive(true);
-                GameObject berryExpImage = berryExp.transform.GetChild(2).gameObject;
-                GameObject berryExpName = berryExp.transform.GetChild(3).gameObject;
-                GameObject berryExpTxt = berryExp.transform.GetChild(4).gameObject;
-                GameObject berryExpPrice= berryExp.transform.GetChild(5).gameObject;
+                //berryExp.SetActive(true);
+                berryExp.GetComponent<PanelAnimation>().OpenScale();
+                GameObject berryExpImage = berryExp.transform.GetChild(1).gameObject;
+                GameObject berryExpName = berryExp.transform.GetChild(2).gameObject;
+                GameObject berryExpTxt = berryExp.transform.GetChild(3).gameObject;
+                GameObject berryExpPrice= berryExp.transform.GetChild(4).gameObject;
 
                 //Explanation 내용을 채운다.
                 berryExpImage.GetComponentInChildren<Image>().sprite

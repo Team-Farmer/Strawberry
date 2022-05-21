@@ -68,7 +68,7 @@ public class News : MonoBehaviour
         WarningPanel = GameObject.FindGameObjectWithTag("WarningPanel");
         WarningPanelBlack= WarningPanel.transform.GetChild(0).gameObject;
         YNPanel = WarningPanel.transform.GetChild(5).gameObject;
-        ConfirmPanel= WarningPanel.transform.GetChild(6).gameObject;
+        ConfirmPanel= WarningPanel.transform.GetChild(7).gameObject;
 
         //¸Þ´Þ
         GameManager.instance.ShowMedalText();

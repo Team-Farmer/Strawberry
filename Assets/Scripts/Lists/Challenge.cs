@@ -61,7 +61,6 @@ public class Challenge : MonoBehaviour
     private int realLevel;//이 레벨에 가야지 보상을 다 받은거다.
 
     private int[] ChallengeValue = new int[6];
-    private int[] ChallengeValue_ = new int[6];
 
     //=======================================================================================================================
     //=======================================================================================================================
@@ -82,9 +81,6 @@ public class Challenge : MonoBehaviour
         ChallengeValue[4] = DataController.instance.gameData.accAttendance;
         ChallengeValue[5] = DataController.instance.gameData.mgPlayCnt;
 
-
-        //0~29,0
-        //ChallengeValue_[prefabnum] = ChallengeValue[prefabnum] % 30;
             
             
         //보상을 받았다면 이 레벨이여야 한다.
@@ -225,7 +221,6 @@ public class Challenge : MonoBehaviour
 
 
     //도전과제 달성후 완료 버튼 누를시
-
     public void ChallengeSuccess() {
 
         if (ChallengeValue[prefabnum] / 30 == DataController.instance.gameData.challengeLevel[prefabnum] + 1

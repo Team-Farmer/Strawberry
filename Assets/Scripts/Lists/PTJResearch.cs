@@ -62,7 +62,7 @@ public class PTJResearch : MonoBehaviour
     public GameObject confirmPanel;
     public GameObject FirePanel;
     public Text panelCoinText;
-    public Button btn;
+    //public Button btn;
 
 
     //Prefab별로 숫자 부여
@@ -111,12 +111,12 @@ public class PTJResearch : MonoBehaviour
             //고용중이라면 고용중 상태로 보이기
             if (DataController.instance.gameData.PTJNum[prefabnum] != 0)
             {  HireInit(prefabnum, DataController.instance.gameData.PTJNum[prefabnum]);  }
-
+            //btn.onClick.AddListener(BtnListener);
         }
         rainParticle = GameObject.FindGameObjectWithTag("Rain").GetComponent<ParticleSystem>();
         globalVar = GameObject.FindGameObjectWithTag("Global").GetComponent<Globalvariable>();
 
-        btn.onClick.AddListener(BtnListener);
+        
     }
     private void Update()
     {
@@ -382,8 +382,8 @@ public class PTJResearch : MonoBehaviour
             }
             //이미 고용중이면 fire
             else
-            { 
-                FireConfirm(); 
+            {
+                Fire(prefabnum);
             }
         }
         //이미 3명이상 고용중이면
@@ -399,7 +399,7 @@ public class PTJResearch : MonoBehaviour
             }
             //이미 고용중이면 fire
             else
-            { FireConfirm(); }
+            { Fire(prefabnum); }
         }
     }
 
@@ -537,7 +537,7 @@ public class PTJResearch : MonoBehaviour
     {
         //confirmPanel.GetComponent<PanelAnimation>().ScriptTxt.text = "해고했어요 ㅠㅠ";
         //confirmPanel.GetComponent<PanelAnimation>().OpenScale();
-        Fire(prefabnum);
+        HireFire();
         warningBlackPanel.SetActive(false);
         FirePanel.GetComponent<PanelAnimation>().CloseScale();
 
