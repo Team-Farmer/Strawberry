@@ -25,7 +25,7 @@ public class Strawberry : MonoBehaviour
 
     //베리 설명창
     private GameObject berryExp;
-
+    //private GameObject berryExpPanelBlack;
     //=====================================================================================================
     //=====================================================================================================
 
@@ -37,10 +37,11 @@ public class Strawberry : MonoBehaviour
     }
     void Start()
     {
+
         berryExp = GameObject.FindGameObjectWithTag("BerryExplanation");
-        berryExp = berryExp.transform.GetChild(0).gameObject;
-        berryExp.SetActive(true);
+        //berryExpPanelBlack = berryExp.transform.GetChild(0).gameObject;
         berryExp = berryExp.transform.GetChild(1).gameObject;
+        
 
         //베리 정보 가져오기
         BERRY = GameObject.FindGameObjectWithTag("Global").GetComponent<Globalvariable>().berryListAll;
@@ -92,12 +93,15 @@ public class Strawberry : MonoBehaviour
                 AudioManager.instance.Cute1AudioPlay();
 
                 //설명창 띄운다
-                //berryExp.SetActive(true);
-                berryExp.GetComponent<PanelAnimation>().OpenScale();
+                berryExp.SetActive(true);
+                //berryExp.GetComponent<PanelAnimation>().OpenScale();
+                //berryExpPanelBlack.SetActive(true);
+
                 GameObject berryExpImage = berryExp.transform.GetChild(1).gameObject;
                 GameObject berryExpName = berryExp.transform.GetChild(2).gameObject;
                 GameObject berryExpTxt = berryExp.transform.GetChild(3).gameObject;
                 GameObject berryExpPrice= berryExp.transform.GetChild(4).gameObject;
+                
 
                 //Explanation 내용을 채운다.
                 berryExpImage.GetComponentInChildren<Image>().sprite
@@ -111,7 +115,6 @@ public class Strawberry : MonoBehaviour
 
                 berryExpPrice.transform.gameObject.GetComponentInChildren<Text>().text
                     = BERRY[prefabnum].GetComponent<Berry>().berryPrice.ToString()+"A";//설명 설정
-
 
             }
         }

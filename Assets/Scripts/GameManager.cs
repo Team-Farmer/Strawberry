@@ -50,13 +50,6 @@ public class GameManager : MonoBehaviour
     public List<int> workingID = new List<int>();//지금 일하고 있는 알바생 Id
     public GameObject PTJList;
 
-    public GameObject berryExp;//베리 설명창
-    public GameObject berryExp_BlackPanel;//베리 설명창
-    public GameObject berryExp_Panel;//베리 설명창
-
-    public GameObject berryExpImage;
-    public GameObject berryExpName;
-    public GameObject berryExpTxt;
 
     //NEWS
     [NonSerialized]
@@ -801,6 +794,7 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region Explanation
+    /*
     public void Explanation(GameObject berry,int prefabnum)
     {
 
@@ -813,9 +807,9 @@ public class GameManager : MonoBehaviour
                 berryExp_BlackPanel.SetActive(true); //시원 건드림
                 berryExp_Panel.GetComponent<PanelAnimation>().OpenScale(); //시원 건드림
 
-/*                GameObject berryExpImage = berryExp.transform.GetChild(1).GetChild(1).gameObject; //시원 건드림
-                GameObject berryExpName = berryExp.transform.GetChild(1).GetChild(2).gameObject; //시원 건드림
-                GameObject berryExpTxt = berryExp.transform.GetChild(1).GetChild(3).gameObject; //시원 건드림*/
+                //GameObject berryExpImage = berryExp.transform.GetChild(1).GetChild(1).gameObject; //시원 건드림
+                //GameObject berryExpName = berryExp.transform.GetChild(1).GetChild(2).gameObject; //시원 건드림
+                //GameObject berryExpTxt = berryExp.transform.GetChild(1).GetChild(3).gameObject; //시원 건드림
 
 
                 //Explanation 내용을 채운다.
@@ -834,7 +828,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("여기에 해당하는 베리는 아직 없다");
         }
     }
-
+    */
     #endregion
 
     public void NewsUnlock() 
