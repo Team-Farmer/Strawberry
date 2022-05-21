@@ -487,17 +487,13 @@ public class GameManager : MonoBehaviour
         //¾û¸ÁÁøÃ¢ÄÚµå
         for (int i = 0; i < 3; i++)
         {
-            try
+            if (working[i].activeSelf == true)
             {
-                if (working[i].activeSelf == true)
-                {
-                    working[i].transform.GetChild(1).transform.GetComponent<Text>().text
-                        = DataController.instance.gameData.PTJNum[workingID[i]].ToString();
-                    if (DataController.instance.gameData.PTJNum[workingID[i]] == 0)
-                    { working[i].SetActive(false); }
-                }
+                working[i].transform.GetChild(1).transform.GetComponent<Text>().text
+                    = DataController.instance.gameData.PTJNum[workingID[i]].ToString();
+                if (DataController.instance.gameData.PTJNum[workingID[i]] == 0)
+                { working[i].SetActive(false); }
             }
-            catch { }
         }
     }
 
