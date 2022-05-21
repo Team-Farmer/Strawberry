@@ -1,7 +1,85 @@
 fileFormatVersion: 2
 guid: 3669433d78cafd44e91c6ad2ab592b81
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 567996217862051449
+    second: panelArbeitBuy_0
+  - first:
+      213: -836338511576723320
+    second: panelArbeitBuy_1
+  - first:
+      213: 4547801432038790291
+    second: panelArbeitBuy_2
+  - first:
+      213: 6296621978150063799
+    second: panelArbeitBuy_3
+  - first:
+      213: -7239394939166477456
+    second: panelArbeitBuy_4
+  - first:
+      213: -4133289886370375050
+    second: panelArbeitBuy_5
+  - first:
+      213: -7250913553417558467
+    second: panelArbeitBuy_6
+  - first:
+      213: -583688217880370174
+    second: panelArbeitBuy_8
+  - first:
+      213: -7002445717317341492
+    second: panelArbeitBuy_20
+  - first:
+      213: -6579904374596989141
+    second: panelArbeitBuy_21
+  - first:
+      213: 4372136268200265254
+    second: panelArbeitBuy_25
+  - first:
+      213: -9057883868668986497
+    second: panelArbeitBuy_26
+  - first:
+      213: 5506663253953490196
+    second: panelArbeitBuy_27
+  - first:
+      213: -308464290846464557
+    second: panelArbeitBuy_33
+  - first:
+      213: 7337274534024483315
+    second: panelArbeitBuy_37
+  - first:
+      213: -99792320350643660
+    second: panelArbeitBuy_38
+  - first:
+      213: -2520327449325823367
+    second: panelArbeitBuy_39
+  - first:
+      213: -5797182239129684320
+    second: panelArbeitBuy_40
+  - first:
+      213: -7645600185257416101
+    second: panelArbeitBuy_41
+  - first:
+      213: -464533967283577750
+    second: panelArbeitBuy_42
+  - first:
+      213: 3966843283518618177
+    second: panelArbeitBuy_43
+  - first:
+      213: 5501853629508197189
+    second: panelArbeitBuy_44
+  - first:
+      213: 2912300540089043732
+    second: panelArbeitBuy_45
+  - first:
+      213: -837931237965706642
+    second: panelArbeitBuy_46
+  - first:
+      213: -4808923606068072338
+    second: panelArbeitBuy_47
+  - first:
+      213: 8739813914834825309
+    second: panelArbeitBuy_54
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -41,7 +119,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -75,9 +153,327 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: panelArbeitBuy_0
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 1283
+        width: 908
+        height: 800
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 976de6ffc8de1e700800000000000000
+      internalID: 567996217862051449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: panelArbeitBuy_1
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 1969
+        width: 76
+        height: 76
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8809d790e8ab464f0800000000000000
+      internalID: -836338511576723320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: panelArbeitBuy_2
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 983
+        width: 182
+        height: 183
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3945fa1ae490d1f30800000000000000
+      internalID: 4547801432038790291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: panelArbeitBuy_8
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 1016
+        width: 9
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 204e8a988a256e7f0800000000000000
+      internalID: -583688217880370174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: panelArbeitBuy_20
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 840
+        width: 58
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cce285c78b052de90800000000000000
+      internalID: -7002445717317341492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: panelArbeitBuy_21
+      rect:
+        serializedVersion: 2
+        x: 244
+        y: 838
+        width: 51
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2f8b1845db7fa4a0800000000000000
+      internalID: -6579904374596989141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: panelArbeitBuy_25
+      rect:
+        serializedVersion: 2
+        x: 1239
+        y: 718
+        width: 382
+        height: 127
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 626cda775c2fcac30800000000000000
+      internalID: 4372136268200265254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: panelArbeitBuy_26
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 594
+        width: 607
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7b7e37bc9eeb4280800000000000000
+      internalID: -9057883868668986497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: panelArbeitBuy_27
+      rect:
+        serializedVersion: 2
+        x: 807
+        y: 594
+        width: 75
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41d289dcd099b6c40800000000000000
+      internalID: 5506663253953490196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: panelArbeitBuy_33
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 505
+        width: 645
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d5243e9c5d18bbf0800000000000000
+      internalID: -308464290846464557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: panelArbeitBuy_37
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 370
+        width: 44
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f19c0c605c33d560800000000000000
+      internalID: 7337274534024483315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: panelArbeitBuy_41
+      rect:
+        serializedVersion: 2
+        x: 1239
+        y: 329
+        width: 382
+        height: 127
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5a221fb32f55e590800000000000000
+      internalID: -7645600185257416101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: panelArbeitBuy_42
+      rect:
+        serializedVersion: 2
+        x: 314
+        y: 134
+        width: 383
+        height: 127
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6c95f561d4ad89f0800000000000000
+      internalID: -464533967283577750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: panelArbeitBuy_43
+      rect:
+        serializedVersion: 2
+        x: 1239
+        y: 134
+        width: 382
+        height: 127
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14a75c9f2fe0d0730800000000000000
+      internalID: 3966843283518618177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

@@ -419,7 +419,11 @@ MonoBehaviour:
   noCoinPanel: {fileID: 0}
   warningBlackPanel: {fileID: 0}
   confirmPanel: {fileID: 0}
+  FirePanel: {fileID: 0}
   panelCoinText: {fileID: 0}
+  FireConfirmButton: {fileID: 0}
+  FireSprite: {fileID: -7645600185257416101, guid: 3669433d78cafd44e91c6ad2ab592b81, type: 3}
+  HireSprite: {fileID: -464533967283577750, guid: 3669433d78cafd44e91c6ad2ab592b81, type: 3}
 --- !u!114 &1349541812454805739
 MonoBehaviour:
   m_ObjectHideFlags: 0

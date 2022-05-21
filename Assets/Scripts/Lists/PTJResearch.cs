@@ -64,7 +64,8 @@ public class PTJResearch : MonoBehaviour
     public Text panelCoinText;
     public Button FireConfirmButton;
 
-
+    public Sprite FireSprite;
+    public Sprite HireSprite;
 
     //test
     private GameObject warningBlackPanel2;
@@ -350,7 +351,8 @@ public class PTJResearch : MonoBehaviour
     //고용 버튼 상태 변경
     public void EmployButtonHire(int SliderNum)
     {
-        
+        PTJExp.transform.GetChild(6).transform.GetComponent<Image>().sprite = HireSprite;
+        PTJExp.transform.GetChild(6).transform.GetChild(0).transform.GetComponent<Text>().text = "고용 하기";
         if (PTJToggle.GetComponent<Toggle>().isOn == true) 
         { SliderNum *= 10; }//10단위이면 10을 곱해준다.
 
@@ -371,7 +373,8 @@ public class PTJResearch : MonoBehaviour
     private void EmployButtonFire()
     {
         //EmployButton 텍스트를 "고용 해제"로
-        PTJExp.transform.GetChild(6).transform.GetChild(0).transform.GetComponent<Text>().text = "고용 해제";
+        PTJExp.transform.GetChild(6).transform.GetComponent<Image>().sprite = FireSprite;
+        PTJExp.transform.GetChild(6).transform.GetChild(0).transform.GetComponent<Text>().text = "";
         //PRICE 텍스트를 빈칸으로
         PTJExp.transform.GetChild(7).transform.GetComponent<Text>().text = "";
 
