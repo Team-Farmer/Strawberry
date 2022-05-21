@@ -80,11 +80,12 @@ public class ChangeLayer2 : MonoBehaviour
 	}
 	void Start()
 	{
+		TagImageChange(0);
+
 		if (isBerry == true)
 		{
 			//처음에는 berry classic
 			selectBerryTag("berry_classic");
-			TagImageChange(0);
 
 			// 처음 시작할 때 0번 페이지 보인다.
 			SetScrollBarValue(0);
@@ -94,16 +95,20 @@ public class ChangeLayer2 : MonoBehaviour
 
 	private void Update()
 	{
-		if (isBerry == true) UpdateInput();//스와이프 관련
+		if (isBerry == true)
+        {
+			UpdateInput();//스와이프 관련
 
-		if (berryLockSpecial.activeInHierarchy && ResearchLevelCheck(4))
-		{
-			LockSpecialBtn.GetComponent<Button>().interactable = true;
+			if (berryLockSpecial.activeInHierarchy && ResearchLevelCheck(4))
+			{
+				LockSpecialBtn.GetComponent<Button>().interactable = true;
+			}
+			if (berryLockUnique.activeInHierarchy && ResearchLevelCheck(9))
+			{
+				LockUniqueBtn.GetComponent<Button>().interactable = true;
+			}
 		}
-		if (berryLockUnique.activeInHierarchy && ResearchLevelCheck(9))
-		{
-			LockUniqueBtn.GetComponent<Button>().interactable = true;
-		}
+		
 	}
 
     #endregion

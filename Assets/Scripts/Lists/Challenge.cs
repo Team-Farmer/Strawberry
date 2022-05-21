@@ -178,7 +178,6 @@ public class Challenge : MonoBehaviour
                 }
                 break;
         }
-        Debug.Log(Info[prefabnum].clearCriterion[0]);
     }
 
     public void InfoUpdate() {
