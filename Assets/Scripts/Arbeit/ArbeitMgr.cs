@@ -82,7 +82,7 @@ public class ArbeitMgr : MonoBehaviour
     IEnumerator DeleteBugByHamsworth(Bug bug)
     {
         yield return new WaitForSeconds(0.75f);
-        bug.DieBug();
+        bug.DieBug();       
     }
 
     void Fubo()//강아지 3
@@ -104,6 +104,7 @@ public class ArbeitMgr : MonoBehaviour
     {
         yield return new WaitForSeconds(0.75f);
         farm.weed.DeleteWeed();
+        farm.GetComponent<BoxCollider2D>().enabled = false;
     }
     public float Pigma() // 돼지 4
     {
