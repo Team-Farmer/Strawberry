@@ -17,10 +17,10 @@ public class MiniGameManager : MonoBehaviour
     public GameObject inside;
     public Button UnlockBtn;
 
-    void Start()
+    void Awake()
     {
-        //GetComponent<Button>().onClick.AddListener(EnterStore);
-        //UnlockBtn.onClick.AddListener(ClickUnlockStore);
+        if (DataController.instance.gameData.isStoreOpend == true)
+            Store.GetComponent<Image>().sprite = StoreSprite[1];
     }
     
     public void EnterStore()

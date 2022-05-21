@@ -7072,7 +7072,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 98ff8ba520c0ea847b00e0d6d9631ba7, type: 3}
+  m_Sprite: {fileID: 5172509251104773220, guid: 382bab518766ebd48902d96097fd77ea, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -13644,7 +13644,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 5808967025678695744, guid: d7462a2db557512448ed8c9a9d1c7db0, type: 3}
+  m_Sprite: {fileID: 5808967025678695744, guid: 12547450b9b29a04cb991a312117156f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -14728,7 +14728,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -4609626307013362723, guid: e8ee2495dfe27ed4195439446c9a27d2, type: 3}
+  m_Sprite: {fileID: 811280717765713463, guid: 382bab518766ebd48902d96097fd77ea, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -20019,7 +20019,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -24471,6 +24471,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1882881319}
+        m_TargetAssemblyTypeName: ChangeLayer2, Assembly-CSharp
+        m_MethodName: TagImageChange
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1078601877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24491,7 +24503,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -4609626307013362723, guid: e8ee2495dfe27ed4195439446c9a27d2, type: 3}
+  m_Sprite: {fileID: -4717903357139683281, guid: 12547450b9b29a04cb991a312117156f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -41803,12 +41815,15 @@ MonoBehaviour:
   isBerry: 0
   tagButtons:
   - {fileID: 712942179}
+  - {fileID: 1078601874}
   - {fileID: 909609631}
   tagButtons_Image:
-  - {fileID: -4609626307013362723, guid: e8ee2495dfe27ed4195439446c9a27d2, type: 3}
-  - {fileID: -4717903357139683281, guid: d7462a2db557512448ed8c9a9d1c7db0, type: 3}
+  - {fileID: 811280717765713463, guid: 382bab518766ebd48902d96097fd77ea, type: 3}
+  - {fileID: -4717903357139683281, guid: 12547450b9b29a04cb991a312117156f, type: 3}
+  - {fileID: -2579287840081258993, guid: 12547450b9b29a04cb991a312117156f, type: 3}
   tagButtons_selectImage:
-  - {fileID: -7765088264360440707, guid: d7462a2db557512448ed8c9a9d1c7db0, type: 3}
+  - {fileID: -7765088264360440707, guid: 12547450b9b29a04cb991a312117156f, type: 3}
+  - {fileID: -3643074390739688353, guid: 382bab518766ebd48902d96097fd77ea, type: 3}
   - {fileID: -3926116356967758208, guid: e8ee2495dfe27ed4195439446c9a27d2, type: 3}
   content:
   - {fileID: 660919301}
