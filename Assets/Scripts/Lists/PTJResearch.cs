@@ -154,7 +154,7 @@ public class PTJResearch : MonoBehaviour
             //변경된 값이 0(즉 알바를 끝냈다면)이면 아래를 실행
             if (PTJ_NUM_NOW == 0) 
             {
-                //Fire() 과 유사하지만 employment수때문에 중복
+                //Fire() 과 유사하지만 employment수때문에 중복 시간있을때 변경
                 //=================================
                 PTJToggle.GetComponent<Toggle>().isOn = false;
 
@@ -184,6 +184,10 @@ public class PTJResearch : MonoBehaviour
                 //기타 활성화
                 PTJExp.transform.GetChild(13).gameObject.SetActive(true);//n회 숨기기
                 PTJExp.transform.GetChild(7).transform.GetChild(0).gameObject.SetActive(true);
+
+                PTJExp.transform.GetChild(6).transform.GetComponent<Image>().sprite = HireSprite;
+                PTJExp.transform.GetChild(6).transform.GetChild(0).transform.GetComponent<Text>().text = "고용 하기";
+
                 //슬라이더 초기화
                 InitSlider();
 
