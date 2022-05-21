@@ -65,6 +65,12 @@ public class PTJResearch : MonoBehaviour
     public Button FireConfirmButton;
 
 
+
+    //test
+    private GameObject warningBlackPanel2;
+    private GameObject noCoinPanel2;
+    private GameObject panelCoinText2;
+
     //Prefab별로 숫자 부여
     static int Prefabcount = 0;
     int prefabnum;
@@ -119,7 +125,11 @@ public class PTJResearch : MonoBehaviour
         rainParticle = GameObject.FindGameObjectWithTag("Rain").GetComponent<ParticleSystem>();
         globalVar = GameObject.FindGameObjectWithTag("Global").GetComponent<Globalvariable>();
 
-        
+
+        warningPanel = GameObject.FindGameObjectWithTag("WarningPanel");
+        warningBlackPanel2 = warningPanel.transform.GetChild(0).gameObject;
+        noCoinPanel2 = warningPanel.transform.GetChild(1).gameObject;
+        panelCoinText2 = noCoinPanel2.transform.GetChild(2).transform.GetChild(0).gameObject;
     }
     private void Update()
     {
@@ -248,13 +258,13 @@ public class PTJResearch : MonoBehaviour
                 (DataController.instance.gameData.researchLevel[prefabnum] + 1) * 2 + "%");//설명 텍스트 표시
 
             }
-            else if (DataController.instance.gameData.coin < Info[prefabnum].Price) //해당 금액이 지금 가진 코인보다 많으면
+            else
             {
                 //재화 부족 경고 패널 등장
                 AudioManager.instance.Cute4AudioPlay();
-                GameManager.instance.ShowCoinText(panelCoinText, DataController.instance.gameData.coin);
-                warningBlackPanel.SetActive(true);
-                noCoinPanel.GetComponent<PanelAnimation>().OpenScale();
+                panelCoinText2.GetComponent<Text>().text= DataController.instance.gameData.coin.ToString();
+                warningBlackPanel2.SetActive(true);
+                noCoinPanel2.GetComponent<PanelAnimation>().OpenScale();
             }
         }
     }
