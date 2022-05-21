@@ -132,9 +132,12 @@ public class GameManager : MonoBehaviour
 
         //TimerStart += Instance_TimerStart;
 
-        DisableObjColliderAll();       
+        //DisableObjColliderAll();       
         
         PTJList.SetActive(true);
+
+        isGameRunning = true;
+
 
         //NEW BERRY
         NewBerryUpdate();

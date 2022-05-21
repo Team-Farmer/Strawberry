@@ -24,7 +24,7 @@ public class BerryFieldData
     public float createTime = 0f;
     public bool canGrow = true;
     public bool hasBug = false;
-    public int seedAnimLevel = 0;
+    
     public int berryPrefabNowIdx;
     public bool isStemEnable = false; // // true면은 있었던거니까 켜주고 false면은 없던거니깐 건들지말고
     public float randomTime = 0f;

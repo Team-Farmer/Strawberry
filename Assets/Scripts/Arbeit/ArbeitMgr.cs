@@ -122,7 +122,7 @@ public class ArbeitMgr : MonoBehaviour
         if (DataController.instance.gameData.PTJNum[5] > 0)
         {
             DataController.instance.gameData.PTJNum[5]--;           
-            return 4;
+            return 3;
         }
         else
         {           
