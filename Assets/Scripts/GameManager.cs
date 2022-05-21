@@ -519,7 +519,7 @@ public class GameManager : MonoBehaviour
             selectBerry();
 
             //가격 시간 아직 미공개라 ?
-            priceText_newBerry.GetComponent<Text>().text = "?";
+            priceText_newBerry.GetComponent<Text>().text = price_newBerry.ToString();
             timeText_newBerry.GetComponent<Text>().text = "?";
 
 
@@ -611,15 +611,24 @@ public class GameManager : MonoBehaviour
                 priceText_newBerry.GetComponent<Text>().text = price_newBerry.ToString();
                 timeText_newBerry.GetComponent<Text>().text = TimeForm(Mathf.CeilToInt(time_newBerry));
 
-                //시간 감소여부 묻는 패널을 띄운다.
-                TimeReduceBlackPanel_newBerry.SetActive(true); //시원 건드림
-                TimeReducePanel_newBerry.GetComponent<PanelAnimation>().OpenScale(); //시원 건드림
-                TimeReduceText_newBerry.GetComponent<Text>().text //시원 건드림
-                    = "하트 10개로 시간을 10분으로 줄이시겠습니까?\n";//지금은 1초. 임시
+                if (DataController.instance.gameData.coin >= price_newBerry)
+                {
+                    //돈소비
+                    UseCoin(price_newBerry);
 
-                //버튼상태 ing로
-                DataController.instance.gameData.newBerryBtnState = 1;
+                    //버튼상태 ing로
+                    DataController.instance.gameData.newBerryBtnState = 1;
 
+                    //시간 감소여부 묻는 패널을 띄운다.
+                    TimeReduceBlackPanel_newBerry.SetActive(true); //시원 건드림
+                    TimeReducePanel_newBerry.GetComponent<PanelAnimation>().OpenScale(); //시원 건드림
+                    TimeReduceText_newBerry.GetComponent<Text>().text //시원 건드림
+                        = "하트 10개로 시간을 10분으로 줄이시겠습니까?\n";//지금은 1초. 임시
+                }
+                else
+                {
+                    NoCoinPanel.GetComponent<PanelAnimation>().OpenScale();
+                }
                 //타이머 시작
                 StartCoroutine("Timer");
                 break;
@@ -631,8 +640,7 @@ public class GameManager : MonoBehaviour
                     = "하트 10개로 시간을 10분으로 줄이시겠습니까?\n";//지금은 1초. 임시
                 break;
             case "done": /*딸기 개발*/
-                if(DataController.instance.gameData.coin >= price_newBerry){ GetNewBerry(); }
-                else { NoCoinPanel.GetComponent<PanelAnimation>().OpenScale(); }
+                GetNewBerry();
                 break;
                 //default:Debug.Log("NowButton이름이 잘못됬습니다."); break;
         }
@@ -712,9 +720,6 @@ public class GameManager : MonoBehaviour
 
         //느낌표 표시
         DataController.instance.gameData.isBerryEM[newBerryIndex] = true;
-
-        //돈소비
-        UseCoin(price_newBerry);
 
         //딸기 얻음 효과음(짜잔)
         AudioManager.instance.TadaAudioPlay();

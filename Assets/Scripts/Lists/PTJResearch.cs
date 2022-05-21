@@ -224,7 +224,7 @@ public class PTJResearch : MonoBehaviour
         if (PTJ == true)//알바
         { levelNum.GetComponent<Text>().text = "고용 전"; }
         else//연구
-        { levelNum.GetComponent<Text>().text = DataController.instance.gameData.researchLevel[prefabnum].ToString(); }
+        { levelNum.GetComponent<Text>().text = (DataController.instance.gameData.researchLevel[prefabnum]+1).ToString(); }
 
 
 
@@ -246,7 +246,7 @@ public class PTJResearch : MonoBehaviour
 
                 //레벨이 올라간다.
                 DataController.instance.gameData.researchLevel[prefabnum]++;
-                levelNum.GetComponent<Text>().text = DataController.instance.gameData.researchLevel[prefabnum].ToString();
+                levelNum.GetComponent<Text>().text = (DataController.instance.gameData.researchLevel[prefabnum]+1).ToString();
 
                 switch (Info[prefabnum].Name)
                 {
