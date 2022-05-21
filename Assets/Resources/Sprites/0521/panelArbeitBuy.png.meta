@@ -1,7 +1,40 @@
 fileFormatVersion: 2
 guid: 3669433d78cafd44e91c6ad2ab592b81
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 567996217862051449
+    second: panelArbeitBuy_0
+  - first:
+      213: -836338511576723320
+    second: panelArbeitBuy_1
+  - first:
+      213: 4547801432038790291
+    second: panelArbeitBuy_2
+  - first:
+      213: -4676204948542705946
+    second: panelArbeitBuy_24
+  - first:
+      213: -308464290846464557
+    second: panelArbeitBuy_33
+  - first:
+      213: 3481632650848307642
+    second: panelArbeitBuy_34
+  - first:
+      213: -5797182239129684320
+    second: panelArbeitBuy_40
+  - first:
+      213: -4880595952176758115
+    second: panelArbeitBuy_51
+  - first:
+      213: 1118331196358042014
+    second: panelArbeitBuy_52
+  - first:
+      213: 6296621978150063799
+    second: panelArbeitBuy_3
+  - first:
+      213: -7239394939166477456
+    second: panelArbeitBuy_4
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -32,7 +65,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -41,7 +74,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -75,9 +108,276 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: panelArbeitBuy_0
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 1283
+        width: 907
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 976de6ffc8de1e700800000000000000
+      internalID: 567996217862051449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: panelArbeitBuy_1
+      rect:
+        serializedVersion: 2
+        x: 1051
+        y: 1970
+        width: 74
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8809d790e8ab464f0800000000000000
+      internalID: -836338511576723320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: panelArbeitBuy_2
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 983
+        width: 182
+        height: 182
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3945fa1ae490d1f30800000000000000
+      internalID: 4547801432038790291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: panelArbeitBuy_24
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 840
+        width: 58
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ee2039ff58ca1fb0800000000000000
+      internalID: -4676204948542705946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: panelArbeitBuy_33
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 594
+        width: 606
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d5243e9c5d18bbf0800000000000000
+      internalID: -308464290846464557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: panelArbeitBuy_34
+      rect:
+        serializedVersion: 2
+        x: 807
+        y: 594
+        width: 74
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab90730137e315030800000000000000
+      internalID: 3481632650848307642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: panelArbeitBuy_40
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 505
+        width: 645
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a6b872e7754c8fa0800000000000000
+      internalID: -5797182239129684320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: panelArbeitBuy_51
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 134
+        width: 381
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d928b4a07d3a44cb0800000000000000
+      internalID: -4880595952176758115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: panelArbeitBuy_52
+      rect:
+        serializedVersion: 2
+        x: 1239
+        y: 134
+        width: 382
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e91a8244c4c158f00800000000000000
+      internalID: 1118331196358042014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: panelArbeitBuy_3
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 838
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7be4d840458126750800000000000000
+      internalID: 6296621978150063799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: panelArbeitBuy_4
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 371
+        width: 44
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 073b836a8a0888b90800000000000000
+      internalID: -7239394939166477456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
