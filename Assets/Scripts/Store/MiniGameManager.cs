@@ -10,52 +10,55 @@ public class MiniGameManager : MonoBehaviour
     //public string[] daramScript;
     //public string[] gameInfoScript;
 
-    public Button open_yes_btn;
+    //public Button open_yes_btn;
+    public GameObject Store;
+    public Sprite[] StoreSprite;
     public GameObject popup;
     public GameObject inside;
+    public Button UnlockBtn;
 
     void Start()
     {
-        GetComponent<Button>().onClick.AddListener(CheckStoreState);
-        open_yes_btn.onClick.AddListener(OnClickYesBtn);
+        //GetComponent<Button>().onClick.AddListener(EnterStore);
+        //UnlockBtn.onClick.AddListener(ClickUnlockStore);
     }
-
-    void CheckStoreState()
+    
+    public void EnterStore()
     {
-        if (DataController.instance.gameData.isStoreOpend)
-        {
+        if (DataController.instance.gameData.isStoreOpend == true)
             inside.SetActive(true);
-        }
         else
         {
+            Debug.Log(DataController.instance.gameData.isStoreOpend);
+            Debug.Log("팝업열림");
             popup.SetActive(true);
 
-            //해금조건 확인 : 연구레벨 15이상, 300A이상 보유
-            bool flag = DataController.instance.gameData.coin >= 300;
-            if (flag)
+            //해금조건 - 연구레벨 15이상, 700A 소모 가능상태
+            if (DataController.instance.gameData.coin >= 700 && ResearchLevelCheck(14))
             {
-                for (int i = 0; i < 6; i++)
-                {
-                    if (DataController.instance.gameData.researchLevel[i] < 15)
-                    {
-                        open_yes_btn.enabled = false;
-                        open_yes_btn.GetComponent<Image>().color = Color.gray;
-                        //flag = false;
-                        break;
-                    }
-                }
+                UnlockBtn.interactable = true;
             }
-
-            if (flag)
+            else
             {
-                open_yes_btn.enabled = true;
-                open_yes_btn.GetComponent<Image>().color = Color.white;
+                UnlockBtn.interactable = false;
             }
         }
     }
 
-    void OnClickYesBtn()
+    public void ClickUnlockStore()
     {
         DataController.instance.gameData.isStoreOpend = true;
+        popup.SetActive(false);
+        Store.GetComponent<Image>().sprite = StoreSprite[1];
+    }
+
+    private bool ResearchLevelCheck(int level)
+    {
+        for (int i = 0; i < DataController.instance.gameData.researchLevel.Length; i++)
+        {
+            if (DataController.instance.gameData.researchLevel[i] < level)
+            { return false; }
+        }
+        return true;
     }
 }
