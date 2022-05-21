@@ -836,10 +836,7 @@ public class GameManager : MonoBehaviour
     {
         News.instance.NewsUnlock(NewsPrefabNum);
     }
-    public void PTJFireConfirm() 
-    { 
-        
-    }
+
     #region 기타
     //활성화 비활성화로 창 끄고 켜고
     public void turnOff(GameObject Obj)

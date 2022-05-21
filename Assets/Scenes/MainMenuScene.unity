@@ -1253,6 +1253,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1079203487}
     - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+      propertyPath: FireConfirmButton
+      value: 
+      objectReference: {fileID: 408412197}
+    - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
       propertyPath: warningBlackPanel
       value: 
       objectReference: {fileID: 638678300}
@@ -21023,6 +21027,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1079203487}
     - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+      propertyPath: FireConfirmButton
+      value: 
+      objectReference: {fileID: 408412197}
+    - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
       propertyPath: warningBlackPanel
       value: 
       objectReference: {fileID: 638678300}
@@ -29907,6 +29915,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1079203487}
     - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+      propertyPath: FireConfirmButton
+      value: 
+      objectReference: {fileID: 408412197}
+    - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
       propertyPath: warningBlackPanel
       value: 
       objectReference: {fileID: 638678300}
@@ -35374,6 +35386,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1079203487}
     - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+      propertyPath: FireConfirmButton
+      value: 
+      objectReference: {fileID: 408412197}
+    - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
       propertyPath: warningBlackPanel
       value: 
       objectReference: {fileID: 638678300}
@@ -39990,6 +40006,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1079203487}
     - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+      propertyPath: FireConfirmButton
+      value: 
+      objectReference: {fileID: 408412197}
+    - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
       propertyPath: warningBlackPanel
       value: 
       objectReference: {fileID: 638678300}
@@ -42274,6 +42294,10 @@ PrefabInstance:
       propertyPath: PTJwarningPanel
       value: 
       objectReference: {fileID: 1079203487}
+    - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+      propertyPath: FireConfirmButton
+      value: 
+      objectReference: {fileID: 408412197}
     - target: {fileID: 4640965026082384919, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
       propertyPath: warningBlackPanel
       value: 

@@ -114,7 +114,7 @@ public class PTJResearch : MonoBehaviour
             //고용중이라면 고용중 상태로 보이기
             if (DataController.instance.gameData.PTJNum[prefabnum] != 0)
             {  HireInit(prefabnum, DataController.instance.gameData.PTJNum[prefabnum]);  }
-            //FireConfirmButton.onClick.AddListener(BtnListener);
+            FireConfirmButton.onClick.AddListener(BtnListener);
         }
         rainParticle = GameObject.FindGameObjectWithTag("Rain").GetComponent<ParticleSystem>();
         globalVar = GameObject.FindGameObjectWithTag("Global").GetComponent<Globalvariable>();
@@ -170,7 +170,9 @@ public class PTJResearch : MonoBehaviour
 
                 GameManager.instance.workingID.Remove(prefabnum);
 
-
+                //기타 활성화
+                PTJExp.transform.GetChild(13).gameObject.SetActive(true);//n회 숨기기
+                PTJExp.transform.GetChild(7).transform.GetChild(0).gameObject.SetActive(true);
                 //슬라이더 초기화
                 InitSlider();
 
@@ -373,19 +375,32 @@ public class PTJResearch : MonoBehaviour
             //고용중이 아니면 hire
             if (DataController.instance.gameData.PTJNum[prefabnum] == 0)
             {
-                //HIRE
-                if (PTJToggle.GetComponent<Toggle>().isOn == true) 
-                { Hire(prefabnum, (int)(PTJSlider10.GetComponent<Slider>().value)*10); }
-                else 
-                { Hire(prefabnum, (int)(PTJSlider.GetComponent<Slider>().value)); }
+                if (Info[prefabnum].Price <= DataController.instance.gameData.coin)
+                {
+                    //HIRE
+                    if (PTJToggle.GetComponent<Toggle>().isOn == true)
+                    { Hire(prefabnum, (int)(PTJSlider10.GetComponent<Slider>().value) * 10); }
+                    else
+                    { Hire(prefabnum, (int)(PTJSlider.GetComponent<Slider>().value)); }
 
-                warningBlackPanel.SetActive(true);
-                confirmPanel.GetComponent<PanelAnimation>().ScriptTxt.text = "고용되었어요!";
-                confirmPanel.GetComponent<PanelAnimation>().OpenScale();
+                    warningBlackPanel.SetActive(true);
+                    confirmPanel.GetComponent<PanelAnimation>().ScriptTxt.text = "고용되었어요!";
+                    confirmPanel.GetComponent<PanelAnimation>().OpenScale();
+                }
+                else
+                { //재화 부족 경고 패널 등장
+                    AudioManager.instance.Cute4AudioPlay();
+                    GameManager.instance.ShowCoinText(panelCoinText, DataController.instance.gameData.coin);
+                    warningBlackPanel.SetActive(true);
+                    noCoinPanel.GetComponent<PanelAnimation>().OpenScale();
+                }
             }
             //이미 고용중이면 fire
             else
-            {    Fire(prefabnum);    }
+            { 
+                DataController.instance.gameData.PTJFireConfirm = prefabnum; 
+                FireConfirm();    
+            }
         }
         //이미 3명이상 고용중이면
         else
@@ -400,7 +415,10 @@ public class PTJResearch : MonoBehaviour
             }
             //이미 고용중이면 fire
             else
-            { Fire(prefabnum); }
+            {
+                DataController.instance.gameData.PTJFireConfirm = prefabnum;
+                FireConfirm(); 
+            }
         }
     }
 
@@ -467,6 +485,10 @@ public class PTJResearch : MonoBehaviour
         levelNum.GetComponent<Text>().color = new Color32(164, 164, 164, 255);
         PTJBackground.transform.GetComponent<Image>().sprite = originalPTJSprite;
 
+        //기타 활성화
+        PTJExp.transform.GetChild(13).gameObject.SetActive(true);//n회 숨기기
+        PTJExp.transform.GetChild(7).transform.GetChild(0).gameObject.SetActive(true);
+
         //main game에 현황 적용
         if (DataController.instance.gameData.PTJNum[prefabnum] != 0){  --employCount;}
         workingList.Remove(Info[ID].FacePicture);
@@ -478,9 +500,7 @@ public class PTJResearch : MonoBehaviour
 
         GameManager.instance.workingID.Remove(prefabnum);
 
-        //기타 활성화
-        PTJExp.transform.GetChild(13).gameObject.SetActive(true);//n회 숨기기
-        PTJExp.transform.GetChild(7).transform.GetChild(0).gameObject.SetActive(true);
+        
 
         InitSlider();        
     }
@@ -529,18 +549,22 @@ public class PTJResearch : MonoBehaviour
 
     private void FireConfirm() //시원 건드림
     {
-        //3명이상 고용중이라는 경고 패널 등장
+
         warningBlackPanel.SetActive(true);
         FirePanel.GetComponent<PanelAnimation>().OpenScale();
+        
+
     }
-     
+
+    //해고 yes버튼누르면
     private void BtnListener() //시원 건드림
     {
-        //confirmPanel.GetComponent<PanelAnimation>().ScriptTxt.text = "해고했어요 ㅠㅠ";
-        //confirmPanel.GetComponent<PanelAnimation>().OpenScale();
-        HireFire();
+        
+        Fire(DataController.instance.gameData.PTJFireConfirm);
         warningBlackPanel.SetActive(false);
         FirePanel.GetComponent<PanelAnimation>().CloseScale();
 
+        confirmPanel.GetComponent<PanelAnimation>().ScriptTxt.text = "해고했어요 ㅠㅠ";
+        confirmPanel.GetComponent<PanelAnimation>().OpenScale();
     }
 }
