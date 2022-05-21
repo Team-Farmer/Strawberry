@@ -62,7 +62,7 @@ public class PTJResearch : MonoBehaviour
     public GameObject confirmPanel;
     public GameObject FirePanel;
     public Text panelCoinText;
-    //public Button btn;
+    public Button FireConfirmButton;
 
 
     //Prefab별로 숫자 부여
@@ -88,10 +88,14 @@ public class PTJResearch : MonoBehaviour
     //비 파티클
     private ParticleSystem rainParticle;
 
+    //고용해제 할까요 확인 패널
+    private GameObject HireYNPanel;
+
     // 글로벌 변수
     private Globalvariable globalVar;
     //===================================================================================================
     //===================================================================================================
+
     void Start()
     {
         InfoUpdate();
@@ -101,7 +105,6 @@ public class PTJResearch : MonoBehaviour
             PTJToggle = PTJExp.transform.GetChild(8).transform.gameObject;//10단위 체크 토글
             PTJSlider = PTJExp.transform.GetChild(9).transform.gameObject;//1단위 슬라이더
             PTJSlider10= PTJExp.transform.GetChild(10).transform.gameObject;//10단위 슬라이더
-            
 
             //Init Slider =(10단위 슬라이더만 보인다)
             PTJSlider.SetActive(true);
@@ -111,7 +114,7 @@ public class PTJResearch : MonoBehaviour
             //고용중이라면 고용중 상태로 보이기
             if (DataController.instance.gameData.PTJNum[prefabnum] != 0)
             {  HireInit(prefabnum, DataController.instance.gameData.PTJNum[prefabnum]);  }
-            //btn.onClick.AddListener(BtnListener);
+            //FireConfirmButton.onClick.AddListener(BtnListener);
         }
         rainParticle = GameObject.FindGameObjectWithTag("Rain").GetComponent<ParticleSystem>();
         globalVar = GameObject.FindGameObjectWithTag("Global").GetComponent<Globalvariable>();
@@ -382,9 +385,7 @@ public class PTJResearch : MonoBehaviour
             }
             //이미 고용중이면 fire
             else
-            {
-                Fire(prefabnum);
-            }
+            {    Fire(prefabnum);    }
         }
         //이미 3명이상 고용중이면
         else

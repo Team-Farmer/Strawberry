@@ -25,7 +25,7 @@ public class Strawberry : MonoBehaviour
 
     //베리 설명창
     private GameObject berryExp;
-    //private GameObject berryExpPanelBlack;
+    private GameObject berryExpPanelBlack;
     //=====================================================================================================
     //=====================================================================================================
 
@@ -39,7 +39,7 @@ public class Strawberry : MonoBehaviour
     {
 
         berryExp = GameObject.FindGameObjectWithTag("BerryExplanation");
-        //berryExpPanelBlack = berryExp.transform.GetChild(0).gameObject;
+        berryExpPanelBlack = berryExp.transform.GetChild(0).gameObject;
         berryExp = berryExp.transform.GetChild(1).gameObject;
         
 
@@ -95,7 +95,7 @@ public class Strawberry : MonoBehaviour
                 //설명창 띄운다
                 berryExp.SetActive(true);
                 //berryExp.GetComponent<PanelAnimation>().OpenScale();
-                //berryExpPanelBlack.SetActive(true);
+                berryExpPanelBlack.SetActive(true);
 
                 GameObject berryExpImage = berryExp.transform.GetChild(1).gameObject;
                 GameObject berryExpName = berryExp.transform.GetChild(2).gameObject;

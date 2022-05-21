@@ -68,6 +68,8 @@ public class GameData
     //PTJ 알바생의 현재 고용횟수
     public int[] PTJNum = new int[6];
 
+    public bool PTJFireConfirm;
+
     //느낌표 !
     public bool[] isBerryEM = new bool[192];
     public bool[] isNewsEM = new bool[7];
