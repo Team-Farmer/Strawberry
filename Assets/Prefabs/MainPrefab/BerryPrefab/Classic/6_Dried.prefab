@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8238155578764226140}
   - component: {fileID: 8238155578764226143}
   m_Layer: 0
-  m_Name: 71_MerryQuin
+  m_Name: 6_Dried
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72,8 +72,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1274572085
   m_SortingLayer: 1
-  m_SortingOrder: 2
-  m_Sprite: {fileID: -6156981189376259499, guid: ae37aafc9316f414f90e450777415481, type: 3}
+  m_SortingOrder: 3
+  m_Sprite: {fileID: 1802891038526139946, guid: 7044a9573a9cdf64bb59a0ddda8db3a6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -96,15 +96,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1623f1a85948efd45a0dfed04582153b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  berryName: "\uBA54\uB9AC\uD038"
+  berryName: "\uAC74\uC870 \uB538\uAE30"
   berrykindProb: 100
-  berryExplain: "\u2018\uACA8\uC6B8\uC758 \uC5EC\uC655? \uBAA8\uB4E0 \uC774\uC5D0\uAC8C
-    \uC990\uAC70\uC6C0\uC744 \uC8FC\uB294(Merry) \uB538\uAE30\uC758 \uC5EC\uC655(Queen)\u2019\uC774\uB780
-    \uB73B\uC73C\uB85C, \uB2F9\uB3C4\uAC00 \uB192\uACE0 \uC2E0\uB9DB \uC801\uB2E4.
-    \uC0AC\uACFC\uB97C \uBCA0\uC5B4\uBA39\uB294 \uB4EF\uD55C \uB2E8\uB2E8\uD55C \uC2DD\uAC10\uC774\uB2E4."
-  berryIdx: 71
-  berryPrice: 135
-  berryRank: 1
+  berryExplain: "\uD0DC\uC591\uC744 \uC9DD\uC0AC\uB791\uD55C \uB538\uAE30\uC774\uB2E4.
+    \uB538\uAE30\uB294 \uD0DC\uC591\uC744 \uBC14\uB77C\uBCFC\uC218\uB85D \uC790\uAFB8\uB9CC
+    \uC790\uB77C \uC218\uD655\uB420\uAE4C \uAC71\uC815\uC774\uC5C8\uC9C0\uB9CC, \uAC74\uC870\uB41C
+    \uC9C0\uAE08\uC740 \uB9C8\uC74C \uB193\uACE0 \uD558\uB8E8 \uC885\uC77C \uBC14\uB77C\uBCFC
+    \uC218 \uC788\uAC8C \uB418\uC5C8\uB2E4."
+  berryIdx: 6
+  berryPrice: 30
+  berryRank: 0
 --- !u!95 &8238155578764226143
 Animator:
   serializedVersion: 3
