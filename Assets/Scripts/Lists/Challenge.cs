@@ -9,10 +9,10 @@ public class Challenge : MonoBehaviour
     [Serializable]
     public class ChallengeNewsStruct
     {
-        public string Title;//제목
-        public int rewardMedal;//메달 보상
-        public int rewardHeart;//하트 보상
-        public int clearCriterion;//달성 조건
+        public string Title;    //제목
+        public int rewardMedal; //메달 보상
+        public int rewardHeart; //하트 보상
+        public int clearCriterion;  //달성 조건
 
         public ChallengeNewsStruct(string Title, int rewardMedal, int rewardHeart,int clearCriterion)
         {
@@ -31,9 +31,9 @@ public class Challenge : MonoBehaviour
     [SerializeField]
     private GameObject titleText;
     [SerializeField]
-    private GameObject achieveCondition;//도전과제 달성 조건 텍스트
+    private GameObject achieveCondition; //도전과제 달성 조건 텍스트
     [SerializeField]
-    private GameObject nowCondition;//현재 도전과제 달성 수치 텍스트
+    private GameObject nowCondition; //현재 도전과제 달성 수치 텍스트
     [SerializeField]
     private GameObject Button;
     public GameObject bangMark;
@@ -55,18 +55,18 @@ public class Challenge : MonoBehaviour
     public GameObject BP;
 
 
-    //추가 된 Prefab 수
-    static int Prefabcount = 0;
-    //자신이 몇번째 Prefab인지
-    int prefabnum;
+    static int Prefabcount = 0; //추가 된 Prefab 수
+    int prefabnum; //자신이 몇번째 Prefab인지
 
 
     private int realLevel;//이 레벨에 가야지 보상을 다 받은거다.
 
     private int[] ChallengeValue = new int[6];
     private int[] ChallengeValue_ = new int[6];
+
     //=======================================================================================================================
     //=======================================================================================================================
+    
     private void Start()
     {
         GameManager.instance.ShowMedalText();//현재 메달을 보인다.
@@ -94,8 +94,10 @@ public class Challenge : MonoBehaviour
 
         InfoUpdate();
     }
+
     //==================================================================================================================
     //==================================================================================================================
+    
     private void InfoInit() {
         //!!!!!!!!!!!!!!주의!!!!!!!!!!!!!숫자 프리팹 숫자와 관련되어 있다!!! 같이 조절해야함
         //프리팹들에게 고유 번호 붙이기
@@ -110,24 +112,47 @@ public class Challenge : MonoBehaviour
 
 
         //보상 설정
-        Info[prefabnum].rewardMedal = 1;
-        Info[prefabnum].clearCriterion = 30;// 일단 30으로 통일
-        //임시
-        switch (prefabnum) 
+        Info[prefabnum].rewardMedal = 1; // 1 뱃지
+        Info[prefabnum].rewardHeart = 1 + DataController.instance.gameData.challengeLevel[prefabnum]; // 레벨x5 하트
+
+        switch (prefabnum)
         {
-            case 0: Info[prefabnum].rewardHeart = Info[prefabnum].clearCriterion; break;
-            case 1: Info[prefabnum].rewardHeart = Info[prefabnum].clearCriterion/5; break;
-            case 2: Info[prefabnum].rewardHeart = Info[prefabnum].clearCriterion/50; break;
-            case 3: Info[prefabnum].rewardHeart = Info[prefabnum].clearCriterion/30; break;
-            case 4: Info[prefabnum].rewardHeart = Info[prefabnum].clearCriterion/6; break;
-            case 5: Info[prefabnum].rewardHeart = Info[prefabnum].clearCriterion/10; break;
+            case 0: // 딸기 수집
+                Info[prefabnum].clearCriterion = 30;
+                break;
+            case 1: // 딸기 수확
+                Info[prefabnum].clearCriterion = 30;
+                break;
+            case 2: // 누적 코인
+                Info[prefabnum].clearCriterion = 30;
+                break;
+            case 3: // 누적 하트
+                Info[prefabnum].clearCriterion = 30;
+                break;
+            case 4: // 누적 출석
+                Info[prefabnum].clearCriterion = 30;
+                break;
+            case 5: // 미니게임 플레이
+                Info[prefabnum].clearCriterion = 30;
+                break;
         }
+
+        //임시
+        //switch (prefabnum) 
+        //{
+        //    case 0: Info[prefabnum].rewardHeart = Info[prefabnum].clearCriterion; break;
+        //    case 1: Info[prefabnum].rewardHeart = Info[prefabnum].clearCriterion / 5; break;
+        //    case 2: Info[prefabnum].rewardHeart = Info[prefabnum].clearCriterion / 50; break;
+        //    case 3: Info[prefabnum].rewardHeart = Info[prefabnum].clearCriterion / 30; break;
+        //    case 4: Info[prefabnum].rewardHeart = Info[prefabnum].clearCriterion / 6; break;
+        //    case 5: Info[prefabnum].rewardHeart = Info[prefabnum].clearCriterion / 10; break;
+        //}
 
     }
 
     public void InfoUpdate() {
 
-        titleText.GetComponent<Text>().text = Info[prefabnum].Title + " " + ChallengeValue[prefabnum];//제목+누적 수
+        // titleText.GetComponent<Text>().text = Info[prefabnum].Title + " " + ChallengeValue[prefabnum];//제목+누적 수
         levelText.GetComponent<Text>().text ="Lv."+ (1+DataController.instance.gameData.challengeLevel[prefabnum]).ToString();//레벨
                                                                                                                                 //도전과제 게이지 달성 조건 숫자
         achieveCondition.GetComponent<Text>().text
@@ -149,8 +174,8 @@ public class Challenge : MonoBehaviour
                 Gauge.GetComponent<Image>().fillAmount = 1;
                 nowCondition.GetComponent<Text>().text = "30";
 
-                Button.GetComponent<Image>().sprite = DoneButton;//도전과제 버튼 이미지 변경
-                bangMark.SetActive(true);//느낌표!! 띄우기 (획득 가능한 도전과제 있다)
+                Button.GetComponent<Image>().sprite = DoneButton; //도전과제 버튼 이미지 변경
+                bangMark.SetActive(true); //느낌표!! 띄우기 (획득 가능한 도전과제 있다)
             }
         }
         else
@@ -159,8 +184,8 @@ public class Challenge : MonoBehaviour
             Gauge.GetComponent<Image>().fillAmount = 1;
             nowCondition.GetComponent<Text>().text = "30";
 
-            Button.GetComponent<Image>().sprite = DoneButton;//도전과제 버튼 이미지 변경
-            bangMark.SetActive(true);//느낌표!! 띄우기 (획득 가능한 도전과제 있다)
+            Button.GetComponent<Image>().sprite = DoneButton; //도전과제 버튼 이미지 변경
+            bangMark.SetActive(true); //느낌표!! 띄우기 (획득 가능한 도전과제 있다)
         }
 
     }
@@ -176,15 +201,13 @@ public class Challenge : MonoBehaviour
             || realLevel > DataController.instance.gameData.challengeLevel[prefabnum])
         {
             AudioManager.instance.Cute1AudioPlay();
-            //메달 보상 획득
-            GameManager.instance.GetMedal(Info[prefabnum].rewardMedal);
-            //하트 보상 획득
-            GameManager.instance.GetHeart(Info[prefabnum].rewardHeart);
+            GameManager.instance.GetMedal(Info[prefabnum].rewardMedal); //메달 보상 획득
+            GameManager.instance.GetHeart(Info[prefabnum].rewardHeart); //하트 보상 획득
 
-            Button.GetComponent<Image>().sprite = IngButton;//도전과제 버튼 이미지 변경
-            bangMark.SetActive(false);//느낌표 지우기
+            Button.GetComponent<Image>().sprite = IngButton; //도전과제 버튼 이미지 변경
+            bangMark.SetActive(false); //느낌표 지우기
 
-            DataController.instance.gameData.challengeLevel[prefabnum]++;//레벨증가
+            DataController.instance.gameData.challengeLevel[prefabnum]++; //레벨증가
 
         }
 
