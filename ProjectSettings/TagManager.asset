@@ -24,6 +24,7 @@ TagManager:
   - NewsContent
   - YNPanel
   - WarningPanel
+  - HireYNPanel
   layers:
   - Default
   - TransparentFX

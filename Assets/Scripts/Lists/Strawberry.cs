@@ -93,8 +93,8 @@ public class Strawberry : MonoBehaviour
                 AudioManager.instance.Cute1AudioPlay();
 
                 //설명창 띄운다
-                berryExp.SetActive(true);
-                //berryExp.GetComponent<PanelAnimation>().OpenScale();
+                //berryExp.SetActive(true);
+                berryExp.GetComponent<PanelAnimation>().OpenScale();
                 berryExpPanelBlack.SetActive(true);
 
                 GameObject berryExpImage = berryExp.transform.GetChild(1).gameObject;
