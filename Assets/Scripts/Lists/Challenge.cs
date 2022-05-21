@@ -11,10 +11,10 @@ public class Challenge : MonoBehaviour
     {
         public string Title;    //제목
         public int rewardMedal; //메달 보상
-        public int rewardHeart; //하트 보상
-        public int clearCriterion;  //달성 조건
+        public int[] rewardHeart = new int[100]; //하트 보상
+        public int[] clearCriterion = new int[100];  //달성 조건
 
-        public ChallengeNewsStruct(string Title, int rewardMedal, int rewardHeart,int clearCriterion)
+        public ChallengeNewsStruct(string Title, int rewardMedal, int[] rewardHeart,int[] clearCriterion)
         {
             this.Title = Title;
             this.rewardMedal = rewardMedal;
@@ -36,7 +36,6 @@ public class Challenge : MonoBehaviour
     private GameObject nowCondition; //현재 도전과제 달성 수치 텍스트
     [SerializeField]
     private GameObject Button;
-    public GameObject bangMark;
 
     [Header("==========Gauge==========")]
     [SerializeField]
@@ -85,12 +84,12 @@ public class Challenge : MonoBehaviour
 
 
         //0~29,0
-        ChallengeValue_[prefabnum] = ChallengeValue[prefabnum] % 30;
+        //ChallengeValue_[prefabnum] = ChallengeValue[prefabnum] % 30;
             
             
         //보상을 받았다면 이 레벨이여야 한다.
-        realLevel = ChallengeValue[prefabnum] / 30;
-        if (realLevel %30== 0) { realLevel--; }
+        //realLevel = ChallengeValue[prefabnum] / 30;
+        //if (realLevel %30== 0) { realLevel--; }
 
         InfoUpdate();
     }
@@ -107,85 +106,117 @@ public class Challenge : MonoBehaviour
 
         Prefabcount++;
 
-        titleText.GetComponent<Text>().text = Info[prefabnum].Title;//제목표시
 
+        Info[prefabnum].rewardHeart = new int[100];
+        Info[prefabnum].clearCriterion = new int[100];
+
+        titleText.GetComponent<Text>().text = Info[prefabnum].Title;//제목표시
 
 
         //보상 설정
         Info[prefabnum].rewardMedal = 1; // 1 뱃지
-        Info[prefabnum].rewardHeart = 1 + DataController.instance.gameData.challengeLevel[prefabnum]; // 레벨x5 하트
+        
+        for (int i=0; i<100; i++) // 1~100레벨
+        {
+            Info[prefabnum].rewardHeart[i] = i * 5; // 레벨x5 하트
+        }
 
         switch (prefabnum)
         {
             case 0: // 딸기 수집
-                Info[prefabnum].clearCriterion = 30;
+                for (int i = 0; i < 100; i++) // 1~100레벨
+                {
+                    if (i == 0)
+                        Info[prefabnum].clearCriterion[i] = 10;
+                    else
+                        Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[i - 1] + 20;
+                }
                 break;
             case 1: // 딸기 수확
-                Info[prefabnum].clearCriterion = 30;
+                for (int i = 0; i < 100; i++) // 1~100레벨
+                {
+                    if (i == 0)
+                        Info[prefabnum].clearCriterion[i] = 100;
+                    else if (i == 1)
+                        Info[prefabnum].clearCriterion[i] = 200;
+                    else
+                        Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[i - 1] + Info[prefabnum].clearCriterion[i - 2];
+                }
                 break;
             case 2: // 누적 코인
-                Info[prefabnum].clearCriterion = 30;
+                for (int i = 0; i < 100; i++) // 1~100레벨
+                {
+                    if (i == 0)
+                        Info[prefabnum].clearCriterion[i] = 1000;
+                    else
+                        Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[i - 1] * 3;
+                }
                 break;
             case 3: // 누적 하트
-                Info[prefabnum].clearCriterion = 30;
+                for (int i = 0; i < 100; i++) // 1~100레벨
+                {
+                    if (i == 0)
+                        Info[prefabnum].clearCriterion[i] = 100;
+                    else
+                        Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[i - 1] * 3;
+                }
                 break;
             case 4: // 누적 출석
-                Info[prefabnum].clearCriterion = 30;
+                for (int i = 0; i < 100; i++) // 1~100레벨
+                {
+                    if (i == 0)
+                        Info[prefabnum].clearCriterion[i] = 10;
+                    else
+                        Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[i - 1] + 20;
+                }
                 break;
             case 5: // 미니게임 플레이
-                Info[prefabnum].clearCriterion = 30;
+                for (int i = 0; i < 100; i++) // 1~100레벨
+                {
+                    if (i == 0)
+                        Info[prefabnum].clearCriterion[i] = 10;
+                    else if (i == 1)
+                        Info[prefabnum].clearCriterion[i] = 20;
+                    else
+                        Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[i - 1] + Info[prefabnum].clearCriterion[i - 2];
+                }
                 break;
         }
-
-        //임시
-        //switch (prefabnum) 
-        //{
-        //    case 0: Info[prefabnum].rewardHeart = Info[prefabnum].clearCriterion; break;
-        //    case 1: Info[prefabnum].rewardHeart = Info[prefabnum].clearCriterion / 5; break;
-        //    case 2: Info[prefabnum].rewardHeart = Info[prefabnum].clearCriterion / 50; break;
-        //    case 3: Info[prefabnum].rewardHeart = Info[prefabnum].clearCriterion / 30; break;
-        //    case 4: Info[prefabnum].rewardHeart = Info[prefabnum].clearCriterion / 6; break;
-        //    case 5: Info[prefabnum].rewardHeart = Info[prefabnum].clearCriterion / 10; break;
-        //}
-
+        Debug.Log(Info[prefabnum].clearCriterion[0]);
     }
 
     public void InfoUpdate() {
-
         // titleText.GetComponent<Text>().text = Info[prefabnum].Title + " " + ChallengeValue[prefabnum];//제목+누적 수
-        levelText.GetComponent<Text>().text ="Lv."+ (1+DataController.instance.gameData.challengeLevel[prefabnum]).ToString();//레벨
-                                                                                                                                //도전과제 게이지 달성 조건 숫자
-        achieveCondition.GetComponent<Text>().text
-            = "/" + Info[prefabnum].clearCriterion.ToString();
+        levelText.GetComponent<Text>().text ="Lv."+ (1+DataController.instance.gameData.challengeLevel[prefabnum]).ToString();  //레벨
+
+        achieveCondition.GetComponent<Text>().text = "/" + Info[prefabnum].clearCriterion[DataController.instance.gameData.challengeLevel[prefabnum]].ToString();   //도전과제 게이지 달성 조건 숫자
 
         if (realLevel <= DataController.instance.gameData.challengeLevel[prefabnum])
         {
             //도전과제 게이지 증가
             Gauge.GetComponent<Image>().fillAmount
-                = (float)(ChallengeValue[prefabnum] % Info[prefabnum].clearCriterion) / Info[prefabnum].clearCriterion;
+                = (float)(ChallengeValue[prefabnum] % Info[prefabnum].clearCriterion[DataController.instance.gameData.challengeLevel[prefabnum]]) / Info[prefabnum].clearCriterion[DataController.instance.gameData.challengeLevel[prefabnum]];
             //도전과제 게이지 현재값
             nowCondition.GetComponent<Text>().text
-                = (ChallengeValue[prefabnum] % Info[prefabnum].clearCriterion).ToString();
+                = (ChallengeValue[prefabnum] % Info[prefabnum].clearCriterion[DataController.instance.gameData.challengeLevel[prefabnum]]).ToString();
 
             //도전과제 달성하면
-            if (ChallengeValue[prefabnum] / 30 == DataController.instance.gameData.challengeLevel[prefabnum] + 1)
+            if (ChallengeValue[prefabnum] == Info[prefabnum].clearCriterion[DataController.instance.gameData.challengeLevel[prefabnum]])
             {
                 //가득 찬 상태로
                 Gauge.GetComponent<Image>().fillAmount = 1;
-                nowCondition.GetComponent<Text>().text = "30";
+                nowCondition.GetComponent<Text>().text = Info[prefabnum].clearCriterion[DataController.instance.gameData.challengeLevel[prefabnum]].ToString();
 
                 Button.GetComponent<Image>().sprite = DoneButton; //도전과제 버튼 이미지 변경
-                bangMark.SetActive(true); //느낌표!! 띄우기 (획득 가능한 도전과제 있다)
             }
         }
         else
         { 
             //가득 찬 상태로
             Gauge.GetComponent<Image>().fillAmount = 1;
-            nowCondition.GetComponent<Text>().text = "30";
+            nowCondition.GetComponent<Text>().text = Info[prefabnum].clearCriterion[DataController.instance.gameData.challengeLevel[prefabnum]].ToString(); ;
 
             Button.GetComponent<Image>().sprite = DoneButton; //도전과제 버튼 이미지 변경
-            bangMark.SetActive(true); //느낌표!! 띄우기 (획득 가능한 도전과제 있다)
         }
 
     }
@@ -202,10 +233,9 @@ public class Challenge : MonoBehaviour
         {
             AudioManager.instance.Cute1AudioPlay();
             GameManager.instance.GetMedal(Info[prefabnum].rewardMedal); //메달 보상 획득
-            GameManager.instance.GetHeart(Info[prefabnum].rewardHeart); //하트 보상 획득
+            GameManager.instance.GetHeart(Info[prefabnum].rewardHeart[DataController.instance.gameData.challengeLevel[prefabnum]]); //하트 보상 획득
 
             Button.GetComponent<Image>().sprite = IngButton; //도전과제 버튼 이미지 변경
-            bangMark.SetActive(false); //느낌표 지우기
 
             DataController.instance.gameData.challengeLevel[prefabnum]++; //레벨증가
 
