@@ -363,8 +363,7 @@ public class PTJResearch : MonoBehaviour
             PTJExp.transform.GetChild(13).transform.GetComponent<Text>().text
                 = SliderNum.ToString() + "회";
             //PRICE 텍스트
-            PTJExp.transform.GetChild(7).transform.GetComponent<Text>().text
-               = (SliderNum * Info[prefabnum].Price).ToString();
+            GameManager.instance.ShowCoinText(PTJExp.transform.GetChild(7).GetComponent<Text>(), SliderNum * Info[prefabnum].Price);
         }
 
     }
@@ -536,7 +535,7 @@ public class PTJResearch : MonoBehaviour
                 //Slider Num 텍스트
                 PTJExp.transform.GetChild(13).transform.GetComponent<Text>().text = "10회";
                 //PRICE 텍스트
-                PTJExp.transform.GetChild(7).transform.GetComponent<Text>().text = (Info[prefabnum].Price).ToString();
+                GameManager.instance.ShowCoinText(PTJExp.transform.GetChild(7).GetComponent<Text>(), Info[prefabnum].Price);
             }
             //1단위
             else
@@ -550,7 +549,7 @@ public class PTJResearch : MonoBehaviour
                 //Slider Num텍스트
                 PTJExp.transform.GetChild(13).transform.GetComponent<Text>().text = "1회";
                 //PRICE 텍스트
-                PTJExp.transform.GetChild(7).transform.GetComponent<Text>().text = (Info[prefabnum].Price).ToString();
+                GameManager.instance.ShowCoinText(PTJExp.transform.GetChild(7).GetComponent<Text>(), Info[prefabnum].Price);
             }
         }
         //고용중이면
