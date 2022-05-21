@@ -15,12 +15,14 @@ public class PTJResearch : MonoBehaviour
         public Sprite FacePicture;//알바생 얼굴 사진
         public string Explanation;//설명
         public int Price;//가격
+        public int[] Prices = new int[25];//가격
 
-        public PrefabStruct(string Name, string Explanation, int Price, Sprite Picture, Sprite FacePicture, bool exist)
+        public PrefabStruct(string Name, string Explanation, int Price, int[] Prices, Sprite Picture, Sprite FacePicture, bool exist)
         {
             this.Name = Name;
             this.Explanation = Explanation;
             this.Price = Price;
+            this.Prices = Prices;   // 연구 가격은 배열로
             this.Picture = Picture;
             this.FacePicture = FacePicture;
         }
@@ -206,6 +208,12 @@ public class PTJResearch : MonoBehaviour
         { Prefabcount -= 6; }
         prefabnum = Prefabcount;
 
+        Info[Prefabcount].Prices = new int[25];
+
+        for (int i=0; i<25; i++)
+        {
+            Info[prefabnum].Prices[i] = 100 * (i+1);
+        }
 
         //타이틀, 설명, 코인값, 레벨, 고용여부 텍스트에 표시
         titleText.GetComponent<Text>().text = Info[Prefabcount].Name;//제목(이름) 표시
@@ -215,10 +223,14 @@ public class PTJResearch : MonoBehaviour
         }
         
         explanationText.GetComponent<Text>().text = Info[Prefabcount].Explanation+"\n"+
-            ((DataController.instance.gameData.researchLevel[prefabnum]*2) + "%"+"→"+ 
+            ((DataController.instance.gameData.researchLevel[prefabnum]*2) + "% →" + 
             (DataController.instance.gameData.researchLevel[prefabnum]+1)*2 + "%");//설명 텍스트 표시
-        
-        coinNum.GetComponent<Text>().text = Info[Prefabcount].Price.ToString() + "A";//비용 표시
+
+        //coinNum.GetComponent<Text>().text = Info[Prefabcount].Price.ToString() + "A";
+        if (PTJ == true)//알바
+            GameManager.instance.ShowCoinText(coinNum.GetComponent<Text>(), Info[Prefabcount].Price); //비용 표시
+        else
+            GameManager.instance.ShowCoinText(coinNum.GetComponent<Text>(), Info[Prefabcount].Prices[DataController.instance.gameData.researchLevel[prefabnum]]); //비용 표시
 
 
         if (PTJ == true)//알바
@@ -239,14 +251,15 @@ public class PTJResearch : MonoBehaviour
         if (DataController.instance.gameData.researchLevel[prefabnum] < 25)//레벨 25로 한계두기
         {         
             //해당 금액이 지금 가진 코인보다 적으면
-            if (DataController.instance.gameData.coin >= Info[prefabnum].Price)
+            if (DataController.instance.gameData.coin >= Info[prefabnum].Prices[DataController.instance.gameData.researchLevel[prefabnum]])
             {
                 //해당 금액의 코인이 감소
-                GameManager.instance.UseCoin(Info[prefabnum].Price);
+                GameManager.instance.UseCoin(Info[prefabnum].Prices[DataController.instance.gameData.researchLevel[prefabnum]]);
 
                 //레벨이 올라간다.
                 DataController.instance.gameData.researchLevel[prefabnum]++;
                 levelNum.GetComponent<Text>().text = (DataController.instance.gameData.researchLevel[prefabnum]+1).ToString();
+                GameManager.instance.ShowCoinText(coinNum.GetComponent<Text>(), Info[prefabnum].Prices[DataController.instance.gameData.researchLevel[prefabnum]]);
 
                 switch (Info[prefabnum].Name)
                 {
@@ -267,7 +280,8 @@ public class PTJResearch : MonoBehaviour
             {
                 //재화 부족 경고 패널 등장
                 AudioManager.instance.Cute4AudioPlay();
-                panelCoinText2.GetComponent<Text>().text= DataController.instance.gameData.coin.ToString();
+                //panelCoinText2.GetComponent<Text>().text= DataController.instance.gameData.coin.ToString();
+                GameManager.instance.ShowCoinText(panelCoinText2.GetComponent<Text>(), DataController.instance.gameData.coin);
                 warningBlackPanel2.SetActive(true);
                 noCoinPanel2.GetComponent<PanelAnimation>().OpenScale();
             }
