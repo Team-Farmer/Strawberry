@@ -627,7 +627,8 @@ public class GameManager : MonoBehaviour
                     = "하트 10개로 시간을 10분으로 줄이시겠습니까?\n";//지금은 1초. 임시
                 break;
             case "done": /*딸기 개발*/
-    GetNewBerry();
+                if(DataController.instance.gameData.coin >= price_newBerry){ GetNewBerry(); }
+                else { NoCoinPanel.GetComponent<PanelAnimation>().OpenScale(); }
                 break;
                 //default:Debug.Log("NowButton이름이 잘못됬습니다."); break;
         }
@@ -638,16 +639,20 @@ public class GameManager : MonoBehaviour
     //하트 써서 시간을 줄일건가요? 패널
     public void TimeReduce(bool isTimeReduce)
     {
-        //하트 써서 시간을 줄일거면
-        if (isTimeReduce == true)
+        if (DataController.instance.gameData.heart >= 10)
         {
-            //시간을 10으로 줄여준다.
-            time_newBerry = 1;
-            timeText_newBerry.GetComponent<Text>().text = TimeForm(Mathf.CeilToInt(time_newBerry));
-            //하트를 소비한다.
-            UseHeart(10);
+            //하트 써서 시간을 줄일거면
+            if (isTimeReduce == true)
+            {
+                //시간을 10으로 줄여준다.
+                time_newBerry = 1;
+                timeText_newBerry.GetComponent<Text>().text = TimeForm(Mathf.CeilToInt(time_newBerry));
+                //하트를 소비한다.
+                UseHeart(10);
+            }
         }
-
+        else 
+        { NoHeartPanel.GetComponent<PanelAnimation>().OpenScale(); }
         //창 끄기
         TimeReduceBlackPanel_newBerry.SetActive(false);
         TimeReducePanel_newBerry.GetComponent<PanelAnimation>().CloseScale();
