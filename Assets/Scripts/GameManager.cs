@@ -618,6 +618,8 @@ public class GameManager : MonoBehaviour
 
                     //버튼상태 ing로
                     DataController.instance.gameData.newBerryBtnState = 1;
+                    //타이머 시작
+                    StartCoroutine("Timer");
 
                     //시간 감소여부 묻는 패널을 띄운다.
                     TimeReduceBlackPanel_newBerry.SetActive(true); //시원 건드림
@@ -629,8 +631,6 @@ public class GameManager : MonoBehaviour
                 {
                     NoCoinPanel.GetComponent<PanelAnimation>().OpenScale();
                 }
-                //타이머 시작
-                StartCoroutine("Timer");
                 break;
             case "ing":
                 //시간 감소여부 묻는 패널을 띄운다.

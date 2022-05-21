@@ -2559,8 +2559,9 @@ MonoBehaviour:
   swipeTime: 0.1
   swipeDistance: 100
   berryLockSpecial: {fileID: 655529759}
+  LockSpecialBtn: {fileID: 170176987}
   berryLockUnique: {fileID: 153615610}
-  berryLockPanel: {fileID: 882306121}
+  LockUniqueBtn: {fileID: 182718844}
   panelBlack: {fileID: 1177823553}
 --- !u!1 &137593172
 GameObject:
@@ -3693,8 +3694,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 135233324}
         m_TargetAssemblyTypeName: ChangeLayer2, Assembly-CSharp
-        m_MethodName: DevelopButton1
-        m_Mode: 3
+        m_MethodName: BerryUnlockBtn
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3916,8 +3917,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 135233324}
         m_TargetAssemblyTypeName: ChangeLayer2, Assembly-CSharp
-        m_MethodName: DevelopButton1
-        m_Mode: 3
+        m_MethodName: BerryUnlockBtn
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -41540,8 +41541,9 @@ MonoBehaviour:
   swipeTime: 0.1
   swipeDistance: 1
   berryLockSpecial: {fileID: 0}
+  LockSpecialBtn: {fileID: 0}
   berryLockUnique: {fileID: 0}
-  berryLockPanel: {fileID: 0}
+  LockUniqueBtn: {fileID: 0}
   panelBlack: {fileID: 0}
 --- !u!224 &1882881320
 RectTransform:

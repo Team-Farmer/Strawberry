@@ -85,7 +85,7 @@ public class DataController : MonoBehaviour
     {
         gameData.cloudSaveTime = new System.DateTime();
         // 재화 변수
-        gameData.coin = 500;
+        gameData.coin = 50000; // 원래 500 테스트 50000
         gameData.heart = 50;
         gameData.medal = 0;
         // 누적 변수

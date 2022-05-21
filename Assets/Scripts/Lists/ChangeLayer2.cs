@@ -23,7 +23,6 @@ public class ChangeLayer2 : MonoBehaviour
 	[SerializeField]
 	private GameObject[] content;
 
-
 	[Header("========Swipe=======")]
 	[SerializeField]
 	private Scrollbar scrollBar;                    // Scrollbar의 위치를 바탕으로 현재 페이지 검사
@@ -32,12 +31,13 @@ public class ChangeLayer2 : MonoBehaviour
 	[SerializeField]
 	private float swipeDistance = 1.0f;        // 페이지가 Swipe되기 위해 움직여야 하는 최소 거리
 
-
 	[Header("=====Berry Lock=====")]
 	public GameObject berryLockSpecial;
+	public GameObject LockSpecialBtn;
+
 	public GameObject berryLockUnique;
-	public GameObject berryLockPanel;
-	private GameObject NoButton;//개발 조건이 안되면 클릭을 막을 버튼
+	public GameObject LockUniqueBtn;
+
 	[Header("=====Panel Black=====")]
 	[SerializeField]
 	private GameObject panelBlack;
@@ -83,25 +83,31 @@ public class ChangeLayer2 : MonoBehaviour
 		if (isBerry == true)
 		{
 			//처음에는 berry classic
-			
-			selectBerryTag("berry_special");
 			selectBerryTag("berry_classic");
 			TagImageChange(0);
 
 			// 처음 시작할 때 0번 페이지 보인다.
 			SetScrollBarValue(0);
-			
-
-			NoButton = berryLockPanel.transform.GetChild(2).gameObject;
+		
 		}
 	}
 
 	private void Update()
 	{
 		if (isBerry == true) UpdateInput();//스와이프 관련
+
+		if (berryLockSpecial.activeInHierarchy && ResearchLevelCheck(4))
+		{
+			LockSpecialBtn.GetComponent<Button>().interactable = true;
+		}
+		if (berryLockUnique.activeInHierarchy && ResearchLevelCheck(9))
+		{
+			LockUniqueBtn.GetComponent<Button>().interactable = true;
+		}
 	}
 
     #endregion
+
     
 	//===========================================================================================================
     //===========================================================================================================
@@ -282,34 +288,6 @@ public class ChangeLayer2 : MonoBehaviour
     //=================================================================================================
 
     #region Berry Lock
-    //스페셜, 유니크 잠금해제
-    public void DevelopButton1(int index) 
-	{
-
-		panelBlack.SetActive(true);
-		NoButton.SetActive(true);
-		//기본 패널 띄우기
-		berryLockPanel.SetActive(true);
-
-		//패널 내용 index 0=special / index 1=unique
-		switch (index) 
-		{
-			case 0: //special
-				berryLockPanel.transform.GetChild(1).GetComponent<Text>().text
-					= "스페셜 딸기를 개발하겠습니까? \n 모든 연구레벨이 5이상이면 개발 가능";				
-				if (ResearchLevelCheck(5)) //조건을 충족하면 개발 버튼 누를 수 있게된다.
-				{ NoButton.SetActive(false); }
-				break;
-
-			case 1: //unique 
-				berryLockPanel.transform.GetChild(1).GetComponent<Text>().text
-					= "유니크 딸기를 개발하겠습니까? \n 모든 연구레벨이 15이상이면 개발 가능";				
-				if (ResearchLevelCheck(15)) //조건을 충족하면 개발 버튼 누를 수 있게된다.
-				{ NoButton.SetActive(false); }
-				break;
-		}	
-	}
-
 	private bool ResearchLevelCheck(int level) 
 	{
 		for (int i = 0; i < DataController.instance.gameData.researchLevel.Length; i++)
@@ -320,8 +298,9 @@ public class ChangeLayer2 : MonoBehaviour
 		return true;//모든 연구가 level이상이면 true를 반환한다.
 	
 	}
-	//조건이 충족되어서 유니크,스페셜 딸기 개발 버튼을 누르면
-	public void DevelopButton2() 
+
+	//조건이 충족되어서 유니크, 스페셜 개발 가능
+	public void BerryUnlockBtn() 
 	{
 		switch (DataController.instance.gameData.newBerryResearchAble) 
 		{
@@ -337,7 +316,6 @@ public class ChangeLayer2 : MonoBehaviour
 				break;
 		}
 		GameManager.instance.NewBerryUpdate();
-		berryLockPanel.SetActive(false);
 		panelBlack.SetActive(false);
 	}
     #endregion
@@ -368,6 +346,7 @@ public class ChangeLayer2 : MonoBehaviour
 			case "berry_special":
 				//LOCK
 				berryLockUnique.SetActive(false);
+				LockSpecialBtn.GetComponent<Button>().interactable = false;
 				switch (DataController.instance.gameData.newBerryResearchAble)
 				{
 					case 0: berryLockSpecial.SetActive(true); break;
@@ -382,6 +361,7 @@ public class ChangeLayer2 : MonoBehaviour
 			case "berry_unique":
 				//LOCK
 				berryLockSpecial.SetActive(false);
+				LockUniqueBtn.GetComponent<Button>().interactable = false;
 				switch (DataController.instance.gameData.newBerryResearchAble)
 				{
 					case 0: berryLockUnique.SetActive(true);	break;
