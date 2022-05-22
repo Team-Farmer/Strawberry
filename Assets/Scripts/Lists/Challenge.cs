@@ -182,7 +182,7 @@ public class Challenge : MonoBehaviour
 
     public void InfoUpdate() {
         // titleText.GetComponent<Text>().text = Info[prefabnum].Title + " " + ChallengeValue[prefabnum];//제목+누적 수
-        levelText.GetComponent<Text>().text ="Lv."+ (1+DataController.instance.gameData.challengeLevel[prefabnum]).ToString();  //레벨
+        levelText.GetComponent<Text>().text ="Lv."+ DataController.instance.gameData.challengeLevel[prefabnum].ToString();  //레벨
 
         achieveCondition.GetComponent<Text>().text = "/" + Info[prefabnum].clearCriterion[DataController.instance.gameData.challengeLevel[prefabnum]].ToString();   //도전과제 게이지 달성 조건 숫자
 
