@@ -25,6 +25,7 @@ TagManager:
   - YNPanel
   - WarningPanel
   - HireYNPanel
+  - PanelBlack
   layers:
   - Default
   - TransparentFX

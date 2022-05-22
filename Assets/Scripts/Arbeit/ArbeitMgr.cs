@@ -104,7 +104,6 @@ public class ArbeitMgr : MonoBehaviour
     {
         yield return new WaitForSeconds(0.75f);
         farm.weed.DeleteWeed();
-        farm.GetComponent<BoxCollider2D>().enabled = false;
     }
     public float Pigma() // µÅÁö 4
     {

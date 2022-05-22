@@ -7,7 +7,8 @@ public class Weed : MonoBehaviour
     public int weedIdx;  
     public float xPos = 0f;   
     public int weedSpriteNum; // 옮김
-    
+
+    private GameObject BP;
     private Farm farm;
     private Animator anim;
     private BoxCollider2D farmColl;
@@ -15,7 +16,8 @@ public class Weed : MonoBehaviour
     {        
         anim = GetComponent<Animator>();
         farm = transform.parent.gameObject.GetComponent<Farm>();        
-        farmColl = farm.GetComponent<BoxCollider2D>();       
+        farmColl = farm.GetComponent<BoxCollider2D>();
+        BP = GameObject.FindGameObjectWithTag("PanelBlack");
     }
     void OnEnable()
     {
@@ -59,7 +61,7 @@ public class Weed : MonoBehaviour
         yield return new WaitForSeconds(time);
      
         float creatTime = DataController.instance.gameData.berryFieldData[weedIdx].createTime; // 딸기가 생성된 시간변수 참조
-        if (creatTime == 0f || creatTime >= DataController.instance.gameData.stemLevel[4]) // BP가 꺼져있고 맨 땅이거나 딸기가 수확가능한 상태라면
+        if ((creatTime == 0f && !BP.activeSelf)|| creatTime >= DataController.instance.gameData.stemLevel[4] ) // BP가 꺼져있고 맨 땅이거나 딸기가 수확가능한 상태라면
         {
             farmColl.enabled = true; // 밭의 Collider를 켠다.
         }

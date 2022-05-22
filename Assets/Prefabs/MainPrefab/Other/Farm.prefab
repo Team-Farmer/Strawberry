@@ -119,6 +119,7 @@ MonoBehaviour:
   weedIdx: 0
   xPos: 0
   weedSpriteNum: 0
+  BP: {fileID: 1540724596827197256}
 --- !u!70 &6276483865271743662
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
