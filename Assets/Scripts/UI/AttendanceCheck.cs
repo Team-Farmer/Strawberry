@@ -27,7 +27,8 @@ public class AttendanceCheck : MonoBehaviour
 
     public bool isAtd;
 
-    int days;
+    private int days;
+    private int hearts;
     String weeks_text;
 
 
@@ -148,10 +149,18 @@ public class AttendanceCheck : MonoBehaviour
             DataController.instance.gameData.Lastday = DataController.instance.gameData.Today;
 
             DataController.instance.gameData.accAttendance += 1; // 누적 출석 증가
-            GameManager.instance.GetHeart(10 * (number + 1)); // 10*날짜*주수
-                                                              // Debug.Log("누적 출석 : " + DataController.instance.gameData.accAttendance);
-                                                              // Debug.Log("누적 하트 : " + DataController.instance.gameData.accHeart);
+                                                                 // 10*날짜*주수
+                                                                 // Debug.Log("누적 출석 : " + DataController.instance.gameData.accAttendance);
+                                                                 // Debug.Log("누적 하트 : " + DataController.instance.gameData.accHeart);
+
+            hearts = number;
+            Invoke("AtdHeart", 0.75f);
         }
+    }
+
+    public void AtdHeart()
+    {
+        GameManager.instance.GetHeart(10 * (hearts + 1));
     }
 
     public static implicit operator AttendanceCheck(GameManager v)

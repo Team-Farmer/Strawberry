@@ -105,6 +105,8 @@ public class GameManager : MonoBehaviour
     [Header("[ Game Flag ]")]
     public bool isGameRunning;
 
+    private int coinUpdate;
+
     #endregion
 
     #region 기본
@@ -135,6 +137,9 @@ public class GameManager : MonoBehaviour
 
         //NEW BERRY
         NewBerryUpdate();
+
+        ShowCoinText(CoinText, DataController.instance.gameData.coin);
+        HeartText.text = DataController.instance.gameData.heart.ToString();
     }
 
     public void GameStart()
@@ -215,8 +220,8 @@ public class GameManager : MonoBehaviour
     void LateUpdate()
     {
         //CoinText.text = coin.ToString() + " A";
-        ShowCoinText(CoinText, DataController.instance.gameData.coin); // 트럭코인 나타낼 때 같이쓰려고 매개변수로 받게 수정했어요 - 신희규
-        HeartText.text = DataController.instance.gameData.heart.ToString();
+        //ShowCoinText(CoinText, DataController.instance.gameData.coin); // 트럭코인 나타낼 때 같이쓰려고 매개변수로 받게 수정했어요 - 신희규
+        //HeartText.text = DataController.instance.gameData.heart.ToString();
     }
 
     #endregion
@@ -337,6 +342,67 @@ public class GameManager : MonoBehaviour
 
     #region 재화
 
+    IEnumerator CountAnimation(Text characters, float target, float current) //재화 증가 애니메이션
+
+    {
+        float duration = 1.0f; // 카운팅에 걸리는 시간 설정. 
+
+        float offset = (target - current) / duration;
+
+        while (current < target)
+
+        {
+
+            current += offset * Time.deltaTime;
+
+            if (characters == CoinText)
+            {
+                if ((int)current <= 9999)           // 0~9999까지 A
+                {
+                    characters.text = ((int)current).ToString() + "A";
+                }
+                else if ((int)current <= 9999999)   // 10000~9999999(=9999B)까지 B
+                {
+                    current /= (float)1000;
+                    characters.text = ((int)current).ToString() + "B";
+                }
+                else                        // 그 외 C (최대 2100C)
+                {
+                    current /= (float)1000000;
+                    characters.text = ((int)current).ToString() + "C";
+                }
+            }
+            else
+                characters.text = ((int)current).ToString();
+
+            yield return null;
+
+        }
+
+        current = target;
+        int num = (int)current;
+
+        if (characters == CoinText)
+        {
+            if (num <= 9999)           // 0~9999까지 A
+            {
+                characters.text = num.ToString() + "A";
+            }
+            else if (num <= 9999999)   // 10000~9999999(=9999B)까지 B
+            {
+                current /= 1000;
+                characters.text = num.ToString() + "B";
+            }
+            else                        // 그 외 C (최대 2100C)
+            {
+                current /= 1000000;
+                characters.text = num.ToString() + "C";
+            }
+        }
+        else
+            characters.text = num.ToString();
+    }
+
     public void ShowCoinText(Text coinText, int coin)
     {
         //int coin = DataController.instance.gameData.coin;
@@ -358,19 +424,27 @@ public class GameManager : MonoBehaviour
 
     public void GetCoin(int cost) // 코인 획득 함수
     {
+        int current, acc;
+        current = DataController.instance.gameData.coin;
         DataController.instance.gameData.coin += cost; // 현재 코인 +
+        acc = DataController.instance.gameData.coin;
+        StartCoroutine(CountAnimation(CoinText, acc, current));
         DataController.instance.gameData.accCoin += cost; // 누적 코인 +
     }
 
     public void UseCoin(int cost) // 코인 사용 함수 (마이너스 방지 위함)
     {
         int mycoin = DataController.instance.gameData.coin;
+        int mycoinacc;
         if (mycoin >= cost)
+        {
             DataController.instance.gameData.coin -= cost;
+            mycoinacc= DataController.instance.gameData.coin;
+            StartCoroutine(CountAnimation(CoinText, mycoinacc, mycoin));
+        }
         else
         {
             //경고 패널 등장
-            GameManager.instance.DisableObjColliderAll();
             ShowCoinText(panelCoinText, DataController.instance.gameData.coin);
             BP.SetActive(true);
             NoCoinPanel.GetComponent<PanelAnimation>().OpenScale();
@@ -379,19 +453,27 @@ public class GameManager : MonoBehaviour
 
     public void GetHeart(int cost) // 하트 획득 함수
     {
+        int current, acc;
+        current = DataController.instance.gameData.heart;
         DataController.instance.gameData.heart += cost; // 현재 하트 +
+        acc = DataController.instance.gameData.heart;
+        StartCoroutine(CountAnimation(HeartText, acc, current));
         DataController.instance.gameData.accHeart += cost; // 누적 하트 +
     }
 
     public void UseHeart(int cost) // 하트 획득 함수 (마이너스 방지 위함)
     {
         int myHeart = DataController.instance.gameData.heart;
+        int myHeartacc;
         if (myHeart >= cost)
+        {
             DataController.instance.gameData.heart -= cost;
+            myHeartacc= DataController.instance.gameData.heart;
+            StartCoroutine(CountAnimation(HeartText, myHeartacc, myHeart));
+        }
         else
         {
             //경고 패널 등장
-            GameManager.instance.DisableObjColliderAll();
             panelHearText.text = DataController.instance.gameData.heart.ToString() + "개";
             BP.SetActive(true);
             NoHeartPanel.GetComponent<PanelAnimation>().OpenScale();
