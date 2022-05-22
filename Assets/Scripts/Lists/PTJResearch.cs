@@ -248,39 +248,41 @@ public class PTJResearch : MonoBehaviour
     //연구 레벨
     public void clickCoin_Research() {
         AudioManager.instance.Cute1AudioPlay();
-        if (DataController.instance.gameData.researchLevel[prefabnum] < 25)//레벨 25로 한계두기
-        {         
+        if (DataController.instance.gameData.researchLevel[prefabnum] < 26)//레벨 25로 한계두기
+        {
             //해당 금액이 지금 가진 코인보다 적으면
             if (DataController.instance.gameData.coin >= Info[prefabnum].Prices[DataController.instance.gameData.researchLevel[prefabnum]])
             {
                 //해당 금액의 코인이 감소
                 GameManager.instance.UseCoin(Info[prefabnum].Prices[DataController.instance.gameData.researchLevel[prefabnum]]);
+                levelNum.GetComponent<Text>().text = DataController.instance.gameData.researchLevel[prefabnum].ToString();
+                DataController.instance.gameData.researchLevel[prefabnum]++;
+                levelNum.GetComponent<Text>().text = DataController.instance.gameData.researchLevel[prefabnum].ToString();
 
-                // 최고 레벨이 아니면
-                if (DataController.instance.gameData.researchLevel[prefabnum] < 24)
+                if (DataController.instance.gameData.researchLevel[prefabnum] == 25)
                 {
-                    DataController.instance.gameData.researchLevel[prefabnum]++;
-                    levelNum.GetComponent<Text>().text = DataController.instance.gameData.researchLevel[prefabnum].ToString();
-                    GameManager.instance.ShowCoinText(coinNum.GetComponent<Text>(), Info[prefabnum].Prices[DataController.instance.gameData.researchLevel[prefabnum]]);
+                    coinNum.GetComponent<Text>().text = "Max";
+                    explanationText.GetComponent<Text>().text = Info[prefabnum].Explanation + "\n" +
+                        ((DataController.instance.gameData.researchLevel[prefabnum] * 2) + "%");//설명 텍스트 표시
                 }
                 else
                 {
-                    levelNum.GetComponent<Text>().text = "Max";
+                    GameManager.instance.ShowCoinText(coinNum.GetComponent<Text>(), Info[prefabnum].Prices[DataController.instance.gameData.researchLevel[prefabnum]]);
+
+                    switch (Info[prefabnum].Name)
+                    {
+                        case "딸기 값이 금값": IncreaseBerryPrice(); break;
+                        case "딸기가 쑥쑥": DecreaseBerryGrowTime(); break;
+                        case "부르는 게 값": break;
+                        case "도와줘요 세스코": DecreaseBugGenerateProb(); break;
+                        case "잡초 바이바이": DecreaseWeedGenerateProb(); break;
+                        case "시원한 소나기": IncreaseRainDuration(); break;
+                    }
+
+                    explanationText.GetComponent<Text>().text = Info[prefabnum].Explanation + "\n" +
+                    ((DataController.instance.gameData.researchLevel[prefabnum] * 2) + "%" + "→" +
+                    (DataController.instance.gameData.researchLevel[prefabnum] + 1) * 2 + "%");//설명 텍스트 표시
                 }
-                
-                switch (Info[prefabnum].Name)
-                {
-                    case "딸기 값이 금값": IncreaseBerryPrice(); break;
-                    case "딸기가 쑥쑥": DecreaseBerryGrowTime(); break;
-                    case "부르는 게 값": break;
-                    case "도와줘요 세스코": DecreaseBugGenerateProb(); break;
-                    case "잡초 바이바이": DecreaseWeedGenerateProb(); break;
-                    case "시원한 소나기": IncreaseRainDuration(); break;
-                }
-               
-                explanationText.GetComponent<Text>().text = Info[prefabnum].Explanation + "\n" +
-                ((DataController.instance.gameData.researchLevel[prefabnum] * 2) + "%" + "→" +
-                (DataController.instance.gameData.researchLevel[prefabnum] + 1) * 2 + "%");//설명 텍스트 표시
             }
             else
             {
@@ -294,8 +296,12 @@ public class PTJResearch : MonoBehaviour
         }
         else
         {
-            // 연구 이미 맥스임~ 패널 필요
-            Debug.Log("연구 렙 맥스임");
+            // 연구 이미 맥스임~ 패널 필요 (아님말고)
+            levelNum.GetComponent<Text>().text = "Max";
+            coinNum.GetComponent<Text>().text = "Max";
+            explanationText.GetComponent<Text>().text = Info[prefabnum].Explanation + "\n" +
+                ((DataController.instance.gameData.researchLevel[prefabnum] * 2) + "%");//설명 텍스트 표시
+            //Debug.Log("연구 렙 맥스임");
         }
             
 
