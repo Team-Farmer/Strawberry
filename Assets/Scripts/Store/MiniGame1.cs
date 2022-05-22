@@ -24,10 +24,9 @@ public class MiniGame1 : MonoBehaviour
     public GameObject resultPanel;//결과패널
     public Text result_txt;    //결과 텍스트
 
-
-    float size;                           //스크롤바 사이즈
-    int time = 64;                        //초
-    int score=0;                          //점수
+    float size;                         //스크롤바 사이즈
+    int time;                           //초
+    int score;                          //점수
     List<int> unlockList=new List<int>(); //해금된 딸기 번호 리스트
 
     void Start()
@@ -55,6 +54,10 @@ public class MiniGame1 : MonoBehaviour
                 unlockList.Add(i);
             }
         }
+        scrollbar.size = 1;
+        score = 0;
+        time = 64;
+        score_txt.text = score.ToString() + "점";
 
         //4초 카운트
         StartCoroutine(Count4Second());
@@ -173,6 +176,8 @@ public class MiniGame1 : MonoBehaviour
             answer_img[i].gameObject.SetActive(false);
             answer_btn[i].enabled=false;
         }
+        O.SetActive(false);
+        X.SetActive(false);
 
         //최고기록 저장
         if (DataController.instance.gameData.highScore[0] < score)
@@ -197,5 +202,15 @@ public class MiniGame1 : MonoBehaviour
         time = 64;
         unlockList.Clear();
         StartGame();
+    }
+
+    public void OnClickPauseButton()
+    {
+        Time.timeScale = 0;
+    }
+
+    public void OnClickKeepGoingButton()
+    {
+        Time.timeScale = 1;
     }
 }

@@ -67,8 +67,10 @@ public class RewardAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListe
             //리워드 구현 - 다른보상 추가되면 코드 수정해야 함
             showAdButton.interactable = true;
             GameManager.instance.GetCoin(DataController.instance.gameData.truckCoin*3);
+            Debug.Log("코인획득");
             DataController.instance.gameData.truckBerryCnt = 0;
             DataController.instance.gameData.truckCoin = 0;
+            StartCoroutine(LoadAd());//광고로드
         }
     }
 
