@@ -69,8 +69,6 @@ public class PTJ : MonoBehaviour
 
     //==========PTJ 창==========
     private GameObject PTJPanel;
-    //==========PTJ Content==========
-    private GameObject PTJContent;
 
     //==========현재 고용 중 인원==========
     static int employCount = 0;
@@ -129,7 +127,6 @@ public class PTJ : MonoBehaviour
         PTJButton = PTJPanel.transform.GetChild(6).transform.gameObject;
         HireNowLock= PTJPanel.transform.GetChild(12).transform.gameObject;
         //==============================
-        PTJContent = GameObject.FindGameObjectWithTag("PTJContent");
 
         HireYNPanel_yes.onClick.AddListener(BtnListener);
         /*
@@ -151,16 +148,16 @@ public class PTJ : MonoBehaviour
     private void Update()
     {
 
-        
+        /*
         //PTJNumNow 값이 변경된다면 set get실행된다.
         PTJNumNow = DataController.instance.gameData.PTJNum[prefabnum];
-        /*
+
         //n번고용중인 현황을 보인다.
         PTJExp.transform.GetChild(12).transform.GetComponent<Text>().text
             = "남은 고용 횟수: " + DataController.instance.gameData.PTJNum[prefabnum].ToString() + "회";
         */
     }
-
+    /*
     int PTJNumNow
     {
         set
@@ -171,16 +168,48 @@ public class PTJ : MonoBehaviour
             //변경된 값이 0(즉 알바를 끝냈다면)이면 아래를 실행
             if (PTJ_NUM_NOW == 0)
             {
-                Fire(prefabnum);
+                //Fire() 과 유사하지만 employment수때문에 중복 시간있을때 변경
+                //=================================
+                PTJToggle.GetComponent<Toggle>().isOn = false;
 
-                //고용해제 상태 적용
-                EmployStateApply_Panel();
-                EmployStateApply_Prefab();
+                //토글 활성화/n번고용중 정보 비활성화
+                PTJToggle.SetActive(true);
+                PTJExp.transform.GetChild(12).gameObject.SetActive(false);
+
+                //고용 해제
+                DataController.instance.gameData.PTJNum[prefabnum] = 0;
+
+                //고용해제 상태 이미지
+                employTF.GetComponent<Text>().text = "고용 전";
+                employTF.GetComponent<Text>().color = new Color32(164, 164, 164, 255);
+                PTJBackground.transform.GetComponent<Image>().sprite = originalPTJSprite;
+
+                //main game에 현황 적용 엉망진창 나중에 손보디
+                --employCount;
+                workingList.Remove(Info[prefabnum].FacePicture);
+                workingList.Add(null);
+                GameManager.instance.workingApply(workingList, prefabnum);
+                workingList.Remove(null);
+                GameManager.instance.workingApply(workingList, prefabnum);
+                GameManager.instance.workingCount(employCount);
+
+                GameManager.instance.workingID.Remove(prefabnum);
+
+                //기타 활성화
+                PTJExp.transform.GetChild(13).gameObject.SetActive(true);//n회 숨기기
+                PTJExp.transform.GetChild(7).transform.GetChild(0).gameObject.SetActive(true);
+
+                PTJExp.transform.GetChild(6).transform.GetComponent<Image>().sprite = HireButtonSprite;
+                PTJExp.transform.GetChild(6).transform.GetChild(0).transform.GetComponent<Text>().text = "고용 하기";
+
+                //슬라이더 초기화
+                InitSlider();
+
             }
         }
         get { return PTJ_NUM_NOW; }
     }
-
+    */
     //===================================================================================================
     //===================================================================================================
     public void InfoUpdate()
@@ -266,24 +295,8 @@ public class PTJ : MonoBehaviour
 
     }
     private void EmployStateApply_Prefab() 
-    {
-        int nowPrefabNum= DataController.instance.gameData.PTJSelectNum;
-        GameObject PTJPrefab = PTJContent.transform.GetChild(nowPrefabNum).gameObject;
-
-        //고용 중이 아니다
-        if (DataController.instance.gameData.PTJNum[nowPrefabNum] == 0)
-        {
-            PTJPrefab.transform.GetChild(0).GetComponent<Image>().sprite = originalPTJSprite;
-            PTJPrefab.transform.GetChild(5).GetComponent<Text>().text = "고용전";
-            PTJPrefab.transform.GetChild(5).GetComponent<Text>().color = new Color32(164, 164, 164, 255);
-        }
-        else 
-        {
-            PTJPrefab.transform.GetChild(0).GetComponent<Image>().sprite = selectPTJSprite ;
-            PTJPrefab.transform.GetChild(5).GetComponent<Text>().text = "고용중";
-            PTJPrefab.transform.GetChild(5).GetComponent<Text>().color = new Color32(245, 71, 71, 255);//#F54747
-        }
-        
+    { 
+    
     }
     public void EmployButtonClick()
     {
@@ -303,11 +316,18 @@ public class PTJ : MonoBehaviour
                 if (Info[nowPrefabNum].Price <= DataController.instance.gameData.coin)
                 {
 
+                    //HIRE
                     //코인사용
                     //GameManager.instance.UseCoin(Info[ID].Price);
 
-                    //HIRE
+                    //n번고용 한다고 저장
+                    DataController.instance.gameData.PTJNum[nowPrefabNum] = Info[nowPrefabNum].NowSliderNum;
+
+
                     Hire(nowPrefabNum, Info[nowPrefabNum].NowSliderNum);
+
+                    //고용 상태로 변경
+                    EmployStateApply_Panel();
 
                     //고용되었다는 패널
                     warningBlackPanel.SetActive(true);
@@ -318,11 +338,11 @@ public class PTJ : MonoBehaviour
                 { 
                     //재화 부족 경고 패널 등장
                     AudioManager.instance.Cute4AudioPlay();
-
-                    GameManager.instance.ShowCoinText(noCoinPanel_text, DataController.instance.gameData.coin);
+                    /*
+                    GameManager.instance.ShowCoinText(panelCoinText, DataController.instance.gameData.coin);
                     warningBlackPanel.SetActive(true);
                     noCoinPanel.GetComponent<PanelAnimation>().OpenScale();
-
+                    */
                 }
             }
             //이미 고용중이면 fire
@@ -350,14 +370,16 @@ public class PTJ : MonoBehaviour
             }
         }
 
-        //고용 상태 반영
-        EmployStateApply_Panel();
-        EmployStateApply_Prefab();
+
     }
     private void Hire(int ID, int num)
     {
-        //고용
-        DataController.instance.gameData.PTJNum[ID] = num;
+        //고용중 이미지
+        /*
+        employTF.GetComponent<Text>().text = "고용 중";
+        employTF.GetComponent<Text>().color = new Color32(245, 71, 71, 255);//#F54747
+        PTJBackground.transform.GetComponent<Image>().sprite = selectPTJSprite;
+        */
 
         //고용중인 알바생 수 증가
         ++employCount;
@@ -367,27 +389,38 @@ public class PTJ : MonoBehaviour
         workingList.Remove(null);
         workingList.Add(Info[ID].FacePicture);
         GameManager.instance.workingApply(workingList, ID);
-        GameManager.instance.workingID.Add(ID);
+        GameManager.instance.workingID.Add(ID);//이건뭐지
+
+
+        EmployStateApply_Panel();
         
     }
-
     private void Fire(int ID)
     {
 
         //고용 해제
         DataController.instance.gameData.PTJNum[ID] = 0;
 
-        //고용 중인 알바생 수 감소
-        if (DataController.instance.gameData.PTJNum[prefabnum] != 0) { --employCount; }
-        GameManager.instance.workingCount(employCount);
+        //고용해제 상태 이미지
+        /*
+        employTF.GetComponent<Text>().text = "고용 전";
+        employTF.GetComponent<Text>().color = new Color32(164, 164, 164, 255);
+        PTJBackground.transform.GetComponent<Image>().sprite = originalPTJSprite;
+        */
+        
 
-        //main game
+        //main game에 현황 적용
+        if (DataController.instance.gameData.PTJNum[prefabnum] != 0) { --employCount; }
         workingList.Remove(Info[ID].FacePicture);
         workingList.Add(null);
         GameManager.instance.workingApply(workingList, prefabnum);
         workingList.Remove(null);
         GameManager.instance.workingApply(workingList, prefabnum);
+        GameManager.instance.workingCount(employCount);
+
         GameManager.instance.workingID.Remove(prefabnum);
+
+
 
         InitSlider();
     }
