@@ -413,16 +413,15 @@ MonoBehaviour:
   employTF: {fileID: 8784485498364733456}
   selectPTJSprite: {fileID: 0}
   originalPTJSprite: {fileID: 0}
-  PTJExp: {fileID: 0}
+  FireButtonSprite: {fileID: -7645600185257416101, guid: 3669433d78cafd44e91c6ad2ab592b81, type: 3}
+  HireButtonSprite: {fileID: -464533967283577750, guid: 3669433d78cafd44e91c6ad2ab592b81, type: 3}
   warningPanel: {fileID: 0}
-  noCoinPanel: {fileID: 0}
   warningBlackPanel: {fileID: 0}
+  noCoinPanel: {fileID: 0}
+  noCoinPanel_text: {fileID: 0}
+  HireYNPanel: {fileID: 0}
+  HireYNPanel_yes: {fileID: 0}
   confirmPanel: {fileID: 0}
-  FirePanel: {fileID: 0}
-  panelCoinText: {fileID: 0}
-  FireConfirmButton: {fileID: 0}
-  FireSprite: {fileID: 0}
-  HireSprite: {fileID: 0}
 --- !u!114 &1349541812454805739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -469,7 +468,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6738786784913078357}
         m_TargetAssemblyTypeName: PTJ, Assembly-CSharp
-        m_MethodName: ClickPTJPrefab
+        m_MethodName: PTJPanelActive
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -681,7 +680,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6738786784913078357}
         m_TargetAssemblyTypeName: PTJ, Assembly-CSharp
-        m_MethodName: ClickPTJPrefab
+        m_MethodName: PTJPanelActive
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
