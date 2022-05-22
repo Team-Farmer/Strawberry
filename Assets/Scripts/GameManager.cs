@@ -89,7 +89,7 @@ public class GameManager : MonoBehaviour
     [Header("[ Check/Settings Panel ]")]
     public GameObject SettingsPanel;
     public GameObject CheckPanel;
-    public bool isblackPanelOn = false;
+    
 
     [Header("[ Check/Day List ]")]
     public GameObject AttendanceCheck;
@@ -104,7 +104,7 @@ public class GameManager : MonoBehaviour
 
     [Header("[ Game Flag ]")]
     public bool isGameRunning;
-
+    public bool isBlackPanelOn = false;
     private int coinUpdate;
 
     #endregion
@@ -325,7 +325,7 @@ public class GameManager : MonoBehaviour
         stem.gameObject.SetActive(false);
 
         farm.isHarvest = false; // 수확이 끝남              
-        if (!DataController.instance.gameData.berryFieldData[farm.farmIdx].hasWeed && !BP.activeSelf) // 잡초가 없다면
+        if (!DataController.instance.gameData.berryFieldData[farm.farmIdx].hasWeed && !isBlackPanelOn) // 잡초가 없다면
         {
             farm.GetComponent<BoxCollider2D>().enabled = true; // 밭을 다시 활성화 
         }
@@ -509,7 +509,8 @@ public class GameManager : MonoBehaviour
     public void DisableObjColliderAll() // 모든 오브젝트의 collider 비활성화
     {
         BoxCollider2D coll;
-        isblackPanelOn = true;
+        isBlackPanelOn = true;
+        Debug.Log(GameManager.instance.isBlackPanelOn);
         for (int i = 0; i < farmList.Count; i++)
         {
             coll = farmList[i].GetComponent<BoxCollider2D>();
@@ -524,7 +525,7 @@ public class GameManager : MonoBehaviour
     public void EnableObjColliderAll() // 모든 오브젝트의 collider 활성화
     {
         BoxCollider2D coll;
-        isblackPanelOn = false;
+        isBlackPanelOn = false;
         for (int i = 0; i < farmList.Count; i++)
         {
             coll = farmList[i].GetComponent<BoxCollider2D>();

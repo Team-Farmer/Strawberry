@@ -95,15 +95,18 @@ public class ArbeitMgr : MonoBehaviour
                 DataController.instance.gameData.berryFieldData[i].hasWeed = false;
                 DataController.instance.gameData.PTJNum[3]--;
                 //Debug.Log("ÇÜ½º¿ö½º ³²Àº È½¼ö: " + DataController.instance.gameData.PTJNum[3]);
-                StartCoroutine(DeleteWeedByFubo(GameManager.instance.farmList[i]));
+                StartCoroutine(DeleteWeedByFubo(GameManager.instance.farmObjList[i]));
                 break;
             }
         }
     }
-    IEnumerator DeleteWeedByFubo(Farm farm)
+    IEnumerator DeleteWeedByFubo(GameObject obj)
     {
         yield return new WaitForSeconds(0.75f);
+
+        Farm farm = obj.GetComponent<Farm>();
         farm.weed.DeleteWeed();
+        //obj.GetComponent<BoxCollider2D>().enabled = false;
     }
     public float Pigma() // µÅÁö 4
     {

@@ -38,10 +38,10 @@ public class RainCtrl : MonoBehaviour
         rainPanel.gameObject.SetActive(true);
         rainPanel.GetComponent<Image>().DOFade(0.3f, 0.3f);        
         mult = arbeit.lluvia();
-        Debug.Log("mult: " + mult);
+        //Debug.Log("mult: " + mult);
         rainTime = 0;
       
-        Debug.Log("duration: " + rainParticle.main.duration);
+        //Debug.Log("duration: " + rainParticle.main.duration);
         rainParticle.Play();            
     }
     IEnumerator RainingRoutine()
