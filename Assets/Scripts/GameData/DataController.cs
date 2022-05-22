@@ -85,7 +85,7 @@ public class DataController : MonoBehaviour
     {
         gameData.cloudSaveTime = new System.DateTime();
         // 재화 변수
-        gameData.coin = 5000000; // 원래 500
+        gameData.coin = 500; // 원래 500
         gameData.heart = 50;
         gameData.medal = 0;
         // 누적 변수
@@ -130,11 +130,11 @@ public class DataController : MonoBehaviour
         //도전과제
         for (int i = 0; i < 6; i++) {   gameData.challengeLevel[i] = 0;   }
 
+        //수집
+        for (int i = 0; i < 7; i++) { gameData.isCollectionDone[i] = false; }
+
         //뉴스
         for (int i = 0; i < 7; i++) {   gameData.newsState[i] = 0;  }
-
-        //수집
-        for (int i = 0; i < 7; i++){   gameData.isCollectionDone[i] = false;   }
 
         //PTJ
         for (int i = 0; i < 6; i++) { gameData.PTJNum[i] = 0; }

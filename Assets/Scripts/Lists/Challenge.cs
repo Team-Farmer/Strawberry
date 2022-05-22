@@ -230,9 +230,11 @@ public class Challenge : MonoBehaviour
             GameManager.instance.GetMedal(Info[prefabnum].rewardMedal); //메달 보상 획득
             GameManager.instance.GetHeart(Info[prefabnum].rewardHeart[DataController.instance.gameData.challengeLevel[prefabnum]]); //하트 보상 획득
 
-            Button.GetComponent<Image>().sprite = IngButton; //도전과제 버튼 이미지 변경
-
-            DataController.instance.gameData.challengeLevel[prefabnum]++; //레벨증가
+            if (DataController.instance.gameData.challengeLevel[prefabnum] < 100)
+            {
+                Button.GetComponent<Image>().sprite = IngButton; //도전과제 버튼 이미지 변경
+                DataController.instance.gameData.challengeLevel[prefabnum]++; //레벨증가
+            }
 
         }
 
