@@ -236,7 +236,7 @@ public class PTJResearch : MonoBehaviour
         if (PTJ == true)//알바
         { levelNum.GetComponent<Text>().text = "고용 전"; }
         else//연구
-        { levelNum.GetComponent<Text>().text = (DataController.instance.gameData.researchLevel[prefabnum]+1).ToString(); }
+        { levelNum.GetComponent<Text>().text = DataController.instance.gameData.researchLevel[prefabnum].ToString(); }
 
 
 
@@ -256,11 +256,18 @@ public class PTJResearch : MonoBehaviour
                 //해당 금액의 코인이 감소
                 GameManager.instance.UseCoin(Info[prefabnum].Prices[DataController.instance.gameData.researchLevel[prefabnum]]);
 
-                //레벨이 올라간다.
-                DataController.instance.gameData.researchLevel[prefabnum]++;
-                levelNum.GetComponent<Text>().text = (DataController.instance.gameData.researchLevel[prefabnum]+1).ToString();
-                GameManager.instance.ShowCoinText(coinNum.GetComponent<Text>(), Info[prefabnum].Prices[DataController.instance.gameData.researchLevel[prefabnum]]);
-
+                // 최고 레벨이 아니면
+                if (DataController.instance.gameData.researchLevel[prefabnum] < 24)
+                {
+                    DataController.instance.gameData.researchLevel[prefabnum]++;
+                    levelNum.GetComponent<Text>().text = DataController.instance.gameData.researchLevel[prefabnum].ToString();
+                    GameManager.instance.ShowCoinText(coinNum.GetComponent<Text>(), Info[prefabnum].Prices[DataController.instance.gameData.researchLevel[prefabnum]]);
+                }
+                else
+                {
+                    levelNum.GetComponent<Text>().text = "Max";
+                }
+                
                 switch (Info[prefabnum].Name)
                 {
                     case "딸기 값이 금값": IncreaseBerryPrice(); break;
@@ -274,7 +281,6 @@ public class PTJResearch : MonoBehaviour
                 explanationText.GetComponent<Text>().text = Info[prefabnum].Explanation + "\n" +
                 ((DataController.instance.gameData.researchLevel[prefabnum] * 2) + "%" + "→" +
                 (DataController.instance.gameData.researchLevel[prefabnum] + 1) * 2 + "%");//설명 텍스트 표시
-
             }
             else
             {
@@ -286,6 +292,13 @@ public class PTJResearch : MonoBehaviour
                 noCoinPanel2.GetComponent<PanelAnimation>().OpenScale();
             }
         }
+        else
+        {
+            // 연구 이미 맥스임~ 패널 필요
+            Debug.Log("연구 렙 맥스임");
+        }
+            
+
     }
     public void IncreaseBerryPrice()
     {

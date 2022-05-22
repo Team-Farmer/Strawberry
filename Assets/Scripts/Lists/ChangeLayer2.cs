@@ -102,11 +102,11 @@ public class ChangeLayer2 : MonoBehaviour
 			UpdateInput(); //스와이프 관련
 
 			// 잠금해제 버튼
-			if (berryLockSpecial.activeInHierarchy && ResearchLevelCheck(4))
+			if (berryLockSpecial.activeInHierarchy && ResearchLevelCheck(5))
 			{
 				LockSpecialBtn.GetComponent<Button>().interactable = true;
 			}
-			if (berryLockUnique.activeInHierarchy && ResearchLevelCheck(9))
+			if (berryLockUnique.activeInHierarchy && ResearchLevelCheck(10))
 			{
 				LockUniqueBtn.GetComponent<Button>().interactable = true;
 			}
