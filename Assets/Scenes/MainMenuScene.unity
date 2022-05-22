@@ -4248,6 +4248,17 @@ RectTransform:
   m_AnchoredPosition: {x: -1.5165272, y: 138}
   m_SizeDelta: {x: -0.89990234, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &194468965 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6738786784913078357, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
+  m_PrefabInstance: {fileID: 2070116119}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a786830c15869f343a70c8003b7f2d2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &194468966 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4889772765070719696, guid: 45881eb2a6a72154fa93d33a89ae3d39, type: 3}
@@ -4350,6 +4361,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1981296081}
     m_Modifications:
+    - target: {fileID: 8833736870865322199, guid: 35ed71b70c5403e4eb648503f90d7caf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 194468965}
+    - target: {fileID: 8833736870865322199, guid: 35ed71b70c5403e4eb648503f90d7caf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: EmployButtonClick
+      objectReference: {fileID: 0}
     - target: {fileID: 8833736871651569081, guid: 35ed71b70c5403e4eb648503f90d7caf, type: 3}
       propertyPath: m_Name
       value: PTJExplanation2 (0)
