@@ -14,14 +14,16 @@ public class PTJ : MonoBehaviour
         public Sprite FacePicture;//알바생 얼굴 사진
         public string Explanation;//설명
         public int Price;//가격
+        public int NowSliderNum;//현재 고른 고용 횟수
 
-        public PrefabStruct(string Name, string Explanation, int Price, int[] Prices, Sprite Picture, Sprite FacePicture, bool exist)
+        public PrefabStruct(string Name, string Explanation, int Price, Sprite Picture, Sprite FacePicture, int NowSliderNum)
         {
             this.Name = Name;
             this.Explanation = Explanation;
             this.Price = Price;
             this.Picture = Picture;
             this.FacePicture = FacePicture;
+            this.NowSliderNum = NowSliderNum;
         }
     }
 
@@ -90,8 +92,6 @@ public class PTJ : MonoBehaviour
     //==========고용 횟수==========
     private int PTJ_NUM_NOW;
 
-    //현재 선택한 가격
-    private int nowSelectPrice;
 
     //???
     //비 파티클
@@ -147,6 +147,7 @@ public class PTJ : MonoBehaviour
     }
     private void Update()
     {
+
         /*
         //PTJNumNow 값이 변경된다면 set get실행된다.
         PTJNumNow = DataController.instance.gameData.PTJNum[prefabnum];
@@ -295,111 +296,60 @@ public class PTJ : MonoBehaviour
     }
     public void EmployButtonClick()
     {
-        Debug.Log("select=" + DataController.instance.gameData.PTJSelectNum + " price=" + nowSelectPrice);
-    }
-    //====================================================================================================
-    //SLIDER
-    public void SliderApply(int value)
-    {
+        int nowPrefabNum = DataController.instance.gameData.PTJSelectNum;
 
-        //10단위이면 10을 곱해준다.
-        if (PTJToggle.GetComponent<Toggle>().isOn == true)
-        { value *= 10; }
+        
 
-        //고용중이 아니면
-        if (DataController.instance.gameData.PTJNum[prefabnum] == 0)
-        {
-            //"n회"
-            SliderNum.transform.GetComponent<Text>().text = value.ToString() + "회";
 
-            //가격
-            price.GetComponent<Text>().text = (value * Info[prefabnum].Price).ToString();
-            //GameManager.instance.ShowCoinText(price.GetComponent<Text>(), Info[prefabnum].Price); 도와주세요
-        }
 
-    }
-    public void InitSlider()
-    {
-
-        //10단위
-        if (PTJToggle.GetComponent<Toggle>().isOn == true)
-        {
-            //slider
-            PTJSlider10.SetActive(true);
-            PTJSlider.SetActive(false);
-
-            PTJSlider10.GetComponent<Slider>().value = 1;
-
-            //n회
-            SliderNum.transform.GetComponent<Text>().text = "10회";
-            //가격
-            nowSelectPrice = 10 * Info[DataController.instance.gameData.PTJSelectNum].Price;
-            price.GetComponent<Text>().text = nowSelectPrice.ToString(); //도와주세요
-            
-        }
-        //1단위
-        else
-        {
-            //slider
-            PTJSlider.SetActive(true);
-            PTJSlider10.SetActive(false);
-
-            PTJSlider.GetComponent<Slider>().value = 1;
-
-            //n회
-            SliderNum.transform.GetComponent<Text>().text = "1회";
-            //가격
-            nowSelectPrice = Info[DataController.instance.gameData.PTJSelectNum].Price;
-            price.GetComponent<Text>().text = nowSelectPrice.ToString();
-            //GameManager.instance.ShowCoinText(PTJPanel.transform.GetChild(7).GetComponent<Text>(), Info[prefabnum].Price);//도와주세요
-        }
-    }
-    
-    
-    /*
-   
-    //============================================================================================================
-    public void HireFire()
-    {
         AudioManager.instance.Cute1AudioPlay();
+
         //3명 아래로 고용중이면
         if (employCount < 3)
         {
             //고용중이 아니면 hire
             if (DataController.instance.gameData.PTJNum[prefabnum] == 0)
             {
-                if (Info[prefabnum].Price <= DataController.instance.gameData.coin)
+                if (Info[nowPrefabNum].Price <= DataController.instance.gameData.coin)
                 {
-                    //HIRE
-                    if (PTJToggle.GetComponent<Toggle>().isOn == true)
-                    { Hire(prefabnum, (int)(PTJSlider10.GetComponent<Slider>().value) * 10); }
-                    else
-                    { Hire(prefabnum, (int)(PTJSlider.GetComponent<Slider>().value)); }
 
+                    //HIRE
+                    //코인사용
+                    //GameManager.instance.UseCoin(Info[ID].Price);
+
+                    //n번고용 한다고 저장
+                    DataController.instance.gameData.PTJNum[nowPrefabNum] = Info[nowPrefabNum].NowSliderNum;
+
+                    Hire(nowPrefabNum, Info[nowPrefabNum].NowSliderNum);
+
+                    //고용 상태로 변경
+                    EmployStateApply();
+
+                    //고용되었다는 패널
                     warningBlackPanel.SetActive(true);
                     confirmPanel.GetComponent<PanelAnimation>().ScriptTxt.text = "고용되었어요!";
                     confirmPanel.GetComponent<PanelAnimation>().OpenScale();
                 }
                 else
-                { //재화 부족 경고 패널 등장
+                { 
+                    //재화 부족 경고 패널 등장
                     AudioManager.instance.Cute4AudioPlay();
+                    /*
                     GameManager.instance.ShowCoinText(panelCoinText, DataController.instance.gameData.coin);
                     warningBlackPanel.SetActive(true);
                     noCoinPanel.GetComponent<PanelAnimation>().OpenScale();
+                    */
                 }
             }
             //이미 고용중이면 fire
-            else
-            {
-                DataController.instance.gameData.PTJSelectNum = prefabnum;
-                FireConfirm();
-            }
+            else { }
+            //{    FireConfirm();    }
         }
         //이미 3명이상 고용중이면
         else
         {
             //고용중이 아니면 no
-            if (DataController.instance.gameData.PTJNum[prefabnum] == 0)
+            if (DataController.instance.gameData.PTJNum[nowPrefabNum] == 0)
             {
                 //3명이상 고용중이라는 경고 패널 등장
                 warningPanel.GetComponent<PanelAnimation>().ScriptTxt.text = "고용 가능한 알바 수를\n넘어섰어요!";
@@ -407,27 +357,13 @@ public class PTJ : MonoBehaviour
                 warningPanel.GetComponent<PanelAnimation>().OpenScale();
             }
             //이미 고용중이면 fire
-            else
-            {
-                DataController.instance.gameData.PTJSelectNum = prefabnum;
-                FireConfirm();
-            }
+            else { }
+            //{    FireConfirm();     }
         }
+
+
     }
-
-
-
     private void Hire(int ID, int num)
-    {
-        //코인사용
-        GameManager.instance.UseCoin(Info[ID].Price);
-        //n번고용 한다고 저장
-        DataController.instance.gameData.PTJNum[ID] = num;
-
-        HireInit(ID, num);
-    }
-
-    private void HireInit(int ID, int num)
     {
         //고용중 이미지
         employTF.GetComponent<Text>().text = "고용 중";
@@ -451,15 +387,86 @@ public class PTJ : MonoBehaviour
         PTJToggle.SetActive(false);
 
         //기타 숨기기
-        PTJExp.transform.GetChild(13).gameObject.SetActive(false);//n회 숨기기
-        PTJExp.transform.GetChild(7).transform.GetChild(0).gameObject.SetActive(false);//코인 이미지 숨기기 이거 왜 안숨겨짐
+        PTJPanel.transform.GetChild(13).gameObject.SetActive(false);//n회 숨기기
+        PTJPanel.transform.GetChild(7).transform.GetChild(0).gameObject.SetActive(false);//코인 이미지 숨기기 이거 왜 안숨겨짐
 
         //n번고용중임을 표시
-        PTJExp.transform.GetChild(12).gameObject.SetActive(true);
+        PTJPanel.transform.GetChild(12).gameObject.SetActive(true);
 
 
-        EmployButtonFire();
+        //EmployButtonFire();
     }
+    //====================================================================================================
+    //SLIDER
+    public void SliderApply(int value)
+    {
+
+        //10단위이면 10을 곱해준다.
+        if (PTJToggle.GetComponent<Toggle>().isOn == true)
+        { value *= 10; }
+
+        //고용중이 아니면
+        if (DataController.instance.gameData.PTJNum[DataController.instance.gameData.PTJSelectNum] == 0)
+        {
+            //"n회"
+            SliderNum.transform.GetComponent<Text>().text = value.ToString() + "회";
+            Info[DataController.instance.gameData.PTJSelectNum].NowSliderNum = value;
+            
+            //가격
+            price.GetComponent<Text>().text = (value * Info[DataController.instance.gameData.PTJSelectNum].Price).ToString();
+            //GameManager.instance.ShowCoinText(price.GetComponent<Text>(), Info[prefabnum].Price); 도와주세요
+
+        }
+
+    }
+    public void InitSlider()
+    {
+
+        //10단위
+        if (PTJToggle.GetComponent<Toggle>().isOn == true)
+        {
+            //slider
+            PTJSlider10.SetActive(true);
+            PTJSlider.SetActive(false);
+
+            PTJSlider10.GetComponent<Slider>().value = 1;
+
+            Info[DataController.instance.gameData.PTJSelectNum].NowSliderNum = 10;
+
+            //n회
+            SliderNum.transform.GetComponent<Text>().text = "10회";
+            //가격
+            price.GetComponent<Text>().text = (10 * Info[DataController.instance.gameData.PTJSelectNum].Price).ToString(); //도와주세요
+            
+        }
+        //1단위
+        else
+        {
+            //slider
+            PTJSlider.SetActive(true);
+            PTJSlider10.SetActive(false);
+
+            PTJSlider.GetComponent<Slider>().value = 1;
+
+            Info[DataController.instance.gameData.PTJSelectNum].NowSliderNum = 1;
+
+            //n회
+            SliderNum.transform.GetComponent<Text>().text = "1회";
+            //가격
+            price.GetComponent<Text>().text = (Info[DataController.instance.gameData.PTJSelectNum].Price).ToString();
+            //GameManager.instance.ShowCoinText(PTJPanel.transform.GetChild(7).GetComponent<Text>(), Info[prefabnum].Price);//도와주세요
+
+        }
+    }
+    
+    
+    /*
+   
+    //============================================================================================================
+   
+
+
+   
 
     private void Fire(int ID)
     {
