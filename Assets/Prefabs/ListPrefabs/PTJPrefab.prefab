@@ -319,7 +319,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4889772765070719696}
   - component: {fileID: 7570710879033552976}
-  - component: {fileID: 4640965026082384919}
+  - component: {fileID: 6738786784913078357}
   - component: {fileID: 1349541812454805739}
   m_Layer: 5
   m_Name: PTJPrefab
@@ -361,7 +361,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3705786545946922626}
   m_CullTransparentMesh: 1
---- !u!114 &4640965026082384919
+--- !u!114 &6738786784913078357
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -370,7 +370,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3705786545946922626}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f89d0cee66e9f194892eb20462f4dc64, type: 3}
+  m_Script: {fileID: 11500000, guid: a786830c15869f343a70c8003b7f2d2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Info:
@@ -394,26 +394,25 @@ MonoBehaviour:
     FacePicture: {fileID: -6835189599539173722, guid: bac779e1f038d5e40bbe137bcb8ace25, type: 3}
     Explanation: "\uC7A1\uCD08\uB294 \uB098\uC5D0\uAC8C \uB9E1\uACA8"
     Price: 30
+  - Name: "\uB8E8\uBE44\uC544"
+    Picture: {fileID: 4620578802948863353, guid: bac779e1f038d5e40bbe137bcb8ace25, type: 3}
+    FacePicture: {fileID: -4124168217499134943, guid: bac779e1f038d5e40bbe137bcb8ace25, type: 3}
+    Explanation: "\uB354\uC6B1 \uAC15\uB825\uD55C \uBE44\uB97C \uC6D0\uD558\uB2C8?"
+    Price: 300
   - Name: "\uD53C\uADF8\uB9C8"
     Picture: {fileID: 5377859178988851676, guid: bac779e1f038d5e40bbe137bcb8ace25, type: 3}
     FacePicture: {fileID: 7456334905099763947, guid: bac779e1f038d5e40bbe137bcb8ace25, type: 3}
     Explanation: "\uB538\uAE30\uB97C \uBE44\uC2F8\uAC8C \uD314\uC544\uC904\uAC8C~
       \uC544\uB9C8\uB3C4! "
     Price: 400
-  - Name: "\uB8E8\uBE44\uC544"
-    Picture: {fileID: 4620578802948863353, guid: bac779e1f038d5e40bbe137bcb8ace25, type: 3}
-    FacePicture: {fileID: -4124168217499134943, guid: bac779e1f038d5e40bbe137bcb8ace25, type: 3}
-    Explanation: "\uB354\uC6B1 \uAC15\uB825\uD55C \uBE44\uB97C \uC6D0\uD558\uB2C8?"
-    Price: 300
   PTJBackground: {fileID: 3464224768173057888}
-  titleText: {fileID: 9018496231175234831}
+  nameText: {fileID: 9018496231175234831}
   facePicture: {fileID: 56983697321961158}
   explanationText: {fileID: 552661853564872658}
   coinNum: {fileID: 3823790824684782391}
-  levelNum: {fileID: 8784485498364733456}
-  PTJ: 1
-  selectPTJSprite: {fileID: -2656170823701886835, guid: 1f095c0873d7a934c8dcc85dab8ee983, type: 3}
-  originalPTJSprite: {fileID: -567519917004074384, guid: 1f095c0873d7a934c8dcc85dab8ee983, type: 3}
+  employTF: {fileID: 8784485498364733456}
+  selectPTJSprite: {fileID: 0}
+  originalPTJSprite: {fileID: 0}
   PTJExp: {fileID: 0}
   warningPanel: {fileID: 0}
   noCoinPanel: {fileID: 0}
@@ -422,8 +421,8 @@ MonoBehaviour:
   FirePanel: {fileID: 0}
   panelCoinText: {fileID: 0}
   FireConfirmButton: {fileID: 0}
-  FireSprite: {fileID: -7645600185257416101, guid: 3669433d78cafd44e91c6ad2ab592b81, type: 3}
-  HireSprite: {fileID: -464533967283577750, guid: 3669433d78cafd44e91c6ad2ab592b81, type: 3}
+  FireSprite: {fileID: 0}
+  HireSprite: {fileID: 0}
 --- !u!114 &1349541812454805739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -468,9 +467,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4640965026082384919}
-        m_TargetAssemblyTypeName: PTJResearch, Assembly-CSharp
-        m_MethodName: Explanation
+      - m_Target: {fileID: 6738786784913078357}
+        m_TargetAssemblyTypeName: PTJ, Assembly-CSharp
+        m_MethodName: ClickPTJPrefab
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -643,7 +642,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5717632097103857936}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
@@ -680,9 +679,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4640965026082384919}
-        m_TargetAssemblyTypeName: PTJResearch, Assembly-CSharp
-        m_MethodName: ActiveExplanation
+      - m_Target: {fileID: 6738786784913078357}
+        m_TargetAssemblyTypeName: PTJ, Assembly-CSharp
+        m_MethodName: ClickPTJPrefab
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
