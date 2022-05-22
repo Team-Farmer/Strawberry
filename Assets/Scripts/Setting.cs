@@ -46,8 +46,7 @@ public class Setting : MonoBehaviour
 
     public void PrivacyPolicy() // 개인정보처리방침
     {
-        Application.OpenURL("https://www.google.com/search?q=%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%B2%98%EB%A6%AC%EB%B0%A9%EC%B9%A8+%EC%98%88%EC%8B%9C&oq=%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%EC%B2%98%EB%A6%AC%EB%B0%A9%EC%B9%A8&aqs=chrome.4.69i57j69i59j0i20i263i512j0i512l7.7768j0j4&sourceid=chrome&ie=UTF-8");
-        Debug.Log("나중에 추가 예정");
+        Application.OpenURL("https://woos-workspace.notion.site/e9c66b72d3ef4e5082909afd2f5cf0a7");
     }
 
     public void ContactByEmail() // 이메일로 문의하기
@@ -75,8 +74,8 @@ public class Setting : MonoBehaviour
         Application.OpenURL("https://www.instagram.com/team_farmer_/");
     }
 
-    public void DevCredit() // 개발자 크레딧
-    {
-        Debug.Log(" 팀 파머 ! ");
-    }
+    //public void DevCredit() // 개발자 크레딧
+    //{
+    //    Debug.Log(" 팀 파머 ! ");
+    //}
 }
