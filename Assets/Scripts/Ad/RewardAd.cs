@@ -51,14 +51,23 @@ public class RewardAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListe
     public void ShowAd()
     {
         showAdButton.interactable = false;
-        Advertisement.Show(adUnitId, this);
+        Advertisement.Show(adUnitId,this);
+
+        //임시조치 : UnityAds 4.0문제 - 콜백동작x 나쁜넘들 ..........다 확인하고 버전을 올리던가ㅠ
+        showAdButton.interactable = true;
+        GameManager.instance.GetCoin(DataController.instance.gameData.truckCoin * 3);
+        Debug.Log("코인획득");
+        DataController.instance.gameData.truckBerryCnt = 0;
+        DataController.instance.gameData.truckCoin = 0;
+        StartCoroutine(LoadAd());//광고로드
     }
+
 
     public void OnUnityAdsFailedToLoad(string placementId, UnityAdsLoadError error, string message)
     {
         Debug.Log($"광고 로드 실패: {error}-{message}");
-
     }
+
 
     public void OnUnityAdsShowComplete(string placementId, UnityAdsShowCompletionState showCompletionState)
     {

@@ -14465,7 +14465,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bannerPosition: 1
-  androidAdUnitId: Banner_ Android
+  androidAdUnitId: Banner_Android
 --- !u!1 &698710642
 GameObject:
   m_ObjectHideFlags: 0
@@ -37265,7 +37265,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -4.1, y: -248.9}
-  m_SizeDelta: {x: 370.6, y: 99.6}
+  m_SizeDelta: {x: 500, y: 99.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1646358656
 MonoBehaviour:
