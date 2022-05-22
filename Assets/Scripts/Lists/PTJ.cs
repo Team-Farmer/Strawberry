@@ -128,7 +128,7 @@ public class PTJ : MonoBehaviour
         HireNowLock= PTJPanel.transform.GetChild(12).transform.gameObject;
         //==============================
 
-
+        HireYNPanel_yes.onClick.AddListener(BtnListener);
         /*
         //고용중이라면 고용중 상태로 보이기
         if (DataController.instance.gameData.PTJNum[prefabnum] != 0)
@@ -266,10 +266,10 @@ public class PTJ : MonoBehaviour
             (delegate { SliderApply((int)PTJSlider10.GetComponent<Slider>().value); });
 
         //알바 고용 상태 반영
-        EmployStateApply();
+        EmployStateApply_Panel();
 
     }
-    private void EmployStateApply()
+    private void EmployStateApply_Panel()
     {
 
         //고용중이 아니다
@@ -294,21 +294,24 @@ public class PTJ : MonoBehaviour
         }
 
     }
+    private void EmployStateApply_Prefab() 
+    { 
+    
+    }
     public void EmployButtonClick()
     {
+        //지금 선택된 알바생
         int nowPrefabNum = DataController.instance.gameData.PTJSelectNum;
 
-        
-
-
-
+        //효과음
         AudioManager.instance.Cute1AudioPlay();
 
+        //=======================고용 or 해고=======================
         //3명 아래로 고용중이면
         if (employCount < 3)
         {
             //고용중이 아니면 hire
-            if (DataController.instance.gameData.PTJNum[prefabnum] == 0)
+            if (DataController.instance.gameData.PTJNum[nowPrefabNum] == 0)
             {
                 if (Info[nowPrefabNum].Price <= DataController.instance.gameData.coin)
                 {
@@ -320,10 +323,11 @@ public class PTJ : MonoBehaviour
                     //n번고용 한다고 저장
                     DataController.instance.gameData.PTJNum[nowPrefabNum] = Info[nowPrefabNum].NowSliderNum;
 
+
                     Hire(nowPrefabNum, Info[nowPrefabNum].NowSliderNum);
 
                     //고용 상태로 변경
-                    EmployStateApply();
+                    EmployStateApply_Panel();
 
                     //고용되었다는 패널
                     warningBlackPanel.SetActive(true);
@@ -343,7 +347,10 @@ public class PTJ : MonoBehaviour
             }
             //이미 고용중이면 fire
             else { }
-            //{    FireConfirm();    }
+            {
+                warningBlackPanel.SetActive(true);
+                HireYNPanel.GetComponent<PanelAnimation>().OpenScale();
+            }
         }
         //이미 3명이상 고용중이면
         else
@@ -352,13 +359,15 @@ public class PTJ : MonoBehaviour
             if (DataController.instance.gameData.PTJNum[nowPrefabNum] == 0)
             {
                 //3명이상 고용중이라는 경고 패널 등장
-                warningPanel.GetComponent<PanelAnimation>().ScriptTxt.text = "고용 가능한 알바 수를\n넘어섰어요!";
+                confirmPanel.GetComponent<PanelAnimation>().ScriptTxt.text = "고용 가능한 알바 수를\n넘어섰어요!";
                 warningBlackPanel.SetActive(true);
-                warningPanel.GetComponent<PanelAnimation>().OpenScale();
+                confirmPanel.GetComponent<PanelAnimation>().OpenScale();
             }
             //이미 고용중이면 fire
             else { }
-            //{    FireConfirm();     }
+            {   warningBlackPanel.SetActive(true);
+                HireYNPanel.GetComponent<PanelAnimation>().OpenScale();
+            }
         }
 
 
@@ -366,35 +375,69 @@ public class PTJ : MonoBehaviour
     private void Hire(int ID, int num)
     {
         //고용중 이미지
+        /*
         employTF.GetComponent<Text>().text = "고용 중";
         employTF.GetComponent<Text>().color = new Color32(245, 71, 71, 255);//#F54747
         PTJBackground.transform.GetComponent<Image>().sprite = selectPTJSprite;
+        */
 
-        //고용중인 동물 수 증가
+        //고용중인 알바생 수 증가
         ++employCount;
         GameManager.instance.workingCount(employCount);
 
         //main game
         workingList.Remove(null);
         workingList.Add(Info[ID].FacePicture);
+        GameManager.instance.workingApply(workingList, ID);
+        GameManager.instance.workingID.Add(ID);//이건뭐지
+
+
+        EmployStateApply_Panel();
+        
+    }
+    private void Fire(int ID)
+    {
+
+        //고용 해제
+        DataController.instance.gameData.PTJNum[ID] = 0;
+
+        //고용해제 상태 이미지
+        /*
+        employTF.GetComponent<Text>().text = "고용 전";
+        employTF.GetComponent<Text>().color = new Color32(164, 164, 164, 255);
+        PTJBackground.transform.GetComponent<Image>().sprite = originalPTJSprite;
+        */
+        
+
+        //main game에 현황 적용
+        if (DataController.instance.gameData.PTJNum[prefabnum] != 0) { --employCount; }
+        workingList.Remove(Info[ID].FacePicture);
+        workingList.Add(null);
         GameManager.instance.workingApply(workingList, prefabnum);
+        workingList.Remove(null);
+        GameManager.instance.workingApply(workingList, prefabnum);
+        GameManager.instance.workingCount(employCount);
 
-        GameManager.instance.workingID.Add(prefabnum);
-
-        //슬라이더,토글
-        PTJSlider.SetActive(false);
-        PTJSlider10.SetActive(false);
-        PTJToggle.SetActive(false);
-
-        //기타 숨기기
-        PTJPanel.transform.GetChild(13).gameObject.SetActive(false);//n회 숨기기
-        PTJPanel.transform.GetChild(7).transform.GetChild(0).gameObject.SetActive(false);//코인 이미지 숨기기 이거 왜 안숨겨짐
-
-        //n번고용중임을 표시
-        PTJPanel.transform.GetChild(12).gameObject.SetActive(true);
+        GameManager.instance.workingID.Remove(prefabnum);
 
 
-        //EmployButtonFire();
+
+        InitSlider();
+    }
+
+    //해고 yes버튼누르면
+    private void BtnListener() //시원 건드림
+    {
+        //해고하기
+        Fire(DataController.instance.gameData.PTJSelectNum);
+
+        //해고 확인 패널 내리기
+        warningBlackPanel.SetActive(false);
+        HireYNPanel.GetComponent<PanelAnimation>().CloseScale();
+
+        //해고 통보 패널 올리기
+        confirmPanel.GetComponent<PanelAnimation>().ScriptTxt.text = "해고했어요 ㅠㅠ";
+        confirmPanel.GetComponent<PanelAnimation>().OpenScale();
     }
     //====================================================================================================
     //SLIDER
@@ -458,75 +501,7 @@ public class PTJ : MonoBehaviour
 
         }
     }
+
     
-    
-    /*
-   
-    //============================================================================================================
-   
 
-
-   
-
-    private void Fire(int ID)
-    {
-
-        PTJToggle.GetComponent<Toggle>().isOn = false;
-
-        //토글 활성화/n번고용중 정보 비활성화
-        PTJToggle.SetActive(true);
-        PTJExp.transform.GetChild(12).gameObject.SetActive(false);
-
-        //고용 해제
-        DataController.instance.gameData.PTJNum[ID] = 0;
-
-        //고용해제 상태 이미지
-        employTF.GetComponent<Text>().text = "고용 전";
-        employTF.GetComponent<Text>().color = new Color32(164, 164, 164, 255);
-        PTJBackground.transform.GetComponent<Image>().sprite = originalPTJSprite;
-
-        //기타 활성화
-        PTJExp.transform.GetChild(13).gameObject.SetActive(true);//n회 숨기기
-        PTJExp.transform.GetChild(7).transform.GetChild(0).gameObject.SetActive(true);
-
-        //main game에 현황 적용
-        if (DataController.instance.gameData.PTJNum[prefabnum] != 0) { --employCount; }
-        workingList.Remove(Info[ID].FacePicture);
-        workingList.Add(null);
-        GameManager.instance.workingApply(workingList, prefabnum);
-        workingList.Remove(null);
-        GameManager.instance.workingApply(workingList, prefabnum);
-        GameManager.instance.workingCount(employCount);
-
-        GameManager.instance.workingID.Remove(prefabnum);
-
-
-
-        InitSlider();
-    }
-
-
-
-
-    private void FireConfirm() //시원 건드림
-    {
-
-        warningBlackPanel.SetActive(true);
-        FirePanel.GetComponent<PanelAnimation>().OpenScale();
-
-
-    }
-
-    //해고 yes버튼누르면
-    private void BtnListener() //시원 건드림
-    {
-
-        Fire(DataController.instance.gameData.PTJSelectNum);
-        warningBlackPanel.SetActive(false);
-        FirePanel.GetComponent<PanelAnimation>().CloseScale();
-
-        confirmPanel.GetComponent<PanelAnimation>().ScriptTxt.text = "해고했어요 ㅠㅠ";
-        confirmPanel.GetComponent<PanelAnimation>().OpenScale();
-    }
-    */
 }
