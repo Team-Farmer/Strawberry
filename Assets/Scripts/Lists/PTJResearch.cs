@@ -17,7 +17,7 @@ public class PTJResearch : MonoBehaviour
         public int Price;//가격
         public int[] Prices = new int[25];//가격
 
-        public PrefabStruct(string Name, string Explanation, int Price, int[] Prices, Sprite Picture, Sprite FacePicture, bool exist)
+        public PrefabStruct(string Name, string Explanation, int Price, int[] Prices, Sprite Picture, Sprite FacePicture)
         {
             this.Name = Name;
             this.Explanation = Explanation;
