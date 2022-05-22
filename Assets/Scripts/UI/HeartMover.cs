@@ -84,12 +84,4 @@ public class HeartMover : MonoBehaviour
         }
     }
 
-    public void CollMover(int i)
-    {
-        if (i == 0)
-            HeartChMover(0.3467f, -0.043f,0.2f);
-        else
-            BadgeMover(0.3467f, -0.043f,0.2f);
-    }
-
 }

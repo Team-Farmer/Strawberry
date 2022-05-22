@@ -37,6 +37,9 @@ public class Collection : MonoBehaviour
     public GameObject collectionNow;
     public Sprite collectionBtnSprite;
     //=================================================================================
+    [Header("[Animation]")]
+    public GameObject heartMover;
+    public GameObject medalMover;
     //=================================================================================
     //프리팹들 번호 붙여주기
     static int Prefabcount = 0;
@@ -123,6 +126,8 @@ public class Collection : MonoBehaviour
         AudioManager.instance.Cute1AudioPlay();
         if (collectionBtn.GetComponent<Image>().sprite == collectionBtnSprite) //지금 버튼 스프라이트가 완료 버튼이면
         {
+            heartMover.GetComponent<HeartMover>().HeartChMover(0.3467f, -0.043f, 0.2f);
+            medalMover.GetComponent<HeartMover>().BadgeMover(0.3467f, -0.043f, 0.2f);
             //하트 획득
             GameManager.instance.GetHeart(Info[prefabnum].rewardHeart);
             //메달 획득
