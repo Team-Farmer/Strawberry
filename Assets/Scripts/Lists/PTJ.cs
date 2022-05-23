@@ -94,7 +94,6 @@ public class PTJ : MonoBehaviour
     //==========고용 횟수==========
     private int PTJ_NUM_NOW;
 
-    private int PTJSelectNum_;
 
     //???
     //비 파티클
@@ -146,13 +145,6 @@ public class PTJ : MonoBehaviour
         //자신의 고용횟수값 변경 파악
         PTJNumNow = DataController.instance.gameData.PTJNum[prefabnum];
 
-        /*
-        //n번고용중인 현황을 보인다.
-        HireNowLock.transform.GetChild(0).transform.GetComponent<Text>().text
-            = "남은 고용 횟수: " + DataController.instance.gameData.PTJNum[DataController.instance.gameData.PTJSelectNum].ToString() + "회";
-    
-        */
-        
     }
 
 
@@ -167,14 +159,16 @@ public class PTJ : MonoBehaviour
             if (PTJ_NUM_NOW == 0)
             {
                 Debug.Log(prefabnum + "번 째 알바생 일 종료");
-                /*
-                Fire(prefabnum);
-
-                //고용해제 상태 적용
-                EmployStateApply_Panel();
-                EmployStateApply_Prefab(prefabnum);
-                */
             }
+            else 
+            {
+                HireNowLock.transform.GetChild(0).transform.GetComponent<Text>().text
+                = "남은 고용 횟수: " + DataController.instance.gameData.PTJNum[DataController.instance.gameData.PTJSelectNum].ToString() + "회";
+
+            }
+            //고용해제 상태 적용
+            EmployStateApply_Panel();
+            EmployStateApply_Prefab();
         }
         get { return PTJ_NUM_NOW; }
     }
@@ -196,8 +190,9 @@ public class PTJ : MonoBehaviour
         GameManager.instance.ShowCoinText(coinNum.GetComponent<Text>(), Info[prefabnum].Price);
 
         //가변====
-        /*EmployStateApply_Prefab(i);
-        */
+        //고용 상태 반영
+        EmployStateApply_Panel();
+        EmployStateApply_Prefab();
 
     }
 
@@ -236,15 +231,15 @@ public class PTJ : MonoBehaviour
             (delegate { ToggleChange(); });
 
         //알바 고용 상태 반영
-        EmployStateApply_Panel(prefabnum);
+        EmployStateApply_Panel();
         EmployStateApply_Prefab();
     }
 
-    private void EmployStateApply_Panel(int ID)
+    private void EmployStateApply_Panel()
     {
 
         //고용중이 아니다
-        if (DataController.instance.gameData.PTJNum[ID] == 0)
+        if (DataController.instance.gameData.PTJNum[prefabnum] == 0)
         {
             //버튼 이미지, 내용 변경
             PTJButton.transform.GetComponent<Image>().sprite = HireButtonSprite;
@@ -295,14 +290,13 @@ public class PTJ : MonoBehaviour
 
         if (DataController.instance.gameData.PTJNum[prefabnum] == 0)
         {
-            Hire(prefabnum, Info[prefabnum].NowSliderNum);
-            //DataController.instance.gameData.PTJNum[prefabnum] = Info[prefabnum].NowSliderNum;
-
+            //Hire(prefabnum, Info[prefabnum].NowSliderNum);
+            Debug.Log("hire"+prefabnum);
         }
         else 
         {
-            DataController.instance.gameData.PTJNum[prefabnum] = 0;
-            Debug.Log("fire");
+            //DataController.instance.gameData.PTJNum[prefabnum] = 0;
+            Debug.Log("fire"+prefabnum);
         }
         /*
         //=======================고용 or 해고=======================
@@ -321,10 +315,6 @@ public class PTJ : MonoBehaviour
                     //HIRE
                     Hire(nowPrefabNum, Info[nowPrefabNum].NowSliderNum);
 
-                    //고용되었다는 패널
-                    warningBlackPanel.SetActive(true);
-                    confirmPanel.GetComponent<PanelAnimation>().ScriptTxt.text = "고용되었어요!";
-                    confirmPanel.GetComponent<PanelAnimation>().OpenScale();
                 }
                 else
                 { 
@@ -366,7 +356,7 @@ public class PTJ : MonoBehaviour
         }
         */
         //고용 상태 반영
-        EmployStateApply_Panel(prefabnum);
+        EmployStateApply_Panel();
         EmployStateApply_Prefab();
     }
     private void Hire(int ID, int num)
@@ -378,6 +368,7 @@ public class PTJ : MonoBehaviour
         ++employCount;
         GameManager.instance.workingCount(employCount);
 
+        
         //main game
         workingList.Remove(null);
         workingList.Add(Info[ID].FacePicture);
