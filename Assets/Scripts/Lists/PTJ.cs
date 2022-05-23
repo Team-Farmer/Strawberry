@@ -106,14 +106,15 @@ public class PTJ : MonoBehaviour
     //===================================================================================================
     private void Awake()
     {
-        //프리팹들에게 고유 번호 붙이기
-        prefabnum = Prefabcount;
-        Prefabcount++;
+        
     }
 
 
     void Start()
-    {   
+    {  
+        //프리팹들에게 고유 번호 붙이기
+        prefabnum = Prefabcount;
+        Prefabcount++;
         //==========PTJ Panel==========
         PTJPanel = GameObject.FindGameObjectWithTag("PTJExplanation");
         PTJPanel = PTJPanel.transform.GetChild(prefabnum).GetChild(0).gameObject;
