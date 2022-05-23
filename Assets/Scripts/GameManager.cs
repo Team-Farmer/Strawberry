@@ -671,12 +671,14 @@ public class GameManager : MonoBehaviour
         warningBlackPanel.SetActive(false);
 
         //상단에 띄우기★
+
         workingList.Remove(PTJ.instance.Info[ID].FacePicture);
         workingList.Add(null);
         workingApply(workingList, ID);
         workingList.Remove(null);
         workingApply(workingList, ID);
         workingID.Remove(ID);
+
     }
     #endregion
 
