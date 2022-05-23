@@ -138,7 +138,8 @@ public class DataController : MonoBehaviour
 
         //PTJ
         for (int i = 0; i < 6; i++) { gameData.PTJNum[i] = 0; }
-        gameData.PTJSelectNum = 0;
+        gameData.PTJSelectNum[0] = 0;
+        gameData.PTJSelectNum[1] = 0;
 
         //´À³¦Ç¥ !!
         for (int i = 0; i < 7; i++) 

@@ -442,7 +442,7 @@ public class PTJResearch : MonoBehaviour
             //이미 고용중이면 fire
             else
             { 
-                DataController.instance.gameData.PTJSelectNum = prefabnum; 
+                //DataController.instance.gameData.PTJSelectNum = prefabnum; 
                 FireConfirm();    
             }
         }
@@ -460,7 +460,7 @@ public class PTJResearch : MonoBehaviour
             //이미 고용중이면 fire
             else
             {
-                DataController.instance.gameData.PTJSelectNum = prefabnum;
+                //DataController.instance.gameData.PTJSelectNum = prefabnum;
                 FireConfirm(); 
             }
         }
@@ -604,7 +604,7 @@ public class PTJResearch : MonoBehaviour
     private void BtnListener() //시원 건드림
     {
         
-        Fire(DataController.instance.gameData.PTJSelectNum);
+        //Fire(DataController.instance.gameData.PTJSelectNum);
         warningBlackPanel.SetActive(false);
         FirePanel.GetComponent<PanelAnimation>().CloseScale();
 

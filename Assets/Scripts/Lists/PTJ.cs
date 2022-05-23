@@ -54,14 +54,7 @@ public class PTJ : MonoBehaviour
 
 
 
-    [Header("==========PTJ Warning Panel===========")]
-    public GameObject warningPanel;
-    public GameObject warningBlackPanel;
-    public GameObject noCoinPanel;
-    public Text noCoinPanel_text;
-    public GameObject HireYNPanel;
-    public Button HireYNPanel_yes;
-    public GameObject confirmPanel;
+   
 
 
 
@@ -150,7 +143,9 @@ public class PTJ : MonoBehaviour
 
         //자신의 고용횟수값 변경 파악
         //PTJNumNow = DataController.instance.gameData.PTJNum[prefabnum];
-
+        //알바 고용 상태 반영
+        EmployStateApply_Panel();
+        EmployStateApply_Prefab();
     }
 
     /*
@@ -240,7 +235,7 @@ public class PTJ : MonoBehaviour
     }
 
 
-    private void EmployStateApply_Panel()
+    public void EmployStateApply_Panel()
     {
 
         //고용중이 아니다
@@ -267,7 +262,7 @@ public class PTJ : MonoBehaviour
     }
 
 
-   private void EmployStateApply_Prefab() 
+   public void EmployStateApply_Prefab() 
    {
 
        //고용 중이 아니다
@@ -396,6 +391,7 @@ public class PTJ : MonoBehaviour
     //해고 yes버튼누르면
     private void BtnListener() //시원 건드림
     {
+        /*
         //해고하기
         Fire(DataController.instance.gameData.PTJSelectNum);
 
@@ -406,6 +402,7 @@ public class PTJ : MonoBehaviour
         //해고 통보 패널 올리기
         confirmPanel.GetComponent<PanelAnimation>().ScriptTxt.text = "해고했어요 ㅠㅠ";
         confirmPanel.GetComponent<PanelAnimation>().OpenScale();
+        */
     }
 
 
@@ -424,7 +421,8 @@ public class PTJ : MonoBehaviour
         //"n회"
         SliderNum.transform.GetComponent<Text>().text = value.ToString() + "회";
         Info[prefabnum].NowSliderNum = value;
-        DataController.instance.gameData.PTJSelectNum = value;
+        DataController.instance.gameData.PTJSelectNum[0] = prefabnum;
+        DataController.instance.gameData.PTJSelectNum[1] = value;
         //가격
         price.GetComponent<Text>().text = (value * Info[prefabnum].Price).ToString();
         //GameManager.instance.ShowCoinText(price.GetComponent<Text>(), Info[prefabnum].Price); 도와주세요
@@ -459,7 +457,8 @@ public class PTJ : MonoBehaviour
             PTJSlider10.GetComponent<Slider>().value = 1;
 
             Info[prefabnum].NowSliderNum = 10;
-            DataController.instance.gameData.PTJSelectNum = 10;
+            DataController.instance.gameData.PTJSelectNum[0] = prefabnum;
+            DataController.instance.gameData.PTJSelectNum[1] = 10;
             //n회
             SliderNum.transform.GetComponent<Text>().text = "10회";
             //가격
@@ -476,7 +475,9 @@ public class PTJ : MonoBehaviour
             PTJSlider.GetComponent<Slider>().value = 1;
 
             Info[prefabnum].NowSliderNum = 1;
-            DataController.instance.gameData.PTJSelectNum = 1;
+
+            DataController.instance.gameData.PTJSelectNum[0] = prefabnum;
+            DataController.instance.gameData.PTJSelectNum[1] = 1;
             //n회
             SliderNum.transform.GetComponent<Text>().text = "1회";
             //가격

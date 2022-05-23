@@ -51,6 +51,13 @@ public class GameManager : MonoBehaviour
     public GameObject PTJList;
 
     public int employCount;
+
+    [Header("==========PTJ Warning Panel===========")]
+    public GameObject warningBlackPanel;
+    public GameObject HireYNPanel;
+    public Button HireYNPanel_yes;
+    public GameObject confirmPanel;
+
     //NEWS
     [NonSerialized]
     public int NewsPrefabNum;
@@ -101,6 +108,9 @@ public class GameManager : MonoBehaviour
     public GameObject NoHeartPanel;
     public GameObject BP;
 
+    
+
+
     [Header("[ Game Flag ]")]
     public bool isGameRunning;
     public bool isBlackPanelOn = false;
@@ -115,7 +125,7 @@ public class GameManager : MonoBehaviour
         instance = this; // 게임 매니저의 싱글턴 패턴화 >> GameManager.instance.~~ 로 호출
 
         target = TruckObj.GetComponent<Transform>();
-
+        
         //for(int i = 0; i < )
         //출석 관련 호출.
         StartCoroutine(WebCheck());
@@ -598,7 +608,7 @@ public class GameManager : MonoBehaviour
         {
             if (employCount < 3)
             {
-                int cost = PTJ.instance.Info[prefabNum].Price * DataController.instance.gameData.PTJSelectNum;
+                int cost = PTJ.instance.Info[prefabNum].Price * DataController.instance.gameData.PTJSelectNum[1];
                 if (cost <= DataController.instance.gameData.coin)
                 {
                     //HIRE
@@ -610,7 +620,7 @@ public class GameManager : MonoBehaviour
                     //고용
                     //PTJ.instance.Hire(prefabNum, DataController.instance.gameData.PTJSelectNum);
                     //고용
-                    DataController.instance.gameData.PTJNum[prefabNum] = DataController.instance.gameData.PTJSelectNum;
+                    DataController.instance.gameData.PTJNum[prefabNum] = DataController.instance.gameData.PTJSelectNum[1];
 
                     //고용중인 알바생 수 증가
                     ++employCount;
@@ -632,16 +642,23 @@ public class GameManager : MonoBehaviour
         {
             //FIRE
             //확인창띄우기
-            //해고
-            //PTJ.instance.Fire(prefabNum);
-            //고용 해제
-            DataController.instance.gameData.PTJNum[prefabNum] = 0;
-
-            //고용 중인 알바생 수 감소
-            --employCount;
-            //Debug.Log("fire" + prefabNum);
+            HireYNPanel.GetComponent<PanelAnimation>().OpenScale();
+            warningBlackPanel.SetActive(true);
         }
         workingCountText.GetComponent<Text>().text = employCount.ToString();
+
+    }
+
+    public void Fire() 
+    {
+        //고용 해제
+        DataController.instance.gameData.PTJNum[DataController.instance.gameData.PTJSelectNum[0]] = 0;
+        //고용 중인 알바생 수 감소
+        --employCount;
+
+        //확인창내리기
+        HireYNPanel.GetComponent<PanelAnimation>().CloseScale();
+        warningBlackPanel.SetActive(false);
     }
     #endregion
 
