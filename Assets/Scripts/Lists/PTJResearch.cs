@@ -179,7 +179,7 @@ public class PTJResearch : MonoBehaviour
                 GameManager.instance.workingApply(workingList,prefabnum);
                 workingList.Remove(null);
                 GameManager.instance.workingApply(workingList,prefabnum);
-                GameManager.instance.workingCount(employCount);
+                GameManager.instance.employCount = employCount;
 
                 GameManager.instance.workingID.Remove(prefabnum);
 
@@ -487,7 +487,7 @@ public class PTJResearch : MonoBehaviour
 
         //고용중인 동물 수 증가
         ++employCount;
-        GameManager.instance.workingCount(employCount);
+        GameManager.instance.employCount = employCount;
 
         //main game
         workingList.Remove(null);
@@ -540,7 +540,7 @@ public class PTJResearch : MonoBehaviour
         GameManager.instance.workingApply(workingList, prefabnum);
         workingList.Remove(null);
         GameManager.instance.workingApply(workingList, prefabnum);
-        GameManager.instance.workingCount(employCount);
+        GameManager.instance.employCount = employCount;
 
         GameManager.instance.workingID.Remove(prefabnum);
 

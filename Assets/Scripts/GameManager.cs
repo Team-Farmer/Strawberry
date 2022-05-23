@@ -50,8 +50,7 @@ public class GameManager : MonoBehaviour
     public List<int> workingID = new List<int>();//지금 일하고 있는 알바생 Id
     public GameObject PTJList;
 
-    [NonSerialized]
-    public int PTJPrefabNum;
+    public int employCount;
     //NEWS
     [NonSerialized]
     public int NewsPrefabNum;
@@ -585,9 +584,65 @@ public class GameManager : MonoBehaviour
     }
 
     //PTJ몇명 고용했는지
-    public void workingCount(int employCount)
+    public void workingCount()
     { workingCountText.GetComponent<Text>().text = employCount.ToString(); }
+    
 
+    //고용 버튼 클릭시
+    public void PTJEmployButtonClick(int prefabNum) {
+        //효과음
+        AudioManager.instance.Cute1AudioPlay();
+
+        //고용중이 아닌 상태이다
+        if (DataController.instance.gameData.PTJNum[prefabNum] == 0)
+        {
+            if (employCount < 3)
+            {
+                int cost = PTJ.instance.Info[prefabNum].Price * DataController.instance.gameData.PTJSelectNum;
+                if (cost <= DataController.instance.gameData.coin)
+                {
+                    //HIRE
+
+                    //코인사용
+                    //GameManager.instance.UseCoin(Info[ID].Price);
+
+                    //Debug.Log("hire" + prefabNum+" "+DataController.instance.gameData.PTJSelectNum);
+                    //고용
+                    //PTJ.instance.Hire(prefabNum, DataController.instance.gameData.PTJSelectNum);
+                    //고용
+                    DataController.instance.gameData.PTJNum[prefabNum] = DataController.instance.gameData.PTJSelectNum;
+
+                    //고용중인 알바생 수 증가
+                    ++employCount;
+                }
+                else 
+                {
+                    //돈이 부족합니다.
+                    Debug.Log("돈이 부족합니다.");
+                }
+            }
+            else 
+            {
+                //3명이상 고용중입니다.
+                Debug.Log("3명이상 고용중");
+            }
+        }
+        //고용중인 상태이다
+        else
+        {
+            //FIRE
+            //확인창띄우기
+            //해고
+            //PTJ.instance.Fire(prefabNum);
+            //고용 해제
+            DataController.instance.gameData.PTJNum[prefabNum] = 0;
+
+            //고용 중인 알바생 수 감소
+            --employCount;
+            //Debug.Log("fire" + prefabNum);
+        }
+        workingCountText.GetComponent<Text>().text = employCount.ToString();
+    }
     #endregion
 
     #region New Berry Add
@@ -924,6 +979,7 @@ public class GameManager : MonoBehaviour
 
     public void NewsUnlock() 
     {
+
         News.instance.NewsUnlock(NewsPrefabNum);
     }
 
