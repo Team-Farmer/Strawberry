@@ -147,6 +147,7 @@ public class PTJ : MonoBehaviour
                 GameManager.instance.employCount--;
                 GameManager.instance.workingCountText.GetComponent<Text>().text = GameManager.instance.employCount.ToString();
 
+                /*
                 //main game
                 workingList.Remove(Info[prefabnum].FacePicture);
                 workingList.Add(null);
@@ -154,7 +155,7 @@ public class PTJ : MonoBehaviour
                 workingList.Remove(null);
                 GameManager.instance.workingApply(workingList, prefabnum);
                 GameManager.instance.workingID.Remove(prefabnum);
-
+                */
                 InitSlider();
             }
             else 
