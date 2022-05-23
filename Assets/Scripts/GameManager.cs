@@ -52,6 +52,7 @@ public class GameManager : MonoBehaviour
 
     public int employCount;
 
+    static List<Sprite> workingList = new List<Sprite>();
     [Header("==========PTJ Warning Panel===========")]
     public GameObject warningBlackPanel;
     public GameObject HireYNPanel;
@@ -592,10 +593,6 @@ public class GameManager : MonoBehaviour
             catch { }
         }
     }
-
-    //PTJ몇명 고용했는지
-    public void workingCount()
-    { workingCountText.GetComponent<Text>().text = employCount.ToString(); }
     
 
     //고용 버튼 클릭시
@@ -611,30 +608,42 @@ public class GameManager : MonoBehaviour
                 int cost = PTJ.instance.Info[prefabNum].Price * DataController.instance.gameData.PTJSelectNum[1];
                 if (cost <= DataController.instance.gameData.coin)
                 {
+                    int ID = DataController.instance.gameData.PTJSelectNum[0];
                     //HIRE
 
                     //코인사용
-                    //GameManager.instance.UseCoin(Info[ID].Price);
+                    //UseCoin(Info[ID].Price);
 
-                    //Debug.Log("hire" + prefabNum+" "+DataController.instance.gameData.PTJSelectNum);
-                    //고용
-                    //PTJ.instance.Hire(prefabNum, DataController.instance.gameData.PTJSelectNum);
                     //고용
                     DataController.instance.gameData.PTJNum[prefabNum] = DataController.instance.gameData.PTJSelectNum[1];
 
                     //고용중인 알바생 수 증가
                     ++employCount;
+
+                    //상단에 띄우기★
+                    workingList.Remove(null);
+                    workingList.Add(PTJ.instance.Info[ID].FacePicture);
+                    workingApply(workingList, ID);
+                    workingID.Add(ID);
                 }
                 else 
                 {
-                    //돈이 부족합니다.
-                    Debug.Log("돈이 부족합니다.");
+                    //효과음
+                    AudioManager.instance.Cute4AudioPlay();
+                    //재화 부족 경고 패널
+                    ShowCoinText(panelCoinText, DataController.instance.gameData.coin);
+                    NoCoinPanel.GetComponent<PanelAnimation>().OpenScale();
+                    warningBlackPanel.SetActive(true);
                 }
             }
             else 
             {
-                //3명이상 고용중입니다.
-                Debug.Log("3명이상 고용중");
+                //효과음
+                AudioManager.instance.Cute4AudioPlay();
+                //3명이상 고용중이라는 경고 패널 등장
+                confirmPanel.GetComponent<PanelAnimation>().ScriptTxt.text = "고용 가능한 알바 수를\n넘어섰어요!";
+                confirmPanel.GetComponent<PanelAnimation>().OpenScale();
+                warningBlackPanel.SetActive(true);
             }
         }
         //고용중인 상태이다
@@ -651,14 +660,23 @@ public class GameManager : MonoBehaviour
 
     public void Fire() 
     {
+        int ID = DataController.instance.gameData.PTJSelectNum[0];
         //고용 해제
-        DataController.instance.gameData.PTJNum[DataController.instance.gameData.PTJSelectNum[0]] = 0;
+        DataController.instance.gameData.PTJNum[ID] = 0;
         //고용 중인 알바생 수 감소
-        --employCount;
+        //PTJ에서 구현됨
 
         //확인창내리기
         HireYNPanel.GetComponent<PanelAnimation>().CloseScale();
         warningBlackPanel.SetActive(false);
+
+        //상단에 띄우기★
+        workingList.Remove(PTJ.instance.Info[ID].FacePicture);
+        workingList.Add(null);
+        workingApply(workingList, ID);
+        workingList.Remove(null);
+        workingApply(workingList, ID);
+        workingID.Remove(ID);
     }
     #endregion
 
