@@ -22,11 +22,9 @@ TagManager:
   - Arbeit
   - medalCount
   - NewsContent
-  - YNPanel
   - WarningPanel
   - HireYNPanel
   - PanelBlack
-  - PTJContent
   layers:
   - Default
   - TransparentFX
