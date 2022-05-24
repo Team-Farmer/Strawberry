@@ -74,5 +74,6 @@ public class Weed : MonoBehaviour
             DataController.instance.gameData.berryFieldData[weedIdx].canGrow = true; // 딸기는 다시 자랄 수 있다.
         }
         this.gameObject.SetActive(false); // 잡초 비활성화
+        //AudioManager.instance.Remove2AudioPlay();
     }
 }

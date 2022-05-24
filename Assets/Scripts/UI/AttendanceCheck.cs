@@ -140,6 +140,7 @@ public class AttendanceCheck : MonoBehaviour
         
         if (number == days&& DataController.instance.gameData.attendance==false)
         {
+            AudioManager.instance.RewardAudioPlay();
             image[number].sprite = Front[number].Behind[1];
             icon.SetActive(false);
 

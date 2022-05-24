@@ -226,7 +226,7 @@ public class Challenge : MonoBehaviour
             DataController.instance.gameData.challengeLevel[prefabnum] + 1
             || realLevel > DataController.instance.gameData.challengeLevel[prefabnum])
         {
-            AudioManager.instance.Cute1AudioPlay();
+            AudioManager.instance.RewardAudioPlay();
             GameManager.instance.GetMedal(Info[prefabnum].rewardMedal); //¸Þ´Þ º¸»ó È¹µæ
             GameManager.instance.GetHeart(Info[prefabnum].rewardHeart[DataController.instance.gameData.challengeLevel[prefabnum]]); //ÇÏÆ® º¸»ó È¹µæ
 

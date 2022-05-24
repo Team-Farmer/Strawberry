@@ -35,6 +35,12 @@ public class AudioManager : MonoBehaviour
     public AudioClip WrongClip;
     public AudioClip DoorOpenClip;
     public AudioClip DoorCloseClip;
+    // 아래 우연이가 추가
+    public AudioClip CoinClip;
+    public AudioClip RewardClip;
+    public AudioClip TimerClip;
+    public AudioClip RemoveClip;
+    public AudioClip Remove2Clip;
 
 
     public static AudioManager instance;
@@ -141,13 +147,21 @@ public class AudioManager : MonoBehaviour
     { SFXPlay("WrongSFX", WrongClip); }
 
 
-
     public void DoorOpenAudioPlay() //문열기
     { SFXPlay("DoorOpenSFX", DoorOpenClip); }
     public void DoorCloseAudioPlay() //문닫기 
     { SFXPlay("DoorCloseSFX", DoorCloseClip); }
 
-
+    public void CoinAudioPlay() // 코인 획득
+    { SFXPlay("CoinSFX", CoinClip); }
+    public void RewardAudioPlay() // 보상 획득
+    { SFXPlay("RewardSFX", RewardClip); }
+    public void TimerCloseAudioPlay() // 미니게임 타이머
+    { SFXPlay("TimerSFX", TimerClip); }
+    public void RemoveAudioPlay() // 제거1
+    { SFXPlay("RemoveSFX", RemoveClip); }
+    public void Remove2AudioPlay() // 제거2
+    { SFXPlay("Remove2SFX", Remove2Clip); }
 
     //직접 오디오 넣는 함수
     public void SFXPlayButton(AudioClip clip) 
