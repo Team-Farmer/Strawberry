@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "R3CR201FVDB",
         "name": "com.teamfarmer.strawberryfarm",
-        "processId": 25404,
+        "processId": 2424,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -90,6 +90,12 @@
             "deviceId": "R3CR201FVDB",
             "name": "com.teamfarmer.strawberryfarm",
             "processId": 25404,
+            "exited": false
+        },
+        {
+            "deviceId": "R3CR201FVDB",
+            "name": "com.teamfarmer.strawberryfarm",
+            "processId": 2424,
             "exited": false
         }
     ],
