@@ -9636,8 +9636,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1346116725}
   m_HandleRect: {fileID: 1346116724}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.58826655
+  m_Value: 0
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -16678,7 +16678,7 @@ GameObject:
   - component: {fileID: 790186542}
   - component: {fileID: 790186541}
   m_Layer: 5
-  m_Name: QuitButton
+  m_Name: X
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16774,6 +16774,18 @@ MonoBehaviour:
       - m_Target: {fileID: 41530273}
         m_TargetAssemblyTypeName: PanelAnimation, Assembly-CSharp
         m_MethodName: FadeOut
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 909940711}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: SFXAudioPlay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -26274,7 +26286,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0.000034141758}
-  m_SizeDelta: {x: -515, y: 1696}
+  m_SizeDelta: {x: -515, y: 70}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1179187198
 MonoBehaviour:
@@ -26784,7 +26796,7 @@ GameObject:
   - component: {fileID: 1199143653}
   - component: {fileID: 1199143652}
   m_Layer: 5
-  m_Name: QuitButton
+  m_Name: X
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26880,6 +26892,18 @@ MonoBehaviour:
       - m_Target: {fileID: 41530273}
         m_TargetAssemblyTypeName: PanelAnimation, Assembly-CSharp
         m_MethodName: FadeOut
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 909940711}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: SFXAudioPlay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -29503,7 +29527,7 @@ RectTransform:
   m_Father: {fileID: 308993803}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.41173345}
+  m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -9.800049}
   m_SizeDelta: {x: 46, y: -929.4}
@@ -45620,6 +45644,18 @@ MonoBehaviour:
       - m_Target: {fileID: 41530273}
         m_TargetAssemblyTypeName: PanelAnimation, Assembly-CSharp
         m_MethodName: FadeOut
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 909940711}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: SFXAudioPlay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
