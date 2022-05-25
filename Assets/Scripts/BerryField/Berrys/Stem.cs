@@ -20,6 +20,8 @@ public class Stem : MonoBehaviour
   
     RainCtrl rainCtrl;
     Globalvariable global;
+
+    private int[] rank = { 6, 9, 10 };
     void Awake()
     {       
         anim = GetComponent<Animator>();
@@ -152,24 +154,40 @@ public class Stem : MonoBehaviour
     }
     void DefineBerry() // 누적 확률변수로 랜덤한 딸기 생성
     {
-        int cumulative = 0, probSum = 0;
-        int len = global.berryListAll.Count;
-
-        for (int i = 0; i < len; i++)
+        int cumulativeKind = 0, cumulativeRank = 0, probSum = 0;
+        int begin = 0, end = 196;
+        int berryRandomChance;
+        int rankRandom = Random.Range(0, rank[DataController.instance.gameData.newBerryResearchAble]);
+        if(rankRandom < 6)
+        {
+            begin = 0; end = 64;
+            Debug.Log("Classic!");
+        }
+        else if(rankRandom < 9)
+        {
+            begin = 64; end = 128;
+            Debug.Log("Special!");
+        }
+        else
+        {
+            begin = 128; end = 196;
+            Debug.Log("Unique!");
+        }
+        for (int i = begin; i < end; i++)
         {
             if(DataController.instance.gameData.isBerryUnlock[i])
             {
                 probSum += global.berryListAll[i].GetComponent<Berry>().berrykindProb; // 해금된 딸기에서 딸기의 발생확률을 가져옴
             }           
         }
-        int berryRandomChance = Random.Range(0, probSum + 1);
+        berryRandomChance = Random.Range(0, probSum + 1);
 
-        for (int i = 0; i < len; i++)
+        for (int i = begin; i < end; i++)
         {
             if (DataController.instance.gameData.isBerryUnlock[i])
             {
-                cumulative += global.berryListAll[i].GetComponent<Berry>().berrykindProb; // 해금된 딸기에서 딸기의 발생확률을 가져옴
-                if (berryRandomChance <= cumulative)
+                cumulativeKind += global.berryListAll[i].GetComponent<Berry>().berrykindProb; // 해금된 딸기에서 딸기의 발생확률을 가져옴
+                if (berryRandomChance <= cumulativeKind)
                 {
                     DataController.instance.gameData.berryFieldData[stemIdx].berryPrefabNowIdx = i;
                     break;
