@@ -18,20 +18,15 @@ public class PTJWorking : MonoBehaviour
     //==========고용 횟수==========
     private int PTJ_NUM_NOW;
 
-    
-
-
-
+   
     void Start()
     {
-
         //프리팹들에게 고유 번호 붙이기
         prefabnum = Prefabcount;
         Prefabcount++;
 
         //얼굴 이미지 적용
         face.GetComponent<Image>().sprite = FacePicture[prefabnum];
-
     }
 
 
@@ -67,8 +62,6 @@ public class PTJWorking : MonoBehaviour
                 employCount.GetComponent<Text>().text = DataController.instance.gameData.PTJNum[prefabnum].ToString();
             }
 
-           
-            
         }
         get { return PTJ_NUM_NOW; }
     }
