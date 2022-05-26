@@ -139,9 +139,7 @@ public class GameManager : MonoBehaviour
         //TimerStart += Instance_TimerStart;
 
         //DisableObjColliderAll();       
-        
-        PTJList.SetActive(true);
-
+       
         isGameRunning = true;
 
 
@@ -156,13 +154,7 @@ public class GameManager : MonoBehaviour
     {
         isGameRunning = true;
     }
-    /*private void Start()
-    {
-        PTJList.SetActive(true);
 
-        //NEW BERRY
-        NewBerryUpdate();
-    }*/
     void InitDataInGM()
     {
         for (int i = 0; i < 16; i++)
@@ -557,23 +549,7 @@ public class GameManager : MonoBehaviour
     #region 리스트
 
     #region PTJ
-    public void workingApply(List<Sprite> workingList, int ID)
-    {
-        for (int i = 0; i < workingList.Count; i++)
-        {
-            try
-            {
-                if (workingList[i] == null) { working[i].SetActive(false); } //알바중인 사람 없으면 비활성화
-                else //알바중 있으면
-                {
-                    working[i].SetActive(true); //활성화
-                    working[i].transform.GetChild(0).transform.GetComponent<Image>().sprite = workingList[i];//얼굴 이미지 넣기
-
-                }
-            }
-            catch { }
-        }
-    }
+    
     public void workinCountApply()
     {
         //지금 알바중인 알바생들의 남은 고용횟수
@@ -619,14 +595,6 @@ public class GameManager : MonoBehaviour
 
                     //고용중인 알바생 수 증가
                     ++employCount;
-
-                    //상단에 띄우기★
-                    /*
-                    workingList.Remove(null);
-                    workingList.Add(PTJ.instance.Info[ID].FacePicture);
-                    workingApply(workingList, ID);
-                    workingID.Add(ID);
-                    */
                 }
                 else 
                 {
@@ -671,16 +639,6 @@ public class GameManager : MonoBehaviour
         //확인창내리기
         HireYNPanel.GetComponent<PanelAnimation>().CloseScale();
         warningBlackPanel.SetActive(false);
-
-        //상단에 띄우기★
-        /*
-        workingList.Remove(PTJ.instance.Info[ID].FacePicture);
-        workingList.Add(null);
-        workingApply(workingList, ID);
-        workingList.Remove(null);
-        workingApply(workingList, ID);
-        workingID.Remove(ID);
-        */
     }
     #endregion
 

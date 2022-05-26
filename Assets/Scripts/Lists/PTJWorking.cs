@@ -11,8 +11,7 @@ public class PTJWorking : MonoBehaviour
     public GameObject face;
     public GameObject employCount;
 
-    //==========workingPTJ의 content==========
-    private GameObject PTJWorkingContent;
+
     //==========Prefab별로 숫자 부여==========
     static int Prefabcount = 0;
     int prefabnum;
@@ -32,9 +31,6 @@ public class PTJWorking : MonoBehaviour
 
         //얼굴 이미지 적용
         face.GetComponent<Image>().sprite = FacePicture[prefabnum];
-
-        //PTJWorkingContent
-        PTJWorkingContent = GameObject.FindGameObjectWithTag("PTJWorkingContent");
 
     }
 

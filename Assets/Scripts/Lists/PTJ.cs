@@ -287,11 +287,12 @@ public class PTJ : MonoBehaviour
 
 
         //main game 여기너무 왔다갔다임 바꿀것
+        /*
         workingList.Remove(null);
         workingList.Add(Info[ID].FacePicture);
         GameManager.instance.workingApply(workingList, ID);
         GameManager.instance.workingID.Add(ID);
-        
+        */
     }
 
     public void Fire(int ID)
@@ -305,13 +306,14 @@ public class PTJ : MonoBehaviour
         //GameManager.instance.employCount=employCount;
 
         //main game
+        /*
         workingList.Remove(Info[ID].FacePicture);
         workingList.Add(null);
         GameManager.instance.workingApply(workingList, ID);
         workingList.Remove(null);
         GameManager.instance.workingApply(workingList, ID);
         GameManager.instance.workingID.Remove(ID);
-
+        */
         //InitSlider();
     }
 

@@ -379,7 +379,7 @@ GameObject:
   - component: {fileID: 2308732274228177981}
   - component: {fileID: 4317702747580342800}
   m_Layer: 5
-  m_Name: faceBg
+  m_Name: pictureBg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -454,7 +454,7 @@ GameObject:
   - component: {fileID: 4857128851934911633}
   - component: {fileID: 1597808359815754234}
   m_Layer: 5
-  m_Name: face
+  m_Name: picture
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -742,50 +742,40 @@ MonoBehaviour:
   Info:
   - Name: "\uB538\uAE30 \uAC12\uC774 \uAE08\uAC12"
     Picture: {fileID: 4797985456115717453, guid: 4a782c50b2bb02a4a81b18e13d67cb90, type: 3}
-    FacePicture: {fileID: 4797985456115717453, guid: 4a782c50b2bb02a4a81b18e13d67cb90, type: 3}
     Explanation: "\uB538\uAE30\uC758 \uAC00\uCE58\uAC00 \uB192\uC544\uC838\uC694."
     Price: 100
+    Prices: 
   - Name: "\uB538\uAE30\uAC00 \uC465\uC465"
     Picture: {fileID: -7122343688644831495, guid: 4a782c50b2bb02a4a81b18e13d67cb90, type: 3}
-    FacePicture: {fileID: -7122343688644831495, guid: 4a782c50b2bb02a4a81b18e13d67cb90, type: 3}
     Explanation: "\uB538\uAE30\uC758 \uC131\uC7A5\uC2DC\uAC04\uC774 \uAC10\uC18C\uD574\uC694."
     Price: 100
+    Prices: 
   - Name: "\uBD80\uB974\uB294 \uAC8C \uAC12"
     Picture: {fileID: -5804490749463610629, guid: 4a782c50b2bb02a4a81b18e13d67cb90, type: 3}
-    FacePicture: {fileID: -5804490749463610629, guid: 4a782c50b2bb02a4a81b18e13d67cb90, type: 3}
     Explanation: "\uB538\uAE30\uB97C \uD310\uB9E4\uD560 \uB54C \uB192\uC740 \uAC00\uACA9\uC73C\uB85C
       \uD310\uB9E4\uD574\uC694."
     Price: 100
+    Prices: 
   - Name: "\uB3C4\uC640\uC918\uC694 \uC138\uC2A4\uCF54"
     Picture: {fileID: -2640173872217149559, guid: 4a782c50b2bb02a4a81b18e13d67cb90, type: 3}
-    FacePicture: {fileID: -2640173872217149559, guid: 4a782c50b2bb02a4a81b18e13d67cb90, type: 3}
     Explanation: "\uBC8C\uB808\uAC00 \uC0DD\uAE38 \uD655\uB960\uC774 \uAC10\uC18C\uD574\uC694."
     Price: 100
+    Prices: 
   - Name: "\uC7A1\uCD08 \uBC14\uC774\uBC14\uC774"
     Picture: {fileID: -7908086550202134589, guid: 4a782c50b2bb02a4a81b18e13d67cb90, type: 3}
-    FacePicture: {fileID: -7908086550202134589, guid: 4a782c50b2bb02a4a81b18e13d67cb90, type: 3}
     Explanation: "\uC7A1\uCD08\uAC00 \uC0DD\uAE38 \uD655\uB960\uC774 \uAC10\uC18C\uD574\uC694."
     Price: 100
+    Prices: 
   - Name: "\uC2DC\uC6D0\uD55C \uC18C\uB098\uAE30"
     Picture: {fileID: -1716160622732779056, guid: 4a782c50b2bb02a4a81b18e13d67cb90, type: 3}
-    FacePicture: {fileID: -1716160622732779056, guid: 4a782c50b2bb02a4a81b18e13d67cb90, type: 3}
     Explanation: "\uC18C\uB098\uAE30\uAC00 \uB354 \uC624\uB798\uB0B4\uB824\uC694"
     Price: 100
-  PTJBackground: {fileID: 0}
+    Prices: 
   titleText: {fileID: 1015919002668168413}
-  facePicture: {fileID: 3456816838606078675}
+  Picture: {fileID: 3456816838606078675}
   explanationText: {fileID: 4024267953252206434}
   coinNum: {fileID: 7782225767939862393}
   levelNum: {fileID: 5807405014252815133}
-  PTJ: 0
-  selectPTJSprite: {fileID: 0}
-  originalPTJSprite: {fileID: 0}
-  PTJExp: {fileID: 0}
-  warningPanel: {fileID: 0}
-  noCoinPanel: {fileID: 0}
-  warningBlackPanel: {fileID: 0}
-  confirmPanel: {fileID: 0}
-  panelCoinText: {fileID: 0}
 --- !u!1 &7782225767939862393
 GameObject:
   m_ObjectHideFlags: 0
