@@ -25,6 +25,7 @@ TagManager:
   - WarningPanel
   - HireYNPanel
   - PanelBlack
+  - PTJWorkingContent
   layers:
   - Default
   - TransparentFX
