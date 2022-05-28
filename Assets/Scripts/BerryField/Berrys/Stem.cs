@@ -42,8 +42,6 @@ public class Stem : MonoBehaviour
         }
         else sprite.sortingOrder = 2;
 
-        
-
         if (DataController.instance.gameData.berryFieldData[stemIdx].isPlant)
         {
             MakeBerry();
@@ -61,8 +59,9 @@ public class Stem : MonoBehaviour
     {
         DataController.instance.gameData.berryFieldData[stemIdx].isStemEnable = false;
         // 변수 초기화       
-        if (DataController.instance.gameData.berryFieldData[stemIdx].isPlant) return;
+        //if (DataController.instance.gameData.berryFieldData[stemIdx].isPlant) return;
 
+        DataController.instance.gameData.berryFieldData[stemIdx].isPlant = false;
         DataController.instance.gameData.berryFieldData[stemIdx].canGrow = true;
         DataController.instance.gameData.berryFieldData[stemIdx].createTime = 0f;
         DataController.instance.gameData.berryFieldData[stemIdx].randomTime = 0f;
@@ -154,24 +153,21 @@ public class Stem : MonoBehaviour
     }
     void DefineBerry() // 누적 확률변수로 랜덤한 딸기 생성
     {
-        int cumulativeKind = 0, cumulativeRank = 0, probSum = 0;
+        int cumulativeKind = 0, probSum = 0;
         int begin = 0, end = 196;
         int berryRandomChance;
         int rankRandom = Random.Range(0, rank[DataController.instance.gameData.newBerryResearchAble]);
         if(rankRandom < 6)
         {
-            begin = 0; end = 64;
-            Debug.Log("Classic!");
+            begin = 0; end = 64;      
         }
         else if(rankRandom < 9)
         {
             begin = 64; end = 128;
-            Debug.Log("Special!");
         }
         else
         {
             begin = 128; end = 196;
-            Debug.Log("Unique!");
         }
         for (int i = begin; i < end; i++)
         {
