@@ -178,7 +178,7 @@ public class AudioManager : MonoBehaviour
     }
 
 
-    public void BgSoundPlay(AudioClip clip) 
+    public void BgSoundPlay(AudioClip clip) //이건 안쓰기는 할듯
     {
         if (isPlayAudio == true)
         {
