@@ -69,6 +69,8 @@ public class Strawberry : MonoBehaviour
 
             berryImagePanel.GetComponent<Image>().sprite 
                 = BERRY[prefabnum].GetComponent<SpriteRenderer>().sprite;//해당 베리 이미지 보이기
+            berryImagePanel.GetComponent<Image>().preserveAspect = true;
+
         }
 
         //베리 아직 한번도 확인하지 않았다면 느낌표 표시. 이미 한 번 봤으면 없애기
@@ -106,6 +108,7 @@ public class Strawberry : MonoBehaviour
                 //Explanation 내용을 채운다.
                 berryExpImage.GetComponentInChildren<Image>().sprite
                     = BERRY[prefabnum].GetComponent<SpriteRenderer>().sprite;//이미지 설정
+                berryExpImage.GetComponentInChildren<Image>().preserveAspect = true;
 
                 berryExpName.gameObject.GetComponentInChildren<Text>().text
                     = BERRY[prefabnum].GetComponent<Berry>().berryName;//이름 설정

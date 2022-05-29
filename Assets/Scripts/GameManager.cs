@@ -863,6 +863,8 @@ public class GameManager : MonoBehaviour
         AcheivePanel_newBerry.SetActive(true);
         AcheivePanel_newBerry.transform.GetChild(0).GetComponent<Image>().sprite
             = Global.GetComponent<Globalvariable>().berryListAll[newBerryIndex].GetComponent<SpriteRenderer>().sprite;
+        AcheivePanel_newBerry.transform.GetChild(0).GetComponent<Image>().preserveAspect = true;
+
         AcheivePanel_newBerry.transform.GetChild(1).GetComponent<Text>().text
             = Global.GetComponent<Globalvariable>().berryListAll[newBerryIndex].GetComponent<Berry>().berryName;
 
