@@ -121,6 +121,7 @@ public class DataController : MonoBehaviour
         //초기 딸기 가격 설정
         InitBerryPrice();
 
+        //=====================================================
         //여기 아래 정리 필요
         //isBerryUnlock
         for (int i = 0; i < 192; i++)
@@ -148,12 +149,15 @@ public class DataController : MonoBehaviour
         for (int i = 0; i < 192; i++)
         {    gameData.isBerryEM[i] = false;    }
 
+        //딸기
         gameData.newBerryResearchAble = 0;
         gameData.newBerryBtnState = 0;
+        gameData.newBerryTime = 0;
 
         //가게관련변수
         gameData.isStoreOpend = false;
         for (int i = 0; i < 4; i++) { gameData.highScore[i] = 0; }
+        //=====================================================
     }
     void InitBerryPrice()
     {      
