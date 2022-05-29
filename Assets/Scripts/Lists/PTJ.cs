@@ -143,8 +143,7 @@ public class PTJ : MonoBehaviour
             if (PTJ_NUM_NOW == 0)
             {
                 Debug.Log(prefabnum + "번 째 알바생 일 종료");
-                GameManager.instance.employCount--;
-                GameManager.instance.workingCountText.GetComponent<Text>().text = GameManager.instance.employCount.ToString();
+                DataController.instance.gameData.PTJCount--;
 
                 InitSlider();
             }

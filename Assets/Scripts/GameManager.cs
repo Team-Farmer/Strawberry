@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
     public List<int> workingID = new List<int>();//지금 일하고 있는 알바생 Id
     public GameObject PTJList;
 
-    public int employCount;
+
 
     static List<Sprite> workingList = new List<Sprite>();
     [Header("==========PTJ Warning Panel===========")]
@@ -189,6 +189,8 @@ public class GameManager : MonoBehaviour
     {
         //PTJ
         workinCountApply();
+        workingCountText.GetComponent<Text>().text = DataController.instance.gameData.PTJCount.ToString();
+
 
         //NEW BERRY 개발
         //이부분 시간들이면 없앨 수있음. 일단 지금은 시간없으니까 이렇게 하고 나중에 없애는게 나으면 말해주세요
@@ -559,8 +561,9 @@ public class GameManager : MonoBehaviour
     
     public void workinCountApply()
     {
+
         //지금 알바중인 알바생들의 남은 고용횟수
-        //엉망진창코드
+        //엉망진창?
         for (int i = 0; i < 3; i++)
         {
             try
@@ -576,7 +579,7 @@ public class GameManager : MonoBehaviour
             catch { }
         }
     }
-    
+
 
     //고용 버튼 클릭시
     public void PTJEmployButtonClick(int prefabNum) {
@@ -586,7 +589,7 @@ public class GameManager : MonoBehaviour
         //고용중이 아닌 상태이다
         if (DataController.instance.gameData.PTJNum[prefabNum] == 0)
         {
-            if (employCount < 3)
+            if (DataController.instance.gameData.PTJCount < 3)
             {
                 int cost = PTJ.instance.Info[prefabNum].Price * DataController.instance.gameData.PTJSelectNum[1];
                 if (cost <= DataController.instance.gameData.coin)
@@ -601,7 +604,7 @@ public class GameManager : MonoBehaviour
                     DataController.instance.gameData.PTJNum[prefabNum] = DataController.instance.gameData.PTJSelectNum[1];
 
                     //고용중인 알바생 수 증가
-                    ++employCount;
+                    DataController.instance.gameData.PTJCount++;
                 }
                 else 
                 {
@@ -631,7 +634,7 @@ public class GameManager : MonoBehaviour
             HireYNPanel.GetComponent<PanelAnimation>().OpenScale();
             warningBlackPanel.SetActive(true);
         }
-        workingCountText.GetComponent<Text>().text = employCount.ToString();
+        
 
     }
 
