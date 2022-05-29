@@ -18,8 +18,10 @@ public class AudioManager : MonoBehaviour
     public AudioMixer mixer;//오디오 믹서
     public AudioSource bgSound;//오디오 매니저
 
-    //배경음 오디오(오디오 이름과 씬이름이 같을경우 플레이 해줍니다)
-    public AudioClip[] bglist;
+    //public bool isGameMain;//true=메인게임 false=미니게임
+
+    //배경음 오디오
+    public AudioClip[] BgClipList;//0=메인게임 1=미니게임
 
     //효과음 오디오
     public AudioClip SFXclip;
@@ -48,11 +50,13 @@ public class AudioManager : MonoBehaviour
     //========================================================================================================
     private void Awake()
     {
+        //isGameMain = true;
+        
         if (instance == null)
         {
             instance = this;
             DontDestroyOnLoad(instance);
-            SceneManager.sceneLoaded += OnSceneLoaded;//씬 시작시 실행
+            //SceneManager.sceneLoaded += OnSceneLoaded;//씬 시작될때마다 실행
         }
         else { Destroy(gameObject); }
     }
@@ -64,17 +68,21 @@ public class AudioManager : MonoBehaviour
         SFXSoundSlider.GetComponent<Slider>().value = 0.5f;
         BGSoundVolume();
         SFXVolume();
+
+        BgSoundPlay2(true);
     }
 
     //========================================================================================================
     //========================================================================================================
     
     //배경음 변경(새로운 씬 안가져오니까 이거 변경할것)
-    private void OnSceneLoaded(Scene arg0,LoadSceneMode arg1) {
-        for (int i = 0; i < bglist.Length; i++) {
-            if (arg0.name == bglist[i].name)//씬이름과 같은 배경음 틀기
+    private void OnSceneLoaded(Scene sceneNow,LoadSceneMode mode) 
+    {
+
+        for (int i = 0; i < BgClipList.Length; i++) {
+            if (sceneNow.name == BgClipList[i].name)//씬이름과 같은 배경음 틀기
             {
-                BgSoundPlay(bglist[i]);//재생
+                BgSoundPlay(BgClipList[i]);//재생
             }
         }
     
@@ -181,4 +189,21 @@ public class AudioManager : MonoBehaviour
             bgSound.Play();
         }
     }
+    public void BgSoundPlay2(bool isGameMain)
+    {
+        AudioClip clip;
+        if (isGameMain == true) {clip= BgClipList[0]; }
+        else { clip = BgClipList[1]; }
+
+
+        if (isPlayAudio == true)
+        {
+            bgSound.outputAudioMixerGroup = mixer.FindMatchingGroups("BGSound")[0];
+            bgSound.clip = clip;
+            bgSound.loop = false;
+            bgSound.volume = 0.2f;
+            bgSound.Play();
+        }
+    }
+
 }

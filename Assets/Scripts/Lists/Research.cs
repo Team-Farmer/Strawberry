@@ -153,9 +153,10 @@ public class Research : MonoBehaviour
                 //재화 부족 경고 패널 등장
                 AudioManager.instance.Cute4AudioPlay();
                 //panelCoinText2.GetComponent<Text>().text= DataController.instance.gameData.coin.ToString();
-                GameManager.instance.ShowCoinText(panelCoinText2.GetComponent<Text>(), DataController.instance.gameData.coin);
-                warningBlackPanel2.SetActive(true);
-                noCoinPanel2.GetComponent<PanelAnimation>().OpenScale();
+                //여기 오류남
+                //GameManager.instance.ShowCoinText(panelCoinText2.GetComponent<Text>(), DataController.instance.gameData.coin); 
+                //warningBlackPanel2.SetActive(true);
+                //noCoinPanel2.GetComponent<PanelAnimation>().OpenScale();
             }
         }
         else

@@ -10430,6 +10430,7 @@ MonoBehaviour:
   DoneImg: {fileID: -765015418919943096, guid: d7462a2db557512448ed8c9a9d1c7db0, type: 3}
   IngImg: {fileID: -7943917676593969559, guid: d7462a2db557512448ed8c9a9d1c7db0, type: 3}
   stemLevelSprites: []
+  Global: {fileID: 699566879}
   SettingsPanel: {fileID: 2031592367}
   CheckPanel: {fileID: 1334959770}
   AttendanceCheck: {fileID: 1284243152}
@@ -14332,6 +14333,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4035880483817675465, guid: 7472d0e0e33818244bfbde2fe34e734e, type: 3}
   m_PrefabInstance: {fileID: 699558295}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &699566879 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 518175885998587216, guid: 4c430f901d7b5ba448644219770afe62, type: 3}
+  m_PrefabInstance: {fileID: 2013803140}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &701221542
 GameObject:
@@ -19630,9 +19636,9 @@ MonoBehaviour:
   SFXSoundSlider: {fileID: 1349655535}
   mixer: {fileID: 24100000, guid: 61b1ac8c39cbb0541ab8ce6a71e1bd09, type: 2}
   bgSound: {fileID: 909940709}
-  bglist:
+  BgClipList:
   - {fileID: 8300000, guid: c17e18da545cac5428a7ab0bcdca08d0, type: 3}
-  - {fileID: 8300000, guid: f577741392d62e945a0649884f142343, type: 3}
+  - {fileID: 8300000, guid: 98b1319a1e1a2564db29aea0fb488b78, type: 3}
   SFXclip: {fileID: 8300000, guid: 573b0c07504e2014d9849507007ad69f, type: 3}
   SowClip: {fileID: 8300000, guid: 7297c6a03c194444eab3a17ed75c9a74, type: 3}
   HarvestClip: {fileID: 8300000, guid: 2083be458872fa54e9a0288e12f6e33a, type: 3}
@@ -20330,6 +20336,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 909940711}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: BgSoundPlay2
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &926323871
 MonoBehaviour:
@@ -43874,6 +43892,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 909940711}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: BgSoundPlay2
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &2037819672
 MonoBehaviour:

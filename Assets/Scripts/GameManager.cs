@@ -80,6 +80,9 @@ public class GameManager : MonoBehaviour
     public GameObject NoPanel_newBerry;
     public GameObject BlackPanel_newBerry;
 
+    
+
+
     [Header("[ SPRITE ]")]
     public Sprite StartImg;
     public Sprite DoneImg;
@@ -91,6 +94,7 @@ public class GameManager : MonoBehaviour
 
     private string BtnState;//지금 버튼 상태
     private int newBerryIndex;//이번에 개발되는 베리 넘버
+    public GameObject Global;
     //===========================================
 
     [Header("[ Check/Settings Panel ]")]
@@ -122,8 +126,11 @@ public class GameManager : MonoBehaviour
     #region 기본
     void Start()
     {
+
         Application.targetFrameRate = 60;
         instance = this; // 게임 매니저의 싱글턴 패턴화 >> GameManager.instance.~~ 로 호출
+
+
 
         target = TruckObj.GetComponent<Transform>();
         
@@ -697,23 +704,23 @@ public class GameManager : MonoBehaviour
         switch (berryClssify)
         {
             case "classic":
-                for (int i = 0; i < Globalvariable.instance.classicBerryList.Count; i++)
+                for (int i = 0; i < Global.GetComponent<Globalvariable>().classicBerryList.Count; i++)
                 {
                     if (DataController.instance.gameData.isBerryUnlock[i]==true) { countIsUnlock++; }
-                    if (Globalvariable.instance.classicBerryList[i] == true) { countIsExsist++; } 
+                    if (Global.GetComponent<Globalvariable>().classicBerryList[i] == true) { countIsExsist++; } 
                 }
                 break;
 
             case "special":
-                for (int i = 0; i < Globalvariable.instance.specialBerryList.Count; i++)
-                { if (Globalvariable.instance.specialBerryList[i] == true) { countIsExsist++; } }
+                for (int i = 0; i < Global.GetComponent<Globalvariable>().specialBerryList.Count; i++)
+                { if (Global.GetComponent<Globalvariable>().specialBerryList[i] == true) { countIsExsist++; } }
                 for (int i = 64; i < 64+64; i++)
                 {if (DataController.instance.gameData.isBerryUnlock[i] == true) { countIsUnlock++; } }
                 break;
 
             case "unique":
-                for (int i = 0; i < Globalvariable.instance.uniqueBerryList.Count; i++)
-                { if (Globalvariable.instance.uniqueBerryList[i] == true) { countIsExsist++; } }
+                for (int i = 0; i < Global.GetComponent<Globalvariable>().uniqueBerryList.Count; i++)
+                { if (Global.GetComponent<Globalvariable>().uniqueBerryList[i] == true) { countIsExsist++; } }
                 for (int i = 128; i < 128+64; i++)
                 { if (DataController.instance.gameData.isBerryUnlock[i] == true) { countIsUnlock++; } }
                 break;
@@ -822,7 +829,7 @@ public class GameManager : MonoBehaviour
     {
         newBerryIndex = 0;
         while (DataController.instance.gameData.isBerryUnlock[newBerryIndex] == true
-            || Globalvariable.instance.berryListAll[newBerryIndex] == null)
+            || Global.GetComponent<Globalvariable>().berryListAll[newBerryIndex] == null)
         {
             switch (DataController.instance.gameData.newBerryResearchAble)
             {
@@ -855,9 +862,9 @@ public class GameManager : MonoBehaviour
         //얻은 딸기 설명창
         AcheivePanel_newBerry.SetActive(true);
         AcheivePanel_newBerry.transform.GetChild(0).GetComponent<Image>().sprite
-            = Globalvariable.instance.berryListAll[newBerryIndex].GetComponent<SpriteRenderer>().sprite;
+            = Global.GetComponent<Globalvariable>().berryListAll[newBerryIndex].GetComponent<SpriteRenderer>().sprite;
         AcheivePanel_newBerry.transform.GetChild(1).GetComponent<Text>().text
-            = Globalvariable.instance.berryListAll[newBerryIndex].GetComponent<Berry>().berryName;
+            = Global.GetComponent<Globalvariable>().berryListAll[newBerryIndex].GetComponent<Berry>().berryName;
 
         //검정창 띄우기
         BlackPanel_newBerry.SetActive(true);
