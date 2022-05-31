@@ -145,7 +145,7 @@ public class GameManager : MonoBehaviour
 
         //TimerStart += Instance_TimerStart;
 
-        //DisableObjColliderAll();       
+        DisableObjColliderAll();       
        
         isGameRunning = true;
 
