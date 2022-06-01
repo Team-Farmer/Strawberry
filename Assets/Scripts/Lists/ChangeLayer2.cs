@@ -339,7 +339,7 @@ public class ChangeLayer2 : MonoBehaviour
 				berryLockUnique.SetActive(false);
 				break;
 		}
-		GameManager.instance.NewBerryUpdate();
+		GameManager.instance.NewBerryUpdate2();
 		panelBlack.SetActive(false);
 	}
     #endregion

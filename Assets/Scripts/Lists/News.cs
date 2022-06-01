@@ -67,7 +67,7 @@ public class News : MonoBehaviour
         
         WarningPanel = GameObject.FindGameObjectWithTag("WarningPanel");
         WarningPanelBlack= WarningPanel.transform.GetChild(0).gameObject;
-        YNPanel = WarningPanel.transform.GetChild(5).gameObject;
+        YNPanel = WarningPanel.transform.GetChild(2).gameObject;
         ConfirmPanel= WarningPanel.transform.GetChild(7).gameObject;
 
         //메달
@@ -133,12 +133,10 @@ public class News : MonoBehaviour
     }
 
     //뉴스 해금
-    public void NewsUnlock(int ID) 
+    public void NewsUnlock(int ID) //ID==PrefabNum
     {
-        //ID==PrefabNum
-        Debug.Log("prefabNum"+ID);
 
-        if (DataController.instance.gameData.medal >= Info[ID].Price)
+        if (DataController.instance.gameData.medal >= Info[ID].Price)//메달이 충분하면
         {
             //메달 소비
             GameManager.instance.UseMedal(Info[ID].Price);
@@ -151,21 +149,9 @@ public class News : MonoBehaviour
             thisNews.transform.GetChild(4).gameObject.SetActive(true);//Lock
 
 
-            /*
-            //만약 다음 뉴스 있다면
-            if (prefabnum + 1 != newsContent.transform.GetChildCount())
-            {
-                DataController.instance.gameData.newsState[prefabnum + 1] = 1;//다음거 잠금 해제 가능하게
-
-                newsContent.transform.GetChild(prefabnum + 1).//다음거 찾아서
-                    transform.GetChild(4).gameObject.SetActive(true);//잠금해제 이미지로 변경
-                newsContent.transform.GetChild(prefabnum + 1).
-                    transform.GetChild(3).gameObject.SetActive(false);//잠금이미지 지우기
-            }
-            */
 
             //딸기 획득??
-            int RandomNum = UnityEngine.Random.Range(0, 100);
+            int RandomNum = UnityEngine.Random.Range(1, 101);
             if (RandomNum <= Info[ID].Price * 10) //price*10%확률로
             {
                 //딸기 획득
@@ -185,10 +171,11 @@ public class News : MonoBehaviour
         else
         {
             //메달이 부족할 시
-            YNPanel.SetActive(false);
+            YNPanel.GetComponent<PanelAnimation>().CloseScale();
             WarningPanelBlack.SetActive(true);
-            ConfirmPanel.transform.GetChild(0).transform.GetComponent<Text>().text = "코인이 부족해요!";
             ConfirmPanel.GetComponent<PanelAnimation>().OpenScale();
+            ConfirmPanel.transform.GetChild(0).transform.GetComponent<Text>().text = "메달이 부족해요!";
+            
         }
     }
 
