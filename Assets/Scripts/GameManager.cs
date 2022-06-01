@@ -663,7 +663,6 @@ public class GameManager : MonoBehaviour
             if (isNewBerryAble() == true)
             {
                 //얻을딸기가 정해진다.->시간,값도 정해진다.
-
                 //PRICE
                 price_newBerry = 100 * (BerryCount("classic", true) + BerryCount("special", true) + BerryCount("unique", true));
                 priceText_newBerry.GetComponent<Text>().text = price_newBerry.ToString();
@@ -672,23 +671,19 @@ public class GameManager : MonoBehaviour
                 selectBerry();
                 timeText_newBerry.GetComponent<Text>().text = "??:??";//가격 시간 아직 미공개 "?"
 
-            
-            
-            
                 //베리 없음 지우기
                 NoPanel_newBerry.SetActive(false);
             }
             else { NoPanel_newBerry.SetActive(true);}
         }
     }
-    public void NewBerryUpdate2() //새로운 딸기 열렸을때 실행되는 거. 위에 합칠까 말까
+    public void NewBerryUpdate2() //새로운 딸기 열렸을때 실행되는 거. 위에 합치자
     {
         if (isNewBerryAble() == true)//한 번 더 확인
         {
             if (DataController.instance.gameData.newBerryBtnState == 0)//진행 중이 아니면
             { 
                 //얻을딸기가 정해진다.->시간,값도 정해진다.
-
                 //PRICE
                 price_newBerry = 100 * (BerryCount("classic", true) + BerryCount("special", true) + BerryCount("unique", true));
                 priceText_newBerry.GetComponent<Text>().text = price_newBerry.ToString();
