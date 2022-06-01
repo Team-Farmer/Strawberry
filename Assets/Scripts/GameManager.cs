@@ -668,12 +668,15 @@ public class GameManager : MonoBehaviour
 
             //TIME
             selectBerry();
-            if (DataController.instance.gameData.newBerryTime == 0)
-            {   timeText_newBerry.GetComponent<Text>().text = "??:??"; }//가격 시간 아직 미공개 "?"
-            else //시간 가는 도중에 껐었다면 
-            {   timeText_newBerry.GetComponent<Text>().text = TimeForm(DataController.instance.gameData.newBerryTime);
-                Timer();
+
+            if (DataController.instance.gameData.newBerryBtnState == 1)//진행중이면
+            { StartCoroutine("Timer"); }
+            else 
+            {
+                timeText_newBerry.GetComponent<Text>().text = "??:??";//가격 시간 아직 미공개 "?"
             }
+            
+            
             
             //베리 없음 지우기
             NoPanel_newBerry.SetActive(false);
@@ -684,7 +687,7 @@ public class GameManager : MonoBehaviour
     private bool isNewBerryAble()
     {
 
-        //지금 새딸기를 개발 할 수 있나?
+        //지금 새딸기를 개발 할 수 있나
         switch (DataController.instance.gameData.newBerryResearchAble)
         {
             case 0://classic 개발가능
@@ -765,6 +768,7 @@ public class GameManager : MonoBehaviour
 
                     //버튼상태 ing로
                     DataController.instance.gameData.newBerryBtnState = 1;
+                    
                     //타이머 시작
                     StartCoroutine("Timer");
 
@@ -795,7 +799,7 @@ public class GameManager : MonoBehaviour
     }
 
     //TimeReucePanel_newBerry
-    //하트 써서 시간을 줄일건가요? 패널
+    //하트 써서 시간을 줄인지 여부 패널
     public void TimeReduce(bool isTimeReduce)
     {
         if (DataController.instance.gameData.heart >= 10)
@@ -821,6 +825,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator Timer()
     {
+        Debug.Log("start imer");
         //1초씩 감소
         yield return new WaitForSeconds(1f);
         DataController.instance.gameData.newBerryTime--;
