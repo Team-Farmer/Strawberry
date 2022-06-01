@@ -523,7 +523,6 @@ public class GameManager : MonoBehaviour
     {
         BoxCollider2D coll;
         isBlackPanelOn = true;
-        Debug.Log(GameManager.instance.isBlackPanelOn);
         for (int i = 0; i < farmList.Count; i++)
         {
             coll = farmList[i].GetComponent<BoxCollider2D>();

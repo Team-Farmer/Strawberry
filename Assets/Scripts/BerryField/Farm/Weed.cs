@@ -61,7 +61,6 @@ public class Weed : MonoBehaviour
         float creatTime = DataController.instance.gameData.berryFieldData[weedIdx].createTime; // 딸기가 생성된 시간변수 참조
         if ((creatTime == 0f || (creatTime >= DataController.instance.gameData.stemLevel[4])) && !GameManager.instance.isBlackPanelOn) // BP가 꺼져있고 맨 땅이거나 딸기가 수확가능한 상태라면
         {
-            Debug.Log(GameManager.instance.isBlackPanelOn);
             farmColl.enabled = true; // 밭의 Collider를 켠다.
         }
         else // 아니라면

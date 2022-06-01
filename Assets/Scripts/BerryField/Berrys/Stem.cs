@@ -167,7 +167,7 @@ public class Stem : MonoBehaviour
         }
         else
         {
-            begin = 128; end = 196;
+            begin = 128; end = 192;
         }
         for (int i = begin; i < end; i++)
         {

@@ -29,6 +29,7 @@ public class MiniGame1 : MonoBehaviour
     int score;                          //점수
     List<int> unlockList=new List<int>(); //해금된 딸기 번호 리스트
 
+    Globalvariable global;
     void Start()
     {
         size = scrollbar.size / 60f;
@@ -37,6 +38,7 @@ public class MiniGame1 : MonoBehaviour
             int _i = i;
             answer_btn[_i].onClick.AddListener(()=>OnClickAnswerButton(_i));
         }
+        global = GameObject.FindGameObjectWithTag("Global").GetComponent<Globalvariable>();
     }
 
     void OnEnable()
@@ -104,7 +106,7 @@ public class MiniGame1 : MonoBehaviour
     {
         //퀴즈딸기 만들고 이미지 배치
         quizIndex = Random.Range(0, unlockList.Count);
-        quiz_img.sprite = Globalvariable.instance.berryListAll[quizIndex].GetComponent<SpriteRenderer>().sprite;
+        quiz_img.sprite = global.berryListAll[quizIndex].GetComponent<SpriteRenderer>().sprite;
 
         //랜덤의 정답딸기 인덱스(0~4)에 퀴즈딸기 배치
         int randomAnswerIndex = Random.Range(0, 4);
@@ -123,7 +125,7 @@ public class MiniGame1 : MonoBehaviour
                 {
                     answerIndex[i] = Random.Range(0, unlockList.Count);
                 }
-                answer_img[i].sprite = Globalvariable.instance.berryListAll[answerIndex[i]].GetComponent<SpriteRenderer>().sprite;
+                answer_img[i].sprite = global.berryListAll[answerIndex[i]].GetComponent<SpriteRenderer>().sprite;
             }
         }
 
