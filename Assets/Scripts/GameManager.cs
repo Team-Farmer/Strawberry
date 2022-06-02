@@ -145,7 +145,7 @@ public class GameManager : MonoBehaviour
 
         //TimerStart += Instance_TimerStart;
 
-        DisableObjColliderAll();       
+        //DisableObjColliderAll();       
        
         isGameRunning = true;
 
@@ -448,9 +448,9 @@ public class GameManager : MonoBehaviour
     public void UseCoin(int cost) // 코인 사용 함수 (마이너스 방지 위함)
     {
         int mycoin = DataController.instance.gameData.coin;
-        int mycoinacc = mycoin - cost ;
         if (mycoin >= cost)
         {
+            int mycoinacc = mycoin - cost;
             StartCoroutine(CountAnimation(CoinText, mycoinacc, mycoin));
             DataController.instance.gameData.coin -= cost;
         }
@@ -476,9 +476,10 @@ public class GameManager : MonoBehaviour
     public void UseHeart(int cost) // 하트 획득 함수 (마이너스 방지 위함)
     {
         int myHeart = DataController.instance.gameData.heart;
-        int myHeartacc = myHeart - cost;
+
         if (myHeart >= cost)
         {
+            int myHeartacc = myHeart - cost;
             DataController.instance.gameData.heart -= cost;
             StartCoroutine(CountAnimation(HeartText, myHeartacc, myHeart));
         }
