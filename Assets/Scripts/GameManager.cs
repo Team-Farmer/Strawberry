@@ -448,12 +448,11 @@ public class GameManager : MonoBehaviour
     public void UseCoin(int cost) // 코인 사용 함수 (마이너스 방지 위함)
     {
         int mycoin = DataController.instance.gameData.coin;
-        int mycoinacc;
+        int mycoinacc = mycoin - cost ;
         if (mycoin >= cost)
         {
-            DataController.instance.gameData.coin -= cost;
-            mycoinacc= DataController.instance.gameData.coin;
             StartCoroutine(CountAnimation(CoinText, mycoinacc, mycoin));
+            DataController.instance.gameData.coin -= cost;
         }
         else
         {
@@ -477,11 +476,10 @@ public class GameManager : MonoBehaviour
     public void UseHeart(int cost) // 하트 획득 함수 (마이너스 방지 위함)
     {
         int myHeart = DataController.instance.gameData.heart;
-        int myHeartacc;
+        int myHeartacc = myHeart - cost;
         if (myHeart >= cost)
         {
             DataController.instance.gameData.heart -= cost;
-            myHeartacc= DataController.instance.gameData.heart;
             StartCoroutine(CountAnimation(HeartText, myHeartacc, myHeart));
         }
         else
