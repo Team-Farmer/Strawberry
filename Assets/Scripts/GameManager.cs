@@ -145,7 +145,7 @@ public class GameManager : MonoBehaviour
 
         //TimerStart += Instance_TimerStart;
 
-        //DisableObjColliderAll();       
+        DisableObjColliderAll();       
        
         isGameRunning = true;
 
@@ -162,6 +162,7 @@ public class GameManager : MonoBehaviour
     public void GameStart()
     {
         isGameRunning = true;
+        Invoke("EnableObjColliderAll", 1.2f);
     }
 
     void InitDataInGM()
