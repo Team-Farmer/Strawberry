@@ -163,7 +163,7 @@ public class GameManager : MonoBehaviour
     public void GameStart()
     {
         isGameRunning = true;
-        Invoke("EnableObjColliderAll", 5.0f);
+        Invoke("EnableObjColliderAll", 4.5f);
     }
 
     void InitDataInGM()
