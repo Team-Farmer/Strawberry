@@ -157,8 +157,6 @@ public class GameManager : MonoBehaviour
         //NEW BERRY
         NewBerryUpdate();
 
-
-
         ShowCoinText(CoinText, DataController.instance.gameData.coin);
         HeartText.text = DataController.instance.gameData.heart.ToString();
     }
@@ -379,14 +377,14 @@ public class GameManager : MonoBehaviour
                 cost /= 1000000;
                 coinAnimText.text = text + cost.ToString() + "C";
             }
-            coinAnimManager.GetComponent<HeartMover>().CountCoin(-235f);
-            Invoke("invokeCoin", 2f);
+            coinAnimManager.GetComponent<HeartMover>().CountCoin(-240f);
+            Invoke("invokeCoin", 1.1f);
         }
         else
         {
             heartAnimText.text = text + cost.ToString();
             heartAnimManager.GetComponent<HeartMover>().CountCoin(100f);
-            Invoke("invokeHeart", 2f);
+            Invoke("invokeHeart", 1.1f);
         }
         yield return null;
     }
