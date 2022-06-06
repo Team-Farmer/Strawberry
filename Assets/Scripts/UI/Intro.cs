@@ -58,11 +58,8 @@ public class Intro : MonoBehaviour
         .Append(rect[2].GetComponent<Image>().DOFade(0, 1.0f)).SetEase(Ease.OutCubic)
         .AppendCallback(() => {
             introObject[4].SetActive(false);
+            introObject[5].SetActive(false);
         });
         yield return null;
     }
-
-
-
-
 }

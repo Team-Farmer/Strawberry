@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     public Text CoinText;
     public Text HeartText;
     public Text MedalText;
+    public Text coinAnimText;
+    public Text heartAnimText;
 
     [Header("[ Object ]")]
     public GameObject stemPrefab; // 프리팹
@@ -99,21 +101,22 @@ public class GameManager : MonoBehaviour
     //===========================================
 
     [Header("[ Check/Settings Panel ]")]
-    public GameObject SettingsPanel;
-    public GameObject CheckPanel;
+    public GameObject settingsPanel;
+    public GameObject checkPanel;
     
 
     [Header("[ Check/Day List ]")]
-    public GameObject AttendanceCheck;
+    public GameObject attendanceCheck;
     public string url = "";
 
     [Header("[ Panel List ]")]
     public Text panelCoinText;
     public Text panelHearText;
-    public GameObject NoCoinPanel;
-    public GameObject NoHeartPanel;
-    public GameObject BP;
-
+    public GameObject noCoinPanel;
+    public GameObject noHeartPanel;
+    public GameObject blackPanel;
+    public GameObject coinAnimManager;
+    public GameObject heartAnimManager;
     
 
 
@@ -138,7 +141,7 @@ public class GameManager : MonoBehaviour
         //for(int i = 0; i < )
         //출석 관련 호출.
         StartCoroutine(WebCheck());
-        AttendanceCheck.GetComponent<AttendanceCheck>().Attendance();
+        attendanceCheck.GetComponent<AttendanceCheck>().Attendance();
         CheckTime();
 
 
@@ -357,65 +360,45 @@ public class GameManager : MonoBehaviour
 
     #region 재화
 
-    IEnumerator CountAnimation(Text characters, float target, float current) //재화 증가 애니메이션
+    IEnumerator CountAnimation(int cost, String text, int num) //재화 증가 애니메이션
 
     {
-        float duration = 1.0f; // 카운팅에 걸리는 시간 설정. 
-
-        float offset = (target - current) / duration;
-
-        while (current < target)
-
+        if (num == 0)
         {
-
-            current += offset * Time.deltaTime;
-
-            if (characters == CoinText)
+            if (cost <= 9999)           // 0~9999까지 A
             {
-                if ((int)current <= 9999)           // 0~9999까지 A
-                {
-                    characters.text = ((int)current).ToString() + "A";
-                }
-                else if ((int)current <= 9999999)   // 10000~9999999(=9999B)까지 B
-                {
-                    current /= (float)1000;
-                    characters.text = ((int)current).ToString() + "B";
-                }
-                else                        // 그 외 C (최대 2100C)
-                {
-                    current /= (float)1000000;
-                    characters.text = ((int)current).ToString() + "C";
-                }
+                coinAnimText.text = text + cost.ToString() + "A";
             }
-            else
-                characters.text = ((int)current).ToString();
-
-            yield return null;
-
-        }
-
-        current = target;
-        int num = (int)current;
-
-        if (characters == CoinText)
-        {
-            if (num <= 9999)           // 0~9999까지 A
+            else if (cost <= 9999999)   // 10000~9999999(=9999B)까지 B
             {
-                characters.text = num.ToString() + "A";
-            }
-            else if (num <= 9999999)   // 10000~9999999(=9999B)까지 B
-            {
-                current /= 1000;
-                characters.text = num.ToString() + "B";
+                cost /= 1000;
+                coinAnimText.text = text + cost.ToString() + "B";
             }
             else                        // 그 외 C (최대 2100C)
             {
-                current /= 1000000;
-                characters.text = num.ToString() + "C";
+                cost /= 1000000;
+                coinAnimText.text = text + cost.ToString() + "C";
             }
+            coinAnimManager.GetComponent<HeartMover>().CountCoin(-235f);
+            Invoke("invokeCoin", 2f);
         }
         else
-            characters.text = num.ToString();
+        {
+            heartAnimText.text = text + cost.ToString();
+            heartAnimManager.GetComponent<HeartMover>().CountCoin(100f);
+            Invoke("invokeHeart", 2f);
+        }
+        yield return null;
+    }
+
+    public void invokeCoin()
+    {
+        ShowCoinText(CoinText, DataController.instance.gameData.coin);
+    }
+
+    public void invokeHeart()
+    {
+        HeartText.text = DataController.instance.gameData.heart.ToString();
     }
 
     public void ShowCoinText(Text coinText, int coin)
@@ -439,11 +422,9 @@ public class GameManager : MonoBehaviour
 
     public void GetCoin(int cost) // 코인 획득 함수
     {
-        int current, acc;
-        current = DataController.instance.gameData.coin;
+        StartCoroutine(CountAnimation(cost,"+",0));
         DataController.instance.gameData.coin += cost; // 현재 코인 +
-        acc = DataController.instance.gameData.coin;
-        StartCoroutine(CountAnimation(CoinText, acc, current));
+
         DataController.instance.gameData.accCoin += cost; // 누적 코인 +
     }
 
@@ -452,16 +433,15 @@ public class GameManager : MonoBehaviour
         int mycoin = DataController.instance.gameData.coin;
         if (mycoin >= cost)
         {
-            int mycoinacc = mycoin - cost;
-            StartCoroutine(CountAnimation(CoinText, mycoinacc, mycoin));
+            StartCoroutine(CountAnimation(cost,"-",0));
             DataController.instance.gameData.coin -= cost;
         }
         else
         {
             //경고 패널 등장
             ShowCoinText(panelCoinText, DataController.instance.gameData.coin);
-            BP.SetActive(true);
-            NoCoinPanel.GetComponent<PanelAnimation>().OpenScale();
+            blackPanel.SetActive(true);
+            noCoinPanel.GetComponent<PanelAnimation>().OpenScale();
         }
     }
 
@@ -471,7 +451,7 @@ public class GameManager : MonoBehaviour
         current = DataController.instance.gameData.heart;
         DataController.instance.gameData.heart += cost; // 현재 하트 +
         acc = DataController.instance.gameData.heart;
-        StartCoroutine(CountAnimation(HeartText, acc, current));
+        StartCoroutine(CountAnimation(cost,"+",1));
         DataController.instance.gameData.accHeart += cost; // 누적 하트 +
     }
 
@@ -481,16 +461,15 @@ public class GameManager : MonoBehaviour
 
         if (myHeart >= cost)
         {
-            int myHeartacc = myHeart - cost;
             DataController.instance.gameData.heart -= cost;
-            StartCoroutine(CountAnimation(HeartText, myHeartacc, myHeart));
+            StartCoroutine(CountAnimation(cost,"-",1));
         }
         else
         {
             //경고 패널 등장
             panelHearText.text = DataController.instance.gameData.heart.ToString() + "개";
-            BP.SetActive(true);
-            NoHeartPanel.GetComponent<PanelAnimation>().OpenScale();
+            blackPanel.SetActive(true);
+            noHeartPanel.GetComponent<PanelAnimation>().OpenScale();
         }
     }
 
@@ -614,7 +593,7 @@ public class GameManager : MonoBehaviour
                     AudioManager.instance.Cute4AudioPlay();
                     //재화 부족 경고 패널
                     ShowCoinText(panelCoinText, DataController.instance.gameData.coin);
-                    NoCoinPanel.GetComponent<PanelAnimation>().OpenScale();
+                    noCoinPanel.GetComponent<PanelAnimation>().OpenScale();
                     warningBlackPanel.SetActive(true);
                 }
             }
@@ -801,7 +780,7 @@ public class GameManager : MonoBehaviour
                 }
                 else
                 {
-                    NoCoinPanel.GetComponent<PanelAnimation>().OpenScale();
+                    noCoinPanel.GetComponent<PanelAnimation>().OpenScale();
                 }
                 break;
             case "ing":
@@ -836,7 +815,7 @@ public class GameManager : MonoBehaviour
                 UseHeart(10);
             }
             else 
-            { NoHeartPanel.GetComponent<PanelAnimation>().OpenScale(); }
+            { noHeartPanel.GetComponent<PanelAnimation>().OpenScale(); }
         }
         //창 끄기
         TimeReduceBlackPanel_newBerry.SetActive(false);
@@ -1101,7 +1080,7 @@ public class GameManager : MonoBehaviour
     {
         //정보갱신
         DataController.instance.gameData.attendance = false;
-        AttendanceCheck.GetComponent<AttendanceCheck>().Attendance();
+        attendanceCheck.GetComponent<AttendanceCheck>().Attendance();
     }
 
     #endregion
