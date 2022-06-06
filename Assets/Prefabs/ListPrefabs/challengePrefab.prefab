@@ -619,30 +619,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 4328159929649047439}
-        m_TargetAssemblyTypeName: HeartMover, Assembly-CSharp
-        m_MethodName: badge
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 4343370977376227628}
-        m_TargetAssemblyTypeName: HeartMover, Assembly-CSharp
-        m_MethodName: heart
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &527783997791190854
 GameObject:
   m_ObjectHideFlags: 0
@@ -853,6 +829,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 576111008284070252}
   Day: {fileID: 527783997747247045}
+  to: {fileID: 0}
   rect: {fileID: 8956052210182060300}
   daysCompare: 0
 --- !u!1 &2157807828004521961
@@ -1233,6 +1210,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 8645409806838682217}
   Day: {fileID: 527783997747247045}
+  to: {fileID: 0}
   rect: {fileID: 1163356146302917869}
   daysCompare: 0
 --- !u!1 &6844077706645152247

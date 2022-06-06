@@ -47,19 +47,24 @@ public class Intro : MonoBehaviour
         introObject[1].SetActive(true);
         sequence = DOTween.Sequence()
         .Append(rect[0].GetComponent<Image>().DOFade(1, 2.0f))
-        .AppendCallback(() => {
+        .AppendCallback(() =>
+        {
             introObject[2].GetComponent<Image>().sprite = sprites[0];
         })
         .AppendInterval(1)
         .Append(rect[1].GetComponent<Image>().DOFade(1, 2.0f)).SetEase(Ease.InCubic)
-        .AppendCallback(() => {
+        .AppendCallback(() =>
+        {
             introObject[3].SetActive(false);
         })
-        .Append(rect[2].GetComponent<Image>().DOFade(0, 1.0f)).SetEase(Ease.OutCubic)
-        .AppendCallback(() => {
-            introObject[4].SetActive(false);
-            introObject[5].SetActive(false);
-        });
+        .Append(rect[2].GetComponent<Image>().DOFade(0, 1.0f)).SetEase(Ease.OutCubic);
+        Invoke("Active", 4.5f);
         yield return null;
+    }
+
+    public void Active()
+    {
+        introObject[4].SetActive(false);
+        introObject[5].SetActive(false);
     }
 }

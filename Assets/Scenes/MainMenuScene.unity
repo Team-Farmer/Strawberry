@@ -735,8 +735,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.20999908}
-  m_SizeDelta: {x: 980, y: 2240.38}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &41530270
 MonoBehaviour:
@@ -922,7 +922,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -2343,8 +2343,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -1870}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 0.012493, y: 0.0050411}
+  m_SizeDelta: {x: 1080.1, y: 2338.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &135233322
 GameObject:
@@ -2468,7 +2468,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 1126291562}
   Day: {fileID: 2119959384}
-  rect: {fileID: 2119959385}
+  to: {fileID: 1187532002}
+  rect: {fileID: 1187532003}
+  target: {fileID: 0}
   daysCompare: 0
 --- !u!1 &139806053
 GameObject:
@@ -5965,7 +5967,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 146443504}
   Day: {fileID: 396545910}
-  rect: {fileID: 396545911}
+  to: {fileID: 1187532002}
+  rect: {fileID: 1187532003}
+  target: {fileID: 1187532003}
   daysCompare: 0
 --- !u!1 &271674904
 GameObject:
@@ -12090,7 +12094,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 217713241}
   Day: {fileID: 217713238}
+  to: {fileID: 0}
   rect: {fileID: 217713239}
+  target: {fileID: 0}
   daysCompare: 0
 --- !u!224 &565687599
 RectTransform:
@@ -12353,7 +12359,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 1251632623}
   Day: {fileID: 608074536}
-  rect: {fileID: 608074537}
+  to: {fileID: 1187532002}
+  rect: {fileID: 1187532003}
+  target: {fileID: 0}
   daysCompare: 0
 --- !u!224 &587123966
 RectTransform:
@@ -17070,7 +17078,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 1430612218}
   Day: {fileID: 1712557475}
-  rect: {fileID: 1712557476}
+  to: {fileID: 1187532002}
+  rect: {fileID: 1187532003}
+  target: {fileID: 0}
   daysCompare: 0
 --- !u!224 &797549122
 RectTransform:
@@ -18286,7 +18296,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 420392498}
   Day: {fileID: 997283058}
-  rect: {fileID: 997283059}
+  to: {fileID: 1187532002}
+  rect: {fileID: 1187532003}
+  target: {fileID: 0}
   daysCompare: 0
 --- !u!1 &874029963 stripped
 GameObject:
@@ -19065,7 +19077,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 1671721267}
   Day: {fileID: 1860574803}
-  rect: {fileID: 1860574804}
+  to: {fileID: 1187532002}
+  rect: {fileID: 1187532003}
+  target: {fileID: 0}
   daysCompare: 0
 --- !u!224 &890403289
 RectTransform:
@@ -22034,10 +22048,10 @@ RectTransform:
   m_Father: {fileID: 1999629606}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &997283058
 GameObject:
@@ -22336,8 +22350,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.96647644, y: 75.37598}
-  m_SizeDelta: {x: 1004, y: 1400.3246}
+  m_AnchoredPosition: {x: -0.00027894974, y: 75.37598}
+  m_SizeDelta: {x: 982.6, y: 1400.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1015507218
 MonoBehaviour:
@@ -25526,8 +25540,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00024414062, y: -53.600098}
-  m_SizeDelta: {x: -0.00012207, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1166646938
 PrefabInstance:
@@ -26642,7 +26656,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 364, y: -143.8003}
+  m_AnchoredPosition: {x: 364, y: -191.8003}
   m_SizeDelta: {x: 310, y: 94.2}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1187532004
@@ -29208,10 +29222,10 @@ RectTransform:
   m_Father: {fileID: 1426705492}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 1890}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.64001465, y: 1868}
+  m_SizeDelta: {x: 1080.1, y: 2337.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1334959772
 MonoBehaviour:
@@ -34666,7 +34680,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 30, y: -143}
+  m_AnchoredPosition: {x: 30, y: -191}
   m_SizeDelta: {x: 330, y: 86.8}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1595401650
@@ -39094,7 +39108,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.009338379, y: -0.00012207031}
+  m_AnchoredPosition: {x: -0.009277344, y: 0}
   m_SizeDelta: {x: -39.018, y: -28.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1776652375
@@ -39817,7 +39831,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -51}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1834860004
@@ -44745,7 +44759,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 215653204}
   Day: {fileID: 215653200}
+  to: {fileID: 0}
   rect: {fileID: 215653201}
+  target: {fileID: 0}
   daysCompare: 0
 --- !u!224 &2071455844 stripped
 RectTransform:
@@ -45977,7 +45993,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 1834860005}
   Day: {fileID: 946351618}
-  rect: {fileID: 946351619}
+  to: {fileID: 1187532002}
+  rect: {fileID: 1187532003}
+  target: {fileID: 0}
   daysCompare: 0
 --- !u!1 &2120615085
 GameObject:

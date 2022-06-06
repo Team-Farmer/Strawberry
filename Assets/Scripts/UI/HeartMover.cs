@@ -9,7 +9,9 @@ public class HeartMover : MonoBehaviour
 {
     public HeartAcquireFx prefab;
     public GameObject Day;
+    public GameObject to;
     public RectTransform rect;
+    public Transform target;
 
     public int daysCompare;
     private int days;
