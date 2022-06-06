@@ -83,9 +83,9 @@ public class Challenge : MonoBehaviour
 
             
             
-        //보상을 받았다면 이 레벨이여야 한다.
-        realLevel = ChallengeValue[prefabnum] / 30;
-        if (realLevel %30== 0) { realLevel--; }
+        //보상을 제대로 다 받았다면 이 레벨이여야 한다.
+        realLevel = ChallengeValue[prefabnum] / Info[prefabnum].clearCriterion;
+        if (realLevel % Info[prefabnum].clearCriterion == 0) { realLevel--; }
 
         InfoUpdate();
     }
