@@ -94,6 +94,7 @@ public class GameManager : MonoBehaviour
 
     private string BtnState;//지금 버튼 상태
     private int newBerryIndex;//이번에 개발되는 베리 넘버
+    private int newBerryIndex2;//이번에 개발되는 뉴스 베리 넘버
     public GameObject Global;
     //===========================================
 
@@ -805,10 +806,10 @@ public class GameManager : MonoBehaviour
                 TimeReduceText_newBerry.GetComponent<Text>().text
                     = "하트 10개로 시간을 10분으로 줄이시겠습니까?\n";//지금은 1초. 임시
                 break;
-            case "done": /*딸기 개발*/
+            case "done": //딸기 개발
                 GetNewBerry();
                 break;
-                //default:Debug.Log("NowButton이름이 잘못됬습니다."); break;
+
         }
         
     }
@@ -867,10 +868,12 @@ public class GameManager : MonoBehaviour
     {
         newBerryIndex = 0;
 
-        //이미 얻은 베리|| 값이 없는 베리 -> 다른 베리를 탐색
-        while (DataController.instance.gameData.isBerryUnlock[newBerryIndex] == true
-            || Global.GetComponent<Globalvariable>().berryListAll[newBerryIndex] == null)
+        while (true)
         {
+            if (DataController.instance.gameData.isBerryUnlock[newBerryIndex] == false
+            && Global.GetComponent<Globalvariable>().berryListAll[newBerryIndex] != null)
+            { break; }
+
             switch (DataController.instance.gameData.newBerryResearchAble)
             {
                 case 0: newBerryIndex = UnityEngine.Random.Range(1, 64);
@@ -927,8 +930,7 @@ public class GameManager : MonoBehaviour
         else if (endIndex == 192) { randomNum = UnityEngine.Random.Range(0, 100 + 1); }//지금 전부다 가능하면
 
 
-        //if (berryCountComparision() == 3)
-        //{
+
         if (randomNum < 45) 
         { newBerryIndex = UnityEngine.Random.Range(1, 64); 
             DataController.instance.gameData.newBerryTime = 10; }//classic
@@ -938,30 +940,51 @@ public class GameManager : MonoBehaviour
         else if (randomNum <= 100) 
         { newBerryIndex = UnityEngine.Random.Range(128, 192); 
             DataController.instance.gameData.newBerryTime = 30; }//unique
-        //}
+
 
         return newBerryIndex;
     }
 
+    private void selectBerry2()//중복되는 함수
+    {
+        newBerryIndex2 = 0;
 
+        while (true)
+        {
+            if (DataController.instance.gameData.isBerryUnlock[newBerryIndex2] == false
+            && Global.GetComponent<Globalvariable>().berryListAll[newBerryIndex2] != null)
+            { break; }
+
+            switch (DataController.instance.gameData.newBerryResearchAble)
+            {
+                case 0:
+                    newBerryIndex2 = UnityEngine.Random.Range(1, 64);
+                    DataController.instance.gameData.newBerryTime = 10;
+                    break;
+                case 1:
+                    newBerryIndex2 = berryPercantage(128);
+                    break;
+                case 2:
+                    newBerryIndex2 = berryPercantage(192);
+                    break;
+            }
+        }
+    }
 
     public void newsBerry()
     {
         if (isNewBerryAble())
         {
-            selectBerry();//새딸기 개발이랑 뉴스 해금 동시에 했는데 같은 딸기 얻으려고 하면 문제생길수도 있다고 생각
+            selectBerry2();//새딸기 개발이랑 뉴스 해금 동시에 했는데 같은 딸기 얻으려고 하면 문제생길수도 있다고 생각
             
             //새로운 딸기가 추가된다.
-            DataController.instance.gameData.isBerryUnlock[newBerryIndex] = true;
+            DataController.instance.gameData.isBerryUnlock[newBerryIndex2] = true;
+            DataController.instance.gameData.unlockBerryCnt++;
             //느낌표 표시
-            DataController.instance.gameData.isBerryEM[newBerryIndex] = true;
+            DataController.instance.gameData.isBerryEM[newBerryIndex2] = true;
 
             //딸기 얻음 효과음(짜잔)
             AudioManager.instance.TadaAudioPlay();
-
-            //얻은 딸기 설명창
-            //검정창
-            //BlackPanel_newBerry.SetActive(true);
 
         }
         else { Debug.Log("더이상 개발가능한 딸기 없음."); }
