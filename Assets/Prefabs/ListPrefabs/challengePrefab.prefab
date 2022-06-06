@@ -445,28 +445,28 @@ MonoBehaviour:
   Info:
   - Title: "\uB538\uAE30 \uC218\uC9D1"
     rewardMedal: 0
-    rewardHeart: 
-    clearCriterion: 
+    rewardHeart: 0
+    clearCriterion: 30
   - Title: "\uB538\uAE30 \uC218\uD655"
     rewardMedal: 0
-    rewardHeart: 
-    clearCriterion: 
+    rewardHeart: 0
+    clearCriterion: 30
   - Title: "\uB204\uC801 \uCF54\uC778"
     rewardMedal: 0
-    rewardHeart: 
-    clearCriterion: 
+    rewardHeart: 0
+    clearCriterion: 30
   - Title: "\uB204\uC801 \uD558\uD2B8"
     rewardMedal: 0
-    rewardHeart: 
-    clearCriterion: 
+    rewardHeart: 0
+    clearCriterion: 30
   - Title: "\uB204\uC801 \uCD9C\uC11D"
     rewardMedal: 0
-    rewardHeart: 
-    clearCriterion: 
+    rewardHeart: 0
+    clearCriterion: 30
   - Title: "\uBBF8\uB2C8\uAC8C\uC784 \uD50C\uB808\uC774"
     rewardMedal: 0
-    rewardHeart: 
-    clearCriterion: 
+    rewardHeart: 0
+    clearCriterion: 30
   levelText: {fileID: 24569728808626950}
   titleText: {fileID: 527783996456215474}
   achieveCondition: {fileID: 527783997037598283}

@@ -94,7 +94,7 @@ public class DataController : MonoBehaviour
         gameData.accCoin = 50000;
         gameData.accHeart = 50;
         gameData.accAttendance = 0;
-        gameData.mgPlayCnt = 0;
+        gameData.mgPlayCnt = 40;
 
         // 딸기 성장 시간
 
