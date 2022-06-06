@@ -47,6 +47,7 @@ public class GameData
 
     //새로운 딸기 개발
     public int newBerryBtnState;//딸기 개발 버튼 상태
+    public int newBerryIndex;
     public int newBerryTime;//딸기 개발 시간
 
     //베리 개발 가능 구역
@@ -59,7 +60,6 @@ public class GameData
     //도전과제
     public int[] challengeLevel = new int[7];//현재 달성 수치
 
-
     //뉴스
     public int[] newsState = new int[7];//0=Lock, 1=Unlock Able 2=Unlock
 
@@ -71,7 +71,7 @@ public class GameData
     public int PTJCount;
     public int[] PTJSelectNum =new int[2];//지금 선택된 (prefabNum , 슬라이더 넘버)
 
-    //느낌표 ! 이거 없앨ㄴ수있음
+    //느낌표 ! 이거 없앨ㄴ수있음?
     public bool[] isBerryEM = new bool[192];
     public bool[] isNewsEM = new bool[7];
     //=====================================================================================

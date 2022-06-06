@@ -153,6 +153,7 @@ public class DataController : MonoBehaviour
         gameData.newBerryResearchAble = 0;
         gameData.newBerryBtnState = 0;
         gameData.newBerryTime = 0;
+        gameData.newBerryIndex = 0;
 
         //가게관련변수
         gameData.isStoreOpend = false;
