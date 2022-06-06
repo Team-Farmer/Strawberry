@@ -55,35 +55,34 @@ public class HeartMover : MonoBehaviour
         }
     }
 
-    public void BadgeMover(float j, float k, float range)
+    public void BadgeMover(float range)
     {
-        Vector2 vec2 = new Vector2(j, k);
-        int randCount = 1;//Random.Range(5, 10);
+        int randCount = 1;
         for (int i = 0; i < randCount; ++i)
         {
             var itemFx = GameObject.Instantiate<HeartAcquireFx>(prefab, this.transform);
-            itemFx.Explosion2(vec2, range);
+            itemFx.Explosion2(Day.transform.position, range);
         }
     }
 
-    public void HeartChMover(float j, float k, float range)
+    public void HeartChMover(float range)
     {
-        Vector2 vec2 = new Vector2(j, k);
-        int randCount = 5;//Random.Range(5, 10);
+        int randCount = 5;
         for (int i = 0; i < randCount; ++i)
         {
             var itemFx = GameObject.Instantiate<HeartAcquireFx>(prefab, this.transform);
-            itemFx.Explosion2(vec2, range);
+            itemFx.Explosion2(Day.transform.position, range);
         }
     }
 
-    public void CollMover(int i)
+
+/*    public void CollMover(int i)
     {
         if (i == 0)
             HeartChMover(0.3467f, -0.043f, 0.2f);
         else
             BadgeMover(0.3467f, -0.043f, 0.2f);
-    }
+    }*/
 
     public void CountCoin(float dis)
     {

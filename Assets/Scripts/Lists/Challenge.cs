@@ -55,6 +55,10 @@ public class Challenge : MonoBehaviour
     public GameObject confirmPanel;
     public GameObject BP;
 
+    [Header("==========Animation==========")]
+    public GameObject heartMover;
+    public GameObject medalMover;
+
 
     static int Prefabcount = 0; //추가 된 Prefab 수
     int prefabnum; //자신이 몇번째 Prefab인지
@@ -238,6 +242,8 @@ public class Challenge : MonoBehaviour
         if (ChallengeValue[prefabnum] / Info[prefabnum].clearCriterion[level] == level + 1 || realLevel > level)
         {
             AudioManager.instance.RewardAudioPlay();
+            heartMover.GetComponent<HeartMover>().HeartChMover(120);
+            medalMover.GetComponent<HeartMover>().BadgeMover(120);
             GameManager.instance.GetMedal(Info[prefabnum].rewardMedal); //메달 보상 획득
             GameManager.instance.GetHeart(Info[prefabnum].rewardHeart); //하트 보상 획득
 

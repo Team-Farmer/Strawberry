@@ -21,6 +21,7 @@ public class HeartAcquireFx : MonoBehaviour
 
     public void Explosion2(Vector2 from, float explo_range)
     {
+        //rect.position = from;
         Sequence sequence = DOTween.Sequence();
         sequence.Append(rect.DOAnchorPos(from + Random.insideUnitCircle * explo_range, 0.25f).SetEase(Ease.OutCubic));
         sequence.Append(rect.DOAnchorPos(from, 0.5f).SetEase(Ease.InCubic));
