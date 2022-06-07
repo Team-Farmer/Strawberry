@@ -422,7 +422,6 @@ public class GameManager : MonoBehaviour
     {
         StartCoroutine(CountAnimation(cost,"+",0));
         DataController.instance.gameData.coin += cost; // 현재 코인 +
-
         DataController.instance.gameData.accCoin += cost; // 누적 코인 +
     }
 
@@ -445,11 +444,8 @@ public class GameManager : MonoBehaviour
 
     public void GetHeart(int cost) // 하트 획득 함수
     {
-        int current, acc;
-        current = DataController.instance.gameData.heart;
+        StartCoroutine(CountAnimation(cost, "+", 1));
         DataController.instance.gameData.heart += cost; // 현재 하트 +
-        acc = DataController.instance.gameData.heart;
-        StartCoroutine(CountAnimation(cost,"+",1));
         DataController.instance.gameData.accHeart += cost; // 누적 하트 +
     }
 
@@ -778,7 +774,8 @@ public class GameManager : MonoBehaviour
                 }
                 else
                 {
-                    noCoinPanel.GetComponent<PanelAnimation>().OpenScale();
+                    //noCoinPanel.GetComponent<PanelAnimation>().OpenScale(); //UseCoin 안에 돈 부족 시 경고 패널 있음
+                    UseCoin(price_newBerry);
                 }
                 break;
             case "ing":
@@ -813,7 +810,10 @@ public class GameManager : MonoBehaviour
                 UseHeart(10);
             }
             else 
-            { noHeartPanel.GetComponent<PanelAnimation>().OpenScale(); }
+            {
+                UseHeart(10); //Use Heart 안에 하트 부족 시 경고 패널 있음
+                //noHeartPanel.GetComponent<PanelAnimation>().OpenScale(); 
+            }
         }
         //창 끄기
         TimeReduceBlackPanel_newBerry.SetActive(false);

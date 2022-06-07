@@ -308,7 +308,7 @@ public class PTJ : MonoBehaviour
             SliderNum.transform.GetComponent<Text>().text = "10회";
             //가격
             price.GetComponent<Text>().text = (10 * Info[prefabnum].Price).ToString(); //도와주세요
-            
+
         }
         //1단위
         else
