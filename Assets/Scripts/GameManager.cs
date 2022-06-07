@@ -47,14 +47,8 @@ public class GameManager : MonoBehaviour
     [Header("[ PartTime/Search/Berry List ]")]
     //PTJ 알바
     public GameObject workingCountText;//고용 중인 동물 수
-    public GameObject[] working;//고용 중인 동물 리스트 상단에
-    [NonSerialized]
-    public List<int> workingID = new List<int>();//지금 일하고 있는 알바생 Id
     public GameObject PTJList;
 
-
-
-    static List<Sprite> workingList = new List<Sprite>();
     [Header("==========PTJ Warning Panel===========")]
     public GameObject warningBlackPanel;
     public GameObject HireYNPanel;
@@ -193,8 +187,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         //PTJ
-        workinCountApply();
-        workingCountText.GetComponent<Text>().text = DataController.instance.gameData.PTJCount.ToString();
+        workingCountText.GetComponent<Text>().text = DataController.instance.gameData.PTJCount.ToString();//알바중인 인원수
 
 
         //NEW BERRY 개발
@@ -533,28 +526,6 @@ public class GameManager : MonoBehaviour
     #region 리스트
 
     #region PTJ
-    
-    public void workinCountApply()
-    {
-
-        //지금 알바중인 알바생들의 남은 고용횟수
-        //엉망진창?
-        for (int i = 0; i < 3; i++)
-        {
-            try
-            {
-                if (working[i].activeSelf == true)
-                {
-                    working[i].transform.GetChild(1).transform.GetComponent<Text>().text
-                        = DataController.instance.gameData.PTJNum[workingID[i]].ToString();
-                    if (DataController.instance.gameData.PTJNum[workingID[i]] == 0)
-                    { working[i].SetActive(false); }
-                }
-            }
-            catch { }
-        }
-    }
-
 
     //고용 버튼 클릭시
     public void PTJEmployButtonClick(int prefabNum) {

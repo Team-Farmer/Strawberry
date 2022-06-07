@@ -142,16 +142,12 @@ public class PTJ : MonoBehaviour
             //변경된 값이 0(즉 알바를 끝냈다면)이면 아래를 실행
             if (PTJ_NUM_NOW == 0)
             {
-                Debug.Log(prefabnum + "번 째 알바생 일 종료");
-                DataController.instance.gameData.PTJCount--;
-
                 InitSlider();
             }
             else 
             {
                 HireNowLock.transform.GetChild(0).transform.GetComponent<Text>().text
                 = "남은 고용 횟수: " + DataController.instance.gameData.PTJNum[prefabnum].ToString() + "회";
-
             }
         }
         get { return PTJ_NUM_NOW; }

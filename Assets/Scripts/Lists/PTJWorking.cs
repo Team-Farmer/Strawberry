@@ -49,7 +49,7 @@ public class PTJWorking : MonoBehaviour
             {
                 face.SetActive(false);
                 employCount.SetActive(false);
-
+                DataController.instance.gameData.PTJCount--;
                 gameObject.transform.SetAsLastSibling();
             }
             //알바 하는중
