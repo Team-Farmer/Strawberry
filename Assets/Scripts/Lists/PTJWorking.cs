@@ -6,11 +6,13 @@ using UnityEngine.UI;
 
 public class PTJWorking : MonoBehaviour
 {
-
+    //========알바생 정보==========
     public Sprite[] FacePicture;
     public GameObject face;
     public GameObject employCount;
 
+    //
+    public bool isPrefab;
 
     //==========Prefab별로 숫자 부여==========
     static int Prefabcount = 0;

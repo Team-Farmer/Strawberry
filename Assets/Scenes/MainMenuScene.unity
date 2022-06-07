@@ -10684,10 +10684,6 @@ MonoBehaviour:
   truckCoinBonusText: {fileID: 869209127}
   bonusTruckCoin: 0
   workingCountText: {fileID: 922995694}
-  working:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   PTJList: {fileID: 642284036}
   warningBlackPanel: {fileID: 638678300}
   HireYNPanel: {fileID: 1436066614}
