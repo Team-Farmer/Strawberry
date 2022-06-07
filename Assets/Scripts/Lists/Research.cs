@@ -113,6 +113,7 @@ public class Research : MonoBehaviour
     //연구 레벨
     public void clickCoin_Research() {
         AudioManager.instance.Cute1AudioPlay();
+        Debug.Log("prefabnum: " + prefabnum);
         if (DataController.instance.gameData.researchLevel[prefabnum] < 25)//레벨 25로 한계두기
         {
             //해당 금액이 지금 가진 코인보다 적으면
@@ -130,7 +131,7 @@ public class Research : MonoBehaviour
                     case "부르는 게 값": break;
                     case "도와줘요 세스코": DecreaseBugGenerateProb(); break;
                     case "잡초 바이바이": DecreaseWeedGenerateProb(); break;
-                    case "시원한 소나기": IncreaseRainDuration(); break;
+                    case "시원한 소나기": AccessRainDuration(); break;
                 }
 
                 if (DataController.instance.gameData.researchLevel[prefabnum] == 25)
@@ -206,14 +207,26 @@ public class Research : MonoBehaviour
         float researchCoeffi = (DataController.instance.gameData.researchLevel[4]) * Globalvariable.instance.getEffi();
         DataController.instance.gameData.weedProb = Globalvariable.WEED_PROB * (1 - researchCoeffi);
     }
+    public void AccessRainDuration()
+    {
+        var main = rainParticle.main;
+
+        if (rainParticle.isPlaying)
+        {
+            Invoke("IncreaseRainDuration", rainParticle.main.duration + 1.0f);
+        }
+        else
+        {
+            IncreaseRainDuration();
+        }  
+    }
     public void IncreaseRainDuration()
     {
         float researchCoeffi = (DataController.instance.gameData.researchLevel[5]) * Globalvariable.instance.getEffi();
+
         var main = rainParticle.main;
         main.duration = Globalvariable.RAIN_DURATION * (1 + researchCoeffi);
+
         DataController.instance.gameData.rainDuration = Globalvariable.RAIN_DURATION * (1 + researchCoeffi);
     }
-    
-
-
 }
