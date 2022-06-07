@@ -92,7 +92,7 @@ public class Stem : MonoBehaviour
             && DataController.instance.gameData.berryFieldData[stemIdx].createTime < DataController.instance.gameData.stemLevel[2])
         {
             if (animlevel == 1) return;
-            transform.localPosition = new Vector3(0, 0.5f, 0);
+            transform.localPosition = new Vector3(0, 0.45f, 0);
             SetAnim(1);
         }
         else if (DataController.instance.gameData.stemLevel[2] <= DataController.instance.gameData.berryFieldData[stemIdx].createTime 
@@ -106,7 +106,7 @@ public class Stem : MonoBehaviour
             && DataController.instance.gameData.berryFieldData[stemIdx].createTime < DataController.instance.gameData.stemLevel[4])
         {
             if (animlevel == 3) return;
-            transform.localPosition = new Vector3(0, 0.47f, 0);
+            transform.localPosition = new Vector3(0, 0.45f, 0);
             SetAnim(3);
         }
         else if (DataController.instance.gameData.berryFieldData[stemIdx].createTime >= DataController.instance.gameData.stemLevel[4])
@@ -114,7 +114,7 @@ public class Stem : MonoBehaviour
             DataController.instance.gameData.berryFieldData[stemIdx].canGrow = false;
             if(!GameManager.instance.isBlackPanelOn)
                 GameManager.instance.farmList[stemIdx].GetComponent<BoxCollider2D>().enabled = true; // 밭의 콜라이더 다시 활성화
-            transform.localPosition = new Vector3(0, 0.47f, 0);
+            transform.localPosition = new Vector3(0, 0.45f, 0);
             SetAnim(4);
         }
     }
