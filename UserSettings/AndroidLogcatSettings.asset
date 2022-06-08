@@ -1,30 +1,18 @@
 {
-    "m_SelectedDeviceId": "R3CNC07DVPN",
+    "m_SelectedDeviceId": "52003dbfc0875583",
     "m_SelectedPackage": {
-        "deviceId": "R3CNC07DVPN",
+        "deviceId": "52003dbfc0875583",
         "name": "com.teamfarmer.strawberryfarm",
-        "processId": 1951,
+        "processId": 27720,
         "exited": false
     },
     "m_SelectedPriority": 0,
     "m_KnownPackagesForSerialization": [
         {
             "deviceId": "52003dbfc0875583",
-            "name": "com.teamfarmer.strawberryfarm",
-            "processId": 28769,
-            "exited": true
-        },
-        {
-            "deviceId": "52003dbfc0875583",
-            "name": "com.teamfarmer.strawberryfarm",
-            "processId": 4544,
-            "exited": true
-        },
-        {
-            "deviceId": "52003dbfc0875583",
             "name": "com.google.android.gms.ui",
             "processId": 18319,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "52003dbfc0875583",
@@ -48,6 +36,12 @@
             "deviceId": "52003dbfc0875583",
             "name": "com.teamfarmer.strawberryfarm",
             "processId": 27477,
+            "exited": true
+        },
+        {
+            "deviceId": "52003dbfc0875583",
+            "name": "com.teamfarmer.strawberryfarm",
+            "processId": 27720,
             "exited": false
         },
         {

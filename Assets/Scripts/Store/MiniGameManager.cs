@@ -5,12 +5,6 @@ using UnityEngine.UI;
 
 public class MiniGameManager : MonoBehaviour
 {
-    //public Text daram_txt;
-    //public Text gameInfo_txt;
-    //public string[] daramScript;
-    //public string[] gameInfoScript;
-
-    //public Button open_yes_btn;
     public GameObject Store;
     public Sprite[] StoreSprite;
     public GameObject popup;
@@ -29,16 +23,16 @@ public class MiniGameManager : MonoBehaviour
             inside.SetActive(true);
         else
         {
-            Debug.Log(DataController.instance.gameData.isStoreOpend);
-            //해금조건 - 연구레벨 15이상, 700A 소모 가능상태
-            if (DataController.instance.gameData.coin >= 700 && ResearchLevelCheck(15))
-            {
-                UnlockBtn.interactable = true;
-            }
-            else
-            {
-                UnlockBtn.interactable = false;
-            }
+            //Debug.Log(DataController.instance.gameData.isStoreOpend);
+            ////해금조건 - 연구레벨 15이상, 700A 소모 가능상태
+            //if (DataController.instance.gameData.coin >= 700 && ResearchLevelCheck(15))
+            //{
+            //    UnlockBtn.interactable = true;
+            //}
+            //else
+            //{
+            //    UnlockBtn.interactable = false;
+            //}
         }
     }
 
