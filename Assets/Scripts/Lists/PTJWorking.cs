@@ -11,8 +11,6 @@ public class PTJWorking : MonoBehaviour
     public GameObject face;
     public GameObject employCount;
 
-    //
-    public bool isPrefab;
 
     //==========Prefab별로 숫자 부여==========
     static int Prefabcount = 0;
@@ -20,6 +18,7 @@ public class PTJWorking : MonoBehaviour
     //==========고용 횟수==========
     private int PTJ_NUM_NOW;
 
+    private bool isOnetime;//첫번째에만 scrollView맨 앞으로 이동하게 한다.
    
     void Start()
     {
@@ -29,6 +28,8 @@ public class PTJWorking : MonoBehaviour
 
         //얼굴 이미지 적용
         face.GetComponent<Image>().sprite = FacePicture[prefabnum];
+
+        isOnetime = true;
     }
 
 
@@ -52,6 +53,7 @@ public class PTJWorking : MonoBehaviour
                 face.SetActive(false);
                 employCount.SetActive(false);
                 DataController.instance.gameData.PTJCount--;
+                isOnetime = true;
                 gameObject.transform.SetAsLastSibling();
             }
             //알바 하는중
@@ -60,7 +62,9 @@ public class PTJWorking : MonoBehaviour
                 face.SetActive(true);
                 employCount.SetActive(true);
 
-                gameObject.transform.SetAsFirstSibling();
+                if (isOnetime==true) 
+                { gameObject.transform.SetAsFirstSibling(); isOnetime = false; }
+
                 employCount.GetComponent<Text>().text = DataController.instance.gameData.PTJNum[prefabnum].ToString();
             }
 
