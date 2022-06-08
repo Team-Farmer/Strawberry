@@ -891,7 +891,9 @@ public class GameManager : MonoBehaviour
     {
         if (isNewBerryAble())
         {
-            newBerryIndex2=selectBerry();
+            do { newBerryIndex2 = selectBerry(); }
+            while (newBerryIndex2 == DataController.instance.gameData.newBerryIndex);
+
             //새딸기 개발이랑 뉴스 해금 동시에 했는데 같은 딸기 얻으려고 하면 문제생길수도 있다고 생각
             
             //새로운 딸기가 추가된다.
@@ -950,7 +952,6 @@ public class GameManager : MonoBehaviour
 
     public void NewsUnlock() 
     {
-
         News.instance.NewsUnlock(NewsPrefabNum);
     }
 

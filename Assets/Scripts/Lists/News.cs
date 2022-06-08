@@ -150,24 +150,23 @@ public class News : MonoBehaviour
 
 
 
-            //딸기 획득??
             int RandomNum = UnityEngine.Random.Range(1, 101);
-            //if (RandomNum <= Info[ID].Price * 10) //price*10%확률로
-            //{
+            if (RandomNum <= Info[ID].Price * 10) //price*10%확률로 보너스 딸기 획득
+            {
                 //딸기 획득
                 WarningPanelBlack.SetActive(true);
                 ConfirmPanel.GetComponent<PanelAnimation>().ScriptTxt.text = "뉴스와 보너스 딸기가 해금되었어요!";
                 ConfirmPanel.GetComponent<PanelAnimation>().OpenScale();
                 GameManager.instance.newsBerry();
-            //}
-            
+            }
+            else //뉴스만 해금
+            {
+                //안내창
+                WarningPanelBlack.SetActive(true);
+                ConfirmPanel.GetComponent<PanelAnimation>().ScriptTxt.text = "뉴스가 해금되었어요!";
+                ConfirmPanel.GetComponent<PanelAnimation>().OpenScale();
+            }
 
-            //안내창
-            /*
-            WarningPanelBlack.SetActive(true);
-            ConfirmPanel.GetComponent<PanelAnimation>().ScriptTxt.text = "뉴스가 해금되었어요!";
-            ConfirmPanel.GetComponent<PanelAnimation>().OpenScale();
-            */
             YNPanel.SetActive(false);
         }
         else
