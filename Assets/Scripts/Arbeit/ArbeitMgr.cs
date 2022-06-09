@@ -50,7 +50,7 @@ public class ArbeitMgr : MonoBehaviour
                 !DataController.instance.gameData.berryFieldData[i].hasBug &&
                 DataController.instance.gameData.PTJNum[1] > 0)
             {
-
+                DataController.instance.gameData.PTJNum[1]--;
                 StartCoroutine(HarvestbyThomson(i));
                 //Debug.Log("Åè½¼ ³²Àº È½¼ö: " + DataController.instance.gameData.PTJNum[1]);
                 break;
@@ -61,8 +61,7 @@ public class ArbeitMgr : MonoBehaviour
     {
         yield return new WaitForSeconds(0.25f);
 
-        GameManager.instance.Harvest(GameManager.instance.stemList[idx]); // ¼öÈ®ÇÑ´Ù
-        DataController.instance.gameData.PTJNum[1]--;
+        GameManager.instance.Harvest(GameManager.instance.stemList[idx]); // ¼öÈ®ÇÑ´Ù    
     }  
     void Hamsworth()//ÇÜ½ºÅÍ 2
     {
@@ -108,23 +107,23 @@ public class ArbeitMgr : MonoBehaviour
         farm.weed.DeleteWeed();
         //obj.GetComponent<BoxCollider2D>().enabled = false;
     }
-    public float Pigma() // µÅÁö 4
+    public float Pigma() // µÅÁö 5
     {
-        if (DataController.instance.gameData.PTJNum[4] > 0)
+        if (DataController.instance.gameData.PTJNum[5] > 0)
         {
             float coEffi = Random.Range(0.7f, 1.8f);
-            DataController.instance.gameData.PTJNum[4]--;
+            DataController.instance.gameData.PTJNum[5]--;
 
             Debug.Log(coEffi);
             return coEffi;
         }
         else return 1.0f;
     }
-    public int lluvia() // °í¾çÀÌ 5
+    public int lluvia() // °í¾çÀÌ 4
     {
-        if (DataController.instance.gameData.PTJNum[5] > 0)
+        if (DataController.instance.gameData.PTJNum[4] > 0)
         {
-            DataController.instance.gameData.PTJNum[5]--;           
+            DataController.instance.gameData.PTJNum[4]--;           
             return 3;
         }
         else
