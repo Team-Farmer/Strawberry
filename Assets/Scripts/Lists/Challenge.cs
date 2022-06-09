@@ -13,15 +13,14 @@ public class Challenge : MonoBehaviour
         public int rewardMedal; //메달 보상
         public int rewardHeart; //하트 보상
         public int[] clearCriterion;  //달성 조건
-        public int accClearCriterion;
 
-        public ChallengeNewsStruct(string Title, int rewardMedal, int rewardHeart,int[] clearCriterion,int accClearCriterion)
+        public ChallengeNewsStruct(string Title, int rewardMedal, int rewardHeart,int[] clearCriterion)
         {
             this.Title = Title;
             this.rewardMedal = rewardMedal;
             this.rewardHeart = rewardHeart;
             this.clearCriterion = clearCriterion;
-            this.accClearCriterion = accClearCriterion;
+
         }
     }
     [Header("==========INFO STRUCT==========")]
@@ -66,13 +65,11 @@ public class Challenge : MonoBehaviour
 
 
     //==========도전과제 값==========
-    private int LevelReal;//이 레벨에 가야지 보상을 다 받은거다.
     private int LevelNow;//현재 이 레벨에 있다.
 
     private int[] ChallengeValue = new int[6];//누적된 수
 
     private int ValueNow;//이번 레벨에서의 수(0부터 갱신된)
-    private int ValueReal;
 
     //=======================================================================================================================
     //=======================================================================================================================
@@ -104,27 +101,10 @@ public class Challenge : MonoBehaviour
         ChallengeValue[5] = DataController.instance.gameData.mgPlayCnt;
 
         LevelNow= DataController.instance.gameData.challengeLevel[prefabnum];//이거는 없앨 수있음
+        ValueNow = ChallengeValue[prefabnum];
 
-
-        Info[prefabnum].accClearCriterion = 0;
-        for (int i = 0; i < 100; i++)
-        {
-            if (ChallengeValue[prefabnum] > Info[prefabnum].clearCriterion[i])
-            {
-                //Debug.Log(prefabnum+" / valueReal=" + ChallengeValue[prefabnum] + "clear criterion=" + Info[prefabnum].clearCriterion[i]);
-                //acc Clear Criterion정보 획득
-                Info[prefabnum].accClearCriterion += Info[prefabnum].clearCriterion[i];
-                LevelReal = i + 1;//Level Real정보 획득
-            }
-            else { break; }
-        }
-       
-        ValueNow = ChallengeValue[prefabnum] - Info[prefabnum].accClearCriterion;
-        
         InfoUpdate();
-        Debug.Log("[" + prefabnum + "]----" + "real Level=" + LevelReal + " now Level=" + LevelNow+
-            "\n acc="+ Info[prefabnum].accClearCriterion+
-            "\n now value="+ValueNow+" real value="+ValueReal);
+
     }
 
     //==================================================================================================================
@@ -211,8 +191,7 @@ public class Challenge : MonoBehaviour
         achieveCondition.GetComponent<Text>().text = "/" + Info[prefabnum].clearCriterion[LevelNow].ToString();//도전과제 게이지 달성 조건 숫자
 
         //게이지===============
-        if (LevelReal > LevelNow || ValueNow == Info[prefabnum].clearCriterion[LevelNow])
-            //아직 보상 다 못받음  ||  도전과제 달성
+        if (ValueNow >= Info[prefabnum].clearCriterion[LevelNow])
         {
             //도전과제 게이지 == 가득 찬 상태로
             Gauge.GetComponent<Image>().fillAmount = 1;
@@ -223,7 +202,7 @@ public class Challenge : MonoBehaviour
 
 
         }
-        else //보상 최대한 다 받음
+        else
         {
             //도전과제 게이지 == ValueNow 만큼 증가
             Gauge.GetComponent<Image>().fillAmount = (float)(ValueNow) / Info[prefabnum].clearCriterion[LevelNow];
@@ -270,8 +249,7 @@ public class Challenge : MonoBehaviour
     {
 
         //도전과제 달성했는지 확인
-        if (LevelReal > LevelNow || ValueNow == Info[prefabnum].clearCriterion[LevelNow])
-            //아직 보상 다 못받음  ||  도전과제 달성
+        if (ValueNow >= Info[prefabnum].clearCriterion[LevelNow])
         {
             //효과음, 효과 애니메이션
             AudioManager.instance.RewardAudioPlay();
@@ -282,13 +260,34 @@ public class Challenge : MonoBehaviour
             GameManager.instance.GetMedal(Info[prefabnum].rewardMedal); //메달 보상 획득
             GameManager.instance.GetHeart(Info[prefabnum].rewardHeart); //하트 보상 획득
 
-
             //다음 레벨로 이동
             if (LevelNow < 100)
             {
-                if (LevelReal == LevelNow) { LevelReal++; }//지금 보상 최대로 받은 상태이면 두 레벨 같이 상승
+                switch (prefabnum) 
+                {
+                    case 0:
+                        DataController.instance.gameData.unlockBerryCnt-= Info[prefabnum].clearCriterion[LevelNow];
+                        break;
+                    case 1:
+                        DataController.instance.gameData.totalHarvBerryCnt -= Info[prefabnum].clearCriterion[LevelNow];
+                        break;
+                    case 2:
+                        DataController.instance.gameData.accCoin -= Info[prefabnum].clearCriterion[LevelNow];
+                        break;
+                    case 3:
+                        DataController.instance.gameData.accHeart -= Info[prefabnum].clearCriterion[LevelNow];
+                        break;
+                    case 4:
+                        DataController.instance.gameData.accAttendance -= Info[prefabnum].clearCriterion[LevelNow];
+                        break;
+                    case 5:
+                        DataController.instance.gameData.mgPlayCnt -= Info[prefabnum].clearCriterion[LevelNow];
+                        break;
+                }
+
                 Button.GetComponent<Image>().sprite = IngButton; //도전과제 버튼 이미지 변경
                 DataController.instance.gameData.challengeLevel[prefabnum]++; //LevelNow증가 == 레벨증가
+
             }
         }
     }
