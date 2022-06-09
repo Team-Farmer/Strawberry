@@ -14,7 +14,7 @@ public class Research : MonoBehaviour
         public Sprite Picture;//사진
         public string Explanation;//설명
         public int Price;//가격
-        public int[] Prices = new int[25];//가격
+        public int[] Prices = new int[26];//가격
 
         public ResearchStruct(string Name, string Explanation, int Price, int[] Prices, Sprite Picture)
         {
@@ -76,9 +76,9 @@ public class Research : MonoBehaviour
         { Prefabcount -= 6; }
         prefabnum = Prefabcount;
 
-        Info[Prefabcount].Prices = new int[25];
+        Info[Prefabcount].Prices = new int[26];
 
-        for (int i=0; i<25; i++)
+        for (int i=0; i<26; i++)
         {
             Info[prefabnum].Prices[i] = 100 * (i+1);
         }
@@ -150,7 +150,6 @@ public class Research : MonoBehaviour
                 //재화 부족 경고 패널 등장
                 AudioManager.instance.Cute4AudioPlay();
                 GameManager.instance.UseCoin(Info[prefabnum].Prices[DataController.instance.gameData.researchLevel[prefabnum]]);
-                //UseCoin 안에 재화 부족 패널 있음
 
             }
         }
@@ -180,6 +179,11 @@ public class Research : MonoBehaviour
                     = Convert.ToInt32((globalVar.UNIQUE_FIRST + (i - 128) * 7) * (1 + researchCoeffi));
         }
     }
+
+
+    //=============================================================================================================================
+    //=============================================================================================================================
+    //연구 기능 구현
     public void DecreaseBerryGrowTime()
     {
         
