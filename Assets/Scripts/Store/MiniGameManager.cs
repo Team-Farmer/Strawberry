@@ -10,6 +10,7 @@ public class MiniGameManager : MonoBehaviour
     public GameObject popup;
     public GameObject inside;
     public Button UnlockBtn;
+    public Text infoText;
 
     void Awake()
     {
@@ -51,5 +52,16 @@ public class MiniGameManager : MonoBehaviour
             { return false; }
         }
         return true;
+    }
+
+    public void SetInfo(int btnIdx)
+    {
+        switch(btnIdx)
+        {
+            case 1:
+                infoText.text = "딸기 창고가 정전이 되었어요! 빨리 딸기들을 분류해서 팔아야 하는데... 안은 깜깜하고 어둑어둑한 바깥은 비까지 내려요. 하지만 우리는 하루 이틀 딸기를 수확한 게 아니죠! 어둠 속에서 최대한 많은 딸기들을 분류해 봐요!";
+                break;
+
+        }
     }
 }
