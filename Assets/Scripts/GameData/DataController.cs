@@ -89,7 +89,7 @@ public class DataController : MonoBehaviour
         gameData.heart = 50;
         gameData.medal = 0;
         // 누적 변수
-        gameData.unlockBerryCnt = 1;
+        gameData.unlockBerryCnt = 4;
         gameData.totalHarvBerryCnt = 0;
         gameData.accCoin = 50000;
         gameData.accHeart = 50;
