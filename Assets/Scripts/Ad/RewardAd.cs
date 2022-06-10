@@ -11,11 +11,6 @@ public class RewardAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListe
     //[SerializeField] string iOSUnitId = "Rewarded_iOS";
     string adUnitId = null; //This will remain null for unsupported platforms
 
-    void Awake()
-    {
-        showAdButton.onClick.AddListener(ShowAd);
-    }
-
     void Start()
     {
 #if UNITY_IOS
@@ -53,12 +48,20 @@ public class RewardAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListe
         showAdButton.interactable = false;
         Advertisement.Show(adUnitId,this);
 
-        //임시조치 : UnityAds 4.0문제 - 콜백동작x 나쁜넘들 ..........다 확인하고 버전을 올리던가ㅠ
+        //임시조치 : UnityAds 4.0문제
+        //다음에 고치도록 하겠습니당 220610
         showAdButton.interactable = true;
-        GameManager.instance.GetCoin(DataController.instance.gameData.truckCoin * 3);
-        Debug.Log("코인획득");
+
+        ArbeitMgr arbeit = GameObject.FindGameObjectWithTag("Arbeit").GetComponent<ArbeitMgr>();
+        float coEffi = arbeit.Pigma();
+        float totalCoin = (DataController.instance.gameData.truckCoin
+            + GameManager.instance.bonusTruckCoin) * coEffi*3;
+        GameManager.instance.GetCoin((int)totalCoin);
+
+        Debug.Log("코인 3배 획득");
         DataController.instance.gameData.truckBerryCnt = 0;
         DataController.instance.gameData.truckCoin = 0;
+
         StartCoroutine(LoadAd());//광고로드
     }
 
