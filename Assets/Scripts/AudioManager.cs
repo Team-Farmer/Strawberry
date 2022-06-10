@@ -200,7 +200,7 @@ public class AudioManager : MonoBehaviour
         {
             bgSound.outputAudioMixerGroup = mixer.FindMatchingGroups("BGSound")[0];
             bgSound.clip = clip;
-            bgSound.loop = false;
+            bgSound.loop = true;
             bgSound.volume = 0.2f;
             bgSound.Play();
         }
