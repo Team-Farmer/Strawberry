@@ -146,7 +146,7 @@ public class Stem : MonoBehaviour
         else if (animlevel == 4)
         {
             instantBerryObj.gameObject.SetActive(true);
-            instantBerryObj.GetComponent<SpriteRenderer>().sprite = global.berryListAll[DataController.instance.gameData.berryFieldData[stemIdx].berryPrefabNowIdx].GetComponent<SpriteRenderer>().sprite;
+            //instantBerryObj.GetComponent<SpriteRenderer>().sprite = global.berryListAll[DataController.instance.gameData.berryFieldData[stemIdx].berryPrefabNowIdx].GetComponent<SpriteRenderer>().sprite;
             instantBerryObj.GetComponent<Animator>().SetInteger("berryLevel", level);
             instantBerryObj.transform.localPosition = new Vector2(0.32f, -0.08f);
         }

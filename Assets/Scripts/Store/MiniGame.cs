@@ -16,6 +16,7 @@ public class MiniGame : MonoBehaviour
     protected float size;                         //스크롤바 사이즈
     protected int time;                           //초
     protected int score;                          //점수
+    protected bool isGameRunning = false;           //게임이 실행 중인지
     protected List<int> unlockList=new List<int>(); //해금된 딸기 번호 리스트
 
     protected Globalvariable global;
