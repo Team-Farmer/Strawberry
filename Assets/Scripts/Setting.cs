@@ -21,7 +21,8 @@ public class Setting : MonoBehaviour
     void Start()
     {
         SetCloudSave();
-        GPGSManager.instance.OnSaveSucceed += SetCloudSave;
+        //로그인 되어야 클라우드 세이브 가능해서 주석해놓겠습니다
+        //GPGSManager.instance.OnSaveSucceed += SetCloudSave;
     }
 
     public void SetCloudSave()

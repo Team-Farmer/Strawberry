@@ -34,8 +34,8 @@ public class GPGSManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        //초기화
-        if (Application.platform==RuntimePlatform.Android) Init();
+        //초기화 로그인 기능 꺼놓을게욘
+        //if (Application.platform==RuntimePlatform.Android) Init();
     }
 
     void Init()
