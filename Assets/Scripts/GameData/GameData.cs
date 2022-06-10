@@ -30,7 +30,7 @@ public class GameData
     public float weedProb = 20f; 
 
     //잡초 생성 주기
-    public float weedPeriod = 15f;
+    public float weedPeriod = 30f;
 
     // 비의 지속 시간
     public float rainDuration = 5.0f;

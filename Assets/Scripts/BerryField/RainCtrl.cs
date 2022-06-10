@@ -10,7 +10,7 @@ public class RainCtrl : MonoBehaviour
 
     private ParticleSystem rainParticle;
     private ArbeitMgr arbeit;
-    public float rainPeriod;
+    private float rainPeriod = 240f;
     public int mult = 1;
     public float rainTime;
     private bool isRaining;
