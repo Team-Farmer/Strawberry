@@ -764,7 +764,7 @@ public class GameManager : MonoBehaviour
             {
                 //시간을 10분 줄여준다.
                 if (DataController.instance.gameData.newBerryTime < 10 * 60) 
-                { DataController.instance.gameData.newBerryTime = 1; }
+                { DataController.instance.gameData.newBerryTime = 0; }
                 else 
                 { DataController.instance.gameData.newBerryTime -= 10 * 60; }
                 
@@ -793,8 +793,14 @@ public class GameManager : MonoBehaviour
             DataController.instance.gameData.newBerryTime--;
 
             //감소하는 시간 보이기
-            timeText_newBerry.GetComponent<Text>().text
-                = TimeForm(Mathf.CeilToInt(DataController.instance.gameData.newBerryTime));
+            if (DataController.instance.gameData.newBerryTime <= 0) 
+            { timeText_newBerry.GetComponent<Text>().text = TimeForm(Mathf.CeilToInt(0)); }
+            else 
+            {
+                timeText_newBerry.GetComponent<Text>().text
+             = TimeForm(Mathf.CeilToInt(DataController.instance.gameData.newBerryTime));
+            }
+            
 
             //타이머 끝나면
             if (DataController.instance.gameData.newBerryTime < 0.1f)

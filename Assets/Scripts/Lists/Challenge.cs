@@ -81,13 +81,8 @@ public class Challenge : MonoBehaviour
         //프리팹들에게 고유 번호 붙이기
         prefabnum = Prefabcount;
         Prefabcount++;
-
-        
+ 
         InfoInit();
-
-
-        
-
     }
 
     private void Update()
@@ -101,6 +96,7 @@ public class Challenge : MonoBehaviour
         ChallengeValue[5] = DataController.instance.gameData.mgPlayCnt;
 
         LevelNow= DataController.instance.gameData.challengeLevel[prefabnum];//이거는 없앨 수있음
+        Info[prefabnum].rewardHeart = DataController.instance.gameData.challengeLevel[prefabnum] * 5;//레벨X5 하트//이거는 없앨 수있음
         ValueNow = ChallengeValue[prefabnum];
 
         InfoUpdate();
@@ -182,9 +178,11 @@ public class Challenge : MonoBehaviour
     }
 
 
-    public void InfoUpdate() {
 
-        
+
+
+
+    public void InfoUpdate() {
 
         //text 정보=========== update에서 뺄것
         levelText.GetComponent<Text>().text ="Lv."+ LevelNow.ToString();  //레벨
@@ -210,35 +208,7 @@ public class Challenge : MonoBehaviour
             nowCondition.GetComponent<Text>().text = ValueNow.ToString();
         }
 
-        /*
-        if (LevelReal <= LevelNow)
-        {
-            //도전과제 게이지 == 증가
-            Gauge.GetComponent<Image>().fillAmount
-                = (float)(ChallengeValue[prefabnum] % Info[prefabnum].clearCriterion[LevelNow]) / Info[prefabnum].clearCriterion[LevelNow];
-            //도전과제 게이지 현재값 == ValueNow
-            nowCondition.GetComponent<Text>().text
-                = (ChallengeValue[prefabnum] % Info[prefabnum].clearCriterion[LevelNow]).ToString();
-
-            //도전과제 달성하면
-            if (ChallengeValue[prefabnum] == Info[prefabnum].clearCriterion[LevelNow])
-            {
-                //가득 찬 상태로
-                Gauge.GetComponent<Image>().fillAmount = 1;
-                nowCondition.GetComponent<Text>().text = Info[prefabnum].clearCriterion[LevelNow].ToString();
-
-                Button.GetComponent<Image>().sprite = DoneButton; //도전과제 버튼 이미지 Done
-            }
-        }
-        else
-        { 
-            //가득 찬 상태로
-            Gauge.GetComponent<Image>().fillAmount = 1;
-            nowCondition.GetComponent<Text>().text = Info[prefabnum].clearCriterion[LevelNow].ToString(); ;
-
-            Button.GetComponent<Image>().sprite = DoneButton; //도전과제 버튼 이미지 Done
-        }
-        */
+        
     }
     //==================================================================================================================
     //==================================================================================================================
@@ -259,7 +229,7 @@ public class Challenge : MonoBehaviour
             //보상획득
             GameManager.instance.GetMedal(Info[prefabnum].rewardMedal); //메달 보상 획득
             GameManager.instance.GetHeart(Info[prefabnum].rewardHeart); //하트 보상 획득
-
+            Debug.Log(Info[prefabnum].rewardMedal + "   " + Info[prefabnum].rewardHeart);
             //다음 레벨로 이동
             if (LevelNow < 100)
             {
