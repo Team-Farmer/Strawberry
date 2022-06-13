@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     public Text heartAnimText;
 
     [Header("[ Object ]")]
+    private Globalvariable globalVar;
     public GameObject stemPrefab; // 프리팹
     public GameObject bugPrefab;
 
@@ -120,11 +121,8 @@ public class GameManager : MonoBehaviour
     #region 기본
     void Start()
     {
-
         Application.targetFrameRate = 60;
         instance = this; // 게임 매니저의 싱글턴 패턴화 >> GameManager.instance.~~ 로 호출
-
-
 
         target = TruckObj.GetComponent<Transform>();
         
@@ -134,21 +132,21 @@ public class GameManager : MonoBehaviour
         attendanceCheck.GetComponent<AttendanceCheck>().Attendance();
         CheckTime();
 
-
-        InitDataInGM();
-
         //TimerStart += Instance_TimerStart;
 
         DisableObjColliderAll();       
        
         isGameRunning = true;
 
-
         //NEW BERRY
         NewBerryUpdate();
 
         ShowCoinText(CoinText, DataController.instance.gameData.coin);
         HeartText.text = DataController.instance.gameData.heart.ToString();
+
+        globalVar = GameObject.FindGameObjectWithTag("Global").GetComponent<Globalvariable>();
+
+        InitDataInGM();
     }
 
     public void GameStart()
@@ -159,6 +157,23 @@ public class GameManager : MonoBehaviour
 
     void InitDataInGM()
     {
+        // 게임 시작 시 딸기 가격 한번 업데이트 해주기
+        float researchCoeffi = (DataController.instance.gameData.researchLevel[0]) * globalVar.getEffi();
+        for (int i = 0; i < 192; i++)
+        {
+            if (globalVar.berryListAll[i] == null) continue;
+
+            if (i < 64)
+                globalVar.berryListAll[i].GetComponent<Berry>().berryPrice
+                    = Convert.ToInt32((globalVar.CLASSIC_FIRST + i * 3) * (1 + researchCoeffi));
+            else if (i < 128)
+                globalVar.berryListAll[i].GetComponent<Berry>().berryPrice
+                    = Convert.ToInt32((globalVar.SPECIAL_FIRST + (i - 64) * 5) * (1 + researchCoeffi));
+            else
+                globalVar.berryListAll[i].GetComponent<Berry>().berryPrice
+                    = Convert.ToInt32((globalVar.UNIQUE_FIRST + (i - 128) * 7) * (1 + researchCoeffi));
+        }
+
         for (int i = 0; i < 16; i++)
         {
             if (DataController.instance.gameData.berryFieldData[i].isStemEnable)

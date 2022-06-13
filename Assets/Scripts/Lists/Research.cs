@@ -57,11 +57,9 @@ public class Research : MonoBehaviour
 
     void Start()
     {
-        InfoUpdate();
-
+        InfoUpdate();      
         rainParticle = GameObject.FindGameObjectWithTag("Rain").GetComponent<ParticleSystem>();
-        globalVar = GameObject.FindGameObjectWithTag("Global").GetComponent<Globalvariable>();
-
+        globalVar = GameObject.FindGameObjectWithTag("Global").GetComponent<Globalvariable>();       
     }
 
     
@@ -122,7 +120,7 @@ public class Research : MonoBehaviour
 
                 switch (Info[prefabnum].Name)
                 {
-                    case "µþ±â °ªÀÌ ±Ý°ª": IncreaseBerryPrice(); break;
+                    case "µþ±â °ªÀÌ ±Ý°ª": UpdateBerryPrice(); break;
                     case "µþ±â°¡ ¾¦¾¦": DecreaseBerryGrowTime(); break;
                     case "ºÎ¸£´Â °Ô °ª": break;
                     case "µµ¿ÍÁà¿ä ¼¼½ºÄÚ": DecreaseBugGenerateProb(); break;
@@ -161,7 +159,7 @@ public class Research : MonoBehaviour
             
 
     }
-    public void IncreaseBerryPrice()
+    public void UpdateBerryPrice()
     {
         float researchCoeffi = (DataController.instance.gameData.researchLevel[0]) * globalVar.getEffi();     
         for (int i = 0; i < 192; i++)

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8238155578764226140}
   - component: {fileID: 8238155578764226143}
   m_Layer: 0
-  m_Name: 78_HighBerry
+  m_Name: 22_StickyRiceCake
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: -1274572085
   m_SortingLayer: 1
   m_SortingOrder: 2
-  m_Sprite: {fileID: 2883912329823682490, guid: 8dedacfb3f4d07844a1c06f7cbe8f919, type: 3}
+  m_Sprite: {fileID: -3859627200237796889, guid: 8dedacfb3f4d07844a1c06f7cbe8f919, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -96,15 +96,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1623f1a85948efd45a0dfed04582153b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  berryName: "\uD558\uC774\uBCA0\uB9AC"
+  berryName: "\uCC39\uC0B4\uB5A1 \uB538\uAE30"
   berrykindProb: 100
-  berryExplain: "\uACFC\uD53C\uAC00 \uB2E8\uB2E8\uD558\uACE0 \uACFC\uC721\uC758 \uB2F9\uB3C4\uAC00
-    \uB192\uC73C\uBA70, \uC628\uB3C4\uAC00 \uC0C1\uC2B9\uD558\uB294 \uBD04\uCCA0\uC5D0\uB3C4
-    \uD48D\uBBF8\uAC00 \uC6B0\uC218\uD558\uC5EC \uB9E4\uD5A5\uC744 \uB300\uCCB4\uD560
-    \uB9CC\uD55C \uC218\uCD9C\uD558\uAE30 \uC88B\uC740 \uB538\uAE30\uC774\uB2E4."
-  berryIdx: 78
-  berryPrice: 60
-  berryRank: 1
+  berryExplain: "\uB9D0\uB791\uB9D0\uB791 \uCC39\uC300\uB5A1 \uC0AC\uC774\uC5D0 \uC559\uAE08\uC744
+    \uB450\uB974\uACE0 \uC228\uC5B4\uC788\uB294 \uC7A5\uB09C\uAE30 \uB9CE\uC740 \uB538\uAE30\uC774\uB2E4.
+    \uCC39\uC300\uB5A1\uC778\uCC99 \uD558\uB2E4\uAC00 \uC0C1\uD07C\uD55C \uACFC\uC999\uC73C\uB85C
+    \uC0AC\uB78C\uB4E4\uC744 \uB180\uB798\uD0A4\uACE4 \uD55C\uB2E4."
+  berryIdx: 22
+  berryPrice: 0
+  berryRank: 0
 --- !u!95 &8238155578764226143
 Animator:
   serializedVersion: 3

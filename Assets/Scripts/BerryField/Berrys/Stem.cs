@@ -92,21 +92,21 @@ public class Stem : MonoBehaviour
             && DataController.instance.gameData.berryFieldData[stemIdx].createTime < DataController.instance.gameData.stemLevel[2])
         {
             if (animlevel == 1) return;
-            transform.localPosition = new Vector3(0, 0.45f, 0);
+            transform.localPosition = new Vector3(0, 0.72f, 0);
             SetAnim(1);
         }
         else if (DataController.instance.gameData.stemLevel[2] <= DataController.instance.gameData.berryFieldData[stemIdx].createTime 
             && DataController.instance.gameData.berryFieldData[stemIdx].createTime < DataController.instance.gameData.stemLevel[3])
         {
             if (animlevel == 2) return;
-            transform.localPosition = new Vector3(0, 0.45f, 0);
+            transform.localPosition = new Vector3(0, 0.72f, 0);
             SetAnim(2);
         }
         else if (DataController.instance.gameData.stemLevel[3] <= DataController.instance.gameData.berryFieldData[stemIdx].createTime
             && DataController.instance.gameData.berryFieldData[stemIdx].createTime < DataController.instance.gameData.stemLevel[4])
         {
             if (animlevel == 3) return;
-            transform.localPosition = new Vector3(0, 0.45f, 0);
+            transform.localPosition = new Vector3(0, 0.72f, 0);
             SetAnim(3);
         }
         else if (DataController.instance.gameData.berryFieldData[stemIdx].createTime >= DataController.instance.gameData.stemLevel[4])
@@ -114,7 +114,7 @@ public class Stem : MonoBehaviour
             DataController.instance.gameData.berryFieldData[stemIdx].canGrow = false;
             if(!GameManager.instance.isBlackPanelOn)
                 GameManager.instance.farmList[stemIdx].GetComponent<BoxCollider2D>().enabled = true; // 밭의 콜라이더 다시 활성화
-            transform.localPosition = new Vector3(0, 0.45f, 0);
+            transform.localPosition = new Vector3(0, 0.72f, 0);
             SetAnim(4);
         }
     }
@@ -148,7 +148,7 @@ public class Stem : MonoBehaviour
             instantBerryObj.gameObject.SetActive(true);
             //instantBerryObj.GetComponent<SpriteRenderer>().sprite = global.berryListAll[DataController.instance.gameData.berryFieldData[stemIdx].berryPrefabNowIdx].GetComponent<SpriteRenderer>().sprite;
             instantBerryObj.GetComponent<Animator>().SetInteger("berryLevel", level);
-            instantBerryObj.transform.localPosition = new Vector2(0.32f, -0.08f);
+            instantBerryObj.transform.localPosition = new Vector2(0.32f, -0.27f);
         }
     }
     void DefineBerry() // 누적 확률변수로 랜덤한 딸기 생성

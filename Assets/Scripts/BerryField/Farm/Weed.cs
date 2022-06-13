@@ -21,6 +21,10 @@ public class Weed : MonoBehaviour
     {
         DataController.instance.gameData.berryFieldData[weedIdx].isWeedEnable = true;
         DataController.instance.gameData.berryFieldData[weedIdx].weedSpriteNum = Random.Range(0, 3);
+
+        xPos = Random.Range(-0.35f, 0.35f); // 밭의 X축의 랜덤한 위치에 잡초 생성
+        transform.position = new Vector2(farm.transform.position.x + xPos, farm.transform.position.y + 0.07f);
+
         anim.SetInteger("Generate", weedSpriteNum);
     }
     void OnDisable()
