@@ -34,7 +34,7 @@ public class MiniGame : MonoBehaviour
     }
 
     void StartGame()
-    {
+    {   
         // 리스트 초기화
         unlockList.Clear();
 
@@ -64,8 +64,9 @@ public class MiniGame : MonoBehaviour
         time -= 1;
         if (time <= 60)
         {
-            StartCoroutine(Timer());
+            StartCoroutine(Timer());          
             MakeGame(); //각 게임에서 오버라이딩 하기
+            isGameRunning = true; // Update 함수 쓰려면 그냥 게임 시작 변수 쓰는게 편함
         }
         else
         {
@@ -116,7 +117,7 @@ public class MiniGame : MonoBehaviour
 
     public virtual void StopGame()
     {
-
+        isGameRunning = false;
     }
 
     public void ReStart() //다시하기
@@ -130,11 +131,13 @@ public class MiniGame : MonoBehaviour
     public virtual void OnClickPauseButton() //일시정지
     {
         Time.timeScale = 0;
+        isGameRunning = false;
     }
 
     public virtual void OnClickKeepGoingButton() //일시정지 해제
     {
         Time.timeScale = 1;
+        isGameRunning = true;
     }
 
     public void OnclickExitButton() //게임 나가기

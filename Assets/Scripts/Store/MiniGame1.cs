@@ -102,6 +102,7 @@ public class MiniGame1 : MiniGame
 
     public override void StopGame()
     {
+        base.StopGame();
         //딸기 안보이게
         quiz_img.gameObject.SetActive(false);
         for (int i = 0; i < 4; i++)

@@ -15,11 +15,5 @@ public class Basket : MonoBehaviour
     {
         
     }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if(collision.gameObject.name == "MiniGameBerry")
-        {
-            collision.gameObject.SetActive(false);
-        }
-    }
+    
 }

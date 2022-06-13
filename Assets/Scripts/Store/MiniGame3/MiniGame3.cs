@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MiniGame3 : MiniGame
 {
@@ -8,7 +9,8 @@ public class MiniGame3 : MiniGame
     public GameObject basket;
     private RectTransform basketRect;
     public RectTransform bgRect;
-
+    public GameObject miniGameBerryPref;
+    public List<GameObject> berryPool = new List<GameObject>();
     
     private bool isDrag;
     float accTime, randTime;
@@ -18,9 +20,8 @@ public class MiniGame3 : MiniGame
     protected override void Start()
     {
         base.Start();
-        isGameRunning = true;
         basketRect = basket.GetComponent<RectTransform>();
-        randTime = Random.Range(4.5f, 6.0f);
+        randTime = Random.Range(1.5f, 2.0f);
     }
 
     public void PointDown()
@@ -35,7 +36,7 @@ public class MiniGame3 : MiniGame
     void Update()
     {
         if (!isGameRunning) return;
-
+        
         if (isDrag)
         {
             //Debug.Log("Dragging");
@@ -58,19 +59,57 @@ public class MiniGame3 : MiniGame
 
         if(accTime >= randTime)
         {
-            //MakeMiniGame3Berry();
+            MinigameBerry miniBerry = GetMiniGameBerry();
+            miniBerry.gameObject.SetActive(true);
             accTime = 0f;
             randTime = Random.Range(1.5f, 2.0f);
         }
     }
+    MinigameBerry GetMiniGameBerry()
+    {
+        for (int i = 0; i < berryPool.Count; i++)
+        {
+            if (!berryPool[i].gameObject.activeSelf)
+            {
+                int rndId = unlockList[Random.Range(0, unlockList.Count)];
+                berryPool[i].GetComponent<Image>().sprite = global.berryListAll[rndId].GetComponent<SpriteRenderer>().sprite;
+                
+                return berryPool[i].GetComponent<MinigameBerry>();
+            }
+        }
+        return MakeMiniGameBerry(); // 비활성화된 동글이가 없다면 새로 만든다.
+    }
+    MinigameBerry MakeMiniGameBerry()
+    {
+        GameObject instantMiniBerryObj = Instantiate(miniGameBerryPref, berryGroup);
+        int rndId = unlockList[Random.Range(0, unlockList.Count)];
+
+        instantMiniBerryObj.GetComponent<Image>().sprite = global.berryListAll[rndId].GetComponent<SpriteRenderer>().sprite;
+        instantMiniBerryObj.name = "MiniBerry " + berryPool.Count;
+
+        berryPool.Add(instantMiniBerryObj);
+
+        MinigameBerry instantMiniBerry = instantMiniBerryObj.GetComponent<MinigameBerry>();
+        instantMiniBerry.bgRect = bgRect;
+        instantMiniBerry.basketRect = basketRect;
+      
+        return instantMiniBerry;
+    }
     public override void OnClickPauseButton()
     {
-        base.OnClickPauseButton();
-        isGameRunning = false;
+        base.OnClickPauseButton();        
     }
     public override void OnClickKeepGoingButton()
     {
-        base.OnClickKeepGoingButton();
-        isGameRunning = true;
+        base.OnClickKeepGoingButton();     
+    }
+
+    public override void StopGame()
+    {
+        base.StopGame();
+        for (int i = 0; i < berryPool.Count; i++)
+        {
+            berryPool[i].SetActive(false);
+        }       
     }
 }
