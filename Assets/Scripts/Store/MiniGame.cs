@@ -117,6 +117,10 @@ public class MiniGame : MonoBehaviour
 
     public virtual void StopGame()
     {
+        score = 0;
+        time = 64;
+        unlockList.Clear();
+
         isGameRunning = false;
     }
 
