@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class MiniGame : MonoBehaviour
 {
+    static public bool isGameRunning = false;           //게임이 실행 중인지
+
     [Header("UI")]
     public Scrollbar scrollbar;//스크롤바
     public Text score_txt;     //점수
@@ -16,7 +18,6 @@ public class MiniGame : MonoBehaviour
     protected float size;                         //스크롤바 사이즈
     protected int time;                           //초
     protected int score;                          //점수
-    protected bool isGameRunning = false;           //게임이 실행 중인지
     protected List<int> unlockList=new List<int>(); //해금된 딸기 번호 리스트
 
     protected Globalvariable global;
@@ -34,6 +35,9 @@ public class MiniGame : MonoBehaviour
 
     void StartGame()
     {
+        // 리스트 초기화
+        unlockList.Clear();
+
         //보유한 딸기 리스트 구성
         for (int i = 0; i < 192; i++)
         {
@@ -42,6 +46,7 @@ public class MiniGame : MonoBehaviour
                 unlockList.Add(i);
             }
         }
+        Debug.Log("unlockList.Count: " + unlockList.Count);
         scrollbar.size = 1;
         score = 0;
         time = 64;
@@ -122,12 +127,12 @@ public class MiniGame : MonoBehaviour
         StartGame();
     }
 
-    public void OnClickPauseButton() //일시정지
+    public virtual void OnClickPauseButton() //일시정지
     {
         Time.timeScale = 0;
     }
 
-    public void OnClickKeepGoingButton() //일시정지 해제
+    public virtual void OnClickKeepGoingButton() //일시정지 해제
     {
         Time.timeScale = 1;
     }

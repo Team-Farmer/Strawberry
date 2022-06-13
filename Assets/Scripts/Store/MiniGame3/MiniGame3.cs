@@ -38,15 +38,15 @@ public class MiniGame3 : MiniGame
 
         if (isDrag)
         {
-            Debug.Log("Dragging");
+            //Debug.Log("Dragging");
             
             Vector3 mousePos = Input.mousePosition;
-            Debug.Log("mousePos.x: " + mousePos.x + " mousePos.y: " + mousePos.y);
+            //Debug.Log("mousePos.x: " + mousePos.x + " mousePos.y: " + mousePos.y);
             
             float leftBorder = 0f;
             float rightBorder = bgRect.rect.width - basketRect.rect.width;
 
-            Debug.Log("leftBorder: " + leftBorder + " rightBorder: " + rightBorder);
+            //Debug.Log("leftBorder: " + leftBorder + " rightBorder: " + rightBorder);
             
             mousePos.y = 560;
             mousePos.z = 0;
@@ -63,28 +63,14 @@ public class MiniGame3 : MiniGame
             randTime = Random.Range(1.5f, 2.0f);
         }
     }
-    /*protected override void MakeGame()
+    public override void OnClickPauseButton()
     {
-        MakeMiniGame3Berry();
-    }
-    void MakeMiniGame3Berry()
-    {
-        int idx = Random.Range(0, unlockList.Count);
-       
-        GameObject berryPrefab = global.berryListAll[unlockList[idx]];
-        GameObject miniGame3Berry = Instantiate(berryPrefab, berryGroup);
-
-        miniGame3Berry.name = global.berryListAll[unlockList[idx]].name;
-        miniGame3Berry.GetComponent<SpriteRenderer>().sortingOrder = 5;
-        miniGame3Berry.transform.localScale = new Vector3(300, 300, 0);
-
-        float halfScale = miniGame3Berry.transform.localScale.x / 2;
-        float xPos = Random.Range(0 + halfScale, bgRect.rect.width - halfScale);
-        miniGame3Berry.transform.localPosition = new Vector3(xPos, berryGroup.anchoredPosition.y - halfScale);
-        miniGame3Berry.GetComponent<Rigidbody2D>().simulated = true;
-    }*/
-    public override void StopGame()
-    {
+        base.OnClickPauseButton();
         isGameRunning = false;
+    }
+    public override void OnClickKeepGoingButton()
+    {
+        base.OnClickKeepGoingButton();
+        isGameRunning = true;
     }
 }

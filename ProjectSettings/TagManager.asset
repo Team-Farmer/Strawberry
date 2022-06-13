@@ -25,6 +25,9 @@ TagManager:
   - WarningPanel
   - HireYNPanel
   - PanelBlack
+  - YNPanel
+  - PTJContent
+  - MiniGameBerry
   layers:
   - Default
   - TransparentFX
