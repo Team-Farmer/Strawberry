@@ -127,9 +127,9 @@ public class DataController : MonoBehaviour
         for (int i = 0; i < 192; i++)
         {   gameData.isBerryUnlock[i] = false;   }
         gameData.isBerryUnlock[0] = true;//첫번째 기본베리는 존재
-        gameData.isBerryUnlock[1] = true;//두번째 기본베리는 존재
+        /*gameData.isBerryUnlock[1] = true;//두번째 기본베리는 존재
         gameData.isBerryUnlock[2] = true;//세번째 기본베리는 존재
-        gameData.isBerryUnlock[3] = true;//네번째 기본베리는 존재
+        gameData.isBerryUnlock[3] = true;//네번째 기본베리는 존재*/
 
         //도전과제
         for (int i = 0; i < 6; i++) {   gameData.challengeLevel[i] = 0;   }
