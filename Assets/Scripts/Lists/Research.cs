@@ -14,14 +14,12 @@ public class Research : MonoBehaviour
         public Sprite Picture;//사진
         public string Explanation;//설명
         public int Price;//가격
-        public int[] Prices = new int[26];//가격
 
-        public ResearchStruct(string Name, string Explanation, int Price, int[] Prices, Sprite Picture)
+        public ResearchStruct(string Name, string Explanation, int Price, Sprite Picture)
         {
             this.Name = Name;
             this.Explanation = Explanation;
             this.Price = Price;
-            this.Prices = Prices;   // 연구 가격은 배열로 왜영..?
             this.Picture = Picture;
         }
     }
@@ -74,26 +72,22 @@ public class Research : MonoBehaviour
         { Prefabcount -= 6; }
         prefabnum = Prefabcount;
 
-        Info[Prefabcount].Prices = new int[26];
+        Info[prefabnum].Price = (1+DataController.instance.gameData.researchLevel[prefabnum])*100;
 
-        for (int i=0; i<26; i++)
-        {
-            Info[prefabnum].Prices[i] = 100 * (i+1);
-        }
 
         //타이틀, 설명, 코인값, 레벨, 고용여부 텍스트에 표시
-        titleText.GetComponent<Text>().text = Info[Prefabcount].Name;//제목(이름) 표시
+        titleText.GetComponent<Text>().text = Info[prefabnum].Name;//제목(이름) 표시
 
         Picture.GetComponent<Image>().sprite = Info[prefabnum].Picture;//그림 표시
 
         
-        explanationText.GetComponent<Text>().text = Info[Prefabcount].Explanation+"\n"+
+        explanationText.GetComponent<Text>().text = Info[prefabnum].Explanation+"\n"+
             ((DataController.instance.gameData.researchLevel[prefabnum]*2) + "% →" + 
             (DataController.instance.gameData.researchLevel[prefabnum]+1)*2 + "%");//설명 텍스트 표시
 
-        //coinNum.GetComponent<Text>().text = Info[Prefabcount].Price.ToString() + "A";
+
        
-        GameManager.instance.ShowCoinText(coinNum.GetComponent<Text>(), Info[Prefabcount].Prices[DataController.instance.gameData.researchLevel[prefabnum]]); //비용 표시
+        GameManager.instance.ShowCoinText(coinNum.GetComponent<Text>(), Info[prefabnum].Price); //비용 표시
 
         levelNum.GetComponent<Text>().text = DataController.instance.gameData.researchLevel[prefabnum].ToString();
 
@@ -111,12 +105,13 @@ public class Research : MonoBehaviour
         if (DataController.instance.gameData.researchLevel[prefabnum] < 25)//레벨 25로 한계두기
         {
             //해당 금액이 지금 가진 코인보다 적으면
-            if (DataController.instance.gameData.coin >= Info[prefabnum].Prices[DataController.instance.gameData.researchLevel[prefabnum]])
+            if (DataController.instance.gameData.coin >= Info[prefabnum].Price)
             {
                 //해당 금액의 코인이 감소하고 레벨업
-                GameManager.instance.UseCoin(Info[prefabnum].Prices[DataController.instance.gameData.researchLevel[prefabnum]]);
-                DataController.instance.gameData.researchLevel[prefabnum]++;
-                levelNum.GetComponent<Text>().text = DataController.instance.gameData.researchLevel[prefabnum].ToString();
+                GameManager.instance.UseCoin(Info[prefabnum].Price);
+                DataController.instance.gameData.researchLevel[prefabnum]++;//레벨업
+                Info[prefabnum].Price = (1 + DataController.instance.gameData.researchLevel[prefabnum]) * 100;//가격 업데이트
+                levelNum.GetComponent<Text>().text = DataController.instance.gameData.researchLevel[prefabnum].ToString();//레벨 보이기
 
                 switch (Info[prefabnum].Name)
                 {
@@ -131,30 +126,27 @@ public class Research : MonoBehaviour
                 if (DataController.instance.gameData.researchLevel[prefabnum] == 25)
                 {
                     coinNum.GetComponent<Text>().text = "Max";
-                    explanationText.GetComponent<Text>().text = Info[prefabnum].Explanation + "\n" +
-                        ((DataController.instance.gameData.researchLevel[prefabnum] * 2) + "%");//설명 텍스트 표시
+                    explanationText.GetComponent<Text>().text = 
+                        Info[prefabnum].Explanation + "\n" +
+                        (DataController.instance.gameData.researchLevel[prefabnum] * 2) + "%";//설명 텍스트 표시
                 }
                 else
                 {
-                    GameManager.instance.ShowCoinText(coinNum.GetComponent<Text>(), Info[prefabnum].Prices[DataController.instance.gameData.researchLevel[prefabnum]]);
+                    GameManager.instance.ShowCoinText(coinNum.GetComponent<Text>(), Info[prefabnum].Price);
 
-                    explanationText.GetComponent<Text>().text = Info[prefabnum].Explanation + "\n" +
-                    ((DataController.instance.gameData.researchLevel[prefabnum] * 2) + "%" + "→" +
-                    (DataController.instance.gameData.researchLevel[prefabnum] + 1) * 2 + "%");//설명 텍스트 표시
+                    explanationText.GetComponent<Text>().text = 
+                        Info[prefabnum].Explanation + "\n" +
+                        (DataController.instance.gameData.researchLevel[prefabnum] * 2) + "%" + "→" +
+                        (DataController.instance.gameData.researchLevel[prefabnum] + 1) * 2 + "%";//설명 텍스트 표시
                 }
             }
             else
             {
                 //재화 부족 경고 패널 등장
                 AudioManager.instance.Cute4AudioPlay();
-                GameManager.instance.UseCoin(Info[prefabnum].Prices[DataController.instance.gameData.researchLevel[prefabnum]]);
+                GameManager.instance.UseCoin(Info[prefabnum].Price);
 
             }
-        }
-        else
-        {
-            // 연구 이미 맥스임~ 패널 필요 (아님말고)
-            Debug.Log("연구 렙 맥스임");
         }
             
 
