@@ -89,12 +89,12 @@ public class GameData
 
 
     //마지막 출석 날짜 저장.
-    public DateTime Lastday = new DateTime();
-    public DateTime Today = new DateTime();
+    public DateTime attendanceLastday = new DateTime();
+    public DateTime attendanceToday = new DateTime();
     //출석 일 수
-    public int days=0;
+    public int accDays=0;
     //오늘 출석 여부 판단
-    public bool attendance = false;
+    public bool isAttendance = false;
 
     //가게&미니게임
     public bool isStoreOpend;

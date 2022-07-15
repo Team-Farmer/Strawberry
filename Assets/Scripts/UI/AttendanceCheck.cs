@@ -23,16 +23,13 @@ public class AttendanceCheck : MonoBehaviour
     public Text[] text = new Text[7];
     public TextMeshProUGUI text_mesh;
     public GameObject icon;
-    public GameObject Tag;
-
+    public GameObject m_tag;
     public bool isAtd;
-
     private int days;
     private int hearts;
-    String weeks_text;
-
-
-
+    private int weeks;
+    private int multiply_tag;
+    String weeksText;
 
     #endregion
 
@@ -40,70 +37,48 @@ public class AttendanceCheck : MonoBehaviour
 
     public void Attendance()
     {
-        DateTime today = DataController.instance.gameData.Today;
-        DateTime lastday = DataController.instance.gameData.Lastday; //지난 날짜 받아오기
-        bool isAttendance = DataController.instance.gameData.attendance; //출석 여부 판단 bool 값
-        days = DataController.instance.gameData.days; // 출석 누적 날짜.
-        int weeks; //주차 구분
 
+        //테스트용
+        DataController.instance.gameData.attendanceLastday = DateTime.Parse("2022-07-17");
+        DataController.instance.gameData.accDays = 15;
+        DataController.instance.gameData.isAttendance = false;
 
-/*        //테스트용
-        lastday = DateTime.Parse("2022-04-28");
-        days = 5;
-        isAttendance = false;*/
-
+        DateTime today = DataController.instance.gameData.attendanceToday;
+        DateTime lastday = DataController.instance.gameData.attendanceLastday; //지난 날짜 받아오기
+        bool isAttendance = DataController.instance.gameData.isAttendance; //출석 여부 판단 bool 값
+        days = DataController.instance.gameData.accDays; // 출석 누적 날짜
 
         TimeSpan ts = today - lastday; //날짜 차이 계산
         int DaysCompare = ts.Days; //Days 정보만 추출.
-
-
-        if (days > 6)
-        {
-            weeks = 1+(days / 7);
-            days %= 7;
-
-            if (weeks > 9)
-            {
-                weeks = 9;
-            }
-            weeks_text = weeks.ToString();
-            text_mesh.text = weeks_text;
-
-            for (int i = 0; i < text.Length; i++)
-            {
-                text[i].text = weeks_text;
-            }
-            Tag.SetActive(true);
-        }
-        else 
-        {
-            weeks = 1;
-            weeks_text = weeks.ToString();
-            for (int i = 0; i < text.Length; i++)
-            {
-                text[i].text = weeks_text;
-            }
-        }
 
 
         if (isAttendance == false)
         {
             icon.SetActive(true);
 
-            if (DaysCompare == 1) //오늘 날짜가 지난번 출석 날짜보다 하루 미래면
+            if (DaysCompare == 1) //연속 출석
             {
+                if (days > 6)
+                {
+                    weeks = 1 + (days % 6);
+                    days %= 6;
+                    multiply_tag = weeks;
+                }
+                else
+                {
+                    weeks = 1;
+                    multiply_tag = 1;
+                }
                 selectDay(days);
-            }
-            else if (DateTime.Compare(today, lastday) < 0) //오늘이 과거인 경우는 없지만, 오류 방지용
-            {
-                DataController.instance.gameData.days = 0;
-                selectDay(0);
             }
             else //연속출석이 아닌경우
             {
-                //days 1으로 초기화 후 day1버튼 활성화, week 1로 변경.
-                DataController.instance.gameData.days = 0;
-                selectDay(0);
+                //days 0으로 초기화 후 day1버튼 활성화
+                DataController.instance.gameData.accDays = 0;
+                days = 0;
+                weeks = 1;
+                multiply_tag = 1;
+                selectDay(days);
             }
         }
         else //출석을 이미 한 상태다
@@ -113,6 +88,28 @@ public class AttendanceCheck : MonoBehaviour
                 image[i].sprite = Front[i].Behind[1];
             }
         }
+
+        /*        if (weeks < 9)
+                {
+                    weeksText = weeks.ToString();
+                    text_mesh.text = weeksText;
+                    for (int i = 0; i < text.Length; i++)
+                    {
+                        text[i].text = weeks_text;
+                    }
+
+                }
+                else
+                {
+                     weeksText = weeks.ToString();
+                    for (int i = 0; i < text.Length; i++)
+                    {
+                        text[i].text = "8";
+                    }
+                    multiply_tag = 8;
+                }
+                m_tag.SetActive(true);*/
+
     }
 
     #endregion
@@ -138,22 +135,21 @@ public class AttendanceCheck : MonoBehaviour
     public void AttandanceSave(int number)
     {
         
-        if (number == days&& DataController.instance.gameData.attendance==false)
+        if (number == days&& DataController.instance.gameData.isAttendance==false)
         {
             AudioManager.instance.RewardAudioPlay();
             image[number].sprite = Front[number].Behind[1];
             icon.SetActive(false);
 
             //출석 정보 저장.
-            DataController.instance.gameData.days += 1;
-            DataController.instance.gameData.attendance = true;
-            DataController.instance.gameData.Lastday = DataController.instance.gameData.Today;
+            DataController.instance.gameData.accDays += 1; 
+            DataController.instance.gameData.isAttendance = true;
+            DataController.instance.gameData.attendanceLastday = DataController.instance.gameData.attendanceToday;
 
             DataController.instance.gameData.accAttendance += 1; // 누적 출석 증가
                                                                  // 10*날짜*주수
                                                                  // Debug.Log("누적 출석 : " + DataController.instance.gameData.accAttendance);
                                                                  // Debug.Log("누적 하트 : " + DataController.instance.gameData.accHeart);
-
             hearts = number;
             Invoke("AtdHeart", 0.75f);
         }
@@ -161,7 +157,7 @@ public class AttendanceCheck : MonoBehaviour
 
     public void AtdHeart()
     {
-        GameManager.instance.GetHeart(10 * (hearts + 1));
+        GameManager.instance.GetHeart(10 * (hearts + 1) * multiply_tag);
     }
 
     public static implicit operator AttendanceCheck(GameManager v)

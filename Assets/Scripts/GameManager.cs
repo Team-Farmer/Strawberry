@@ -1043,7 +1043,7 @@ public class GameManager : MonoBehaviour
             {
                 string date = request.GetResponseHeader("date");
                 DateTime dateTime = DateTime.Parse(date);
-                DataController.instance.gameData.Today = dateTime;
+                DataController.instance.gameData.attendanceToday = dateTime;
             }
         }
     }
@@ -1054,10 +1054,10 @@ public class GameManager : MonoBehaviour
     {
         //플레이 도중 자정이 넘어갈 경우 출석 가능
         // 자정시간 구하기.
-        DateTime target = new DateTime(DataController.instance.gameData.Today.Year, DataController.instance.gameData.Today.Month, DataController.instance.gameData.Today.Day);
+        DateTime target = new DateTime(DataController.instance.gameData.attendanceToday.Year, DataController.instance.gameData.attendanceToday.Month, DataController.instance.gameData.attendanceToday.Day);
         target = target.AddDays(1);
         // 자정시간 - 현재시간
-        TimeSpan ts = target - DataController.instance.gameData.Today;
+        TimeSpan ts = target - DataController.instance.gameData.attendanceToday;
         // 남은시간 만큼 대기 후 OnTimePass 함수 호출.
         Invoke("OnTimePass", (float)ts.TotalSeconds);
     }
@@ -1065,7 +1065,7 @@ public class GameManager : MonoBehaviour
     public void OnTimePass()
     {
         //정보갱신
-        DataController.instance.gameData.attendance = false;
+        DataController.instance.gameData.isAttendance = false;
         attendanceCheck.GetComponent<AttendanceCheck>().Attendance();
     }
 

@@ -19,8 +19,8 @@ public class HeartMover : MonoBehaviour
 
     private void Start()
     {
-        days = DataController.instance.gameData.days;
-        isAtd = DataController.instance.gameData.attendance;
+        days = DataController.instance.gameData.accDays;
+        isAtd = DataController.instance.gameData.isAttendance;
     }
 
     public void HeartMove(int j)
