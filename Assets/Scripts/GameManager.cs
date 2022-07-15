@@ -746,19 +746,22 @@ public class GameManager : MonoBehaviour
                     TimeReduceBlackPanel_newBerry.SetActive(true); //시원 건드림
                     TimeReducePanel_newBerry.GetComponent<PanelAnimation>().OpenScale(); //시원 건드림
                     TimeReduceText_newBerry.GetComponent<Text>().text //시원 건드림
-                        = "하트 10개로 시간을 10분으로 줄이시겠습니까?\n";//지금은 1초. 임시
+                        = "하트 10개로 시간을 10분으로 줄이시겠습니까?\n";
                 }
                 else//돈이 모자름
                 {  UseCoin(price_newBerry);  }
                 break;
 
             case "ing":
-                //시간 감소여부 묻는 패널을 띄운다.
-                TimeReduceBlackPanel_newBerry.SetActive(true);
-                TimeReducePanel_newBerry.GetComponent<PanelAnimation>().OpenScale();
-                TimeReduceText_newBerry.GetComponent<Text>().text
-                    = "하트 10개로 시간을 10분으로 줄이시겠습니까?\n";//지금은 1초. 임시
-                break;
+                if (DataController.instance.gameData.newBerryTime > 1)
+                { 
+                    //시간 감소여부 묻는 패널을 띄운다.
+                    TimeReduceBlackPanel_newBerry.SetActive(true);
+                    TimeReducePanel_newBerry.GetComponent<PanelAnimation>().OpenScale();
+                    TimeReduceText_newBerry.GetComponent<Text>().text
+                        = "하트 10개로 시간을 10분으로 줄이시겠습니까?\n";
+                }
+                    break;
 
             case "done": //딸기 개발
                 GetNewBerry();
