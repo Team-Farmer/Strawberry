@@ -19,16 +19,20 @@ public class PTJWorking : MonoBehaviour
     private int PTJ_NUM_NOW;
 
     private bool isOnetime;//첫번째에만 scrollView맨 앞으로 이동하게 한다.
-   
-    void Start()
+
+    private void Awake()
     {
         //프리팹들에게 고유 번호 붙이기
+        if (Prefabcount >= 6) { Prefabcount %= 6; }
         prefabnum = Prefabcount;
         Prefabcount++;
 
+    }
+    void Start()
+    {
         //얼굴 이미지 적용
         face.GetComponent<Image>().sprite = FacePicture[prefabnum];
-
+        
         isOnetime = true;
     }
 

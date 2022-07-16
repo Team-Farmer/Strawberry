@@ -136,6 +136,7 @@ MonoBehaviour:
   - {fileID: -6835189599539173722, guid: bac779e1f038d5e40bbe137bcb8ace25, type: 3}
   - {fileID: -4124168217499134943, guid: bac779e1f038d5e40bbe137bcb8ace25, type: 3}
   - {fileID: 7456334905099763947, guid: bac779e1f038d5e40bbe137bcb8ace25, type: 3}
+  - {fileID: 7456334905099763947, guid: bac779e1f038d5e40bbe137bcb8ace25, type: 3}
   face: {fileID: 7809778659071548713}
   employCount: {fileID: 7809778657780772914}
 --- !u!1 &7809778659071548713

@@ -68,8 +68,7 @@ public class Research : MonoBehaviour
         //!!!!!!!!!!!!!!주의!!!!!!!!!!!!!숫자 6은 프리팹 숫자와 관련되어 있다!!! 같이 조절 . 변수설정하기
 
         //프리팹들에게 고유 번호 붙이기
-        if (Prefabcount >= 6)
-        { Prefabcount -= 6; }
+        if (Prefabcount >= 6) { Prefabcount %= 6; }
         prefabnum = Prefabcount;
 
         Info[prefabnum].Price = (1+DataController.instance.gameData.researchLevel[prefabnum])*100;

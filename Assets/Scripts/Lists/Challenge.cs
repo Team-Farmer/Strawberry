@@ -77,8 +77,9 @@ public class Challenge : MonoBehaviour
     private void Awake()
     {
         GameManager.instance.ShowMedalText();//현재 메달을 보인다.
-        
+
         //프리팹들에게 고유 번호 붙이기
+        if (Prefabcount >= 6) { Prefabcount %= 6; }
         prefabnum = Prefabcount;
         Prefabcount++;
  

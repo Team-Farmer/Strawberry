@@ -57,6 +57,7 @@ public class News : MonoBehaviour
         instance = this;
 
         //프리팹들에게 고유 번호 붙이기
+        if (Prefabcount >= 6) { Prefabcount %= 6; }
         prefabnum = Prefabcount;
         Prefabcount++;
     }

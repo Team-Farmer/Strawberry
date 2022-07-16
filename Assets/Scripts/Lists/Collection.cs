@@ -50,6 +50,7 @@ public class Collection : MonoBehaviour
     {
         Global = GameObject.FindGameObjectWithTag("Global");
         //프리팹들에게 번호를 붙여 주자
+        if (Prefabcount >= 6) { Prefabcount %= 6; }
         prefabnum = Prefabcount;
         Prefabcount++;
 
