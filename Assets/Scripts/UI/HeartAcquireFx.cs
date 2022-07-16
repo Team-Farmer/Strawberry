@@ -11,7 +11,7 @@ public class HeartAcquireFx : MonoBehaviour
         rect.position = from;
         Sequence sequence = DOTween.Sequence();
         sequence.Append(rect.DOAnchorPos(from + Random.insideUnitCircle * explo_range, 0.25f).SetEase(Ease.OutCubic));
-        sequence.Append(rect.DOAnchorPos(to, 0.5f).SetEase(Ease.InCubic));
+        sequence.Append(rect.DOMove(to, 0.5f).SetEase(Ease.InCubic));
         sequence.AppendCallback(() =>
         {
             gameObject.SetActive(false);

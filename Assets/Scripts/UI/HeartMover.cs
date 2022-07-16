@@ -16,6 +16,7 @@ public class HeartMover : MonoBehaviour
     public int daysCompare;
     private int days;
     private bool isAtd;
+    [SerializeField] RectTransform heartPoint;
 
     private void Start()
     {
@@ -23,35 +24,36 @@ public class HeartMover : MonoBehaviour
         isAtd = DataController.instance.gameData.isAttendance;
     }
 
-    public void HeartMove(int j)
+    public void HeartMove(int num)
     {
-        daysCompare = j;
 
         if (days > 6)
-            days %= 7;
-        
+            days %= 6;
+
         Vector2 vec = new Vector2(153, 714);
 
-        if (j == 1)
-            vec = new Vector2(-133, 714);
-        else if (j == 2)
-            vec = new Vector2(-410, 724);
-        else if (j == 3)
-            vec = new Vector2(153, 1014);
-        else if (j == 4)
-            vec = new Vector2(-133, 1014);
-        else if (j == 5)
-            vec = new Vector2(-410, 1014);
-        else if (j == 6)
-            vec = new Vector2(-133, 1314);
+        /*      
+                Vector2 vec = new Vector2(153, 714);
+                if (j == 1)
+                    vec = new Vector2(-133, 714);
+                else if (j == 2)
+                    vec = new Vector2(-410, 724);
+                else if (j == 3)
+                    vec = new Vector2(153, 1014);
+                else if (j == 4)
+                    vec = new Vector2(-133, 1014);
+                else if (j == 5)
+                    vec = new Vector2(-410, 1014);
+                else if (j == 6)
+                    vec = new Vector2(-133, 1314);*/
 
-        if (isAtd == false && days == daysCompare)
+        if (isAtd == false && days == num)
         {
             int randCount = 10;//Random.Range(5, 10);
             for (int i = 0; i < randCount; ++i)
             {
-                var itemFx = GameObject.Instantiate<HeartAcquireFx>(prefab, this.transform);
-                itemFx.Explosion(Day.transform.position, vec, 120.0f);
+                var itemFx = GameObject.Instantiate<HeartAcquireFx>(prefab, Day.transform);
+                itemFx.Explosion(Day.transform.position, heartPoint.transform.position, 120.0f);
             }
             isAtd = true;
         }

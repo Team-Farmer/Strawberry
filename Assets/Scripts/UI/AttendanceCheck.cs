@@ -22,6 +22,8 @@ public class AttendanceCheck : MonoBehaviour
     public Image[] image = new Image[7];
     public Text[] text = new Text[7];
     public TextMeshProUGUI text_mesh;
+    [SerializeField] TMP_Text weekTMP;
+    [SerializeField] TMP_Text[] tagTMP;
     public GameObject icon;
     public GameObject m_tag;
     public bool isAtd;
@@ -38,9 +40,10 @@ public class AttendanceCheck : MonoBehaviour
     public void Attendance()
     {
 
+        #region 변수 초기화
         //테스트용
-        DataController.instance.gameData.attendanceLastday = DateTime.Parse("2022-07-17");
-        DataController.instance.gameData.accDays = 15;
+        DataController.instance.gameData.attendanceLastday = DateTime.Parse("2022-07-15");
+        DataController.instance.gameData.accDays = 125;
         DataController.instance.gameData.isAttendance = false;
 
         DateTime today = DataController.instance.gameData.attendanceToday;
@@ -50,7 +53,7 @@ public class AttendanceCheck : MonoBehaviour
 
         TimeSpan ts = today - lastday; //날짜 차이 계산
         int DaysCompare = ts.Days; //Days 정보만 추출.
-
+        #endregion
 
         if (isAttendance == false)
         {
@@ -89,27 +92,27 @@ public class AttendanceCheck : MonoBehaviour
             }
         }
 
-        /*        if (weeks < 9)
-                {
-                    weeksText = weeks.ToString();
-                    text_mesh.text = weeksText;
-                    for (int i = 0; i < text.Length; i++)
-                    {
-                        text[i].text = weeks_text;
-                    }
+        if (weeks < 9 && weeks> 1)
+        {
+            weekTMP.text = weeks.ToString();
 
-                }
-                else
-                {
-                     weeksText = weeks.ToString();
-                    for (int i = 0; i < text.Length; i++)
-                    {
-                        text[i].text = "8";
-                    }
-                    multiply_tag = 8;
-                }
-                m_tag.SetActive(true);*/
+            for (int i = 0; i < tagTMP.Length; i++)
+            {
+                tagTMP[i].text = weeks.ToString();
+            }
+            m_tag.SetActive(true);
+        }
+        else if(weeks > 9)
+        {
+            weekTMP.text = weeks.ToString();
 
+            for (int i = 0; i < tagTMP.Length; i++)
+            {
+                tagTMP[i].text = "9";
+            }
+            m_tag.SetActive(true);
+
+        }
     }
 
     #endregion
