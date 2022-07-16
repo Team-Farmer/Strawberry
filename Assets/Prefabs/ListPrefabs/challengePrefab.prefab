@@ -823,8 +823,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 576111008284070252}
   toObject: {fileID: 527783997747247045}
-  to: {fileID: 0}
-  heartPoint: {fileID: 0}
+  point: {fileID: 0}
 --- !u!1 &2157807828004521961
 GameObject:
   m_ObjectHideFlags: 0
@@ -1203,8 +1202,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 8645409806838682217}
   toObject: {fileID: 527783997747247045}
-  to: {fileID: 0}
-  heartPoint: {fileID: 0}
+  point: {fileID: 0}
 --- !u!1 &6844077706645152247
 GameObject:
   m_ObjectHideFlags: 0
