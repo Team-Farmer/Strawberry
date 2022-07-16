@@ -86,6 +86,7 @@ public class AttendanceCheck : MonoBehaviour
         }
         else //출석을 이미 한 상태다
         {
+            Debug.Log (days %= 6);
             for (int i = 0; i < days; i++) //출석완료 버튼 활성화
             {
                 image[i].sprite = Front[i].Behind[1];

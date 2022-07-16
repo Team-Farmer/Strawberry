@@ -2587,12 +2587,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 1126291562}
-  Day: {fileID: 2119959384}
-  to: {fileID: 1187532002}
-  rect: {fileID: 1187532003}
-  target: {fileID: 0}
-  daysCompare: 0
-  heartPoint: {fileID: 1269943085}
+  toObject: {fileID: 2119959384}
+  point: {fileID: 1269943085}
 --- !u!1 &138406439
 GameObject:
   m_ObjectHideFlags: 0
@@ -6065,12 +6061,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 146443504}
-  Day: {fileID: 396545910}
-  to: {fileID: 1187532002}
-  rect: {fileID: 1187532003}
-  target: {fileID: 1187532003}
-  daysCompare: 0
-  heartPoint: {fileID: 1269943085}
+  toObject: {fileID: 396545910}
+  point: {fileID: 1269943085}
 --- !u!1 &271674904
 GameObject:
   m_ObjectHideFlags: 0
@@ -12636,12 +12628,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 217713241}
-  Day: {fileID: 217713238}
-  to: {fileID: 0}
-  rect: {fileID: 217713239}
-  target: {fileID: 0}
-  daysCompare: 0
-  heartPoint: {fileID: 0}
+  toObject: {fileID: 217713238}
+  point: {fileID: 0}
 --- !u!224 &565687599
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12902,12 +12890,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 1251632623}
-  Day: {fileID: 608074536}
-  to: {fileID: 1187532002}
-  rect: {fileID: 1187532003}
-  target: {fileID: 0}
-  daysCompare: 0
-  heartPoint: {fileID: 1269943085}
+  toObject: {fileID: 608074536}
+  point: {fileID: 1269943085}
 --- !u!224 &587123966
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18120,12 +18104,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 1430612218}
-  Day: {fileID: 1712557475}
-  to: {fileID: 1187532002}
-  rect: {fileID: 1187532003}
-  target: {fileID: 0}
-  daysCompare: 0
-  heartPoint: {fileID: 1269943085}
+  toObject: {fileID: 1712557475}
+  point: {fileID: 1269943085}
 --- !u!224 &797549122
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19586,12 +19566,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 420392498}
-  Day: {fileID: 997283058}
-  to: {fileID: 1187532002}
-  rect: {fileID: 1187532003}
-  target: {fileID: 0}
-  daysCompare: 0
-  heartPoint: {fileID: 1269943085}
+  toObject: {fileID: 997283058}
+  point: {fileID: 1269943085}
 --- !u!1 &874029963 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4035880483817675467, guid: 7472d0e0e33818244bfbde2fe34e734e, type: 3}
@@ -20368,12 +20344,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 1671721267}
-  Day: {fileID: 1860574803}
-  to: {fileID: 1187532002}
-  rect: {fileID: 1187532003}
-  target: {fileID: 0}
-  daysCompare: 0
-  heartPoint: {fileID: 1269943085}
+  toObject: {fileID: 1860574803}
+  point: {fileID: 1269943085}
 --- !u!224 &890403289
 RectTransform:
   m_ObjectHideFlags: 0
@@ -32317,18 +32289,6 @@ PrefabInstance:
     - target: {fileID: 8833736870865322199, guid: 35ed71b70c5403e4eb648503f90d7caf, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8833736870953297627, guid: 35ed71b70c5403e4eb648503f90d7caf, type: 3}
-      propertyPath: m_Color.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8833736870953297627, guid: 35ed71b70c5403e4eb648503f90d7caf, type: 3}
-      propertyPath: m_Color.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8833736870953297627, guid: 35ed71b70c5403e4eb648503f90d7caf, type: 3}
-      propertyPath: m_Color.r
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8833736871651569081, guid: 35ed71b70c5403e4eb648503f90d7caf, type: 3}
       propertyPath: m_Name
@@ -47089,12 +47049,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 215653204}
-  Day: {fileID: 215653200}
-  to: {fileID: 0}
-  rect: {fileID: 215653201}
-  target: {fileID: 0}
-  daysCompare: 0
-  heartPoint: {fileID: 0}
+  toObject: {fileID: 215653200}
+  point: {fileID: 0}
 --- !u!1 &2075429932
 GameObject:
   m_ObjectHideFlags: 0
@@ -48319,12 +48275,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 1834860005}
-  Day: {fileID: 946351618}
-  to: {fileID: 1187532002}
-  rect: {fileID: 1187532003}
-  target: {fileID: 0}
-  daysCompare: 0
-  heartPoint: {fileID: 1269943085}
+  toObject: {fileID: 946351618}
+  point: {fileID: 1269943085}
 --- !u!1 &2120615085
 GameObject:
   m_ObjectHideFlags: 0

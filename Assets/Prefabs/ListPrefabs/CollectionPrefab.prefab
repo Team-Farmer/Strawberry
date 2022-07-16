@@ -178,7 +178,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 3ff747b0021cd38409616246d17bf19b, type: 3}
+    m_Font: {fileID: 12800000, guid: fffcb38c5316eb843924a2af66e3bd38, type: 3}
     m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
@@ -658,6 +658,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 21204139049265590}
+        m_TargetAssemblyTypeName: HeartMover, Assembly-CSharp
+        m_MethodName: HeartChMover
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 120
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6166730917049980533}
+        m_TargetAssemblyTypeName: HeartMover, Assembly-CSharp
+        m_MethodName: BadgeMover
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 120
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5179378678102735793
 GameObject:
   m_ObjectHideFlags: 0
@@ -777,7 +801,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3865188385623000476}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 21204139049265590}
+        m_TargetAssemblyTypeName: HeartMover, Assembly-CSharp
+        m_MethodName: HeartChMover
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 120
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6166730917049980533}
+        m_TargetAssemblyTypeName: HeartMover, Assembly-CSharp
+        m_MethodName: BadgeMover
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 120
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5714027239636749130
 GameObject:
   m_ObjectHideFlags: 0
@@ -827,11 +875,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 4781584845299629763}
-  Day: {fileID: 4911162250941680714}
-  to: {fileID: 0}
-  rect: {fileID: 0}
-  target: {fileID: 0}
-  daysCompare: 0
+  toObject: {fileID: 4911162250941680714}
+  point: {fileID: 0}
 --- !u!1 &5826314664937963886
 GameObject:
   m_ObjectHideFlags: 0
@@ -959,11 +1004,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 5026228088490291876}
-  Day: {fileID: 4911162250941680714}
-  to: {fileID: 0}
-  rect: {fileID: 0}
-  target: {fileID: 0}
-  daysCompare: 0
+  toObject: {fileID: 4911162250941680714}
+  point: {fileID: 0}
 --- !u!1 &8000951061545820816
 GameObject:
   m_ObjectHideFlags: 0

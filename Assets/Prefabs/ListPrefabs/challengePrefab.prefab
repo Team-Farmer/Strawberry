@@ -448,32 +448,26 @@ MonoBehaviour:
     rewardMedal: 0
     rewardHeart: 0
     clearCriterion: 00000000
-    accClearCriterion: 0
   - Title: "\uB538\uAE30 \uC218\uD655"
     rewardMedal: 0
     rewardHeart: 0
     clearCriterion: 00000000
-    accClearCriterion: 0
   - Title: "\uB204\uC801 \uCF54\uC778"
     rewardMedal: 0
     rewardHeart: 0
     clearCriterion: 00000000
-    accClearCriterion: 0
   - Title: "\uB204\uC801 \uD558\uD2B8"
     rewardMedal: 0
     rewardHeart: 0
     clearCriterion: 00000000
-    accClearCriterion: 0
   - Title: "\uB204\uC801 \uCD9C\uC11D"
     rewardMedal: 0
     rewardHeart: 0
     clearCriterion: 00000000
-    accClearCriterion: 0
   - Title: "\uBBF8\uB2C8\uAC8C\uC784 \uD50C\uB808\uC774"
     rewardMedal: 0
     rewardHeart: 0
     clearCriterion: 00000000
-    accClearCriterion: 0
   levelText: {fileID: 24569728808626950}
   titleText: {fileID: 527783996456215474}
   achieveCondition: {fileID: 527783997037598283}
@@ -828,10 +822,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 576111008284070252}
-  Day: {fileID: 527783997747247045}
+  toObject: {fileID: 527783997747247045}
   to: {fileID: 0}
-  rect: {fileID: 8956052210182060300}
-  daysCompare: 0
+  heartPoint: {fileID: 0}
 --- !u!1 &2157807828004521961
 GameObject:
   m_ObjectHideFlags: 0
@@ -1209,10 +1202,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 8645409806838682217}
-  Day: {fileID: 527783997747247045}
+  toObject: {fileID: 527783997747247045}
   to: {fileID: 0}
-  rect: {fileID: 1163356146302917869}
-  daysCompare: 0
+  heartPoint: {fileID: 0}
 --- !u!1 &6844077706645152247
 GameObject:
   m_ObjectHideFlags: 0
@@ -1298,7 +1290,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2092732143923423232}
   m_Layer: 5
-  m_Name: Animanager
+  m_Name: AniManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
