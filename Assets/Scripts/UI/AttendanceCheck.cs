@@ -41,10 +41,10 @@ public class AttendanceCheck : MonoBehaviour
     {
 
         #region 변수 초기화
-        //테스트용
+/*        //테스트용
         DataController.instance.gameData.attendanceLastday = DateTime.Parse("2022-07-15");
         DataController.instance.gameData.accDays = 125;
-        DataController.instance.gameData.isAttendance = false;
+        DataController.instance.gameData.isAttendance = false;*/
 
         DateTime today = DataController.instance.gameData.attendanceToday;
         DateTime lastday = DataController.instance.gameData.attendanceLastday; //지난 날짜 받아오기
