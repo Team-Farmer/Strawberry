@@ -219,14 +219,14 @@ RectTransform:
   m_GameObject: {fileID: 1806504805776644555}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.0012059499, y: 0.0040198327, z: 1}
+  m_LocalScale: {x: 1.2624, y: 1.2624, z: 1.2624}
   m_Children: []
   m_Father: {fileID: 2365483120866331673}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.998, y: 1.18}
+  m_AnchoredPosition: {x: 47.99951, y: -2.0141602}
   m_SizeDelta: {x: 66.0288, y: 60.3758}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3288241183768558993
@@ -461,11 +461,11 @@ RectTransform:
   m_Children:
   - {fileID: 4854417316416495424}
   - {fileID: 6734046020334841031}
+  - {fileID: 8886021377207003239}
+  - {fileID: 7831807616108024215}
+  - {fileID: 4560716895611496691}
   - {fileID: 3572804201014903790}
   - {fileID: 3929264525156321507}
-  - {fileID: 4560716895611496691}
-  - {fileID: 7831807616108024215}
-  - {fileID: 8886021377207003239}
   - {fileID: 3864542280833198056}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -557,7 +557,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2365483120866331673}
-  m_RootOrder: 2
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -658,30 +658,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 21204139049265590}
-        m_TargetAssemblyTypeName: HeartMover, Assembly-CSharp
-        m_MethodName: HeartChMover
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 120
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 6166730917049980533}
-        m_TargetAssemblyTypeName: HeartMover, Assembly-CSharp
-        m_MethodName: BadgeMover
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 120
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &5179378678102735793
 GameObject:
   m_ObjectHideFlags: 0
@@ -713,7 +689,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2365483120866331673}
-  m_RootOrder: 3
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -801,31 +777,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3865188385623000476}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 21204139049265590}
-        m_TargetAssemblyTypeName: HeartMover, Assembly-CSharp
-        m_MethodName: HeartChMover
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 120
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 6166730917049980533}
-        m_TargetAssemblyTypeName: HeartMover, Assembly-CSharp
-        m_MethodName: BadgeMover
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 120
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &5714027239636749130
 GameObject:
   m_ObjectHideFlags: 0
@@ -1034,14 +986,14 @@ RectTransform:
   m_GameObject: {fileID: 8000951061545820816}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.0009870843, y: 0.0032902812, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2365483120866331673}
-  m_RootOrder: 6
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.9979999, y: 1.18}
+  m_AnchoredPosition: {x: 48, y: -2}
   m_SizeDelta: {x: 66.0288, y: 60.3758}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7019163478704062689
