@@ -22,13 +22,13 @@ public class MiniGame : MonoBehaviour
 
     protected Globalvariable global;
 
-    protected virtual void Start()
+    protected virtual void Awake()
     {
         size = scrollbar.size / 60f; 
         global = GameObject.FindGameObjectWithTag("Global").GetComponent<Globalvariable>();
     }
 
-    void OnEnable()
+    protected virtual void OnEnable()
     {
         StartGame();
     }
@@ -51,7 +51,7 @@ public class MiniGame : MonoBehaviour
         score = 0;
         time = 64;
         score_txt.text = score.ToString() + "점";
-
+        isGameRunning = false;
         //4초 카운트
         StartCoroutine(Count4Second());
     }

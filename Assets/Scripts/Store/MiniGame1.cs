@@ -14,7 +14,7 @@ public class MiniGame1 : MiniGame
     public GameObject O;       //O 이미지
     public GameObject X;       //X 이미지
 
-    protected override void Start()
+    protected override void Awake()
     {
         for (int i = 0; i < 4; i++)
         {
@@ -22,7 +22,7 @@ public class MiniGame1 : MiniGame
             answer_btn[_i].onClick.AddListener(() => OnClickAnswerButton(_i));
         }
         answerIndex = new int[4];
-        base.Start();
+        base.Awake();
     }
 
     protected override void MakeGame()

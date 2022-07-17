@@ -46,6 +46,7 @@ public class MinigameBerry : MonoBehaviour
             
             if (dist <= r * r || berry_y <= 75f)
             {
+                this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
                 this.gameObject.SetActive(false);
                 return;
             }

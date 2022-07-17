@@ -17,13 +17,17 @@ public class MiniGame3 : MiniGame
     public RectTransform berryGroup;
 
     // Start is called before the first frame update
-    protected override void Start()
+    protected override void Awake()
     {
-        base.Start();
-        basketRect = basket.GetComponent<RectTransform>();
+        base.Awake();
+        basketRect = basket.GetComponent<RectTransform>();     
         randTime = Random.Range(1.5f, 2.0f);
     }
-
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        basketRect.anchoredPosition = new Vector3(425f, 560f, 0f);
+    }
     public void PointDown()
     {
         isDrag = true;
@@ -53,6 +57,8 @@ public class MiniGame3 : MiniGame
             mousePos.z = 0;
             if (mousePos.x < leftBorder) mousePos.x = leftBorder;
             else if (mousePos.x > rightBorder) mousePos.x = rightBorder;
+            else mousePos.x = mousePos.x - basketRect.rect.width / 2;
+
             basketRect.anchoredPosition = Vector3.Lerp(basketRect.anchoredPosition, mousePos, 0.2f);
         }
         accTime += Time.deltaTime;
@@ -73,11 +79,17 @@ public class MiniGame3 : MiniGame
             {
                 int rndId = unlockList[Random.Range(0, unlockList.Count)];
                 berryPool[i].GetComponent<Image>().sprite = global.berryListAll[rndId].GetComponent<SpriteRenderer>().sprite;
-                
+
+                float bugrnd = Random.Range(0f, 10f);
+                if(bugrnd <= 2f)
+                {
+                    Debug.Log("Bug!!");
+                    berryPool[i].transform.GetChild(0).gameObject.SetActive(true);
+                }
                 return berryPool[i].GetComponent<MinigameBerry>();
             }
         }
-        return MakeMiniGameBerry(); // 비활성화된 동글이가 없다면 새로 만든다.
+        return MakeMiniGameBerry(); // 비활성화된 딸기가 없다면 새로 만든다.
     }
     MinigameBerry MakeMiniGameBerry()
     {
@@ -92,7 +104,9 @@ public class MiniGame3 : MiniGame
         MinigameBerry instantMiniBerry = instantMiniBerryObj.GetComponent<MinigameBerry>();
         instantMiniBerry.bgRect = bgRect;
         instantMiniBerry.basketRect = basketRect;
-      
+
+        instantMiniBerry.transform.GetChild(0).gameObject.SetActive(false);
+
         return instantMiniBerry;
     }
     public override void OnClickPauseButton()
