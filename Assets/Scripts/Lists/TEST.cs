@@ -11,7 +11,6 @@ public class TEST : MonoBehaviour
         global = GameObject.FindGameObjectWithTag("Global");
     }
 
-
     public void Get(int berryClassify) 
     {
         int start=0, end=0;

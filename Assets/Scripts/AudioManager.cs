@@ -75,42 +75,34 @@ public class AudioManager : MonoBehaviour
     //========================================================================================================
     //========================================================================================================
     
-    //배경음 변경(새로운 씬 안가져오니까 이거 변경할것)
-    private void OnSceneLoaded(Scene sceneNow,LoadSceneMode mode) 
-    {
-
-        for (int i = 0; i < BgClipList.Length; i++) {
-            if (sceneNow.name == BgClipList[i].name)//씬이름과 같은 배경음 틀기
-            {
-                BgSoundPlay(BgClipList[i]);//재생
-            }
-        }
-    
-    }
-
-
     public void BGSoundVolume() {
 
-        //배경음 음량변화
-        if (BGSoundSlider.GetComponent<Slider>().value == 0)
-        { mixer.SetFloat("BGSoundVolume", -80); }
-        mixer.SetFloat("BGSoundVolume", Mathf.Log10(BGSoundSlider.GetComponent<Slider>().value) * 20);
+        //배경음 음량조절
+        if (BGSoundSlider.GetComponent<Slider>().value == 0) { mixer.SetFloat("BGSoundVolume", -80); }
+        else { mixer.SetFloat("BGSoundVolume", Mathf.Log10(BGSoundSlider.GetComponent<Slider>().value) * 20); }
+        
+        float value;
+        mixer.GetFloat("BGSoundVolume", out value);
+        Debug.Log("bg sound=" + BGSoundSlider.GetComponent<Slider>().value + "->" + value);
 
     }
 
     public void SFXVolume() {
-        //효과음 음량변화
-        if (SFXSoundSlider.GetComponent<Slider>().value == 0) 
-        { mixer.SetFloat("SFXVolume", -80); }
+        //효과음 음량조절
+        if (SFXSoundSlider.GetComponent<Slider>().value == 0) { mixer.SetFloat("SFXVolume", -80); }
         else { mixer.SetFloat("SFXVolume", Mathf.Log10(SFXSoundSlider.GetComponent<Slider>().value) * 20); }
 
+        float value2;
+        mixer.GetFloat("SFXVolume", out value2);
+        Debug.Log("sfx sound=" + SFXSoundSlider.GetComponent<Slider>().value + "->" + value2);
     }
 
 
 
     //효과음
     //이거 미완성
-    public void SFXPlay(string sfxName,AudioClip clip) {
+    public void SFXPlay(string sfxName,AudioClip clip) 
+    {
 
         GameObject go = new GameObject(sfxName+"Sound");//해당이름을 가진 오브젝트가 소리 날때마다 생성된다.
         
@@ -128,7 +120,7 @@ public class AudioManager : MonoBehaviour
 
 
 
-    //얘네 줄일수있긴한데 그러면 오디오 수작ㅇ업으로 넣어야하는데 ..
+    //얘네 줄일수있긴한데 그러면 오디오 수작ㅇ업으로 넣어야함
 
     public void SowAudioPlay()//씨뿌리기 효과음
     { SFXPlay("SowSFX", SowClip); }
@@ -178,17 +170,7 @@ public class AudioManager : MonoBehaviour
     }
 
 
-    public void BgSoundPlay(AudioClip clip) //이건 안쓰기는 할듯
-    {
-        if (isPlayAudio == true)
-        {
-            bgSound.outputAudioMixerGroup = mixer.FindMatchingGroups("BGSound")[0];
-            bgSound.clip = clip;
-            bgSound.loop = false;
-            bgSound.volume = 0.2f;
-            bgSound.Play();
-        }
-    }
+
     public void BgSoundPlay2(bool isGameMain)
     {
         AudioClip clip;
