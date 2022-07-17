@@ -119,6 +119,16 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region 기본
+    void Awake()
+    {
+        //출석 관련 호출.
+        StartCoroutine(WebCheck());
+        CheckTime();
+        if (DataController.instance.gameData.attendanceToday.Day != DataController.instance.gameData.attendanceLastday.Day)
+            DataController.instance.gameData.isAttendance = false;
+        attendanceCheck.GetComponent<AttendanceCheck>().Attendance();
+    }
+
     void Start()
     {
         Application.targetFrameRate = 60;
@@ -127,11 +137,6 @@ public class GameManager : MonoBehaviour
         target = TruckObj.GetComponent<Transform>();
         
         //for(int i = 0; i < )
-        //출석 관련 호출.
-        StartCoroutine(WebCheck());
-        attendanceCheck.GetComponent<AttendanceCheck>().Attendance();
-        CheckTime();
-
         //TimerStart += Instance_TimerStart;
 
         DisableObjColliderAll();       
@@ -1065,6 +1070,8 @@ public class GameManager : MonoBehaviour
     public void OnTimePass()
     {
         //정보갱신
+        StartCoroutine(WebCheck());
+        CheckTime();
         DataController.instance.gameData.isAttendance = false;
         attendanceCheck.GetComponent<AttendanceCheck>().Attendance();
     }

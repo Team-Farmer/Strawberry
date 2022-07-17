@@ -26,12 +26,16 @@ public class AttendanceCheck : MonoBehaviour
     [SerializeField] TMP_Text[] tagTMP;
     public GameObject icon;
     public GameObject m_tag;
-    public bool isAtd;
     private int days;
     private int hearts;
     private int weeks;
     private int multiply_tag;
     String weeksText;
+    DateTime today;
+    DateTime lastday;
+    bool isAttendance;
+    TimeSpan ts;
+    int DaysCompare;
 
     #endregion
 
@@ -39,20 +43,20 @@ public class AttendanceCheck : MonoBehaviour
 
     public void Attendance()
     {
-
         #region 변수 초기화
+
 /*        //테스트용
         DataController.instance.gameData.attendanceLastday = DateTime.Parse("2022-07-15");
         DataController.instance.gameData.accDays = 123;
         DataController.instance.gameData.isAttendance = false;*/
 
-        DateTime today = DataController.instance.gameData.attendanceToday;
-        DateTime lastday = DataController.instance.gameData.attendanceLastday; //지난 날짜 받아오기
-        bool isAttendance = DataController.instance.gameData.isAttendance; //출석 여부 판단 bool 값
+        today = DataController.instance.gameData.attendanceToday;
+        lastday = DataController.instance.gameData.attendanceLastday; //지난 날짜 받아오기
+        isAttendance = DataController.instance.gameData.isAttendance; //출석 여부 판단 bool 값
         days = DataController.instance.gameData.accDays; // 출석 누적 날짜
+        ts = today - lastday; //날짜 차이 계산
+        DaysCompare = ts.Days; //Days 정보만 추출.
 
-        TimeSpan ts = today - lastday; //날짜 차이 계산
-        int DaysCompare = ts.Days; //Days 정보만 추출.
         #endregion
 
         if (isAttendance == false)
@@ -86,7 +90,17 @@ public class AttendanceCheck : MonoBehaviour
         }
         else //출석을 이미 한 상태다
         {
-            Debug.Log (days %= 6);
+            if (days > 6)
+            {
+                weeks = 1 + (days % 6);
+                days %= 6;
+                multiply_tag = weeks;
+            }
+            else
+            {
+                weeks = 1;
+                multiply_tag = 1;
+            }
             for (int i = 0; i < days; i++) //출석완료 버튼 활성화
             {
                 image[i].sprite = Front[i].Behind[1];
