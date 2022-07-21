@@ -16787,8 +16787,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -60}
-  m_SizeDelta: {x: 980.0001, y: 2299.9995}
+  m_AnchoredPosition: {x: 2.2999992, y: -22.300003}
+  m_SizeDelta: {x: 1552.9, y: 2920.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &752352166
 MonoBehaviour:
@@ -27256,8 +27256,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1080.0001, y: 2399.9995}
+  m_AnchoredPosition: {x: -8.1, y: -71}
+  m_SizeDelta: {x: 1436.7, y: 2720.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1166699829
 MonoBehaviour:
@@ -47846,7 +47846,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 215653204}
   toObject: {fileID: 215653200}
-  point: {fileID: 0}
+  point: {fileID: 1595401649}
 --- !u!1 &2075429932
 GameObject:
   m_ObjectHideFlags: 0
