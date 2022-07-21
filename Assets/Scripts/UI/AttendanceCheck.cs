@@ -45,9 +45,9 @@ public class AttendanceCheck : MonoBehaviour
     {
         #region 변수 초기화
 
-/*        //테스트용
-        DataController.instance.gameData.attendanceLastday = DateTime.Parse("2022-07-15");
-        DataController.instance.gameData.accDays = 123;
+/*       //테스트용
+        DataController.instance.gameData.attendanceLastday = DateTime.Parse("2022-07-21");
+        DataController.instance.gameData.accDays = 5;
         DataController.instance.gameData.isAttendance = false;*/
 
         today = DataController.instance.gameData.attendanceToday;
@@ -82,7 +82,7 @@ public class AttendanceCheck : MonoBehaviour
             {
                 //days 0으로 초기화 후 day1버튼 활성화
                 DataController.instance.gameData.accDays = 0;
-                days = 0;
+                days = DataController.instance.gameData.accDays;
                 weeks = 1;
                 multiply_tag = 1;
                 selectDay(days);
@@ -90,6 +90,7 @@ public class AttendanceCheck : MonoBehaviour
         }
         else //출석을 이미 한 상태다
         {
+
             if (days > 6)
             {
                 weeks = 1 + (days % 6);
@@ -101,10 +102,12 @@ public class AttendanceCheck : MonoBehaviour
                 weeks = 1;
                 multiply_tag = 1;
             }
+
             for (int i = 0; i < days; i++) //출석완료 버튼 활성화
             {
                 image[i].sprite = Front[i].Behind[1];
             }
+
         }
 
         if (weeks < 9 && weeks> 1)
@@ -162,9 +165,8 @@ public class AttendanceCheck : MonoBehaviour
             //출석 정보 저장.
             DataController.instance.gameData.accDays += 1; 
             DataController.instance.gameData.isAttendance = true;
-            DataController.instance.gameData.attendanceLastday = DataController.instance.gameData.attendanceToday;
-
-            DataController.instance.gameData.accAttendance += 1; // 누적 출석 증가
+            DataController.instance.gameData.attendanceLastday = today;
+            //DataController.instance.gameData.accAttendance += 1; // 누적 출석 증가
                                                                  // 10*날짜*주수
                                                                  // Debug.Log("누적 출석 : " + DataController.instance.gameData.accAttendance);
                                                                  // Debug.Log("누적 하트 : " + DataController.instance.gameData.accHeart);

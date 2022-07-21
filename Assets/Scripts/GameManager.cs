@@ -126,11 +126,13 @@ public class GameManager : MonoBehaviour
         CheckTime();
         if (DataController.instance.gameData.attendanceToday.Day != DataController.instance.gameData.attendanceLastday.Day)
             DataController.instance.gameData.isAttendance = false;
-        attendanceCheck.GetComponent<AttendanceCheck>().Attendance();
+
     }
 
     void Start()
     {
+        attendanceCheck.GetComponent<AttendanceCheck>().Attendance();
+
         Application.targetFrameRate = 60;
         instance = this; // 게임 매니저의 싱글턴 패턴화 >> GameManager.instance.~~ 로 호출
 
