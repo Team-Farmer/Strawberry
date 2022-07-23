@@ -127,6 +127,10 @@ public class GameManager : MonoBehaviour
         if (DataController.instance.gameData.attendanceToday.Day != DataController.instance.gameData.attendanceLastday.Day)
             DataController.instance.gameData.isAttendance = false;
 
+        Debug.Log("오늘 날짜: "+DataController.instance.gameData.attendanceToday.Day);
+        Debug.Log("지난 출석 날짜: "+DataController.instance.gameData.attendanceLastday.Day);
+        Debug.Log("출석여부 "+DataController.instance.gameData.isAttendance);
+
     }
 
     void Start()
@@ -1067,14 +1071,14 @@ public class GameManager : MonoBehaviour
         TimeSpan ts = target - DataController.instance.gameData.attendanceToday;
         // 남은시간 만큼 대기 후 OnTimePass 함수 호출.
         Invoke("OnTimePass", (float)ts.TotalSeconds);
+        Debug.Log("자정까지 남은 시간(분): " + ts.TotalMinutes);
     }
 
     public void OnTimePass()
     {
         //정보갱신
-        StartCoroutine(WebCheck());
-        CheckTime();
-        DataController.instance.gameData.isAttendance = false;
+        Debug.Log("출석 정보가 갱신되었습니다.");
+        Awake();
         attendanceCheck.GetComponent<AttendanceCheck>().Attendance();
     }
 
