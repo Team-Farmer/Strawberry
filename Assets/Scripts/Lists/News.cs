@@ -44,6 +44,7 @@ public class News : MonoBehaviour
 
     GameObject newsExp;
     GameObject newsContent;
+    GameObject LockNum;
 
     //경고 창 패널들
     GameObject WarningPanel;
@@ -57,7 +58,7 @@ public class News : MonoBehaviour
         instance = this;
 
         //프리팹들에게 고유 번호 붙이기
-        if (Prefabcount >= 6) { Prefabcount %= 6; }
+        if (Prefabcount >= 15) { Prefabcount %= 15; }
         prefabnum = Prefabcount;
         Prefabcount++;
     }
@@ -65,7 +66,9 @@ public class News : MonoBehaviour
     {
         newsExp = GameObject.FindGameObjectWithTag("NewsExplanation").transform.GetChild(0).gameObject;
         newsContent = GameObject.FindGameObjectWithTag("NewsContent");
-        
+        LockNum = Lock.transform.GetChild(2).gameObject;
+
+
         WarningPanel = GameObject.FindGameObjectWithTag("WarningPanel");
         WarningPanelBlack= WarningPanel.transform.GetChild(0).gameObject;
         YNPanel = WarningPanel.transform.GetChild(2).gameObject;
@@ -78,6 +81,8 @@ public class News : MonoBehaviour
         TitleText.GetComponent<Text>().text = Info[prefabnum].Title;
         //뉴스 숫자
         CountText.GetComponent<Text>().text = "0" + (prefabnum + 1);
+        //해금에 필요한 뱃지 수
+        LockNum.GetComponent<Text>().text = Info[prefabnum].Price.ToString();
 
         //뉴스 상태 업데이트
         InfoUpdate();
@@ -87,7 +92,7 @@ public class News : MonoBehaviour
     
     public void InfoUpdate()
     {
-        //뉴스 상태에 따라서 lock, unlockable,unlock으로 보이기 
+        //뉴스 상태에 따라서 lock, unlockable, unlock으로 보이기 
         switch (DataController.instance.gameData.newsState[prefabnum]) 
         {
             case 0://LOCK

@@ -61,7 +61,7 @@ public class GameData
     public int[] challengeLevel = new int[7];//현재 달성 수치
 
     //뉴스
-    public int[] newsState = new int[7];//0=Lock, 1=Unlock Able 2=Unlock
+    public int[] newsState = new int[15];//0=Lock, 1=Unlock Able 2=Unlock
 
     //수집
     public bool[] isCollectionDone = new bool[7];
@@ -73,7 +73,7 @@ public class GameData
 
     //느낌표 ! 이거 없앨ㄴ수있음?
     public bool[] isBerryEM = new bool[192];
-    public bool[] isNewsEM = new bool[7];
+    public bool[] isNewsEM = new bool[15];
     //=====================================================================================
 
     //도전과제를 위한 누적 저장 변수 (누적 : accumulate)

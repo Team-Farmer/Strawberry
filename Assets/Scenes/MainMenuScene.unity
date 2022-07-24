@@ -6217,7 +6217,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &279432230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8372,7 +8372,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &366425171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12255,7 +12255,7 @@ MonoBehaviour:
   elementPrefab: {fileID: 5274030419520564147, guid: 89552374ac89cd24c848dcc5746ba2eb, type: 3}
   content:
   - {fileID: 1416352139}
-  count: 6
+  count: 15
   isBerry: 0
 --- !u!114 &529438798
 MonoBehaviour:
@@ -38965,7 +38965,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 32.320007, y: -111.640015}
+  m_AnchoredPosition: {x: 32.320007, y: -111.63989}
   m_SizeDelta: {x: 192.57, y: -117.16}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1677206385

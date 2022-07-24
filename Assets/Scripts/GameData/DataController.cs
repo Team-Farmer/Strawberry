@@ -138,7 +138,7 @@ public class DataController : MonoBehaviour
         for (int i = 0; i < 7; i++) { gameData.isCollectionDone[i] = false; }
 
         //´º½º
-        for (int i = 0; i < 7; i++) {   gameData.newsState[i] = 0;  }
+        for (int i = 0; i < 15; i++) {   gameData.newsState[i] = 0;  }
 
         //PTJ
         for (int i = 0; i < 6; i++) { gameData.PTJNum[i] = 0; }
@@ -147,7 +147,7 @@ public class DataController : MonoBehaviour
         gameData.PTJCount = 0;
 
         //´À³¦Ç¥ !!
-        for (int i = 0; i < 7; i++) 
+        for (int i = 0; i < 15; i++) 
         {    gameData.isNewsEM[i] = false;   }
         for (int i = 0; i < 192; i++)
         {    gameData.isBerryEM[i] = false;    }
