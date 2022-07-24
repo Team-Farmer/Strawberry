@@ -79,8 +79,9 @@ public class News : MonoBehaviour
      
         //제목
         TitleText.GetComponent<Text>().text = Info[prefabnum].Title;
-        //뉴스 숫자
-        CountText.GetComponent<Text>().text = "0" + (prefabnum + 1);
+        //뉴스 번호 숫자
+        if (prefabnum < 9) { CountText.GetComponent<Text>().text = "0" + (prefabnum + 1); }
+        else { CountText.GetComponent<Text>().text = (prefabnum + 1).ToString(); }
         //해금에 필요한 뱃지 수
         LockNum.GetComponent<Text>().text = Info[prefabnum].Price.ToString();
 
