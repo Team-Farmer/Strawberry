@@ -166,6 +166,7 @@ public class PTJ : MonoBehaviour
         nameText.GetComponent<Text>().text = Info[prefabnum].Name;
         //알바생 사진
         facePicture.GetComponent<Image>().sprite = Info[prefabnum].Picture;
+        facePicture.GetComponent<Image>().preserveAspect = true;
         //설명
         explanationText.GetComponent<Text>().text = Info[prefabnum].Explanation;
         //비용
@@ -191,6 +192,7 @@ public class PTJ : MonoBehaviour
         GameObject explanation = PTJPanel.transform.GetChild(5).gameObject;
 
         picture.GetComponent<Image>().sprite = Info[prefabnum].Picture;
+        picture.GetComponent<Image>().preserveAspect = true;
         name.GetComponent<Text>().text = Info[prefabnum].Name;
         explanation.GetComponent<Text>().text = Info[prefabnum].Explanation;
 

@@ -139,6 +139,10 @@ MonoBehaviour:
   yesBerryImage: {fileID: -4623353640749799153, guid: 5793a0752ea94ed4d8413bd1fcc8df20, type: 3}
   berryImagePanel: {fileID: 2596841310103868763}
   ExclamationMark: {fileID: 8721197370247341226}
+  berryClassifyImage:
+  - {fileID: 21300000, guid: 352fee73bc94e024a81f0df75d3eb167, type: 3}
+  - {fileID: 21300000, guid: 79118817bca60f64f8fc3a0f0b1db419, type: 3}
+  - {fileID: 21300000, guid: 7b14e6385ab8a2e47a9b536a0dc50a17, type: 3}
 --- !u!114 &3105252500657323887
 MonoBehaviour:
   m_ObjectHideFlags: 0

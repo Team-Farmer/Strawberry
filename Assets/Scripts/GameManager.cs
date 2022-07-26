@@ -890,12 +890,14 @@ public class GameManager : MonoBehaviour
 
         AcheivePanel_newBerry.transform.GetChild(2).GetComponent<Text>().text //얻은 딸기 이름
             = Global.GetComponent<Globalvariable>().berryListAll[DataController.instance.gameData.newBerryIndex].GetComponent<Berry>().berryName;
+                //베리 분류 이미지 
         if (DataController.instance.gameData.newBerryIndex < 64) 
         { AcheivePanel_newBerry.transform.GetChild(3).GetComponent<Image>().sprite =AcheiveClassify_newBerry[0]; }
         else if (DataController.instance.gameData.newBerryIndex < 128)
         { AcheivePanel_newBerry.transform.GetChild(3).GetComponent<Image>().sprite = AcheiveClassify_newBerry[1]; }
         else
         { AcheivePanel_newBerry.transform.GetChild(3).GetComponent<Image>().sprite = AcheiveClassify_newBerry[2]; }
+
 
         //검정창 띄우기
         BlackPanel_newBerry.SetActive(true);

@@ -13,13 +13,15 @@ public class Challenge : MonoBehaviour
         public int rewardMedal; //메달 보상
         public int rewardHeart; //하트 보상
         public int[] clearCriterion;  //달성 조건
+        public Sprite challengeImage;
 
-        public ChallengeNewsStruct(string Title, int rewardMedal, int rewardHeart,int[] clearCriterion)
+        public ChallengeNewsStruct(string Title, int rewardMedal, int rewardHeart,int[] clearCriterion,Sprite challengeImage)
         {
             this.Title = Title;
             this.rewardMedal = rewardMedal;
             this.rewardHeart = rewardHeart;
             this.clearCriterion = clearCriterion;
+            this.challengeImage = challengeImage;
 
         }
     }
@@ -37,6 +39,8 @@ public class Challenge : MonoBehaviour
     private GameObject nowCondition; //현재 도전과제 달성 수치 텍스트
     [SerializeField]
     private GameObject Button;
+    [SerializeField]
+    private GameObject image;//왼쪽의 설명 그림
 
     [Header("==========Gauge==========")]
     [SerializeField]
@@ -116,6 +120,10 @@ public class Challenge : MonoBehaviour
         //보상 설정
         Info[prefabnum].rewardMedal = 1; // 1 뱃지
         Info[prefabnum].rewardHeart = DataController.instance.gameData.challengeLevel[prefabnum] * 5;//레벨X5 하트
+
+        //그림 설정
+        image.GetComponent<Image>().sprite = Info[prefabnum].challengeImage;
+
 
         //수집 기준 설정
         Info[prefabnum].clearCriterion = new int[100];

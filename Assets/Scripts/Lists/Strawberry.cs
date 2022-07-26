@@ -20,8 +20,9 @@ public class Strawberry : MonoBehaviour
     [SerializeField]
     private GameObject berryImagePanel;//이미지를 보일 오브젝트 대상
     [SerializeField]
-    private GameObject ExclamationMark;
-
+    private GameObject ExclamationMark;//new!표시
+    [SerializeField]
+    private Sprite[] berryClassifyImage;//베리 분류 이미지
 
     //베리 설명창
     private GameObject berryExp;
@@ -100,10 +101,11 @@ public class Strawberry : MonoBehaviour
                 berryExp.GetComponent<PanelAnimation>().OpenScale();
                 berryExpPanelBlack.SetActive(true);
 
-                GameObject berryExpImage = berryExp.transform.GetChild(1).gameObject;
-                GameObject berryExpName = berryExp.transform.GetChild(2).gameObject;
-                GameObject berryExpTxt = berryExp.transform.GetChild(3).gameObject;
-                GameObject berryExpPrice= berryExp.transform.GetChild(4).gameObject;
+                GameObject berryExpImage = berryExp.transform.GetChild(2).gameObject;
+                GameObject berryExpName = berryExp.transform.GetChild(3).gameObject;
+                GameObject berryExpTxt = berryExp.transform.GetChild(4).gameObject;
+                GameObject berryExpPrice= berryExp.transform.GetChild(5).gameObject;
+                GameObject berryClassify = berryExp.transform.GetChild(6).gameObject;
                 
 
                 //Explanation 내용을 채운다.
@@ -118,7 +120,17 @@ public class Strawberry : MonoBehaviour
                     = BERRY[prefabnum].GetComponent<Berry>().berryExplain;//설명 설정
 
                 berryExpPrice.transform.gameObject.GetComponentInChildren<Text>().text
-                    = BERRY[prefabnum].GetComponent<Berry>().berryPrice.ToString()+"A";//설명 설정
+                    = BERRY[prefabnum].GetComponent<Berry>().berryPrice.ToString()+"A";//가격 설정
+
+                if (prefabnum < 64)
+                { berryClassify.GetComponent<Image>().sprite = berryClassifyImage[0]; }
+                else if (prefabnum < 128)
+                { berryClassify.GetComponent<Image>().sprite = berryClassifyImage[1]; }
+                else
+                { berryClassify.GetComponent<Image>().sprite = berryClassifyImage[2]; }
+                berryClassify.GetComponent<Image>().preserveAspect = true;
+
+
 
             }
         }
