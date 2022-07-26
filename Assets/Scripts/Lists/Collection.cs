@@ -35,7 +35,7 @@ public class Collection : MonoBehaviour
     public GameObject collectionBtn;
     public GameObject collectionNoBtn;
     public GameObject collectionNow;
-    public Sprite collectionBtnSprite;
+    public Sprite collectionBtnSprite;//베리 다 모았을 때 완료버튼 스프라이트
     //=================================================================================
     //=================================================================================
     //프리팹들 번호 붙여주기

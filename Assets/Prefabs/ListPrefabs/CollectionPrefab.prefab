@@ -524,7 +524,7 @@ MonoBehaviour:
   collectionBtn: {fileID: 4911162250941680714}
   collectionNoBtn: {fileID: 5179378678102735793}
   collectionNow: {fileID: 5826314664937963886}
-  collectionBtnSprite: {fileID: -765015418919943096, guid: d7462a2db557512448ed8c9a9d1c7db0, type: 3}
+  collectionBtnSprite: {fileID: 21300000, guid: a1f9986a252c979409269070691ab9bd, type: 3}
   berryClassifyNum: 0
 --- !u!1 &4911162250941680714
 GameObject:

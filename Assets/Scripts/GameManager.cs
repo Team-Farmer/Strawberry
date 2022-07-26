@@ -72,6 +72,7 @@ public class GameManager : MonoBehaviour
     public GameObject TimeReducePanel_newBerry;
     public Text TimeReduceText_newBerry;
     public GameObject AcheivePanel_newBerry;
+    public Sprite[] AcheiveClassify_newBerry;
 
     public GameObject NoPanel_newBerry;
     public GameObject BlackPanel_newBerry;
@@ -883,12 +884,18 @@ public class GameManager : MonoBehaviour
 
         //얻은 딸기 설명창
         AcheivePanel_newBerry.SetActive(true);
-        AcheivePanel_newBerry.transform.GetChild(0).GetComponent<Image>().sprite
+        AcheivePanel_newBerry.transform.GetChild(1).GetComponent<Image>().sprite //얻은 딸기 이미지
             = Global.GetComponent<Globalvariable>().berryListAll[DataController.instance.gameData.newBerryIndex].GetComponent<SpriteRenderer>().sprite;
-        AcheivePanel_newBerry.transform.GetChild(0).GetComponent<Image>().preserveAspect = true;
+        AcheivePanel_newBerry.transform.GetChild(1).GetComponent<Image>().preserveAspect = true;
 
-        AcheivePanel_newBerry.transform.GetChild(1).GetComponent<Text>().text
+        AcheivePanel_newBerry.transform.GetChild(2).GetComponent<Text>().text //얻은 딸기 이름
             = Global.GetComponent<Globalvariable>().berryListAll[DataController.instance.gameData.newBerryIndex].GetComponent<Berry>().berryName;
+        if (DataController.instance.gameData.newBerryIndex < 64) 
+        { AcheivePanel_newBerry.transform.GetChild(3).GetComponent<Image>().sprite =AcheiveClassify_newBerry[0]; }
+        else if (DataController.instance.gameData.newBerryIndex < 128)
+        { AcheivePanel_newBerry.transform.GetChild(3).GetComponent<Image>().sprite = AcheiveClassify_newBerry[1]; }
+        else
+        { AcheivePanel_newBerry.transform.GetChild(3).GetComponent<Image>().sprite = AcheiveClassify_newBerry[2]; }
 
         //검정창 띄우기
         BlackPanel_newBerry.SetActive(true);
