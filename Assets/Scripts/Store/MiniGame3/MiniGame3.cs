@@ -21,7 +21,7 @@ public class MiniGame3 : MiniGame
     {
         base.Awake();
         basketRect = basket.GetComponent<RectTransform>();     
-        randTime = Random.Range(1.5f, 2.0f);
+        randTime = Random.Range(1.0f, 2.0f);
     }
     protected override void OnEnable()
     {
@@ -41,17 +41,13 @@ public class MiniGame3 : MiniGame
     {
         if (!isGameRunning) return;
         
+        // 드래그해서 바구니 옮기기!
         if (isDrag)
-        {
-            //Debug.Log("Dragging");
-            
-            Vector3 mousePos = Input.mousePosition;
-            //Debug.Log("mousePos.x: " + mousePos.x + " mousePos.y: " + mousePos.y);
+        {                     
+            Vector3 mousePos = Input.mousePosition;          
             
             float leftBorder = 0f;
-            float rightBorder = bgRect.rect.width - basketRect.rect.width;
-
-            //Debug.Log("leftBorder: " + leftBorder + " rightBorder: " + rightBorder);
+            float rightBorder = bgRect.rect.width - basketRect.rect.width;           
             
             mousePos.y = 560;
             mousePos.z = 0;
@@ -63,12 +59,13 @@ public class MiniGame3 : MiniGame
         }
         accTime += Time.deltaTime;
 
+        // 랜덤한 시간마다 딸기 생성
         if(accTime >= randTime)
         {
             MinigameBerry miniBerry = GetMiniGameBerry();
             miniBerry.gameObject.SetActive(true);
             accTime = 0f;
-            randTime = Random.Range(1.5f, 2.0f);
+            randTime = Random.Range(1.0f, 2.0f);
         }
     }
     MinigameBerry GetMiniGameBerry()

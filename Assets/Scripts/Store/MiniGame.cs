@@ -15,9 +15,9 @@ public class MiniGame : MonoBehaviour
     public GameObject resultPanel;//결과패널
     public Text result_txt;    //결과 텍스트
 
-    protected float size;                         //스크롤바 사이즈
-    protected int time;                           //초
-    protected int score;                          //점수
+    public float size;                         //스크롤바 사이즈
+    public int time;                           //초
+    public int score;                          //점수
     protected List<int> unlockList=new List<int>(); //해금된 딸기 번호 리스트
 
     protected Globalvariable global;
@@ -79,8 +79,10 @@ public class MiniGame : MonoBehaviour
         yield return new WaitForSeconds(1);
         scrollbar.size -= size;
         time -= 1;
+        Debug.Log("Game is Running!!");
         if (time <= 0)
         {
+            Debug.Log("Game is Done!!");
             FinishGame();
         }
         else
