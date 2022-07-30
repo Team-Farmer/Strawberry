@@ -47,9 +47,6 @@ public class AudioManager : MonoBehaviour
     //instance
     public static AudioManager instance;
 
-    //values
-    private float BG_SOUND_VALUE;
-    private float SFX_SOUND_VALUE;
 
     //========================================================================================================
     //========================================================================================================
@@ -71,50 +68,20 @@ public class AudioManager : MonoBehaviour
     {
         BGSoundSlider.GetComponent<Slider>().value = 0.5f;
         SFXSoundSlider.GetComponent<Slider>().value = 0.5f;
-        //BGSoundVolume();
-        //SFXVolume();
 
         BgSoundPlay2(true);
-    }
-    private void Update()
-    {
-        BGSoundValue = BGSoundSlider.GetComponent<Slider>().value;
-        SFXSoundValue = SFXSoundSlider.GetComponent<Slider>().value;
-    }
-
-    //value update
-    float BGSoundValue {
-        set
-        {
-            if (BG_SOUND_VALUE == value) return;
-            BG_SOUND_VALUE = value;
 
 
-            if (BGSoundSlider.GetComponent<Slider>().value == 0) { mixer.SetFloat("BGSoundVolume", -80); }
-            else { mixer.SetFloat("BGSoundVolume", Mathf.Log10(BGSoundSlider.GetComponent<Slider>().value) * 20); }
-
-        }
-        get { return BG_SOUND_VALUE; }
+        //슬라이드값 변할때마다 아래 함수 실행
+        BGSoundSlider.GetComponent<Slider>().onValueChanged.AddListener(delegate { BGSoundVolume(); });
+        SFXSoundSlider.GetComponent<Slider>().onValueChanged.AddListener(delegate { SFXVolume(); });
     }
 
-    float SFXSoundValue {
-        set
-        {
-            if (SFX_SOUND_VALUE == value) return;
-            SFX_SOUND_VALUE = value;
-
-            if (SFXSoundSlider.GetComponent<Slider>().value == 0) { mixer.SetFloat("SFXVolume", -80); }
-            else { mixer.SetFloat("SFXVolume", Mathf.Log10(SFXSoundSlider.GetComponent<Slider>().value) * 20); }
-
-
-        }
-        get { return SFX_SOUND_VALUE; }
-    }
+    
     //========================================================================================================
     //========================================================================================================
+    
 
-    //onvalue changed로 작동하는 함수. 안됨.
-    /*
     public void BGSoundVolume() {
 
         //배경음 음량조절
@@ -136,7 +103,7 @@ public class AudioManager : MonoBehaviour
         mixer.GetFloat("SFXVolume", out value2);
         Debug.Log("sfx sound=" + SFXSoundSlider.GetComponent<Slider>().value + "->" + value2);
     }
-    */
+
 
 
     //효과음
