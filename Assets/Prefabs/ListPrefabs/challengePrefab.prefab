@@ -620,6 +620,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 4328159929649047439}
+        m_TargetAssemblyTypeName: HeartMover, Assembly-CSharp
+        m_MethodName: BadgeMover
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 120
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4343370977376227628}
+        m_TargetAssemblyTypeName: HeartMover, Assembly-CSharp
+        m_MethodName: HeartChMover
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 120
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &527783998005169606
 GameObject:
   m_ObjectHideFlags: 0
@@ -738,7 +762,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 293, y: 0}
+  m_AnchoredPosition: {x: 293, y: -20}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4343370977376227628
@@ -791,7 +815,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.8687453, y: 0.48412699}
   m_AnchorMax: {x: 0.8687453, y: 0.48412699}
-  m_AnchoredPosition: {x: -0.2999878, y: 0.6999998}
+  m_AnchoredPosition: {x: -30.695496, y: -24.599072}
   m_SizeDelta: {x: 98, y: 83}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6507183086947452709
@@ -955,7 +979,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.8687453, y: 0.5}
   m_AnchorMax: {x: 0.8687453, y: 0.5}
-  m_AnchoredPosition: {x: 0.3999939, y: -1.7}
+  m_AnchoredPosition: {x: -30, y: -27}
   m_SizeDelta: {x: 98, y: 83}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8427615303698570151
@@ -1192,7 +1216,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 292.99927, y: 0}
+  m_AnchoredPosition: {x: 292.99927, y: -19.989014}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4328159929649047439

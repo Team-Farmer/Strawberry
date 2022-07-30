@@ -24,8 +24,8 @@ public class HeartAcquireFx : MonoBehaviour
     public void Explosion2(Vector2 from, float explo_range)
     {
         Sequence sequence = DOTween.Sequence();
-        sequence.Append(rect.DOAnchorPos(from + Random.insideUnitCircle * explo_range, 0.25f).SetEase(Ease.OutCubic));
-        sequence.Append(rect.GetComponent<Image>().DOFade(0, 0.8f));
+        sequence.Append(rect.DOJumpAnchorPos(from + Random.insideUnitCircle * explo_range,130,1, 0.5f).SetEase(Ease.OutCubic));
+        sequence.Append(rect.GetComponent<Image>().DOFade(0, 0.5f));
         sequence.AppendCallback(() =>
         {
             gameObject.SetActive(false);

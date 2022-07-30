@@ -179,7 +179,26 @@ public class AttendanceCheck : MonoBehaviour
 
     public void AtdHeart()
     {
-        GameManager.instance.GetHeart(10 * (hearts + 1) * multiply_tag);
+        int num=0;
+        switch (hearts)
+        {
+            case 0:
+            case 1:
+            case 2:
+                num = 10;
+                break;
+            case 3:
+            case 4:
+            case 5:
+                num = 20;
+                break;
+            case 6:
+                num = 30;
+                break;
+            default:
+                break;
+        }
+        GameManager.instance.GetHeart(num  * multiply_tag);
     }
 }
     #endregion
