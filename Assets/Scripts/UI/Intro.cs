@@ -7,9 +7,9 @@ using UnityEngine.UI;
 public class Intro : MonoBehaviour
 {
     [Header("[ Intro ]")]
-    public GameObject[] introObject=new GameObject[4];
+    public GameObject[] introObject = new GameObject[4];
     public Sprite[] sprites = new Sprite[2];
-    public RectTransform[] rect = new RectTransform[2];
+    public RectTransform rect;
 
     private static Intro instance;
     Sequence sequence;
@@ -22,66 +22,38 @@ public class Intro : MonoBehaviour
 
     void Start()
     {
-        //StartCoroutine(DoFade());
-        dScale();
-    }
-
-
-    public void dScale()
-    {
         StartCoroutine(DoScale());
+        introObject[5].SetActive(false);
+
     }
 
     IEnumerator DoScale()
     {
         sequence = DOTween.Sequence();
-        sequence
-            .Append(rect[0].DOAnchorPos(Vector3.zero, 0.75f))
-        .Join(rect[0].transform.DOScale(Vector3.one, 1.0f).SetEase(Ease.InCubic))
-        .AppendInterval(0.5f)
+        sequence.Append(rect.DOAnchorPos(new Vector3(157, -313, 0), 0.8f))
+                .Join(rect.transform.DOScale(Vector3.one, 0.8f))
+                .AppendInterval(0.5f)
                 .AppendCallback(() =>
                 {
-                    introObject[2].GetComponent<Image>().sprite = sprites[0];
+                    introObject[0].GetComponent<Image>().sprite = sprites[0];
                 })
                 .AppendInterval(0.5f)
-                .Append(rect[0].transform.DOScale(Vector3.one * -0.005f, 1f).SetEase(Ease.InCubic))
-                .AppendInterval(1.3f)
+                .Append(rect.transform.DOScale(Vector3.one * 0.002f, 0.5f))
+                .AppendInterval(0.1f)
                 .AppendCallback(() =>
                 {
-                    introObject[1].SetActive(true);
-                });
-        /*        sequence.AppendCallback(() => {
-                    introObject[0].SetActive(false);
-                });
-                sequence.Append(rect[0].GetComponent<Image>().DOFade(0, 1.2f));
-                sequence.AppendCallback(() => {
+                    introObject[1].SetActive(false);
+                    introObject[2].SetActive(true);
+                    introObject[3].SetActive(true);
+                })
+                .AppendInterval(0.5f)
+                .Append(rect.transform.DOScale(Vector3.one * 7f, 0.8f).SetEase(Ease.InCubic))
+                .AppendInterval(0.5f)
+                .AppendCallback(() =>
+                {
+                    introObject[4].SetActive(false);
                     GameManager.instance.EnableObjColliderAll();
-                    introObject[2].SetActive(false);
-                });*/
+                });
         yield return null;
-    }
-
-    IEnumerator DoFade()
-    {
-        introObject[0].SetActive(true);
-        introObject[1].SetActive(true);
-        sequence = DOTween.Sequence()
-        .Append(rect[0].GetComponent<Image>().DOFade(1, 2.0f))
-
-        .AppendInterval(1)
-        .Append(rect[1].GetComponent<Image>().DOFade(1, 2.0f)).SetEase(Ease.InCubic)
-        .AppendCallback(() =>
-        {
-            introObject[3].SetActive(false);
-        })
-        .Append(rect[2].GetComponent<Image>().DOFade(0, 1.0f)).SetEase(Ease.OutCubic);
-        Invoke("Active", 4.5f);
-        yield return null;
-    }
-
-    public void Active()
-    {
-        introObject[4].SetActive(false);
-        introObject[5].SetActive(false);
     }
 }
