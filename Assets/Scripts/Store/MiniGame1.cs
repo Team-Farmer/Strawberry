@@ -7,10 +7,10 @@ public class MiniGame1 : MiniGame
 {
     [Header("MiniGame1")]
     public Image quiz_img;     //퀴즈딸기 이미지
-    int quizIndex;             //퀴즈딸기 인덱스
+    public int quizIndex;      //퀴즈딸기 인덱스
+    public int[] answerIndex;  //정답딸기 인덱스(4개)
     public Button[] answer_btn;//정답딸기 버튼(4개)
     public Image[] answer_img; //정답딸기 이미지(4개)
-    int[] answerIndex;         //정답딸기 인덱스(4개)
     public GameObject O;       //O 이미지
     public GameObject X;       //X 이미지
 
@@ -35,7 +35,7 @@ public class MiniGame1 : MiniGame
         }
 
         //퀴즈딸기 만들고 이미지 배치
-        quizIndex = Random.Range(0, unlockList.Count);
+        quizIndex = unlockList[Random.Range(0, unlockList.Count)];
         quiz_img.sprite = global.berryListAll[quizIndex].GetComponent<SpriteRenderer>().sprite;
 
         //랜덤의 정답딸기 인덱스(0~4)에 퀴즈딸기 배치
@@ -50,10 +50,10 @@ public class MiniGame1 : MiniGame
             else
             {
                 //정답인덱스나 다른 정답딸기들이랑 다른 딸기번호 나올때까지 랜덤번호로 뽑아서 정답딸기에 배치
-                answerIndex[i] = Random.Range(0, unlockList.Count);
+                answerIndex[i] = unlockList[Random.Range(0, unlockList.Count)];
                 while (CheckIndex(i))
                 {
-                    answerIndex[i] = Random.Range(0, unlockList.Count);
+                    answerIndex[i] = unlockList[Random.Range(0, unlockList.Count)] ;
                 }
                 answer_img[i].sprite = global.berryListAll[answerIndex[i]].GetComponent<SpriteRenderer>().sprite;
             }
