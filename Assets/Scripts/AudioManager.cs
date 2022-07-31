@@ -88,9 +88,7 @@ public class AudioManager : MonoBehaviour
         if (BGSoundSlider.GetComponent<Slider>().value == 0) { mixer.SetFloat("BGSoundVolume", -80); }
         else { mixer.SetFloat("BGSoundVolume", Mathf.Log10(BGSoundSlider.GetComponent<Slider>().value) * 20); }
         
-        float value;
-        mixer.GetFloat("BGSoundVolume", out value);
-        Debug.Log("bg sound=" + BGSoundSlider.GetComponent<Slider>().value + "->" + value);
+
 
     }
 
@@ -99,9 +97,7 @@ public class AudioManager : MonoBehaviour
         if (SFXSoundSlider.GetComponent<Slider>().value == 0) { mixer.SetFloat("SFXVolume", -80); }
         else { mixer.SetFloat("SFXVolume", Mathf.Log10(SFXSoundSlider.GetComponent<Slider>().value) * 20); }
 
-        float value2;
-        mixer.GetFloat("SFXVolume", out value2);
-        Debug.Log("sfx sound=" + SFXSoundSlider.GetComponent<Slider>().value + "->" + value2);
+
     }
 
 

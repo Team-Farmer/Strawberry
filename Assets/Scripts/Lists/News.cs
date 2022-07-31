@@ -192,11 +192,19 @@ public class News : MonoBehaviour
     {
         //설명창을 띄운다.
         newsExp.SetActive(true);
+
         //내용을 채운다.
-        newsExp.transform.GetChild(2).transform.gameObject.GetComponentInChildren<Text>().text
-            = Info[prefabnum].Title;//제목
-        newsExp.transform.GetChild(3).transform.gameObject.GetComponentInChildren<Text>().text
-            = Info[prefabnum].Exp;//설명
+        //newsScrollViewContent.transform.GetChild(0).transform.GetComponent<Text>().text = "eeee";
+        //    = Info[prefabnum].Title;//제목
+        //newsScrollViewContent.transform.GetChild(1).transform.GetComponent<Text>().text = "test2";
+        //    = Info[prefabnum].Exp;//설명
+
+        newsExp.transform.GetChild(1).GetChild(0).GetChild(0).GetChild(0).GetComponent<Text>().text//환장
+            = Info[prefabnum].Title;
+        newsExp.transform.GetChild(1).GetChild(0).GetChild(0).GetChild(1).GetComponent<Text>().text
+            = Info[prefabnum].Exp;
+
+
     }
 
 }

@@ -14,20 +14,19 @@ TagManager:
   - Truck
   - Store
   - BG
-  - UI
   - Global
-  - PTJExplanation
-  - NewsExplanation
-  - BerryExplanation
   - Arbeit
-  - medalCount
-  - NewsContent
   - WarningPanel
-  - HireYNPanel
+  - MiniGameBerry
+  - medalCount
   - PanelBlack
+  - BerryExplanation
   - YNPanel
   - PTJContent
-  - MiniGameBerry
+  - NewsContent
+  - HireYNPanel
+  - NewsExplanation
+  - PTJExplanation
   layers:
   - Default
   - TransparentFX
