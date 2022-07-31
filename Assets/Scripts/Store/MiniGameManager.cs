@@ -67,6 +67,9 @@ public class MiniGameManager : MonoBehaviour
             case 3:
                 infoText.text = "딸기 밭에 폭풍이 지나갔어요! 밭에 열려있던 딸기들도, 수확해둔 딸기들도 모두 모두 날아가 버렸어요... 어라? 근데 날아갔던 딸기들이 하늘에서 떨어지네요?보고만 있을 때가 아니죠! 바구니로 멀쩡한 딸기들만 최대한 담아봐요!";
                 break;
+            case 4:
+                infoText.text = "아이고 딸기를 흘려서 딸기가 다섞였다 분리해보자";
+                break;
         }
     }
     public void OnclickStartBtn()
@@ -80,6 +83,10 @@ public class MiniGameManager : MonoBehaviour
         else if(info_str == "딸기 밭에")
         {
             miniGameList[2].gameObject.SetActive(true);
+        }
+        else if (info_str == "아이고 딸")
+        {
+            miniGameList[3].gameObject.SetActive(true);
         }
     }
 }
