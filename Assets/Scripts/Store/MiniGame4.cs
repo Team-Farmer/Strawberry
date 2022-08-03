@@ -9,7 +9,8 @@ public class MiniGame4 : MiniGame
     public GameObject leftImage;
     public GameObject rightImage;
     public GameObject content;
-
+    public GameObject correctTxt;
+    public GameObject fakeImage;
 
     Sprite leftSprite;
     Sprite rightSprite;
@@ -40,12 +41,14 @@ public class MiniGame4 : MiniGame
 
     void SetGame() 
     {
-        //왼쪽과 오른쪽에 해당하는 정답을 고른다.
+        //왼쪽과 오른쪽 정답 설정
         int leftOne;
         int rightOne;
-
-        leftOne = Random.Range(0, 10);
-        do { rightOne = Random.Range(0, 10); } while (leftOne == rightOne);
+        do { leftOne = Random.Range(0, 10); } 
+        while (DataController.instance.gameData.isBerryUnlock[leftOne] == false);
+        
+        do { rightOne = Random.Range(0, 10); } 
+        while (leftOne == rightOne || DataController.instance.gameData.isBerryUnlock[rightOne] == false);
 
         leftSprite = berryListAll[leftOne].GetComponent<SpriteRenderer>().sprite;
         rightSprite = berryListAll[rightOne].GetComponent<SpriteRenderer>().sprite;
@@ -77,6 +80,11 @@ public class MiniGame4 : MiniGame
 
     public void clickAnswer(bool isLeft) 
     {
+        StopCoroutine("FadeCoroutine");
+        //StopCoroutine(MoveCoroutine(true, content.transform.GetChild(content.transform.childCount - 1).gameObject));
+        //fakeImage.SetActive(false);
+        //fakeImage.GetComponent<RectTransform>().position = new Vector3(50f,-597f,0);
+        correctTxt.GetComponent<Text>().color = new Color(1f, 1f, 1f, 0f);
 
         //정답여부 판별=======================================
         Sprite answerSprite;
@@ -89,18 +97,22 @@ public class MiniGame4 : MiniGame
         {
             score += 10;
             score_txt.text = score.ToString();
-            //정답 효과///////////////////////////////////
+
+            //정답 효과//////////////////////////피드백필요////////////////////////////////////
+            correctTxt.GetComponent<Text>().color=new Color(1f,1f,1f,1f);
+            StartCoroutine("FadeCoroutine");
         }
         //오답!!
         else
         {
             scrollbar.size -= size * 10;
             time -= 10;
+
             //화면 흔들기?////////////////////////////////
-            
+
         }
         //좌우 이동==========================================
-        //왼쪽 혹은 오른쪽으로 이동///////////////////////////////////
+        //StartCoroutine(MoveCoroutine(isLeft, content.transform.GetChild(content.transform.childCount - 1).gameObject));
 
         //+)갯수 늘릴것인지?. 좌우 변경하기?/////////////////////////
 
@@ -115,6 +127,45 @@ public class MiniGame4 : MiniGame
             content.transform.GetChild(0).GetComponent<Image>().sprite = leftSprite;
         else
             content.transform.GetChild(0).GetComponent<Image>().sprite = rightSprite;
+    }
+
+    IEnumerator FadeCoroutine()
+    {
+        float fadeCount = 1;
+        while (fadeCount > 0.1f) 
+        {
+            fadeCount -= 0.01f;
+            yield return new WaitForSeconds(0.01f);
+            correctTxt.GetComponent<Text>().color = new Color(1f, 1f, 1f, fadeCount);
+        }
+    }
+    IEnumerator MoveCoroutine(bool isLeft,GameObject content)
+    {
+        fakeImage.GetComponent<Image>().sprite = content.GetComponent<Image>().sprite;
+        fakeImage.GetComponent<Image>().preserveAspect = true;
+        fakeImage.SetActive(true);
+
+        Vector3 moveCount = content.GetComponent<RectTransform>().position;
+        float fadeCount = 1;
+
+        while (fadeCount > -0.1f)
+        {
+            //점점흐려짐
+            fadeCount -= 0.01f;
+            fakeImage.GetComponent<Image>().color = new Color(1f, 1f, 1f, fadeCount);
+
+            //점점이동함
+            if (isLeft == true)
+            { moveCount.x -= 0.02f; }
+            else
+            { moveCount.x += 0.02f; }
+            fakeImage.GetComponent<RectTransform>().position = moveCount;
+
+            yield return new WaitForSeconds(0.01f);
+
+           
+        }
+
     }
 
 }
