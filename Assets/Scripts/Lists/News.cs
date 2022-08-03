@@ -14,11 +14,13 @@ public class News : MonoBehaviour
         public string Title;//제목
         public string Exp;//뉴스 내용
         public int Price;
-        public NewsStruct(string Title, string Exp,int Price)
+        public bool isShort;
+        public NewsStruct(string Title, string Exp,int Price,bool isShort)
         {
             this.Title = Title;
             this.Exp = Exp;
             this.Price = Price;
+            this.isShort = isShort;
         }
     }
 
@@ -193,16 +195,27 @@ public class News : MonoBehaviour
         //설명창을 띄운다.
         newsExp.SetActive(true);
 
-        //내용을 채운다.
-        //newsScrollViewContent.transform.GetChild(0).transform.GetComponent<Text>().text = "eeee";
-        //    = Info[prefabnum].Title;//제목
-        //newsScrollViewContent.transform.GetChild(1).transform.GetComponent<Text>().text = "test2";
-        //    = Info[prefabnum].Exp;//설명
+
+        Info[prefabnum].Exp=Info[prefabnum].Exp.Replace("\\n", "\n");//\n적용
+
+        newsExp.transform.GetChild(1).GetChild(1).GetComponent<Scrollbar>().value = 1; //Scrollbar Vertical 스크롤 맨위로 이동
+
+
+        if (Info[prefabnum].isShort == true) //내용 짧으면 content사이즈 조절
+        {
+            newsExp.transform.GetChild(1).GetChild(0).GetChild(0).GetComponent<RectTransform>().sizeDelta 
+                = new Vector2(-81, 1010);
+        }
+        else 
+        {
+            newsExp.transform.GetChild(1).GetChild(0).GetChild(0).GetComponent<RectTransform>().sizeDelta 
+                = new Vector2(-81, 1260);
+        }
 
         newsExp.transform.GetChild(1).GetChild(0).GetChild(0).GetChild(0).GetComponent<Text>().text//환장
-            = Info[prefabnum].Title;
+            = Info[prefabnum].Title;//제목
         newsExp.transform.GetChild(1).GetChild(0).GetChild(0).GetChild(1).GetComponent<Text>().text
-            = Info[prefabnum].Exp;
+            = Info[prefabnum].Exp;//내용
 
 
     }
