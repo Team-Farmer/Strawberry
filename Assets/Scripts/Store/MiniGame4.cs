@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class MiniGame4 : MiniGame
 {
@@ -44,10 +45,10 @@ public class MiniGame4 : MiniGame
         //왼쪽과 오른쪽 정답 설정
         int leftOne;
         int rightOne;
-        do { leftOne = Random.Range(0, 10); } 
+        do { leftOne = UnityEngine.Random.Range(0, 10); } 
         while (DataController.instance.gameData.isBerryUnlock[leftOne] == false);
         
-        do { rightOne = Random.Range(0, 10); } 
+        do { rightOne = UnityEngine.Random.Range(0, 10); } 
         while (leftOne == rightOne || DataController.instance.gameData.isBerryUnlock[rightOne] == false);
 
         leftSprite = berryListAll[leftOne].GetComponent<SpriteRenderer>().sprite;
@@ -64,7 +65,7 @@ public class MiniGame4 : MiniGame
 
         for (int i = 0; i < content.transform.childCount; i++) 
         {
-            int ran = Random.Range(0, 4);
+            int ran = UnityEngine.Random.Range(0, 4);
 
             if (ran == 0 || ran == 1)
             { content.transform.GetChild(i).GetComponent<Image>().sprite = leftSprite; }
@@ -122,12 +123,37 @@ public class MiniGame4 : MiniGame
         content.transform.GetChild(content.transform.childCount - 1).GetComponent<RectTransform>().SetAsFirstSibling();
 
         //방금 막 맨 뒤로 간 스프라이트를 새로운 스프라이트로 변경한다.
-        int ran = Random.Range(0, 4);
+        int ran = UnityEngine.Random.Range(0, 4);
         if (ran == 0 || ran == 1)
             content.transform.GetChild(0).GetComponent<Image>().sprite = leftSprite;
         else
             content.transform.GetChild(0).GetComponent<Image>().sprite = rightSprite;
     }
+
+    protected override void FinishGame()
+    {
+        base.FinishGame();
+
+        //최고기록 저장
+        if (DataController.instance.gameData.highScore[3] < score)
+        {
+            DataController.instance.gameData.highScore[3] = score;
+        }
+
+        //결과패널
+        resultPanel.SetActive(true);
+        result_txt.text = "최고기록 : " + DataController.instance.gameData.highScore[3] + "\n현재점수 : " + score;
+
+        // 미니게임 3 보상 하트 공식(미니게임 3은 해금 하트가 20이다)
+        float gain_coin = score * research_level_avg * ((100 + 80 * 2) / 100f);
+
+        Debug.Log("얻은 코인:" + Convert.ToInt32(gain_coin));
+        //하트지급
+        GameManager.instance.GetCoin(Convert.ToInt32(gain_coin));
+
+        base.StopGame();
+    }
+
 
     IEnumerator FadeCoroutine()
     {
