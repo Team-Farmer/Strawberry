@@ -21,11 +21,14 @@ public class MiniGame : MonoBehaviour
     protected List<int> unlockList=new List<int>(); //해금된 딸기 번호 리스트
 
     protected Globalvariable global;
+    protected int research_level_sum;
+    protected float research_level_avg;
 
     protected virtual void Awake()
     {
         size = scrollbar.size / 60f; 
         global = GameObject.FindGameObjectWithTag("Global").GetComponent<Globalvariable>();
+        
     }
 
     protected virtual void OnEnable()
@@ -79,10 +82,8 @@ public class MiniGame : MonoBehaviour
         yield return new WaitForSeconds(1);
         scrollbar.size -= size;
         time -= 1;
-        Debug.Log("Game is Running!!");
         if (time <= 0)
-        {
-            Debug.Log("Game is Done!!");
+        {           
             FinishGame();
         }
         else
@@ -98,23 +99,19 @@ public class MiniGame : MonoBehaviour
 
     protected virtual void FinishGame()
     {
-        //최고기록 저장
-        if (DataController.instance.gameData.highScore[0] < score)
+        research_level_sum = 0;
+
+        for (int i = 0; i < DataController.instance.gameData.researchLevel.Length; i++)
         {
-            DataController.instance.gameData.highScore[0] = score;
+            // 연구레벨의 합을 구한다.
+            research_level_sum += DataController.instance.gameData.researchLevel[i];
         }
 
-        //결과패널
-        resultPanel.SetActive(true);
-        result_txt.text = "최고기록 : " + DataController.instance.gameData.highScore[0] + "\n현재점수 : " + score;
-
-        //하트지급
-        GameManager.instance.GetHeart(score / 10);
+        // 연구레벨의 평균을 구한다.
+        research_level_avg = research_level_sum / DataController.instance.gameData.researchLevel.Length;
 
         //미니게임 플레이 횟수 증가
-        DataController.instance.gameData.mgPlayCnt++;
-
-        StopGame();
+        DataController.instance.gameData.mgPlayCnt++;       
     }
 
     public virtual void StopGame()
@@ -126,7 +123,7 @@ public class MiniGame : MonoBehaviour
         isGameRunning = false;
     }
 
-    public void ReStart() //다시하기
+    public virtual void ReStart() //다시하기
     {
         score = 0;
         time = 64;

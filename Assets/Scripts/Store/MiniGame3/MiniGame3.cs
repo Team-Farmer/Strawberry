@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,7 +22,7 @@ public class MiniGame3 : MiniGame
     {
         base.Awake();
         basketRect = basket.GetComponent<RectTransform>();     
-        randTime = Random.Range(1.0f, 2.0f);
+        randTime = UnityEngine.Random.Range(1.0f, 2.0f);
     }
     protected override void OnEnable()
     {
@@ -65,7 +66,7 @@ public class MiniGame3 : MiniGame
             MinigameBerry miniBerry = GetMiniGameBerry();
             miniBerry.gameObject.SetActive(true);
             accTime = 0f;
-            randTime = Random.Range(1.0f, 2.0f);
+            randTime = UnityEngine.Random.Range(1.0f, 2.0f);
         }
     }
     MinigameBerry GetMiniGameBerry()
@@ -74,10 +75,10 @@ public class MiniGame3 : MiniGame
         {
             if (!berryPool[i].gameObject.activeSelf)
             {
-                int rndId = unlockList[Random.Range(0, unlockList.Count)];
+                int rndId = unlockList[UnityEngine.Random.Range(0, unlockList.Count)];
                 berryPool[i].GetComponent<Image>().sprite = global.berryListAll[rndId].GetComponent<SpriteRenderer>().sprite;
 
-                float bugrnd = Random.Range(0f, 10f);
+                float bugrnd = UnityEngine.Random.Range(0f, 10f);
                 if(bugrnd <= 2f)
                 {
                     Debug.Log("Bug!!");
@@ -91,7 +92,7 @@ public class MiniGame3 : MiniGame
     MinigameBerry MakeMiniGameBerry()
     {
         GameObject instantMiniBerryObj = Instantiate(miniGameBerryPref, berryGroup);
-        int rndId = unlockList[Random.Range(0, unlockList.Count)];
+        int rndId = unlockList[UnityEngine.Random.Range(0, unlockList.Count)];
 
         instantMiniBerryObj.GetComponent<Image>().sprite = global.berryListAll[rndId].GetComponent<SpriteRenderer>().sprite;
         instantMiniBerryObj.name = "MiniBerry " + berryPool.Count;
@@ -122,5 +123,35 @@ public class MiniGame3 : MiniGame
         {
             berryPool[i].SetActive(false);
         }       
+    }
+
+    public override void ReStart() //다시하기
+    {
+        base.ReStart();
+        basketRect.anchoredPosition = new Vector3(425f, 560f, 0f);
+    }
+    protected override void FinishGame()
+    {
+        base.FinishGame();
+
+        int score = GetComponent<MiniGame3>().score;
+        //최고기록 저장
+        if (DataController.instance.gameData.highScore[2] < score)
+        {
+            DataController.instance.gameData.highScore[2] = score;
+        }
+
+        //결과패널
+        resultPanel.SetActive(true);
+        result_txt.text = "최고기록 : " + DataController.instance.gameData.highScore[2] + "\n현재점수 : " + score;
+       
+        // 미니게임 3 보상 하트 공식(미니게임 3은 해금 하트가 20이다)
+        float gain_coin = score * research_level_avg * ((100 + 20 * 2) / 100f);
+        
+        Debug.Log("얻은 코인:" + Convert.ToInt32(gain_coin));
+        //하트지급
+        GameManager.instance.GetCoin(Convert.ToInt32(gain_coin));
+
+        StopGame();
     }
 }

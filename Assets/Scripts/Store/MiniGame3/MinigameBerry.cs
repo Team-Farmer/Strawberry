@@ -8,7 +8,7 @@ public class MinigameBerry : MonoBehaviour
 
     public float velocity = 0.0f;
     private RectTransform rect;
-    float berry_rad = 85f;
+    float berry_rad = 90f;
 
     [Header("Basket")]
     float basket_rad = 75f;
@@ -39,14 +39,14 @@ public class MinigameBerry : MonoBehaviour
     {
         if(MiniGame.isGameRunning)
         {
-            float berry_x = rect.anchoredPosition.x, berry_y = rect.anchoredPosition.y;                    
-            float basket_x = basketRect.anchoredPosition.x, basket_y = basketRect.anchoredPosition.y;
+            float berry_x = rect.anchoredPosition.x + berry_rad, berry_y = rect.anchoredPosition.y + berry_rad;                    
+            float basket_x = basketRect.anchoredPosition.x + 150f, basket_y = basketRect.anchoredPosition.y + 75f;
             float dist = (berry_x - basket_x) * (berry_x - basket_x) + (berry_y - basket_y) * (berry_y - basket_y);
             
             float r = berry_rad + basket_rad;
             
             // µþ±â°¡ ¹Ù±¸´Ï¿¡ ´ê¾ÒÀ» °æ¿ì
-            if (dist <= r * r || berry_y <= 75f)
+            if (dist <= r * r)
             {
                 // ¹ú·¹ºÙÀº µþ±â¸¦ ¸Ô¾úÀ» ½Ã
                 if(this.gameObject.transform.GetChild(0).gameObject.activeSelf)
@@ -69,7 +69,12 @@ public class MinigameBerry : MonoBehaviour
                 this.gameObject.SetActive(false);
                 return;
             }
-            
+            else if (berry_y <= 75f)
+            {
+                this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
+                this.gameObject.SetActive(false);
+                return;
+            }
             rect.anchoredPosition = new Vector3(rect.anchoredPosition.x, rect.anchoredPosition.y - velocity);           
         }
     }

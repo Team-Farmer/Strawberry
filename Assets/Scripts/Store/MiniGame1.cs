@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -35,11 +36,11 @@ public class MiniGame1 : MiniGame
         }
 
         //퀴즈딸기 만들고 이미지 배치
-        quizIndex = unlockList[Random.Range(0, unlockList.Count)];
+        quizIndex = unlockList[UnityEngine.Random.Range(0, unlockList.Count)];
         quiz_img.sprite = global.berryListAll[quizIndex].GetComponent<SpriteRenderer>().sprite;
 
         //랜덤의 정답딸기 인덱스(0~4)에 퀴즈딸기 배치
-        int randomAnswerIndex = Random.Range(0, 4);
+        int randomAnswerIndex = UnityEngine.Random.Range(0, 4);
         for (int i = 0; i < 4; i++)
         {
             if (randomAnswerIndex == i)
@@ -50,10 +51,10 @@ public class MiniGame1 : MiniGame
             else
             {
                 //정답인덱스나 다른 정답딸기들이랑 다른 딸기번호 나올때까지 랜덤번호로 뽑아서 정답딸기에 배치
-                answerIndex[i] = unlockList[Random.Range(0, unlockList.Count)];
+                answerIndex[i] = unlockList[UnityEngine.Random.Range(0, unlockList.Count)];
                 while (CheckIndex(i))
                 {
-                    answerIndex[i] = unlockList[Random.Range(0, unlockList.Count)] ;
+                    answerIndex[i] = unlockList[UnityEngine.Random.Range(0, unlockList.Count)] ;
                 }
                 answer_img[i].sprite = global.berryListAll[answerIndex[i]].GetComponent<SpriteRenderer>().sprite;
             }
@@ -112,5 +113,32 @@ public class MiniGame1 : MiniGame
         }
         O.SetActive(false);
         X.SetActive(false);
+    }
+
+    protected override void FinishGame()
+    {
+        base.FinishGame();
+
+        //최고기록 저장
+        if (DataController.instance.gameData.highScore[0] < score)
+        {
+            DataController.instance.gameData.highScore[0] = score;
+        }
+
+        //결과패널
+        resultPanel.SetActive(true);
+        result_txt.text = "최고기록 : " + DataController.instance.gameData.highScore[0] + "\n현재점수 : " + score;
+
+        
+
+        // 미니게임 1 보상 하트 공식(미니게임 1은 해금 하트가 60이다)
+        float gain_coin = score * research_level_avg * ((100 + 60 * 2) / 100f);
+
+        Debug.Log("얻은 코인:" + Convert.ToInt32(gain_coin));
+
+        //코인지급
+        GameManager.instance.GetCoin(Convert.ToInt32(gain_coin));
+
+        StopGame();
     }
 }
