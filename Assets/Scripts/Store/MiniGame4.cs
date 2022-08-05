@@ -81,11 +81,14 @@ public class MiniGame4 : MiniGame
 
     public void clickAnswer(bool isLeft) 
     {
+        //효과 초기화
         StopCoroutine("FadeCoroutine");
-        //StopCoroutine(MoveCoroutine(true, content.transform.GetChild(content.transform.childCount - 1).gameObject));
-        //fakeImage.SetActive(false);
-        //fakeImage.GetComponent<RectTransform>().position = new Vector3(50f,-597f,0);
         correctTxt.GetComponent<Text>().color = new Color(1f, 1f, 1f, 0f);
+
+        StopCoroutine(MoveCoroutine(true, content.transform.GetChild(content.transform.childCount - 1).gameObject));
+        fakeImage.SetActive(false);
+        fakeImage.GetComponent<RectTransform>().position = new Vector3(50f,-597f,0);
+        
 
         //정답여부 판별=======================================
         Sprite answerSprite;
@@ -113,11 +116,17 @@ public class MiniGame4 : MiniGame
 
         }
         //좌우 이동==========================================
-        //StartCoroutine(MoveCoroutine(isLeft, content.transform.GetChild(content.transform.childCount - 1).gameObject));
+        StartCoroutine(MoveCoroutine(isLeft, content.transform.GetChild(content.transform.childCount - 1).gameObject));
+
+
+
 
         //+)갯수 늘릴것인지?. 좌우 변경하기?/////////////////////////
 
-        //updateContent 스프라이트가 업데이트 된다.=================================
+
+
+
+        //updateContent 스프라이트가 업데이트=================================
 
         //맨 앞에 있는 스프라이트를 뒤로 뒤로 이동시킨다.
         content.transform.GetChild(content.transform.childCount - 1).GetComponent<RectTransform>().SetAsFirstSibling();
@@ -158,7 +167,7 @@ public class MiniGame4 : MiniGame
     IEnumerator FadeCoroutine()
     {
         float fadeCount = 1;
-        while (fadeCount > 0.1f) 
+        while (fadeCount > -0.1f) 
         {
             fadeCount -= 0.01f;
             yield return new WaitForSeconds(0.01f);
@@ -177,21 +186,22 @@ public class MiniGame4 : MiniGame
         while (fadeCount > -0.1f)
         {
             //점점흐려짐
-            fadeCount -= 0.01f;
+            fadeCount -= 0.05f;
             fakeImage.GetComponent<Image>().color = new Color(1f, 1f, 1f, fadeCount);
 
             //점점이동함
             if (isLeft == true)
-            { moveCount.x -= 0.02f; }
+            { moveCount.x -= 0.05f; }
             else
-            { moveCount.x += 0.02f; }
+            { moveCount.x += 0.05f; }
             fakeImage.GetComponent<RectTransform>().position = moveCount;
 
             yield return new WaitForSeconds(0.01f);
 
            
         }
-
+        fakeImage.SetActive(false);
+        fakeImage.GetComponent<RectTransform>().position = new Vector3(50f, -597f, 0);
     }
 
 }
