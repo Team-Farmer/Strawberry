@@ -6,76 +6,68 @@ using UnityEngine.UI;
 
 public class MiniGame2 : MiniGame
 {
-    [Header("MiniGame1")]
-    public Image quiz_img;     //퀴즈딸기 이미지
-    public int quizIndex;      //퀴즈딸기 인덱스
-    public int[] answerIndex;  //정답딸기 인덱스(4개)
-    public Button[] answer_btn;//정답딸기 버튼(4개)
-    public Image[] answer_img; //정답딸기 이미지(4개)
+    [Header("MiniGame2")]
+    public Berry[] rotten_berry; // 상한(정답) 딸기 인덱스
+    public int normalIndex;      //퀴즈딸기 인덱스
+    public int[] answerIndex_4x4;  //정답딸기 인덱스(16개)
+    public Button[] answer_btn_4x4;//정답딸기 버튼(16개)
+    public Image[] answer_img_4x4; //정답딸기 이미지(16개)
     public GameObject O;       //O 이미지
     public GameObject X;       //X 이미지
+    public int rottenIndex; // 4(무른) or 8(상한)인 인덱스
 
     protected override void Awake()
     {
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 16; i++)
         {
             int _i = i;
-            answer_btn[_i].onClick.AddListener(() => OnClickAnswerButton(_i));
+            answer_btn_4x4[_i].onClick.AddListener(() => OnClickAnswerButton(_i));
         }
-        answerIndex = new int[4];
+        answerIndex_4x4 = new int[16];
         base.Awake();
     }
 
     protected override void MakeGame()
     {
-        quiz_img.gameObject.SetActive(true);
-        for (int i = 0; i < 4; i++)
+        //normal_img.gameObject.SetActive(true);
+        for (int i = 0; i < 16; i++)
         {
-            answer_img[i].gameObject.SetActive(true);
-            answer_btn[i].enabled = true;
+            answer_img_4x4[i].gameObject.SetActive(true);
+            answer_btn_4x4[i].enabled = true;
         }
 
-        //퀴즈딸기 만들고 이미지 배치
-        quizIndex = unlockList[UnityEngine.Random.Range(0, unlockList.Count)];
-        quiz_img.sprite = global.berryListAll[quizIndex].GetComponent<SpriteRenderer>().sprite;
+        //정상 딸기 만들고 이미지 배치
+        while (true) // 상한, 무른 딸기를 제외하고 선정
+        {
+            normalIndex = unlockList[UnityEngine.Random.Range(0, unlockList.Count)];
+            if (normalIndex != 4 && normalIndex != 8) break;
+        }
+        Debug.Log("normalIndex.: " + normalIndex);
 
-        //랜덤의 정답딸기 인덱스(0~4)에 퀴즈딸기 배치
-        int randomAnswerIndex = UnityEngine.Random.Range(0, 4);
-        for (int i = 0; i < 4; i++)
+        //랜덤의 상한 딸기 인덱스(0~16)에 상한 딸기 배치
+        int randomAnswerIndex = UnityEngine.Random.Range(0, 16);
+        for (int i = 0; i < 16; i++)
         {
             if (randomAnswerIndex == i)
             {
-                answer_img[i].sprite = quiz_img.sprite;
-                answerIndex[i] = quizIndex;
+                // 상한 or 무른 딸기 선정
+                rottenIndex = rotten_berry[UnityEngine.Random.Range(0, 2)].berryIdx;
+                // 상한 or 무른 딸기 배치
+                answerIndex_4x4[i] = rottenIndex;               
             }
             else
             {
-                //정답인덱스나 다른 정답딸기들이랑 다른 딸기번호 나올때까지 랜덤번호로 뽑아서 정답딸기에 배치
-                answerIndex[i] = unlockList[UnityEngine.Random.Range(0, unlockList.Count)];
-                while (CheckIndex(i))
-                {
-                    answerIndex[i] = unlockList[UnityEngine.Random.Range(0, unlockList.Count)] ;
-                }
-                answer_img[i].sprite = global.berryListAll[answerIndex[i]].GetComponent<SpriteRenderer>().sprite;
+                // 정상 딸기 배치
+                answerIndex_4x4[i] = normalIndex;
             }
-        }
-
-        bool CheckIndex(int idx)
-        {
-            if (answerIndex[idx] == quizIndex) return true;
-            for (int i = 0; i < 4; i++)
-            {
-                if (i == idx) continue;
-                if (answerIndex[idx] == answerIndex[i]) return true;
-            }
-            return false;
+            answer_img_4x4[i].sprite = global.berryListAll[answerIndex_4x4[i]].GetComponent<SpriteRenderer>().sprite;
         }
     }
 
     public void OnClickAnswerButton(int index)
     {
         //정답 : 10점 추가, 다음문제 출제
-        if (answerIndex[index] == quizIndex)
+        if (answerIndex_4x4[index] == rottenIndex)
         {
             O.SetActive(true);
             score += 10;
@@ -105,11 +97,10 @@ public class MiniGame2 : MiniGame
     {
         base.StopGame();
         //딸기 안보이게
-        quiz_img.gameObject.SetActive(false);
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 16; i++)
         {
-            answer_img[i].gameObject.SetActive(false);
-            answer_btn[i].enabled = false;
+            answer_img_4x4[i].gameObject.SetActive(false);
+            answer_btn_4x4[i].enabled = false;
         }
         O.SetActive(false);
         X.SetActive(false);
@@ -120,19 +111,19 @@ public class MiniGame2 : MiniGame
         base.FinishGame();
 
         //최고기록 저장
-        if (DataController.instance.gameData.highScore[0] < score)
+        if (DataController.instance.gameData.highScore[1] < score)
         {
-            DataController.instance.gameData.highScore[0] = score;
+            DataController.instance.gameData.highScore[1] = score;
         }
 
         //결과패널
         resultPanel.SetActive(true);
-        result_txt.text = "최고기록 : " + DataController.instance.gameData.highScore[0] + "\n현재점수 : " + score;
+        result_txt.text = "최고기록 : " + DataController.instance.gameData.highScore[1] + "\n현재점수 : " + score;
 
         
 
-        // 미니게임 1 보상 하트 공식(미니게임 1은 해금 하트가 60이다)
-        float gain_coin = score * research_level_avg * ((100 + 60 * 2) / 100f);
+        // 미니게임 1 보상 하트 공식(미니게임 2은 해금 하트가 40이다)
+        float gain_coin = score * research_level_avg * ((100 + 40 * 2) / 100f);
 
         Debug.Log("얻은 코인:" + Convert.ToInt32(gain_coin));
 
