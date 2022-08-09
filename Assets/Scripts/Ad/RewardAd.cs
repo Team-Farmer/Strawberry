@@ -9,7 +9,7 @@ public class RewardAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListe
     [SerializeField] Button showAdButton;
     [SerializeField] string androidUnitId = "Rewarded_Android";
     //[SerializeField] string iOSUnitId = "Rewarded_iOS";
-    public string adUnitId = null; //This will remain null for unsupported platforms
+    string adUnitId = null; //This will remain null for unsupported platforms
 
     void Start()
     {
@@ -65,7 +65,7 @@ public class RewardAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListe
         Debug.Log("OnUnityAdsShowComplete "+showCompletionState);
         Debug.Log(UnityAdsCompletionState.COMPLETED.Equals(showCompletionState));
         //if (adUnitId.Equals(placementId) && showCompletionState.Equals(UnityAdsCompletionState.COMPLETED))
-        if(adUnitId.Equals(placementId)/*&&UnityAdsCompletionState.COMPLETED.Equals(showCompletionState)*/) //뒷쪽 코드가 계속 false가 뜨네...왜이러지 220810
+        if(adUnitId.Equals(placementId)/*&&UnityAdsCompletionState.COMPLETED.Equals(showCompletionState)*/) //뒷쪽 조건 계속 false가 뜨네...왜이러지 220810
         {
             //리워드 구현 - 다른보상 추가되면 코드 수정해야 함
             showAdButton.interactable = true;
