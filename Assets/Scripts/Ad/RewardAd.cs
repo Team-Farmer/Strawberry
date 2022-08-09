@@ -9,7 +9,7 @@ public class RewardAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListe
     [SerializeField] Button showAdButton;
     [SerializeField] string androidUnitId = "Rewarded_Android";
     //[SerializeField] string iOSUnitId = "Rewarded_iOS";
-    string adUnitId = null; //This will remain null for unsupported platforms
+    public string adUnitId = null; //This will remain null for unsupported platforms
 
     void Start()
     {
@@ -50,20 +50,7 @@ public class RewardAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListe
 
         //임시조치 : UnityAds 4.0문제
         //다음에 고치도록 하겠습니당 220610
-        //220810 UnityAds 4.2로 변ㄱ
-        /*showAdButton.interactable = true;
-
-        ArbeitMgr arbeit = GameObject.FindGameObjectWithTag("Arbeit").GetComponent<ArbeitMgr>();
-        float coEffi = arbeit.Pigma();
-        float totalCoin = (DataController.instance.gameData.truckCoin
-            + GameManager.instance.bonusTruckCoin) * coEffi * 3;
-        GameManager.instance.GetCoin((int)totalCoin);
-
-        Debug.Log("코인 3배 획득");
-        DataController.instance.gameData.truckBerryCnt = 0;
-        DataController.instance.gameData.truckCoin = 0;
-
-        StartCoroutine(LoadAd());//광고로드*/
+        //220810 UnityAds 4.2로 변경
     }
 
 
@@ -76,7 +63,9 @@ public class RewardAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListe
     public void OnUnityAdsShowComplete(string placementId, UnityAdsShowCompletionState showCompletionState)
     {
         Debug.Log("OnUnityAdsShowComplete "+showCompletionState);
-        if (adUnitId.Equals(placementId) && showCompletionState.Equals(UnityAdsCompletionState.COMPLETED))
+        Debug.Log(UnityAdsCompletionState.COMPLETED.Equals(showCompletionState));
+        //if (adUnitId.Equals(placementId) && showCompletionState.Equals(UnityAdsCompletionState.COMPLETED))
+        if(adUnitId.Equals(placementId)/*&&UnityAdsCompletionState.COMPLETED.Equals(showCompletionState)*/) //뒷쪽 코드가 계속 false가 뜨네...왜이러지 220810
         {
             //리워드 구현 - 다른보상 추가되면 코드 수정해야 함
             showAdButton.interactable = true;
