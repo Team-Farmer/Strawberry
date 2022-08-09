@@ -8,7 +8,7 @@ public class BannerAd : MonoBehaviour
     [SerializeField] BannerPosition bannerPosition = BannerPosition.TOP_CENTER;
 
     [SerializeField] string androidAdUnitId = "Banner_Android";
-    // [SerializeField] string iosAdUnitId = "Banner_iOS"; // ÄÜ¼ÖÃ¢¿¡¼­ ¹Ì»ç¿ë º¯¼ö¶ó°íÇØ¼­ ÁÖ¼®Ã³¸® ÇØµÑ°Ô¿ä! -Èñ±Ô
+    // [SerializeField] string iosAdUnitId = "Banner_iOS"; // ì½˜ì†”ì°½ì—ì„œ ë¯¸ì‚¬ìš© ë³€ìˆ˜ë¼ê³ í•´ì„œ ì£¼ì„ì²˜ë¦¬ í•´ë‘˜ê²Œìš”! -í¬ê·œ
     string adUnitId = null; //This will remain null for unsupported platforms.
 
     void Start()
@@ -20,7 +20,7 @@ public class BannerAd : MonoBehaviour
         adUnitId = androidAdUnitId;
 #endif
 
-        //ÃÊ±âÈ­°¡ µÆ´ÂÁö È®ÀÎÇÏ°í ¹è³Ê±¤°í ·Îµå
+        //ì´ˆê¸°í™”ê°€ ëëŠ”ì§€ í™•ì¸í•˜ê³  ë°°ë„ˆê´‘ê³  ë¡œë“œ
         StartCoroutine(CheckInitialize());
     }
 
@@ -50,13 +50,13 @@ public class BannerAd : MonoBehaviour
 
     void OnBannerLoaded()
     {
-        Debug.Log("¹è³Ê±¤°í ·Îµå");
+        Debug.Log("ë°°ë„ˆê´‘ê³  ë¡œë“œ");
         Advertisement.Banner.Show(adUnitId);
     }
 
     void OnBannerError(string message)
     {
-        Debug.Log($"¹è³Ê±¤°í ·Îµå ½ÇÆĞ:{message}");
+        Debug.Log($"ë°°ë„ˆê´‘ê³  ë¡œë“œ ì‹¤íŒ¨:{message}");
     }
 
     /*void OnDestroy()

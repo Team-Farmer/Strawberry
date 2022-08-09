@@ -18,7 +18,7 @@ public class RewardAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListe
 #elif UNITY_ANDROID
         adUnitId = androidUnitId;
 #endif
-        //¾Èµå, ios ¿ÜÀÇ ÇÃ·§ÆûÀÌ¸é ¹öÆ° ¾È´­¸®°Ô Ã³¸®
+        //ì•ˆë“œ, ios ì™¸ì˜ í”Œë«í¼ì´ë©´ ë²„íŠ¼ ì•ˆëˆŒë¦¬ê²Œ ì²˜ë¦¬
         showAdButton.interactable = false;
 
         StartCoroutine(LoadAd());
@@ -31,15 +31,15 @@ public class RewardAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListe
         WaitForSeconds wait = new WaitForSeconds(.5f);
         while (!Advertisement.isInitialized)
         {
-            //±¤°í ·ÎµåÁß ÆË¾÷ ¶ç¿ì±â
+            //ê´‘ê³  ë¡œë“œì¤‘ íŒì—… ë„ìš°ê¸°
             yield return wait;
         }
-        Advertisement.Load(adUnitId, this);
+        Advertisement.Load(adUnitId,this);
     }
 
     public void OnUnityAdsAdLoaded(string placementId)
     {
-        Debug.Log("º¸»óÇü ±¤°í ·Îµå ¿Ï·á");
+        Debug.Log("ë³´ìƒí˜• ê´‘ê³  ë¡œë“œ ì™„ë£Œ");
         showAdButton.interactable = true;
     }
 
@@ -48,47 +48,55 @@ public class RewardAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListe
         showAdButton.interactable = false;
         Advertisement.Show(adUnitId,this);
 
-        //ÀÓ½ÃÁ¶Ä¡ : UnityAds 4.0¹®Á¦
-        //´ÙÀ½¿¡ °íÄ¡µµ·Ï ÇÏ°Ú½À´Ï´ç 220610
-        showAdButton.interactable = true;
+        //ì„ì‹œì¡°ì¹˜ : UnityAds 4.0ë¬¸ì œ
+        //ë‹¤ìŒì— ê³ ì¹˜ë„ë¡ í•˜ê² ìŠµë‹ˆë‹¹ 220610
+        //220810 UnityAds 4.2ë¡œ ë³€ã„±
+        /*showAdButton.interactable = true;
 
         ArbeitMgr arbeit = GameObject.FindGameObjectWithTag("Arbeit").GetComponent<ArbeitMgr>();
         float coEffi = arbeit.Pigma();
         float totalCoin = (DataController.instance.gameData.truckCoin
-            + GameManager.instance.bonusTruckCoin) * coEffi*3;
+            + GameManager.instance.bonusTruckCoin) * coEffi * 3;
         GameManager.instance.GetCoin((int)totalCoin);
 
-        Debug.Log("ÄÚÀÎ 3¹è È¹µæ");
+        Debug.Log("ì½”ì¸ 3ë°° íšë“");
         DataController.instance.gameData.truckBerryCnt = 0;
         DataController.instance.gameData.truckCoin = 0;
 
-        StartCoroutine(LoadAd());//±¤°í·Îµå
+        StartCoroutine(LoadAd());//ê´‘ê³ ë¡œë“œ*/
     }
 
 
     public void OnUnityAdsFailedToLoad(string placementId, UnityAdsLoadError error, string message)
     {
-        Debug.Log($"±¤°í ·Îµå ½ÇÆĞ: {error}-{message}");
+        Debug.Log($"ê´‘ê³  ë¡œë“œ ì‹¤íŒ¨: {error}-{message}");
     }
 
 
     public void OnUnityAdsShowComplete(string placementId, UnityAdsShowCompletionState showCompletionState)
     {
-        if (adUnitId == placementId && showCompletionState.Equals(UnityAdsCompletionState.COMPLETED))
+        Debug.Log("OnUnityAdsShowComplete "+showCompletionState);
+        if (adUnitId.Equals(placementId) && showCompletionState.Equals(UnityAdsCompletionState.COMPLETED))
         {
-            //¸®¿öµå ±¸Çö - ´Ù¸¥º¸»ó Ãß°¡µÇ¸é ÄÚµå ¼öÁ¤ÇØ¾ß ÇÔ
+            //ë¦¬ì›Œë“œ êµ¬í˜„ - ë‹¤ë¥¸ë³´ìƒ ì¶”ê°€ë˜ë©´ ì½”ë“œ ìˆ˜ì •í•´ì•¼ í•¨
             showAdButton.interactable = true;
-            GameManager.instance.GetCoin(DataController.instance.gameData.truckCoin*3);
-            Debug.Log("ÄÚÀÎÈ¹µæ");
+
+            ArbeitMgr arbeit = GameObject.FindGameObjectWithTag("Arbeit").GetComponent<ArbeitMgr>();
+            float coEffi = arbeit.Pigma();
+            float totalCoin = (DataController.instance.gameData.truckCoin
+                + GameManager.instance.bonusTruckCoin) * coEffi * 3;
+            GameManager.instance.GetCoin((int)totalCoin);
+
+            Debug.Log($"{totalCoin} íšë“");
             DataController.instance.gameData.truckBerryCnt = 0;
             DataController.instance.gameData.truckCoin = 0;
-            StartCoroutine(LoadAd());//±¤°í·Îµå
+            StartCoroutine(LoadAd());//ê´‘ê³ ë¡œë“œ
         }
     }
 
     public void OnUnityAdsShowFailure(string placementId, UnityAdsShowError error, string message)
     {
-        Debug.Log($"±¤°í º¸¿©ÁÖ±â Error : {error}-{message}");
+        Debug.Log($"ê´‘ê³  ë³´ì—¬ì£¼ê¸° Error : {error}-{message}");
     }
 
     public void OnUnityAdsShowClick(string placementId) { }

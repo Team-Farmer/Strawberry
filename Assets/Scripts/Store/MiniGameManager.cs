@@ -20,7 +20,7 @@ public class MiniGameManager : MonoBehaviour
             Store.GetComponent<Image>().sprite = StoreSprite[1];
 
     }
-    
+
     public void EnterStore()
     {
         if (DataController.instance.gameData.isStoreOpend == true)
@@ -28,7 +28,7 @@ public class MiniGameManager : MonoBehaviour
         else
         {
             //Debug.Log(DataController.instance.gameData.isStoreOpend);
-            ////ÇØ±ÝÁ¶°Ç - ¿¬±¸·¹º§ 15ÀÌ»ó, 700A ¼Ò¸ð °¡´É»óÅÂ
+            ////í•´ê¸ˆì¡°ê±´ - ì—°êµ¬ë ˆë²¨ 15ì´ìƒ, 700A ì†Œëª¨ ê°€ëŠ¥ìƒíƒœ
             //if (DataController.instance.gameData.coin >= 700 && ResearchLevelCheck(15))
             //{
             //    UnlockBtn.interactable = true;
@@ -59,19 +59,19 @@ public class MiniGameManager : MonoBehaviour
 
     public void SetInfo(int btnIdx)
     {
-        switch(btnIdx)
+        switch (btnIdx)
         {
             case 1:
-                infoText.text = "µþ±â Ã¢°í°¡ Á¤ÀüÀÌ µÇ¾ú¾î¿ä! »¡¸® µþ±âµéÀ» ºÐ·ùÇØ¼­ ÆÈ¾Æ¾ß ÇÏ´Âµ¥... ¾ÈÀº ±ô±ôÇÏ°í ¾îµÏ¾îµÏÇÑ ¹Ù±ùÀº ºñ±îÁö ³»·Á¿ä. ÇÏÁö¸¸ ¿ì¸®´Â ÇÏ·ç ÀÌÆ² µþ±â¸¦ ¼öÈ®ÇÑ °Ô ¾Æ´ÏÁÒ! ¾îµÒ ¼Ó¿¡¼­ ÃÖ´ëÇÑ ¸¹Àº µþ±âµéÀ» ºÐ·ùÇØ ºÁ¿ä!";
+                infoText.text = "ë”¸ê¸° ì°½ê³ ê°€ ì •ì „ì´ ë˜ì—ˆì–´ìš”! ë¹¨ë¦¬ ë”¸ê¸°ë“¤ì„ ë¶„ë¥˜í•´ì„œ íŒ”ì•„ì•¼ í•˜ëŠ”ë°... ì•ˆì€ ê¹œê¹œí•˜ê³  ì–´ë‘‘ì–´ë‘‘í•œ ë°”ê¹¥ì€ ë¹„ê¹Œì§€ ë‚´ë ¤ìš”. í•˜ì§€ë§Œ ìš°ë¦¬ëŠ” í•˜ë£¨ ì´í‹€ ë”¸ê¸°ë¥¼ ìˆ˜í™•í•œ ê²Œ ì•„ë‹ˆì£ ! ì–´ë‘  ì†ì—ì„œ ìµœëŒ€í•œ ë§Žì€ ë”¸ê¸°ë“¤ì„ ë¶„ë¥˜í•´ ë´ìš”!";
                 break;
             case 2:
-                infoText.text = "Àß ÀÍÀº µþ±âµé µû¼­ ¸ð¾Æµ×¾ú´Âµ¥, ³¯ÀÌ ´õ¿ö¼­ÀÎÁö ¸î¸î µþ±âµéÀÌ »ìÂ¦ ¹«¸¥ °Í °°¾Æ¿ä. ÇÏÁö¸¸ ¿ì¸®¿¡°Õ ±»Àº ½Å³äÀÌ ÀÖÁÒ. °¡Àå ´ÞÄÞÇÏ°í °¡Àå ½Ì½ÌÇÑ µþ±âµéÀ» ÆÈÀÚ! ±×·¯´Ï ´«À» Å©°Ô ¶ß°í »óÇÑ µþ±âµéÀ» °ñ¶ó³»ºÁ¿ä!";
+                infoText.text = "ìž˜ ìµì€ ë”¸ê¸°ë“¤ ë”°ì„œ ëª¨ì•„ë’€ì—ˆëŠ”ë°, ë‚ ì´ ë”ì›Œì„œì¸ì§€ ëª‡ëª‡ ë”¸ê¸°ë“¤ì´ ì‚´ì§ ë¬´ë¥¸ ê²ƒ ê°™ì•„ìš”. í•˜ì§€ë§Œ ìš°ë¦¬ì—ê² êµ³ì€ ì‹ ë…ì´ ìžˆì£ . ê°€ìž¥ ë‹¬ì½¤í•˜ê³  ê°€ìž¥ ì‹±ì‹±í•œ ë”¸ê¸°ë“¤ì„ íŒ”ìž! ê·¸ëŸ¬ë‹ˆ ëˆˆì„ í¬ê²Œ ëœ¨ê³  ìƒí•œ ë”¸ê¸°ë“¤ì„ ê³¨ë¼ë‚´ë´ìš”!";
                 break;
             case 3:
-                infoText.text = "µþ±â ¹ç¿¡ ÆøÇ³ÀÌ Áö³ª°¬¾î¿ä! ¹ç¿¡ ¿­·ÁÀÖ´ø µþ±âµéµµ, ¼öÈ®ÇØµÐ µþ±âµéµµ ¸ðµÎ ¸ðµÎ ³¯¾Æ°¡ ¹ö·È¾î¿ä... ¾î¶ó? ±Ùµ¥ ³¯¾Æ°¬´ø µþ±âµéÀÌ ÇÏ´Ã¿¡¼­ ¶³¾îÁö³×¿ä?º¸°í¸¸ ÀÖÀ» ¶§°¡ ¾Æ´ÏÁÒ! ¹Ù±¸´Ï·Î ¸ÖÂÄÇÑ µþ±âµé¸¸ ÃÖ´ëÇÑ ´ã¾ÆºÁ¿ä!";
+                infoText.text = "ë”¸ê¸° ë°­ì— í­í’ì´ ì§€ë‚˜ê°”ì–´ìš”! ë°­ì— ì—´ë ¤ìžˆë˜ ë”¸ê¸°ë“¤ë„, ìˆ˜í™•í•´ë‘” ë”¸ê¸°ë“¤ë„ ëª¨ë‘ ëª¨ë‘ ë‚ ì•„ê°€ ë²„ë ¸ì–´ìš”... ì–´ë¼? ê·¼ë° ë‚ ì•„ê°”ë˜ ë”¸ê¸°ë“¤ì´ í•˜ëŠ˜ì—ì„œ ë–¨ì–´ì§€ë„¤ìš”?ë³´ê³ ë§Œ ìžˆì„ ë•Œê°€ ì•„ë‹ˆì£ ! ë°”êµ¬ë‹ˆë¡œ ë©€ì©¡í•œ ë”¸ê¸°ë“¤ë§Œ ìµœëŒ€í•œ ë‹´ì•„ë´ìš”!";
                 break;
             case 4:
-                infoText.text = "¾ÆÀÌ°í µþ±â¸¦ Èê·Á¼­ µþ±â°¡ ´Ù¼¯¿´´Ù ºÐ¸®ÇØº¸ÀÚ";
+                infoText.text = "ì•„ì´ê³  ë”¸ê¸°ë¥¼ í˜ë ¤ì„œ ë”¸ê¸°ê°€ ë‹¤ì„žì˜€ë‹¤ ë¶„ë¦¬í•´ë³´ìž";
                 break;
         }
     }
@@ -79,19 +79,19 @@ public class MiniGameManager : MonoBehaviour
     {
         string info_str = infoText.text.Substring(0, 5);
         Debug.Log(info_str);
-        if (info_str == "µþ±â Ã¢°í")
+        if (info_str == "ë”¸ê¸° ì°½ê³ ")
         {
             miniGameList[0].gameObject.SetActive(true);
         }
-        else if (info_str == "Àß ÀÍÀº ")
+        else if (info_str == "ìž˜ ìµì€ ")
         {
             miniGameList[1].gameObject.SetActive(true);
         }
-        else if(info_str == "µþ±â ¹ç¿¡")
+        else if (info_str == "ë”¸ê¸° ë°­ì—")
         {
             miniGameList[2].gameObject.SetActive(true);
-        }  
-        else if (info_str == "¾ÆÀÌ°í µþ")
+        }
+        else if (info_str == "ì•„ì´ê³  ë”¸")
         {
             miniGameList[3].gameObject.SetActive(true);
         }
