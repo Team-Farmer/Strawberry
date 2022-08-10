@@ -85,7 +85,7 @@ public class MiniGame1 : MiniGame
         else
         {
             X.SetActive(true);
-            scrollbar.size -= size * 10;
+            scroll.fillAmount -= size * 10;
             time -= 10;
         }
         if (time > 0)

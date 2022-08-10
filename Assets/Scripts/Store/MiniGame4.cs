@@ -109,7 +109,9 @@ public class MiniGame4 : MiniGame
         //오답!!
         else
         {
-            scrollbar.size -= size * 10;
+            //scrollbar.size -= size * 10;
+            scroll.fillAmount -= size * 10;
+
             time -= 10;
 
             //화면 흔들기?////////////////////////////////

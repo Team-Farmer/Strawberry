@@ -9,6 +9,7 @@ public class MiniGame : MonoBehaviour
 
     [Header("UI")]
     public Scrollbar scrollbar;//스크롤바
+    public Image scroll;
     public Text score_txt;     //점수
     public GameObject countImgs;//카운트 이미지
     public Button pause_btn;   //일시정지 버튼
@@ -26,7 +27,8 @@ public class MiniGame : MonoBehaviour
 
     protected virtual void Awake()
     {
-        size = scrollbar.size / 60f; 
+        //size = scrollbar.size / 60f; 
+        size = scroll.fillAmount / 60f;
         global = GameObject.FindGameObjectWithTag("Global").GetComponent<Globalvariable>();
         
     }
@@ -50,7 +52,8 @@ public class MiniGame : MonoBehaviour
             }
         }
         Debug.Log("unlockList.Count: " + unlockList.Count);
-        scrollbar.size = 1;
+        //scrollbar.size = 1;
+        scroll.fillAmount = 1;
         score = 0;
         time = 64;
         score_txt.text = score.ToString() + "점";
@@ -80,7 +83,8 @@ public class MiniGame : MonoBehaviour
     IEnumerator Timer()
     {
         yield return new WaitForSeconds(1);
-        scrollbar.size -= size;
+        //scrollbar.size -= size;
+        scroll.fillAmount -= size;
         time -= 1;
         if (time <= 0)
         {           
