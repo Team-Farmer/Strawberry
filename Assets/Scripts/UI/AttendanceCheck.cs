@@ -48,8 +48,8 @@ public class AttendanceCheck : MonoBehaviour
     {
         #region 변수 초기화
 
-        today = DataController.instance.gameData.attendanceToday;
-        lastday = DataController.instance.gameData.attendanceLastday; //지난 날짜 받아오기
+        today = DataController.instance.gameData.currentDay;
+        lastday = DataController.instance.gameData.atdLastday; //지난 날짜 받아오기
         isAttendance = DataController.instance.gameData.isAttendance; //출석 여부 판단 bool 값
         days = DataController.instance.gameData.accDays; // 출석 누적 날짜
 
@@ -166,8 +166,8 @@ public class AttendanceCheck : MonoBehaviour
             //출석 정보 저장.
             DataController.instance.gameData.accDays += 1; 
             DataController.instance.gameData.isAttendance = true;
-            DataController.instance.gameData.attendanceLastday 
-                = DataController.instance.gameData.attendanceToday;
+            DataController.instance.gameData.atdLastday 
+                = DataController.instance.gameData.currentDay;
             //DataController.instance.gameData.accAttendance += 1; // 누적 출석 증가
                                                                  // 10*날짜*주수
                                                                  // Debug.Log("누적 출석 : " + DataController.instance.gameData.accAttendance);

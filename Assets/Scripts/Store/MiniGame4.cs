@@ -111,7 +111,6 @@ public class MiniGame4 : MiniGame
         {
             //scrollbar.size -= size * 10;
             scroll.fillAmount -= size * 10;
-
             time -= 10;
 
             //È­¸é Èçµé±â?////////////////////////////////
