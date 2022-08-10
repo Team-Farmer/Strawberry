@@ -60,7 +60,7 @@ public class HeartMover : MonoBehaviour
 
     public void CountCoin(float dis)
     {
-        var itemFx2 = GameObject.Instantiate<HeartAcquireFx>(prefab, transform);
+        var itemFx2 = GameObject.Instantiate<HeartAcquireFx>(prefab, toObject.transform);
         itemFx2.Coin(toObject.transform.position,dis);
     }
 }
