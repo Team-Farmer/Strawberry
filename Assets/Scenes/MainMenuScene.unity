@@ -19747,8 +19747,6 @@ MonoBehaviour:
   content:
   - {fileID: 638177079}
   - {fileID: 1862953772}
-  - {fileID: 0}
-  - {fileID: 0}
   count: 1
   isBerry: 1
 --- !u!114 &698710650

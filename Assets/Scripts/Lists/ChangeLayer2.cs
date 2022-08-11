@@ -111,6 +111,8 @@ public class ChangeLayer2 : MonoBehaviour
 				LockUniqueBtn.GetComponent<Button>().interactable = true;
 			}
 
+
+
 			// 스와이프 버튼
 			if (currentPage == 0)
 			{
@@ -119,6 +121,7 @@ public class ChangeLayer2 : MonoBehaviour
 			}
 			else if (currentPage == maxPage - 1)
 			{
+				swipeBtn[0].interactable = true;
 				swipeBtn[1].interactable = false;
 			}
 			else
