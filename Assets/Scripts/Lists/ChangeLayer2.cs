@@ -49,7 +49,7 @@ public class ChangeLayer2 : MonoBehaviour
 	private float[] scrollPageValues;           // 각 페이지의 위치 값 [0.0 - 1.0]
 	private float valueDistance = 0;            // 각 페이지 사이의 거리
 	private int currentPage = 0;            // 현재 페이지
-	private int maxPage = 4;                // 최대 페이지 2로 설정
+	private int maxPage = 2;                // 최대 페이지 2로 설정
 
 	private float startTouchX;              // 터치 시작 위치
 	private float endTouchX;                    // 터치 종료 위치
@@ -67,7 +67,7 @@ public class ChangeLayer2 : MonoBehaviour
 		if (isBerry == true)
 		{
 			// 스크롤 되는 페이지의 각 value 값을 저장하는 배열 메모리 할당
-			scrollPageValues = new float[4];
+			scrollPageValues = new float[2];
 
 			// 스크롤 되는 페이지 사이의 거리
 			valueDistance = 1f / (scrollPageValues.Length - 1f);
@@ -414,7 +414,7 @@ public class ChangeLayer2 : MonoBehaviour
 		}
 
 		//비활성화
-		for (int j = 0; j < 4; j++)
+		for (int j = 0; j < content.Length; j++)
 		{
 			for (int i = index; i < index + 16; i++)
 			{
@@ -429,7 +429,7 @@ public class ChangeLayer2 : MonoBehaviour
 	public void AllActive()
 	{
 		//모든 베리 오브젝트 활성화
-		for (int j = 0; j < 4; j++)
+		for (int j = 0; j < content.Length; j++)
 		{
 			for (int i = 0; i < content[j].transform.childCount; i++)
 			{
