@@ -33,7 +33,7 @@ public class Strawberry : MonoBehaviour
     private void Awake()
     {
         //프리팹들에게 번호를 붙여 주자
-        if (Prefabcount >= 32*3) { Prefabcount %= 32 * 3; }
+        if (Prefabcount >= 64*3) { Prefabcount %= 64 * 3; }
         prefabnum = Prefabcount;
         Prefabcount++;
     }
@@ -46,7 +46,7 @@ public class Strawberry : MonoBehaviour
         
 
         //베리 정보 가져오기
-        BERRY = GameObject.FindGameObjectWithTag("Global").GetComponent<Globalvariable>().berryListAll2;
+        BERRY = GameObject.FindGameObjectWithTag("Global").GetComponent<Globalvariable>().berryListAll;
 
         //베리들을 보인다.
         berryImageChange();
