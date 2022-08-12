@@ -68,7 +68,7 @@ public class News : MonoBehaviour
     {
         newsExp = GameObject.FindGameObjectWithTag("NewsExplanation").transform.GetChild(0).gameObject;
         newsContent = GameObject.FindGameObjectWithTag("NewsContent");
-        LockNum = Lock.transform.GetChild(2).gameObject;
+        LockNum = Lock.transform.GetChild(1).gameObject;
 
 
         WarningPanel = GameObject.FindGameObjectWithTag("WarningPanel");
@@ -85,7 +85,7 @@ public class News : MonoBehaviour
         if (prefabnum < 9) { CountText.GetComponent<Text>().text = "0" + (prefabnum + 1); }
         else { CountText.GetComponent<Text>().text = (prefabnum + 1).ToString(); }
         //해금에 필요한 뱃지 수
-        LockNum.GetComponent<Text>().text = Info[prefabnum].Price.ToString();
+        LockNum.GetComponent<Text>().text = "x"+Info[prefabnum].Price.ToString();
 
         //뉴스 상태 업데이트
         InfoUpdate();
@@ -99,14 +99,17 @@ public class News : MonoBehaviour
         switch (DataController.instance.gameData.newsState[prefabnum]) 
         {
             case 0://LOCK
+                CountText.SetActive(false);
                 Lock.SetActive(true);
                 Unlockable.SetActive(false);
                 break;
             case 1://UNLOCK ABLE
+                CountText.SetActive(false);
                 Lock.SetActive(false);
                 Unlockable.SetActive(true);
                 break;
             case 2://UNLOCK
+                CountText.SetActive(true);
                 Lock.SetActive(false);
                 Unlockable.SetActive(false);
                 break;
@@ -198,23 +201,23 @@ public class News : MonoBehaviour
 
         Info[prefabnum].Exp=Info[prefabnum].Exp.Replace("\\n", "\n");//\n적용
 
-        newsExp.transform.GetChild(1).GetChild(1).GetComponent<Scrollbar>().value = 1; //Scrollbar Vertical 스크롤 맨위로 이동
+        newsExp.transform.GetChild(2).GetChild(1).GetComponent<Scrollbar>().value = 1; //Scrollbar Vertical 스크롤 맨위로 이동
 
 
         if (Info[prefabnum].isShort == true) //내용 짧으면 content사이즈 조절
         {
-            newsExp.transform.GetChild(1).GetChild(0).GetChild(0).GetComponent<RectTransform>().sizeDelta 
+            newsExp.transform.GetChild(2).GetChild(0).GetChild(0).GetComponent<RectTransform>().sizeDelta 
                 = new Vector2(-81, 1010);
         }
         else 
         {
-            newsExp.transform.GetChild(1).GetChild(0).GetChild(0).GetComponent<RectTransform>().sizeDelta 
+            newsExp.transform.GetChild(2).GetChild(0).GetChild(0).GetComponent<RectTransform>().sizeDelta 
                 = new Vector2(-81, 1260);
         }
 
-        newsExp.transform.GetChild(1).GetChild(0).GetChild(0).GetChild(0).GetComponent<Text>().text//환장
+        newsExp.transform.GetChild(2).GetChild(0).GetChild(0).GetChild(0).GetComponent<Text>().text//환장
             = Info[prefabnum].Title;//제목
-        newsExp.transform.GetChild(1).GetChild(0).GetChild(0).GetChild(1).GetComponent<Text>().text
+        newsExp.transform.GetChild(2).GetChild(0).GetChild(0).GetChild(1).GetComponent<Text>().text
             = Info[prefabnum].Exp;//내용
 
 

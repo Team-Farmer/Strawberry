@@ -101,7 +101,7 @@ public class Challenge : MonoBehaviour
         ChallengeValue[5] = DataController.instance.gameData.mgPlayCnt;
 
         LevelNow= DataController.instance.gameData.challengeLevel[prefabnum];//이거는 없앨 수있음
-        Info[prefabnum].rewardHeart = DataController.instance.gameData.challengeLevel[prefabnum] * 5;//레벨X5 하트//이거는 없앨 수있음
+        Info[prefabnum].rewardHeart = (DataController.instance.gameData.challengeLevel[prefabnum]+1) * 5;//레벨X5 하트//이거는 없앨 수있음
         ValueNow = ChallengeValue[prefabnum];
 
         InfoUpdate();
@@ -119,7 +119,7 @@ public class Challenge : MonoBehaviour
 
         //보상 설정
         Info[prefabnum].rewardMedal = 1; // 1 뱃지
-        Info[prefabnum].rewardHeart = DataController.instance.gameData.challengeLevel[prefabnum] * 5;//레벨X5 하트
+        Info[prefabnum].rewardHeart = (DataController.instance.gameData.challengeLevel[prefabnum]+1) * 5;//레벨X5 하트
 
         //그림 설정
         image.GetComponent<Image>().sprite = Info[prefabnum].challengeImage;
@@ -238,7 +238,7 @@ public class Challenge : MonoBehaviour
             //보상획득
             GameManager.instance.GetMedal(Info[prefabnum].rewardMedal); //메달 보상 획득
             GameManager.instance.GetHeart(Info[prefabnum].rewardHeart); //하트 보상 획득
-            Debug.Log(Info[prefabnum].rewardMedal + "   " + Info[prefabnum].rewardHeart);
+            //Debug.Log(Info[prefabnum].rewardMedal + "   " + Info[prefabnum].rewardHeart);
             //다음 레벨로 이동
             if (LevelNow < 100)
             {

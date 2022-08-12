@@ -33,9 +33,13 @@ public class Strawberry : MonoBehaviour
     private void Awake()
     {
         //프리팹들에게 번호를 붙여 주자
-        if (Prefabcount >= 64*3) { Prefabcount %= 64 * 3; }
+        if (Prefabcount >= 32*3) { Prefabcount %= 32 * 3; }
         prefabnum = Prefabcount;
+        if (prefabnum >= 32 && prefabnum <= 63) { prefabnum += 32; }
+        else if (prefabnum >= 64 && prefabnum <= 95) { prefabnum += 64; }
         Prefabcount++;
+        
+
     }
     void Start()
     {
@@ -54,7 +58,7 @@ public class Strawberry : MonoBehaviour
     }
     private void Update()
     {
-        //베리들을 보인다. 이거 없앨수있
+        //베리들을 보인다. 이거 없앨수있을듯
         berryImageChange();
     }
 

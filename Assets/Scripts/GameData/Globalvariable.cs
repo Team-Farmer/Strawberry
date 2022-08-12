@@ -7,7 +7,6 @@ public class Globalvariable : MonoBehaviour
     public static Globalvariable instance;
 
     public List<GameObject> berryListAll;
-    public List<GameObject> berryListAll2;//이거 문제 되면 말해주세요 -허윤지
 
     public List<GameObject> classicBerryList;
     public List<GameObject> specialBerryList;

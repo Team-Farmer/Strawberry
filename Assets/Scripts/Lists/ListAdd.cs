@@ -26,7 +26,7 @@ public class ListAdd : MonoBehaviour
         {
             for (int t = 0; t < 3; t++)//classic, special unique 3개
             {
-                for (int j = 0; j < content.Length; j++)//layer 갯수만큼
+                for (int j = 0; j < content.Length; j++)//layer 갯수만큼 지금은 2개
                 {
                     for (int i = 0; i < 16; i++)//content 내 갯수만큼
                     {
