@@ -207,7 +207,7 @@ public class News : MonoBehaviour
         if (Info[prefabnum].isShort == true) //내용 짧으면 content사이즈 조절
         {
             newsExp.transform.GetChild(2).GetChild(0).GetChild(0).GetComponent<RectTransform>().sizeDelta 
-                = new Vector2(-81, 1010);
+                = new Vector2(-81, 900);
         }
         else 
         {

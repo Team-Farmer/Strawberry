@@ -24,9 +24,9 @@ public class MiniGame4 : MiniGame
 
         berryListAll = GameObject.FindGameObjectWithTag("Global").GetComponent<Globalvariable>().berryListAll;
 
-        SetGame();
+        
         base.Awake();
-
+        SetGame();
     }
     protected override void OnEnable()
     {
@@ -81,7 +81,7 @@ public class MiniGame4 : MiniGame
 
     public void clickAnswer(bool isLeft) 
     {
-        //효과 초기화
+        //애니메이션 효과 초기화
         StopCoroutine("FadeCoroutine");
         correctTxt.GetComponent<Text>().color = new Color(1f, 1f, 1f, 0f);
 
@@ -102,19 +102,15 @@ public class MiniGame4 : MiniGame
             score += 10;
             score_txt.text = score.ToString();
 
-            //정답 효과//////////////////////////피드백필요////////////////////////////////////
+            //정답 효과//////////////////////////피드백필요
             correctTxt.GetComponent<Text>().color=new Color(1f,1f,1f,1f);
             StartCoroutine("FadeCoroutine");
         }
         //오답!!
         else
         {
-            //scrollbar.size -= size * 10;
             scroll.fillAmount -= size * 10;
             time -= 10;
-
-            //화면 흔들기?////////////////////////////////
-
         }
         //좌우 이동==========================================
         StartCoroutine(MoveCoroutine(isLeft, content.transform.GetChild(content.transform.childCount - 1).gameObject));
