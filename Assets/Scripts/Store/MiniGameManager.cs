@@ -71,7 +71,7 @@ public class MiniGameManager : MonoBehaviour
                 infoText.text = "딸기 밭에 폭풍이 지나갔어요! 밭에 열려있던 딸기들도, 수확해둔 딸기들도 모두 모두 날아가 버렸어요... 어라? 근데 날아갔던 딸기들이 하늘에서 떨어지네요?보고만 있을 때가 아니죠! 바구니로 멀쩡한 딸기들만 최대한 담아봐요!";
                 break;
             case 4:
-                infoText.text = "아이고 딸기를 흘려서 딸기가 다섞였다 분리해보자";
+                infoText.text = "우리가 정성들여 딸기를 키우고 열심히 수확했더니 트럭에 딸기들이 가득 찼어요! 딸기들을 판매하기 위해서는 우선 딸기들을 종류에 맞게 나누어야 해요. 비슷하게 생겨도 문제 없죠! 재빠르게 딸기들을 분류해서 알맞게 박스에 담아봐요!";
                 break;
         }
     }
@@ -91,7 +91,7 @@ public class MiniGameManager : MonoBehaviour
         {
             miniGameList[2].gameObject.SetActive(true);
         }
-        else if (info_str == "아이고 딸")
+        else if (info_str == "우리가 정")
         {
             miniGameList[3].gameObject.SetActive(true);
         }

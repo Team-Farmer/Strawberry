@@ -38,8 +38,6 @@ public class MiniGame4 : MiniGame
         
     }
 
-
-
     void SetGame() 
     {
         //왼쪽과 오른쪽 정답 설정
