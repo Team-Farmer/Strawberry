@@ -15,7 +15,8 @@ public class MiniGame4 : MiniGame
 
     Sprite leftSprite;
     Sprite rightSprite;
-
+    int leftOne;
+    int rightOne;
 
     List<GameObject> berryListAll;//global의 berryListAll
 
@@ -24,29 +25,28 @@ public class MiniGame4 : MiniGame
 
         berryListAll = GameObject.FindGameObjectWithTag("Global").GetComponent<Globalvariable>().berryListAll;
 
-        
         base.Awake();
-        SetGame();
+        
     }
     protected override void OnEnable()
     {
-        base.OnEnable();
-       
+        base.OnEnable(); 
     }
-    void Start()
+    protected override void MakeGame()
     {
-        
+        SetGame();
     }
 
     void SetGame() 
     {
+
         //왼쪽과 오른쪽 정답 설정
-        int leftOne;
-        int rightOne;
-        do { leftOne = UnityEngine.Random.Range(0, 10); } 
+        leftOne = UnityEngine.Random.Range(0, 192);
+        rightOne = UnityEngine.Random.Range(0, 192);
+        do { leftOne = UnityEngine.Random.Range(0, 192); } 
         while (DataController.instance.gameData.isBerryUnlock[leftOne] == false);
         
-        do { rightOne = UnityEngine.Random.Range(0, 10); } 
+        do { rightOne = UnityEngine.Random.Range(0, 192); } 
         while (leftOne == rightOne || DataController.instance.gameData.isBerryUnlock[rightOne] == false);
 
         leftSprite = berryListAll[leftOne].GetComponent<SpriteRenderer>().sprite;
@@ -73,7 +73,7 @@ public class MiniGame4 : MiniGame
             content.transform.GetChild(i).GetComponent<Image>().preserveAspect = true;
 
         }
-
+        Debug.Log("START@@@"+leftOne+" "+rightOne);
     }
 
 

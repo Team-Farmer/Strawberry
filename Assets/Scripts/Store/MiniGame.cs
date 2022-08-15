@@ -96,6 +96,17 @@ public class MiniGame : MonoBehaviour
         }
     }
 
+    IEnumerator Timer2()
+    {    
+        while (time >= 0)
+        {
+            scroll.fillAmount -= size;
+            time -= 1;
+            yield return new WaitForSeconds(1);
+        }
+        FinishGame();
+    }
+
     protected virtual void MakeGame()
     {
         
