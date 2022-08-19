@@ -8,7 +8,10 @@ public class MiniGame4 : MiniGame
 {
     [Header("MiniGame 4")]
     public GameObject leftImage;
+    public GameObject leftImage2;
     public GameObject rightImage;
+    public GameObject rightImage2;
+
     public GameObject content;
     public GameObject correctTxt;
     public GameObject fakeImage;
@@ -17,8 +20,15 @@ public class MiniGame4 : MiniGame
 
     Sprite leftSprite1;
     Sprite rightSprite1;
+    Sprite leftSprite2;
+    Sprite rightSprite2;
+
     int leftOne;
     int rightOne;
+    int leftOne2;
+    int rightOne2;
+
+    bool isUpgrade;
 
     List<GameObject> berryListAll;//global의 berryListAll
 
@@ -36,16 +46,23 @@ public class MiniGame4 : MiniGame
         base.OnEnable();
         leftBtn.GetComponent<Button>().interactable = false;
         rightBtn.GetComponent<Button>().interactable = false;
-        SetGame();
+        SetGame(ref leftOne,ref rightOne, ref leftSprite1,ref rightSprite1,ref leftImage,ref rightImage);
+        
+        //upgrade초기화
+        isUpgrade = false;
+        leftImage2.SetActive(false);
+        rightImage2.SetActive(false);
     }
     protected override void MakeGame()
     {
-        Debug.Log("!!!!!!!!!!!!");
         leftBtn.GetComponent<Button>().interactable = true;
         rightBtn.GetComponent<Button>().interactable = true;
     }
 
-    void SetGame() 
+    void SetGame
+        (ref int leftOne,ref int rightOne, 
+        ref Sprite leftSprite,ref Sprite rightSprite,
+        ref GameObject leftImage,ref GameObject rightImage) 
     {
 
         //왼쪽과 오른쪽 정답 설정
@@ -57,13 +74,13 @@ public class MiniGame4 : MiniGame
         do { rightOne = UnityEngine.Random.Range(0, 192); } 
         while (leftOne == rightOne || DataController.instance.gameData.isBerryUnlock[rightOne] == false);
 
-        leftSprite1 = berryListAll[leftOne].GetComponent<SpriteRenderer>().sprite;
-        rightSprite1 = berryListAll[rightOne].GetComponent<SpriteRenderer>().sprite;
+        leftSprite = berryListAll[leftOne].GetComponent<SpriteRenderer>().sprite;
+        rightSprite = berryListAll[rightOne].GetComponent<SpriteRenderer>().sprite;
 
         
         //해당 정답들을 보인다.
-        leftImage.GetComponent<Image>().sprite = leftSprite1;
-        rightImage.GetComponent<Image>().sprite = rightSprite1;
+        leftImage.GetComponent<Image>().sprite = leftSprite;
+        rightImage.GetComponent<Image>().sprite = rightSprite;
 
         leftImage.GetComponent<Image>().preserveAspect = true;
         rightImage.GetComponent<Image>().preserveAspect = true;
@@ -74,9 +91,9 @@ public class MiniGame4 : MiniGame
             int ran = UnityEngine.Random.Range(0, 4);
 
             if (ran == 0 || ran == 1)
-            { content.transform.GetChild(i).GetComponent<Image>().sprite = leftSprite1; }
+            { content.transform.GetChild(i).GetComponent<Image>().sprite = leftSprite; }
             else 
-            { content.transform.GetChild(i).GetComponent<Image>().sprite = rightSprite1; }
+            { content.transform.GetChild(i).GetComponent<Image>().sprite = rightSprite; }
 
             content.transform.GetChild(i).GetComponent<Image>().preserveAspect = true;
 
@@ -124,7 +141,15 @@ public class MiniGame4 : MiniGame
 
 
 
-        //+)갯수 늘릴것인지?. 좌우 변경하기?/////////////////////////
+        // UPGRADE!! 갯수 늘리기
+        if (score > 300 && isUpgrade==false)
+        { 
+            SetGame(ref leftOne2, ref rightOne2, ref leftSprite2, ref rightSprite2, ref leftImage2, ref rightImage2);
+            isUpgrade = true;
+            leftImage2.SetActive(true);
+            rightImage2.SetActive(true);
+        }
+        
 
 
 
