@@ -103,7 +103,7 @@ MonoBehaviour:
     \uB18D\uBD80\uAC00 \uD798\uB4E4\uC9C0 \uC54A\uAC8C \uB538\uAE30\uB4E4\uC774 \uBC18\uB4EF\uC774
     \uC790\uB77C\uB3C4\uB85D \uAD70\uAE30\uBC18\uC7A5 \uC5ED\uD560\uC744 \uD55C\uB2E4."
   berryIdx: 138
-  berryPrice: 79
+  berryPrice: 270
   berryRank: 2
 --- !u!95 &8238155578764226143
 Animator:
