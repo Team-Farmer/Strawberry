@@ -35,7 +35,10 @@ public class Collection : MonoBehaviour
     public GameObject collectionBtn;
     public GameObject collectionNoBtn;
     public GameObject collectionNow;
+    public GameObject medalTxt;
+    public GameObject heartTxt;
     public Sprite collectionBtnSprite;//베리 다 모았을 때 완료버튼 스프라이트
+
     //=================================================================================
     //=================================================================================
     //프리팹들 번호 붙여주기
@@ -89,6 +92,10 @@ public class Collection : MonoBehaviour
         
         }
         collectionBtn.GetComponent<Image>().sprite = collectionBtnSprite;//3개다 얻었으면 버튼변경한다.
+        medalTxt.SetActive(true);
+        heartTxt.SetActive(true);
+        medalTxt.GetComponent<Text>().text = "X"+Info[prefabnum].rewardMedal.ToString();
+        heartTxt.GetComponent<Text>().text = "X" + Info[prefabnum].rewardHeart.ToString();
     }
 
 
@@ -132,7 +139,8 @@ public class Collection : MonoBehaviour
             
             //버튼 더이상 못누르게
             collectionNoBtn.SetActive(true);
-
+            medalTxt.SetActive(false);
+            heartTxt.SetActive(false);
             //완전히 끝났다.
             DataController.instance.gameData.isCollectionDone[prefabnum] = true;
         }

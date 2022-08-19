@@ -41,6 +41,8 @@ public class Challenge : MonoBehaviour
     private GameObject Button;
     [SerializeField]
     private GameObject image;//왼쪽의 설명 그림
+    public GameObject medalTxt;
+    public GameObject heartTxt;
 
     [Header("==========Gauge==========")]
     [SerializeField]
@@ -52,11 +54,6 @@ public class Challenge : MonoBehaviour
     [SerializeField]
     private Sprite DoneButton;
 
-
-    [Header("==========패널==========")]
-    public GameObject warnningPanel;
-    public GameObject confirmPanel;
-    public GameObject BP;
 
     [Header("==========Animation==========")]
     public GameObject heartMover;
@@ -206,7 +203,11 @@ public class Challenge : MonoBehaviour
             nowCondition.GetComponent<Text>().text = Info[prefabnum].clearCriterion[LevelNow].ToString(); ;
             //도전과제 버튼 이미지 == Done
             Button.GetComponent<Image>().sprite = DoneButton;
-
+            //도전과제 보상 보인다.
+            medalTxt.SetActive(true);
+            heartTxt.SetActive(true);
+            medalTxt.GetComponent<Text>().text = "X"+Info[prefabnum].rewardMedal.ToString();
+            heartTxt.GetComponent<Text>().text = "X"+Info[prefabnum].rewardHeart.ToString();
 
         }
         else
@@ -265,6 +266,8 @@ public class Challenge : MonoBehaviour
                 }
 
                 Button.GetComponent<Image>().sprite = IngButton; //도전과제 버튼 이미지 변경
+                medalTxt.SetActive(false);
+                heartTxt.SetActive(false);
                 DataController.instance.gameData.challengeLevel[prefabnum]++; //LevelNow증가 == 레벨증가
 
             }

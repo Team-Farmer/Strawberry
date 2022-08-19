@@ -143,7 +143,8 @@ public class MiniGame : MonoBehaviour
         score = 0;
         time = 64;
         unlockList.Clear();
-        StartGame();
+        //StartGame();
+        OnEnable();
     }
 
     public virtual void OnClickPauseButton() //일시정지

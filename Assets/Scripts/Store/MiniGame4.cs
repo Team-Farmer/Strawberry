@@ -12,9 +12,11 @@ public class MiniGame4 : MiniGame
     public GameObject content;
     public GameObject correctTxt;
     public GameObject fakeImage;
+    public GameObject leftBtn;
+    public GameObject rightBtn;
 
-    Sprite leftSprite;
-    Sprite rightSprite;
+    Sprite leftSprite1;
+    Sprite rightSprite1;
     int leftOne;
     int rightOne;
 
@@ -30,11 +32,17 @@ public class MiniGame4 : MiniGame
     }
     protected override void OnEnable()
     {
-        base.OnEnable(); 
+
+        base.OnEnable();
+        leftBtn.GetComponent<Button>().interactable = false;
+        rightBtn.GetComponent<Button>().interactable = false;
+        SetGame();
     }
     protected override void MakeGame()
     {
-        SetGame();
+        Debug.Log("!!!!!!!!!!!!");
+        leftBtn.GetComponent<Button>().interactable = true;
+        rightBtn.GetComponent<Button>().interactable = true;
     }
 
     void SetGame() 
@@ -49,13 +57,13 @@ public class MiniGame4 : MiniGame
         do { rightOne = UnityEngine.Random.Range(0, 192); } 
         while (leftOne == rightOne || DataController.instance.gameData.isBerryUnlock[rightOne] == false);
 
-        leftSprite = berryListAll[leftOne].GetComponent<SpriteRenderer>().sprite;
-        rightSprite = berryListAll[rightOne].GetComponent<SpriteRenderer>().sprite;
+        leftSprite1 = berryListAll[leftOne].GetComponent<SpriteRenderer>().sprite;
+        rightSprite1 = berryListAll[rightOne].GetComponent<SpriteRenderer>().sprite;
 
         
         //해당 정답들을 보인다.
-        leftImage.GetComponent<Image>().sprite = leftSprite;
-        rightImage.GetComponent<Image>().sprite = rightSprite;
+        leftImage.GetComponent<Image>().sprite = leftSprite1;
+        rightImage.GetComponent<Image>().sprite = rightSprite1;
 
         leftImage.GetComponent<Image>().preserveAspect = true;
         rightImage.GetComponent<Image>().preserveAspect = true;
@@ -66,14 +74,14 @@ public class MiniGame4 : MiniGame
             int ran = UnityEngine.Random.Range(0, 4);
 
             if (ran == 0 || ran == 1)
-            { content.transform.GetChild(i).GetComponent<Image>().sprite = leftSprite; }
+            { content.transform.GetChild(i).GetComponent<Image>().sprite = leftSprite1; }
             else 
-            { content.transform.GetChild(i).GetComponent<Image>().sprite = rightSprite; }
+            { content.transform.GetChild(i).GetComponent<Image>().sprite = rightSprite1; }
 
             content.transform.GetChild(i).GetComponent<Image>().preserveAspect = true;
 
         }
-        Debug.Log("START@@@"+leftOne+" "+rightOne);
+
     }
 
 
@@ -90,8 +98,8 @@ public class MiniGame4 : MiniGame
 
         //정답여부 판별=======================================
         Sprite answerSprite;
-        if (isLeft == true) { answerSprite = leftSprite; }
-        else { answerSprite = rightSprite; }
+        if (isLeft == true) { answerSprite = leftSprite1; }
+        else { answerSprite = rightSprite1; }
 
 
         //정답!!
@@ -129,9 +137,9 @@ public class MiniGame4 : MiniGame
         //방금 막 맨 뒤로 간 스프라이트를 새로운 스프라이트로 변경한다.
         int ran = UnityEngine.Random.Range(0, 4);
         if (ran == 0 || ran == 1)
-            content.transform.GetChild(0).GetComponent<Image>().sprite = leftSprite;
+            content.transform.GetChild(0).GetComponent<Image>().sprite = leftSprite1;
         else
-            content.transform.GetChild(0).GetComponent<Image>().sprite = rightSprite;
+            content.transform.GetChild(0).GetComponent<Image>().sprite = rightSprite1;
     }
 
     protected override void FinishGame()
