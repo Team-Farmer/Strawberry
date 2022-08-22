@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class RewardAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListener
 {
-    [SerializeField] Button showAdButton;
+    [SerializeField] Button[] showAdButtons;
     [SerializeField] string androidUnitId = "Rewarded_Android";
     //[SerializeField] string iOSUnitId = "Rewarded_iOS";
     string adUnitId = null; //This will remain null for unsupported platforms
@@ -18,8 +18,6 @@ public class RewardAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListe
 #elif UNITY_ANDROID
         adUnitId = androidUnitId;
 #endif
-        //안드, ios 외의 플랫폼이면 버튼 안눌리게 처리
-        showAdButton.interactable = false;
 
         StartCoroutine(LoadAd());
     }
@@ -40,17 +38,13 @@ public class RewardAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListe
     public void OnUnityAdsAdLoaded(string placementId)
     {
         Debug.Log("보상형 광고 로드 완료");
-        showAdButton.interactable = true;
+        InteractableBtn(true);
     }
 
     public void ShowAd()
     {
-        showAdButton.interactable = false;
+        InteractableBtn(false);
         Advertisement.Show(adUnitId,this);
-
-        //임시조치 : UnityAds 4.0문제
-        //다음에 고치도록 하겠습니당 220610
-        //220810 UnityAds 4.2로 변경
     }
 
 
@@ -62,14 +56,8 @@ public class RewardAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListe
 
     public void OnUnityAdsShowComplete(string placementId, UnityAdsShowCompletionState showCompletionState)
     {
-        Debug.Log("OnUnityAdsShowComplete "+showCompletionState);
-        Debug.Log(UnityAdsCompletionState.COMPLETED.Equals(showCompletionState));
-        //if (adUnitId.Equals(placementId) && showCompletionState.Equals(UnityAdsCompletionState.COMPLETED))
-        if(adUnitId.Equals(placementId)/*&&UnityAdsCompletionState.COMPLETED.Equals(showCompletionState)*/) //뒷쪽 조건 계속 false가 뜨네...왜이러지 220810
+        if(adUnitId.Equals(placementId)&& UnityAdsShowCompletionState.COMPLETED.Equals(showCompletionState))
         {
-            //리워드 구현 - 다른보상 추가되면 코드 수정해야 함
-            showAdButton.interactable = true;
-
             ArbeitMgr arbeit = GameObject.FindGameObjectWithTag("Arbeit").GetComponent<ArbeitMgr>();
             float coEffi = arbeit.Pigma();
             float totalCoin = (DataController.instance.gameData.truckCoin
@@ -96,4 +84,12 @@ public class RewardAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListe
     {
         showAdButton.onClick.RemoveAllListeners();
     }*/
+
+    void InteractableBtn(bool state)
+    {
+        for(int i = 0; i < showAdButtons.Length; i++)
+        {
+            showAdButtons[i].interactable = state;
+        }
+    }
 }
