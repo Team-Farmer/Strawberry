@@ -30333,10 +30333,11 @@ MonoBehaviour:
   size: 0
   time: 0
   score: 0
-  leftImage: {fileID: 342395063}
-  leftImage2: {fileID: 1945542772}
-  rightImage: {fileID: 1964662491}
-  rightImage2: {fileID: 443862267}
+  correctImage:
+  - {fileID: 342395063}
+  - {fileID: 1964662491}
+  - {fileID: 1945542772}
+  - {fileID: 443862267}
   content: {fileID: 490734980}
   correctTxt: {fileID: 1927224384}
   fakeImage: {fileID: 1366057028}
