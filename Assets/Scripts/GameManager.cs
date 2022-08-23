@@ -123,16 +123,11 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(WebCheck());
-        CheckTime();
-        if (DataController.instance.gameData.currentDay.Day != DataController.instance.gameData.atdLastday.Day)
-            DataController.instance.gameData.isAttendance = false;
-
-        Debug.Log("오늘 날짜: " + DataController.instance.gameData.currentDay.Day);
-        Debug.Log("지난 출석 날짜: " + DataController.instance.gameData.atdLastday.Day);
-        Debug.Log("출석여부 " + DataController.instance.gameData.isAttendance);
-
+        PrintTime();
+        StartCoroutine(PreWork());
+        CheckFirstGame();
         attendanceCheck.GetComponent<AttendanceCheck>().Attendance();
+        StartCoroutine(CheckElapseTime());
 
         Application.targetFrameRate = 60;
         instance = this; // 게임 매니저의 싱글턴 패턴화 >> GameManager.instance.~~ 로 호출
@@ -1041,57 +1036,204 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region 출석
-
+    
     //인터넷 시간 가져오기.
 
-    IEnumerator WebCheck() 
+    public static IEnumerator UpdateCurrentTime()
     {
-        UnityWebRequest request = new UnityWebRequest();
-        using (request = UnityWebRequest.Get(url))
+        while (true)
         {
-            yield return request.SendWebRequest();
+            yield return new WaitForSeconds(30f);
+            UnityWebRequest request = new UnityWebRequest();
+            using (request = UnityWebRequest.Get("https://naver.com"))
+            {
+                yield return request.SendWebRequest();
 
-            if (request.result == UnityWebRequest.Result.ConnectionError)
-            {
-                Debug.Log(request.error);
-            }
-            else
-            {
-                string date = request.GetResponseHeader("date");
-                DateTime dateTime = DateTime.Parse(date);
-                DataController.instance.gameData.currentDay = dateTime;
+                if (request.result == UnityWebRequest.Result.ConnectionError)
+                {
+                    Debug.Log(request.error);
+                }
+                else
+                {
+                    string date = request.GetResponseHeader("date");
+                    DateTime dateTime = DateTime.Parse(date);
+                    DataController.instance.gameData.currentTime = dateTime;
+                    Debug.Log("현재 시간: " + DataController.instance.gameData.currentTime);
+                }
             }
         }
     }
 
+    public static IEnumerator TryGetCurrentTime()
+    {
+        while (DataController.instance.gameData.isPrework == false)
+        {
+            UnityWebRequest request = new UnityWebRequest();
+            using (request = UnityWebRequest.Get("https://naver.com"))
+            {
+                yield return request.SendWebRequest();
+
+                if (request.result == UnityWebRequest.Result.ConnectionError)
+                {
+                    DataController.instance.gameData.isPrework = false;
+                }
+                else
+                {
+                    string date = request.GetResponseHeader("date");
+                    DateTime dateTime = DateTime.Parse(date);
+                    DataController.instance.gameData.currentTime = dateTime;
+                    DataController.instance.gameData.isPrework = true;
+                }
+            }
+            yield return new WaitForSecondsRealtime(1f);
+        }
+    }
+
     //자정 체크 및 정보갱신
-
-    public void CheckTime()
+    void ResetTime()
     {
-        //플레이 도중 자정이 넘어갈 경우 출석 가능하게
-        // 자정시간 구하기.
-        DateTime target = new DateTime(DataController.instance.gameData.currentDay.Year, 
-            DataController.instance.gameData.currentDay.Month, DataController.instance.gameData.currentDay.Day);
-        target = target.AddDays(1);
-        // 자정시간 - 현재시간
-        TimeSpan ts = target - DataController.instance.gameData.currentDay;
-        // 남은시간 만큼 대기 후 OnTimePass 함수 호출.
-        Invoke("OnTimePass", (float)ts.TotalSeconds);
-        Debug.Log("자정까지 남은 시간(분): " + ts.TotalMinutes);
-    }
+        Debug.Log("자정 초기화");
+        DataController.instance.gameData.nextMidnightTime =
+            DataController.instance.gameData.currentTime.Date.AddDays(1); //다음날 자정 정보 저장.
 
-    public void OnTimePass()
-    {
-        //정보갱신
-        Debug.Log("출석 정보가 갱신되었습니다.");
-
-        StartCoroutine(WebCheck());
-        CheckTime();
-        if (DataController.instance.gameData.currentDay.Day != DataController.instance.gameData.atdLastday.Day)
-            DataController.instance.gameData.isAttendance = false;
-
+        DataController.instance.gameData.isAttendance = false;
         attendanceCheck.GetComponent<AttendanceCheck>().Attendance();
+
+        //자정 타이머
+        Invoke(nameof(ResetTime),
+            (float)(DataController.instance.gameData.nextMidnightTime
+            - DataController.instance.gameData.currentTime).TotalSeconds);
     }
+
+    IEnumerator CheckElapseTime() //게임 복귀할때
+    {
+        DataController.instance.gameData.isPrework = false;
+        yield return StartCoroutine(TryGetCurrentTime());
+
+        TimeSpan gap = DataController.instance.gameData.currentTime - DataController.instance.gameData.lastExitTime;
+
+        if (gap.TotalSeconds > 70f)
+        {
+            //경과한 시간만큼 부재중 수익, 알바 시간 차감 계산
+        }
+
+        MidNightCheck();
+
+        //if(DataController.instance.gameData.rewardAbsenceTime>=1) //부재중 시간이 1분 이상이면
+        //부재중 이벤트
+    }
+
+    IEnumerator PreWork() //접속할 때
+    {
+        yield return StartCoroutine(TryGetCurrentTime()); //현재 시간 불러오기 체크
+        yield return StartCoroutine(CalculateTime());
+
+        StartCoroutine(UpdateCurrentTime()); //30초 갱신 레쓰기릿
+
+        MidNightCheck();
+
+        //if(DataController.instance.gameData.rewardAbsenceTime>=1) //부재중 시간이 1분 이상이면
+        //부재중 이벤트
+    }
+
+
+    void MidNightCheck()
+    {
+        DateTime temp = new DateTime();
+        if (temp != DataController.instance.gameData.nextMidnightTime &&
+            temp != DataController.instance.gameData.currentTime)
+        {
+            //예외처리
+            TimeSpan test = DataController.instance.gameData.nextMidnightTime - DataController.instance.gameData.currentTime.Date;
+            if (test.Days >= 2)
+                DataController.instance.gameData.nextMidnightTime = DataController.instance.gameData.currentTime.Date.AddDays(1);
+
+            //자정시간을 지났다면
+            TimeSpan gap = DataController.instance.gameData.currentTime - DataController.instance.gameData.nextMidnightTime;
+
+            if (gap.TotalSeconds >= 0)
+            {
+                DataController.instance.gameData.nextMidnightTime = DataController.instance.gameData.currentTime.Date.AddDays(1);
+                DataController.instance.gameData.isAttendance = false;
+                attendanceCheck.GetComponent<AttendanceCheck>().Attendance();
+            }
+
+            //자정시간을 지나지 않았다면
+            gap = DataController.instance.gameData.nextMidnightTime - DataController.instance.gameData.currentTime;
+
+            if (gap.TotalSeconds >= 0)
+                Invoke(nameof(ResetTime), (float)gap.TotalSeconds);
+        }
+    }
+
+    public static bool CheckFirstGame()
+    {
+        if (!DataController.instance.gameData.isFirstGame)
+        {
+            DataController.instance.gameData.isFirstGame = true;
+
+            DataController.instance.gameData.nextMidnightTime = DataController.instance.gameData.currentTime.Date.AddDays(1);
+            DataController.instance.gameData.lastExitTime = DataController.instance.gameData.currentTime;
+            DataController.instance.gameData.rewardAbsenceTime = TimeSpan.FromSeconds(0);
+            return true;
+        }
+        return false;
+    }
+
+    public static IEnumerator CalculateTime() //부재중 시간 계산
+    {
+        if (CheckFirstGame() == true) yield break;
+
+        TimeSpan gap = DataController.instance.gameData.currentTime - DataController.instance.gameData.lastExitTime;
+
+        DataController.instance.gameData.lastExitTime = DataController.instance.gameData.currentTime;
+
+        if ((DataController.instance.gameData.rewardAbsenceTime + gap).TotalMinutes >= 720)
+            DataController.instance.gameData.rewardAbsenceTime = TimeSpan.FromMinutes(720);
+        else
+            DataController.instance.gameData.rewardAbsenceTime += gap;
+
+        //남은 알바 시간 갱신 자리
+    }
+
+    void PrintTime()
+    {
+        Debug.Log("현재시간: " + DataController.instance.gameData.currentTime);
+        Debug.Log("다음 자정까지 남은시간: " + (DataController.instance.gameData.nextMidnightTime - DataController.instance.gameData.currentTime));
+        Debug.Log("마지막 종료시간: " + DataController.instance.gameData.lastExitTime);
+        Debug.Log("부재중 시간: " + (DataController.instance.gameData.currentTime - DataController.instance.gameData.lastExitTime));
+        Debug.Log("출석 여부: " + DataController.instance.gameData.isAttendance);
+        Debug.Log("마지막 출석 날짜: " + DataController.instance.gameData.atdLastday);
+        Debug.Log("연속 출석 일 수: " + DataController.instance.gameData.accDays);
+    }
+
+    /*    public void CheckTime()
+        {
+            //플레이 도중 자정이 넘어갈 경우 출석 가능하게
+            // 자정시간 구하기.
+            DateTime target = new DateTime(DataController.instance.gameData.currentTime.Year, 
+                DataController.instance.gameData.currentTime.Month, DataController.instance.gameData.currentTime.Day);
+            target = target.AddDays(1);
+            // 자정시간 - 현재시간
+            TimeSpan ts = target - DataController.instance.gameData.currentTime;
+            // 남은시간 만큼 대기 후 OnTimePass 함수 호출.
+            Invoke("OnTimePass", (float)ts.TotalSeconds);
+            Debug.Log("자정까지 남은 시간(분): " + ts.TotalMinutes);
+        }*/
+
+    /*    public void OnTimePass()
+        {
+            //정보갱신
+            Debug.Log("출석 정보가 갱신되었습니다.");
+
+            StartCoroutine(UpdateCurrentTime());
+            CheckTime();
+            if (DataController.instance.gameData.currentTime.Day != DataController.instance.gameData.atdLastday.Day)
+                DataController.instance.gameData.isAttendance = false;
+
+            attendanceCheck.GetComponent<AttendanceCheck>().Attendance();
+        }*/
+
 
     #endregion
 

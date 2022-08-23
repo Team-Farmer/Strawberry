@@ -87,14 +87,18 @@ public class GameData
     //public int totalBerryCnt; => 이게 수확한거 맞죠?
     //=====================================================================================
 
-
     //마지막 출석 날짜 저장.
     public DateTime atdLastday = new DateTime();
-    public DateTime currentDay = new DateTime();
+    public DateTime currentTime = new DateTime();
+    public DateTime lastExitTime = new DateTime();
+    public DateTime nextMidnightTime = new DateTime();
+    public TimeSpan rewardAbsenceTime = new TimeSpan();
     //출석 일 수
-    public int accDays=0;
+    public int accDays = 0;
     //오늘 출석 여부 판단
     public bool isAttendance = false;
+    public bool isPrework = false;
+    public bool isFirstGame = false;
 
     //가게&미니게임
     public bool isStoreOpend;
