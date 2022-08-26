@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using System.Linq;
 
 public class MiniGame4 : MiniGame
 {
@@ -62,20 +63,27 @@ public class MiniGame4 : MiniGame
     void SetGame()
     {
 
-        //왼쪽과 오른쪽 정답 설정
+        //왼쪽과 오른쪽 정답을 랜덤으로 정하자(랜덤수 4개 설정)
+        while (true)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                do { correctNum[i] = UnityEngine.Random.Range(0, 192); }
+                while(DataController.instance.gameData.isBerryUnlock[correctNum[i]] == false);
+            }
+
+
+            correctNum = correctNum.Distinct().ToArray();//배열 중복 삭제하는 명령어
+            if (correctNum.Length == 4) { break; }
+
+        }
+
+
+
         for (int i = 0; i < 4; i++)
-        { 
-            //정답 베리 넘버 설정
-            correctNum[i]= UnityEngine.Random.Range(0, 192);
-            do { correctNum[i] = UnityEngine.Random.Range(0, 192); }
-            while (DataController.instance.gameData.isBerryUnlock[correctNum[i]] == false);
-
-            Debug.Log(i + " = " + correctNum[i]);
-            //자기들끼리 중복 방지넣기///////////////////////////////////////
-
-
-            //정답 베리 스프라이트 
-            correctSprite[i]= berryListAll[correctNum[i]].GetComponent<SpriteRenderer>().sprite;
+        {
+                //정답 베리 스프라이트 
+                correctSprite[i]= berryListAll[correctNum[i]].GetComponent<SpriteRenderer>().sprite;
 
 
             //정답을 보인다.
