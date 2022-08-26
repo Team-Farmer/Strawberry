@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class MiniGame : MonoBehaviour
 {
     static public bool isGameRunning = false;           //게임이 실행 중인지
+    static public bool isMiniGameWork = false;           //게임이 실행 중인지
 
     [Header("UI")]
     public Scrollbar scrollbar;//스크롤바
@@ -25,17 +26,18 @@ public class MiniGame : MonoBehaviour
     protected int research_level_sum;
     protected float research_level_avg;
 
+
     protected virtual void Awake()
     {
         //size = scrollbar.size / 60f; 
         size = scroll.fillAmount / 60f;
         global = GameObject.FindGameObjectWithTag("Global").GetComponent<Globalvariable>();
-        
     }
 
     protected virtual void OnEnable()
     {
         StartGame();
+        isMiniGameWork = true;
     }
 
     void StartGame()
@@ -136,6 +138,7 @@ public class MiniGame : MonoBehaviour
         unlockList.Clear();
 
         isGameRunning = false;
+        isMiniGameWork = false;
     }
 
     public virtual void ReStart() //다시하기

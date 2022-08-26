@@ -13,6 +13,7 @@ public class MiniGameManager : MonoBehaviour
     public Button startButton;
     public Text infoText;
     public List<GameObject> miniGameList;
+    public static bool isOpen;
 
     void Awake()
     {
@@ -24,7 +25,10 @@ public class MiniGameManager : MonoBehaviour
     public void EnterStore()
     {
         if (DataController.instance.gameData.isStoreOpend == true)
+        {
             inside.SetActive(true);
+            isOpen = true;
+        }
         else
         {
             //Debug.Log(DataController.instance.gameData.isStoreOpend);

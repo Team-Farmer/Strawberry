@@ -10,6 +10,7 @@ public class Intro : MonoBehaviour
     public GameObject[] introObject = new GameObject[4];
     public Sprite[] sprites = new Sprite[2];
     public RectTransform rect;
+    static public bool isEnd=false;
 
     private static Intro instance;
     Sequence sequence;
@@ -53,6 +54,7 @@ public class Intro : MonoBehaviour
                 {
                     introObject[4].SetActive(false);
                     GameManager.instance.EnableObjColliderAll();
+                    isEnd = true;
                 });
         yield return null;
     }

@@ -100,16 +100,18 @@ public class GameManager : MonoBehaviour
     [Header("[ Check/Day List ]")]
     public GameObject attendanceCheck;
     public string url = "";
+    private int revenue;
 
     [Header("[ Panel List ]")]
     public Text panelCoinText;
     public Text panelHearText;
+    public Text AbsenceText;
     public GameObject noCoinPanel;
     public GameObject noHeartPanel;
     public GameObject blackPanel;
     public GameObject coinAnimManager;
     public GameObject heartAnimManager;
-    
+    public GameObject AbsencePanel;
 
 
     [Header("[ Game Flag ]")]
@@ -124,10 +126,9 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         PrintTime();
-        StartCoroutine(PreWork());
         CheckFirstGame();
+        StartCoroutine(PreWork());
         attendanceCheck.GetComponent<AttendanceCheck>().Attendance();
-        StartCoroutine(CheckElapseTime());
 
         Application.targetFrameRate = 60;
         instance = this; // 게임 매니저의 싱글턴 패턴화 >> GameManager.instance.~~ 로 호출
@@ -245,6 +246,22 @@ public class GameManager : MonoBehaviour
         //CoinText.text = coin.ToString() + " A";
         //ShowCoinText(CoinText, DataController.instance.gameData.coin); // 트럭코인 나타낼 때 같이쓰려고 매개변수로 받게 수정했어요 - 신희규
         //HeartText.text = DataController.instance.gameData.heart.ToString();
+    }
+
+    private void OnApplicationPause(bool pause)
+    {
+        if (pause)
+        {
+            if (DataController.instance.gameData.isPrework == true)
+                DataController.instance.gameData.lastExitTime = DataController.instance.gameData.currentTime;
+
+            DataController.instance.SaveData();
+        }
+        else 
+        {
+            StartCoroutine(CheckElapseTime());
+        }
+
     }
 
     #endregion
@@ -1058,7 +1075,7 @@ public class GameManager : MonoBehaviour
                     string date = request.GetResponseHeader("date");
                     DateTime dateTime = DateTime.Parse(date);
                     DataController.instance.gameData.currentTime = dateTime;
-                    Debug.Log("현재 시간: " + DataController.instance.gameData.currentTime);
+                    Debug.Log("현재 시간" + dateTime);
                 }
             }
         }
@@ -1093,8 +1110,8 @@ public class GameManager : MonoBehaviour
     void ResetTime()
     {
         Debug.Log("자정 초기화");
-        DataController.instance.gameData.nextMidnightTime =
-            DataController.instance.gameData.currentTime.Date.AddDays(1); //다음날 자정 정보 저장.
+        DataController.instance.gameData.nextMidnightTime = DataController.instance.gameData.currentTime.Date.AddMinutes(2);
+        //DataController.instance.gameData.currentTime.Date.AddDays(1); //다음날 자정 정보 저장.
 
         DataController.instance.gameData.isAttendance = false;
         attendanceCheck.GetComponent<AttendanceCheck>().Attendance();
@@ -1114,13 +1131,19 @@ public class GameManager : MonoBehaviour
 
         if (gap.TotalSeconds > 70f)
         {
-            //경과한 시간만큼 부재중 수익, 알바 시간 차감 계산
+            StartCoroutine(CalculateTime());
         }
 
         MidNightCheck();
 
-        //if(DataController.instance.gameData.rewardAbsenceTime>=1) //부재중 시간이 1분 이상이면
-        //부재중 이벤트
+        if (!MiniGameManager.isOpen && DataController.instance.gameData.rewardAbsenceTime.TotalMinutes >= 1)
+        {
+            //부재중 이벤트
+            revenue = DataController.instance.gameData.rewardAbsenceTime.Minutes * 100;
+            AbsenceTime();
+            DataController.instance.gameData.rewardAbsenceTime = TimeSpan.FromSeconds(0);
+        }
+
     }
 
     IEnumerator PreWork() //접속할 때
@@ -1129,11 +1152,15 @@ public class GameManager : MonoBehaviour
         yield return StartCoroutine(CalculateTime());
 
         StartCoroutine(UpdateCurrentTime()); //30초 갱신 레쓰기릿
-
         MidNightCheck();
 
-        //if(DataController.instance.gameData.rewardAbsenceTime>=1) //부재중 시간이 1분 이상이면
-        //부재중 이벤트
+        if (!MiniGameManager.isOpen&&DataController.instance.gameData.rewardAbsenceTime.TotalMinutes >= 1) //부재중 시간이 1분 이상이면
+        {
+            //부재중 이벤트
+            revenue=DataController.instance.gameData.rewardAbsenceTime.Minutes * 100;
+            AbsenceTime();
+            DataController.instance.gameData.rewardAbsenceTime = TimeSpan.FromSeconds(0);
+        }
     }
 
 
@@ -1153,7 +1180,7 @@ public class GameManager : MonoBehaviour
 
             if (gap.TotalSeconds >= 0)
             {
-                DataController.instance.gameData.nextMidnightTime = DataController.instance.gameData.currentTime.Date.AddDays(1);
+                DataController.instance.gameData.nextMidnightTime = DataController.instance.gameData.currentTime.Date.AddMinutes(2);
                 DataController.instance.gameData.isAttendance = false;
                 attendanceCheck.GetComponent<AttendanceCheck>().Attendance();
             }
@@ -1172,7 +1199,7 @@ public class GameManager : MonoBehaviour
         {
             DataController.instance.gameData.isFirstGame = true;
 
-            DataController.instance.gameData.nextMidnightTime = DataController.instance.gameData.currentTime.Date.AddDays(1);
+            DataController.instance.gameData.nextMidnightTime = DataController.instance.gameData.currentTime.Date.AddMinutes(2);
             DataController.instance.gameData.lastExitTime = DataController.instance.gameData.currentTime;
             DataController.instance.gameData.rewardAbsenceTime = TimeSpan.FromSeconds(0);
             return true;
@@ -1188,7 +1215,7 @@ public class GameManager : MonoBehaviour
 
         DataController.instance.gameData.lastExitTime = DataController.instance.gameData.currentTime;
 
-        if ((DataController.instance.gameData.rewardAbsenceTime + gap).TotalMinutes >= 720)
+        if ((DataController.instance.gameData.rewardAbsenceTime + gap).TotalMinutes >= 720) //부재중 수익 최대치 고정
             DataController.instance.gameData.rewardAbsenceTime = TimeSpan.FromMinutes(720);
         else
             DataController.instance.gameData.rewardAbsenceTime += gap;
@@ -1203,8 +1230,39 @@ public class GameManager : MonoBehaviour
         Debug.Log("마지막 종료시간: " + DataController.instance.gameData.lastExitTime);
         Debug.Log("부재중 시간: " + (DataController.instance.gameData.currentTime - DataController.instance.gameData.lastExitTime));
         Debug.Log("출석 여부: " + DataController.instance.gameData.isAttendance);
-        Debug.Log("마지막 출석 날짜: " + DataController.instance.gameData.atdLastday);
-        Debug.Log("연속 출석 일 수: " + DataController.instance.gameData.accDays);
+    }
+
+    public void AbsenceTime()
+    {
+        //if (Intro.isEnd)
+        {
+            if (revenue == 0)
+                return;
+
+            if (revenue <= 9999)           // 0~9999까지 A
+            {
+                AbsenceText.text = "부재중 수익:" + revenue + "A";
+            }
+            else if (revenue <= 9999999)   // 10000~9999999(=9999B)까지 B
+            {
+                revenue /= 1000;
+                AbsenceText.text = "부재중 수익:" + revenue + "B";
+            }
+            else                        // 그 외 C (최대 2100C)
+            {
+                revenue /= 1000000;
+                AbsenceText.text = "부재중 수익:" + revenue + "C";
+            }
+            blackPanel.SetActive(true);
+            AbsencePanel.GetComponent<PanelAnimation>().OpenScale();
+        }
+    }
+
+    public void AbsenceBtn()
+    {
+        GetCoin(revenue);
+        AbsencePanel.GetComponent<PanelAnimation>().CloseScale();
+
     }
 
     /*    public void CheckTime()

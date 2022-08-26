@@ -64,7 +64,6 @@ public class PanelAnimation : MonoBehaviour
         RectTransform rt = GetComponent<RectTransform>();
         gameObject.SetActive(true);
         rt.transform.DOScale(new Vector3(1f, 1f, 1f), 0.3f);
-
     }
 
     public void CloseScale()

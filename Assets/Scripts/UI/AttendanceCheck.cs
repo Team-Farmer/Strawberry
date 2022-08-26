@@ -32,12 +32,9 @@ public class AttendanceCheck : MonoBehaviour
     private int hearts;
     private int weeks;
     private int multiply_tag;
-    private bool isAttendance;
     private int daysCompare;
 
     String weeksText;
-    DateTime today;
-    DateTime lastday;
     TimeSpan ts;
 
     #endregion
@@ -46,27 +43,17 @@ public class AttendanceCheck : MonoBehaviour
 
     public void Attendance()
     {
-        #region 변수 초기화
-
-        today = DataController.instance.gameData.currentTime;
-        lastday = DataController.instance.gameData.atdLastday; //지난 날짜 받아오기
         days = DataController.instance.gameData.accDays; // 출석 누적 날짜
-
-        #endregion
 
         if (!DataController.instance.gameData.isAttendance)
         {
-            ts = today - lastday; //날짜 차이 계산
-            daysCompare = ts.Days; //Days 정보만 추출.
             icon.SetActive(true);
-            Debug.Log("날짜 차이: " + daysCompare);
-
-            if (daysCompare == 1) //연속 출석
+            if (DaysCalculate()) //연속 출석
             {
                 WeeksInit();
                 selectDay(days);
             }
-            else if (daysCompare > 1 || daysCompare == 0) //연속출석이 아닌경우
+            else //연속출석이 아닌경우
             {
                 DataController.instance.gameData.accDays = 0;
                 days = DataController.instance.gameData.accDays;
@@ -77,20 +64,13 @@ public class AttendanceCheck : MonoBehaviour
         }
         else //출석을 이미 한 상태다
         {
-            AlreadyAtd();
+            WeeksInit();
+            for (int i = 0; i < days; i++) //출석완료 버튼 활성화
+            {
+                image[i].sprite = Front[i].Behind[1];
+            }
         }
-
         WeeksTag();
-    }
-
-    public void AlreadyAtd()
-    {
-        WeeksInit();
-
-        for (int i = 0; i < days; i++) //출석완료 버튼 활성화
-        {
-            image[i].sprite = Front[i].Behind[1];
-        }
     }
 
     public void WeeksTag()
@@ -133,6 +113,17 @@ public class AttendanceCheck : MonoBehaviour
         }
     }
 
+    public bool DaysCalculate()
+    {
+        ts = DataController.instance.gameData.currentTime 
+            - DataController.instance.gameData.atdLastday; //날짜 차이 계산
+        daysCompare = ts.Minutes; //Days 정보만 추출.
+
+        if(daysCompare ==1)
+            return true;
+
+        return false;
+    }
 
     #endregion
 
@@ -158,7 +149,7 @@ public class AttendanceCheck : MonoBehaviour
     public void AttandanceSave(int number)
     {
 
-        if (number == days && isAttendance == false)
+        if (number == days && !DataController.instance.gameData.isAttendance)
         {
             AudioManager.instance.RewardAudioPlay();
             image[number].sprite = Front[number].Behind[1];
@@ -169,10 +160,10 @@ public class AttendanceCheck : MonoBehaviour
             DataController.instance.gameData.isAttendance = true;
             DataController.instance.gameData.atdLastday
                 = DataController.instance.gameData.currentTime;
-            //DataController.instance.gameData.accAttendance += 1; // 누적 출석 증가
-            // 10*날짜*주수
-            // Debug.Log("누적 출석 : " + DataController.instance.gameData.accAttendance);
-            // Debug.Log("누적 하트 : " + DataController.instance.gameData.accHeart);
+
+            Debug.Log("누적 출석:" + DataController.instance.gameData.accDays);
+            Debug.Log("마지막 출석날짜:" + DataController.instance.gameData.atdLastday);
+
             hearts = number;
             Invoke("AtdHeart", 0.75f);
         }
