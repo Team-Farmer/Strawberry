@@ -36,6 +36,7 @@ public class AttendanceCheck : MonoBehaviour
 
     String weeksText;
     TimeSpan ts;
+    DateTime now;
 
     #endregion
 
@@ -44,17 +45,30 @@ public class AttendanceCheck : MonoBehaviour
     public void Attendance()
     {
         days = DataController.instance.gameData.accDays; // 출석 누적 날짜
+        now = DataController.instance.gameData.currentTime;
 
         if (!DataController.instance.gameData.isAttendance)
         {
-            icon.SetActive(true);
-            if (DaysCalculate()) //연속 출석
+            if (DaysCalculate() == 1) //연속 출석
             {
+                icon.SetActive(true);
                 WeeksInit();
+                for (int i = 0; i < days; i++) //출석완료 버튼 활성화
+                {
+                    image[i].sprite = Front[i].Behind[1];
+                }
                 selectDay(days);
+            }
+            else if (DaysCalculate() == 2)
+            {
+                for (int i = 0; i < days; i++) //출석완료 버튼 활성화
+                {
+                    image[i].sprite = Front[i].Behind[1];
+                }
             }
             else //연속출석이 아닌경우
             {
+                icon.SetActive(true);
                 DataController.instance.gameData.accDays = 0;
                 days = DataController.instance.gameData.accDays;
                 weeks = 1;
@@ -113,16 +127,18 @@ public class AttendanceCheck : MonoBehaviour
         }
     }
 
-    public bool DaysCalculate()
+    public int DaysCalculate()
     {
-        ts = DataController.instance.gameData.currentTime 
+        ts = now
             - DataController.instance.gameData.atdLastday; //날짜 차이 계산
         daysCompare = ts.Minutes; //Days 정보만 추출.
 
-        if(daysCompare ==1)
-            return true;
+        Debug.Log(ts.Minutes);
 
-        return false;
+        if (daysCompare>=30&&daysCompare<60)
+            return 1;
+
+        return 0;
     }
 
     #endregion
@@ -161,8 +177,8 @@ public class AttendanceCheck : MonoBehaviour
             DataController.instance.gameData.atdLastday
                 = DataController.instance.gameData.currentTime;
 
-            Debug.Log("누적 출석:" + DataController.instance.gameData.accDays);
-            Debug.Log("마지막 출석날짜:" + DataController.instance.gameData.atdLastday);
+            Debug.Log("버튼 누른 후 누적 출석:" + DataController.instance.gameData.accDays);
+            Debug.Log("버튼 누른 후 마지막 출석날짜:" + DataController.instance.gameData.atdLastday);
 
             hearts = number;
             Invoke("AtdHeart", 0.75f);
