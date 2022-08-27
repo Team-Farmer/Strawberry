@@ -29,6 +29,7 @@ public class MiniGameManager : MonoBehaviour
         {
             inside.SetActive(true);
             isOpen = true;
+            AudioManager.BgSoundPlay2(false);
         }
         else
         {
