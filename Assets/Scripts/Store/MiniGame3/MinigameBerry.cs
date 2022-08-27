@@ -9,6 +9,9 @@ public class MinigameBerry : MonoBehaviour
     public float velocity = 0.0f;
     private RectTransform rect;
     float berry_rad = 90f;
+    private float berry_src_speed;
+    private float berry_dst_speed;
+    private int minigame_3_score;
 
     [Header("Basket")]
     float basket_rad = 75f;
@@ -26,7 +29,21 @@ public class MinigameBerry : MonoBehaviour
     {
         float rectXPos = Random.Range(100f, 950f);
         rect.anchoredPosition = new Vector3(rectXPos, bgRect.rect.height - 80f);
-        velocity = Random.Range(10.0f, 20.0f);
+
+        minigame_3_score = this.gameObject.transform.GetComponentInParent<MiniGame3>().score;
+
+        if (minigame_3_score < 150) // 점수에 따라 딸기 낙하속도 변경
+        {
+            berry_src_speed = 10.0f;
+            berry_dst_speed = 20.0f;
+        }
+        else
+        {
+            berry_src_speed = 15.0f;
+            berry_dst_speed = 25.0f;
+        }
+
+        velocity = Random.Range(berry_src_speed, berry_dst_speed);
         // 어떤 스프라이트 쓸 건지?
     }
     private void OnDisable() // 딸기 정보들 초기화
@@ -36,7 +53,7 @@ public class MinigameBerry : MonoBehaviour
     }
     // Update is called once per frame
     void Update()
-    {
+    {       
         if(MiniGame.isGameRunning)
         {
             float berry_x = rect.anchoredPosition.x + berry_rad, berry_y = rect.anchoredPosition.y + berry_rad;                    
@@ -44,7 +61,7 @@ public class MinigameBerry : MonoBehaviour
             float dist = (berry_x - basket_x) * (berry_x - basket_x) + (berry_y - basket_y) * (berry_y - basket_y);
             
             float r = berry_rad + basket_rad;
-            
+           
             // 딸기가 바구니에 닿았을 경우
             if (dist <= r * r)
             {
@@ -60,10 +77,9 @@ public class MinigameBerry : MonoBehaviour
                 }
                 else
                 {
-                    this.gameObject.transform.GetComponentInParent<MiniGame3>().score += 10;
-                    int score = this.gameObject.transform.GetComponentInParent<MiniGame3>().score;
-                
-                    this.gameObject.transform.GetComponentInParent<MiniGame3>().score_txt.text = score.ToString() + "점";
+                    this.gameObject.transform.GetComponentInParent<MiniGame3>().score += 10;                                                    
+                    this.gameObject.transform.GetComponentInParent<MiniGame3>().score_txt.text
+                        = this.gameObject.transform.GetComponentInParent<MiniGame3>().score.ToString() + "점";
                 }
 
                 this.gameObject.SetActive(false);
