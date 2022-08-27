@@ -37360,6 +37360,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxPanel: {fileID: 1148245772}
+  normal_receive_btn: {fileID: 766781379}
+  add_receive_btn: {fileID: 109862329}
 --- !u!95 &1218476149
 Animator:
   serializedVersion: 3
