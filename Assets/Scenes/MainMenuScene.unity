@@ -7409,8 +7409,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uC0AC\uC7A5\uB2D8,\n\uC774\uAC8C \uC5B4\uB5A4 \uB538\uAE30\uC778\uC9C0\n\uBAA8\uB974\uACA0\uC5B4\uC694.
-    \uB3C4\uC640\uC8FC\uC138\uC694!"
+  m_Text: '?'
 --- !u!222 &252816386
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -29317,6 +29316,7 @@ MonoBehaviour:
   UnlockBtn: {fileID: 1548186592}
   startButton: {fileID: 356585423}
   infoText: {fileID: 1015856940}
+  daramSpeechBubbleText: {fileID: 252816385}
   miniGameList:
   - {fileID: 1048971386}
   - {fileID: 208079357}
