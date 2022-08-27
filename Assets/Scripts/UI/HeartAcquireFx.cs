@@ -14,7 +14,7 @@ public class HeartAcquireFx : MonoBehaviour
         Sequence sequence = DOTween.Sequence();
         sequence.Append(rect.DOAnchorPos(from + Random.insideUnitCircle * explo_range, 0.25f).SetEase(Ease.OutCubic));
         sequence.Append(rect.DOMove(to, 0.5f).SetEase(Ease.InCubic));
-        sequence.AppendCallback(() =>
+        sequence.OnComplete(() =>
         {
             gameObject.SetActive(false);
             Destroy(gameObject);
@@ -26,7 +26,7 @@ public class HeartAcquireFx : MonoBehaviour
         Sequence sequence = DOTween.Sequence();
         sequence.Append(rect.DOJumpAnchorPos(from + Random.insideUnitCircle * explo_range,130,1, 0.5f).SetEase(Ease.OutCubic));
         sequence.Append(rect.GetComponent<Image>().DOFade(0, 0.5f));
-        sequence.AppendCallback(() =>
+        sequence.OnComplete(() =>
         {
             gameObject.SetActive(false);
             Destroy(gameObject);
@@ -37,10 +37,10 @@ public class HeartAcquireFx : MonoBehaviour
     {
         rect.position = from;
         Sequence seq = DOTween.Sequence()
-        .Append(rect.GetComponent<Text>().DOFade(1, 0.5f))
+        .Append(rect.GetComponent<Text>().DOFade(1, 0.3f))
         .Join(rect.DOAnchorPosX(230f, 0.7f))
-        .Append(rect.GetComponent<Text>().DOFade(0, 0.5f))
-        .AppendCallback(() =>
+        .Append(rect.GetComponent<Text>().DOFade(0, 0.3f))
+        .OnComplete(() =>
         {
             gameObject.SetActive(false);
             Destroy(gameObject);

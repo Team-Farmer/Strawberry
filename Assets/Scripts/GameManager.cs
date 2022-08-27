@@ -96,7 +96,7 @@ public class GameManager : MonoBehaviour
     [Header("[ Check/Settings Panel ]")]
     public GameObject settingsPanel;
     public GameObject checkPanel;
-    
+
 
     [Header("[ Check/Day List ]")]
     public GameObject attendanceCheck;
@@ -134,12 +134,12 @@ public class GameManager : MonoBehaviour
         instance = this; // 게임 매니저의 싱글턴 패턴화 >> GameManager.instance.~~ 로 호출
 
         target = TruckObj.GetComponent<Transform>();
-        
+
         //for(int i = 0; i < )
         //TimerStart += Instance_TimerStart;
 
-        DisableObjColliderAll();       
-       
+        DisableObjColliderAll();
+
         isGameRunning = true;
 
         //NEW BERRY
@@ -150,7 +150,7 @@ public class GameManager : MonoBehaviour
 
         globalVar = GameObject.FindGameObjectWithTag("Global").GetComponent<Globalvariable>();
 
-        //isStart = true;
+        isStart = true;
 
         InitDataInGM();
     }
@@ -209,8 +209,9 @@ public class GameManager : MonoBehaviour
 
         //NEW BERRY 개발
         //없애기
-        switch (DataController.instance.gameData.newBerryBtnState) { 
-            case 0:BtnState = "start"; startBtn_newBerry.GetComponent<Image>().sprite = StartImg; break;
+        switch (DataController.instance.gameData.newBerryBtnState)
+        {
+            case 0: BtnState = "start"; startBtn_newBerry.GetComponent<Image>().sprite = StartImg; break;
             case 1: BtnState = "ing"; startBtn_newBerry.GetComponent<Image>().sprite = IngImg; break;
             case 2: BtnState = "done"; startBtn_newBerry.GetComponent<Image>().sprite = DoneImg; break;
         }
@@ -257,13 +258,12 @@ public class GameManager : MonoBehaviour
         {
             if (DataController.instance.gameData.isPrework == true)
                 DataController.instance.gameData.lastExitTime = DataController.instance.gameData.currentTime;
-            
+
             DataController.instance.SaveData();
         }
-        else 
+        else
         {
-            attendanceCheck.GetComponent<AttendanceCheck>().Attendance();
-            //if(isStart)//&&Intro.isEnd)
+            if (isStart)//&&Intro.isEnd)
                 StartCoroutine(CheckElapseTime());
         }
 
@@ -450,7 +450,7 @@ public class GameManager : MonoBehaviour
 
     public void GetCoin(int cost) // 코인 획득 함수
     {
-        StartCoroutine(CountAnimation(cost,"+",0));
+        StartCoroutine(CountAnimation(cost, "+", 0));
         DataController.instance.gameData.coin += cost; // 현재 코인 +
         DataController.instance.gameData.accCoin += cost; // 누적 코인 +
     }
@@ -460,7 +460,7 @@ public class GameManager : MonoBehaviour
         int mycoin = DataController.instance.gameData.coin;
         if (mycoin >= cost)
         {
-            StartCoroutine(CountAnimation(cost,"-",0));
+            StartCoroutine(CountAnimation(cost, "-", 0));
             DataController.instance.gameData.coin -= cost;
         }
         else
@@ -486,7 +486,7 @@ public class GameManager : MonoBehaviour
         if (myHeart >= cost)
         {
             DataController.instance.gameData.heart -= cost;
-            StartCoroutine(CountAnimation(cost,"-",1));
+            StartCoroutine(CountAnimation(cost, "-", 1));
         }
         else
         {
@@ -565,7 +565,8 @@ public class GameManager : MonoBehaviour
     #region PTJ
 
     //고용 버튼 클릭시
-    public void PTJEmployButtonClick(int prefabNum) {
+    public void PTJEmployButtonClick(int prefabNum)
+    {
         //효과음
         AudioManager.instance.Cute1AudioPlay();
 
@@ -589,7 +590,7 @@ public class GameManager : MonoBehaviour
                     //고용중인 알바생 수 증가
                     DataController.instance.gameData.PTJCount++;
                 }
-                else 
+                else
                 {
                     //효과음
                     AudioManager.instance.Cute4AudioPlay();
@@ -599,7 +600,7 @@ public class GameManager : MonoBehaviour
                     warningBlackPanel.SetActive(true);
                 }
             }
-            else 
+            else
             {
                 //효과음
                 AudioManager.instance.Cute4AudioPlay();
@@ -617,11 +618,11 @@ public class GameManager : MonoBehaviour
             HireYNPanel.GetComponent<PanelAnimation>().OpenScale();
             warningBlackPanel.SetActive(true);
         }
-        
+
 
     }
 
-    public void Fire() 
+    public void Fire()
     {
         int ID = DataController.instance.gameData.PTJSelectNum[0];
         //고용 해제
@@ -643,20 +644,21 @@ public class GameManager : MonoBehaviour
         //PRICE
         price_newBerry = 100 * (BerryCount("classic", true) + BerryCount("special", true) + BerryCount("unique", true));
         priceText_newBerry.GetComponent<Text>().text = price_newBerry.ToString();
-        
+
         if (DataController.instance.gameData.newBerryBtnState == 1)//진행중이면
-        {   StartCoroutine("Timer");  }
-        else { 
+        { StartCoroutine("Timer"); }
+        else
+        {
             if (isNewBerryAble() == true)//개발 가능한 딸기 있는지 검사
             {
-                
-                DataController.instance.gameData.newBerryIndex=selectBerry();//얻을딸기, 시간 정해진다
+
+                DataController.instance.gameData.newBerryIndex = selectBerry();//얻을딸기, 시간 정해진다
                 timeText_newBerry.GetComponent<Text>().text = "??:??";//TIME (미공개)
 
                 //베리 없음 지우기
                 NoPanel_newBerry.SetActive(false);
             }
-            else { NoPanel_newBerry.SetActive(true);}
+            else { NoPanel_newBerry.SetActive(true); }
         }
     }
     public void NewBerryUpdate2() //개발 가능한 딸기 범위 넓어질때 실행되는 거. 위에 합치자
@@ -665,7 +667,7 @@ public class GameManager : MonoBehaviour
         if (isNewBerryAble() == true)//한 번 더 확인
         {
             if (DataController.instance.gameData.newBerryBtnState == 0)//딸기 얻고 있는 상태 아니면
-            { 
+            {
                 //얻을딸기가 정해진다.->시간,값도 정해진다.
                 //PRICE
                 price_newBerry = 100 * (BerryCount("classic", true) + BerryCount("special", true) + BerryCount("unique", true));
@@ -673,7 +675,7 @@ public class GameManager : MonoBehaviour
                 //TIME
                 DataController.instance.gameData.newBerryIndex = selectBerry();
                 timeText_newBerry.GetComponent<Text>().text = "??:??";//가격 시간 아직 미공개 "?"
-                
+
             }
             //베리 없음 지우기
             NoPanel_newBerry.SetActive(false);
@@ -688,16 +690,16 @@ public class GameManager : MonoBehaviour
         switch (DataController.instance.gameData.newBerryResearchAble)
         {
             case 0://classic 개발가능
-                if (BerryCount("classic",false) == BerryCount("classic", true)) 
+                if (BerryCount("classic", false) == BerryCount("classic", true))
                 { return false; }
                 break;
             case 1://classic, special 개발가능
-                if (BerryCount("classic",false) + BerryCount("special", false) == 
-                    BerryCount("classic", true) + BerryCount("special", true)) 
+                if (BerryCount("classic", false) + BerryCount("special", false) ==
+                    BerryCount("classic", true) + BerryCount("special", true))
                 { return false; }
                 break;
             case 2: //classic, special, unique 개발가능
-                if (BerryCount("classic", false) + BerryCount("special", false) + BerryCount("unique", false) == 
+                if (BerryCount("classic", false) + BerryCount("special", false) + BerryCount("unique", false) ==
                     BerryCount("classic", true) + BerryCount("special", true) + BerryCount("unique", true))
                 { return false; }
                 break;
@@ -716,25 +718,25 @@ public class GameManager : MonoBehaviour
             case "classic":
                 for (int i = 0; i < Global.GetComponent<Globalvariable>().classicBerryList.Count; i++)
                 {
-                    if (DataController.instance.gameData.isBerryUnlock[i]==true) { countIsUnlock++; }
-                    if (Global.GetComponent<Globalvariable>().classicBerryList[i] == true) { countIsExsist++; } 
+                    if (DataController.instance.gameData.isBerryUnlock[i] == true) { countIsUnlock++; }
+                    if (Global.GetComponent<Globalvariable>().classicBerryList[i] == true) { countIsExsist++; }
                 }
                 break;
 
             case "special":
                 for (int i = 0; i < Global.GetComponent<Globalvariable>().specialBerryList.Count; i++)
                 { if (Global.GetComponent<Globalvariable>().specialBerryList[i] == true) { countIsExsist++; } }
-                for (int i = 64; i < 64+64; i++)
-                {if (DataController.instance.gameData.isBerryUnlock[i] == true) { countIsUnlock++; } }
+                for (int i = 64; i < 64 + 64; i++)
+                { if (DataController.instance.gameData.isBerryUnlock[i] == true) { countIsUnlock++; } }
                 break;
 
             case "unique":
                 for (int i = 0; i < Global.GetComponent<Globalvariable>().uniqueBerryList.Count; i++)
                 { if (Global.GetComponent<Globalvariable>().uniqueBerryList[i] == true) { countIsExsist++; } }
-                for (int i = 128; i < 128+64; i++)
+                for (int i = 128; i < 128 + 64; i++)
                 { if (DataController.instance.gameData.isBerryUnlock[i] == true) { countIsUnlock++; } }
                 break;
-            //default:Debug.Log("잘못된 값 받았다");break;
+                //default:Debug.Log("잘못된 값 받았다");break;
         }
 
 
@@ -754,7 +756,7 @@ public class GameManager : MonoBehaviour
             case "start":
                 //이번 새딸기 개발에 필요한 가격과 시간
                 priceText_newBerry.GetComponent<Text>().text = price_newBerry.ToString();//가격
-                timeText_newBerry.GetComponent<Text>().text 
+                timeText_newBerry.GetComponent<Text>().text
                     = TimeForm(Mathf.CeilToInt(DataController.instance.gameData.newBerryTime));//시간
 
                 if (DataController.instance.gameData.coin >= price_newBerry)
@@ -764,7 +766,7 @@ public class GameManager : MonoBehaviour
 
                     //버튼상태 ing로
                     DataController.instance.gameData.newBerryBtnState = 1;
-                    
+
                     //타이머 시작
                     StartCoroutine("Timer");
 
@@ -775,26 +777,26 @@ public class GameManager : MonoBehaviour
                         = "하트 10개로 시간을 10분으로 줄이시겠습니까?\n";
                 }
                 else//돈이 모자름
-                {  UseCoin(price_newBerry);  }
+                { UseCoin(price_newBerry); }
                 break;
 
             case "ing":
                 if (DataController.instance.gameData.newBerryTime > 1)
-                { 
+                {
                     //시간 감소여부 묻는 패널을 띄운다.
                     TimeReduceBlackPanel_newBerry.SetActive(true);
                     TimeReducePanel_newBerry.GetComponent<PanelAnimation>().OpenScale();
                     TimeReduceText_newBerry.GetComponent<Text>().text
                         = "하트 10개로 시간을 10분으로 줄이시겠습니까?\n";
                 }
-                    break;
+                break;
 
             case "done": //딸기 개발
                 GetNewBerry();
                 break;
 
         }
-        
+
     }
 
     //TimeReucePanel_newBerry
@@ -803,22 +805,22 @@ public class GameManager : MonoBehaviour
     {
         //하트 써서 시간을 줄일거면
         if (isTimeReduce == true)
-        { 
+        {
             if (DataController.instance.gameData.heart >= 10)
             {
                 //시간을 10분 줄여준다.
-                if (DataController.instance.gameData.newBerryTime < 10 * 60) 
+                if (DataController.instance.gameData.newBerryTime < 10 * 60)
                 { DataController.instance.gameData.newBerryTime = 0; }
-                else 
+                else
                 { DataController.instance.gameData.newBerryTime -= 10 * 60; }
-                
-                timeText_newBerry.GetComponent<Text>().text 
+
+                timeText_newBerry.GetComponent<Text>().text
                     = TimeForm(Mathf.CeilToInt(DataController.instance.gameData.newBerryTime));
                 //하트를 소비한다.
                 UseHeart(10);
             }
-            else 
-            {    UseHeart(10);   }
+            else
+            { UseHeart(10); }
         }
 
         //창 끄기
@@ -837,14 +839,14 @@ public class GameManager : MonoBehaviour
             DataController.instance.gameData.newBerryTime--;
 
             //감소하는 시간 보이기
-            if (DataController.instance.gameData.newBerryTime <= 0) 
+            if (DataController.instance.gameData.newBerryTime <= 0)
             { timeText_newBerry.GetComponent<Text>().text = TimeForm(Mathf.CeilToInt(0)); }
-            else 
+            else
             {
                 timeText_newBerry.GetComponent<Text>().text
              = TimeForm(Mathf.CeilToInt(DataController.instance.gameData.newBerryTime));
             }
-            
+
 
             //타이머 끝나면
             if (DataController.instance.gameData.newBerryTime < 0.1f)
@@ -858,7 +860,7 @@ public class GameManager : MonoBehaviour
     }
 
 
-    private int selectBerry() 
+    private int selectBerry()
     {
         int newBerryIndex = 1;
 
@@ -866,12 +868,15 @@ public class GameManager : MonoBehaviour
         {
             switch (DataController.instance.gameData.newBerryResearchAble)
             {
-                case 0: newBerryIndex = UnityEngine.Random.Range(1, 64);
-                    DataController.instance.gameData.newBerryTime = 10*60;
+                case 0:
+                    newBerryIndex = UnityEngine.Random.Range(1, 64);
+                    DataController.instance.gameData.newBerryTime = 10 * 60;
                     break;
-                case 1: newBerryIndex = berryPercantage(128);
+                case 1:
+                    newBerryIndex = berryPercantage(128);
                     break;
-                case 2: newBerryIndex = berryPercantage(192); 
+                case 2:
+                    newBerryIndex = berryPercantage(192);
                     break;
             }
 
@@ -904,9 +909,9 @@ public class GameManager : MonoBehaviour
 
         AcheivePanel_newBerry.transform.GetChild(2).GetComponent<Text>().text //얻은 딸기 이름
             = Global.GetComponent<Globalvariable>().berryListAll[DataController.instance.gameData.newBerryIndex].GetComponent<Berry>().berryName;
-                //베리 분류 이미지 
-        if (DataController.instance.gameData.newBerryIndex < 64) 
-        { AcheivePanel_newBerry.transform.GetChild(3).GetComponent<Image>().sprite =AcheiveClassify_newBerry[0]; }
+        //베리 분류 이미지 
+        if (DataController.instance.gameData.newBerryIndex < 64)
+        { AcheivePanel_newBerry.transform.GetChild(3).GetComponent<Image>().sprite = AcheiveClassify_newBerry[0]; }
         else if (DataController.instance.gameData.newBerryIndex < 128)
         { AcheivePanel_newBerry.transform.GetChild(3).GetComponent<Image>().sprite = AcheiveClassify_newBerry[1]; }
         else
@@ -922,10 +927,10 @@ public class GameManager : MonoBehaviour
         NewBerryUpdate();
 
     }
-    
-    private int berryPercantage(int endIndex) 
-    { 
-        int randomNum=0;
+
+    private int berryPercantage(int endIndex)
+    {
+        int randomNum = 0;
         int newBerryIndex = 0;
 
         //RANDOM NUM -> classic(45)=0~44  special(35)=45~79  unique(20)=80~101
@@ -934,15 +939,21 @@ public class GameManager : MonoBehaviour
 
 
 
-        if (randomNum < 45) 
-        { newBerryIndex = UnityEngine.Random.Range(1, 64); 
-            DataController.instance.gameData.newBerryTime = 10*60; }//classic
-        else if (randomNum < 80) 
-        { newBerryIndex = UnityEngine.Random.Range(64, 128); 
-            DataController.instance.gameData.newBerryTime = 20*60; }//special
-        else if (randomNum <= 100) 
-        { newBerryIndex = UnityEngine.Random.Range(128, 192); 
-            DataController.instance.gameData.newBerryTime = 30*60; }//unique
+        if (randomNum < 45)
+        {
+            newBerryIndex = UnityEngine.Random.Range(1, 64);
+            DataController.instance.gameData.newBerryTime = 10 * 60;
+        }//classic
+        else if (randomNum < 80)
+        {
+            newBerryIndex = UnityEngine.Random.Range(64, 128);
+            DataController.instance.gameData.newBerryTime = 20 * 60;
+        }//special
+        else if (randomNum <= 100)
+        {
+            newBerryIndex = UnityEngine.Random.Range(128, 192);
+            DataController.instance.gameData.newBerryTime = 30 * 60;
+        }//unique
 
 
         return newBerryIndex;
@@ -957,7 +968,7 @@ public class GameManager : MonoBehaviour
             while (newBerryIndex2 == DataController.instance.gameData.newBerryIndex);
 
             //새딸기 개발이랑 뉴스 해금 동시에 했는데 같은 딸기 얻으려고 하면 문제생길수도 있다고 생각
-            
+
             //새로운 딸기가 추가된다.
             DataController.instance.gameData.isBerryUnlock[newBerryIndex2] = true;
             DataController.instance.gameData.unlockBerryCnt++;
@@ -969,9 +980,9 @@ public class GameManager : MonoBehaviour
 
         }
         else { Debug.Log("더이상 개발가능한 딸기 없음."); }
-    
+
     }
-    
+
     #endregion
 
     #region Explanation
@@ -1012,7 +1023,7 @@ public class GameManager : MonoBehaviour
     */
     #endregion
 
-    public void NewsUnlock() 
+    public void NewsUnlock()
     {
         News.instance.NewsUnlock(NewsPrefabNum);
     }
@@ -1026,7 +1037,7 @@ public class GameManager : MonoBehaviour
         { Obj.SetActive(false); }
         else
         { Obj.SetActive(true); }
-  
+
     }
 
     public string TimeForm(int time)//초단위 시간을 분:초로 변경
@@ -1059,7 +1070,7 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region 출석
-    
+
     //인터넷 시간 가져오기.
 
     public static IEnumerator UpdateCurrentTime()
@@ -1116,10 +1127,9 @@ public class GameManager : MonoBehaviour
     void ResetTime()
     {
         Debug.Log("자정 초기화");
-        DataController.instance.gameData.isAttendance = false;
-        attendanceCheck.GetComponent<AttendanceCheck>().Attendance();
+        AttendanceCheck.instance.Attendance();
 
-        DataController.instance.gameData.nextMidnightTime = DataController.instance.gameData.currentTime.AddMinutes(5);
+        DataController.instance.gameData.nextMidnightTime = DataController.instance.gameData.currentTime.AddMinutes(1);
         //DataController.instance.gameData.currentTime.Date.AddDays(1); //다음날 자정 정보 저장.
 
         //자정 타이머
@@ -1128,8 +1138,18 @@ public class GameManager : MonoBehaviour
             - DataController.instance.gameData.currentTime).TotalSeconds);
     }
 
+    public void ResetInvoke()
+    {
+        DataController.instance.gameData.nextMidnightTime = DataController.instance.gameData.currentTime.AddMinutes(1);
+        Invoke(nameof(ResetTime),
+        (float)(DataController.instance.gameData.nextMidnightTime
+            - DataController.instance.gameData.currentTime).TotalSeconds);
+    }
+
+
     IEnumerator CheckElapseTime() //게임 복귀할때
     {
+        Debug.Log("게임 복귀");
         DataController.instance.gameData.isPrework = false;
         yield return StartCoroutine(TryGetCurrentTime());
 
@@ -1146,13 +1166,14 @@ public class GameManager : MonoBehaviour
         {
             //부재중 이벤트
             AbsenceTime();
-
         }
 
     }
 
     IEnumerator PreWork() //접속할 때
     {
+        Debug.Log("사전 작업");
+
         yield return StartCoroutine(TryGetCurrentTime()); //현재 시간 불러오기 체크
         yield return StartCoroutine(CalculateTime());
 
@@ -1167,28 +1188,27 @@ public class GameManager : MonoBehaviour
     }
 
 
-    void MidNightCheck()
+    public void MidNightCheck()
     {
         DateTime temp = new DateTime();
-        if (temp != DataController.instance.gameData.nextMidnightTime &&
-            temp != DataController.instance.gameData.currentTime)
+        if (temp != DataController.instance.gameData.nextMidnightTime && temp != DataController.instance.gameData.currentTime)
         {
             //예외처리
-            TimeSpan test = DataController.instance.gameData.nextMidnightTime - DataController.instance.gameData.currentTime;
-            if (test.TotalMinutes >= 31)
-                DataController.instance.gameData.nextMidnightTime = DataController.instance.gameData.currentTime.AddMinutes(5);
+            TimeSpan test = DataController.instance.gameData.nextMidnightTime - DataController.instance.gameData.currentTime.Date;
+            if (test.Minutes >= 2)
+                DataController.instance.gameData.nextMidnightTime = DataController.instance.gameData.currentTime.Date.AddMinutes(1);
 
-            //자정시간
-            TimeSpan gap = DataController.instance.gameData.nextMidnightTime - DataController.instance.gameData.currentTime;
-
-            if (gap.TotalSeconds > 0) //지나지 않았다면
+            //자정시간을 지났다면
+            TimeSpan gap = DataController.instance.gameData.currentTime - DataController.instance.gameData.nextMidnightTime;
+            if (gap.TotalSeconds >= 0)
             {
+                AttendanceCheck.instance.Attendance();
+                DataController.instance.gameData.nextMidnightTime = DataController.instance.gameData.currentTime.AddMinutes(1);
+            }
+            //자정시간을 지나지 않았다면
+            gap = DataController.instance.gameData.nextMidnightTime - DataController.instance.gameData.currentTime;
+            if (gap.TotalSeconds >= 0)
                 Invoke(nameof(ResetTime), (float)gap.TotalSeconds);
-            }
-            else if (gap.TotalSeconds <= 0) //지났다면
-            {
-                ResetTime();
-            }
         }
     }
 
@@ -1198,7 +1218,7 @@ public class GameManager : MonoBehaviour
         {
             DataController.instance.gameData.isFirstGame = true;
 
-            DataController.instance.gameData.nextMidnightTime = DataController.instance.gameData.currentTime.AddMinutes(5);
+            DataController.instance.gameData.nextMidnightTime = DataController.instance.gameData.currentTime.AddMinutes(1);
             DataController.instance.gameData.lastExitTime = DataController.instance.gameData.currentTime;
             DataController.instance.gameData.rewardAbsenceTime = TimeSpan.FromSeconds(0);
             return true;
@@ -1235,15 +1255,16 @@ public class GameManager : MonoBehaviour
 
     public void AbsenceTime()
     {
-        int researchLevelAdd=0;
+        int researchLevelAdd = 0;
 
         for (int i = 0; i < 6; i++)
-            researchLevelAdd+=DataController.instance.gameData.researchLevel[i];
+        {
+            researchLevelAdd += DataController.instance.gameData.researchLevel[i];
+        }
+        revenue = (DataController.instance.gameData.rewardAbsenceTime.Minutes / 5) * researchLevelAdd / 6 * 2;
 
-        revenue = (DataController.instance.gameData.rewardAbsenceTime.Minutes / 5) * researchLevelAdd/6;
-        Debug.Log("부재중 수익" + revenue);
-
-        //if (Intro.isEnd)
+        //if (Intro.isEnd&&
+        if (MiniGameManager.isOpen)
         {
             if (revenue == 0)
                 return;
@@ -1318,11 +1339,11 @@ public class GameManager : MonoBehaviour
     public void OnclickQuit()
     {
 
-    #if UNITY_EDITOR
+#if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
-    #else
+#else
         Application.Quit();
-    #endif
+#endif
     }
     #endregion
 

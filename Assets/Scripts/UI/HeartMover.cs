@@ -11,32 +11,20 @@ public class HeartMover : MonoBehaviour
     public GameObject toObject;
 
     private int days;
-    private bool isAtd;
 
     [SerializeField] RectTransform point;
 
-    private void Start()
-    {
-        days = DataController.instance.gameData.accDays;
-        isAtd = DataController.instance.gameData.isAttendance;
-    }
+
 
     public void HeartMove(int num)
     {
-
-        if (days > 6)
-            days %= 6;
-
-        if (isAtd == false && days == num)
+        //Random.Range(5, 10);
+        for (int i = 0; i < 10; ++i)
         {
-            //Random.Range(5, 10);
-            for (int i = 0; i < 10; ++i)
-            {
-                var itemFx = GameObject.Instantiate<HeartAcquireFx>(prefab, toObject.transform);
-                itemFx.Explosion(toObject.transform.position, point.transform.position, 120.0f);
-            }
-            isAtd = true;
+            var itemFx = GameObject.Instantiate<HeartAcquireFx>(prefab, toObject.transform);
+            itemFx.Explosion(toObject.transform.position, point.transform.position, 120.0f);
         }
+
     }
 
     public void BadgeMover(float range)
@@ -44,7 +32,7 @@ public class HeartMover : MonoBehaviour
         for (int i = 0; i < 1; ++i)
         {
             var itemFx = GameObject.Instantiate<HeartAcquireFx>(prefab, toObject.transform);
-            itemFx.Explosion2(toObject.transform.position+ new Vector3(-50, 0, 0), range);
+            itemFx.Explosion2(toObject.transform.position + new Vector3(-50, 0, 0), range);
         }
     }
 
@@ -53,7 +41,7 @@ public class HeartMover : MonoBehaviour
         for (int i = 0; i < 5; ++i)
         {
             var itemFx = GameObject.Instantiate<HeartAcquireFx>(prefab, toObject.transform);
-            itemFx.Explosion2(toObject.transform.position+new Vector3(-50,0,0), range);
+            itemFx.Explosion2(toObject.transform.position + new Vector3(-50, 0, 0), range);
         }
     }
 
@@ -61,6 +49,6 @@ public class HeartMover : MonoBehaviour
     public void CountCoin(float dis)
     {
         var itemFx2 = GameObject.Instantiate<HeartAcquireFx>(prefab, toObject.transform);
-        itemFx2.Coin(toObject.transform.position,dis);
+        itemFx2.Coin(toObject.transform.position, dis);
     }
 }
