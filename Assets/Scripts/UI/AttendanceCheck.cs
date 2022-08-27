@@ -18,8 +18,6 @@ public class AttendanceCheck : MonoBehaviour
 {
     #region 인스펙터 및 변수 생성
 
-    public static AttendanceCheck instance;
-
     [SerializeField] TMP_Text weekTMP;
     [SerializeField] TMP_Text[] tagTMP;
 
@@ -47,10 +45,6 @@ public class AttendanceCheck : MonoBehaviour
 
     #region 출석 메인 기능
 
-    private void Start()
-    {
-        instance = this;
-    }
 
     public void Attendance()
     {
@@ -67,13 +61,11 @@ public class AttendanceCheck : MonoBehaviour
         if (DaysCalculate() == 0) //연속 출석
         {
             DataController.instance.gameData.isAttendance = false;
-            Debug.Log("연속 출석했음");
             icon.SetActive(true);
             selectDay(days);
         }
         else if (DaysCalculate() == 1 && DataController.instance.gameData.isFirstGame)
         {
-            Debug.Log("이미 출석했음");
             for (int i = 0; i < days; i++)
             {
                 image[i].gameObject.SetActive(true);
@@ -84,8 +76,6 @@ public class AttendanceCheck : MonoBehaviour
         else //연속출석이 아닌경우
         {
             DataController.instance.gameData.isAttendance = false;
-            Debug.Log("출석 초기화");
-
             icon.SetActive(true);
             DataController.instance.gameData.accDays = 0;
             days = DataController.instance.gameData.accDays;
@@ -99,7 +89,7 @@ public class AttendanceCheck : MonoBehaviour
     {
         ts = now
         - DataController.instance.gameData.atdLastday; //날짜 차이 계산
-        daysCompare = ts.Minutes; //Days 정보만 추출.
+        daysCompare = ts.Days; //Days 정보만 추출.
 
         if (days > 6)
         {
@@ -117,9 +107,7 @@ public class AttendanceCheck : MonoBehaviour
             weeks = 1;
         }
 
-        Debug.Log("초 차이: " + daysCompare);
-
-        if (daysCompare >= 1 && daysCompare < 2)
+        if (daysCompare ==1)
             return 0;
         else if (daysCompare == 0)
             return 1;
@@ -189,9 +177,6 @@ public class AttendanceCheck : MonoBehaviour
             DataController.instance.gameData.isAttendance = true;
             DataController.instance.gameData.atdLastday
                 = DataController.instance.gameData.currentTime;
-
-            Debug.Log("버튼 누른 후 누적 출석:" + DataController.instance.gameData.accDays);
-            Debug.Log("버튼 누른 후 마지막 출석날짜:" + DataController.instance.gameData.atdLastday);
 
             hearts = number;
             Invoke("AtdHeart", 0.75f);

@@ -129,7 +129,10 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         StartCoroutine(PreWork());
+        attendanceCheck.GetComponent<AttendanceCheck>().Attendance();
         //PrintTime();
+
+
         Application.targetFrameRate = 60;
         instance = this; // 게임 매니저의 싱글턴 패턴화 >> GameManager.instance.~~ 로 호출
 
@@ -1092,7 +1095,6 @@ public class GameManager : MonoBehaviour
                     string date = request.GetResponseHeader("date");
                     DateTime dateTime = DateTime.Parse(date);
                     DataController.instance.gameData.currentTime = dateTime;
-                    Debug.Log("현재 시간" + dateTime);
                 }
             }
         }
@@ -1126,10 +1128,9 @@ public class GameManager : MonoBehaviour
     //자정 체크 및 정보갱신
     void ResetTime()
     {
-        Debug.Log("자정 초기화");
-        AttendanceCheck.instance.Attendance();
+        DataController.instance.gameData.nextMidnightTime = DataController.instance.gameData.currentTime.Date.AddDays(1);
 
-        DataController.instance.gameData.nextMidnightTime = DataController.instance.gameData.currentTime.AddMinutes(1);
+        attendanceCheck.GetComponent<AttendanceCheck>().Attendance();
         //DataController.instance.gameData.currentTime.Date.AddDays(1); //다음날 자정 정보 저장.
 
         //자정 타이머
@@ -1140,7 +1141,7 @@ public class GameManager : MonoBehaviour
 
     public void ResetInvoke()
     {
-        DataController.instance.gameData.nextMidnightTime = DataController.instance.gameData.currentTime.AddMinutes(1);
+        DataController.instance.gameData.nextMidnightTime = DataController.instance.gameData.currentTime.Date.AddDays(1);
         Invoke(nameof(ResetTime),
         (float)(DataController.instance.gameData.nextMidnightTime
             - DataController.instance.gameData.currentTime).TotalSeconds);
@@ -1149,20 +1150,21 @@ public class GameManager : MonoBehaviour
 
     IEnumerator CheckElapseTime() //게임 복귀할때
     {
-        Debug.Log("게임 복귀");
         DataController.instance.gameData.isPrework = false;
         yield return StartCoroutine(TryGetCurrentTime());
 
         TimeSpan gap = DataController.instance.gameData.currentTime - DataController.instance.gameData.lastExitTime;
 
-        if (gap.TotalSeconds > 70f)//310f
+        if (gap.TotalSeconds > 3610f)
         {
-            StartCoroutine(CalculateTime());
+            yield return StartCoroutine(CalculateTime());
         }
 
         MidNightCheck();
 
-        if (!MiniGameManager.isOpen && DataController.instance.gameData.rewardAbsenceTime.TotalMinutes >= 1)//>=60//&&Intro.isEnd)
+        //PrintTime();
+
+        if (!MiniGameManager.isOpen && DataController.instance.gameData.rewardAbsenceTime.TotalMinutes >= 60)//&&Intro.isEnd)
         {
             //부재중 이벤트
             AbsenceTime();
@@ -1172,15 +1174,14 @@ public class GameManager : MonoBehaviour
 
     IEnumerator PreWork() //접속할 때
     {
-        Debug.Log("사전 작업");
-
         yield return StartCoroutine(TryGetCurrentTime()); //현재 시간 불러오기 체크
         yield return StartCoroutine(CalculateTime());
 
         StartCoroutine(UpdateCurrentTime()); //30초 갱신 레쓰기릿
+
         MidNightCheck();
 
-        if (DataController.instance.gameData.rewardAbsenceTime.TotalMinutes >= 1)//60&&Intro.isEnd)
+        if (DataController.instance.gameData.rewardAbsenceTime.TotalMinutes >= 60)//&&Intro.isEnd)
         {
             //부재중 이벤트
             AbsenceTime();
@@ -1195,15 +1196,15 @@ public class GameManager : MonoBehaviour
         {
             //예외처리
             TimeSpan test = DataController.instance.gameData.nextMidnightTime - DataController.instance.gameData.currentTime.Date;
-            if (test.Minutes >= 2)
-                DataController.instance.gameData.nextMidnightTime = DataController.instance.gameData.currentTime.Date.AddMinutes(1);
+            if (test.Days >= 2)
+                DataController.instance.gameData.nextMidnightTime = DataController.instance.gameData.currentTime.Date.AddDays(1);
 
             //자정시간을 지났다면
             TimeSpan gap = DataController.instance.gameData.currentTime - DataController.instance.gameData.nextMidnightTime;
             if (gap.TotalSeconds >= 0)
             {
-                AttendanceCheck.instance.Attendance();
-                DataController.instance.gameData.nextMidnightTime = DataController.instance.gameData.currentTime.AddMinutes(1);
+                DataController.instance.gameData.nextMidnightTime = DataController.instance.gameData.currentTime.Date.AddDays(1);
+                attendanceCheck.GetComponent<AttendanceCheck>().Attendance();
             }
             //자정시간을 지나지 않았다면
             gap = DataController.instance.gameData.nextMidnightTime - DataController.instance.gameData.currentTime;
@@ -1218,9 +1219,12 @@ public class GameManager : MonoBehaviour
         {
             DataController.instance.gameData.isFirstGame = true;
 
-            DataController.instance.gameData.nextMidnightTime = DataController.instance.gameData.currentTime.AddMinutes(1);
+            DataController.instance.gameData.nextMidnightTime = DataController.instance.gameData.currentTime.Date.AddDays(1);
             DataController.instance.gameData.lastExitTime = DataController.instance.gameData.currentTime;
             DataController.instance.gameData.rewardAbsenceTime = TimeSpan.FromSeconds(0);
+            DataController.instance.gameData.atdLastday = DataController.instance.gameData.currentTime.Date.AddDays(-1);
+            DataController.instance.gameData.accDays = 0;
+            GameManager.instance.attendanceCheck.GetComponent<AttendanceCheck>().Attendance();
             return true;
         }
         return false;
@@ -1245,10 +1249,10 @@ public class GameManager : MonoBehaviour
     void PrintTime()
     {
         Debug.Log("현재시간: " + DataController.instance.gameData.currentTime);
+        Debug.Log("다음 자정시간: " + DataController.instance.gameData.nextMidnightTime);
         Debug.Log("다음 자정까지 남은시간: " + (DataController.instance.gameData.nextMidnightTime - DataController.instance.gameData.currentTime));
         Debug.Log("마지막 종료시간: " + DataController.instance.gameData.lastExitTime);
         Debug.Log("부재중 시간: " + (DataController.instance.gameData.currentTime - DataController.instance.gameData.lastExitTime));
-        Debug.Log("출석 여부: " + DataController.instance.gameData.isAttendance);
         Debug.Log("누적 출석:" + DataController.instance.gameData.accDays);
         Debug.Log("마지막 출석날짜:" + DataController.instance.gameData.atdLastday);
     }
