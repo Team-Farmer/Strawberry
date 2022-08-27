@@ -29316,6 +29316,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adc94740434bce44e92ac9ede16f51d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AudioManager: {fileID: 909940711}
   Store: {fileID: 926323866}
   StoreSprite:
   - {fileID: 2894771460051042406, guid: 11799ae92cd2d07459ef58f34b7286bc, type: 3}
