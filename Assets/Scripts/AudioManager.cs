@@ -21,29 +21,7 @@ public class AudioManager : MonoBehaviour
     //public bool isGameMain;//true=메인게임 false=미니게임
 
     //배경음 오디오
-    public AudioClip[] BgClipList;//0=메인게임 1=미니게임
-
-    //효과음 오디오
-    /*
-    public AudioClip SFXclip;
-    //public AudioClip SowClip;
-    //public AudioClip HarvestClip;
-    public AudioClip Cute1Clip;
-    public AudioClip Cute2Clip;
-    public AudioClip Cute4Clip;
-    //public AudioClip TadaClip;
-    //public AudioClip RainClip;
-    public AudioClip RightClip;
-    public AudioClip WrongClip;
-    public AudioClip DoorOpenClip;
-    public AudioClip DoorCloseClip;
-    // 아래 우연이가 추가
-    public AudioClip CoinClip;
-    public AudioClip RewardClip;
-    public AudioClip TimerClip;
-    public AudioClip RemoveClip;
-    public AudioClip Remove2Clip;
-    */
+    public AudioClip[] BgClipList;//0=튜토리얼, 1=배경음악, 2=가게, 3=크레딧, 4~7=미니게임
 
     //효과음 오디오 (갈아엎음)
     public AudioClip HarvestClip;
