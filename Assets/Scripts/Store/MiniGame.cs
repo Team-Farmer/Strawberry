@@ -58,7 +58,7 @@ public class MiniGame : MonoBehaviour
         scroll.fillAmount = 1;
         score = 0;
         time = 64;
-        score_txt.text = score.ToString() + "점";
+        score_txt.text = score.ToString();
         isGameRunning = false;
         //4초 카운트
         StartCoroutine(Count4Second());

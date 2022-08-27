@@ -150,7 +150,7 @@ public class MiniGame4 : MiniGame
             content.transform.GetChild(content.transform.childCount - 1).GetComponent<Image>().sprite == answerSprite[1])
             )
         {
-            score += 10;
+            score += 5;
             score_txt.text = score.ToString();
 
             //정답 효과
