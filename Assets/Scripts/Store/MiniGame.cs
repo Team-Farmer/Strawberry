@@ -159,6 +159,9 @@ public class MiniGame : MonoBehaviour
         challengeButton.interactable = false;
         settingButton.interactable = false;
 
+        checkButton.transform.GetChild(0).GetComponent<Image>().color = new Vector4(1, 1, 1, 0.5f);
+        challengeButton.transform.GetChild(0).GetComponent<Image>().color = new Vector4(1, 1, 1, 0.5f);
+
         Time.timeScale = 0;
         isGameRunning = false;
     }
@@ -168,6 +171,9 @@ public class MiniGame : MonoBehaviour
         checkButton.interactable = true;
         challengeButton.interactable = true;
         settingButton.interactable = true;
+
+        checkButton.transform.GetChild(0).GetComponent<Image>().color = new Vector4(1, 1, 1, 1);
+        challengeButton.transform.GetChild(0).GetComponent<Image>().color = new Vector4(1, 1, 1, 1);
 
         Time.timeScale = 1;
         isGameRunning = true;
