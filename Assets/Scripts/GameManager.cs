@@ -258,6 +258,7 @@ public class GameManager : MonoBehaviour
         {
             if (DataController.instance.gameData.isPrework == true)
                 DataController.instance.gameData.lastExitTime = DataController.instance.gameData.currentTime;
+            
             DataController.instance.SaveData();
         }
         else 
@@ -1141,12 +1142,11 @@ public class GameManager : MonoBehaviour
 
         MidNightCheck();
 
-        if (!MiniGameManager.isOpen && DataController.instance.gameData.rewardAbsenceTime.TotalMinutes >= 1)
+        if (!MiniGameManager.isOpen && DataController.instance.gameData.rewardAbsenceTime.TotalMinutes >= 1)//&&Intro.isEnd)
         {
             //부재중 이벤트
-            revenue = DataController.instance.gameData.rewardAbsenceTime.Minutes * 100;
             AbsenceTime();
-            DataController.instance.gameData.rewardAbsenceTime = TimeSpan.FromSeconds(0);
+
         }
 
     }
@@ -1159,12 +1159,11 @@ public class GameManager : MonoBehaviour
         StartCoroutine(UpdateCurrentTime()); //30초 갱신 레쓰기릿
         MidNightCheck();
 
-        if (!MiniGameManager.isOpen&&DataController.instance.gameData.rewardAbsenceTime.TotalMinutes >= 1) //부재중 시간이 1분 이상이면
+        if (!MiniGameManager.isOpen && DataController.instance.gameData.rewardAbsenceTime.TotalMinutes >= 1)//&&Intro.isEnd)
         {
             //부재중 이벤트
-            revenue=DataController.instance.gameData.rewardAbsenceTime.Minutes * 100;
             AbsenceTime();
-            DataController.instance.gameData.rewardAbsenceTime = TimeSpan.FromSeconds(0);
+
         }
     }
 
@@ -1237,6 +1236,7 @@ public class GameManager : MonoBehaviour
 
     public void AbsenceTime()
     {
+        revenue = DataController.instance.gameData.rewardAbsenceTime.Minutes * 100;
         //if (Intro.isEnd)
         {
             if (revenue == 0)
@@ -1258,6 +1258,7 @@ public class GameManager : MonoBehaviour
             }
             AbsenceBlackPanel.SetActive(true);
             AbsencePanel.GetComponent<PanelAnimation>().OpenScale();
+            DataController.instance.gameData.rewardAbsenceTime = TimeSpan.FromSeconds(0);
         }
     }
 

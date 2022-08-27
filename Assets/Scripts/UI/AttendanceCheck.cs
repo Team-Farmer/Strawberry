@@ -49,7 +49,7 @@ public class AttendanceCheck : MonoBehaviour
 
         if (!DataController.instance.gameData.isAttendance)
         {
-            if (DaysCalculate() == 1) //연속 출석
+            if (DaysCalculate() == 0) //연속 출석
             {
                 icon.SetActive(true);
                 WeeksInit();
@@ -59,7 +59,7 @@ public class AttendanceCheck : MonoBehaviour
                 }
                 selectDay(days);
             }
-            else if (DaysCalculate() == 2)
+            else if (DaysCalculate() == 1)
             {
                 for (int i = 0; i < days; i++) //출석완료 버튼 활성화
                 {
@@ -135,10 +135,12 @@ public class AttendanceCheck : MonoBehaviour
 
         Debug.Log(ts.Minutes);
 
-        if (daysCompare>=30&&daysCompare<60)
+        if (daysCompare >= 30 && daysCompare < 60)
+            return 0;
+        else if (daysCompare == 0)
             return 1;
 
-        return 0;
+        return 2;
     }
 
     #endregion
