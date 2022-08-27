@@ -54,7 +54,7 @@ public class MinigameBerry : MonoBehaviour
                     // 시간 감소
                     float size = this.gameObject.transform.GetComponentInParent<MiniGame3>().size;
 
-                    this.gameObject.transform.GetComponentInParent<MiniGame3>().scrollbar.size -= size * 10;
+                    this.gameObject.transform.GetComponentInParent<MiniGame3>().scroll.fillAmount -= size * 10;
                     this.gameObject.transform.GetComponentInParent<MiniGame3>().time -= 10;
                     this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
                 }

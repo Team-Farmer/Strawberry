@@ -72,15 +72,15 @@ public class MiniGameManager : MonoBehaviour
                 break;
             case 2:
                 infoText.text = "잘 익은 딸기들 따서 모아뒀었는데, 날이 더워서인지 몇몇 딸기들이 살짝 무른 것 같아요. 하지만 우리에겐 굳은 신념이 있죠. 가장 달콤하고 가장 싱싱한 딸기들을 팔자! 그러니 눈을 크게 뜨고 상한 딸기들을 골라내봐요!";
-                daramSpeechBubbleText.text = "?";
+                daramSpeechBubbleText.text = "사장님,\n어떤 게 상한 딸기일까요?\n 도와주세요!";
                 break;
             case 3:
                 infoText.text = "딸기 밭에 폭풍이 지나갔어요! 밭에 열려있던 딸기들도, 수확해둔 딸기들도 모두 모두 날아가 버렸어요... 어라? 근데 날아갔던 딸기들이 하늘에서 떨어지네요?보고만 있을 때가 아니죠! 바구니로 멀쩡한 딸기들만 최대한 담아봐요!";
-                daramSpeechBubbleText.text = "?";
+                daramSpeechBubbleText.text = "사장님,\n 잔뜩 떨어지는 딸기를\n 받아야해요. 도와주세요!";
                 break;
             case 4:
                 infoText.text = "우리가 정성들여 딸기를 키우고 열심히 수확했더니 트럭에 딸기들이 가득 찼어요! 딸기들을 판매하기 위해서는 우선 딸기들을 종류에 맞게 나누어야 해요. 비슷하게 생겨도 문제 없죠! 재빠르게 딸기들을 분류해서 알맞게 박스에 담아봐요!";
-                daramSpeechBubbleText.text = "?";
+                daramSpeechBubbleText.text = "사장님,\n 트럭에 있는 딸기들을\n 분류해야해요. 도와주세요!";
                 break;
         }
     }
