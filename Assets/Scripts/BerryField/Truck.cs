@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 
 public class Truck : MonoBehaviour
 {
-    public GameObject MaxPanel;    
+    public GameObject MaxPanel;
+    public Button normal_receive_btn;
+    public Button add_receive_btn;
     //public int berryCnt = 0; // 옮김
     private Animator anim;
     private ArbeitMgr arbeit;
@@ -21,16 +24,30 @@ public class Truck : MonoBehaviour
         arbeit = GameObject.FindGameObjectWithTag("Arbeit").GetComponent<ArbeitMgr>();
     }
     void FixedUpdate()
-    {
+    {       
+        if(DataController.instance.gameData.truckBerryCnt == CNT_LEVEL_0) // 트럭 누적 딸기 개수가 0개라면
+        {
+            normal_receive_btn.interactable = false; // 받기 버튼을 비활성화
+            add_receive_btn.interactable = false; // 광고 보고 받기 버튼을 비활성화
+        }
+        else // 트럭 누적 딸기 개수가 1개 이상이라면
+        {
+            if(!normal_receive_btn.interactable && !normal_receive_btn.interactable) // 버튼이 비활성화 돼있다면
+            {
+                normal_receive_btn.interactable = true; // 받기 버튼을 활성화
+                add_receive_btn.interactable = true; // 광고 보고 받기 버튼을 활성화
+            }           
+        }
         if(CNT_LEVEL_0 <= DataController.instance.gameData.truckBerryCnt && DataController.instance.gameData.truckBerryCnt < CNT_LEVEL_1)
         {
-            if (anim.GetInteger("Truck") == 0) return;
-            MaxPanel.SetActive(false);
-            SetAnim(0);
+            if (anim.GetInteger("Truck") == 0) return;          
+            SetAnim(0); // 트럭 애니메이션을 빈 트럭으로 변경
+            MaxPanel.SetActive(false); // MAX 패널 제거
         }
         if (CNT_LEVEL_1 <= DataController.instance.gameData.truckBerryCnt && DataController.instance.gameData.truckBerryCnt < CNT_LEVEL_2)
         {
             if (anim.GetInteger("Truck") == 1) return;
+
             SetAnim(1);
         }
         if (CNT_LEVEL_2 <= DataController.instance.gameData.truckBerryCnt && DataController.instance.gameData.truckBerryCnt < CNT_LEVEL_MAX)
