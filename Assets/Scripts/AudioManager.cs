@@ -24,15 +24,15 @@ public class AudioManager : MonoBehaviour
     public AudioClip[] BgClipList;//0=메인게임 1=미니게임
 
     //효과음 오디오
+    /*
     public AudioClip SFXclip;
-    public AudioClip SowClip;
-    public AudioClip HarvestClip;
+    //public AudioClip SowClip;
+    //public AudioClip HarvestClip;
     public AudioClip Cute1Clip;
-    public AudioClip BlopClip;
     public AudioClip Cute2Clip;
     public AudioClip Cute4Clip;
-    public AudioClip TadaClip;
-    public AudioClip RainClip;
+    //public AudioClip TadaClip;
+    //public AudioClip RainClip;
     public AudioClip RightClip;
     public AudioClip WrongClip;
     public AudioClip DoorOpenClip;
@@ -43,6 +43,30 @@ public class AudioManager : MonoBehaviour
     public AudioClip TimerClip;
     public AudioClip RemoveClip;
     public AudioClip Remove2Clip;
+    */
+
+    //효과음 오디오 (갈아엎음)
+    public AudioClip HarvestClip;
+    public AudioClip SowClip;
+    public AudioClip ClickClip; //Cute1Clip;
+    public AudioClip OKClip;    //Cute2Clip;
+    public AudioClip BackClip;  //SFXclip;
+    public AudioClip ErrorClip; //Cute4Clip;
+    public AudioClip TadaClip;
+    public AudioClip RainClip;
+    public AudioClip RightClip;
+    public AudioClip WrongClip;
+    public AudioClip DoorOpenClip;
+    public AudioClip DoorCloseClip;
+    public AudioClip CoinClip;
+    public AudioClip RewardClip;
+    public AudioClip TimerClip;
+    public AudioClip FastTimerClip;
+    public AudioClip RemoveWeedClip;
+    public AudioClip RemoveBugClip;
+    public AudioClip CountdownClip;
+    public AudioClip EndClip;
+    public AudioClip ScrollbarClip;
 
     //instance
     public static AudioManager instance;
@@ -125,46 +149,49 @@ public class AudioManager : MonoBehaviour
 
     //얘네 줄일수있긴한데 그러면 오디오 수작ㅇ업으로 넣어야함
 
-    public void SowAudioPlay()//씨뿌리기 효과음
-    { SFXPlay("SowSFX", SowClip); }
-    public void HarvestAudioPlay() //수확 효과음
+    public void HarvestAudioPlay()  //수확 효과음
     { SFXPlay("HarvestSFX", HarvestClip); }
-
-
-
-    public void SFXAudioPlay() //X버튼 blop
-    { SFXPlay("ButtonSFX", SFXclip); }
-    public void Cute1AudioPlay() //버튼 효과음
-    { SFXPlay("Cute1SFX", Cute1Clip); }
-    public void Cute2AudioPlay()//패널 등장
-    { SFXPlay("Cute2SFX", Cute2Clip); }
-    public void Cute4AudioPlay()//에러패널
-    { SFXPlay("Cute4SFX", Cute4Clip); }
-    public void TadaAudioPlay() //딸기 획득 효과음 
+    public void SowAudioPlay()      //씨뿌리기 효과음
+    { SFXPlay("SowSFX", SowClip); }
+    public void Cute1AudioPlay()// 클릭 효과음
+    { SFXPlay("Cute1SFX", ClickClip); }
+    public void Cute2AudioPlay()// 패널 등장 (확인)
+    { SFXPlay("Cute2SFX", OKClip); }
+    public void SFXAudioPlay()  // X버튼 blop
+    { SFXPlay("ButtonSFX", BackClip); }
+    public void Cute4AudioPlay()// 에러 패널
+    { SFXPlay("Cute4SFX", ErrorClip); }
+    public void TadaAudioPlay() // 딸기 획득
     { SFXPlay("TadaSFX", TadaClip); }
-    public void RainAudioPlay() //비 효과음
+    public void RainAudioPlay() // 소나기
     { SFXPlay("RainSFX", RainClip); }
-    public void RightAudioPlay() //맞았아요 
+    public void RightAudioPlay()// 미니게임 정답
     { SFXPlay("RightSFX", RightClip); }
-    public void WrongAudioPlay() //틀렸어요 
+    public void WrongAudioPlay()// 미니게임 오답 
     { SFXPlay("WrongSFX", WrongClip); }
-
-
-    public void DoorOpenAudioPlay() //문열기
+    public void DoorOpenAudioPlay()     // 가게 열기
     { SFXPlay("DoorOpenSFX", DoorOpenClip); }
-    public void DoorCloseAudioPlay() //문닫기 
+    public void DoorCloseAudioPlay()    // 가게 닫기 
     { SFXPlay("DoorCloseSFX", DoorCloseClip); }
-
-    public void CoinAudioPlay() // 코인 획득
+    public void CoinAudioPlay()         // 코인 획득
     { SFXPlay("CoinSFX", CoinClip); }
-    public void RewardAudioPlay() // 보상 획득
+    public void RewardAudioPlay()       // 보상 획득
     { SFXPlay("RewardSFX", RewardClip); }
-    public void TimerCloseAudioPlay() // 미니게임 타이머
+    public void TimerCloseAudioPlay()   // 미니게임 타이머
     { SFXPlay("TimerSFX", TimerClip); }
-    public void RemoveAudioPlay() // 제거1
-    { SFXPlay("RemoveSFX", RemoveClip); }
-    public void Remove2AudioPlay() // 제거2
-    { SFXPlay("Remove2SFX", Remove2Clip); }
+    public void TimerVeryCloseAudioPlay()   // 미니게임 더 빠른 타이머
+    { SFXPlay("FastTimerSFX", FastTimerClip); }
+    public void RemoveAudioPlay()       // 잡초 제거
+    { SFXPlay("RemoveWeedSFX", RemoveWeedClip); }
+    public void Remove2AudioPlay()      // 벌레 제거
+    { SFXPlay("RemoveBugSFX", RemoveBugClip); }
+    public void CountdownAudioPlay()      // 미니게임 카운트 다운
+    { SFXPlay("CountdownSFX", CountdownClip); }
+    public void EndAudioPlay()      // 미니게임 종료
+    { SFXPlay("EndSFX", EndClip); }
+    public void ScrollbarAudioPlay()      // 스크롤바
+    { SFXPlay("ScrollbarSFX", ScrollbarClip); }
+
 
     //직접 오디오 넣는 함수
     public void SFXPlayButton(AudioClip clip) 
@@ -172,14 +199,11 @@ public class AudioManager : MonoBehaviour
         SFXPlay("", clip);
     }
 
-
-
     public void BgSoundPlay2(bool isGameMain)
     {
         AudioClip clip;
         if (isGameMain == true) {clip= BgClipList[0]; }
         else { clip = BgClipList[1]; }
-
 
         if (isPlayAudio == true)
         {
