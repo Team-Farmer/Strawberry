@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class MiniGameManager : MonoBehaviour
 {
+    public AudioManager AudioManager;
     public GameObject Store;
     public Sprite[] StoreSprite;
     public GameObject popup;
@@ -20,7 +21,6 @@ public class MiniGameManager : MonoBehaviour
     {
         if (DataController.instance.gameData.isStoreOpend == true)
             Store.GetComponent<Image>().sprite = StoreSprite[1];
-
     }
 
     public void EnterStore()
@@ -84,6 +84,22 @@ public class MiniGameManager : MonoBehaviour
                 break;
         }
     }
+
+    public void MiniGameBGMPlay(int index)
+    {
+        AudioClip clip;
+        clip = AudioManager.BgClipList[index];
+
+        if (AudioManager.isPlayAudio == true)
+        {
+            AudioManager.bgSound.outputAudioMixerGroup = AudioManager.mixer.FindMatchingGroups("BGSound")[0];
+            AudioManager.bgSound.clip = clip;
+            AudioManager.bgSound.loop = true;
+            AudioManager.bgSound.volume = 0.2f;
+            AudioManager.bgSound.Play();
+        }
+    }
+
     public void OnclickStartBtn()
     {
         string info_str = infoText.text.Substring(0, 5);
@@ -91,18 +107,22 @@ public class MiniGameManager : MonoBehaviour
         if (info_str == "딸기 창고")
         {
             miniGameList[0].gameObject.SetActive(true);
+            MiniGameBGMPlay(4);
         }
         else if (info_str == "잘 익은 ")
         {
             miniGameList[1].gameObject.SetActive(true);
+            MiniGameBGMPlay(5);
         }
         else if (info_str == "딸기 밭에")
         {
             miniGameList[2].gameObject.SetActive(true);
+            MiniGameBGMPlay(6);
         }
         else if (info_str == "우리가 정")
         {
             miniGameList[3].gameObject.SetActive(true);
+            MiniGameBGMPlay(7);
         }
     }
 }
