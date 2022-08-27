@@ -21,8 +21,11 @@ public class Setting : MonoBehaviour
     void Start()
     {
         SetCloudSave();
-        //·Î±×ÀÎ µÇ¾î¾ß Å¬¶ó¿ìµå ¼¼ÀÌºê °¡´ÉÇØ¼­ ÁÖ¼®ÇØ³õ°Ú½À´Ï´Ù
-        //GPGSManager.instance.OnSaveSucceed += SetCloudSave;
+#if UNITY_EDITOR
+
+#elif UNITY_ANDROID
+        GPGSManager.instance.OnSaveSucceed += SetCloudSave;
+#endif
     }
 
     public void SetCloudSave()
@@ -30,30 +33,30 @@ public class Setting : MonoBehaviour
         if (DataController.instance.gameData.cloudSaveTime == System.DateTime.MinValue)
         {
             cloudLoad_btn.interactable = false;
-            saveDate_text.text = "ÀúÀå±â·Ï ¾øÀ½";
+            saveDate_text.text = "ì €ì¥ê¸°ë¡ ì—†ìŒ";
         }
         else
         {
             cloudLoad_btn.interactable = true;
-            saveDate_text.text = "¸¶Áö¸· ÀúÀå ³¯Â¥\n"+DataController.instance.gameData.cloudSaveTime.ToString("yyyy³â MM¿ù ddÀÏ HH:mm:ss");
+            saveDate_text.text = "ë§ˆì§€ë§‰ ì €ì¥ ë‚ ì§œ\n" + DataController.instance.gameData.cloudSaveTime.ToString("yyyyë…„ MMì›” ddì¼ HH:mm:ss");
         }
     }
 
-    private void SetVersionInfo() // ¹öÀü Á¤º¸ ¼¼ÆÃ
+    private void SetVersionInfo() // ë²„ì „ ì •ë³´ ì„¸íŒ…
     {
         versionDate_text.text = "22-05-09";
         version_text.text = "V 1.0.1";
     }
 
-    public void PrivacyPolicy() // °³ÀÎÁ¤º¸Ã³¸®¹æÄ§
+    public void PrivacyPolicy() // ê°œì¸ì •ë³´ì²˜ë¦¬ë°©ì¹¨
     {
         Application.OpenURL("https://woos-workspace.notion.site/e9c66b72d3ef4e5082909afd2f5cf0a7");
     }
 
-    public void ContactByEmail() // ÀÌ¸ŞÀÏ·Î ¹®ÀÇÇÏ±â
+    public void ContactByEmail() // ì´ë©”ì¼ë¡œ ë¬¸ì˜í•˜ê¸°
     {
         string mailto = "teamfarmer.ttalgi@gmail.com";
-        string subject = EscapeURL("[»õÄŞ´ŞÄŞ µş±â³óÀå] ¹ö±× / ¹®ÀÇ");
+        string subject = EscapeURL("[ìƒˆì½¤ë‹¬ì½¤ ë”¸ê¸°ë†ì¥] ë²„ê·¸ / ë¬¸ì˜");
         string body = EscapeURL
             (
              "\n\n\n\n\n" +
@@ -70,13 +73,8 @@ public class Setting : MonoBehaviour
         return UnityWebRequest.EscapeURL(url).Replace("+", "%20");
     }
 
-    public void Instagram() // °ø½Ä ÀÎ½ºÅ¸ °èÁ¤
+    public void Instagram() // ê³µì‹ ì¸ìŠ¤íƒ€ ê³„ì •
     {
         Application.OpenURL("https://www.instagram.com/team_farmer_/");
     }
-
-    //public void DevCredit() // °³¹ßÀÚ Å©·¹µ÷
-    //{
-    //    Debug.Log(" ÆÀ ÆÄ¸Ó ! ");
-    //}
 }

@@ -12,11 +12,11 @@ using System;
 
 public class GPGSManager : MonoBehaviour
 {
-    public static GPGSManager instance=null;
+    public static GPGSManager instance = null;
     public Action OnSaveSucceed;
 
-    FirebaseAuth auth = null; //auth¿ë instance
-    FirebaseUser user = null; //ÇöÀç »ç¿ëÀÚ °èÁ¤
+    FirebaseAuth auth = null; //authìš© instance
+    FirebaseUser user = null; //í˜„ì¬ ì‚¬ìš©ì ê³„ì •
     string authCode = "";
 
     ISavedGameClient SavedGame => PlayGamesPlatform.Instance.SavedGame;
@@ -34,24 +34,27 @@ public class GPGSManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        //ÃÊ±âÈ­ ·Î±×ÀÎ ±â´É ²¨³õÀ»°Ô¿æ
-        //if (Application.platform==RuntimePlatform.Android) Init();
+#if UNITY_EDITOR
+        Debug.Log("ì•ˆë“œë¡œì´ë“œì—ì„œ ì‹œë„í•˜ì„¸ìš©");
+#elif UNITY_ANDROID
+        Init();
+#endif
     }
 
     void Init()
     {
         var config = new PlayGamesClientConfiguration.Builder()
-            .EnableSavedGames() //°ÔÀÓ¼¼ÀÌºê
-            .RequestServerAuthCode(false) //playgames Å¬¶óÀÌ¾ğÆ® ±¸¼º
+            .EnableSavedGames() //ê²Œì„ì„¸ì´ë¸Œ
+            .RequestServerAuthCode(false) //playgames í´ë¼ì´ì–¸íŠ¸ êµ¬ì„±
             .Build();
 
-        //GPGSÃÊ±âÈ­
+        //GPGSì´ˆê¸°í™”
         PlayGamesPlatform.InitializeInstance(config);
         PlayGamesPlatform.DebugLogEnabled = true;
-        //±¸±ÛÇÃ·¹ÀÌ°ÔÀÓ È°¼ºÈ­
+        //êµ¬ê¸€í”Œë ˆì´ê²Œì„ í™œì„±í™”
         PlayGamesPlatform.Activate();
 
-        //´ÙÇßÀ¸¸é ·Î±×ÀÎ
+        //ë‹¤í–ˆìœ¼ë©´ ë¡œê·¸ì¸
         Login();
     }
 
@@ -59,13 +62,13 @@ public class GPGSManager : MonoBehaviour
     //login
     void Login()
     {
-        //±¸±Û ·Î±×ÀÎ
+        //êµ¬ê¸€ ë¡œê·¸ì¸
         Social.localUser.Authenticate((success, error) =>
         {
-            if (!success) Debug.Log("·Î±×ÀÎ ½ÇÆĞ : " + error);
+            if (!success) Debug.Log("ë¡œê·¸ì¸ ì‹¤íŒ¨ : " + error);
             else
             {
-                //firebase »ç¿ëÀÚ ÀÎÁõ Á¤º¸¸¦ »ç¿ëÇÏ¿© ÇÃ·¹ÀÌ¾î ÀÎÁõ
+                //firebase ì‚¬ìš©ì ì¸ì¦ ì •ë³´ë¥¼ ì‚¬ìš©í•˜ì—¬ í”Œë ˆì´ì–´ ì¸ì¦
                 authCode = PlayGamesPlatform.Instance.GetServerAuthCode();
 
                 auth = FirebaseAuth.DefaultInstance;
@@ -74,16 +77,16 @@ public class GPGSManager : MonoBehaviour
                 {
                     if (task.IsCanceled)
                     {
-                        Debug.LogError("ÆÄÀÌ¾îº£ÀÌ½º ÀÎÁõ Ãë¼ÒµÊ");
+                        Debug.LogError("íŒŒì´ì–´ë² ì´ìŠ¤ ì¸ì¦ ì·¨ì†Œë¨");
                         return;
                     }
                     if (task.IsFaulted)
                     {
-                        Debug.LogError("ÆÄÀÌ¾îº£ÀÌ½º ÀÎÁõ ¿¡·¯: " + task.Exception);
+                        Debug.LogError("íŒŒì´ì–´ë² ì´ìŠ¤ ì¸ì¦ ì—ëŸ¬: " + task.Exception);
                         return;
                     }
                     user = task.Result;
-                    Debug.Log(user.DisplayName+"´Ô ·Î±×ÀÎ!");
+                    Debug.Log(user.DisplayName + "ë‹˜ ë¡œê·¸ì¸!");
                 });
             }
         });
@@ -99,10 +102,11 @@ public class GPGSManager : MonoBehaviour
     //overwrites old file or saves a new one
     public void SaveToCloud()
     {
-        if (Application.platform == RuntimePlatform.Android) {
+        if (Application.platform == RuntimePlatform.Android)
+        {
             if (user != null)
             {
-                Debug.Log("Å¬¶ó¿ìµå·Î °ÔÀÓ µ¥ÀÌÅÍ¸¦ Àü¼ÛÇÕ´Ï´Ù...");
+                Debug.Log("í´ë¼ìš°ë“œë¡œ ê²Œì„ ë°ì´í„°ë¥¼ ì „ì†¡í•©ë‹ˆë‹¤...");
                 saving = true;
                 SavedGame.OpenWithAutomaticConflictResolution(
                     fileName,
@@ -112,18 +116,19 @@ public class GPGSManager : MonoBehaviour
             }
             else
             {
-                Debug.Log("·Î±×ÀÎÀÌ µÇ¾îÀÖÁö ¾ÊÀ½");
+                Debug.Log("ë¡œê·¸ì¸ì´ ë˜ì–´ìˆì§€ ì•ŠìŒ");
             }
         }
-        else print("¾Èµå·ÎÀÌµå¿¡¼­ Å×½ºÆ® ÇØÁÖ¼¼¿ä");
+        else print("ì•ˆë“œë¡œì´ë“œì—ì„œ í…ŒìŠ¤íŠ¸ í•´ì£¼ì„¸ìš”");
     }
 
 
     //load from cloud
     public void LoadFromCloud()
     {
-        if (Application.platform == RuntimePlatform.Android) {
-            Debug.Log("Å¬¶ó¿ìµå·ÎºÎÅÍ °ÔÀÓ µ¥ÀÌÅÍ¸¦ °¡Á®¿É´Ï´Ù...");
+        if (Application.platform == RuntimePlatform.Android)
+        {
+            Debug.Log("í´ë¼ìš°ë“œë¡œë¶€í„° ê²Œì„ ë°ì´í„°ë¥¼ ê°€ì ¸ì˜µë‹ˆë‹¤...");
             saving = false;
             if (user != null)
             {
@@ -135,36 +140,36 @@ public class GPGSManager : MonoBehaviour
             }
             else
             {
-                Debug.Log("·Î±×ÀÎÀÌ µÇ¾îÀÖÁö ¾ÊÀ½");
+                Debug.Log("ë¡œê·¸ì¸ì´ ë˜ì–´ìˆì§€ ì•ŠìŒ");
             }
         }
-        else print("¾Èµå·ÎÀÌµå¿¡¼­ Å×½ºÆ® ÇØÁÖ¼¼¿ä");
+        else print("ì•ˆë“œë¡œì´ë“œì—ì„œ í…ŒìŠ¤íŠ¸ í•´ì£¼ì„¸ìš”");
     }
 
 
-    //ÀúÀåÇÏ°Å³ª ·Îµå
+    //ì €ì¥í•˜ê±°ë‚˜ ë¡œë“œ
     private void SavedGameOpened(SavedGameRequestStatus state, ISavedGameMetadata game)
     {
         //check success
-        if (state==SavedGameRequestStatus.Success)
+        if (state == SavedGameRequestStatus.Success)
         {
             if (saving)
             {
                 //saving
                 //read bytes from save
                 //gameData to string -> byte[]
-                //ÀÌ·¸°ÔÇØµµ µÇ´ÂÁö È®ÀÎÇÊ¿ä!!!!!
-                string saveString=JsonConvert.SerializeObject(DataController.instance.gameData); 
+                //ì´ë ‡ê²Œí•´ë„ ë˜ëŠ”ì§€ í™•ì¸í•„ìš”!!!!!
+                string saveString = JsonConvert.SerializeObject(DataController.instance.gameData);
                 byte[] data = Encoding.UTF8.GetBytes(saveString);
 
-                //create builder. ..ÀÌ°Å ²À ÇØ¾ßÇÏ´Â°Ç°¡?
+                //create builder
                 SavedGameMetadataUpdate.Builder builder = new SavedGameMetadataUpdate.Builder();
                 SavedGameMetadataUpdate updateMetaData = builder.Build();
 
                 //saving to cloud
                 SavedGame.CommitUpdate(game, updateMetaData, data, CheckSaving);
             }
-            else 
+            else
             {
                 //loading
                 SavedGame.ReadBinaryData(game, CheckLoading);
@@ -172,7 +177,7 @@ public class GPGSManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("Error opening game : "+state);
+            Debug.Log("Error opening game : " + state);
         }
     }
 
@@ -180,46 +185,46 @@ public class GPGSManager : MonoBehaviour
     //callback from SavedGameOpened. Check saving result was successful or not
     private void CheckSaving(SavedGameRequestStatus state, ISavedGameMetadata game)
     {
-        Debug.Log("Å¬¶ó¿ìµå ÀúÀå È®ÀÎÁß...");
+        Debug.Log("í´ë¼ìš°ë“œ ì €ì¥ í™•ì¸ì¤‘...");
         if (state == SavedGameRequestStatus.Success)
         {
-            Debug.Log("Å¬¶ó¿ìµå ÀúÀå ¼º°ø");
+            Debug.Log("í´ë¼ìš°ë“œ ì €ì¥ ì„±ê³µ");
 
-            //³¯Â¥ °»½Å
+            //ë‚ ì§œ ê°±ì‹ 
             DataController.instance.gameData.cloudSaveTime = System.DateTime.Now;
-            //·ÎÄÃÀúÀå
+            //ë¡œì»¬ì €ì¥
             DataController.instance.SaveData();
-            //¼³Á¤Ã¢ ³¯Â¥ °»½Å - Å¬¶ó¿ìµå ÀúÀå ÈÄ ½ÇÇàµÇ¾î¾ß ÇÏ¹Ç·Î ¾×¼ÇÀ¸·Î ¼³Á¤
+            //ì„¤ì •ì°½ ë‚ ì§œ ê°±ì‹  - í´ë¼ìš°ë“œ ì €ì¥ í›„ ì‹¤í–‰ë˜ì–´ì•¼ í•˜ë¯€ë¡œ ì•¡ì…˜ìœ¼ë¡œ ì„¤ì •
             OnSaveSucceed();
         }
-        else Debug.LogError("Å¬¶ó¿ìµå ÀúÀå ½ÇÆĞ : " + state);
+        else Debug.LogError("í´ë¼ìš°ë“œ ì €ì¥ ì‹¤íŒ¨ : " + state);
     }
 
 
     //callback from SavedGameOpened. Check loading result was successful or not
     private void CheckLoading(SavedGameRequestStatus state, byte[] cloudData)
     {
-        Debug.Log("Å¬¶ó¿ìµå ·Îµù È®ÀÎÁß...");
+        Debug.Log("í´ë¼ìš°ë“œ ë¡œë”© í™•ì¸ì¤‘...");
         if (state == SavedGameRequestStatus.Success)
         {
-            Debug.Log("·Îµù ¼º°ø");
-            if (cloudData ==null)
+            Debug.Log("ë¡œë”© ì„±ê³µ");
+            if (cloudData == null)
             {
-                Debug.Log("ºÒ·¯¿Ã µ¥ÀÌÅÍ°¡ Á¸ÀçÇÏÁö ¾ÊÀ½");
+                Debug.Log("ë¶ˆëŸ¬ì˜¬ ë°ì´í„°ê°€ ì¡´ì¬í•˜ì§€ ì•ŠìŒ");
                 return;
             }
             else
             {
-                //Å¬¶ó¿ìµå µ¥ÀÌÅÍ À¯Àúµ¥ÀÌÅÍ¿¡ ³Ö°í ·ÎÄÃÀúÀå..ÀÌ·¸°Ô ÇØµµ ¹Ù·Î ¹İ¿µ µÇ´Â°ÇÁö È®ÀÎÇØ¾ß ÇÔ
+                //í´ë¼ìš°ë“œ ë°ì´í„° ìœ ì €ë°ì´í„°ì— ë„£ê³  ë¡œì»¬ì €ì¥..ì´ë ‡ê²Œ í•´ë„ ë°”ë¡œ ë°˜ì˜ ë˜ëŠ”ê±´ì§€ í™•ì¸í•´ì•¼ í•¨
                 //byte[] to gameData
-                Debug.Log("µ¥ÀÌÅÍ°¡Á®¿È");
+                Debug.Log("ë°ì´í„°ê°€ì ¸ì˜´");
                 DataController.instance.gameData = JsonConvert.DeserializeObject<GameData>(Encoding.UTF8.GetString(cloudData));
                 DataController.instance.SaveData();
             }
         }
         else
         {
-            Debug.Log("·Îµù ½ÇÆĞ : "+state);
+            Debug.Log("ë¡œë”© ì‹¤íŒ¨ : " + state);
         }
     }
 
