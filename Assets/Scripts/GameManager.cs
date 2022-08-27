@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using DG.Tweening;
 using System;
 using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
 
 
 
@@ -124,13 +125,11 @@ public class GameManager : MonoBehaviour
 
     #region 기본
 
+
     void Start()
     {
-        PrintTime();
-        CheckFirstGame();
         StartCoroutine(PreWork());
-
-
+        //PrintTime();
         Application.targetFrameRate = 60;
         instance = this; // 게임 매니저의 싱글턴 패턴화 >> GameManager.instance.~~ 로 호출
 
@@ -151,7 +150,7 @@ public class GameManager : MonoBehaviour
 
         globalVar = GameObject.FindGameObjectWithTag("Global").GetComponent<Globalvariable>();
 
-        isStart = true;
+        //isStart = true;
 
         InitDataInGM();
     }
@@ -241,7 +240,7 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             DataController.instance.SaveData();
-            isStart = false;
+            //isStart = false;
             Application.Quit();
         }
     }
@@ -264,11 +263,12 @@ public class GameManager : MonoBehaviour
         else 
         {
             attendanceCheck.GetComponent<AttendanceCheck>().Attendance();
-            if(isStart)//&&Intro.isEnd)
+            //if(isStart)//&&Intro.isEnd)
                 StartCoroutine(CheckElapseTime());
         }
 
     }
+
 
     #endregion
 
@@ -1119,7 +1119,7 @@ public class GameManager : MonoBehaviour
         DataController.instance.gameData.isAttendance = false;
         attendanceCheck.GetComponent<AttendanceCheck>().Attendance();
 
-        DataController.instance.gameData.nextMidnightTime = DataController.instance.gameData.currentTime.AddMinutes(30);
+        DataController.instance.gameData.nextMidnightTime = DataController.instance.gameData.currentTime.AddMinutes(5);
         //DataController.instance.gameData.currentTime.Date.AddDays(1); //다음날 자정 정보 저장.
 
         //자정 타이머
@@ -1135,14 +1135,14 @@ public class GameManager : MonoBehaviour
 
         TimeSpan gap = DataController.instance.gameData.currentTime - DataController.instance.gameData.lastExitTime;
 
-        if (gap.TotalSeconds > 70f)
+        if (gap.TotalSeconds > 70f)//310f
         {
             StartCoroutine(CalculateTime());
         }
 
         MidNightCheck();
 
-        if (!MiniGameManager.isOpen && DataController.instance.gameData.rewardAbsenceTime.TotalMinutes >= 1)//&&Intro.isEnd)
+        if (!MiniGameManager.isOpen && DataController.instance.gameData.rewardAbsenceTime.TotalMinutes >= 1)//>=60//&&Intro.isEnd)
         {
             //부재중 이벤트
             AbsenceTime();
@@ -1159,11 +1159,10 @@ public class GameManager : MonoBehaviour
         StartCoroutine(UpdateCurrentTime()); //30초 갱신 레쓰기릿
         MidNightCheck();
 
-        if (!MiniGameManager.isOpen && DataController.instance.gameData.rewardAbsenceTime.TotalMinutes >= 1)//&&Intro.isEnd)
+        if (DataController.instance.gameData.rewardAbsenceTime.TotalMinutes >= 1)//60&&Intro.isEnd)
         {
             //부재중 이벤트
             AbsenceTime();
-
         }
     }
 
@@ -1177,7 +1176,7 @@ public class GameManager : MonoBehaviour
             //예외처리
             TimeSpan test = DataController.instance.gameData.nextMidnightTime - DataController.instance.gameData.currentTime;
             if (test.TotalMinutes >= 31)
-                DataController.instance.gameData.nextMidnightTime = DataController.instance.gameData.currentTime.AddMinutes(30);
+                DataController.instance.gameData.nextMidnightTime = DataController.instance.gameData.currentTime.AddMinutes(5);
 
             //자정시간
             TimeSpan gap = DataController.instance.gameData.nextMidnightTime - DataController.instance.gameData.currentTime;
@@ -1199,7 +1198,7 @@ public class GameManager : MonoBehaviour
         {
             DataController.instance.gameData.isFirstGame = true;
 
-            DataController.instance.gameData.nextMidnightTime = DataController.instance.gameData.currentTime.AddMinutes(30);
+            DataController.instance.gameData.nextMidnightTime = DataController.instance.gameData.currentTime.AddMinutes(5);
             DataController.instance.gameData.lastExitTime = DataController.instance.gameData.currentTime;
             DataController.instance.gameData.rewardAbsenceTime = TimeSpan.FromSeconds(0);
             return true;
@@ -1215,8 +1214,8 @@ public class GameManager : MonoBehaviour
 
         DataController.instance.gameData.lastExitTime = DataController.instance.gameData.currentTime;
 
-        if ((DataController.instance.gameData.rewardAbsenceTime + gap).TotalMinutes >= 720) //부재중 수익 최대치 고정
-            DataController.instance.gameData.rewardAbsenceTime = TimeSpan.FromMinutes(720);
+        if ((DataController.instance.gameData.rewardAbsenceTime + gap).TotalMinutes >= 1440) //부재중 수익 최대치 고정 24시간
+            DataController.instance.gameData.rewardAbsenceTime = TimeSpan.FromMinutes(1440);
         else
             DataController.instance.gameData.rewardAbsenceTime += gap;
 
@@ -1236,7 +1235,14 @@ public class GameManager : MonoBehaviour
 
     public void AbsenceTime()
     {
-        revenue = DataController.instance.gameData.rewardAbsenceTime.Minutes * 100;
+        int researchLevelAdd=0;
+
+        for (int i = 0; i < 6; i++)
+            researchLevelAdd+=DataController.instance.gameData.researchLevel[i];
+
+        revenue = (DataController.instance.gameData.rewardAbsenceTime.Minutes / 5) * researchLevelAdd/6;
+        Debug.Log("부재중 수익" + revenue);
+
         //if (Intro.isEnd)
         {
             if (revenue == 0)

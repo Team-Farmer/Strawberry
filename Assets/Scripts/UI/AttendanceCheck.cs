@@ -133,8 +133,6 @@ public class AttendanceCheck : MonoBehaviour
             - DataController.instance.gameData.atdLastday; //날짜 차이 계산
         daysCompare = ts.Minutes; //Days 정보만 추출.
 
-        Debug.Log(ts.Minutes);
-
         if (daysCompare >= 30 && daysCompare < 60)
             return 0;
         else if (daysCompare == 0)
