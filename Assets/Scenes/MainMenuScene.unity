@@ -158,7 +158,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 214, y: 268}
+  m_SizeDelta: {x: 160.5, y: 201}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &179490
 MonoBehaviour:
@@ -1945,7 +1945,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 214, y: 268}
+  m_SizeDelta: {x: 160.5, y: 201}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &59414524
 MonoBehaviour:
@@ -2311,6 +2311,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 76758257}
   m_CullTransparentMesh: 1
+--- !u!1 &81318100
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 81318102}
+  - component: {fileID: 81318101}
+  m_Layer: 5
+  m_Name: GPGSManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &81318101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 81318100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b34b0be9ea0cc324da77cc8f10c70dfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!224 &81318102
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 81318100}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &82813773
 GameObject:
   m_ObjectHideFlags: 0
@@ -2865,18 +2913,6 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 909940711}
-        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: BgSoundPlay2
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 926323871}
         m_TargetAssemblyTypeName: MiniGameManager, Assembly-CSharp
@@ -3749,7 +3785,7 @@ Transform:
   m_Children:
   - {fileID: 274168414}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &141875251
 GameObject:
@@ -3821,7 +3857,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 100
+  m_Text: 0
 --- !u!222 &141875254
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3911,7 +3947,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uB538\uAE30 \uBD84\uB958\n"
+  m_Text: "\uB538\uAE30\uB97C \uB098\uB220\uB77C"
 --- !u!222 &144421583
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6451,6 +6487,9 @@ MonoBehaviour:
   pause_btn: {fileID: 26371100}
   resultPanel: {fileID: 2074009428}
   result_txt: {fileID: 2044982778}
+  checkButton: {fileID: 0}
+  challengeButton: {fileID: 0}
+  settingButton: {fileID: 0}
   size: 0
   time: 0
   score: 0
@@ -7180,7 +7219,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1038, y: 284}
+  m_SizeDelta: {x: 778.5, y: 213}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &238322980
 MonoBehaviour:
@@ -9750,7 +9789,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 214, y: 268}
+  m_SizeDelta: {x: 160.5, y: 201}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &329374483
 MonoBehaviour:
@@ -10224,7 +10263,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 214, y: 268}
+  m_SizeDelta: {x: 160.5, y: 201}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &349556930
 MonoBehaviour:
@@ -16478,7 +16517,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: fffcb38c5316eb843924a2af66e3bd38, type: 3}
-    m_FontSize: 48
+    m_FontSize: 60
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
@@ -16489,7 +16528,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 100pt
+  m_Text: 0
 --- !u!222 &545549170
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -22364,7 +22403,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 214, y: 268}
+  m_SizeDelta: {x: 160.5, y: 201}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &757843642
 MonoBehaviour:
@@ -25132,7 +25171,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 214, y: 268}
+  m_SizeDelta: {x: 160.5, y: 201}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &830676010
 MonoBehaviour:
@@ -26786,7 +26825,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1038, y: 284}
+  m_SizeDelta: {x: 778.5, y: 213}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &881296383
 MonoBehaviour:
@@ -28179,32 +28218,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b170ec3444a73a47b0e7345a3e7b36b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlayAudio: 0
+  isPlayAudio: 1
   BGSoundSlider: {fileID: 649835577}
   SFXSoundSlider: {fileID: 1349655535}
   mixer: {fileID: 24100000, guid: 61b1ac8c39cbb0541ab8ce6a71e1bd09, type: 2}
   bgSound: {fileID: 909940709}
   BgClipList:
-  - {fileID: 8300000, guid: c17e18da545cac5428a7ab0bcdca08d0, type: 3}
-  - {fileID: 8300000, guid: 98b1319a1e1a2564db29aea0fb488b78, type: 3}
-  SFXclip: {fileID: 8300000, guid: 573b0c07504e2014d9849507007ad69f, type: 3}
-  SowClip: {fileID: 8300000, guid: 7297c6a03c194444eab3a17ed75c9a74, type: 3}
-  HarvestClip: {fileID: 8300000, guid: 2083be458872fa54e9a0288e12f6e33a, type: 3}
-  Cute1Clip: {fileID: 8300000, guid: 09015dfe15d5c3d4ea41fef16aeaf1b0, type: 3}
-  BlopClip: {fileID: 8300000, guid: 573b0c07504e2014d9849507007ad69f, type: 3}
-  Cute2Clip: {fileID: 8300000, guid: 4a9b97e26bbd31b4b81de811b93abd80, type: 3}
-  Cute4Clip: {fileID: 8300000, guid: da592e344f873774fb0cc282ae5ae385, type: 3}
-  TadaClip: {fileID: 8300000, guid: 3ca1e42f2f6d9c241af81e832ef42837, type: 3}
-  RainClip: {fileID: 8300000, guid: bec3ac3a1a92e204ca25192a92ae1c1c, type: 3}
-  RightClip: {fileID: 8300000, guid: 2bb3dbe2c3e0e8c4498b21ec30dbbc78, type: 3}
-  WrongClip: {fileID: 8300000, guid: 397d2f77b1495204f871a9a5a9d78106, type: 3}
-  DoorOpenClip: {fileID: 8300000, guid: db14ec489f5eb704fa9409a8ea3fc0fc, type: 3}
-  DoorCloseClip: {fileID: 8300000, guid: 3ccb012fcadbc0c40a599f4947c47e3c, type: 3}
-  CoinClip: {fileID: 8300000, guid: f9e31c2f9db673c429061405b0fbbb9a, type: 3}
-  RewardClip: {fileID: 8300000, guid: 90e83e21b36f8984e9b14bd03b824b99, type: 3}
-  TimerClip: {fileID: 8300000, guid: ffcb1af4332eaf34f85e6715a27df630, type: 3}
-  RemoveClip: {fileID: 8300000, guid: a58eaf4708e53ce428cf27838080bf08, type: 3}
-  Remove2Clip: {fileID: 8300000, guid: 28ee5571e386cbf43939846a33644b89, type: 3}
+  - {fileID: 8300000, guid: 59e27cfaf43ecee4c8a77c9da02c4f96, type: 3}
+  - {fileID: 8300000, guid: dc249394d81c09048a3e9ff773df352c, type: 3}
+  - {fileID: 8300000, guid: 0a4effcf909b40447805f14ae6bf1704, type: 3}
+  - {fileID: 8300000, guid: 7ce2b63ef82c7b14389af60ea96ad877, type: 3}
+  - {fileID: 8300000, guid: 6ebf1177d4a59ca4bab2391de0132406, type: 3}
+  - {fileID: 8300000, guid: 07d298f1fc835b142adfe7e2e7c7d10e, type: 3}
+  - {fileID: 8300000, guid: df67984beeb38894a8d0c581027c2dc7, type: 3}
+  - {fileID: 8300000, guid: bce228d58e867db43aeb32ae74cf0f46, type: 3}
+  HarvestClip: {fileID: 8300000, guid: 3f2912d4f3ff1754882919561fdd2f94, type: 3}
+  SowClip: {fileID: 8300000, guid: 78e09ff771cde1e44bad11bfe18bc95c, type: 3}
+  ClickClip: {fileID: 8300000, guid: 0f90f3705395aa74fbf347c1d2ccf4cf, type: 3}
+  OKClip: {fileID: 8300000, guid: ae800e1ba0177084faa684447cb1fc45, type: 3}
+  BackClip: {fileID: 8300000, guid: a3805d08c5588184ab154cb1e6188ad5, type: 3}
+  ErrorClip: {fileID: 8300000, guid: a57fcb20a63b88440b3c49b39b84c4f7, type: 3}
+  TadaClip: {fileID: 8300000, guid: fb1097f2d0bd4fd4ca019c532fe94761, type: 3}
+  RainClip: {fileID: 8300000, guid: da4a484d33128504fbae6f3a0feeaf31, type: 3}
+  RightClip: {fileID: 8300000, guid: 7b6b28bd2dfb30a42a4d867b87a32f41, type: 3}
+  WrongClip: {fileID: 8300000, guid: 3acbf0f186a76454b91979b6e73e3684, type: 3}
+  DoorOpenClip: {fileID: 8300000, guid: fba200efab9ec0a4db912ed50e87c53d, type: 3}
+  DoorCloseClip: {fileID: 8300000, guid: b0f0184635d6ad74bac1f1911cdfc7ea, type: 3}
+  CoinClip: {fileID: 8300000, guid: 0d0a916bee94de346bdb062c2230b1d1, type: 3}
+  RewardClip: {fileID: 8300000, guid: 628771933e8c2194dae74965c11d654f, type: 3}
+  TimerClip: {fileID: 8300000, guid: 837c8f7fa3eed2d4f8e09a6d21df15d9, type: 3}
+  FastTimerClip: {fileID: 8300000, guid: f78a31b8542de824f861e9d5c7d691f6, type: 3}
+  RemoveWeedClip: {fileID: 8300000, guid: cca29fe250d1ab049a37192ee113c91f, type: 3}
+  RemoveBugClip: {fileID: 8300000, guid: a0a1264518442474d9e7ec502945b38c, type: 3}
+  CountdownClip: {fileID: 8300000, guid: f918bc0ea3ef18b459d57f5c6044a1d2, type: 3}
+  EndClip: {fileID: 8300000, guid: 45776f7912fbd3244b52a9f68f5efc2c, type: 3}
+  ScrollbarClip: {fileID: 8300000, guid: 3fb798026451a4348904665697b27f97, type: 3}
 --- !u!1 &910149892
 GameObject:
   m_ObjectHideFlags: 0
@@ -29307,6 +29355,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adc94740434bce44e92ac9ede16f51d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AudioManager: {fileID: 909940711}
   Store: {fileID: 926323866}
   StoreSprite:
   - {fileID: 2894771460051042406, guid: 11799ae92cd2d07459ef58f34b7286bc, type: 3}
@@ -29419,7 +29468,7 @@ RectTransform:
   - {fileID: 1732820979}
   - {fileID: 1276420185}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -30967,6 +31016,9 @@ MonoBehaviour:
   pause_btn: {fileID: 983606804}
   resultPanel: {fileID: 442129995}
   result_txt: {fileID: 729198178}
+  checkButton: {fileID: 0}
+  challengeButton: {fileID: 0}
+  settingButton: {fileID: 0}
   size: 0
   time: 0
   score: 0
@@ -31440,7 +31492,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 214, y: 268}
+  m_SizeDelta: {x: 160.5, y: 201}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1010144151
 MonoBehaviour:
@@ -32557,6 +32609,9 @@ MonoBehaviour:
   pause_btn: {fileID: 1527013220}
   resultPanel: {fileID: 1058566553}
   result_txt: {fileID: 1559048968}
+  checkButton: {fileID: 0}
+  challengeButton: {fileID: 0}
+  settingButton: {fileID: 0}
   size: 0
   time: 0
   score: 0
@@ -35895,7 +35950,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 100
+  m_Text: 0
 --- !u!222 &1172329208
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -36829,6 +36884,9 @@ MonoBehaviour:
   pause_btn: {fileID: 1575812598}
   resultPanel: {fileID: 355732581}
   result_txt: {fileID: 165391459}
+  checkButton: {fileID: 0}
+  challengeButton: {fileID: 0}
+  settingButton: {fileID: 0}
   size: 0
   time: 0
   score: 0
@@ -37781,18 +37839,6 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 909940711}
-        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: BgSoundPlay2
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 926323871}
         m_TargetAssemblyTypeName: MiniGameManager, Assembly-CSharp
@@ -44697,7 +44743,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1467007738
 MonoBehaviour:
@@ -48275,7 +48321,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1038, y: 284}
+  m_SizeDelta: {x: 778.5, y: 213}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1624947734
 MonoBehaviour:
@@ -48922,18 +48968,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 909940711}
-        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: BgSoundPlay2
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 926323871}
         m_TargetAssemblyTypeName: MiniGameManager, Assembly-CSharp
         m_MethodName: SetInfo
@@ -49528,7 +49562,7 @@ Transform:
   m_Children:
   - {fileID: 824074773}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1663894956
 PrefabInstance:
@@ -50091,7 +50125,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 214, y: 268}
+  m_SizeDelta: {x: 160.5, y: 201}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1678164360
 MonoBehaviour:
@@ -50687,7 +50721,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 214, y: 268}
+  m_SizeDelta: {x: 160.5, y: 201}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1700265880
 MonoBehaviour:
@@ -53670,7 +53704,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1038, y: 284}
+  m_SizeDelta: {x: 778.5, y: 213}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1826372885
 MonoBehaviour:
@@ -54887,18 +54921,6 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 909940711}
-        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: BgSoundPlay2
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 926323871}
         m_TargetAssemblyTypeName: MiniGameManager, Assembly-CSharp
@@ -56859,7 +56881,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: fffcb38c5316eb843924a2af66e3bd38, type: 3}
-    m_FontSize: 48
+    m_FontSize: 60
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
@@ -56870,7 +56892,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 100pt
+  m_Text: 0
 --- !u!222 &1933553394
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -61301,7 +61323,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 214, y: 268}
+  m_SizeDelta: {x: 160.5, y: 201}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2027749365
 MonoBehaviour:
@@ -61376,7 +61398,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 214, y: 268}
+  m_SizeDelta: {x: 160.5, y: 201}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2029947115
 MonoBehaviour:
@@ -61591,7 +61613,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 214, y: 268}
+  m_SizeDelta: {x: 160.5, y: 201}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2035095709
 MonoBehaviour:
@@ -63413,6 +63435,7 @@ GameObject:
   - component: {fileID: 2112437170}
   - component: {fileID: 2112437172}
   - component: {fileID: 2112437171}
+  - component: {fileID: 2112437173}
   m_Layer: 5
   m_Name: Yes
   m_TagString: Untagged
@@ -63477,6 +63500,62 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2112437169}
   m_CullTransparentMesh: 1
+--- !u!114 &2112437173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2112437169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 2112437171}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 81318101}
+        m_TargetAssemblyTypeName: GPGSManager, Assembly-CSharp
+        m_MethodName: SaveToCloud
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2118730660
 GameObject:
   m_ObjectHideFlags: 0

@@ -32,7 +32,7 @@ public class MinigameBerry : MonoBehaviour
 
         minigame_3_score = this.gameObject.transform.GetComponentInParent<MiniGame3>().score;
 
-        if (minigame_3_score < 150) // 점수에 따라 딸기 낙하속도 변경
+        if (minigame_3_score < 100) // 점수에 따라 딸기 낙하속도 변경
         {
             berry_src_speed = 10.0f;
             berry_dst_speed = 20.0f;
@@ -77,9 +77,9 @@ public class MinigameBerry : MonoBehaviour
                 }
                 else
                 {
-                    this.gameObject.transform.GetComponentInParent<MiniGame3>().score += 10;                                                    
+                    this.gameObject.transform.GetComponentInParent<MiniGame3>().score += 5;                                                    
                     this.gameObject.transform.GetComponentInParent<MiniGame3>().score_txt.text
-                        = this.gameObject.transform.GetComponentInParent<MiniGame3>().score.ToString() + "점";
+                        = this.gameObject.transform.GetComponentInParent<MiniGame3>().score.ToString();
                 }
 
                 this.gameObject.SetActive(false);

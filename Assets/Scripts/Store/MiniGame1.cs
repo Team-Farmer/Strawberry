@@ -79,7 +79,7 @@ public class MiniGame1 : MiniGame
         {
             O.SetActive(true);
             score += 10;
-            score_txt.text = score.ToString() + "점";
+            score_txt.text = score.ToString();
         }
         //오답 : 10초 줄기
         else

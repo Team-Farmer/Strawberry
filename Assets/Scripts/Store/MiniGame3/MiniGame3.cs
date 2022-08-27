@@ -23,7 +23,6 @@ public class MiniGame3 : MiniGame
     {
         base.Awake();
         basketRect = basket.GetComponent<RectTransform>();     
-        //randTime = UnityEngine.Random.Range(0.5f, 1.0f);
     }
     protected override void OnEnable()
     {
@@ -48,7 +47,7 @@ public class MiniGame3 : MiniGame
 
         int score = GetComponent<MiniGame3>().score;
 
-        if (score >= 150) // 점수에 따라 딸기 생성주기 변경
+        if (score >= 100) // 점수에 따라 딸기 생성주기 변경
         {
             minigame_3_src_rndtime = 0.5f;
             minigame_3_dst_rndtime = 1.0f;

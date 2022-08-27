@@ -16,6 +16,9 @@ public class MiniGame : MonoBehaviour
     public Button pause_btn;   //일시정지 버튼
     public GameObject resultPanel;//결과패널
     public Text result_txt;    //결과 텍스트
+    public Button checkButton;
+    public Button challengeButton;
+    public Button settingButton;
 
     public float size;                         //스크롤바 사이즈
     public int time;                           //초
@@ -58,7 +61,7 @@ public class MiniGame : MonoBehaviour
         scroll.fillAmount = 1;
         score = 0;
         time = 64;
-        score_txt.text = score.ToString() + "점";
+        score_txt.text = score.ToString();
         isGameRunning = false;
         //4초 카운트
         StartCoroutine(Count4Second());
@@ -152,12 +155,20 @@ public class MiniGame : MonoBehaviour
 
     public virtual void OnClickPauseButton() //일시정지
     {
+        checkButton.interactable = false;
+        challengeButton.interactable = false;
+        settingButton.interactable = false;
+
         Time.timeScale = 0;
         isGameRunning = false;
     }
 
     public virtual void OnClickKeepGoingButton() //일시정지 해제
     {
+        checkButton.interactable = true;
+        challengeButton.interactable = true;
+        settingButton.interactable = true;
+
         Time.timeScale = 1;
         isGameRunning = true;
     }
