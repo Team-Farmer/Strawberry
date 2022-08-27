@@ -17009,7 +17009,7 @@ RectTransform:
   m_GameObject: {fileID: 576054017}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1908656632}
   - {fileID: 1300520448}
@@ -49800,7 +49800,7 @@ RectTransform:
   m_GameObject: {fileID: 1671744252}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.0008, y: 1.0008, z: 1.0008}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2054212632}
   m_Father: {fileID: 1813413855}
@@ -49892,7 +49892,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 076ee21cfd5ec411a9967e630f552fbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  showAdButtons: []
+  Popup: {fileID: 0}
   androidUnitId: Rewarded_Android
 --- !u!1 &1674278463
 GameObject:
@@ -53054,13 +53054,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 496606690}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: turnOff
-        m_Mode: 2
+      - m_Target: {fileID: 576054018}
+        m_TargetAssemblyTypeName: PanelAnimation, Assembly-CSharp
+        m_MethodName: CloseScale
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 576054017}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
