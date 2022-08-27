@@ -1,25 +1,19 @@
 fileFormatVersion: 2
-guid: 7b5781554daf5bd4f9ebd7e65b6cce4a
+guid: 4be206856f014cd4caf65747d6676499
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7688503138522254423
-    second: albahead_0
+      213: 6719759259592974849
+    second: minigameDivide_6
   - first:
-      213: -8995298805207334545
-    second: albahead_1
+      213: 5042748593916687624
+    second: minigameDivide_7
   - first:
-      213: -7850888183806381051
-    second: albahead_2
+      213: 8182515545256702659
+    second: minigameDivide_8
   - first:
-      213: 1306309026794346754
-    second: albahead_3
-  - first:
-      213: -1513482845346613526
-    second: albahead_4
-  - first:
-      213: 2312389103385020965
-    second: albahead_5
+      213: -6996277720617457420
+    second: minigameDivide_9
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -133,13 +127,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: albahead_0
+      name: minigameDivide_6
       rect:
         serializedVersion: 2
-        x: 18
-        y: 222
-        width: 160
-        height: 160
+        x: 328
+        y: 440
+        width: 1084
+        height: 2405
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,20 +141,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9a3b7e58123fc4590800000000000000
-      internalID: -7688503138522254423
+      spriteID: 1026e2c9171614d50800000000000000
+      internalID: 6719759259592974849
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: albahead_1
+      name: minigameDivide_7
       rect:
         serializedVersion: 2
-        x: 216
-        y: 222
-        width: 160
-        height: 160
+        x: 1597
+        y: 1449
+        width: 381
+        height: 313
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -168,20 +162,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f610f1355674a2380800000000000000
-      internalID: -8995298805207334545
+      spriteID: 8053108e0217bf540800000000000000
+      internalID: 5042748593916687624
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: albahead_2
+      name: minigameDivide_8
       rect:
         serializedVersion: 2
-        x: 416
-        y: 222
-        width: 160
-        height: 160
+        x: 418
+        y: 142
+        width: 196
+        height: 181
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -189,20 +183,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 504b8e8eaca0c0390800000000000000
-      internalID: -7850888183806381051
+      spriteID: 3c2332c19822e8170800000000000000
+      internalID: 8182515545256702659
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: albahead_3
+      name: minigameDivide_9
       rect:
         serializedVersion: 2
-        x: 18
-        y: 31
-        width: 160
-        height: 160
+        x: 1108
+        y: 142
+        width: 196
+        height: 181
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -210,50 +204,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 20996f48321f02210800000000000000
-      internalID: 1306309026794346754
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: albahead_4
-      rect:
-        serializedVersion: 2
-        x: 216
-        y: 31
-        width: 160
-        height: 160
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ae6b775fe570ffae0800000000000000
-      internalID: -1513482845346613526
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: albahead_5
-      rect:
-        serializedVersion: 2
-        x: 417
-        y: 31
-        width: 160
-        height: 160
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 52a8fb153a1471020800000000000000
-      internalID: 2312389103385020965
+      spriteID: 4f8ed902b7a38ee90800000000000000
+      internalID: -6996277720617457420
       vertices: []
       indices: 
       edges: []
