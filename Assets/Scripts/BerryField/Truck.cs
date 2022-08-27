@@ -9,7 +9,7 @@ public class Truck : MonoBehaviour
     public GameObject MaxPanel;
     public Button normal_receive_btn;
     public Button add_receive_btn;
-    //public int berryCnt = 0; // ¿Å±è
+    //public int berryCnt = 0; // ì˜®ê¹€
     private Animator anim;
     private ArbeitMgr arbeit;
 
@@ -22,27 +22,30 @@ public class Truck : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         arbeit = GameObject.FindGameObjectWithTag("Arbeit").GetComponent<ArbeitMgr>();
+
+        //ê´‘ê³ ë³´ê³  3ë°°ë°›ê¸°
+        add_receive_btn.onClick.AddListener(OnclickAdBtn);
     }
     void FixedUpdate()
-    {       
-        if(DataController.instance.gameData.truckBerryCnt == CNT_LEVEL_0) // Æ®·° ´©Àû µş±â °³¼ö°¡ 0°³¶ó¸é
+    {
+        if (DataController.instance.gameData.truckBerryCnt == CNT_LEVEL_0) // íŠ¸ëŸ­ ëˆ„ì  ë”¸ê¸° ê°œìˆ˜ê°€ 0ê°œë¼ë©´
         {
-            normal_receive_btn.interactable = false; // ¹Ş±â ¹öÆ°À» ºñÈ°¼ºÈ­
-            add_receive_btn.interactable = false; // ±¤°í º¸°í ¹Ş±â ¹öÆ°À» ºñÈ°¼ºÈ­
+            normal_receive_btn.interactable = false; // ë°›ê¸° ë²„íŠ¼ì„ ë¹„í™œì„±í™”
+            add_receive_btn.interactable = false; // ê´‘ê³  ë³´ê³  ë°›ê¸° ë²„íŠ¼ì„ ë¹„í™œì„±í™”
         }
-        else // Æ®·° ´©Àû µş±â °³¼ö°¡ 1°³ ÀÌ»óÀÌ¶ó¸é
+        else // íŠ¸ëŸ­ ëˆ„ì  ë”¸ê¸° ê°œìˆ˜ê°€ 1ê°œ ì´ìƒì´ë¼ë©´
         {
-            if(!normal_receive_btn.interactable && !normal_receive_btn.interactable) // ¹öÆ°ÀÌ ºñÈ°¼ºÈ­ µÅÀÖ´Ù¸é
+            if (!normal_receive_btn.interactable && !normal_receive_btn.interactable) // ë²„íŠ¼ì´ ë¹„í™œì„±í™” ë¼ìˆë‹¤ë©´
             {
-                normal_receive_btn.interactable = true; // ¹Ş±â ¹öÆ°À» È°¼ºÈ­
-                add_receive_btn.interactable = true; // ±¤°í º¸°í ¹Ş±â ¹öÆ°À» È°¼ºÈ­
-            }           
+                normal_receive_btn.interactable = true; // ë°›ê¸° ë²„íŠ¼ì„ í™œì„±í™”
+                add_receive_btn.interactable = true; // ê´‘ê³  ë³´ê³  ë°›ê¸° ë²„íŠ¼ì„ í™œì„±í™”
+            }
         }
-        if(CNT_LEVEL_0 <= DataController.instance.gameData.truckBerryCnt && DataController.instance.gameData.truckBerryCnt < CNT_LEVEL_1)
+        if (CNT_LEVEL_0 <= DataController.instance.gameData.truckBerryCnt && DataController.instance.gameData.truckBerryCnt < CNT_LEVEL_1)
         {
-            if (anim.GetInteger("Truck") == 0) return;          
-            SetAnim(0); // Æ®·° ¾Ö´Ï¸ŞÀÌ¼ÇÀ» ºó Æ®·°À¸·Î º¯°æ
-            MaxPanel.SetActive(false); // MAX ÆĞ³Î Á¦°Å
+            if (anim.GetInteger("Truck") == 0) return;
+            SetAnim(0); // íŠ¸ëŸ­ ì• ë‹ˆë©”ì´ì…˜ì„ ë¹ˆ íŠ¸ëŸ­ìœ¼ë¡œ ë³€ê²½
+            MaxPanel.SetActive(false); // MAX íŒ¨ë„ ì œê±°
         }
         if (CNT_LEVEL_1 <= DataController.instance.gameData.truckBerryCnt && DataController.instance.gameData.truckBerryCnt < CNT_LEVEL_2)
         {
@@ -60,15 +63,15 @@ public class Truck : MonoBehaviour
             if (anim.GetInteger("Truck") == 3) return;
             MaxPanel.SetActive(true);
             SetAnim(3);
-        }      
-    }    
+        }
+    }
     void SetAnim(int level)
     {
         anim.SetInteger("Truck", level);
     }
+
     public void ReceiveCoinNormal()
     {
-        //DataController.instance.gameData.coin += DataController.instance.gameData.truckCoin;
         float coEffi = arbeit.Pigma();
         float totalCoin = (DataController.instance.gameData.truckCoin
             + GameManager.instance.bonusTruckCoin) * coEffi;
@@ -76,8 +79,41 @@ public class Truck : MonoBehaviour
         Debug.Log(totalCoin);
         GameManager.instance.GetCoin((int)totalCoin);
 
-        //Debug.Log("´©Àû Ãâ¼® : " + DataController.instance.gameData.accCoin);      // ´©Àû ÄÚÀÎ Å×½ºÆ®
+        //Debug.Log("ëˆ„ì  ì¶œì„ : " + DataController.instance.gameData.accCoin);      // ëˆ„ì  ì½”ì¸ í…ŒìŠ¤íŠ¸
         DataController.instance.gameData.truckBerryCnt = 0;
         DataController.instance.gameData.truckCoin = 0;
+    }
+
+    //ê´‘ê³ 
+    void OnclickAdBtn()
+    {
+        RewardAd.instance.LoadAd();
+        RewardAd.instance.OnAdComplete += ReceiveCoin3Times;
+        RewardAd.instance.OnAdFailed += OnFailedAd;
+        RewardAd.instance.ShowAd();
+        add_receive_btn.interactable = false; // ê´‘ê³  ë³´ê³  ë°›ê¸° ë²„íŠ¼ì„ ë¹„í™œì„±í™”
+    }
+
+    public void ReceiveCoin3Times()
+    {
+        float coEffi = arbeit.Pigma();
+        float totalCoin = (DataController.instance.gameData.truckCoin
+            + GameManager.instance.bonusTruckCoin) * coEffi * 3;
+
+        Debug.Log($"ê´‘ê³ ë³´ê³  3ë°°ë°›ê¸° {totalCoin}");
+        GameManager.instance.GetCoin((int)totalCoin);
+
+        DataController.instance.gameData.truckBerryCnt = 0;
+        DataController.instance.gameData.truckCoin = 0;
+
+        RewardAd.instance.OnAdComplete -= ReceiveCoin3Times;
+        add_receive_btn.interactable = true; // ê´‘ê³  ë³´ê³  ë°›ê¸° ë²„íŠ¼ í™œì„±
+    }
+
+    void OnFailedAd()
+    {
+        RewardAd.instance.OnAdComplete -= ReceiveCoin3Times;
+        RewardAd.instance.OnAdFailed -= OnFailedAd;
+        add_receive_btn.interactable = true; // ê´‘ê³  ë³´ê³  ë°›ê¸° ë²„íŠ¼ í™œì„±
     }
 }
