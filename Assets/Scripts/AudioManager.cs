@@ -180,8 +180,8 @@ public class AudioManager : MonoBehaviour
     public void BgSoundPlay2(bool isGameMain)
     {
         AudioClip clip;
-        if (isGameMain == true) {clip= BgClipList[0]; }
-        else { clip = BgClipList[1]; }
+        if (isGameMain == true) { clip= BgClipList[1]; }
+        else { clip = BgClipList[2]; }
 
         if (isPlayAudio == true)
         {
