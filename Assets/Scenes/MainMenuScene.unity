@@ -19986,7 +19986,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uAC00\uAC8C\uB85C \uB3CC\uC544\uAC00\uAE30"
+  m_Text: "\uB3CC\uC544\uAC00\uAE30"
 --- !u!222 &659849210
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -39640,7 +39640,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uAC00\uAC8C\uB85C \uB3CC\uC544\uAC00\uAE30"
+  m_Text: "\uB3CC\uC544\uAC00\uAE30"
 --- !u!222 &1268984476
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -39934,7 +39934,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uAC00\uAC8C\uB85C \uB3CC\uC544\uAC00\uAE30"
+  m_Text: "\uB3CC\uC544\uAC00\uAE30"
 --- !u!222 &1277445860
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -40330,7 +40330,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uAC00\uAC8C\uB85C \uB3CC\uC544\uAC00\uAE30"
+  m_Text: "\uB3CC\uC544\uAC00\uAE30"
 --- !u!222 &1295807427
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -43523,7 +43523,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uAC00\uAC8C\uB85C \uB3CC\uC544\uAC00\uAE30"
+  m_Text: "\uB3CC\uC544\uAC00\uAE30"
 --- !u!222 &1402391362
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -53529,7 +53529,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uAC00\uAC8C\uB85C \uB3CC\uC544\uAC00\uAE30"
+  m_Text: "\uB3CC\uC544\uAC00\uAE30"
 --- !u!222 &1758093446
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -57710,7 +57710,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uAC00\uAC8C\uB85C \uB3CC\uC544\uAC00\uAE30"
+  m_Text: "\uB3CC\uC544\uAC00\uAE30"
 --- !u!222 &1925352375
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -59389,7 +59389,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 6719759259592974849, guid: 4be206856f014cd4caf65747d6676499, type: 3}
+  m_Sprite: {fileID: 6719759259592974849, guid: 3885fed0fc9ffb94cb7d55203d4bf630, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -63669,7 +63669,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uAC00\uAC8C\uB85C \uB3CC\uC544\uAC00\uAE30"
+  m_Text: "\uB3CC\uC544\uAC00\uAE30"
 --- !u!222 &2056770860
 CanvasRenderer:
   m_ObjectHideFlags: 0
