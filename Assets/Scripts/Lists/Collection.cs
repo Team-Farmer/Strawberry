@@ -37,7 +37,7 @@ public class Collection : MonoBehaviour
     public GameObject medalTxt;
     public GameObject heartTxt;
     public Sprite collectionBtnSprite;//베리 다 모았을 때 완료버튼 스프라이트
-    public Sprite collectionNowSprite;//베리 다 모았을 때 완료버튼 스프라이트
+    public Sprite collectionNowSprite;//베리 다 모았을 때 베리배경 스프라이트
     public GameObject FinBtn;
     public GameObject FinBG;
     public GameObject heart;
