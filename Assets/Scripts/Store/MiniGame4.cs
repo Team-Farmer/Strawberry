@@ -84,8 +84,8 @@ public class MiniGame4 : MiniGame
 
         for (int i = 0; i < 4; i++)
         {
-                //정답 베리 스프라이트 
-                correctSprite[i]= berryListAll[correctNum[i]].GetComponent<SpriteRenderer>().sprite;
+            //정답 베리 스프라이트 
+            correctSprite[i]= berryListAll[correctNum[i]].GetComponent<SpriteRenderer>().sprite;
 
 
             //정답을 보인다.
