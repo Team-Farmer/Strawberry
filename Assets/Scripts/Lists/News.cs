@@ -161,9 +161,8 @@ public class News : MonoBehaviour
             thisNews.transform.GetChild(4).gameObject.SetActive(true);//Lock
 
 
-
             int RandomNum = UnityEngine.Random.Range(1, 101);
-            if (RandomNum <= Info[ID].Price * 10) //price*10%È®·ü·Î º¸³Ê½º µþ±â È¹µæ
+            if (RandomNum <= Info[ID].Price * 10 && GameManager.instance.isNewBerryAble()) //price*10%È®·ü·Î º¸³Ê½º µþ±â È¹µæ
             {
                 //µþ±â È¹µæ
                 WarningPanelBlack.SetActive(true);
@@ -171,6 +170,7 @@ public class News : MonoBehaviour
                 ConfirmPanel.GetComponent<PanelAnimation>().OpenScale();
                 GameManager.instance.newsBerry();
             }
+
             else //´º½º¸¸ ÇØ±Ý
             {
                 //¾È³»Ã¢
@@ -178,8 +178,8 @@ public class News : MonoBehaviour
                 ConfirmPanel.GetComponent<PanelAnimation>().ScriptTxt.text = "´º½º°¡ ÇØ±ÝµÇ¾ú¾î¿ä!";
                 ConfirmPanel.GetComponent<PanelAnimation>().OpenScale();
             }
-
             YNPanel.SetActive(false);
+
         }
         else
         {

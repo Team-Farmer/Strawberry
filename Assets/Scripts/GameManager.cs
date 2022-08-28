@@ -688,7 +688,7 @@ public class GameManager : MonoBehaviour
 
     }
 
-    private bool isNewBerryAble()
+    public bool isNewBerryAble()
     {
         //지금 새딸기를 개발 할 수 있나
         switch (DataController.instance.gameData.newBerryResearchAble)
