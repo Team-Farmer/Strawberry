@@ -10,7 +10,7 @@ public class RainCtrl : MonoBehaviour
 
     private ParticleSystem rainParticle;
     private ArbeitMgr arbeit;
-    private float rainPeriod = 240f;
+    private float rainPeriod = 20f;//240
     public int mult = 1;
     public float rainTime;
     private bool isRaining;
@@ -24,7 +24,8 @@ public class RainCtrl : MonoBehaviour
     }
     void Update()
     {
-        if (isRaining) return;
+        if (isRaining) { return; }
+
         rainTime += Time.deltaTime;
         if(rainTime >= rainPeriod)
         {
@@ -42,13 +43,24 @@ public class RainCtrl : MonoBehaviour
         rainTime = 0;
       
         //Debug.Log("duration: " + rainParticle.main.duration);
-        rainParticle.Play();            
+        rainParticle.Play();
+
+        //예림 sound
+        AudioManager.instance.RainAudioPlay();
+        if (GameManager.instance.isMiniGameMode)
+        {
+            AudioManager.instance.PauseAudio("RainSFXSound");
+        }
     }
+
     IEnumerator RainingRoutine()
     {        
         yield return new WaitForSeconds(rainParticle.main.duration);
         rainPanel.GetComponent<PanelAnimation>().FadeOut();
         mult = 1;
         isRaining = false;
+
+        //예림 sound
+        AudioManager.instance.StopPlayAudio("RainSFXSound");
     }
 }

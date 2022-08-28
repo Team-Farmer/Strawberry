@@ -11,7 +11,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    #region ÀÎ½ºÆåÅÍ
+    #region ï¿½Î½ï¿½ï¿½ï¿½ï¿½ï¿½
     public static GameManager instance;
 
     [Header("[ Money ]")]
@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
 
     [Header("[ Object ]")]
     private Globalvariable globalVar;
-    public GameObject stemPrefab; // ÇÁ¸®ÆÕ
+    public GameObject stemPrefab; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     public GameObject bugPrefab;
 
     public List<GameObject> farmObjList = new List<GameObject>();
@@ -47,8 +47,8 @@ public class GameManager : MonoBehaviour
 
     //PTJ, NEWS================================
     [Header("[ PTJ ]")]
-    //PTJ ¾Ë¹Ù
-    public GameObject workingCountText;//°í¿ë ÁßÀÎ µ¿¹° ¼ö
+    //PTJ ï¿½Ë¹ï¿½
+    public GameObject workingCountText;//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
     public GameObject PTJList;
 
     [Header("PTJ === Warning Panel")]
@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviour
     public int NewsPrefabNum;
 
 
-    //»õ·Î¿îµþ±â================================
+    //ï¿½ï¿½ï¿½Î¿ï¿½ï¿½ï¿½ï¿½================================
     [Header("[ NEW BERRY === OBJECT ]")]
     public GameObject priceText_newBerry;
     public GameObject timeText_newBerry;
@@ -85,9 +85,9 @@ public class GameManager : MonoBehaviour
     public SpriteRenderer[] stemLevelSprites;
 
 
-    private int price_newBerry;//ÀÌ¹ø¿¡ °³¹ßµÇ´Â º£¸® °¡°Ý
-    private string BtnState;//Áö±Ý ¹öÆ° »óÅÂ
-    private int newBerryIndex2;//ÀÌ¹ø¿¡ °³¹ßµÇ´Â ´º½º º£¸® ³Ñ¹ö
+    private int price_newBerry;//ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ßµÇ´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    private string BtnState;//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ° ï¿½ï¿½ï¿½ï¿½
+    private int newBerryIndex2;//ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ßµÇ´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ¹ï¿½
 
     [Header("[ NEW BERRY === GLOBAL ]")]
     public GameObject Global;
@@ -121,9 +121,10 @@ public class GameManager : MonoBehaviour
     public bool isBlackPanelOn = false;
     private int coinUpdate;
     public bool isStart;
+    public bool isMiniGameMode = false;
     #endregion
 
-    #region ±âº»
+    #region ï¿½âº»
 
 
     void Start()
@@ -134,7 +135,7 @@ public class GameManager : MonoBehaviour
 
 
         Application.targetFrameRate = 60;
-        instance = this; // °ÔÀÓ ¸Å´ÏÀúÀÇ ½Ì±ÛÅÏ ÆÐÅÏÈ­ >> GameManager.instance.~~ ·Î È£Ãâ
+        instance = this; // ï¿½ï¿½ï¿½ï¿½ ï¿½Å´ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½È­ >> GameManager.instance.~~ ï¿½ï¿½ È£ï¿½ï¿½
 
         target = TruckObj.GetComponent<Transform>();
 
@@ -166,7 +167,7 @@ public class GameManager : MonoBehaviour
 
     void InitDataInGM()
     {
-        // °ÔÀÓ ½ÃÀÛ ½Ã µþ±â °¡°Ý ÇÑ¹ø ¾÷µ¥ÀÌÆ® ÇØÁÖ±â
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½Ö±ï¿½
         float researchCoeffi = (DataController.instance.gameData.researchLevel[0]) * globalVar.getEffi();
         for (int i = 0; i < 192; i++)
         {
@@ -207,11 +208,11 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         //PTJ
-        //¾ø¾Ö±â
-        workingCountText.GetComponent<Text>().text = DataController.instance.gameData.PTJCount.ToString();//¾Ë¹ÙÁßÀÎ ÀÎ¿ø¼ö
+        //ï¿½ï¿½ï¿½Ö±ï¿½
+        workingCountText.GetComponent<Text>().text = DataController.instance.gameData.PTJCount.ToString();//ï¿½Ë¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Î¿ï¿½ï¿½ï¿½
 
-        //NEW BERRY °³¹ß
-        //¾ø¾Ö±â
+        //NEW BERRY ï¿½ï¿½ï¿½ï¿½
+        //ï¿½ï¿½ï¿½Ö±ï¿½
         switch (DataController.instance.gameData.newBerryBtnState)
         {
             case 0: BtnState = "start"; startBtn_newBerry.GetComponent<Image>().sprite = StartImg; break;
@@ -219,9 +220,9 @@ public class GameManager : MonoBehaviour
             case 2: BtnState = "done"; startBtn_newBerry.GetComponent<Image>().sprite = DoneImg; break;
         }
 
-        if (Input.GetMouseButton(0)) // ¸¶¿ì½º ¿ÞÂÊ ¹öÆ°À¸·Î
+        if (Input.GetMouseButton(0)) // ï¿½ï¿½ï¿½ì½º ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ°ï¿½ï¿½ï¿½ï¿½
         {
-            GameObject obj = ClickObj(); // Å¬¸¯´çÇÑ ¿ÉÁ§À» °¡Á®¿Â´Ù
+            GameObject obj = ClickObj(); // Å¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½
             if (obj != null)
             {
 
@@ -240,7 +241,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        //Æù¿¡¼­ µÚ·Î°¡±â ¹öÆ° ´­·¶À» ¶§/¿¡µðÅÍ¿¡¼­ESC¹öÆ° ´­·¶À» ¶§ °ÔÀÓ Á¾·á
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ú·Î°ï¿½ï¿½ï¿½ ï¿½ï¿½Æ° ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½/ï¿½ï¿½ï¿½ï¿½ï¿½Í¿ï¿½ï¿½ï¿½ESCï¿½ï¿½Æ° ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             DataController.instance.SaveData();
@@ -251,7 +252,7 @@ public class GameManager : MonoBehaviour
     void LateUpdate()
     {
         //CoinText.text = coin.ToString() + " A";
-        //ShowCoinText(CoinText, DataController.instance.gameData.coin); // Æ®·°ÄÚÀÎ ³ªÅ¸³¾ ¶§ °°ÀÌ¾²·Á°í ¸Å°³º¯¼ö·Î ¹Þ°Ô ¼öÁ¤Çß¾î¿ä - ½ÅÈñ±Ô
+        //ShowCoinText(CoinText, DataController.instance.gameData.coin); // Æ®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å¸ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Å°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ß¾ï¿½ï¿½ - ï¿½ï¿½ï¿½ï¿½ï¿½
         //HeartText.text = DataController.instance.gameData.heart.ToString();
     }
 
@@ -275,7 +276,7 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
-    #region µþ±â¹ç
+    #region ï¿½ï¿½ï¿½ï¿½ï¿½
     void ClickedFarm(GameObject obj)
     {
 
@@ -286,17 +287,17 @@ public class GameManager : MonoBehaviour
             Stem st = GetStem(farm.farmIdx);
             if (st != null)
             {
-                PlantStrawBerry(st, obj); // ½É´Â´Ù
+                PlantStrawBerry(st, obj); // ï¿½É´Â´ï¿½
                 AudioManager.instance.SowAudioPlay();
                 DataController.instance
-                    .gameData.berryFieldData[farm.farmIdx].isPlant = true; // Ã¼Å© º¯¼ö °»½Å
+                    .gameData.berryFieldData[farm.farmIdx].isPlant = true; // Ã¼Å© ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             }
         }
         else
         {
             if (!DataController.instance.gameData.berryFieldData[farm.farmIdx].canGrow)
             {
-                Harvest(stemList[farm.farmIdx]); // ¼öÈ®
+                Harvest(stemList[farm.farmIdx]); // ï¿½ï¿½È®
             }
         }
     }
@@ -327,25 +328,25 @@ public class GameManager : MonoBehaviour
     public void PlantStrawBerry(Stem stem, GameObject obj)
     {
         BoxCollider2D coll = obj.GetComponent<BoxCollider2D>();
-        //stem.transform.position = obj.transform.position; ; // ¹çÀÇ Transform¿¡ µþ±â¸¦ ½É´Â´Ù
-        stem.gameObject.SetActive(true); // µþ±â È°¼ºÈ­              
-        coll.enabled = false; // ¹çÀÇ ÄÝ¶óÀÌ´õ¸¦ ºñÈ°¼ºÈ­ (ÀâÃÊ¿Í Ãæµ¹ ¹æÁö)
+        //stem.transform.position = obj.transform.position; ; // ï¿½ï¿½ï¿½ï¿½ Transformï¿½ï¿½ ï¿½ï¿½ï¿½â¸¦ ï¿½É´Â´ï¿½
+        stem.gameObject.SetActive(true); // ï¿½ï¿½ï¿½ï¿½ È°ï¿½ï¿½È­              
+        coll.enabled = false; // ï¿½ï¿½ï¿½ï¿½ ï¿½Ý¶ï¿½ï¿½Ì´ï¿½ï¿½ï¿½ ï¿½ï¿½È°ï¿½ï¿½È­ (ï¿½ï¿½ï¿½Ê¿ï¿½ ï¿½æµ¹ ï¿½ï¿½ï¿½ï¿½)
     }
     public void Harvest(Stem stem)
     {
         Farm farm = farmList[stem.stemIdx];
         if (farm.isHarvest) return;
 
-        AudioManager.instance.HarvestAudioPlay();//µþ±â ¼öÈ®ÇÒ¶§ È¿°úÀ½
+        AudioManager.instance.HarvestAudioPlay();//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È®ï¿½Ò¶ï¿½ È¿ï¿½ï¿½ï¿½ï¿½
         farm.isHarvest = true;
         Vector2 pos = stem.transform.position;
         stem.getInstantBerryObj().GetComponent<Berry>().Explosion(pos, target.position, 0.5f);
         //stem.getInstantBerryObj().GetComponent<SpriteRenderer>().sortingOrder = 3;
 
-        StartCoroutine(HarvestRoutine(farm, stem)); // ¿¬¼ÓÀ¸·Î µþ±â°¡ ½É¾îÁö´Â Çö»óÀ» ¹æÁö
+        StartCoroutine(HarvestRoutine(farm, stem)); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½â°¡ ï¿½É¾ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
     }
-    GameObject ClickObj() // Å¬¸¯´çÇÑ ¿ÀºêÁ§Æ®¸¦ ¹ÝÈ¯
+    GameObject ClickObj() // Å¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½È¯
     {
         Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero, 0f);
@@ -356,27 +357,27 @@ public class GameManager : MonoBehaviour
     }
     IEnumerator HarvestRoutine(Farm farm, Stem stem)
     {
-        farm.GetComponent<BoxCollider2D>().enabled = false; // ¹çÀ» Àá½Ã ºñÈ°¼ºÈ­
+        farm.GetComponent<BoxCollider2D>().enabled = false; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½È°ï¿½ï¿½È­
 
-        yield return new WaitForSeconds(0.75f); // 0.75ÃÊ µÚ¿¡
+        yield return new WaitForSeconds(0.75f); // 0.75ï¿½ï¿½ ï¿½Ú¿ï¿½
 
         UpdateTruckState(stem);
 
-        DataController.instance.gameData.totalHarvBerryCnt++; // ¼öÈ®ÇÑ µþ±âÀÇ ÃÑ °³¼ö ¾÷µ¥ÀÌÆ®            
-        DataController.instance.gameData.berryFieldData[stem.stemIdx].isPlant = false; // ¹çÀ» ºñ¿öÁØ´Ù
+        DataController.instance.gameData.totalHarvBerryCnt++; // ï¿½ï¿½È®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®            
+        DataController.instance.gameData.berryFieldData[stem.stemIdx].isPlant = false; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ø´ï¿½
 
-        //ÁÙ±â¿¡ ÆäÀÌµå ¾Æ¿ô Àû¿ë
+        //ï¿½Ù±â¿¡ ï¿½ï¿½ï¿½Ìµï¿½ ï¿½Æ¿ï¿½ ï¿½ï¿½ï¿½ï¿½
         Animator anim = stemObjList[stem.stemIdx].GetComponent<Animator>();
         anim.SetInteger("Seed", 5);
 
-        yield return new WaitForSeconds(0.3f); // 0.3ÃÊ µÚ¿¡
+        yield return new WaitForSeconds(0.3f); // 0.3ï¿½ï¿½ ï¿½Ú¿ï¿½
 
         stem.gameObject.SetActive(false);
 
-        farm.isHarvest = false; // ¼öÈ®ÀÌ ³¡³²              
-        if (!DataController.instance.gameData.berryFieldData[farm.farmIdx].hasWeed && !isBlackPanelOn) // ÀâÃÊ°¡ ¾ø´Ù¸é
+        farm.isHarvest = false; // ï¿½ï¿½È®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½              
+        if (!DataController.instance.gameData.berryFieldData[farm.farmIdx].hasWeed && !isBlackPanelOn) // ï¿½ï¿½ï¿½Ê°ï¿½ ï¿½ï¿½ï¿½Ù¸ï¿½
         {
-            farm.GetComponent<BoxCollider2D>().enabled = true; // ¹çÀ» ´Ù½Ã È°¼ºÈ­ 
+            farm.GetComponent<BoxCollider2D>().enabled = true; // ï¿½ï¿½ï¿½ï¿½ ï¿½Ù½ï¿½ È°ï¿½ï¿½È­ 
         }
     }
     void UpdateTruckState(Stem stem)
@@ -389,23 +390,23 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-    #region ÀçÈ­
+    #region ï¿½ï¿½È­
 
-    IEnumerator CountAnimation(int cost, String text, int num) //ÀçÈ­ Áõ°¡ ¾Ö´Ï¸ÞÀÌ¼Ç
+    IEnumerator CountAnimation(int cost, String text, int num) //ï¿½ï¿½È­ ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½
 
     {
         if (num == 0)
         {
-            if (cost <= 9999)           // 0~9999±îÁö A
+            if (cost <= 9999)           // 0~9999ï¿½ï¿½ï¿½ï¿½ A
             {
                 coinAnimText.text = text + cost.ToString() + "A";
             }
-            else if (cost <= 9999999)   // 10000~9999999(=9999B)±îÁö B
+            else if (cost <= 9999999)   // 10000~9999999(=9999B)ï¿½ï¿½ï¿½ï¿½ B
             {
                 cost /= 1000;
                 coinAnimText.text = text + cost.ToString() + "B";
             }
-            else                        // ±× ¿Ü C (ÃÖ´ë 2100C)
+            else                        // ï¿½ï¿½ ï¿½ï¿½ C (ï¿½Ö´ï¿½ 2100C)
             {
                 cost /= 1000000;
                 coinAnimText.text = text + cost.ToString() + "C";
@@ -435,31 +436,31 @@ public class GameManager : MonoBehaviour
     public void ShowCoinText(Text coinText, int coin)
     {
         //int coin = DataController.instance.gameData.coin;
-        if (coin <= 9999)           // 0~9999±îÁö A
+        if (coin <= 9999)           // 0~9999ï¿½ï¿½ï¿½ï¿½ A
         {
             coinText.text = coin.ToString() + "A";
         }
-        else if (coin <= 9999999)   // 10000~9999999(=9999B)±îÁö B
+        else if (coin <= 9999999)   // 10000~9999999(=9999B)ï¿½ï¿½ï¿½ï¿½ B
         {
             coin /= 1000;
             coinText.text = coin.ToString() + "B";
         }
-        else                        // ±× ¿Ü C (ÃÖ´ë 2100C)
+        else                        // ï¿½ï¿½ ï¿½ï¿½ C (ï¿½Ö´ï¿½ 2100C)
         {
             coin /= 1000000;
             coinText.text = coin.ToString() + "C";
         }
     }
 
-    public void GetCoin(int cost) // ÄÚÀÎ È¹µæ ÇÔ¼ö
+    public void GetCoin(int cost) // ï¿½ï¿½ï¿½ï¿½ È¹ï¿½ï¿½ ï¿½Ô¼ï¿½
     {
         StartCoroutine(CountAnimation(cost, "+", 0));
-        DataController.instance.gameData.coin += cost; // ÇöÀç ÄÚÀÎ +
-        DataController.instance.gameData.accCoin += cost; // ´©Àû ÄÚÀÎ +
+        DataController.instance.gameData.coin += cost; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ +
+        DataController.instance.gameData.accCoin += cost; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ +
         AudioManager.instance.CoinAudioPlay();
     }
 
-    public void UseCoin(int cost) // ÄÚÀÎ »ç¿ë ÇÔ¼ö (¸¶ÀÌ³Ê½º ¹æÁö À§ÇÔ)
+    public void UseCoin(int cost) // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½ (ï¿½ï¿½ï¿½Ì³Ê½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
     {
         int mycoin = DataController.instance.gameData.coin;
         if (mycoin >= cost)
@@ -469,21 +470,21 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            //°æ°í ÆÐ³Î µîÀå
+            //ï¿½ï¿½ï¿½ ï¿½Ð³ï¿½ ï¿½ï¿½ï¿½ï¿½
             ShowCoinText(panelCoinText, DataController.instance.gameData.coin);
             blackPanel.SetActive(true);
             noCoinPanel.GetComponent<PanelAnimation>().OpenScale();
         }
     }
 
-    public void GetHeart(int cost) // ÇÏÆ® È¹µæ ÇÔ¼ö
+    public void GetHeart(int cost) // ï¿½ï¿½Æ® È¹ï¿½ï¿½ ï¿½Ô¼ï¿½
     {
         StartCoroutine(CountAnimation(cost, "+", 1));
-        DataController.instance.gameData.heart += cost; // ÇöÀç ÇÏÆ® +
-        DataController.instance.gameData.accHeart += cost; // ´©Àû ÇÏÆ® +
+        DataController.instance.gameData.heart += cost; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ® +
+        DataController.instance.gameData.accHeart += cost; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ® +
     }
 
-    public void UseHeart(int cost) // ÇÏÆ® È¹µæ ÇÔ¼ö (¸¶ÀÌ³Ê½º ¹æÁö À§ÇÔ)
+    public void UseHeart(int cost) // ï¿½ï¿½Æ® È¹ï¿½ï¿½ ï¿½Ô¼ï¿½ (ï¿½ï¿½ï¿½Ì³Ê½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
     {
         int myHeart = DataController.instance.gameData.heart;
 
@@ -494,8 +495,8 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            //°æ°í ÆÐ³Î µîÀå
-            panelHearText.text = DataController.instance.gameData.heart.ToString() + "°³";
+            //ï¿½ï¿½ï¿½ ï¿½Ð³ï¿½ ï¿½ï¿½ï¿½ï¿½
+            panelHearText.text = DataController.instance.gameData.heart.ToString() + "ï¿½ï¿½";
             blackPanel.SetActive(true);
             noHeartPanel.GetComponent<PanelAnimation>().OpenScale();
         }
@@ -517,7 +518,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            //¸Þ´ÞÀÌ ¸ðÀÚ¸¦¶§ ¶ß´Â °æ°í
+            //ï¿½Þ´ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ú¸ï¿½ï¿½ï¿½ ï¿½ß´ï¿½ ï¿½ï¿½ï¿½
         }
     }
     public void ShowMedalText()
@@ -526,8 +527,8 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-    #region ÄÝ¶óÀÌ´õ
-    public void DisableObjColliderAll() // ¸ðµç ¿ÀºêÁ§Æ®ÀÇ collider ºñÈ°¼ºÈ­
+    #region ï¿½Ý¶ï¿½ï¿½Ì´ï¿½
+    public void DisableObjColliderAll() // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ collider ï¿½ï¿½È°ï¿½ï¿½È­
     {
         BoxCollider2D coll;
         isBlackPanelOn = true;
@@ -538,43 +539,43 @@ public class GameManager : MonoBehaviour
             //stemList[i].canGrow = false;
             bugList[i].GetComponent<CircleCollider2D>().enabled = false;
             farmList[i].weed.GetComponent<CapsuleCollider2D>().enabled = false;
-            // WeedÀÇ Collider Á¦°Å
+            // Weedï¿½ï¿½ Collider ï¿½ï¿½ï¿½ï¿½
             //farmList[i].canGrowWeed = false;
         }
     }
-    public void EnableObjColliderAll() // ¸ðµç ¿ÀºêÁ§Æ®ÀÇ collider È°¼ºÈ­
+    public void EnableObjColliderAll() // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ collider È°ï¿½ï¿½È­
     {
         BoxCollider2D coll;
         isBlackPanelOn = false;
         for (int i = 0; i < farmList.Count; i++)
         {
             coll = farmList[i].GetComponent<BoxCollider2D>();
-            if (!DataController.instance.gameData.berryFieldData[i].isPlant && !DataController.instance.gameData.berryFieldData[i].hasWeed) // ÀâÃÊ°¡ ¾øÀ» ¶§¸¸ ºó ¹çÀÇ ColliderÈ°¼ºÈ­
+            if (!DataController.instance.gameData.berryFieldData[i].isPlant && !DataController.instance.gameData.berryFieldData[i].hasWeed) // ï¿½ï¿½ï¿½Ê°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ColliderÈ°ï¿½ï¿½È­
             {
                 coll.enabled = true;
             }
-            if (!DataController.instance.gameData.berryFieldData[i].hasBug && !DataController.instance.gameData.berryFieldData[i].hasWeed && DataController.instance.gameData.berryFieldData[i].createTime >= DataController.instance.gameData.stemLevel[4]) // (4)ÀÇ »óÈ², Áï ¹ú·¹¿Í ÀâÃÊ µÑ ´Ù ¾øÀ» ¶§ ´Ù ÀÚ¶õ µþ±â¹çÀÇ ÄÝ¶óÀÌ´õ¸¦ ÄÑÁØ´Ù.
+            if (!DataController.instance.gameData.berryFieldData[i].hasBug && !DataController.instance.gameData.berryFieldData[i].hasWeed && DataController.instance.gameData.berryFieldData[i].createTime >= DataController.instance.gameData.stemLevel[4]) // (4)ï¿½ï¿½ ï¿½ï¿½È², ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½Ú¶ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ý¶ï¿½ï¿½Ì´ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ø´ï¿½.
             {
                 coll.enabled = true;
             }
             bugList[i].GetComponent<CircleCollider2D>().enabled = true;
-            farmList[i].weed.GetComponent<CapsuleCollider2D>().enabled = true; // ÀâÃÊÀÇ Collider È°¼ºÈ­
+            farmList[i].weed.GetComponent<CapsuleCollider2D>().enabled = true; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Collider È°ï¿½ï¿½È­
             //farmList[i].canGrowWeed = true;
         }
     }
     #endregion
 
-    #region ¸®½ºÆ®
+    #region ï¿½ï¿½ï¿½ï¿½Æ®
 
     #region PTJ
 
-    //°í¿ë ¹öÆ° Å¬¸¯½Ã
+    //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ° Å¬ï¿½ï¿½ï¿½ï¿½
     public void PTJEmployButtonClick(int prefabNum)
     {
-        //È¿°úÀ½
+        //È¿ï¿½ï¿½ï¿½ï¿½
         AudioManager.instance.Cute1AudioPlay();
 
-        //°í¿ëÁßÀÌ ¾Æ´Ñ »óÅÂÀÌ´Ù
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Æ´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì´ï¿½
         if (DataController.instance.gameData.PTJNum[prefabNum] == 0)
         {
             if (DataController.instance.gameData.PTJCount < 3)
@@ -585,20 +586,20 @@ public class GameManager : MonoBehaviour
                     int ID = DataController.instance.gameData.PTJSelectNum[0];
                     //HIRE
 
-                    //ÄÚÀÎ»ç¿ë
+                    //ï¿½ï¿½ï¿½Î»ï¿½ï¿½
                     UseCoin(cost);
 
-                    //°í¿ë
+                    //ï¿½ï¿½ï¿½ï¿½
                     DataController.instance.gameData.PTJNum[prefabNum] = DataController.instance.gameData.PTJSelectNum[1];
 
-                    //°í¿ëÁßÀÎ ¾Ë¹Ù»ý ¼ö Áõ°¡
+                    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ë¹Ù»ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
                     DataController.instance.gameData.PTJCount++;
                 }
                 else
                 {
-                    //È¿°úÀ½
+                    //È¿ï¿½ï¿½ï¿½ï¿½
                     AudioManager.instance.Cute4AudioPlay();
-                    //ÀçÈ­ ºÎÁ· °æ°í ÆÐ³Î
+                    //ï¿½ï¿½È­ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ð³ï¿½
                     ShowCoinText(panelCoinText, DataController.instance.gameData.coin);
                     noCoinPanel.GetComponent<PanelAnimation>().OpenScale();
                     warningBlackPanel.SetActive(true);
@@ -606,19 +607,19 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                //È¿°úÀ½
+                //È¿ï¿½ï¿½ï¿½ï¿½
                 AudioManager.instance.Cute4AudioPlay();
-                //3¸íÀÌ»ó °í¿ëÁßÀÌ¶ó´Â °æ°í ÆÐ³Î µîÀå
-                confirmPanel.GetComponent<PanelAnimation>().ScriptTxt.text = "°í¿ë °¡´ÉÇÑ ¾Ë¹Ù ¼ö¸¦\n³Ñ¾î¼¹¾î¿ä!";
+                //3ï¿½ï¿½ï¿½Ì»ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¶ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ð³ï¿½ ï¿½ï¿½ï¿½ï¿½
+                confirmPanel.GetComponent<PanelAnimation>().ScriptTxt.text = "ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ë¹ï¿½ ï¿½ï¿½ï¿½ï¿½\nï¿½Ñ¾î¼¹ï¿½ï¿½ï¿½!";
                 confirmPanel.GetComponent<PanelAnimation>().OpenScale();
                 warningBlackPanel.SetActive(true);
             }
         }
-        //°í¿ëÁßÀÎ »óÅÂÀÌ´Ù
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì´ï¿½
         else
         {
             //FIRE
-            //È®ÀÎÃ¢¶ç¿ì±â
+            //È®ï¿½ï¿½Ã¢ï¿½ï¿½ï¿½ï¿½
             HireYNPanel.GetComponent<PanelAnimation>().OpenScale();
             warningBlackPanel.SetActive(true);
         }
@@ -629,12 +630,12 @@ public class GameManager : MonoBehaviour
     public void Fire()
     {
         int ID = DataController.instance.gameData.PTJSelectNum[0];
-        //°í¿ë ÇØÁ¦
+        //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         DataController.instance.gameData.PTJNum[ID] = 0;
-        //°í¿ë ÁßÀÎ ¾Ë¹Ù»ý ¼ö °¨¼Ò
-        //PTJ¿¡¼­ ±¸ÇöµÊ
+        //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ë¹Ù»ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+        //PTJï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-        //È®ÀÎÃ¢³»¸®±â
+        //È®ï¿½ï¿½Ã¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         HireYNPanel.GetComponent<PanelAnimation>().CloseScale();
         warningBlackPanel.SetActive(false);
     }
@@ -643,45 +644,45 @@ public class GameManager : MonoBehaviour
     #region New Berry Add
     public void NewBerryUpdate()
     {
-        //»õ µþ±â °³¹ß======
+        //ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½======
 
         //PRICE
         price_newBerry = 100 * (BerryCount("classic", true) + BerryCount("special", true) + BerryCount("unique", true));
         priceText_newBerry.GetComponent<Text>().text = price_newBerry.ToString();
 
-        if (DataController.instance.gameData.newBerryBtnState == 1)//ÁøÇàÁßÀÌ¸é
+        if (DataController.instance.gameData.newBerryBtnState == 1)//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½
         { StartCoroutine("Timer"); }
         else
         {
-            if (isNewBerryAble() == true)//°³¹ß °¡´ÉÇÑ µþ±â ÀÖ´ÂÁö °Ë»ç
+            if (isNewBerryAble() == true)//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½
             {
 
-                DataController.instance.gameData.newBerryIndex = selectBerry();//¾òÀ»µþ±â, ½Ã°£ Á¤ÇØÁø´Ù
-                timeText_newBerry.GetComponent<Text>().text = "??:??";//TIME (¹Ì°ø°³)
+                DataController.instance.gameData.newBerryIndex = selectBerry();//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+                timeText_newBerry.GetComponent<Text>().text = "??:??";//TIME (ï¿½Ì°ï¿½ï¿½ï¿½)
 
-                //º£¸® ¾øÀ½ Áö¿ì±â
+                //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
                 NoPanel_newBerry.SetActive(false);
             }
             else { NoPanel_newBerry.SetActive(true); }
         }
     }
-    public void NewBerryUpdate2() //°³¹ß °¡´ÉÇÑ µþ±â ¹üÀ§ ³Ð¾îÁú¶§ ½ÇÇàµÇ´Â °Å. À§¿¡ ÇÕÄ¡ÀÚ
+    public void NewBerryUpdate2() //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ð¾ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ç´ï¿½ ï¿½ï¿½. ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½
     {
 
-        if (isNewBerryAble() == true)//ÇÑ ¹ø ´õ È®ÀÎ
+        if (isNewBerryAble() == true)//ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ È®ï¿½ï¿½
         {
-            if (DataController.instance.gameData.newBerryBtnState == 0)//µþ±â ¾ò°í ÀÖ´Â »óÅÂ ¾Æ´Ï¸é
+            if (DataController.instance.gameData.newBerryBtnState == 0)//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Æ´Ï¸ï¿½
             {
-                //¾òÀ»µþ±â°¡ Á¤ÇØÁø´Ù.->½Ã°£,°ªµµ Á¤ÇØÁø´Ù.
+                //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½â°¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.->ï¿½Ã°ï¿½,ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
                 //PRICE
                 price_newBerry = 100 * (BerryCount("classic", true) + BerryCount("special", true) + BerryCount("unique", true));
                 priceText_newBerry.GetComponent<Text>().text = price_newBerry.ToString();
                 //TIME
                 DataController.instance.gameData.newBerryIndex = selectBerry();
-                timeText_newBerry.GetComponent<Text>().text = "??:??";//°¡°Ý ½Ã°£ ¾ÆÁ÷ ¹Ì°ø°³ "?"
+                timeText_newBerry.GetComponent<Text>().text = "??:??";//ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì°ï¿½ï¿½ï¿½ "?"
 
             }
-            //º£¸® ¾øÀ½ Áö¿ì±â
+            //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
             NoPanel_newBerry.SetActive(false);
         }
         else { NoPanel_newBerry.SetActive(true); }
@@ -690,19 +691,19 @@ public class GameManager : MonoBehaviour
 
     public bool isNewBerryAble()
     {
-        //Áö±Ý »õµþ±â¸¦ °³¹ß ÇÒ ¼ö ÀÖ³ª
+        //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½â¸¦ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö³ï¿½
         switch (DataController.instance.gameData.newBerryResearchAble)
         {
-            case 0://classic °³¹ß°¡´É
+            case 0://classic ï¿½ï¿½ï¿½ß°ï¿½ï¿½ï¿½
                 if (BerryCount("classic", false) == BerryCount("classic", true))
                 { return false; }
                 break;
-            case 1://classic, special °³¹ß°¡´É
+            case 1://classic, special ï¿½ï¿½ï¿½ß°ï¿½ï¿½ï¿½
                 if (BerryCount("classic", false) + BerryCount("special", false) ==
                     BerryCount("classic", true) + BerryCount("special", true))
                 { return false; }
                 break;
-            case 2: //classic, special, unique °³¹ß°¡´É
+            case 2: //classic, special, unique ï¿½ï¿½ï¿½ß°ï¿½ï¿½ï¿½
                 if (BerryCount("classic", false) + BerryCount("special", false) + BerryCount("unique", false) ==
                     BerryCount("classic", true) + BerryCount("special", true) + BerryCount("unique", true))
                 { return false; }
@@ -712,7 +713,7 @@ public class GameManager : MonoBehaviour
     }
 
 
-    //isUnlock-> false=ÇöÀç °ªÀÌ Á¸ÀçÇÏ´Â µþ±â °¹¼öµéÀ» ¹ÝÈ¯ / true=ÇöÀç unlockµÈ µþ±â °¹¼öµéÀ» ¹ÝÈ¯ÇÑ´Ù.
+    //isUnlock-> false=ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ / true=ï¿½ï¿½ï¿½ï¿½ unlockï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ï¿½Ñ´ï¿½.
     private int BerryCount(string berryClssify, bool isUnlock)
     {
         int countIsExsist = 0;
@@ -740,7 +741,7 @@ public class GameManager : MonoBehaviour
                 for (int i = 128; i < 128 + 64; i++)
                 { if (DataController.instance.gameData.isBerryUnlock[i] == true) { countIsUnlock++; } }
                 break;
-                //default:Debug.Log("Àß¸øµÈ °ª ¹Þ¾Ò´Ù");break;
+                //default:Debug.Log("ï¿½ß¸ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Þ¾Ò´ï¿½");break;
         }
 
 
@@ -751,51 +752,51 @@ public class GameManager : MonoBehaviour
 
 
 
-    //»õ·Î¿î µþ±â °³¹ß ¹öÆ° ´©¸£¸é
+    //ï¿½ï¿½ï¿½Î¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ° ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     public void NewBerryButton()
     {
 
         switch (BtnState)
         {
             case "start":
-                //ÀÌ¹ø »õµþ±â °³¹ß¿¡ ÇÊ¿äÇÑ °¡°Ý°ú ½Ã°£
-                priceText_newBerry.GetComponent<Text>().text = price_newBerry.ToString();//°¡°Ý
+                //ï¿½Ì¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ß¿ï¿½ ï¿½Ê¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ý°ï¿½ ï¿½Ã°ï¿½
+                priceText_newBerry.GetComponent<Text>().text = price_newBerry.ToString();//ï¿½ï¿½ï¿½ï¿½
                 timeText_newBerry.GetComponent<Text>().text
-                    = TimeForm(Mathf.CeilToInt(DataController.instance.gameData.newBerryTime));//½Ã°£
+                    = TimeForm(Mathf.CeilToInt(DataController.instance.gameData.newBerryTime));//ï¿½Ã°ï¿½
 
                 if (DataController.instance.gameData.coin >= price_newBerry)
                 {
-                    //µ·¼Òºñ
+                    //ï¿½ï¿½ï¿½Òºï¿½
                     UseCoin(price_newBerry);
 
-                    //¹öÆ°»óÅÂ ing·Î
+                    //ï¿½ï¿½Æ°ï¿½ï¿½ï¿½ï¿½ ingï¿½ï¿½
                     DataController.instance.gameData.newBerryBtnState = 1;
 
-                    //Å¸ÀÌ¸Ó ½ÃÀÛ
+                    //Å¸ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½
                     StartCoroutine("Timer");
 
-                    //½Ã°£ °¨¼Ò¿©ºÎ ¹¯´Â ÆÐ³ÎÀ» ¶ç¿î´Ù.
-                    TimeReduceBlackPanel_newBerry.SetActive(true); //½Ã¿ø °Çµå¸²
-                    TimeReducePanel_newBerry.GetComponent<PanelAnimation>().OpenScale(); //½Ã¿ø °Çµå¸²
-                    TimeReduceText_newBerry.GetComponent<Text>().text //½Ã¿ø °Çµå¸²
-                        = "ÇÏÆ® 10°³·Î ½Ã°£À» 10ºÐÀ¸·Î ÁÙÀÌ½Ã°Ú½À´Ï±î?\n";
+                    //ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½Ò¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ð³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
+                    TimeReduceBlackPanel_newBerry.SetActive(true); //ï¿½Ã¿ï¿½ ï¿½Çµå¸²
+                    TimeReducePanel_newBerry.GetComponent<PanelAnimation>().OpenScale(); //ï¿½Ã¿ï¿½ ï¿½Çµå¸²
+                    TimeReduceText_newBerry.GetComponent<Text>().text //ï¿½Ã¿ï¿½ ï¿½Çµå¸²
+                        = "ï¿½ï¿½Æ® 10ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ï¿½ï¿½ 10ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì½Ã°Ú½ï¿½ï¿½Ï±ï¿½?\n";
                 }
-                else//µ·ÀÌ ¸ðÀÚ¸§
+                else//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ú¸ï¿½
                 { UseCoin(price_newBerry); }
                 break;
 
             case "ing":
                 if (DataController.instance.gameData.newBerryTime > 1)
                 {
-                    //½Ã°£ °¨¼Ò¿©ºÎ ¹¯´Â ÆÐ³ÎÀ» ¶ç¿î´Ù.
+                    //ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½Ò¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ð³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
                     TimeReduceBlackPanel_newBerry.SetActive(true);
                     TimeReducePanel_newBerry.GetComponent<PanelAnimation>().OpenScale();
                     TimeReduceText_newBerry.GetComponent<Text>().text
-                        = "ÇÏÆ® 10°³·Î ½Ã°£À» 10ºÐÀ¸·Î ÁÙÀÌ½Ã°Ú½À´Ï±î?\n";
+                        = "ï¿½ï¿½Æ® 10ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ï¿½ï¿½ 10ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì½Ã°Ú½ï¿½ï¿½Ï±ï¿½?\n";
                 }
                 break;
 
-            case "done": //µþ±â °³¹ß
+            case "done": //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
                 GetNewBerry();
                 break;
 
@@ -804,15 +805,15 @@ public class GameManager : MonoBehaviour
     }
 
     //TimeReucePanel_newBerry
-    //ÇÏÆ® ½á¼­ ½Ã°£À» ÁÙÀÎÁö ¿©ºÎ ÆÐ³Î
+    //ï¿½ï¿½Æ® ï¿½á¼­ ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ð³ï¿½
     public void TimeReduce(bool isTimeReduce)
     {
-        //ÇÏÆ® ½á¼­ ½Ã°£À» ÁÙÀÏ°Å¸é
+        //ï¿½ï¿½Æ® ï¿½á¼­ ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï°Å¸ï¿½
         if (isTimeReduce == true)
         {
             if (DataController.instance.gameData.heart >= 10)
             {
-                //½Ã°£À» 10ºÐ ÁÙ¿©ÁØ´Ù.
+                //ï¿½Ã°ï¿½ï¿½ï¿½ 10ï¿½ï¿½ ï¿½Ù¿ï¿½ï¿½Ø´ï¿½.
                 if (DataController.instance.gameData.newBerryTime < 10 * 60)
                 { DataController.instance.gameData.newBerryTime = 0; }
                 else
@@ -820,14 +821,14 @@ public class GameManager : MonoBehaviour
 
                 timeText_newBerry.GetComponent<Text>().text
                     = TimeForm(Mathf.CeilToInt(DataController.instance.gameData.newBerryTime));
-                //ÇÏÆ®¸¦ ¼ÒºñÇÑ´Ù.
+                //ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Òºï¿½ï¿½Ñ´ï¿½.
                 UseHeart(10);
             }
             else
             { UseHeart(10); }
         }
 
-        //Ã¢ ²ô±â
+        //Ã¢ ï¿½ï¿½ï¿½ï¿½
         TimeReduceBlackPanel_newBerry.SetActive(false);
         TimeReducePanel_newBerry.GetComponent<PanelAnimation>().CloseScale();
 
@@ -838,11 +839,11 @@ public class GameManager : MonoBehaviour
 
         while (true)
         {
-            //1ÃÊ¾¿ °¨¼Ò
+            //1ï¿½Ê¾ï¿½ ï¿½ï¿½ï¿½ï¿½
             yield return new WaitForSeconds(1f);
             DataController.instance.gameData.newBerryTime--;
 
-            //°¨¼ÒÇÏ´Â ½Ã°£ º¸ÀÌ±â
+            //ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½Ì±ï¿½
             if (DataController.instance.gameData.newBerryTime <= 0)
             { timeText_newBerry.GetComponent<Text>().text = TimeForm(Mathf.CeilToInt(0)); }
             else
@@ -852,10 +853,10 @@ public class GameManager : MonoBehaviour
             }
 
 
-            //Å¸ÀÌ¸Ó ³¡³ª¸é
+            //Å¸ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             if (DataController.instance.gameData.newBerryTime < 0.1f)
             {
-                DataController.instance.gameData.newBerryBtnState = 2;//Done»óÅÂ·Î
+                DataController.instance.gameData.newBerryBtnState = 2;//Doneï¿½ï¿½ï¿½Â·ï¿½
                 break;
             }
         }
@@ -895,25 +896,25 @@ public class GameManager : MonoBehaviour
     private void GetNewBerry()
     {
 
-        //»õ·Î¿î µþ±â°¡ Ãß°¡µÈ´Ù.
+        //ï¿½ï¿½ï¿½Î¿ï¿½ ï¿½ï¿½ï¿½â°¡ ï¿½ß°ï¿½ï¿½È´ï¿½.
         DataController.instance.gameData.isBerryUnlock[DataController.instance.gameData.newBerryIndex] = true;
         DataController.instance.gameData.unlockBerryCnt++;
 
-        //´À³¦Ç¥ Ç¥½Ã
+        //ï¿½ï¿½ï¿½ï¿½Ç¥ Ç¥ï¿½ï¿½
         DataController.instance.gameData.isBerryEM[DataController.instance.gameData.newBerryIndex] = true;
 
-        //µþ±â ¾òÀ½ È¿°úÀ½(Â¥ÀÜ)
+        //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ È¿ï¿½ï¿½ï¿½ï¿½(Â¥ï¿½ï¿½)
         AudioManager.instance.TadaAudioPlay();
 
-        //¾òÀº µþ±â ¼³¸íÃ¢
+        //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ã¢
         AcheivePanel_newBerry.SetActive(true);
-        AcheivePanel_newBerry.transform.GetChild(1).GetComponent<Image>().sprite //¾òÀº µþ±â ÀÌ¹ÌÁö
+        AcheivePanel_newBerry.transform.GetChild(1).GetComponent<Image>().sprite //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½
             = Global.GetComponent<Globalvariable>().berryListAll[DataController.instance.gameData.newBerryIndex].GetComponent<SpriteRenderer>().sprite;
         AcheivePanel_newBerry.transform.GetChild(1).GetComponent<Image>().preserveAspect = true;
 
-        AcheivePanel_newBerry.transform.GetChild(2).GetComponent<Text>().text //¾òÀº µþ±â ÀÌ¸§
+        AcheivePanel_newBerry.transform.GetChild(2).GetComponent<Text>().text //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½
             = Global.GetComponent<Globalvariable>().berryListAll[DataController.instance.gameData.newBerryIndex].GetComponent<Berry>().berryName;
-        //º£¸® ºÐ·ù ÀÌ¹ÌÁö 
+        //ï¿½ï¿½ï¿½ï¿½ ï¿½Ð·ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ 
         if (DataController.instance.gameData.newBerryIndex < 64)
         { AcheivePanel_newBerry.transform.GetChild(3).GetComponent<Image>().sprite = AcheiveClassify_newBerry[0]; }
         else if (DataController.instance.gameData.newBerryIndex < 128)
@@ -922,7 +923,7 @@ public class GameManager : MonoBehaviour
         { AcheivePanel_newBerry.transform.GetChild(3).GetComponent<Image>().sprite = AcheiveClassify_newBerry[2]; }
 
 
-        //°ËÁ¤Ã¢ ¶ç¿ì±â
+        //ï¿½ï¿½ï¿½ï¿½Ã¢ ï¿½ï¿½ï¿½ï¿½
         BlackPanel_newBerry.SetActive(true);
 
 
@@ -938,8 +939,8 @@ public class GameManager : MonoBehaviour
         int newBerryIndex = 0;
 
         //RANDOM NUM -> classic(45)=0~44  special(35)=45~79  unique(20)=80~101
-        if (endIndex == 128) { randomNum = UnityEngine.Random.Range(0, 80); }//Áö±Ý Å¬·¡½ÄÀÌ¶û ½ºÆä¼È¸¸ °¡´ÉÇÏ¸é
-        else if (endIndex == 192) { randomNum = UnityEngine.Random.Range(0, 100 + 1); }//Áö±Ý ÀüºÎ´Ù °¡´ÉÇÏ¸é
+        if (endIndex == 128) { randomNum = UnityEngine.Random.Range(0, 80); }//ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ï¿½Ì¶ï¿½ ï¿½ï¿½ï¿½ï¿½È¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½
+        else if (endIndex == 192) { randomNum = UnityEngine.Random.Range(0, 100 + 1); }//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Î´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½
 
 
 
@@ -971,19 +972,19 @@ public class GameManager : MonoBehaviour
             do { newBerryIndex2 = selectBerry(); }
             while (newBerryIndex2 == DataController.instance.gameData.newBerryIndex);
 
-            //»õµþ±â °³¹ßÀÌ¶û ´º½º ÇØ±Ý µ¿½Ã¿¡ Çß´Âµ¥ °°Àº µþ±â ¾òÀ¸·Á°í ÇÏ¸é ¹®Á¦»ý±æ¼öµµ ÀÖ´Ù°í »ý°¢
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì¶ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ø±ï¿½ ï¿½ï¿½ï¿½Ã¿ï¿½ ï¿½ß´Âµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´Ù°ï¿½ ï¿½ï¿½ï¿½ï¿½
 
-            //»õ·Î¿î µþ±â°¡ Ãß°¡µÈ´Ù.
+            //ï¿½ï¿½ï¿½Î¿ï¿½ ï¿½ï¿½ï¿½â°¡ ï¿½ß°ï¿½ï¿½È´ï¿½.
             DataController.instance.gameData.isBerryUnlock[newBerryIndex2] = true;
             DataController.instance.gameData.unlockBerryCnt++;
-            //´À³¦Ç¥ Ç¥½Ã
+            //ï¿½ï¿½ï¿½ï¿½Ç¥ Ç¥ï¿½ï¿½
             DataController.instance.gameData.isBerryEM[newBerryIndex2] = true;
 
-            //µþ±â ¾òÀ½ È¿°úÀ½(Â¥ÀÜ)
+            //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ È¿ï¿½ï¿½ï¿½ï¿½(Â¥ï¿½ï¿½)
             AudioManager.instance.TadaAudioPlay();
 
         }
-        else { Debug.Log("´õÀÌ»ó °³¹ß°¡´ÉÇÑ µþ±â ¾øÀ½."); }
+        else { Debug.Log("ï¿½ï¿½ï¿½Ì»ï¿½ ï¿½ï¿½ï¿½ß°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½."); }
 
     }
 
@@ -999,29 +1000,29 @@ public class GameManager : MonoBehaviour
             if (DataController.instance.gameData.isBerryUnlock[prefabnum] == true)
             {
 
-                //¼³¸íÃ¢ ¶ç¿î´Ù
-                berryExp_BlackPanel.SetActive(true); //½Ã¿ø °Çµå¸²
-                berryExp_Panel.GetComponent<PanelAnimation>().OpenScale(); //½Ã¿ø °Çµå¸²
+                //ï¿½ï¿½ï¿½ï¿½Ã¢ ï¿½ï¿½ï¿½ï¿½
+                berryExp_BlackPanel.SetActive(true); //ï¿½Ã¿ï¿½ ï¿½Çµå¸²
+                berryExp_Panel.GetComponent<PanelAnimation>().OpenScale(); //ï¿½Ã¿ï¿½ ï¿½Çµå¸²
 
-                //GameObject berryExpImage = berryExp.transform.GetChild(1).GetChild(1).gameObject; //½Ã¿ø °Çµå¸²
-                //GameObject berryExpName = berryExp.transform.GetChild(1).GetChild(2).gameObject; //½Ã¿ø °Çµå¸²
-                //GameObject berryExpTxt = berryExp.transform.GetChild(1).GetChild(3).gameObject; //½Ã¿ø °Çµå¸²
+                //GameObject berryExpImage = berryExp.transform.GetChild(1).GetChild(1).gameObject; //ï¿½Ã¿ï¿½ ï¿½Çµå¸²
+                //GameObject berryExpName = berryExp.transform.GetChild(1).GetChild(2).gameObject; //ï¿½Ã¿ï¿½ ï¿½Çµå¸²
+                //GameObject berryExpTxt = berryExp.transform.GetChild(1).GetChild(3).gameObject; //ï¿½Ã¿ï¿½ ï¿½Çµå¸²
 
 
-                //Explanation ³»¿ëÀ» Ã¤¿î´Ù.
+                //Explanation ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã¤ï¿½ï¿½ï¿½.
                 berryExpImage.GetComponentInChildren<Image>().sprite
-                    = berry.GetComponent<SpriteRenderer>().sprite;//ÀÌ¹ÌÁö ¼³Á¤
+                    = berry.GetComponent<SpriteRenderer>().sprite;//ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
                 berryExpName.gameObject.GetComponentInChildren<Text>().text
-                    = berry.GetComponent<Berry>().berryName;//ÀÌ¸§ ¼³Á¤
+                    = berry.GetComponent<Berry>().berryName;//ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½
 
                 berryExpTxt.transform.gameObject.GetComponentInChildren<Text>().text
-                    = berry.GetComponent<Berry>().berryExplain;//¼³¸í ¼³Á¤    
+                    = berry.GetComponent<Berry>().berryExplain;//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½    
             }
         }
         catch
         {
-            Debug.Log("¿©±â¿¡ ÇØ´çÇÏ´Â º£¸®´Â ¾ÆÁ÷ ¾ø´Ù");
+            Debug.Log("ï¿½ï¿½ï¿½â¿¡ ï¿½Ø´ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
         }
     }
     */
@@ -1032,8 +1033,8 @@ public class GameManager : MonoBehaviour
         News.instance.NewsUnlock(NewsPrefabNum);
     }
 
-    #region ±âÅ¸
-    //È°¼ºÈ­ ºñÈ°¼ºÈ­·Î Ã¢ ²ô°í ÄÑ°í
+    #region ï¿½ï¿½Å¸
+    //È°ï¿½ï¿½È­ ï¿½ï¿½È°ï¿½ï¿½È­ï¿½ï¿½ Ã¢ ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ°ï¿½
     public void turnOff(GameObject Obj)
     {
 
@@ -1044,24 +1045,24 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public string TimeForm(int time)//ÃÊ´ÜÀ§ ½Ã°£À» ºÐ:ÃÊ·Î º¯°æ
+    public string TimeForm(int time)//ï¿½Ê´ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½ï¿½:ï¿½Ê·ï¿½ ï¿½ï¿½ï¿½ï¿½
     {
-        int M = 0, S = 0;//M,S °è»ê¿ë
-        string Minutes, Seconds;//M,S ÅØ½ºÆ® Àû¿ë¿ë
+        int M = 0, S = 0;//M,S ï¿½ï¿½ï¿½ï¿½
+        string Minutes, Seconds;//M,S ï¿½Ø½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½
 
         M = (time / 60);
         S = (time % 60);
 
 
-        //M,SÀû¿ë
+        //M,Sï¿½ï¿½ï¿½ï¿½
         Minutes = M.ToString();
         Seconds = S.ToString();
 
-        //M,S°¡ 10¹Ì¸¸ÀÌ¸é 01, 02... ½ÄÀ¸·Î Ç¥½Ã
+        //M,Sï¿½ï¿½ 10ï¿½Ì¸ï¿½ï¿½Ì¸ï¿½ 01, 02... ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ç¥ï¿½ï¿½
         if (M < 10 && M > 0) { Minutes = "0" + M.ToString(); }
         if (S < 10 && S > 0) { Seconds = "0" + S.ToString(); }
 
-        //M,S°¡ 0ÀÌ¸é 00À¸·Î Ç¥½ÃÇÑ´Ù.
+        //M,Sï¿½ï¿½ 0ï¿½Ì¸ï¿½ 00ï¿½ï¿½ï¿½ï¿½ Ç¥ï¿½ï¿½ï¿½Ñ´ï¿½.
         if (M == 0) { Minutes = "00"; }
         if (S == 0) { Seconds = "00"; }
 
@@ -1073,9 +1074,9 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
-    #region Ãâ¼®
+    #region ï¿½â¼®
 
-    //ÀÎÅÍ³Ý ½Ã°£ °¡Á®¿À±â.
+    //ï¿½ï¿½ï¿½Í³ï¿½ ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
 
     public static IEnumerator UpdateCurrentTime()
     {
@@ -1126,15 +1127,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    //ÀÚÁ¤ Ã¼Å© ¹× Á¤º¸°»½Å
+    //ï¿½ï¿½ï¿½ï¿½ Ã¼Å© ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     void ResetTime()
     {
         DataController.instance.gameData.nextMidnightTime = DataController.instance.gameData.currentTime.Date.AddDays(1);
 
         attendanceCheck.GetComponent<AttendanceCheck>().Attendance();
-        //DataController.instance.gameData.currentTime.Date.AddDays(1); //´ÙÀ½³¯ ÀÚÁ¤ Á¤º¸ ÀúÀå.
+        //DataController.instance.gameData.currentTime.Date.AddDays(1); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
 
-        //ÀÚÁ¤ Å¸ÀÌ¸Ó
+        //ï¿½ï¿½ï¿½ï¿½ Å¸ï¿½Ì¸ï¿½
         Invoke(nameof(ResetTime),
             (float)(DataController.instance.gameData.nextMidnightTime
             - DataController.instance.gameData.currentTime).TotalSeconds);
@@ -1149,7 +1150,7 @@ public class GameManager : MonoBehaviour
     }
 
 
-    IEnumerator CheckElapseTime() //°ÔÀÓ º¹±ÍÇÒ¶§
+    IEnumerator CheckElapseTime() //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ò¶ï¿½
     {
         DataController.instance.gameData.isPrework = false;
         yield return StartCoroutine(TryGetCurrentTime());
@@ -1167,24 +1168,24 @@ public class GameManager : MonoBehaviour
 
         if (!MiniGameManager.isOpen && DataController.instance.gameData.rewardAbsenceTime.TotalMinutes >= 60)//&&Intro.isEnd)
         {
-            //ºÎÀçÁß ÀÌº¥Æ®
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìºï¿½Æ®
             AbsenceTime();
         }
 
     }
 
-    IEnumerator PreWork() //Á¢¼ÓÇÒ ¶§
+    IEnumerator PreWork() //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
     {
-        yield return StartCoroutine(TryGetCurrentTime()); //ÇöÀç ½Ã°£ ºÒ·¯¿À±â Ã¼Å©
+        yield return StartCoroutine(TryGetCurrentTime()); //ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ ï¿½Ò·ï¿½ï¿½ï¿½ï¿½ï¿½ Ã¼Å©
         yield return StartCoroutine(CalculateTime());
 
-        StartCoroutine(UpdateCurrentTime()); //30ÃÊ °»½Å ·¹¾²±â¸´
+        StartCoroutine(UpdateCurrentTime()); //30ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½â¸´
 
         MidNightCheck();
 
         if (DataController.instance.gameData.rewardAbsenceTime.TotalMinutes >= 60)//&&Intro.isEnd)
         {
-            //ºÎÀçÁß ÀÌº¥Æ®
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìºï¿½Æ®
             AbsenceTime();
         }
     }
@@ -1195,19 +1196,19 @@ public class GameManager : MonoBehaviour
         DateTime temp = new DateTime();
         if (temp != DataController.instance.gameData.nextMidnightTime && temp != DataController.instance.gameData.currentTime)
         {
-            //¿¹¿ÜÃ³¸®
+            //ï¿½ï¿½ï¿½ï¿½Ã³ï¿½ï¿½
             TimeSpan test = DataController.instance.gameData.nextMidnightTime - DataController.instance.gameData.currentTime.Date;
             if (test.Days >= 2)
                 DataController.instance.gameData.nextMidnightTime = DataController.instance.gameData.currentTime.Date.AddDays(1);
 
-            //ÀÚÁ¤½Ã°£À» Áö³µ´Ù¸é
+            //ï¿½ï¿½ï¿½ï¿½ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ù¸ï¿½
             TimeSpan gap = DataController.instance.gameData.currentTime - DataController.instance.gameData.nextMidnightTime;
             if (gap.TotalSeconds >= 0)
             {
                 DataController.instance.gameData.nextMidnightTime = DataController.instance.gameData.currentTime.Date.AddDays(1);
                 attendanceCheck.GetComponent<AttendanceCheck>().Attendance();
             }
-            //ÀÚÁ¤½Ã°£À» Áö³ªÁö ¾Ê¾Ò´Ù¸é
+            //ï¿½ï¿½ï¿½ï¿½ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¾Ò´Ù¸ï¿½
             gap = DataController.instance.gameData.nextMidnightTime - DataController.instance.gameData.currentTime;
             if (gap.TotalSeconds >= 0)
                 Invoke(nameof(ResetTime), (float)gap.TotalSeconds);
@@ -1231,7 +1232,7 @@ public class GameManager : MonoBehaviour
         return false;
     }
 
-    public static IEnumerator CalculateTime() //ºÎÀçÁß ½Ã°£ °è»ê
+    public static IEnumerator CalculateTime() //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½
     {
         if (CheckFirstGame() == true) yield break;
 
@@ -1239,23 +1240,23 @@ public class GameManager : MonoBehaviour
 
         DataController.instance.gameData.lastExitTime = DataController.instance.gameData.currentTime;
 
-        if ((DataController.instance.gameData.rewardAbsenceTime + gap).TotalMinutes >= 1440) //ºÎÀçÁß ¼öÀÍ ÃÖ´ëÄ¡ °íÁ¤ 24½Ã°£
+        if ((DataController.instance.gameData.rewardAbsenceTime + gap).TotalMinutes >= 1440) //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½ 24ï¿½Ã°ï¿½
             DataController.instance.gameData.rewardAbsenceTime = TimeSpan.FromMinutes(1440);
         else
             DataController.instance.gameData.rewardAbsenceTime += gap;
 
-        //³²Àº ¾Ë¹Ù ½Ã°£ °»½Å ÀÚ¸®
+        //ï¿½ï¿½ï¿½ï¿½ ï¿½Ë¹ï¿½ ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ú¸ï¿½
     }
 
     void PrintTime()
     {
-        Debug.Log("ÇöÀç½Ã°£: " + DataController.instance.gameData.currentTime);
-        Debug.Log("´ÙÀ½ ÀÚÁ¤½Ã°£: " + DataController.instance.gameData.nextMidnightTime);
-        Debug.Log("´ÙÀ½ ÀÚÁ¤±îÁö ³²Àº½Ã°£: " + (DataController.instance.gameData.nextMidnightTime - DataController.instance.gameData.currentTime));
-        Debug.Log("¸¶Áö¸· Á¾·á½Ã°£: " + DataController.instance.gameData.lastExitTime);
-        Debug.Log("ºÎÀçÁß ½Ã°£: " + (DataController.instance.gameData.currentTime - DataController.instance.gameData.lastExitTime));
-        Debug.Log("´©Àû Ãâ¼®:" + DataController.instance.gameData.accDays);
-        Debug.Log("¸¶Áö¸· Ãâ¼®³¯Â¥:" + DataController.instance.gameData.atdLastday);
+        Debug.Log("ï¿½ï¿½ï¿½ï¿½Ã°ï¿½: " + DataController.instance.gameData.currentTime);
+        Debug.Log("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ã°ï¿½: " + DataController.instance.gameData.nextMidnightTime);
+        Debug.Log("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ã°ï¿½: " + (DataController.instance.gameData.nextMidnightTime - DataController.instance.gameData.currentTime));
+        Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ã°ï¿½: " + DataController.instance.gameData.lastExitTime);
+        Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½: " + (DataController.instance.gameData.currentTime - DataController.instance.gameData.lastExitTime));
+        Debug.Log("ï¿½ï¿½ï¿½ï¿½ ï¿½â¼®:" + DataController.instance.gameData.accDays);
+        Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½â¼®ï¿½ï¿½Â¥:" + DataController.instance.gameData.atdLastday);
     }
 
     public void AbsenceTime()
@@ -1274,19 +1275,19 @@ public class GameManager : MonoBehaviour
             if (revenue == 0)
                 return;
 
-            if (revenue <= 9999)           // 0~9999±îÁö A
+            if (revenue <= 9999)           // 0~9999ï¿½ï¿½ï¿½ï¿½ A
             {
-                AbsenceText.text = "ºÎÀçÁß ¼öÀÍ:" + revenue + "A";
+                AbsenceText.text = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½:" + revenue + "A";
             }
-            else if (revenue <= 9999999)   // 10000~9999999(=9999B)±îÁö B
+            else if (revenue <= 9999999)   // 10000~9999999(=9999B)ï¿½ï¿½ï¿½ï¿½ B
             {
                 revenue /= 1000;
-                AbsenceText.text = "ºÎÀçÁß ¼öÀÍ:" + revenue + "B";
+                AbsenceText.text = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½:" + revenue + "B";
             }
-            else                        // ±× ¿Ü C (ÃÖ´ë 2100C)
+            else                        // ï¿½ï¿½ ï¿½ï¿½ C (ï¿½Ö´ï¿½ 2100C)
             {
                 revenue /= 1000000;
-                AbsenceText.text = "ºÎÀçÁß ¼öÀÍ:" + revenue + "C";
+                AbsenceText.text = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½:" + revenue + "C";
             }
             AbsenceBlackPanel.SetActive(true);
             AbsencePanel.GetComponent<PanelAnimation>().OpenScale();
@@ -1303,22 +1304,22 @@ public class GameManager : MonoBehaviour
 
     /*    public void CheckTime()
         {
-            //ÇÃ·¹ÀÌ µµÁß ÀÚÁ¤ÀÌ ³Ñ¾î°¥ °æ¿ì Ãâ¼® °¡´ÉÇÏ°Ô
-            // ÀÚÁ¤½Ã°£ ±¸ÇÏ±â.
+            //ï¿½Ã·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ¾î°¥ ï¿½ï¿½ï¿½ ï¿½â¼® ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½
+            // ï¿½ï¿½ï¿½ï¿½ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½Ï±ï¿½.
             DateTime target = new DateTime(DataController.instance.gameData.currentTime.Year, 
                 DataController.instance.gameData.currentTime.Month, DataController.instance.gameData.currentTime.Day);
             target = target.AddDays(1);
-            // ÀÚÁ¤½Ã°£ - ÇöÀç½Ã°£
+            // ï¿½ï¿½ï¿½ï¿½ï¿½Ã°ï¿½ - ï¿½ï¿½ï¿½ï¿½Ã°ï¿½
             TimeSpan ts = target - DataController.instance.gameData.currentTime;
-            // ³²Àº½Ã°£ ¸¸Å­ ´ë±â ÈÄ OnTimePass ÇÔ¼ö È£Ãâ.
+            // ï¿½ï¿½ï¿½ï¿½ï¿½Ã°ï¿½ ï¿½ï¿½Å­ ï¿½ï¿½ï¿½ ï¿½ï¿½ OnTimePass ï¿½Ô¼ï¿½ È£ï¿½ï¿½.
             Invoke("OnTimePass", (float)ts.TotalSeconds);
-            Debug.Log("ÀÚÁ¤±îÁö ³²Àº ½Ã°£(ºÐ): " + ts.TotalMinutes);
+            Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½(ï¿½ï¿½): " + ts.TotalMinutes);
         }*/
 
     /*    public void OnTimePass()
         {
-            //Á¤º¸°»½Å
-            Debug.Log("Ãâ¼® Á¤º¸°¡ °»½ÅµÇ¾ú½À´Ï´Ù.");
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+            Debug.Log("ï¿½â¼® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ÅµÇ¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
 
             StartCoroutine(UpdateCurrentTime());
             CheckTime();
@@ -1331,7 +1332,7 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
-    #region ¸ÞÀÎ ¸Þ´º
+    #region ï¿½ï¿½ï¿½ï¿½ ï¿½Þ´ï¿½
     public void OnclickStart()
     {
     }
