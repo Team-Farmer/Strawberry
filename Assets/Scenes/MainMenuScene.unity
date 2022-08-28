@@ -56592,7 +56592,7 @@ GameObject:
   - component: {fileID: 1870965506}
   - component: {fileID: 1870965505}
   m_Layer: 5
-  m_Name: Daram
+  m_Name: Sandy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -56638,7 +56638,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 2376870460866429753, guid: 443253014f3a73846814f06cb719bd24, type: 3}
+  m_Sprite: {fileID: 375849117227562598, guid: 926f308be91fa9541976b7d0f6355c6a, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -63921,7 +63921,7 @@ GameObject:
   - component: {fileID: 2054212634}
   - component: {fileID: 2054212633}
   m_Layer: 5
-  m_Name: Daram
+  m_Name: Sandy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63967,7 +63967,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1432243617770418309, guid: 81b03b2fd4095c74e811e61b9bab0489, type: 3}
+  m_Sprite: {fileID: 8839935567487674729, guid: 926f308be91fa9541976b7d0f6355c6a, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
