@@ -7637,14 +7637,14 @@ RectTransform:
   m_GameObject: {fileID: 255685338}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.283783, y: 2.283783, z: 2.283783}
   m_Children: []
   m_Father: {fileID: 1276420185}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 510, y: -2}
+  m_AnchoredPosition: {x: 1164.7275, y: 13.323853}
   m_SizeDelta: {x: 867.8, y: 308.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &255685340
@@ -7668,8 +7668,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: fffcb38c5316eb843924a2af66e3bd38, type: 3}
-    m_FontSize: 50
+    m_Font: {fileID: 12800000, guid: 10bfd5436aa3d4e448f643ba10f20262, type: 3}
+    m_FontSize: 42
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -7679,7 +7679,7 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1
+    m_LineSpacing: 0.8
   m_Text: 'Mini game bgm by SergeQuadrado
 
     Other bgm by REDproductions'
@@ -39902,7 +39902,7 @@ RectTransform:
   m_GameObject: {fileID: 1276420184}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.43787, y: 0.43787, z: 0.43787}
   m_Children:
   - {fileID: 255685339}
   m_Father: {fileID: 929337157}
@@ -39910,7 +39910,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -24, y: 45}
+  m_AnchoredPosition: {x: 46, y: 65}
   m_SizeDelta: {x: 220, y: 220}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1276420186
@@ -39933,7 +39933,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d31c5f33b8488754fb6f76a816bf7949, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 431b6baf7aa1a39458f648aaee1c207b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
