@@ -29,6 +29,8 @@ public class Bug : MonoBehaviour
             DataController.instance.gameData.berryFieldData[bugIdx].canGrow = true;
         }
         DataController.instance.gameData.berryFieldData[bugIdx].hasBug = false;
+
+        AudioManager.instance.Remove2AudioPlay();
     }
     // Update is called once per frame    
     public void GenerateBug()

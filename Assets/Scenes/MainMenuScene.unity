@@ -12393,12 +12393,12 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 909940711}
         m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: BgSoundPlay2
-        m_Mode: 6
+        m_MethodName: BGMPlay
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -20371,12 +20371,12 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 909940711}
         m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: BgSoundPlay2
-        m_Mode: 6
+        m_MethodName: BGMPlay
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -21569,12 +21569,12 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 909940711}
         m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: BgSoundPlay2
-        m_Mode: 6
+        m_MethodName: BGMPlay
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -29868,7 +29868,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adc94740434bce44e92ac9ede16f51d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AudioManager: {fileID: 909940711}
   Store: {fileID: 926323866}
   StoreSprite:
   - {fileID: 2894771460051042406, guid: 11799ae92cd2d07459ef58f34b7286bc, type: 3}
@@ -32775,12 +32774,12 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 909940711}
         m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: BgSoundPlay2
-        m_Mode: 6
+        m_MethodName: BGMPlay
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -45766,12 +45765,12 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 909940711}
         m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: BgSoundPlay2
-        m_Mode: 6
+        m_MethodName: BGMPlay
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -52353,12 +52352,12 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 909940711}
         m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: BgSoundPlay2
-        m_Mode: 6
+        m_MethodName: BGMPlay
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -60054,12 +60053,12 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 909940711}
         m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: BgSoundPlay2
-        m_Mode: 6
+        m_MethodName: BGMPlay
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -63098,12 +63097,12 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 909940711}
         m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: BgSoundPlay2
-        m_Mode: 6
+        m_MethodName: BGMPlay
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
@@ -65715,12 +65714,12 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 909940711}
         m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: BgSoundPlay2
-        m_Mode: 6
+        m_MethodName: BGMPlay
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0

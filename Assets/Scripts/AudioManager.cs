@@ -71,7 +71,7 @@ public class AudioManager : MonoBehaviour
         BGSoundSlider.GetComponent<Slider>().value = 0.5f;
         SFXSoundSlider.GetComponent<Slider>().value = 0.5f;
 
-        BgSoundPlay2(true);
+        AudioManager.instance.BGMPlay(1);
 
 
         //슬라이드값 변할때마다 아래 함수 실행
@@ -177,11 +177,10 @@ public class AudioManager : MonoBehaviour
         SFXPlay("", clip);
     }
 
-    public void BgSoundPlay2(bool isGameMain)
+    public void BGMPlay(int index)
     {
         AudioClip clip;
-        if (isGameMain == true) { clip= BgClipList[1]; }
-        else { clip = BgClipList[2]; }
+        clip = AudioManager.instance.BgClipList[index];
 
         if (isPlayAudio == true)
         {
