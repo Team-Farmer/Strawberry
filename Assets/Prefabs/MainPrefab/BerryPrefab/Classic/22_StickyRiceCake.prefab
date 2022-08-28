@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: -1274572085
   m_SortingLayer: 1
   m_SortingOrder: 2
-  m_Sprite: {fileID: -3859627200237796889, guid: 8dedacfb3f4d07844a1c06f7cbe8f919, type: 3}
+  m_Sprite: {fileID: 3531247957688776861, guid: 6d303b102830ce94894e507a2838fb2d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -103,7 +103,7 @@ MonoBehaviour:
     \uCC39\uC300\uB5A1\uC778\uCC99 \uD558\uB2E4\uAC00 \uC0C1\uD07C\uD55C \uACFC\uC999\uC73C\uB85C
     \uC0AC\uB78C\uB4E4\uC744 \uB180\uB798\uD0A4\uACE4 \uD55C\uB2E4."
   berryIdx: 22
-  berryPrice: 0
+  berryPrice: 91
   berryRank: 0
 --- !u!95 &8238155578764226143
 Animator:

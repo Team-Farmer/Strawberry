@@ -30,7 +30,8 @@ public class MiniGame3 : MiniGame
         minigame_3_src_rndtime = 1.0f;
         minigame_3_dst_rndtime = 1.5f;
         
-        basketRect.anchoredPosition = new Vector3(425f, 560f, 0f);
+        //바구니의 위치 초기화
+        basketRect.anchoredPosition = new Vector3(bgRect.rect.width/2 - 125f, bgRect.rect.height*0.25f - 75f, 0f);
     }
     public void PointDown()
     {
@@ -57,12 +58,14 @@ public class MiniGame3 : MiniGame
         // 드래그해서 바구니 옮기기!
         if (isDrag)
         {                     
-            Vector3 mousePos = Input.mousePosition;          
-            
+            Vector3 mousePos = Input.mousePosition;
+
+            //mousePos = Camera.Screen
+            Debug.Log("mousePos.x = " + mousePos.x);
             float leftBorder = 0f;
             float rightBorder = bgRect.rect.width - basketRect.rect.width;           
             
-            mousePos.y = 560;
+            mousePos.y = bgRect.rect.height * 0.25f - 75f; // y좌표 고정
             mousePos.z = 0;
             if (mousePos.x < leftBorder) mousePos.x = leftBorder;
             else if (mousePos.x > rightBorder) mousePos.x = rightBorder;

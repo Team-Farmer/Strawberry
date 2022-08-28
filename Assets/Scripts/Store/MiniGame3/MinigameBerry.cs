@@ -27,9 +27,9 @@ public class MinigameBerry : MonoBehaviour
     }
     private void OnEnable()
     {
-        float rectXPos = Random.Range(100f, 950f);
+        float rectXPos = Random.Range(150f, bgRect.rect.width - 150f);
         rect.anchoredPosition = new Vector3(rectXPos, bgRect.rect.height - 80f);
-
+       
         minigame_3_score = this.gameObject.transform.GetComponentInParent<MiniGame3>().score;
 
         if (minigame_3_score < 100) // 점수에 따라 딸기 낙하속도 변경
