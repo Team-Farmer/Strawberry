@@ -69,6 +69,7 @@ public class MiniGame : MonoBehaviour
 
     IEnumerator Count4Second()
     {
+        //AudioManager.instance.CountdownAudioPlay(); // ¿œΩ√¡§¡ˆ«ÿµµ æ»∏ÿ√„
         countImgs.transform.GetChild(time - 61).gameObject.SetActive(true);
         yield return new WaitForSeconds(1);
         countImgs.transform.GetChild(time - 61).gameObject.SetActive(false);

@@ -28,7 +28,6 @@ public class MiniGame2 : MiniGame
         }
         answerIndex_4x4 = new int[16];       
         base.Awake();
-        //AudioManager.instance.CountdownAudioPlay(); // ¿œΩ√¡§¡ˆ«ÿµµ æ»∏ÿ√„
     }
 
     protected override void MakeGame()

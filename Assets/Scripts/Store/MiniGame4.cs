@@ -156,7 +156,7 @@ public class MiniGame4 : MiniGame
             //정답 효과
             correctTxt.GetComponent<Text>().color=new Color(1f,1f,1f,1f);
             StartCoroutine("FadeCoroutine");
-            AudioManager.instance.SFXAudioPlay();
+            AudioManager.instance.Cute1AudioPlay();
         }
         //오답!!
         else
