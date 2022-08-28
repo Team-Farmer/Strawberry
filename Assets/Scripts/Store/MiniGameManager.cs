@@ -50,6 +50,7 @@ public class MiniGameManager : MonoBehaviour
         DataController.instance.gameData.isStoreOpend = true;
         popup.SetActive(false);
         Store.GetComponent<Image>().sprite = StoreSprite[1];
+        AudioManager.instance.BGMPlay(2);
     }
 
     private bool ResearchLevelCheck(int level)
