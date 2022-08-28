@@ -130,13 +130,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FacePicture:
-  - {fileID: -8401692288953904933, guid: bac779e1f038d5e40bbe137bcb8ace25, type: 3}
-  - {fileID: -8090365562718305141, guid: bac779e1f038d5e40bbe137bcb8ace25, type: 3}
-  - {fileID: 7152930139536384079, guid: bac779e1f038d5e40bbe137bcb8ace25, type: 3}
-  - {fileID: -6835189599539173722, guid: bac779e1f038d5e40bbe137bcb8ace25, type: 3}
-  - {fileID: -4124168217499134943, guid: bac779e1f038d5e40bbe137bcb8ace25, type: 3}
-  - {fileID: 7456334905099763947, guid: bac779e1f038d5e40bbe137bcb8ace25, type: 3}
-  - {fileID: 7456334905099763947, guid: bac779e1f038d5e40bbe137bcb8ace25, type: 3}
+  - {fileID: -7688503138522254423, guid: 7b5781554daf5bd4f9ebd7e65b6cce4a, type: 3}
+  - {fileID: -8995298805207334545, guid: 7b5781554daf5bd4f9ebd7e65b6cce4a, type: 3}
+  - {fileID: -7850888183806381051, guid: 7b5781554daf5bd4f9ebd7e65b6cce4a, type: 3}
+  - {fileID: 1306309026794346754, guid: 7b5781554daf5bd4f9ebd7e65b6cce4a, type: 3}
+  - {fileID: 2312389103385020965, guid: 7b5781554daf5bd4f9ebd7e65b6cce4a, type: 3}
+  - {fileID: -1513482845346613526, guid: 7b5781554daf5bd4f9ebd7e65b6cce4a, type: 3}
   face: {fileID: 7809778659071548713}
   employCount: {fileID: 7809778657780772914}
 --- !u!1 &7809778659071548713
