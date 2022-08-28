@@ -28953,8 +28953,8 @@ MonoBehaviour:
   RewardClip: {fileID: 8300000, guid: 628771933e8c2194dae74965c11d654f, type: 3}
   TimerClip: {fileID: 8300000, guid: 837c8f7fa3eed2d4f8e09a6d21df15d9, type: 3}
   FastTimerClip: {fileID: 8300000, guid: f78a31b8542de824f861e9d5c7d691f6, type: 3}
-  RemoveWeedClip: {fileID: 8300000, guid: cca29fe250d1ab049a37192ee113c91f, type: 3}
-  RemoveBugClip: {fileID: 8300000, guid: a0a1264518442474d9e7ec502945b38c, type: 3}
+  RemoveWeedClip: {fileID: 8300000, guid: a0a1264518442474d9e7ec502945b38c, type: 3}
+  RemoveBugClip: {fileID: 8300000, guid: cca29fe250d1ab049a37192ee113c91f, type: 3}
   CountdownClip: {fileID: 8300000, guid: f918bc0ea3ef18b459d57f5c6044a1d2, type: 3}
   EndClip: {fileID: 8300000, guid: 45776f7912fbd3244b52a9f68f5efc2c, type: 3}
   ScrollbarClip: {fileID: 8300000, guid: 3fb798026451a4348904665697b27f97, type: 3}
