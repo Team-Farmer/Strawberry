@@ -485,8 +485,8 @@ MonoBehaviour:
   medalTxt: {fileID: 1093676165684111309}
   heartTxt: {fileID: 5063294539094782256}
   Gauge: {fileID: 8123540764124747059}
-  IngButton: {fileID: -7943917676593969559, guid: d7462a2db557512448ed8c9a9d1c7db0, type: 3}
-  DoneButton: {fileID: 21300000, guid: 9ea9d1159b50f9f4d80073c6e2710a4a, type: 3}
+  IngButton: {fileID: -2039454062554464529, guid: 0d07e1966ace1f34bb2579ddb3a45fa8, type: 3}
+  DoneButton: {fileID: -379006227563035724, guid: 0d07e1966ace1f34bb2579ddb3a45fa8, type: 3}
   heartMover: {fileID: 1118165276891983343}
   medalMover: {fileID: 4509833555740243221}
 --- !u!1 &527783997747247045
@@ -781,7 +781,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 40
-    m_Alignment: 4
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -1590,7 +1590,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 40
-    m_Alignment: 4
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0

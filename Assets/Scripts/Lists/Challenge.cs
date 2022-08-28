@@ -194,6 +194,10 @@ public class Challenge : MonoBehaviour
         levelText.GetComponent<Text>().text ="Lv."+ LevelNow.ToString();  //레벨
         achieveCondition.GetComponent<Text>().text = "/" + Info[prefabnum].clearCriterion[LevelNow].ToString();//도전과제 게이지 달성 조건 숫자
 
+        //도전과제 보상 보인다.
+        medalTxt.GetComponent<Text>().text = "X" + Info[prefabnum].rewardMedal.ToString();
+        heartTxt.GetComponent<Text>().text = "X" + Info[prefabnum].rewardHeart.ToString();
+
         //게이지===============
         if (ValueNow >= Info[prefabnum].clearCriterion[LevelNow])
         {
@@ -203,11 +207,7 @@ public class Challenge : MonoBehaviour
             nowCondition.GetComponent<Text>().text = Info[prefabnum].clearCriterion[LevelNow].ToString(); ;
             //도전과제 버튼 이미지 == Done
             Button.GetComponent<Image>().sprite = DoneButton;
-            //도전과제 보상 보인다.
-            medalTxt.SetActive(true);
-            heartTxt.SetActive(true);
-            medalTxt.GetComponent<Text>().text = "X"+Info[prefabnum].rewardMedal.ToString();
-            heartTxt.GetComponent<Text>().text = "X"+Info[prefabnum].rewardHeart.ToString();
+            
 
         }
         else
@@ -266,8 +266,6 @@ public class Challenge : MonoBehaviour
                 }
 
                 Button.GetComponent<Image>().sprite = IngButton; //도전과제 버튼 이미지 변경
-                medalTxt.SetActive(false);
-                heartTxt.SetActive(false);
                 DataController.instance.gameData.challengeLevel[prefabnum]++; //LevelNow증가 == 레벨증가
 
             }
