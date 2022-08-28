@@ -484,6 +484,10 @@ MonoBehaviour:
   image: {fileID: 4206148771154013079}
   medalTxt: {fileID: 1093676165684111309}
   heartTxt: {fileID: 5063294539094782256}
+  FinBtn: {fileID: 6844077706645152247}
+  FinBG: {fileID: 1631165551613105944}
+  heart: {fileID: 2647036563277685573}
+  medal: {fileID: 2157807828004521961}
   Gauge: {fileID: 8123540764124747059}
   IngButton: {fileID: -2039454062554464529, guid: 0d07e1966ace1f34bb2579ddb3a45fa8, type: 3}
   DoneButton: {fileID: -379006227563035724, guid: 0d07e1966ace1f34bb2579ddb3a45fa8, type: 3}

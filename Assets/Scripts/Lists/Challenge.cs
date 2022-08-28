@@ -43,6 +43,10 @@ public class Challenge : MonoBehaviour
     private GameObject image;//왼쪽의 설명 그림
     public GameObject medalTxt;
     public GameObject heartTxt;
+    public GameObject FinBtn;
+    public GameObject FinBG;
+    public GameObject heart;
+    public GameObject medal;
 
     [Header("==========Gauge==========")]
     [SerializeField]
@@ -89,7 +93,11 @@ public class Challenge : MonoBehaviour
 
     private void Update()
     {
-
+        if (LevelNow == 5)
+        {
+            FinishChallenge();
+        }
+            
         ChallengeValue[0] = DataController.instance.gameData.unlockBerryCnt;
         ChallengeValue[1] = DataController.instance.gameData.totalHarvBerryCnt;
         ChallengeValue[2] = DataController.instance.gameData.accCoin;
@@ -241,7 +249,7 @@ public class Challenge : MonoBehaviour
             GameManager.instance.GetHeart(Info[prefabnum].rewardHeart); //하트 보상 획득
             //Debug.Log(Info[prefabnum].rewardMedal + "   " + Info[prefabnum].rewardHeart);
             //다음 레벨로 이동
-            if (LevelNow < 100)
+            if (LevelNow < 5) // 업적 종료를 보기 위해 임시로 바꿈
             {
                 switch (prefabnum) 
                 {
@@ -269,9 +277,20 @@ public class Challenge : MonoBehaviour
                 DataController.instance.gameData.challengeLevel[prefabnum]++; //LevelNow증가 == 레벨증가
 
             }
+            else
+            {
+                FinishChallenge();
+            }
         }
     }
 
 
-
+    public void FinishChallenge()
+    {
+        Button.SetActive(false);
+        heart.SetActive(false);
+        medal.SetActive(false);
+        FinBtn.SetActive(true);
+        FinBG.SetActive(true);
+    }
 }
