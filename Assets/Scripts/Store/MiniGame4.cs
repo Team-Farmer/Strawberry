@@ -9,10 +9,10 @@ public class MiniGame4 : MiniGame
 {
     [Header("MiniGame 4")]
     public GameObject[] correctImage;
+    public GameObject[] boxImage;
 
     public GameObject content;
-    public GameObject correctTxt;//정답시 나오는 텍스트
-    public GameObject fakeImage;//애니메이션용 이미지
+    public GameObject correctTxt; //정답시 나오는 텍스트
     public GameObject leftBtn;
     public GameObject rightBtn;
 
@@ -51,6 +51,8 @@ public class MiniGame4 : MiniGame
         
         //upgrade초기화
         isUpgrade = false;
+        boxImage[2].SetActive(false);
+        boxImage[3].SetActive(false);
         correctImage[2].SetActive(false);
         correctImage[3].SetActive(false);
     }
@@ -117,8 +119,6 @@ public class MiniGame4 : MiniGame
         correctTxt.GetComponent<Text>().color = new Color(1f, 1f, 1f, 0f);
 
         StopCoroutine(MoveCoroutine(true, content.transform.GetChild(content.transform.childCount - 1).gameObject));
-        fakeImage.SetActive(false);
-        fakeImage.GetComponent<RectTransform>().position = new Vector3(50f,-597f,0);
         
 
         //정답여부 판별=======================================
@@ -173,9 +173,11 @@ public class MiniGame4 : MiniGame
 
 
         // UPGRADE!! 갯수 늘리기
-        if (score > 300 && isUpgrade==false)
+        if (score > 200 && isUpgrade==false)
         { 
             isUpgrade = true;
+            boxImage[2].SetActive(true);
+            boxImage[3].SetActive(true);
             correctImage[2].SetActive(true);
             correctImage[3].SetActive(true);
         }
@@ -251,9 +253,6 @@ public class MiniGame4 : MiniGame
     }
     IEnumerator MoveCoroutine(bool isLeft,GameObject content)
     {
-        fakeImage.GetComponent<Image>().sprite = content.GetComponent<Image>().sprite;
-        fakeImage.GetComponent<Image>().preserveAspect = true;
-        fakeImage.SetActive(true);
 
         Vector3 moveCount = content.GetComponent<RectTransform>().position;
         float fadeCount = 1;
@@ -262,21 +261,17 @@ public class MiniGame4 : MiniGame
         {
             //점점흐려짐
             fadeCount -= 0.05f;
-            fakeImage.GetComponent<Image>().color = new Color(1f, 1f, 1f, fadeCount);
 
             //점점이동함
             if (isLeft == true)
             { moveCount.x -= 0.05f; }
             else
             { moveCount.x += 0.05f; }
-            fakeImage.GetComponent<RectTransform>().position = moveCount;
 
             yield return new WaitForSeconds(0.01f);
 
            
         }
-        fakeImage.SetActive(false);
-        fakeImage.GetComponent<RectTransform>().position = new Vector3(50f, -597f, 0);
     }
 
 }
