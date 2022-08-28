@@ -156,12 +156,14 @@ public class MiniGame4 : MiniGame
             //정답 효과
             correctTxt.GetComponent<Text>().color=new Color(1f,1f,1f,1f);
             StartCoroutine("FadeCoroutine");
+            AudioManager.instance.Cute1AudioPlay();
         }
         //오답!!
         else
         {
             scroll.fillAmount -= size * 10;
             time -= 10;
+            AudioManager.instance.WrongAudioPlay();
         }
 
         //좌우 이동==========================================
@@ -214,6 +216,7 @@ public class MiniGame4 : MiniGame
     protected override void FinishGame()
     {
         base.FinishGame();
+        AudioManager.instance.EndAudioPlay();
 
         //최고기록 저장
         if (DataController.instance.gameData.highScore[3] < score)

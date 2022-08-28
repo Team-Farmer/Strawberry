@@ -74,12 +74,14 @@ public class MinigameBerry : MonoBehaviour
                     this.gameObject.transform.GetComponentInParent<MiniGame3>().scroll.fillAmount -= size * 10;
                     this.gameObject.transform.GetComponentInParent<MiniGame3>().time -= 10;
                     this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
+                    AudioManager.instance.WrongAudioPlay();
                 }
                 else
                 {
                     this.gameObject.transform.GetComponentInParent<MiniGame3>().score += 5;                                                    
                     this.gameObject.transform.GetComponentInParent<MiniGame3>().score_txt.text
                         = this.gameObject.transform.GetComponentInParent<MiniGame3>().score.ToString();
+                    AudioManager.instance.Cute1AudioPlay();
                 }
 
                 this.gameObject.SetActive(false);

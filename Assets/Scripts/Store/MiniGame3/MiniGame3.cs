@@ -145,6 +145,7 @@ public class MiniGame3 : MiniGame
     protected override void FinishGame()
     {
         base.FinishGame();
+        AudioManager.instance.EndAudioPlay();
 
         int score = GetComponent<MiniGame3>().score;
         //최고기록 저장

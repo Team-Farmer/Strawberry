@@ -28,6 +28,7 @@ public class MiniGame2 : MiniGame
         }
         answerIndex_4x4 = new int[16];       
         base.Awake();
+        //AudioManager.instance.CountdownAudioPlay(); // 일시정지해도 안멈춤
     }
 
     protected override void MakeGame()
@@ -78,6 +79,7 @@ public class MiniGame2 : MiniGame
             O.SetActive(true);
             score += 10;
             score_txt.text = score.ToString();
+            AudioManager.instance.RightAudioPlay();
         }
         //오답 : 10초 줄기
         else
@@ -86,6 +88,7 @@ public class MiniGame2 : MiniGame
             //scrollbar.size -= size * 10;
             scroll.fillAmount -= size * 10;
             time -= 10;
+            AudioManager.instance.WrongAudioPlay();
         }
         if (time > 0)
         {                  
@@ -118,6 +121,7 @@ public class MiniGame2 : MiniGame
     protected override void FinishGame()
     {
         base.FinishGame();
+        AudioManager.instance.EndAudioPlay();
 
         //최고기록 저장
         if (DataController.instance.gameData.highScore[1] < score)

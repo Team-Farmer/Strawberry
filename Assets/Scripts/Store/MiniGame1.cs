@@ -80,6 +80,7 @@ public class MiniGame1 : MiniGame
             O.SetActive(true);
             score += 10;
             score_txt.text = score.ToString();
+            AudioManager.instance.RightAudioPlay();
         }
         //오답 : 10초 줄기
         else
@@ -87,6 +88,7 @@ public class MiniGame1 : MiniGame
             X.SetActive(true);
             scroll.fillAmount -= size * 10;
             time -= 10;
+            AudioManager.instance.WrongAudioPlay();
         }
         if (time > 0)
         {
@@ -118,6 +120,7 @@ public class MiniGame1 : MiniGame
     protected override void FinishGame()
     {
         base.FinishGame();
+        AudioManager.instance.EndAudioPlay();
 
         //최고기록 저장
         if (DataController.instance.gameData.highScore[0] < score)
