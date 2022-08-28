@@ -33,11 +33,15 @@ public class Collection : MonoBehaviour
     [Header("[Collection]")]
     public GameObject collectionName;
     public GameObject collectionBtn;
-    public GameObject collectionNoBtn;
     public GameObject collectionNow;
     public GameObject medalTxt;
     public GameObject heartTxt;
     public Sprite collectionBtnSprite;//베리 다 모았을 때 완료버튼 스프라이트
+    public Sprite collectionNowSprite;//베리 다 모았을 때 완료버튼 스프라이트
+    public GameObject FinBtn;
+    public GameObject FinBG;
+    public GameObject heart;
+    public GameObject medal;
 
     //=================================================================================
     //=================================================================================
@@ -64,12 +68,12 @@ public class Collection : MonoBehaviour
     private void Update()
     {
         InfoUpdate();
-
     }
 
     private void InfoUpdate()
     {
-        
+        medalTxt.GetComponent<Text>().text = "X" + Info[prefabnum].rewardMedal.ToString();
+        heartTxt.GetComponent<Text>().text = "X" + Info[prefabnum].rewardHeart.ToString();
         //얻은 베리는 색이 보인다.
         for (int i = 0; i < berryClassifyNum; i++)
         {
@@ -92,16 +96,12 @@ public class Collection : MonoBehaviour
         
         }
         collectionBtn.GetComponent<Image>().sprite = collectionBtnSprite;//3개다 얻었으면 버튼변경한다.
-        medalTxt.SetActive(true);
-        heartTxt.SetActive(true);
-        medalTxt.GetComponent<Text>().text = "X"+Info[prefabnum].rewardMedal.ToString();
-        heartTxt.GetComponent<Text>().text = "X" + Info[prefabnum].rewardHeart.ToString();
+
     }
 
 
     private void InfoUpdateOnce()
     {
-
         //수집 제목
         collectionName.GetComponent<Text>().text = Info[prefabnum].Name;
 
@@ -124,26 +124,34 @@ public class Collection : MonoBehaviour
 
         //이미 보상도 받고 다끝난거면 더이상 못누르게
         if (DataController.instance.gameData.isCollectionDone[prefabnum] == true) 
-        { collectionNoBtn.SetActive(true); }
+        { FinishCollect(); }
     }
 
     public void collectionBtnClick() 
     {
-        AudioManager.instance.RewardAudioPlay();
         if (collectionBtn.GetComponent<Image>().sprite == collectionBtnSprite) //지금 버튼 스프라이트가 완료 버튼이면
         {
             //하트 획득
             GameManager.instance.GetHeart(Info[prefabnum].rewardHeart);
             //메달 획득
             GameManager.instance.GetMedal(Info[prefabnum].rewardMedal);
-            
-            //버튼 더이상 못누르게
-            collectionNoBtn.SetActive(true);
-            medalTxt.SetActive(false);
-            heartTxt.SetActive(false);
+
+            AudioManager.instance.RewardAudioPlay();
+            FinishCollect();
             //완전히 끝났다.
             DataController.instance.gameData.isCollectionDone[prefabnum] = true;
         }
         
+    }
+
+    public void FinishCollect()
+    {
+        //완료 UI 적용
+        collectionNow.GetComponent<Image>().sprite = collectionNowSprite;
+        collectionBtn.SetActive(false);
+        FinBtn.SetActive(true);
+        FinBG.SetActive(true);
+        medalTxt.SetActive(false);
+        heartTxt.SetActive(false);
     }
 }

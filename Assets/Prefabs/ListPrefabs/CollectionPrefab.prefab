@@ -603,11 +603,15 @@ MonoBehaviour:
     rewardHeart: 30
   collectionName: {fileID: 1476324555848526793}
   collectionBtn: {fileID: 4911162250941680714}
-  collectionNoBtn: {fileID: 0}
   collectionNow: {fileID: 5826314664937963886}
-  medalTxt: {fileID: 0}
-  heartTxt: {fileID: 0}
-  collectionBtnSprite: {fileID: 21300000, guid: 9ea9d1159b50f9f4d80073c6e2710a4a, type: 3}
+  medalTxt: {fileID: 2918977390123462885}
+  heartTxt: {fileID: 8197499917771909799}
+  collectionBtnSprite: {fileID: 6660268247917714091, guid: 1bcf449fa505472459202ce69e0d20c7, type: 3}
+  collectionNowSprite: {fileID: -2463527919772510135, guid: 1bcf449fa505472459202ce69e0d20c7, type: 3}
+  FinBtn: {fileID: 6764486266852864524}
+  FinBG: {fileID: 5645115448955947239}
+  heart: {fileID: 8000951061545820816}
+  medal: {fileID: 1806504805776644555}
   berryClassifyNum: 0
 --- !u!1 &3665103452678471443
 GameObject:
