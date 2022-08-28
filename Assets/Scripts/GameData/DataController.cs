@@ -7,11 +7,13 @@ using Newtonsoft.Json;
 public class DataController : MonoBehaviour
 {
     public bool isSaveMode;
+    [Header("ì•”í˜¸í™” ì—¬ë¶€ ì²´í¬")]
+    public bool dataEncryption;
 
-    //½Ì±ÛÅæ
+    //ï¿½Ì±ï¿½ï¿½ï¿½
     public static DataController instance = null;
 
-    //°ÔÀÓµ¥ÀÌÅÍ 
+    //ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½ 
     string gameDataFileName = "gameData.json";
     //[HideInInspector]
     public GameData gameData;
@@ -23,14 +25,14 @@ public class DataController : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            //¾À ÀüÈ¯ÀÌ µÇ´õ¶óµµ ÆÄ±«µÇÁö ¾Êµµ·Ï ÇÔ
+            //ï¿½ï¿½ ï¿½ï¿½È¯ï¿½ï¿½ ï¿½Ç´ï¿½ï¿½ï¿½ ï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Êµï¿½ï¿½ï¿½ ï¿½ï¿½
             DontDestroyOnLoad(this.gameObject);
         }
         else if(instance!=this)
         {
-            //¾À ÀüÈ¯ÀÌ µÇ¾ú´Âµ¥ ÀÎ½ºÅÏ½º°¡ Á¸ÀçÇÏ´Â °æ¿ì
-            //ÀÌÀü ¾À¿¡¼­ ³Ñ¾î¿Â ÀÎ½ºÅÏ½º¸¦ »ç¿ëÇÏ±â À§ÇØ 
-            //»õ·Î¿î ¾ÀÀÇ °ÔÀÓ¿ÀºêÁ§Æ® Á¦°Å
+            //ï¿½ï¿½ ï¿½ï¿½È¯ï¿½ï¿½ ï¿½Ç¾ï¿½ï¿½Âµï¿½ ï¿½Î½ï¿½ï¿½Ï½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½
+            //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ¾ï¿½ï¿½ ï¿½Î½ï¿½ï¿½Ï½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ 
+            //ï¿½ï¿½ï¿½Î¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ó¿ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½
             Destroy(this.gameObject);
         }
         rainParticle = GameObject.FindGameObjectWithTag("Rain").GetComponent<ParticleSystem>();
@@ -43,23 +45,23 @@ public class DataController : MonoBehaviour
 
         if (File.Exists(filePath))
         {
-            //jsonÆÄÀÏ ºÒ·¯¿À±â
+            //jsonï¿½ï¿½ï¿½ï¿½ ï¿½Ò·ï¿½ï¿½ï¿½ï¿½ï¿½
             //Debug.Log(filePath);
             string jsonData = File.ReadAllText(filePath);
 
-            //¿ªÁ÷·ÄÈ­
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È­
             gameData =JsonConvert.DeserializeObject<GameData>(jsonData);
             //gameData = JsonUtility.FromJson<GameData>(jsonData);
 
-            // ºñ Áö¼Ó½Ã°£ ·Îµå
+            // ï¿½ï¿½ ï¿½ï¿½ï¿½Ó½Ã°ï¿½ ï¿½Îµï¿½
             var main = rainParticle.main;
             main.duration = gameData.rainDuration;
 
-            Debug.Log("µ¥ÀÌÅÍ¸¦ ·ÎµåÇß½À´Ï´Ù");
+            Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½Îµï¿½ï¿½ß½ï¿½ï¿½Ï´ï¿½");
         }
         else
         {
-            Debug.Log("»õ·Î¿î µ¥ÀÌÅÍ »ı¼º");
+            Debug.Log("ï¿½ï¿½ï¿½Î¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
             gameData = new GameData();
             InitData();
             if(isSaveMode) SaveData();
@@ -71,24 +73,24 @@ public class DataController : MonoBehaviour
     {
         string filePath = Application.persistentDataPath + gameDataFileName;
 
-        //µ¥ÀÌÅÍ Á÷·ÄÈ­
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½È­
         string jsonData = JsonConvert.SerializeObject(gameData);
         //string jsonData = JsonUtility.ToJson(gameData);
 
-        //·ÎÄÃ¿¡ ÀúÀå
+        //ï¿½ï¿½ï¿½Ã¿ï¿½ ï¿½ï¿½ï¿½ï¿½
         File.WriteAllText(filePath, jsonData);
 
-        Debug.Log("·ÎÄÃ ÀúÀå ¿Ï·á °æ·Î : "+filePath);
+        Debug.Log("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ï·ï¿½ ï¿½ï¿½ï¿½ : "+filePath);
     }
 
     public void InitData()
     {
         gameData.cloudSaveTime = new System.DateTime();
-        // ÀçÈ­ º¯¼ö
-        gameData.coin = 10000; // ¿ø·¡ 500
+        // ï¿½ï¿½È­ ï¿½ï¿½ï¿½ï¿½
+        gameData.coin = 10000; // ï¿½ï¿½ï¿½ï¿½ 500
         gameData.heart = 50;
         gameData.medal = 0;
-        // ´©Àû º¯¼ö
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         gameData.unlockBerryCnt = 4;
         gameData.totalHarvBerryCnt = 0;
         gameData.accCoin = 50000;
@@ -96,7 +98,7 @@ public class DataController : MonoBehaviour
         gameData.accAttendance = 0;
         gameData.mgPlayCnt = 0;
 
-        // µş±â ¼ºÀå ½Ã°£
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½
 
 
         //Truck
@@ -114,30 +116,30 @@ public class DataController : MonoBehaviour
             gameData.berryFieldData[i] = new BerryFieldData();                       
         }
         
-        // ºñ Áö¼Ó½Ã°£ ÃÊ±âÈ­
+        // ï¿½ï¿½ ï¿½ï¿½ï¿½Ó½Ã°ï¿½ ï¿½Ê±ï¿½È­
         var main = rainParticle.main;
         main.duration = 5.0f;
 
-        //ÃÊ±â µş±â °¡°İ ¼³Á¤
+        //ï¿½Ê±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         InitBerryPrice();
 
         //=====================================================
-        //¿©±â ¾Æ·¡ Á¤¸® ÇÊ¿ä
+        //ï¿½ï¿½ï¿½ï¿½ ï¿½Æ·ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½
         //isBerryUnlock
         for (int i = 0; i < 192; i++)
         {   gameData.isBerryUnlock[i] = false;   }
-        gameData.isBerryUnlock[0] = true;//Ã¹¹øÂ° ±âº»º£¸®´Â Á¸Àç
-        /*gameData.isBerryUnlock[1] = true;//µÎ¹øÂ° ±âº»º£¸®´Â Á¸Àç
-        gameData.isBerryUnlock[2] = true;//¼¼¹øÂ° ±âº»º£¸®´Â Á¸Àç
-        gameData.isBerryUnlock[3] = true;//³×¹øÂ° ±âº»º£¸®´Â Á¸Àç*/
+        gameData.isBerryUnlock[0] = true;//Ã¹ï¿½ï¿½Â° ï¿½âº»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+        /*gameData.isBerryUnlock[1] = true;//ï¿½Î¹ï¿½Â° ï¿½âº»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+        gameData.isBerryUnlock[2] = true;//ï¿½ï¿½ï¿½ï¿½Â° ï¿½âº»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+        gameData.isBerryUnlock[3] = true;//ï¿½×¹ï¿½Â° ï¿½âº»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½*/
 
-        //µµÀü°úÁ¦
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         for (int i = 0; i < 6; i++) {   gameData.challengeLevel[i] = 0;   }
 
-        //¼öÁı
+        //ï¿½ï¿½ï¿½ï¿½
         for (int i = 0; i < 7; i++) { gameData.isCollectionDone[i] = false; }
 
-        //´º½º
+        //ï¿½ï¿½ï¿½ï¿½
         for (int i = 0; i < 15; i++) {   gameData.newsState[i] = 0;  }
 
         //PTJ
@@ -146,19 +148,19 @@ public class DataController : MonoBehaviour
         gameData.PTJSelectNum[1] = 0;
         gameData.PTJCount = 0;
 
-        //´À³¦Ç¥ !!
+        //ï¿½ï¿½ï¿½ï¿½Ç¥ !!
         for (int i = 0; i < 15; i++) 
         {    gameData.isNewsEM[i] = false;   }
         for (int i = 0; i < 192; i++)
         {    gameData.isBerryEM[i] = false;    }
 
-        //µş±â
+        //ï¿½ï¿½ï¿½ï¿½
         gameData.newBerryResearchAble = 0;
         gameData.newBerryBtnState = 0;
         gameData.newBerryTime = 0;
         gameData.newBerryIndex = 0;
 
-        //°¡°Ô°ü·Ãº¯¼ö
+        //ï¿½ï¿½ï¿½Ô°ï¿½ï¿½Ãºï¿½ï¿½ï¿½
         gameData.isStoreOpend = false;
         for (int i = 0; i < 4; i++) { gameData.highScore[i] = 0; }
         //=====================================================
@@ -182,7 +184,7 @@ public class DataController : MonoBehaviour
     }
     void OnApplicationQuit()
     {
-        //°ÔÀÓÁ¾·á½Ã ÀúÀå
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         if(isSaveMode)SaveData();
     }
     

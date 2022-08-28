@@ -29,6 +29,10 @@ public class MiniGameManager : MonoBehaviour
             inside.SetActive(true);
             isOpen = true;
             AudioManager.instance.BGMPlay(2);
+
+            //예림-오디오
+            GameManager.instance.isMiniGameMode = true;
+            AudioManager.instance.PauseAudio("RainSFXSound");
         }
         else
         {
@@ -61,6 +65,12 @@ public class MiniGameManager : MonoBehaviour
             { return false; }
         }
         return true;
+    }
+
+    public void ExitStore()
+    {
+        GameManager.instance.isMiniGameMode = false;
+        AudioManager.instance.ResumePlayAudio("RainSFXSound");
     }
 
     public void SetInfo(int btnIdx)

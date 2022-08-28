@@ -30,7 +30,7 @@ public class Bug : MonoBehaviour
         }
         DataController.instance.gameData.berryFieldData[bugIdx].hasBug = false;
 
-        AudioManager.instance.Remove2AudioPlay();
+        //AudioManager.instance.Remove2AudioPlay();
     }
     // Update is called once per frame    
     public void GenerateBug()
@@ -58,7 +58,7 @@ public class Bug : MonoBehaviour
     IEnumerator DisableBug(float time)
     {
         yield return new WaitForSeconds(time);
-
+        AudioManager.instance.Remove2AudioPlay();
         this.gameObject.SetActive(false);
     }
 }

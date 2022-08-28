@@ -5,25 +5,25 @@ using UnityEngine.UI;
 
 public class MiniGame : MonoBehaviour
 {
-    static public bool isGameRunning = false;           //°ÔÀÓÀÌ ½ÇÇà ÁßÀÎÁö
-    static public bool isMiniGameWork = false;           //°ÔÀÓÀÌ ½ÇÇà ÁßÀÎÁö
+    static public bool isGameRunning = false;           //ê²Œì„ì´ ì‹¤í–‰ ì¤‘ì¸ì§€
+    static public bool isMiniGameWork = false;           //ê²Œì„ì´ ì‹¤í–‰ ì¤‘ì¸ì§€
 
     [Header("UI")]
-    public Scrollbar scrollbar;//½ºÅ©·Ñ¹Ù
+    public Scrollbar scrollbar;//ìŠ¤í¬ë¡¤ë°”
     public Image scroll;
-    public Text score_txt;     //Á¡¼ö
-    public GameObject countImgs;//Ä«¿îÆ® ÀÌ¹ÌÁö
-    public Button pause_btn;   //ÀÏ½ÃÁ¤Áö ¹öÆ°
-    public GameObject resultPanel;//°á°úÆĞ³Î
-    public Text result_txt;    //°á°ú ÅØ½ºÆ®
+    public Text score_txt;     //ì ìˆ˜
+    public GameObject countImgs;//ì¹´ìš´íŠ¸ ì´ë¯¸ì§€
+    public Button pause_btn;   //ì¼ì‹œì •ì§€ ë²„íŠ¼
+    public GameObject resultPanel;//ê²°ê³¼íŒ¨ë„
+    public Text result_txt;    //ê²°ê³¼ í…ìŠ¤íŠ¸
     public Button checkButton;
     public Button challengeButton;
     public Button settingButton;
 
-    public float size;                         //½ºÅ©·Ñ¹Ù »çÀÌÁî
-    public int time;                           //ÃÊ
-    public int score;                          //Á¡¼ö
-    protected List<int> unlockList=new List<int>(); //ÇØ±İµÈ µş±â ¹øÈ£ ¸®½ºÆ®
+    public float size;                         //ìŠ¤í¬ë¡¤ë°” ì‚¬ì´ì¦ˆ
+    public int time;                           //ì´ˆ
+    public int score;                          //ì ìˆ˜
+    protected List<int> unlockList = new List<int>(); //í•´ê¸ˆëœ ë”¸ê¸° ë²ˆí˜¸ ë¦¬ìŠ¤íŠ¸
 
     protected Globalvariable global;
     protected int research_level_sum;
@@ -44,11 +44,11 @@ public class MiniGame : MonoBehaviour
     }
 
     void StartGame()
-    {   
-        // ¸®½ºÆ® ÃÊ±âÈ­
+    {
+        // ë¦¬ìŠ¤íŠ¸ ì´ˆê¸°í™”
         unlockList.Clear();
 
-        //º¸À¯ÇÑ µş±â ¸®½ºÆ® ±¸¼º
+        //ë³´ìœ í•œ ë”¸ê¸° ë¦¬ìŠ¤íŠ¸ êµ¬ì„±
         for (int i = 0; i < 192; i++)
         {
             if (DataController.instance.gameData.isBerryUnlock[i] == true)
@@ -63,22 +63,22 @@ public class MiniGame : MonoBehaviour
         time = 64;
         score_txt.text = score.ToString();
         isGameRunning = false;
-        //4ÃÊ Ä«¿îÆ®
+        //4ì´ˆ ì¹´ìš´íŠ¸
         StartCoroutine(Count4Second());
+        AudioManager.instance.CountdownAudioPlay(); // ì¼ì‹œì •ì§€í•´ë„ ì•ˆë©ˆì¶¤
     }
 
     IEnumerator Count4Second()
     {
-        //AudioManager.instance.CountdownAudioPlay(); // ÀÏ½ÃÁ¤ÁöÇØµµ ¾È¸ØÃã
         countImgs.transform.GetChild(time - 61).gameObject.SetActive(true);
         yield return new WaitForSeconds(1);
         countImgs.transform.GetChild(time - 61).gameObject.SetActive(false);
         time -= 1;
         if (time <= 60)
         {
-            StartCoroutine(Timer());          
-            MakeGame(); //°¢ °ÔÀÓ¿¡¼­ ¿À¹ö¶óÀÌµù ÇÏ±â
-            isGameRunning = true; // Update ÇÔ¼ö ¾²·Á¸é ±×³É °ÔÀÓ ½ÃÀÛ º¯¼ö ¾²´Â°Ô ÆíÇÔ
+            StartCoroutine(Timer());
+            MakeGame(); //ê° ê²Œì„ì—ì„œ ì˜¤ë²„ë¼ì´ë”© í•˜ê¸°
+            isGameRunning = true; // Update í•¨ìˆ˜ ì“°ë ¤ë©´ ê·¸ëƒ¥ ê²Œì„ ì‹œì‘ ë³€ìˆ˜ ì“°ëŠ”ê²Œ í¸í•¨
         }
         else
         {
@@ -93,7 +93,7 @@ public class MiniGame : MonoBehaviour
         scroll.fillAmount -= size;
         time -= 1;
         if (time <= 0)
-        {           
+        {
             FinishGame();
         }
         else
@@ -103,7 +103,7 @@ public class MiniGame : MonoBehaviour
     }
 
     IEnumerator Timer2()
-    {    
+    {
         while (time >= 0)
         {
             scroll.fillAmount -= size;
@@ -115,7 +115,7 @@ public class MiniGame : MonoBehaviour
 
     protected virtual void MakeGame()
     {
-        
+
     }
 
     protected virtual void FinishGame()
@@ -124,15 +124,15 @@ public class MiniGame : MonoBehaviour
 
         for (int i = 0; i < DataController.instance.gameData.researchLevel.Length; i++)
         {
-            // ¿¬±¸·¹º§ÀÇ ÇÕÀ» ±¸ÇÑ´Ù.
+            // ì—°êµ¬ë ˆë²¨ì˜ í•©ì„ êµ¬í•œë‹¤.
             research_level_sum += DataController.instance.gameData.researchLevel[i];
         }
 
-        // ¿¬±¸·¹º§ÀÇ Æò±ÕÀ» ±¸ÇÑ´Ù.
+        // ì—°êµ¬ë ˆë²¨ì˜ í‰ê· ì„ êµ¬í•œë‹¤.
         research_level_avg = research_level_sum / DataController.instance.gameData.researchLevel.Length;
 
-        //¹Ì´Ï°ÔÀÓ ÇÃ·¹ÀÌ È½¼ö Áõ°¡
-        DataController.instance.gameData.mgPlayCnt++;       
+        //ë¯¸ë‹ˆê²Œì„ í”Œë ˆì´ íšŸìˆ˜ ì¦ê°€
+        DataController.instance.gameData.mgPlayCnt++;
     }
 
     public virtual void StopGame()
@@ -145,7 +145,7 @@ public class MiniGame : MonoBehaviour
         isMiniGameWork = false;
     }
 
-    public virtual void ReStart() //´Ù½ÃÇÏ±â
+    public virtual void ReStart() //ë‹¤ì‹œí•˜ê¸°
     {
         score = 0;
         time = 64;
@@ -154,7 +154,7 @@ public class MiniGame : MonoBehaviour
         OnEnable();
     }
 
-    public virtual void OnClickPauseButton() //ÀÏ½ÃÁ¤Áö
+    public virtual void OnClickPauseButton() //ì¼ì‹œì •ì§€
     {
         checkButton.interactable = false;
         challengeButton.interactable = false;
@@ -165,9 +165,11 @@ public class MiniGame : MonoBehaviour
 
         Time.timeScale = 0;
         isGameRunning = false;
+
+        AudioManager.instance.PauseAudio("CountdownSFXSound");
     }
 
-    public virtual void OnClickKeepGoingButton() //ÀÏ½ÃÁ¤Áö ÇØÁ¦
+    public virtual void OnClickKeepGoingButton() //ì¼ì‹œì •ì§€ í•´ì œ
     {
         checkButton.interactable = true;
         challengeButton.interactable = true;
@@ -178,9 +180,11 @@ public class MiniGame : MonoBehaviour
 
         Time.timeScale = 1;
         isGameRunning = true;
+
+        AudioManager.instance.ResumePlayAudio("CountdownSFXSound");
     }
 
-    public void OnclickExitButton() //°ÔÀÓ ³ª°¡±â
+    public void OnclickExitButton() //ê²Œì„ ë‚˜ê°€ê¸°
     {
         OnClickKeepGoingButton();
         StopGame();
