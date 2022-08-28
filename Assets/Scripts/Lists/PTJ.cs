@@ -170,8 +170,8 @@ public class PTJ : MonoBehaviour
         //설명
         explanationText.GetComponent<Text>().text = Info[prefabnum].Explanation;
         //비용
-        coinNum.GetComponent<Text>().text = Info[prefabnum].Price.ToString()+"A";
-        //GameManager.instance.ShowCoinText(coinNum.GetComponent<Text>(), Info[prefabnum].Price);
+        //coinNum.GetComponent<Text>().text = Info[prefabnum].Price.ToString()+"A";
+        GameManager.instance.ShowCoinText(price.GetComponent<Text>(), Info[prefabnum].Price);
     }
 
     //PTJ Explanation Panel 띄우기
@@ -270,8 +270,8 @@ public class PTJ : MonoBehaviour
         DataController.instance.gameData.PTJSelectNum[0] = prefabnum;
         DataController.instance.gameData.PTJSelectNum[1] = value;
         //가격
-        price.GetComponent<Text>().text = (value * Info[prefabnum].Price).ToString();
-        //GameManager.instance.ShowCoinText(price.GetComponent<Text>(), Info[prefabnum].Price); 도와주세요
+        //price.GetComponent<Text>().text = (value * Info[prefabnum].Price).ToString();
+        GameManager.instance.ShowCoinText(price.GetComponent<Text>(), value * Info[prefabnum].Price);
 
     }
     public void ToggleChange()
@@ -307,7 +307,8 @@ public class PTJ : MonoBehaviour
             //n회
             SliderNum.transform.GetComponent<Text>().text = "10회";
             //가격
-            price.GetComponent<Text>().text = (10 * Info[prefabnum].Price).ToString(); //도와주세요
+            //price.GetComponent<Text>().text = (10 * Info[prefabnum].Price).ToString(); //도와주세요
+            GameManager.instance.ShowCoinText(price.GetComponent<Text>(), 10 * Info[prefabnum].Price);
 
         }
         //1단위
@@ -325,9 +326,8 @@ public class PTJ : MonoBehaviour
             //n회
             SliderNum.transform.GetComponent<Text>().text = "1회";
             //가격
-            price.GetComponent<Text>().text = (Info[prefabnum].Price).ToString();
-            //GameManager.instance.ShowCoinText(PTJPanel.transform.GetChild(7).GetComponent<Text>(), Info[prefabnum].Price);//도와주세요
-
+            //price.GetComponent<Text>().text = (Info[prefabnum].Price).ToString();
+            GameManager.instance.ShowCoinText(price.GetComponent<Text>(), Info[prefabnum].Price);
         }
     }
 
