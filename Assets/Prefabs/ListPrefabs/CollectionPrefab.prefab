@@ -605,8 +605,8 @@ MonoBehaviour:
   collectionBtn: {fileID: 4911162250941680714}
   collectionNoBtn: {fileID: 0}
   collectionNow: {fileID: 5826314664937963886}
-  medalTxt: {fileID: 2918977390123462885}
-  heartTxt: {fileID: 8197499917771909799}
+  medalTxt: {fileID: 0}
+  heartTxt: {fileID: 0}
   collectionBtnSprite: {fileID: 21300000, guid: 9ea9d1159b50f9f4d80073c6e2710a4a, type: 3}
   berryClassifyNum: 0
 --- !u!1 &3665103452678471443
