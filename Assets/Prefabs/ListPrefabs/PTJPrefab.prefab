@@ -35,7 +35,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -271.4, y: 0.000021935}
-  m_SizeDelta: {x: 122.1429, y: 133.5709}
+  m_SizeDelta: {x: 160, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8588996463547964912
 CanvasRenderer:
@@ -65,9 +65,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 118610161138818046, guid: 9fe2522d09c446346b852650ce21a7f9, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -109,8 +109,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -16.600525, y: -47.019234}
-  m_SizeDelta: {x: 272.79895, y: 86.03847}
+  m_AnchoredPosition: {x: 9.58, y: -34.8}
+  m_SizeDelta: {x: 328.75, y: 86.04}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7718661988145398440
 CanvasRenderer:
@@ -147,13 +147,13 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 109
-    m_Alignment: 0
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uC54C\uBC14\uC0DD \uC124\uBA85"
+  m_Text: "\uC54C\uBC14\uC0DD \uC124\uBA85\n\uC54C\uBC14\uC0DD \uC124\uBA85"
 --- !u!1 &3464224768173057888
 GameObject:
   m_ObjectHideFlags: 0
@@ -299,38 +299,32 @@ MonoBehaviour:
     FacePicture: {fileID: -8401692288953904933, guid: bac779e1f038d5e40bbe137bcb8ace25, type: 3}
     Explanation: "\uBE48 \uBC2D\uC5D0 \uB538\uAE30 \uC528\uC557\uB4E4\uC744 \uC2EC\uC5B4\uC904\uAC8C"
     Price: 20
-    NowSliderNum: 0
   - Name: "\uD1B0\uC2A8"
     Picture: {fileID: 3445332486847661990, guid: bac779e1f038d5e40bbe137bcb8ace25, type: 3}
     FacePicture: {fileID: -8090365562718305141, guid: bac779e1f038d5e40bbe137bcb8ace25, type: 3}
     Explanation: "\uBC2D\uC5D0 \uC5F4\uB9B0 \uB538\uAE30\uB4E4\uC744 \uC218\uD655\uD574\uC904\uAC8C"
     Price: 20
-    NowSliderNum: 0
   - Name: "\uD584\uC2A4\uC6CC\uC2A4"
     Picture: {fileID: -5725962078152895296, guid: bac779e1f038d5e40bbe137bcb8ace25, type: 3}
     FacePicture: {fileID: 7152930139536384079, guid: bac779e1f038d5e40bbe137bcb8ace25, type: 3}
     Explanation: "\uBC8C\uB808\uB4E4\uC744 \uB2E4 \uBA39\uC5B4 \uCE58\uC6B0\uACA0\uC5B4"
     Price: 30
-    NowSliderNum: 0
   - Name: "\uD478\uBCF4"
     Picture: {fileID: 679739729869728943, guid: bac779e1f038d5e40bbe137bcb8ace25, type: 3}
     FacePicture: {fileID: -6835189599539173722, guid: bac779e1f038d5e40bbe137bcb8ace25, type: 3}
     Explanation: "\uC7A1\uCD08\uB294 \uB098\uC5D0\uAC8C \uB9E1\uACA8"
     Price: 30
-    NowSliderNum: 0
   - Name: "\uB8E8\uBE44\uC544"
     Picture: {fileID: 4620578802948863353, guid: bac779e1f038d5e40bbe137bcb8ace25, type: 3}
     FacePicture: {fileID: -4124168217499134943, guid: bac779e1f038d5e40bbe137bcb8ace25, type: 3}
     Explanation: "\uB354\uC6B1 \uAC15\uB825\uD55C \uBE44\uB97C \uC6D0\uD558\uB2C8?"
     Price: 300
-    NowSliderNum: 0
   - Name: "\uD53C\uADF8\uB9C8"
     Picture: {fileID: 5377859178988851676, guid: bac779e1f038d5e40bbe137bcb8ace25, type: 3}
     FacePicture: {fileID: 7456334905099763947, guid: bac779e1f038d5e40bbe137bcb8ace25, type: 3}
     Explanation: "\uB538\uAE30\uB97C \uBE44\uC2F8\uAC8C \uD314\uC544\uC904\uAC8C~
       \uC544\uB9C8\uB3C4! "
     Price: 400
-    NowSliderNum: 0
   PTJBackground: {fileID: 3464224768173057888}
   nameText: {fileID: 9018496231175234831}
   facePicture: {fileID: 56983697321961158}
@@ -341,13 +335,6 @@ MonoBehaviour:
   originalPTJSprite: {fileID: -567519917004074384, guid: 1f095c0873d7a934c8dcc85dab8ee983, type: 3}
   FireButtonSprite: {fileID: -7645600185257416101, guid: 3669433d78cafd44e91c6ad2ab592b81, type: 3}
   HireButtonSprite: {fileID: -464533967283577750, guid: 3669433d78cafd44e91c6ad2ab592b81, type: 3}
-  warningPanel: {fileID: 0}
-  warningBlackPanel: {fileID: 0}
-  noCoinPanel: {fileID: 0}
-  noCoinPanel_text: {fileID: 0}
-  HireYNPanel: {fileID: 0}
-  HireYNPanel_yes: {fileID: 0}
-  confirmPanel: {fileID: 0}
 --- !u!114 &1349541812454805739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -729,7 +716,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 21.915009, y: 35}
+  m_AnchoredPosition: {x: 17.5, y: 50.8}
   m_SizeDelta: {x: 349.83002, y: 62}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1737820312368183820
