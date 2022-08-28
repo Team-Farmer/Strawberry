@@ -97,7 +97,7 @@ public class MiniGameManager : MonoBehaviour
         else if (info_str == "잘 익은 ")
         {
             miniGameList[1].gameObject.SetActive(true);
-            AudioManager.instance.BGMPlay(5);
+            AudioManager.instance.BGMPlay(4);
         }
         else if (info_str == "딸기 밭에")
         {
@@ -107,7 +107,7 @@ public class MiniGameManager : MonoBehaviour
         else if (info_str == "우리가 정")
         {
             miniGameList[3].gameObject.SetActive(true);
-            AudioManager.instance.BGMPlay(7);
+            AudioManager.instance.BGMPlay(6);
         }
     }
 }

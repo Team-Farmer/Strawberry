@@ -156,14 +156,14 @@ public class MiniGame4 : MiniGame
             //정답 효과
             correctTxt.GetComponent<Text>().color=new Color(1f,1f,1f,1f);
             StartCoroutine("FadeCoroutine");
-            AudioManager.instance.Cute1AudioPlay();
+            AudioManager.instance.SFXAudioPlay();
         }
         //오답!!
         else
         {
             scroll.fillAmount -= size * 10;
             time -= 10;
-            AudioManager.instance.WrongAudioPlay();
+            AudioManager.instance.Cute5AudioPlay();
         }
 
         //좌우 이동==========================================

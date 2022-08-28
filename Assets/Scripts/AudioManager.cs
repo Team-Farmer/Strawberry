@@ -45,6 +45,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip CountdownClip;
     public AudioClip EndClip;
     public AudioClip ScrollbarClip;
+    public AudioClip Cute5Clip;
 
     //instance
     public static AudioManager instance;
@@ -169,6 +170,9 @@ public class AudioManager : MonoBehaviour
     { SFXPlay("EndSFX", EndClip); }
     public void ScrollbarAudioPlay()      // 스크롤바
     { SFXPlay("ScrollbarSFX", ScrollbarClip); }
+
+    public void Cute5AudioPlay()      // 스크롤바
+    { SFXPlay("Cute5SFX", Cute5Clip); }
 
 
     //직접 오디오 넣는 함수
