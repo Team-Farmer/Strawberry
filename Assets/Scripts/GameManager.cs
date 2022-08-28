@@ -965,7 +965,7 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public void newsBerry()
+    public bool newsBerry()
     {
         if (isNewBerryAble())
         {
@@ -980,11 +980,13 @@ public class GameManager : MonoBehaviour
             //����ǥ ǥ��
             DataController.instance.gameData.isBerryEM[newBerryIndex2] = true;
 
-            //���� ���� ȿ����(¥��)
-            AudioManager.instance.TadaAudioPlay();
+            //새딸기 얻음 팝업창
+            GetNewBerry();
+
+            return true;
 
         }
-        else { Debug.Log("���̻� ���߰����� ���� ����."); }
+        else { return false; }
 
     }
 
