@@ -456,6 +456,7 @@ public class GameManager : MonoBehaviour
         StartCoroutine(CountAnimation(cost, "+", 0));
         DataController.instance.gameData.coin += cost; // 현재 코인 +
         DataController.instance.gameData.accCoin += cost; // 누적 코인 +
+        AudioManager.instance.CoinAudioPlay();
     }
 
     public void UseCoin(int cost) // 코인 사용 함수 (마이너스 방지 위함)
