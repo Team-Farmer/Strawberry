@@ -109,7 +109,6 @@ public class AudioManager : MonoBehaviour
     //이거 미완성
     public void SFXPlay(string sfxName,AudioClip clip) 
     {
-
         GameObject go = new GameObject(sfxName+"Sound");//해당이름을 가진 오브젝트가 소리 날때마다 생성된다.
         
         //오디오 재생

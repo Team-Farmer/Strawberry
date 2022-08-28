@@ -129,7 +129,7 @@ public class Collection : MonoBehaviour
 
     public void collectionBtnClick() 
     {
-        AudioManager.instance.Cute1AudioPlay();
+        AudioManager.instance.RewardAudioPlay();
         if (collectionBtn.GetComponent<Image>().sprite == collectionBtnSprite) //지금 버튼 스프라이트가 완료 버튼이면
         {
             //하트 획득
