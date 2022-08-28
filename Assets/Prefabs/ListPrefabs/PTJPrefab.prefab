@@ -109,8 +109,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 9.58, y: -34.8}
-  m_SizeDelta: {x: 328.75, y: 86.04}
+  m_AnchoredPosition: {x: 19.62, y: -38.889}
+  m_SizeDelta: {x: 370.2, y: 77.791}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7718661988145398440
 CanvasRenderer:
@@ -142,7 +142,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: fffcb38c5316eb843924a2af66e3bd38, type: 3}
-    m_FontSize: 30
+    m_FontSize: 32
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -153,7 +153,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uC54C\uBC14\uC0DD \uC124\uBA85\n\uC54C\uBC14\uC0DD \uC124\uBA85"
+  m_Text: "\uC54C\uBC14\uC0DD \uC124\uBA85"
 --- !u!1 &3464224768173057888
 GameObject:
   m_ObjectHideFlags: 0
@@ -295,34 +295,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Info:
   - Name: "\uB808\uC774\uCCBC"
-    Picture: {fileID: 7888922196035610388, guid: bac779e1f038d5e40bbe137bcb8ace25, type: 3}
-    FacePicture: {fileID: -8401692288953904933, guid: bac779e1f038d5e40bbe137bcb8ace25, type: 3}
-    Explanation: "\uBE48 \uBC2D\uC5D0 \uB538\uAE30 \uC528\uC557\uB4E4\uC744 \uC2EC\uC5B4\uC904\uAC8C"
+    Picture: {fileID: 118610161138818046, guid: 9fe2522d09c446346b852650ce21a7f9, type: 3}
+    FacePicture: {fileID: -7688503138522254423, guid: 7b5781554daf5bd4f9ebd7e65b6cce4a, type: 3}
+    Explanation: "\uB538\uAE30 \uC528\uC557\uB4E4\uC744 \uC2EC\uC5B4\uC904\uAC8C"
     Price: 20
   - Name: "\uD1B0\uC2A8"
-    Picture: {fileID: 3445332486847661990, guid: bac779e1f038d5e40bbe137bcb8ace25, type: 3}
-    FacePicture: {fileID: -8090365562718305141, guid: bac779e1f038d5e40bbe137bcb8ace25, type: 3}
-    Explanation: "\uBC2D\uC5D0 \uC5F4\uB9B0 \uB538\uAE30\uB4E4\uC744 \uC218\uD655\uD574\uC904\uAC8C"
+    Picture: {fileID: 4898508702420887539, guid: 9fe2522d09c446346b852650ce21a7f9, type: 3}
+    FacePicture: {fileID: -8995298805207334545, guid: 7b5781554daf5bd4f9ebd7e65b6cce4a, type: 3}
+    Explanation: "\uB538\uAE30\uB4E4\uC744 \uC218\uD655\uD574\uC904\uAC8C"
     Price: 20
   - Name: "\uD584\uC2A4\uC6CC\uC2A4"
-    Picture: {fileID: -5725962078152895296, guid: bac779e1f038d5e40bbe137bcb8ace25, type: 3}
-    FacePicture: {fileID: 7152930139536384079, guid: bac779e1f038d5e40bbe137bcb8ace25, type: 3}
-    Explanation: "\uBC8C\uB808\uB4E4\uC744 \uB2E4 \uBA39\uC5B4 \uCE58\uC6B0\uACA0\uC5B4"
+    Picture: {fileID: -3022224164914145473, guid: 9fe2522d09c446346b852650ce21a7f9, type: 3}
+    FacePicture: {fileID: -7850888183806381051, guid: 7b5781554daf5bd4f9ebd7e65b6cce4a, type: 3}
+    Explanation: "\uBC8C\uB808\uB4E4\uC744 \uBAA8\uB450 \uC7A1\uC544\uC904\uAC8C"
     Price: 30
   - Name: "\uD478\uBCF4"
-    Picture: {fileID: 679739729869728943, guid: bac779e1f038d5e40bbe137bcb8ace25, type: 3}
-    FacePicture: {fileID: -6835189599539173722, guid: bac779e1f038d5e40bbe137bcb8ace25, type: 3}
+    Picture: {fileID: -1493095850736361556, guid: 9fe2522d09c446346b852650ce21a7f9, type: 3}
+    FacePicture: {fileID: 1306309026794346754, guid: 7b5781554daf5bd4f9ebd7e65b6cce4a, type: 3}
     Explanation: "\uC7A1\uCD08\uB294 \uB098\uC5D0\uAC8C \uB9E1\uACA8"
     Price: 30
   - Name: "\uB8E8\uBE44\uC544"
-    Picture: {fileID: 4620578802948863353, guid: bac779e1f038d5e40bbe137bcb8ace25, type: 3}
-    FacePicture: {fileID: -4124168217499134943, guid: bac779e1f038d5e40bbe137bcb8ace25, type: 3}
-    Explanation: "\uB354\uC6B1 \uAC15\uB825\uD55C \uBE44\uB97C \uC6D0\uD558\uB2C8?"
+    Picture: {fileID: 1491852098334267804, guid: 9fe2522d09c446346b852650ce21a7f9, type: 3}
+    FacePicture: {fileID: 2312389103385020965, guid: 7b5781554daf5bd4f9ebd7e65b6cce4a, type: 3}
+    Explanation: "\uAC15\uB825\uD55C \uBE44\uB97C \uC6D0\uD558\uB2C8?"
     Price: 300
   - Name: "\uD53C\uADF8\uB9C8"
-    Picture: {fileID: 5377859178988851676, guid: bac779e1f038d5e40bbe137bcb8ace25, type: 3}
-    FacePicture: {fileID: 7456334905099763947, guid: bac779e1f038d5e40bbe137bcb8ace25, type: 3}
-    Explanation: "\uB538\uAE30\uB97C \uBE44\uC2F8\uAC8C \uD314\uC544\uC904\uAC8C~
+    Picture: {fileID: 296038017401492265, guid: 9fe2522d09c446346b852650ce21a7f9, type: 3}
+    FacePicture: {fileID: -1513482845346613526, guid: 7b5781554daf5bd4f9ebd7e65b6cce4a, type: 3}
+    Explanation: "\uB538\uAE30\uB97C \uBE44\uC2F8\uAC8C \uD314\uC544\uC904\uAC8C
       \uC544\uB9C8\uB3C4! "
     Price: 400
   PTJBackground: {fileID: 3464224768173057888}
@@ -716,7 +716,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 17.5, y: 50.8}
+  m_AnchoredPosition: {x: 8, y: 41}
   m_SizeDelta: {x: 349.83002, y: 62}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1737820312368183820
