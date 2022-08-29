@@ -43,6 +43,10 @@ public class Collection : MonoBehaviour
     public GameObject heart;
     public GameObject medal;
 
+    [Header("[Animation]")]
+    public GameObject heartMover;
+    public GameObject medalMover;
+
     //=================================================================================
     //=================================================================================
     //프리팹들 번호 붙여주기
@@ -52,6 +56,7 @@ public class Collection : MonoBehaviour
     public int berryClassifyNum = 0;
 
     private GameObject Global;
+ 
 
     void Start()
     {
@@ -131,6 +136,9 @@ public class Collection : MonoBehaviour
     {
         if (collectionBtn.GetComponent<Image>().sprite == collectionBtnSprite) //지금 버튼 스프라이트가 완료 버튼이면
         {
+            heartMover.GetComponent<HeartMover>().HeartChMover(120);
+            medalMover.GetComponent<HeartMover>().BadgeMover(120);
+
             //하트 획득
             GameManager.instance.GetHeart(Info[prefabnum].rewardHeart);
             //메달 획득

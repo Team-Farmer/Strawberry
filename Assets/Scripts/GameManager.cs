@@ -106,7 +106,8 @@ public class GameManager : MonoBehaviour
     [Header("[ Panel List ]")]
     public Text panelCoinText;
     public Text panelHearText;
-    public Text AbsenceText;
+    public Text AbsenceMoneyText;
+    public Text AbsenceTimeText;
     public GameObject noCoinPanel;
     public GameObject noHeartPanel;
     public GameObject blackPanel;
@@ -114,6 +115,7 @@ public class GameManager : MonoBehaviour
     public GameObject heartAnimManager;
     public GameObject AbsencePanel;
     public GameObject AbsenceBlackPanel;
+
 
 
     [Header("[ Game Flag ]")]
@@ -1252,18 +1254,27 @@ public class GameManager : MonoBehaviour
 
     void PrintTime()
     {
-        Debug.Log("����ð�: " + DataController.instance.gameData.currentTime);
-        Debug.Log("���� �����ð�: " + DataController.instance.gameData.nextMidnightTime);
-        Debug.Log("���� �������� �����ð�: " + (DataController.instance.gameData.nextMidnightTime - DataController.instance.gameData.currentTime));
-        Debug.Log("������ ����ð�: " + DataController.instance.gameData.lastExitTime);
-        Debug.Log("������ �ð�: " + (DataController.instance.gameData.currentTime - DataController.instance.gameData.lastExitTime));
-        Debug.Log("���� �⼮:" + DataController.instance.gameData.accDays);
-        Debug.Log("������ �⼮��¥:" + DataController.instance.gameData.atdLastday);
+        Debug.Log("현재 시간: " + DataController.instance.gameData.currentTime);
+        Debug.Log("다음 자정시간: " + DataController.instance.gameData.nextMidnightTime);
+        Debug.Log("다음 자정시간까지 남은시간: " + (DataController.instance.gameData.nextMidnightTime - DataController.instance.gameData.currentTime));
+        Debug.Log("마지막 종료 시간: " + DataController.instance.gameData.lastExitTime);
+        Debug.Log("부재중 시간: " + (DataController.instance.gameData.currentTime - DataController.instance.gameData.lastExitTime));
+        Debug.Log("누적출석:" + DataController.instance.gameData.accDays);
+        Debug.Log("마지막 출석:" + DataController.instance.gameData.atdLastday);
     }
 
     public void AbsenceTime()
     {
         int researchLevelAdd = 0;
+        int minute = DataController.instance.gameData.rewardAbsenceTime.Minutes;
+        int hour=0;
+        if (minute > 59)
+        {
+            hour = minute / 60;
+            minute &= minute;
+        }
+
+        AbsenceTimeText.text = string.Format("{0:D2}:{1:D2}", hour, minute);
 
         for (int i = 0; i < 6; i++)
         {
@@ -1279,17 +1290,17 @@ public class GameManager : MonoBehaviour
 
             if (revenue <= 9999)           // 0~9999���� A
             {
-                AbsenceText.text = "������ ����:" + revenue + "A";
+                AbsenceMoneyText.text =  revenue + "A";
             }
             else if (revenue <= 9999999)   // 10000~9999999(=9999B)���� B
             {
                 revenue /= 1000;
-                AbsenceText.text = "������ ����:" + revenue + "B";
+                AbsenceMoneyText.text = revenue + "B";
             }
             else                        // �� �� C (�ִ� 2100C)
             {
                 revenue /= 1000000;
-                AbsenceText.text = "������ ����:" + revenue + "C";
+                AbsenceMoneyText.text = revenue + "C";
             }
             AbsenceBlackPanel.SetActive(true);
             AbsencePanel.GetComponent<PanelAnimation>().OpenScale();

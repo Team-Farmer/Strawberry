@@ -612,6 +612,8 @@ MonoBehaviour:
   FinBG: {fileID: 5645115448955947239}
   heart: {fileID: 8000951061545820816}
   medal: {fileID: 1806504805776644555}
+  heartMover: {fileID: 5714027239636749130}
+  medalMover: {fileID: 6747613001859234775}
   berryClassifyNum: 0
 --- !u!1 &3665103452678471443
 GameObject:
