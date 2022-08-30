@@ -475,7 +475,7 @@ MonoBehaviour:
     rewardMedal: 0
     rewardHeart: 0
     clearCriterion: 00000000
-    challengeImage: {fileID: -353946654998929424, guid: 11799ae92cd2d07459ef58f34b7286bc, type: 3}
+    challengeImage: {fileID: 21300000, guid: ddbffbdc38ee63b40bf220b80ab8bf8b, type: 3}
   levelText: {fileID: 24569728808626950}
   titleText: {fileID: 527783996456215474}
   achieveCondition: {fileID: 527783997037598283}
