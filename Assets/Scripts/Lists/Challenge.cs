@@ -108,7 +108,7 @@ public class Challenge : MonoBehaviour
         ChallengeValue[5] = DataController.instance.gameData.mgPlayCnt;
 
         LevelNow= DataController.instance.gameData.challengeLevel[prefabnum];//이거는 없앨 수있음
-        Info[prefabnum].rewardHeart = (DataController.instance.gameData.challengeLevel[prefabnum]+1) * 5;//레벨X5 하트//이거는 없앨 수있음
+        Info[prefabnum].rewardHeart = (DataController.instance.gameData.challengeLevel[prefabnum]+1) * 10;//레벨X5 하트//이거는 없앨 수있음
         ValueNow = ChallengeValue[prefabnum];
 
         InfoUpdate();
@@ -212,13 +212,14 @@ public class Challenge : MonoBehaviour
         medalTxt.GetComponent<Text>().text = "X" + Info[prefabnum].rewardMedal.ToString();
         heartTxt.GetComponent<Text>().text = "X" + Info[prefabnum].rewardHeart.ToString();
 
+        // 도전과제 게이지 현재값 == ValueNow
+        nowCondition.GetComponent<Text>().text = ValueNow.ToString();
+
         //게이지===============
         if (ValueNow >= Info[prefabnum].clearCriterion[LevelNow])
         {
             //도전과제 게이지 == 가득 찬 상태로
             Gauge.GetComponent<Image>().fillAmount = 1;
-            //도전과제 게이지 현재값 == 최대
-            nowCondition.GetComponent<Text>().text = Info[prefabnum].clearCriterion[LevelNow].ToString(); ;
             //도전과제 버튼 이미지 == Done
             Button.GetComponent<Image>().sprite = DoneButton;
             
@@ -228,8 +229,6 @@ public class Challenge : MonoBehaviour
         {
             //도전과제 게이지 == ValueNow 만큼 증가
             Gauge.GetComponent<Image>().fillAmount = (float)(ValueNow) / Info[prefabnum].clearCriterion[LevelNow];
-            //도전과제 게이지 현재값 == ValueNow
-            nowCondition.GetComponent<Text>().text = ValueNow.ToString();
         }
 
         
@@ -255,8 +254,9 @@ public class Challenge : MonoBehaviour
             GameManager.instance.GetHeart(Info[prefabnum].rewardHeart); //하트 보상 획득
             //Debug.Log(Info[prefabnum].rewardMedal + "   " + Info[prefabnum].rewardHeart);
             //다음 레벨로 이동
-            if (LevelNow < MaxLevel) // 업적 종료를 보기 위해 임시로 바꿈
+            if (LevelNow < MaxLevel)
             {
+                /*
                 switch (prefabnum) 
                 {
                     case 0:
@@ -278,10 +278,10 @@ public class Challenge : MonoBehaviour
                         DataController.instance.gameData.mgPlayCnt -= Info[prefabnum].clearCriterion[LevelNow];
                         break;
                 }
-
+                */
                 Button.GetComponent<Image>().sprite = IngButton; //도전과제 버튼 이미지 변경
                 DataController.instance.gameData.challengeLevel[prefabnum]++; //LevelNow증가 == 레벨증가
-
+                
             }
             else
             {

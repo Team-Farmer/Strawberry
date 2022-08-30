@@ -26,7 +26,11 @@ public class TEST : MonoBehaviour
         {
             if (global.GetComponent<Globalvariable>().berryListAll[i] != null) 
             {
-                DataController.instance.gameData.isBerryUnlock[i] = true;
+                if (DataController.instance.gameData.isBerryUnlock[i] == false)
+                {
+                    DataController.instance.gameData.isBerryUnlock[i] = true;
+                    DataController.instance.gameData.unlockBerryCnt++;
+                }
             }
         }
     

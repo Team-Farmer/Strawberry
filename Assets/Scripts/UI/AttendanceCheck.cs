@@ -164,7 +164,6 @@ public class AttendanceCheck : MonoBehaviour
 
     public void AttandanceSave(int number)
     {
-
         if (number == days && !isClicked[number])
         {
             isClicked[number] = true;
@@ -178,6 +177,7 @@ public class AttendanceCheck : MonoBehaviour
             DataController.instance.gameData.isAttendance = true;
             DataController.instance.gameData.atdLastday
                 = DataController.instance.gameData.currentTime;
+            DataController.instance.gameData.accAttendance++;
 
             hearts = number;
             Invoke("AtdHeart", 0.75f);
