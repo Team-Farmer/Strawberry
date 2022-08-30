@@ -99,6 +99,8 @@ public class ChangeLayer2 : MonoBehaviour
 	{
 		if (isBerry == true)
         {
+
+
 			UpdateInput(); //스와이프 관련
 
 			// 잠금해제 버튼
@@ -129,7 +131,7 @@ public class ChangeLayer2 : MonoBehaviour
 				swipeBtn[0].interactable = true;
 				swipeBtn[1].interactable = true;
 			}
-				
+
 		}
 		
 	}
@@ -146,6 +148,23 @@ public class ChangeLayer2 : MonoBehaviour
 	{
 		// 현재 Swipe를 진행중이면 터치 불가
 		if (isSwipeMode == true) return;
+
+		//현재 swipe불가한 상태이면 터치 불가
+		if ((berryLockSpecial.activeSelf == true && tagButtons[1].GetComponent<Image>().sprite == tagButtons_selectImage[1]) ||
+		   (berryLockUnique.activeSelf == true && tagButtons[2].GetComponent<Image>().sprite == tagButtons_selectImage[2]))
+		{
+			swipeBtn[0].GetComponent<Button>().interactable = false;
+			swipeBtn[1].GetComponent<Button>().interactable = false;
+			return;
+		}
+		else
+		{
+			swipeBtn[0].GetComponent<Button>().interactable = true;
+			swipeBtn[1].GetComponent<Button>().interactable = true;
+		}
+
+
+
 
 #if UNITY_EDITOR
 		// 마우스 왼쪽 버튼을 눌렀을 때 1회
@@ -199,6 +218,7 @@ public class ChangeLayer2 : MonoBehaviour
 			// 원래 페이지로 Swipe해서 돌아간다
 			StartCoroutine(OnSwipeOneStep(currentPage));
 			return;
+			
 		}
 
 
@@ -252,6 +272,8 @@ public class ChangeLayer2 : MonoBehaviour
 		}
 
 		isSwipeMode = false;
+
+
 	}
 
 	#endregion
@@ -300,6 +322,9 @@ public class ChangeLayer2 : MonoBehaviour
 		//해당 버튼 스프라이트만 눌린거로
 		tagButtons[index].GetComponent<Image>().sprite = tagButtons_selectImage[index];
 
+		SetScrollBarValue(0);
+		startTouchX = 0;
+		endTouchX = 0;
 	}
 	//=================================================================================================
 	//=================================================================================================
