@@ -687,7 +687,7 @@ public class GameManager : MonoBehaviour
             {
                 //�������Ⱑ ��������.->�ð�,���� ��������.
                 //PRICE
-                price_newBerry = 100 * (BerryCount("classic", true) + BerryCount("special", true) + BerryCount("unique", true));
+                price_newBerry = 10 * (BerryCount("classic", true) + BerryCount("special", true) + BerryCount("unique", true));
                 //priceText_newBerry.GetComponent<Text>().text = price_newBerry.ToString();
                 ShowCoinText(priceText_newBerry.GetComponent<Text>(), price_newBerry);
                 //TIME
