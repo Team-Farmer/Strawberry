@@ -71,8 +71,13 @@ public class Research : MonoBehaviour
         if (Prefabcount >= 6) { Prefabcount %= 6; }
         prefabnum = Prefabcount;
 
-        Info[prefabnum].Price = (1+DataController.instance.gameData.researchLevel[prefabnum])*200;
-
+        if (DataController.instance.gameData.researchLevel[prefabnum] < 5) // 연구 레벨이 5레벨 이하라면
+            Info[prefabnum].Price = (1 + DataController.instance.gameData.researchLevel[prefabnum]) * 200;
+        else if (DataController.instance.gameData.researchLevel[prefabnum] < 10) // 연구 레벨이 10레벨 이하라면
+            Info[prefabnum].Price = 1000 + (DataController.instance.gameData.researchLevel[prefabnum] - 4) * 400;
+        else // 연구 레벨이 15레벨 이하라면
+            Info[prefabnum].Price = 3000 + (DataController.instance.gameData.researchLevel[prefabnum] - 9) * 600;
+     
 
         //타이틀, 설명, 코인값, 레벨, 고용여부 텍스트에 표시
         titleText.GetComponent<Text>().text = Info[prefabnum].Name;//제목(이름) 표시
@@ -109,7 +114,17 @@ public class Research : MonoBehaviour
                 //해당 금액의 코인이 감소하고 레벨업
                 GameManager.instance.UseCoin(Info[prefabnum].Price);
                 DataController.instance.gameData.researchLevel[prefabnum]++;//레벨업
-                Info[prefabnum].Price = (1 + DataController.instance.gameData.researchLevel[prefabnum]) * 200;//가격 업데이트
+                //Info[prefabnum].Price = (1 + DataController.instance.gameData.researchLevel[prefabnum]) * 200 * (DataController.instance.gameData.newBerryResearchAble + 1);//가격 업데이트
+
+                //가격 업데이트
+                if (DataController.instance.gameData.researchLevel[prefabnum] < 5) // 연구 레벨이 5레벨 이하라면
+                    Info[prefabnum].Price = (1 + DataController.instance.gameData.researchLevel[prefabnum]) * 200;
+                else if (DataController.instance.gameData.researchLevel[prefabnum] < 10) // 연구 레벨이 10레벨 이하라면
+                    Info[prefabnum].Price = 1000 + (DataController.instance.gameData.researchLevel[prefabnum] - 4) * 400;
+                else // 연구 레벨이 15레벨 이하라면
+                    Info[prefabnum].Price = 3000 + (DataController.instance.gameData.researchLevel[prefabnum] - 9) * 600;
+                
+
                 levelNum.GetComponent<Text>().text = DataController.instance.gameData.researchLevel[prefabnum].ToString();//레벨 보이기
 
                 switch (Info[prefabnum].Name)
