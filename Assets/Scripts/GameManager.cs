@@ -137,7 +137,7 @@ public class GameManager : MonoBehaviour
 
 
         Application.targetFrameRate = 60;
-        instance = this; // ���� �Ŵ����� �̱��� ����ȭ >> GameManager.instance.~~ �� ȣ��
+        instance = this; 
 
         target = TruckObj.GetComponent<Transform>();
 
@@ -781,7 +781,7 @@ public class GameManager : MonoBehaviour
                     TimeReduceBlackPanel_newBerry.SetActive(true); //�ÿ� �ǵ帲
                     TimeReducePanel_newBerry.GetComponent<PanelAnimation>().OpenScale(); //�ÿ� �ǵ帲
                     TimeReduceText_newBerry.GetComponent<Text>().text //�ÿ� �ǵ帲
-                        = "��Ʈ 10���� �ð��� 10������ ���̽ðڽ��ϱ�?\n";
+                        = "하트 10개를 소모하여 10분 단축하시겠습니까??\n";
                 }
                 else//���� ���ڸ�
                 { UseCoin(price_newBerry); }
@@ -794,7 +794,7 @@ public class GameManager : MonoBehaviour
                     TimeReduceBlackPanel_newBerry.SetActive(true);
                     TimeReducePanel_newBerry.GetComponent<PanelAnimation>().OpenScale();
                     TimeReduceText_newBerry.GetComponent<Text>().text
-                        = "��Ʈ 10���� �ð��� 10������ ���̽ðڽ��ϱ�?\n";
+                        = "하트 10개를 소모하여 10분 단축하시겠습니까?\n";
                 }
                 break;
 
