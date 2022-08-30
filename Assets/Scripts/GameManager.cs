@@ -659,7 +659,8 @@ public class GameManager : MonoBehaviour
 
         //PRICE
         price_newBerry = 80 + 20 * (BerryCount("classic", true) + BerryCount("special", true) + BerryCount("unique", true));
-        priceText_newBerry.GetComponent<Text>().text = price_newBerry.ToString();
+        //priceText_newBerry.GetComponent<Text>().text = price_newBerry.ToString();
+        ShowCoinText(priceText_newBerry.GetComponent<Text>(), price_newBerry);
 
         if (DataController.instance.gameData.newBerryBtnState == 1)//�������̸�
         { StartCoroutine("Timer"); }
@@ -687,7 +688,8 @@ public class GameManager : MonoBehaviour
                 //�������Ⱑ ��������.->�ð�,���� ��������.
                 //PRICE
                 price_newBerry = 100 * (BerryCount("classic", true) + BerryCount("special", true) + BerryCount("unique", true));
-                priceText_newBerry.GetComponent<Text>().text = price_newBerry.ToString();
+                //priceText_newBerry.GetComponent<Text>().text = price_newBerry.ToString();
+                ShowCoinText(priceText_newBerry.GetComponent<Text>(), price_newBerry);
                 //TIME
                 DataController.instance.gameData.newBerryIndex = selectBerry();
                 timeText_newBerry.GetComponent<Text>().text = "??:??";//���� �ð� ���� �̰��� "?"
@@ -771,7 +773,8 @@ public class GameManager : MonoBehaviour
         {
             case "start":
                 //�̹� ������ ���߿� �ʿ��� ���ݰ� �ð�
-                priceText_newBerry.GetComponent<Text>().text = price_newBerry.ToString();//����
+                //priceText_newBerry.GetComponent<Text>().text = price_newBerry.ToString();//����
+                ShowCoinText(priceText_newBerry.GetComponent<Text>(), price_newBerry);
 
                 if (DataController.instance.gameData.coin >= price_newBerry)
                 {
