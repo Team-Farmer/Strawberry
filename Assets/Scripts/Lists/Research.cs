@@ -117,7 +117,7 @@ public class Research : MonoBehaviour
                     case "딸기 값이 금값": UpdateBerryPrice(); break;
                     case "딸기가 쑥쑥": DecreaseBerryGrowTime(); break;
                     case "부르는 게 값": break;
-                    case "도와줘요 세스코": DecreaseBugGenerateProb(); break;
+                    case "도와줘요 세스콩": DecreaseBugGenerateProb(); break;
                     case "잡초 바이바이": DecreaseWeedGenerateProb(); break;
                     case "시원한 소나기": AccessRainDuration(); break;
                 }
