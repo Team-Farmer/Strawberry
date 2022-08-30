@@ -124,12 +124,12 @@ TextureImporter:
       name: icon_14
       rect:
         serializedVersion: 2
-        x: 185
-        y: 889
-        width: 145
-        height: 151
+        x: 151
+        y: 862
+        width: 200
+        height: 200
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -145,12 +145,12 @@ TextureImporter:
       name: icon_16
       rect:
         serializedVersion: 2
-        x: 498
-        y: 896
-        width: 130
-        height: 132
+        x: 460
+        y: 860
+        width: 200
+        height: 200
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -166,12 +166,12 @@ TextureImporter:
       name: icon_45
       rect:
         serializedVersion: 2
-        x: 183
-        y: 606
-        width: 148
-        height: 140
+        x: 151
+        y: 575
+        width: 200
+        height: 200
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -187,12 +187,12 @@ TextureImporter:
       name: icon_47
       rect:
         serializedVersion: 2
-        x: 486
-        y: 602
-        width: 152
-        height: 148
+        x: 460
+        y: 575
+        width: 200
+        height: 200
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -208,12 +208,12 @@ TextureImporter:
       name: icon_72
       rect:
         serializedVersion: 2
-        x: 179
-        y: 292
-        width: 157
-        height: 157
+        x: 151
+        y: 260
+        width: 200
+        height: 200
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -229,12 +229,12 @@ TextureImporter:
       name: icon_74
       rect:
         serializedVersion: 2
-        x: 491
-        y: 306
-        width: 146
-        height: 129
+        x: 460
+        y: 260
+        width: 200
+        height: 200
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

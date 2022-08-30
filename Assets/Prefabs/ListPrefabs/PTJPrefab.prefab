@@ -109,7 +109,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 19.62, y: -38.889}
+  m_AnchoredPosition: {x: 19.62, y: -29}
   m_SizeDelta: {x: 370.2, y: 77.791}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7718661988145398440
@@ -307,12 +307,12 @@ MonoBehaviour:
   - Name: "\uD584\uC2A4\uC6CC\uC2A4"
     Picture: {fileID: -3022224164914145473, guid: 9fe2522d09c446346b852650ce21a7f9, type: 3}
     FacePicture: {fileID: -7850888183806381051, guid: 7b5781554daf5bd4f9ebd7e65b6cce4a, type: 3}
-    Explanation: "\uBC8C\uB808\uB4E4\uC744 \uBAA8\uB450 \uC7A1\uC544\uC904\uAC8C"
+    Explanation: "\uBC8C\uB808\uB294 \uB098\uC5D0\uAC8C \uB9E1\uACA8"
     Price: 30
   - Name: "\uD478\uBCF4"
     Picture: {fileID: -1493095850736361556, guid: 9fe2522d09c446346b852650ce21a7f9, type: 3}
     FacePicture: {fileID: 1306309026794346754, guid: 7b5781554daf5bd4f9ebd7e65b6cce4a, type: 3}
-    Explanation: "\uC7A1\uCD08\uB294 \uB098\uC5D0\uAC8C \uB9E1\uACA8"
+    Explanation: "\uC7A1\uCD08\uB4E4\uC744 \uBF51\uC544\uC904\uAC8C"
     Price: 30
   - Name: "\uB8E8\uBE44\uC544"
     Picture: {fileID: 1491852098334267804, guid: 9fe2522d09c446346b852650ce21a7f9, type: 3}
@@ -749,7 +749,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: fffcb38c5316eb843924a2af66e3bd38, type: 3}
-    m_FontSize: 40
+    m_FontSize: 42
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1

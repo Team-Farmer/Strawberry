@@ -171,7 +171,7 @@ public class PTJ : MonoBehaviour
         explanationText.GetComponent<Text>().text = Info[prefabnum].Explanation;
         //ºñ¿ë
         //coinNum.GetComponent<Text>().text = Info[prefabnum].Price.ToString()+"A";
-        GameManager.instance.ShowCoinText(price.GetComponent<Text>(), Info[prefabnum].Price);
+        GameManager.instance.ShowCoinText(coinNum.GetComponent<Text>(), Info[prefabnum].Price);
     }
 
     //PTJ Explanation Panel ¶ç¿ì±â

@@ -247,8 +247,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -35.802, y: 63.997}
-  m_SizeDelta: {x: 255, y: 52}
+  m_AnchoredPosition: {x: 10.838, y: 51}
+  m_SizeDelta: {x: 348.29, y: 52}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5677428750705983046
 CanvasRenderer:
@@ -281,7 +281,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 12800000, guid: fffcb38c5316eb843924a2af66e3bd38, type: 3}
     m_FontSize: 40
-    m_FontStyle: 1
+    m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
     m_MaxSize: 48
@@ -477,7 +477,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -274.49, y: 0.00039577}
-  m_SizeDelta: {x: 149.3, y: 150.15}
+  m_SizeDelta: {x: 190, y: 190}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4857128851934911633
 CanvasRenderer:
@@ -507,9 +507,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 4797985456115717453, guid: 4a782c50b2bb02a4a81b18e13d67cb90, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -551,8 +551,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 100.85, y: -28.083}
-  m_SizeDelta: {x: 528.3, y: 123.84}
+  m_AnchoredPosition: {x: 100.85, y: -40}
+  m_SizeDelta: {x: 528.3, y: 94.84}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4334383867775516376
 CanvasRenderer:
@@ -584,8 +584,8 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: fffcb38c5316eb843924a2af66e3bd38, type: 3}
-    m_FontSize: 30
-    m_FontStyle: 1
+    m_FontSize: 32
+    m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 3
     m_MaxSize: 33
@@ -742,35 +742,28 @@ MonoBehaviour:
   Info:
   - Name: "\uB538\uAE30 \uAC12\uC774 \uAE08\uAC12"
     Picture: {fileID: 4797985456115717453, guid: 4a782c50b2bb02a4a81b18e13d67cb90, type: 3}
-    Explanation: "\uB538\uAE30\uC758 \uAC00\uCE58\uAC00 \uB192\uC544\uC838\uC694."
+    Explanation: "\uB538\uAE30\uC758 \uAC00\uCE58\uAC00 \uC62C\uB77C\uC694"
     Price: 100
-    Prices: 
   - Name: "\uB538\uAE30\uAC00 \uC465\uC465"
     Picture: {fileID: -7122343688644831495, guid: 4a782c50b2bb02a4a81b18e13d67cb90, type: 3}
-    Explanation: "\uB538\uAE30\uC758 \uC131\uC7A5\uC2DC\uAC04\uC774 \uAC10\uC18C\uD574\uC694."
+    Explanation: "\uB538\uAE30\uC758 \uC131\uC7A5\uC2DC\uAC04\uC774 \uC904\uC5B4\uC694"
     Price: 100
-    Prices: 
-  - Name: "\uBD80\uB974\uB294 \uAC8C \uAC12"
-    Picture: {fileID: -5804490749463610629, guid: 4a782c50b2bb02a4a81b18e13d67cb90, type: 3}
-    Explanation: "\uB538\uAE30\uB97C \uD310\uB9E4\uD560 \uB54C \uB192\uC740 \uAC00\uACA9\uC73C\uB85C
-      \uD310\uB9E4\uD574\uC694."
-    Price: 100
-    Prices: 
-  - Name: "\uB3C4\uC640\uC918\uC694 \uC138\uC2A4\uCF54"
+  - Name: "\uB3C4\uC640\uC918\uC694 \uC138\uC2A4\uCF69"
     Picture: {fileID: -2640173872217149559, guid: 4a782c50b2bb02a4a81b18e13d67cb90, type: 3}
-    Explanation: "\uBC8C\uB808\uAC00 \uC0DD\uAE38 \uD655\uB960\uC774 \uAC10\uC18C\uD574\uC694."
+    Explanation: "\uBC8C\uB808 \uC0DD\uAE38 \uD655\uB960\uC774 \uC904\uC5B4\uC694"
     Price: 100
-    Prices: 
   - Name: "\uC7A1\uCD08 \uBC14\uC774\uBC14\uC774"
     Picture: {fileID: -7908086550202134589, guid: 4a782c50b2bb02a4a81b18e13d67cb90, type: 3}
-    Explanation: "\uC7A1\uCD08\uAC00 \uC0DD\uAE38 \uD655\uB960\uC774 \uAC10\uC18C\uD574\uC694."
+    Explanation: "\uC7A1\uCD08 \uC0DD\uAE38 \uD655\uB960\uC774 \uC904\uC5B4\uC694"
     Price: 100
-    Prices: 
   - Name: "\uC2DC\uC6D0\uD55C \uC18C\uB098\uAE30"
     Picture: {fileID: -1716160622732779056, guid: 4a782c50b2bb02a4a81b18e13d67cb90, type: 3}
     Explanation: "\uC18C\uB098\uAE30\uAC00 \uB354 \uC624\uB798\uB0B4\uB824\uC694"
     Price: 100
-    Prices: 
+  - Name: "\uBD80\uB974\uB294 \uAC8C \uAC12"
+    Picture: {fileID: -5804490749463610629, guid: 4a782c50b2bb02a4a81b18e13d67cb90, type: 3}
+    Explanation: "\uB538\uAE30\uB97C \uB354 \uBE44\uC2F8\uAC8C \uD314\uC544\uC694"
+    Price: 100
   titleText: {fileID: 1015919002668168413}
   Picture: {fileID: 3456816838606078675}
   explanationText: {fileID: 4024267953252206434}
