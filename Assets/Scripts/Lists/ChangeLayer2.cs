@@ -322,9 +322,13 @@ public class ChangeLayer2 : MonoBehaviour
 		//해당 버튼 스프라이트만 눌린거로
 		tagButtons[index].GetComponent<Image>().sprite = tagButtons_selectImage[index];
 
-		SetScrollBarValue(0);
-		startTouchX = 0;
-		endTouchX = 0;
+		if (isBerry == true) 
+		{
+			SetScrollBarValue(0);
+			startTouchX = 0;
+			endTouchX = 0;
+		}
+
 	}
 	//=================================================================================================
 	//=================================================================================================
