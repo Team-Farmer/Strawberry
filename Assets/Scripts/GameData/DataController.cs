@@ -57,11 +57,11 @@ public class DataController : MonoBehaviour
             var main = rainParticle.main;
             main.duration = gameData.rainDuration;
 
-            Debug.Log("�����͸� �ε��߽��ϴ�");
+            Debug.Log("데이터 불러오기 성공");
         }
         else
         {
-            Debug.Log("���ο� ������ ����");
+            Debug.Log("새로운 데이터 생성");
             gameData = new GameData();
             InitData();
             if(isSaveMode) SaveData();
@@ -80,7 +80,7 @@ public class DataController : MonoBehaviour
         //���ÿ� ����
         File.WriteAllText(filePath, jsonData);
 
-        Debug.Log("���� ���� �Ϸ� ��� : "+filePath);
+        Debug.Log("저장 완료 경로 : "+filePath);
     }
 
     public void InitData()
