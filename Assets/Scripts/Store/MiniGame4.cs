@@ -34,7 +34,7 @@ public class MiniGame4 : MiniGame
 
         berryListAll = GameObject.FindGameObjectWithTag("Global").GetComponent<Globalvariable>().berryListAll;
         
-        correctNum = new int[4];
+        correctNum = new int[4] { 0,0,0,0};
         correctSprite = new Sprite[4];
         answerSprite = new Sprite[4];
 
@@ -70,14 +70,14 @@ public class MiniGame4 : MiniGame
         {
             for (int i = 0; i < 4; i++)
             {
-                do { correctNum[i] = UnityEngine.Random.Range(0, 192); }
+                do { correctNum[i] = UnityEngine.Random.Range(1, 192); }
                 while(DataController.instance.gameData.isBerryUnlock[correctNum[i]] == false);
             }
 
-
-            correctNum = correctNum.Distinct().ToArray();//배열 중복 삭제하는 명령어
-            if (correctNum.Length == 4) { break; }
-
+            if (correctNum.Length == correctNum.Distinct().Count())//중복되는것이 없으면
+            { break; }
+            //correctNum = correctNum.Distinct().ToArray();//배열 중복 삭제하는 명령어
+            
         }
 
 
