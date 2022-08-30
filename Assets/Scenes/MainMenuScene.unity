@@ -4419,7 +4419,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &153615611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4478,8 +4478,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.3, y: -148.1}
-  m_SizeDelta: {x: 891.4, y: 838.3}
+  m_AnchoredPosition: {x: -1.3, y: -144.8}
+  m_SizeDelta: {x: 891.4, y: 798.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &154427229
 GameObject:
@@ -5164,7 +5164,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 909940711}
         m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: Cute1AudioPlay
+        m_MethodName: TadaAudioPlay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5467,7 +5467,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 909940711}
         m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: Cute1AudioPlay
+        m_MethodName: TadaAudioPlay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -19905,7 +19905,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &655529760
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19926,8 +19926,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.3, y: -148.1}
-  m_SizeDelta: {x: 891.4, y: 838.3}
+  m_AnchoredPosition: {x: -1.3, y: -144.8}
+  m_SizeDelta: {x: 891.4, y: 798.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &655529761
 MonoBehaviour:
@@ -28477,7 +28477,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1854287046}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.24920844
+  m_Size: 0.49704683
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -56447,7 +56447,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.24920842, y: 1}
+  m_AnchorMax: {x: 0.49704683, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
