@@ -87,8 +87,8 @@ public class DataController : MonoBehaviour
     {
         gameData.cloudSaveTime = new System.DateTime();
         // ��ȭ ����
-        gameData.coin = 300; // ���� 500
-        gameData.heart = 30;
+        gameData.coin = 200; // ���� 500
+        gameData.heart = 20;
         gameData.medal = 0;
         // ���� ����
         gameData.unlockBerryCnt = 4;
