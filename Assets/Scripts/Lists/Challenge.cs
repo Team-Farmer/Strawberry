@@ -76,6 +76,8 @@ public class Challenge : MonoBehaviour
 
     private int ValueNow;//이번 레벨에서의 수(0부터 갱신된)
 
+    private int MaxLevel = 25;
+
     //=======================================================================================================================
     //=======================================================================================================================
     
@@ -93,7 +95,7 @@ public class Challenge : MonoBehaviour
 
     private void Update()
     {
-        if (LevelNow == 5)
+        if (LevelNow == MaxLevel)
         {
             FinishChallenge();
         }
@@ -131,12 +133,12 @@ public class Challenge : MonoBehaviour
 
 
         //수집 기준 설정
-        Info[prefabnum].clearCriterion = new int[100];
+        Info[prefabnum].clearCriterion = new int[MaxLevel];
         switch (prefabnum)
         {
             case 0: // 딸기 수집
                 Info[prefabnum].clearCriterion[0] = 10;
-                for (int i = 0; i < 100; i++)
+                for (int i = 0; i < MaxLevel; i++)
                 {
                     Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[0] + 20 * i;
                 }
@@ -144,7 +146,7 @@ public class Challenge : MonoBehaviour
 
             case 4: // 누적 출석
                 Info[prefabnum].clearCriterion[0] = 10;
-                for (int i = 0; i < 100; i++)
+                for (int i = 0; i < MaxLevel; i++)
                 {
                     Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[0] + 20 * i;
                 }
@@ -152,7 +154,7 @@ public class Challenge : MonoBehaviour
 
             case 1: // 딸기 수확
                 Info[prefabnum].clearCriterion[0] = 10;
-                for (int i = 1; i < 100; i++)
+                for (int i = 1; i < MaxLevel; i++)
                 {
                     Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[i-1]+100;
                 }
@@ -160,7 +162,7 @@ public class Challenge : MonoBehaviour
 
             case 2: // 누적 코인
                 Info[prefabnum].clearCriterion[0] = 1000;
-                for (int i = 1; i < 100; i++)
+                for (int i = 1; i < MaxLevel; i++)
                 {
                     //Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[0] * (int)Mathf.Pow(2,i);
                     if (i <= 10)
@@ -171,7 +173,7 @@ public class Challenge : MonoBehaviour
 
             case 3: // 누적 하트
                 Info[prefabnum].clearCriterion[0] = 100;
-                for (int i = 1; i < 100; i++)
+                for (int i = 1; i < MaxLevel; i++)
                 {
                     //Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[0] * (int)Mathf.Pow(2, i);
                     if (i <= 10)
@@ -182,7 +184,7 @@ public class Challenge : MonoBehaviour
 
             case 5: //미니게임 플레이
                 Info[prefabnum].clearCriterion[0] = 10;
-                for (int i = 1; i < 100; i++)
+                for (int i = 1; i < MaxLevel; i++)
                 {
                     Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[i - 1] + 10;
                 }
@@ -249,7 +251,7 @@ public class Challenge : MonoBehaviour
             GameManager.instance.GetHeart(Info[prefabnum].rewardHeart); //하트 보상 획득
             //Debug.Log(Info[prefabnum].rewardMedal + "   " + Info[prefabnum].rewardHeart);
             //다음 레벨로 이동
-            if (LevelNow < 5) // 업적 종료를 보기 위해 임시로 바꿈
+            if (LevelNow < MaxLevel) // 업적 종료를 보기 위해 임시로 바꿈
             {
                 switch (prefabnum) 
                 {
