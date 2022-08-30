@@ -175,16 +175,16 @@ public class GameManager : MonoBehaviour
         {
             if (globalVar.berryListAll[i] == null) continue;
 
-            /*if (i < 64)
+            if (i < 64)
                 globalVar.berryListAll[i].GetComponent<Berry>().berryPrice
-                    = Convert.ToInt32((globalVar.CLASSIC_FIRST + i * 3) * (1 + researchCoeffi));
+                    = Convert.ToInt32((globalVar.CLASSIC_FIRST + i) * (1 + researchCoeffi));
             else if (i < 128)
                 globalVar.berryListAll[i].GetComponent<Berry>().berryPrice
-                    = Convert.ToInt32((globalVar.SPECIAL_FIRST + (i - 64) * 5) * (1 + researchCoeffi));
+                    = Convert.ToInt32((globalVar.SPECIAL_FIRST + (i - 64) * 2) * (1 + researchCoeffi));
             else
                 globalVar.berryListAll[i].GetComponent<Berry>().berryPrice
-                    = Convert.ToInt32((globalVar.UNIQUE_FIRST + (i - 128) * 7) * (1 + researchCoeffi));*/
-            if (i < 64)
+                    = Convert.ToInt32((globalVar.UNIQUE_FIRST + (i - 128) * 3) * (1 + researchCoeffi));
+            /*if (i < 64)
                 globalVar.berryListAll[i].GetComponent<Berry>().berryPrice
                     = Convert.ToInt32((globalVar.CLASSIC_FIRST + i) * (1 + researchCoeffi));
             else if (i < 128)
@@ -192,7 +192,7 @@ public class GameManager : MonoBehaviour
                     = Convert.ToInt32((50) * (1 + researchCoeffi));
             else
                 globalVar.berryListAll[i].GetComponent<Berry>().berryPrice
-                    = Convert.ToInt32((1000) * (1 + researchCoeffi));
+                    = Convert.ToInt32((1000) * (1 + researchCoeffi));*/
         }
 
         for (int i = 0; i < 16; i++)
