@@ -53,6 +53,7 @@ public class News : MonoBehaviour
     GameObject YNPanel;
     GameObject ConfirmPanel;
     GameObject WarningPanelBlack;
+    GameObject GetBonusBerryPanel;
     //=======================================================================================================================
     //=======================================================================================================================
     private void Awake()
@@ -75,6 +76,7 @@ public class News : MonoBehaviour
         WarningPanelBlack= WarningPanel.transform.GetChild(0).gameObject;
         YNPanel = WarningPanel.transform.GetChild(2).gameObject;
         ConfirmPanel= WarningPanel.transform.GetChild(7).gameObject;
+        GetBonusBerryPanel = WarningPanel.transform.GetChild(10).gameObject;
 
         //메달
         GameManager.instance.ShowMedalText();
@@ -159,7 +161,7 @@ public class News : MonoBehaviour
             GameObject thisNews = newsContent.transform.GetChild(ID).gameObject;
             thisNews.transform.GetChild(3).gameObject.SetActive(false);//Lock
             thisNews.transform.GetChild(4).gameObject.SetActive(true);//Lock
-
+            WarningPanelBlack.SetActive(false);
 
             int RandomNum = UnityEngine.Random.Range(1, 101);
             if (RandomNum <= Info[ID].Price * 10 && GameManager.instance.isNewBerryAble()
@@ -168,18 +170,19 @@ public class News : MonoBehaviour
             {
 
                 //딸기 획득
-                WarningPanelBlack.SetActive(true);
-                ConfirmPanel.GetComponent<PanelAnimation>().ScriptTxt.text = "뉴스와 보너스 딸기가 해금되었어요!";
-                ConfirmPanel.GetComponent<PanelAnimation>().OpenScale();
+                //WarningPanelBlack.SetActive(true);
+                GetBonusBerryPanel.SetActive(true);
+                //ConfirmPanel.GetComponent<PanelAnimation>().ScriptTxt.text = "뉴스와 보너스 딸기가 해금되었어요!";
+                //ConfirmPanel.GetComponent<PanelAnimation>().OpenScale();
 
             }
 
             else //뉴스만 해금
             {
                 //안내창
-                WarningPanelBlack.SetActive(true);
-                ConfirmPanel.GetComponent<PanelAnimation>().ScriptTxt.text = "뉴스가 해금되었어요!";
-                ConfirmPanel.GetComponent<PanelAnimation>().OpenScale();
+                //WarningPanelBlack.SetActive(true);
+                //ConfirmPanel.GetComponent<PanelAnimation>().ScriptTxt.text = "뉴스가 해금되었어요!";
+                //ConfirmPanel.GetComponent<PanelAnimation>().OpenScale();
             }
             YNPanel.SetActive(false);
 
