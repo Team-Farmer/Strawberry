@@ -475,7 +475,7 @@ MonoBehaviour:
     rewardMedal: 0
     rewardHeart: 0
     clearCriterion: 00000000
-    challengeImage: {fileID: -229256013063241344, guid: 8647c3afc86716a4b80730f89d72eea6, type: 3}
+    challengeImage: {fileID: -353946654998929424, guid: 11799ae92cd2d07459ef58f34b7286bc, type: 3}
   levelText: {fileID: 24569728808626950}
   titleText: {fileID: 527783996456215474}
   achieveCondition: {fileID: 527783997037598283}
@@ -1386,9 +1386,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 6934086728263231946, guid: 8647c3afc86716a4b80730f89d72eea6, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
