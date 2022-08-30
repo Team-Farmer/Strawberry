@@ -79,36 +79,27 @@ public class AttendanceCheck : MonoBehaviour
             icon.SetActive(true);
             DataController.instance.gameData.accDays = 0;
             days = DataController.instance.gameData.accDays;
-            weeks = 1;
+            DataController.instance.gameData.weeks = 1;
             selectDay(days);
         }
         WeeksTag();
-
-        //Debug.Log("날짜차이" + daysCompare);
     }
 
     public int DaysCalculate()
     {
-        ts = now.Date - DataController.instance.gameData.atdLastday.Date; //날짜 차이 계산
+        ts = now - DataController.instance.gameData.atdLastday; //날짜 차이 계산
         daysCompare = ts.Days; //Days 정보만 추출.
 
-        if (days > 6)
-        {
-            days %= 7;
+        DataController.instance.gameData.weeks = (DataController.instance.gameData.accDays / 7) + 1;
+        if (DataController.instance.gameData.weeks > 9)
+            DataController.instance.gameData.weeks = 9;
 
-            if (days == 0)
-            {
-                weeks += 1;
-                if (weeks > 9)
-                    weeks = 9;
-            }
-        }
-        else
+        if (days > 7)
         {
-            weeks = 1;
+            days %= 7;            
         }
 
-        if (daysCompare == 1)
+        if (daysCompare==1)
             return 0;
         else if (daysCompare == 0)
             return 1;
@@ -118,16 +109,19 @@ public class AttendanceCheck : MonoBehaviour
 
     public void WeeksTag()
     {
-        if (weeks > 1)
-        {
-            weekTMP.text = weeks.ToString();
+        weekTMP.text = DataController.instance.gameData.weeks.ToString();
 
+
+        if (DataController.instance.gameData.weeks > 1)
+        {
             for (int i = 0; i < tagTMP.Length; i++)
             {
-                tagTMP[i].text = weeks.ToString();
+                tagTMP[i].text = DataController.instance.gameData.weeks.ToString();
             }
+
             m_tag.SetActive(true);
         }
+
     }
 
     #endregion
@@ -182,7 +176,6 @@ public class AttendanceCheck : MonoBehaviour
             hearts = number;
             Invoke("AtdHeart", 0.75f);
 
-            GameManager.instance.ResetInvoke();
         }
     }
 
@@ -207,7 +200,7 @@ public class AttendanceCheck : MonoBehaviour
             default:
                 break;
         }
-        GameManager.instance.GetHeart(num * weeks);
+        GameManager.instance.GetHeart(num * DataController.instance.gameData.weeks);
     }
 }
 #endregion

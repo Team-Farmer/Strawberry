@@ -69,6 +69,7 @@ public class MiniGameManager : MonoBehaviour
 
     public void ExitStore()
     {
+        isOpen = false;
         GameManager.instance.isMiniGameMode = false;
         AudioManager.instance.ResumePlayAudio("RainSFXSound");
     }

@@ -131,13 +131,12 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        DataController.instance.gameData.isPrework = false;
         StartCoroutine(PreWork());
-        attendanceCheck.GetComponent<AttendanceCheck>().Attendance();
-        //PrintTime();
 
 
         Application.targetFrameRate = 60;
-        instance = this; 
+        instance = this;
 
         target = TruckObj.GetComponent<Transform>();
 
@@ -259,12 +258,6 @@ public class GameManager : MonoBehaviour
             //isStart = false;
             Application.Quit();
         }
-    }
-    void LateUpdate()
-    {
-        //CoinText.text = coin.ToString() + " A";
-        //ShowCoinText(CoinText, DataController.instance.gameData.coin); // Ʈ������ ��Ÿ�� �� ���̾����� �Ű������� �ް� �����߾�� - �����
-        //HeartText.text = DataController.instance.gameData.heart.ToString();
     }
 
     private void OnApplicationPause(bool pause)
@@ -1147,25 +1140,15 @@ public class GameManager : MonoBehaviour
     //���� üũ �� ��������
     void ResetTime()
     {
-        DataController.instance.gameData.nextMidnightTime = DataController.instance.gameData.currentTime.Date.AddDays(1);
-
         attendanceCheck.GetComponent<AttendanceCheck>().Attendance();
-        //DataController.instance.gameData.currentTime.Date.AddDays(1); //������ ���� ���� ����.
+
+        DataController.instance.gameData.nextMidnightTime = DataController.instance.gameData.currentTime.Date.AddDays(1);
 
         //���� Ÿ�̸�
         Invoke(nameof(ResetTime),
             (float)(DataController.instance.gameData.nextMidnightTime
             - DataController.instance.gameData.currentTime).TotalSeconds);
     }
-
-    public void ResetInvoke()
-    {
-        DataController.instance.gameData.nextMidnightTime = DataController.instance.gameData.currentTime.Date.AddDays(1);
-        Invoke(nameof(ResetTime),
-        (float)(DataController.instance.gameData.nextMidnightTime
-            - DataController.instance.gameData.currentTime).TotalSeconds);
-    }
-
 
     IEnumerator CheckElapseTime() //���� �����Ҷ�
     {
@@ -1181,13 +1164,13 @@ public class GameManager : MonoBehaviour
 
         MidNightCheck();
 
-        //PrintTime();
-
         if (!MiniGameManager.isOpen && DataController.instance.gameData.rewardAbsenceTime.TotalMinutes >= 60)//&&Intro.isEnd)
         {
             //������ �̺�Ʈ
             AbsenceTime();
         }
+
+        attendanceCheck.GetComponent<AttendanceCheck>().Attendance();
 
     }
 
@@ -1197,7 +1180,6 @@ public class GameManager : MonoBehaviour
         yield return StartCoroutine(CalculateTime());
 
         StartCoroutine(UpdateCurrentTime()); //30�� ���� �����⸴
-
         MidNightCheck();
 
         if (DataController.instance.gameData.rewardAbsenceTime.TotalMinutes >= 60)//&&Intro.isEnd)
@@ -1205,6 +1187,8 @@ public class GameManager : MonoBehaviour
             //������ �̺�Ʈ
             AbsenceTime();
         }
+
+        attendanceCheck.GetComponent<AttendanceCheck>().Attendance();
     }
 
 
@@ -1243,7 +1227,6 @@ public class GameManager : MonoBehaviour
             DataController.instance.gameData.rewardAbsenceTime = TimeSpan.FromSeconds(0);
             DataController.instance.gameData.atdLastday = DataController.instance.gameData.currentTime.Date.AddDays(-1);
             DataController.instance.gameData.accDays = 0;
-            GameManager.instance.attendanceCheck.GetComponent<AttendanceCheck>().Attendance();
             return true;
         }
         return false;
@@ -1279,12 +1262,13 @@ public class GameManager : MonoBehaviour
     public void AbsenceTime()
     {
         int researchLevelAdd = 0;
-        int minute = DataController.instance.gameData.rewardAbsenceTime.Minutes;
-        int hour=0;
+        int minute = (int)DataController.instance.gameData.rewardAbsenceTime.TotalMinutes;
+        int hour = 0;
+
         if (minute > 59)
         {
             hour = minute / 60;
-            minute &= minute;
+            minute %= 60;
         }
 
         AbsenceTimeText.text = string.Format("{0:D2}:{1:D2}", hour, minute);
@@ -1293,17 +1277,18 @@ public class GameManager : MonoBehaviour
         {
             researchLevelAdd += DataController.instance.gameData.researchLevel[i];
         }
-        revenue = (DataController.instance.gameData.rewardAbsenceTime.Minutes / 5) * researchLevelAdd / 6 * 2;
+
+        revenue = ((int)DataController.instance.gameData.rewardAbsenceTime.TotalMinutes / 5) * researchLevelAdd / 6 * 2;
 
         //if (Intro.isEnd&&
-        if (MiniGameManager.isOpen)
+        if(DataController.instance.gameData.isStoreOpend)
         {
             if (revenue == 0)
                 return;
 
             if (revenue <= 9999)           // 0~9999���� A
             {
-                AbsenceMoneyText.text =  revenue + "A";
+                AbsenceMoneyText.text = revenue + "A";
             }
             else if (revenue <= 9999999)   // 10000~9999999(=9999B)���� B
             {
@@ -1325,7 +1310,6 @@ public class GameManager : MonoBehaviour
     {
         GetCoin(revenue);
         AbsencePanel.GetComponent<PanelAnimation>().CloseScale();
-
     }
 
     /*    public void CheckTime()

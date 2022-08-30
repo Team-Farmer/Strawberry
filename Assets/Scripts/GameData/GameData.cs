@@ -95,6 +95,7 @@ public class GameData
     public TimeSpan rewardAbsenceTime = TimeSpan.FromSeconds(0);
     //출석 일 수
     public int accDays = 0;
+    public int weeks = 0;
     //오늘 출석 여부 판단
     public bool isAttendance = false;
     public bool isPrework = false;

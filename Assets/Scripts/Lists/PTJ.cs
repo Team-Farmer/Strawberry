@@ -183,8 +183,8 @@ public class PTJ : MonoBehaviour
         DataController.instance.gameData.PTJSelectNum[0] = prefabnum;
         //==== 알바 창 ====
         //알바 창을 띄운다.
-        PTJPanel.SetActive(true);
         PTJPanel.transform.GetChild(0).gameObject.SetActive(true);
+        PTJPanel.GetComponent<PanelAnimation>().OpenScale();
 
         //알바 창 채우기
         GameObject picture = PTJPanel.transform.GetChild(3).gameObject;
