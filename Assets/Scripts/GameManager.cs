@@ -772,11 +772,11 @@ public class GameManager : MonoBehaviour
             case "start":
                 //�̹� ������ ���߿� �ʿ��� ���ݰ� �ð�
                 priceText_newBerry.GetComponent<Text>().text = price_newBerry.ToString();//����
-                timeText_newBerry.GetComponent<Text>().text
-                    = TimeForm(Mathf.CeilToInt(DataController.instance.gameData.newBerryTime));//�ð�
 
                 if (DataController.instance.gameData.coin >= price_newBerry)
                 {
+                    timeText_newBerry.GetComponent<Text>().text
+                        = TimeForm(Mathf.CeilToInt(DataController.instance.gameData.newBerryTime));//�ð�
                     //���Һ�
                     UseCoin(price_newBerry);
 
@@ -790,7 +790,7 @@ public class GameManager : MonoBehaviour
                     TimeReduceBlackPanel_newBerry.SetActive(true); //�ÿ� �ǵ帲
                     TimeReducePanel_newBerry.GetComponent<PanelAnimation>().OpenScale(); //�ÿ� �ǵ帲
                     TimeReduceText_newBerry.GetComponent<Text>().text //�ÿ� �ǵ帲
-                        = "하트 10개를 소모하여 10분 단축하시겠습니까??\n";
+                        = "하트 3개를 소모하여 3분 단축하시겠습니까??\n";
                 }
                 else//���� ���ڸ�
                 { UseCoin(price_newBerry); }
@@ -803,7 +803,7 @@ public class GameManager : MonoBehaviour
                     TimeReduceBlackPanel_newBerry.SetActive(true);
                     TimeReducePanel_newBerry.GetComponent<PanelAnimation>().OpenScale();
                     TimeReduceText_newBerry.GetComponent<Text>().text
-                        = "하트 10개를 소모하여 10분 단축하시겠습니까?\n";
+                        = "하트 3개를 소모하여 3분 단축하시겠습니까?\n";
                 }
                 break;
 
@@ -822,21 +822,21 @@ public class GameManager : MonoBehaviour
         //��Ʈ �Ἥ �ð��� ���ϰŸ�
         if (isTimeReduce == true)
         {
-            if (DataController.instance.gameData.heart >= 10)
+            if (DataController.instance.gameData.heart >= 3)
             {
                 //�ð��� 10�� �ٿ��ش�.
-                if (DataController.instance.gameData.newBerryTime < 10 * 60)
+                if (DataController.instance.gameData.newBerryTime < 3 * 60)
                 { DataController.instance.gameData.newBerryTime = 0; }
                 else
-                { DataController.instance.gameData.newBerryTime -= 10 * 60; }
+                { DataController.instance.gameData.newBerryTime -= 3 * 60; }
 
                 timeText_newBerry.GetComponent<Text>().text
                     = TimeForm(Mathf.CeilToInt(DataController.instance.gameData.newBerryTime));
                 //��Ʈ�� �Һ��Ѵ�.
-                UseHeart(10);
+                UseHeart(3);
             }
             else
-            { UseHeart(10); }
+            { UseHeart(3); }
         }
 
         //â ����
@@ -885,8 +885,9 @@ public class GameManager : MonoBehaviour
             switch (DataController.instance.gameData.newBerryResearchAble)
             {
                 case 0:
-                    newBerryIndex = UnityEngine.Random.Range(1, 64);
-                    DataController.instance.gameData.newBerryTime = 10 * 60;
+                    newBerryIndex = berryPercantage(64);
+                    /*newBerryIndex = UnityEngine.Random.Range(1, 64);
+                    DataController.instance.gameData.newBerryTime = 10 * 60;*/
                     break;
                 case 1:
                     newBerryIndex = berryPercantage(128);
@@ -958,17 +959,17 @@ public class GameManager : MonoBehaviour
         if (randomNum < 45)
         {
             newBerryIndex = UnityEngine.Random.Range(1, 64);
-            DataController.instance.gameData.newBerryTime = 10 * 60;
+            DataController.instance.gameData.newBerryTime = 3 * 60;
         }//classic
         else if (randomNum < 80)
         {
             newBerryIndex = UnityEngine.Random.Range(64, 128);
-            DataController.instance.gameData.newBerryTime = 20 * 60;
+            DataController.instance.gameData.newBerryTime = 6 * 60;
         }//special
         else if (randomNum <= 100)
         {
             newBerryIndex = UnityEngine.Random.Range(128, 192);
-            DataController.instance.gameData.newBerryTime = 30 * 60;
+            DataController.instance.gameData.newBerryTime = 9 * 60;
         }//unique
 
 
