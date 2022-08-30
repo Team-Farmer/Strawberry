@@ -157,7 +157,7 @@ public class Research : MonoBehaviour
         {
             if (globalVar.berryListAll[i] == null) continue;
 
-            if (i < 64)
+            /*if (i < 64)
                 globalVar.berryListAll[i].GetComponent<Berry>().berryPrice
                     = Convert.ToInt32((globalVar.CLASSIC_FIRST + i * 3) * (1 + researchCoeffi));
             else if (i < 128)
@@ -165,7 +165,16 @@ public class Research : MonoBehaviour
                     = Convert.ToInt32((globalVar.SPECIAL_FIRST + (i - 64) * 5) * (1 + researchCoeffi));
             else
                 globalVar.berryListAll[i].GetComponent<Berry>().berryPrice
-                    = Convert.ToInt32((globalVar.UNIQUE_FIRST + (i - 128) * 7) * (1 + researchCoeffi));
+                    = Convert.ToInt32((globalVar.UNIQUE_FIRST + (i - 128) * 7) * (1 + researchCoeffi));*/
+            if (i < 64)
+                globalVar.berryListAll[i].GetComponent<Berry>().berryPrice
+                    = Convert.ToInt32((5) * (1 + researchCoeffi));
+            else if (i < 128)
+                globalVar.berryListAll[i].GetComponent<Berry>().berryPrice
+                    = Convert.ToInt32((50) * (1 + researchCoeffi));
+            else
+                globalVar.berryListAll[i].GetComponent<Berry>().berryPrice
+                    = Convert.ToInt32((1000) * (1 + researchCoeffi));
         }
     }
 
@@ -186,12 +195,12 @@ public class Research : MonoBehaviour
     }
     public void DecreaseBugGenerateProb()
     {
-        float researchCoeffi = (DataController.instance.gameData.researchLevel[3]) * Globalvariable.instance.getEffi();     
+        float researchCoeffi = (DataController.instance.gameData.researchLevel[2]) * Globalvariable.instance.getEffi();     
         DataController.instance.gameData.bugProb = (Globalvariable.BUG_PROB * (1 - researchCoeffi));
     }
     public void DecreaseWeedGenerateProb()
     {
-        float researchCoeffi = (DataController.instance.gameData.researchLevel[4]) * Globalvariable.instance.getEffi();
+        float researchCoeffi = (DataController.instance.gameData.researchLevel[3]) * Globalvariable.instance.getEffi();
         DataController.instance.gameData.weedProb = Globalvariable.WEED_PROB * (1 - researchCoeffi);
     }
     public void AccessRainDuration()
@@ -209,7 +218,7 @@ public class Research : MonoBehaviour
     }
     public void IncreaseRainDuration()
     {
-        float researchCoeffi = (DataController.instance.gameData.researchLevel[5]) * Globalvariable.instance.getEffi();
+        float researchCoeffi = (DataController.instance.gameData.researchLevel[4]) * Globalvariable.instance.getEffi();
 
         var main = rainParticle.main;
         main.duration = Globalvariable.RAIN_DURATION * (1 + researchCoeffi);

@@ -175,7 +175,7 @@ public class GameManager : MonoBehaviour
         {
             if (globalVar.berryListAll[i] == null) continue;
 
-            if (i < 64)
+            /*if (i < 64)
                 globalVar.berryListAll[i].GetComponent<Berry>().berryPrice
                     = Convert.ToInt32((globalVar.CLASSIC_FIRST + i * 3) * (1 + researchCoeffi));
             else if (i < 128)
@@ -183,7 +183,16 @@ public class GameManager : MonoBehaviour
                     = Convert.ToInt32((globalVar.SPECIAL_FIRST + (i - 64) * 5) * (1 + researchCoeffi));
             else
                 globalVar.berryListAll[i].GetComponent<Berry>().berryPrice
-                    = Convert.ToInt32((globalVar.UNIQUE_FIRST + (i - 128) * 7) * (1 + researchCoeffi));
+                    = Convert.ToInt32((globalVar.UNIQUE_FIRST + (i - 128) * 7) * (1 + researchCoeffi));*/
+            if (i < 64)
+                globalVar.berryListAll[i].GetComponent<Berry>().berryPrice
+                    = Convert.ToInt32((5) * (1 + researchCoeffi));
+            else if (i < 128)
+                globalVar.berryListAll[i].GetComponent<Berry>().berryPrice
+                    = Convert.ToInt32((50) * (1 + researchCoeffi));
+            else
+                globalVar.berryListAll[i].GetComponent<Berry>().berryPrice
+                    = Convert.ToInt32((1000) * (1 + researchCoeffi));
         }
 
         for (int i = 0; i < 16; i++)
@@ -316,7 +325,7 @@ public class GameManager : MonoBehaviour
     public void ClickedTruck()
     {
         bonusTruckCoin = (int)(DataController.instance.gameData.truckCoin *
-            DataController.instance.gameData.researchLevel[2] * Globalvariable.instance.getEffi());
+            DataController.instance.gameData.researchLevel[5] * Globalvariable.instance.getEffi());
         ShowCoinText(truckCoinText, DataController.instance.gameData.truckCoin);
         ShowCoinText(truckCoinBonusText, bonusTruckCoin);
     }
