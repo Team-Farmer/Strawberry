@@ -71,7 +71,7 @@ public class Research : MonoBehaviour
         if (Prefabcount >= 6) { Prefabcount %= 6; }
         prefabnum = Prefabcount;
 
-        Info[prefabnum].Price = (1+DataController.instance.gameData.researchLevel[prefabnum])*100;
+        Info[prefabnum].Price = (1+DataController.instance.gameData.researchLevel[prefabnum])*1000;
 
 
         //타이틀, 설명, 코인값, 레벨, 고용여부 텍스트에 표시
@@ -109,7 +109,7 @@ public class Research : MonoBehaviour
                 //해당 금액의 코인이 감소하고 레벨업
                 GameManager.instance.UseCoin(Info[prefabnum].Price);
                 DataController.instance.gameData.researchLevel[prefabnum]++;//레벨업
-                Info[prefabnum].Price = (1 + DataController.instance.gameData.researchLevel[prefabnum]) * 100;//가격 업데이트
+                Info[prefabnum].Price = (1 + DataController.instance.gameData.researchLevel[prefabnum]) * 1000;//가격 업데이트
                 levelNum.GetComponent<Text>().text = DataController.instance.gameData.researchLevel[prefabnum].ToString();//레벨 보이기
 
                 switch (Info[prefabnum].Name)
@@ -159,7 +159,7 @@ public class Research : MonoBehaviour
 
             if (i < 64)
                 globalVar.berryListAll[i].GetComponent<Berry>().berryPrice
-                    = Convert.ToInt32((globalVar.CLASSIC_FIRST + i * 2) * (1 + researchCoeffi));
+                    = Convert.ToInt32((globalVar.CLASSIC_FIRST + i) * (1 + researchCoeffi));
             else if (i < 128)
                 globalVar.berryListAll[i].GetComponent<Berry>().berryPrice
                     = Convert.ToInt32((globalVar.SPECIAL_FIRST + (i - 64) * 3) * (1 + researchCoeffi));
