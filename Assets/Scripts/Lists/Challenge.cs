@@ -76,7 +76,7 @@ public class Challenge : MonoBehaviour
 
     private int ValueNow;//이번 레벨에서의 수(0부터 갱신된)
 
-    private int MaxLevel = 25;
+    private int MaxLevel = 6;
 
     //=======================================================================================================================
     //=======================================================================================================================
@@ -126,7 +126,7 @@ public class Challenge : MonoBehaviour
 
         //보상 설정
         Info[prefabnum].rewardMedal = 1; // 1 뱃지
-        Info[prefabnum].rewardHeart = (DataController.instance.gameData.challengeLevel[prefabnum]+1) * 5;//레벨X5 하트
+        Info[prefabnum].rewardHeart = (DataController.instance.gameData.challengeLevel[prefabnum]+1) * 10;//레벨X5 하트
 
         //그림 설정
         image.GetComponent<Image>().sprite = Info[prefabnum].challengeImage;
@@ -138,25 +138,26 @@ public class Challenge : MonoBehaviour
         {
             case 0: // 딸기 수집
                 Info[prefabnum].clearCriterion[0] = 10;
-                for (int i = 0; i < MaxLevel; i++)
+                for (int i = 1; i < MaxLevel; i++)
                 {
-                    Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[0] + 20 * i;
+                    Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[0] + 10 * i;
                 }
                 break;
 
             case 4: // 누적 출석
-                Info[prefabnum].clearCriterion[0] = 10;
-                for (int i = 0; i < MaxLevel; i++)
+                Info[prefabnum].clearCriterion[0] = 3;
+                Info[prefabnum].clearCriterion[1] = 7;
+                for (int i = 2; i < MaxLevel; i++)
                 {
-                    Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[0] + 20 * i;
+                    Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[1] + 7 * i;
                 }
                 break;
 
             case 1: // 딸기 수확
-                Info[prefabnum].clearCriterion[0] = 10;
+                Info[prefabnum].clearCriterion[0] = 32;
                 for (int i = 1; i < MaxLevel; i++)
                 {
-                    Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[i-1]+100;
+                    Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[i - 1] + 32 * i;
                 }
                 break;
 
@@ -164,21 +165,24 @@ public class Challenge : MonoBehaviour
                 Info[prefabnum].clearCriterion[0] = 1000;
                 for (int i = 1; i < MaxLevel; i++)
                 {
+                    // 1000 3000 9000 12000 36000
+                    Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[i - 1] * 3;
                     //Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[0] * (int)Mathf.Pow(2,i);
-                    if (i <= 10)
+                    /*if (i <= 10)
                     { Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[i - 1] * 2; }
-                    else { Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[i - 1]; }
+                    else { Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[i - 1]; }*/
                 }
                 break;
 
             case 3: // 누적 하트
-                Info[prefabnum].clearCriterion[0] = 100;
+                Info[prefabnum].clearCriterion[0] = 50;
                 for (int i = 1; i < MaxLevel; i++)
                 {
+                    Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[i - 1] * 2;
                     //Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[0] * (int)Mathf.Pow(2, i);
-                    if (i <= 10)
+                    /*if (i <= 10)
                     { Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[i - 1] * 2; }
-                    else { Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[i - 1]; }
+                    else { Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[i - 1]; }*/
                 }
                 break;
 
@@ -186,7 +190,7 @@ public class Challenge : MonoBehaviour
                 Info[prefabnum].clearCriterion[0] = 10;
                 for (int i = 1; i < MaxLevel; i++)
                 {
-                    Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[i - 1] + 10;
+                    Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[i - 1] + 20 * i;
                 }
                 break;
 
@@ -289,6 +293,7 @@ public class Challenge : MonoBehaviour
 
     public void FinishChallenge()
     {
+        levelText.GetComponent<Text>().text = "Lv.Max";
         Button.SetActive(false);
         heart.SetActive(false);
         medal.SetActive(false);

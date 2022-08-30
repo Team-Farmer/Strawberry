@@ -579,28 +579,28 @@ MonoBehaviour:
   Info:
   - Name: "\uBA4B\uC9C4 \uD5E4\uC5B4\uC2A4\uD0C0\uC77C"
     berryClassify: 090000000a0000000b000000
-    rewardMedal: 5
-    rewardHeart: 10
+    rewardMedal: 1
+    rewardHeart: 30
   - Name: "\uC774\uC0C1\uD55C \uCE5C\uAD6C\uB4E4"
     berryClassify: 0f0000001000000011000000
-    rewardMedal: 5
-    rewardHeart: 10
+    rewardMedal: 1
+    rewardHeart: 30
   - Name: "\uAC70\uB300 \uB538\uAE30"
     berryClassify: 4300000044000000
-    rewardMedal: 10
-    rewardHeart: 20
+    rewardMedal: 1
+    rewardHeart: 40
   - Name: "\uD558\uC580 \uB538\uAE30\uB4E4"
     berryClassify: 420000004a000000
-    rewardMedal: 10
-    rewardHeart: 20
+    rewardMedal: 1
+    rewardHeart: 40
   - Name: "\uD574\uD53C \uD560\uB85C\uC708"
     berryClassify: 850000008600000087000000
-    rewardMedal: 15
-    rewardHeart: 30
+    rewardMedal: 1
+    rewardHeart: 50
   - Name: "\uC5B4\uB514\uC11C \uC654\uB2C8?"
     berryClassify: 8c0000008d0000008e000000
-    rewardMedal: 15
-    rewardHeart: 30
+    rewardMedal: 1
+    rewardHeart: 50
   collectionName: {fileID: 1476324555848526793}
   collectionBtn: {fileID: 4911162250941680714}
   collectionNow: {fileID: 5826314664937963886}
