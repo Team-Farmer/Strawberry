@@ -257,7 +257,11 @@ public class GameManager : MonoBehaviour
         {
             DataController.instance.SaveData();
             //isStart = false;
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#else
             Application.Quit();
+#endif
         }
     }
     void LateUpdate()
@@ -285,9 +289,9 @@ public class GameManager : MonoBehaviour
     }
 
 
-    #endregion
+#endregion
 
-    #region 딸기밭
+#region 딸기밭
     void ClickedFarm(GameObject obj)
     {
 
@@ -399,9 +403,9 @@ public class GameManager : MonoBehaviour
             DataController.instance.gameData.truckCoin += stem.getInstantBerryObj().GetComponent<Berry>().berryPrice;
         }
     }
-    #endregion
+#endregion
 
-    #region 재화
+#region 재화
 
     IEnumerator CountAnimation(int cost, String text, int num) //재화 증가 애니메이션
 
@@ -536,9 +540,9 @@ public class GameManager : MonoBehaviour
     {
         MedalText.GetComponent<Text>().text = DataController.instance.gameData.medal.ToString();
     }
-    #endregion
+#endregion
 
-    #region 콜라이더
+#region 콜라이더
     public void DisableObjColliderAll() // 모든 오브젝트의 콜라이더 비활성화
     {
         BoxCollider2D coll;
@@ -574,11 +578,11 @@ public class GameManager : MonoBehaviour
             //farmList[i].canGrowWeed = true;
         }
     }
-    #endregion
+#endregion
 
-    #region 리스트
+#region 리스트
 
-    #region PTJ
+#region PTJ
 
     //고용 버튼 클릭시
     public void PTJEmployButtonClick(int prefabNum)
@@ -650,9 +654,9 @@ public class GameManager : MonoBehaviour
         HireYNPanel.GetComponent<PanelAnimation>().CloseScale();
         warningBlackPanel.SetActive(false);
     }
-    #endregion
+#endregion
 
-    #region New Berry Add
+#region New Berry Add
     public void NewBerryUpdate()
     {
         //새 딸기 개발======
@@ -1005,9 +1009,9 @@ public class GameManager : MonoBehaviour
 
     }
 
-    #endregion
+#endregion
 
-    #region Explanation
+#region Explanation
     /*
     public void Explanation(GameObject berry,int prefabnum)
     {
@@ -1043,14 +1047,14 @@ public class GameManager : MonoBehaviour
         }
     }
     */
-    #endregion
+#endregion
 
     public void NewsUnlock()
     {
         News.instance.NewsUnlock(NewsPrefabNum);
     }
 
-    #region 기타
+#region 기타
     //활성화 비활성화로 창 끄고 켜고
     public void turnOff(GameObject Obj)
     {
@@ -1087,11 +1091,11 @@ public class GameManager : MonoBehaviour
         return Minutes + " : " + Seconds;
 
     }
-    #endregion
+#endregion
 
-    #endregion
+#endregion
 
-    #region 출석
+#region 출석
 
     //인터넷 시간 가져오기.
 
@@ -1376,9 +1380,9 @@ public class GameManager : MonoBehaviour
         }*/
 
 
-    #endregion
+#endregion
 
-    #region 메인 메뉴
+#region 메인 메뉴
     public void OnclickStart()
     {
     }
@@ -1397,6 +1401,6 @@ public class GameManager : MonoBehaviour
         Application.Quit();
 #endif
     }
-    #endregion
+#endregion
 
 }
