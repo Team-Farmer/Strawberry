@@ -11,7 +11,6 @@ public class Truck : MonoBehaviour
     public Button add_receive_btn;
     public Sprite[] truckSprite;
     //public int berryCnt = 0; // 옮김
-    private Animator anim;
     private ArbeitMgr arbeit;
     private int truckSpirteLv;
     public const int CNT_LEVEL_0 = Globalvariable.TRUCK_CNT_LEVEL_0;
@@ -20,8 +19,7 @@ public class Truck : MonoBehaviour
     public const int CNT_LEVEL_MAX = Globalvariable.TRUCK_CNT_LEVEL_MAX;
 
     void Awake()
-    {
-        anim = GetComponent<Animator>();
+    {        
         arbeit = GameObject.FindGameObjectWithTag("Arbeit").GetComponent<ArbeitMgr>();
 
         //광고보고 3배받기
@@ -72,11 +70,7 @@ public class Truck : MonoBehaviour
             GetComponent<Image>().sprite = truckSprite[3];
         }
     }
-    /*void SetAnim(int level)
-    {
-        anim.SetInteger("Truck", level);
-    }*/
-
+    
     public void ReceiveCoinNormal()
     {
         float coEffi = arbeit.Pigma();

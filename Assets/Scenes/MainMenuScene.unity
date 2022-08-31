@@ -36606,7 +36606,7 @@ RectTransform:
   m_GameObject: {fileID: 1148245772}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.233041, y: 1.233041, z: 1.233041}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_Children: []
   m_Father: {fileID: 1218476152}
   m_RootOrder: 0
@@ -38934,7 +38934,6 @@ GameObject:
   - component: {fileID: 1218476151}
   - component: {fileID: 1218476150}
   - component: {fileID: 1218476148}
-  - component: {fileID: 1218476149}
   - component: {fileID: 1218476153}
   m_Layer: 5
   m_Name: Panel
@@ -38958,25 +38957,11 @@ MonoBehaviour:
   MaxPanel: {fileID: 1148245772}
   normal_receive_btn: {fileID: 766781379}
   add_receive_btn: {fileID: 109862329}
---- !u!95 &1218476149
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1218476147}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a2517d09354fbac429d7a564cd84a6b5, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  truckSprite:
+  - {fileID: -7346612907530598944, guid: f2ce07a7228f41e42a23dc6e101efcf8, type: 3}
+  - {fileID: 6073188691700466064, guid: f2ce07a7228f41e42a23dc6e101efcf8, type: 3}
+  - {fileID: -3774541597547798147, guid: f2ce07a7228f41e42a23dc6e101efcf8, type: 3}
+  - {fileID: 5360149298724630911, guid: f2ce07a7228f41e42a23dc6e101efcf8, type: 3}
 --- !u!114 &1218476150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39024,7 +39009,7 @@ RectTransform:
   m_GameObject: {fileID: 1218476147}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.0543039, y: 1.0543039, z: 0.81100297}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_Children:
   - {fileID: 1148245778}
   m_Father: {fileID: 1747111493}
