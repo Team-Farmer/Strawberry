@@ -39,32 +39,56 @@ public class DataController : MonoBehaviour
     }   
     public void LoadData()
     {
-        string filePath = Application.persistentDataPath + gameDataFileName;
-
-        if (File.Exists(filePath))
+        //암호화x
+        if (!instance.dataEncryption)
         {
-            //json파일 불러오기
-            //Debug.Log(filePath);
-            string jsonData = File.ReadAllText(filePath);
+            string filePath = Application.persistentDataPath + gameDataFileName;
 
-            //역직렬화
-            gameData =JsonConvert.DeserializeObject<GameData>(jsonData);
-            //gameData = JsonUtility.FromJson<GameData>(jsonData);
+            if (File.Exists(filePath))
+            {
+                //json파일 불러오기
+                //Debug.Log(filePath);
+                string jsonData = File.ReadAllText(filePath);
 
-            // 비 지속시간 로드
-            var main = rainParticle.main;
-            main.duration = gameData.rainDuration;
+                //역직렬화
+                gameData =JsonConvert.DeserializeObject<GameData>(jsonData);
 
-            Debug.Log("데이터 불러오기 성공");
+                // 비 지속시간 로드
+                var main = rainParticle.main;
+                main.duration = gameData.rainDuration;
+
+                Debug.Log("비 암호화 된 데이터 불러오기 성공");
+            }
+            else
+            {
+                Debug.Log("새로운 데이터 생성");
+                gameData = new GameData();
+                InitData();
+                if(isSaveMode) SaveData();
+            }
         }
-        else
+        else //암호화 O
         {
-            Debug.Log("새로운 데이터 생성");
-            gameData = new GameData();
-            InitData();
-            if(isSaveMode) SaveData();
-        }
+            string jsonData = DataSecurity.Load(gameDataFileName);
 
+            if (string.IsNullOrEmpty(jsonData))
+            {
+                Debug.Log("새로운 데이터 생성");
+                gameData = new GameData();
+                InitData();
+                if (isSaveMode) SaveData();
+            }
+            else
+            {
+                gameData = JsonConvert.DeserializeObject<GameData>(jsonData);
+
+                // 비 지속시간 로드
+                var main = rainParticle.main;
+                main.duration = gameData.rainDuration;
+
+                Debug.Log("암호화된 데이터 불러오기 성공");
+            }
+        }
     }
 
     public void SaveData()
@@ -73,12 +97,19 @@ public class DataController : MonoBehaviour
 
         //데이터 직렬화
         string jsonData = JsonConvert.SerializeObject(gameData);
-        //string jsonData = JsonUtility.ToJson(gameData);
 
-        //로컬에 저장
-        File.WriteAllText(filePath, jsonData);
+        //암호화x
+        if (!instance.dataEncryption)
+        {
+            File.WriteAllText(filePath, jsonData);
+            Debug.Log("암호화 하지 않고 저장 : " + filePath);
+        }
+        else
+        {
+            DataSecurity.Save(gameDataFileName,jsonData);
+            Debug.Log("암호화저장");
+        }
 
-        Debug.Log("로컬 저장 완료 경로 : "+filePath);
     }
 
     public void InitData()

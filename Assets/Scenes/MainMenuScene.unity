@@ -3790,7 +3790,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSaveMode: 1
-  dataEncryption: 0
+  dataEncryption: 1
 --- !u!4 &139806055
 Transform:
   m_ObjectHideFlags: 0
