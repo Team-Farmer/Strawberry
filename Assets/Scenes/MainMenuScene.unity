@@ -24437,7 +24437,7 @@ GameObject:
   - component: {fileID: 791402903}
   - component: {fileID: 791402902}
   m_Layer: 5
-  m_Name: Load
+  m_Name: LoadBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38534,7 +38534,7 @@ GameObject:
   - component: {fileID: 1202437570}
   - component: {fileID: 1202437569}
   m_Layer: 5
-  m_Name: Save
+  m_Name: SaveBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63767,6 +63767,7 @@ MonoBehaviour:
   versionDate_text: {fileID: 221963174}
   version_text: {fileID: 1759201231}
   saveDate_text: {fileID: 209293523}
+  cloudSave_btn: {fileID: 1202437569}
   cloudLoad_btn: {fileID: 791402902}
 --- !u!212 &2031592371
 SpriteRenderer:

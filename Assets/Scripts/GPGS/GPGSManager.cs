@@ -37,7 +37,7 @@ public class GPGSManager : MonoBehaviour
 #if UNITY_EDITOR
         //Debug.Log("안드로이드에서 시도하세용");
 #elif UNITY_ANDROID
-        Init();
+        //Init(); //공모전 제출용으로 일단 닫음
 #endif
     }
 
