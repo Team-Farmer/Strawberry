@@ -151,11 +151,7 @@ public class MiniGame3 : MiniGame
         AudioManager.instance.EndAudioPlay();
 
         int score = GetComponent<MiniGame3>().score;
-        //최고기록 저장
-        if (DataController.instance.gameData.highScore[2] < score)
-        {
-            DataController.instance.gameData.highScore[2] = score;
-        }
+        ManageScore(2, score);
 
         //결과패널
         resultPanel.SetActive(true);

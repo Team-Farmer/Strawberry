@@ -122,11 +122,7 @@ public class MiniGame1 : MiniGame
         base.FinishGame();
         AudioManager.instance.EndAudioPlay();
 
-        //최고기록 저장
-        if (DataController.instance.gameData.highScore[0] < score)
-        {
-            DataController.instance.gameData.highScore[0] = score;
-        }
+        ManageScore(0, score);
 
         //결과패널
         resultPanel.SetActive(true);

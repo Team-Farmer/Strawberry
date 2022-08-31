@@ -131,8 +131,28 @@ public class MiniGame : MonoBehaviour
         // 연구레벨의 평균을 구한다.
         research_level_avg = research_level_sum / DataController.instance.gameData.researchLevel.Length;
 
-        //미니게임 플레이 횟수 증가
-        DataController.instance.gameData.mgPlayCnt++;
+        
+    }
+
+    public void ManageScore(int idx, int score)
+    {
+        //최고기록 저장
+        if (DataController.instance.gameData.highScore[idx] < score)
+        {
+            DataController.instance.gameData.highScore[idx] = score;
+        }
+
+        //미니게임 플레이 횟수 증가 (업적 채우기 위한 플레이 방지)
+        if (idx == 4)
+        {
+            if (score >= 45)
+                DataController.instance.gameData.mgPlayCnt++;
+        }
+        else
+        {
+            if (score >= 30)
+                DataController.instance.gameData.mgPlayCnt++;
+        }
     }
 
     public virtual void StopGame()

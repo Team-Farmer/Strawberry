@@ -220,11 +220,7 @@ public class MiniGame4 : MiniGame
         base.FinishGame();
         AudioManager.instance.EndAudioPlay();
 
-        //최고기록 저장
-        if (DataController.instance.gameData.highScore[3] < score)
-        {
-            DataController.instance.gameData.highScore[3] = score;
-        }
+        ManageScore(3, score);
 
         //결과패널
         resultPanel.SetActive(true);
