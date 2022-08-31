@@ -298,7 +298,6 @@ public class GameManager : MonoBehaviour
     #region 딸기밭
     void ClickedFarm(GameObject obj)
     {
-
         Farm farm = obj.GetComponent<Farm>();
 
         if (!DataController.instance.gameData.berryFieldData[farm.farmIdx].isPlant)
@@ -306,12 +305,14 @@ public class GameManager : MonoBehaviour
             Stem st = GetStem(farm.farmIdx);
             if (st != null)
             {
-                PlantStrawBerry(st, obj); // 심는다
+                //PlantStrawBerry(st, obj); // 심는다
 
                 DataController.instance
                     .gameData.berryFieldData[farm.farmIdx].isPlant = true; // 체크 변수 갱신
 
+                PlantStrawBerry(st, obj); // 심는다
 
+                
             }
         }
         else
@@ -352,18 +353,21 @@ public class GameManager : MonoBehaviour
         //stem.transform.position = obj.transform.position; ; // 밭의 Transform에 달기를 심는다
         stem.gameObject.SetActive(true); // 딸기 활성화              
         coll.enabled = false; // 밭의 콜라이더 비활성화 (잡초와 충돌 방지)
+     
+        Debug.Log((stem.stemIdx+1) + "번에 심었다!");
 
-        AudioManager.instance.SowAudioPlay();
-
-        /*if (GameManager.instance.isMiniGameMode || Blink.instance.gameObject.activeSelf) // 미니게임 중에는 소리 안나게
-            AudioManager.instance.PauseAudio("SowSFXSound");*/
+        if (!(isMiniGameMode || Blink.instance.gameObject.activeSelf)) // 미니게임 중에는 소리 안나게
+            AudioManager.instance.SowAudioPlay();
     }
     public void Harvest(Stem stem)
     {
         Farm farm = farmList[stem.stemIdx];
         if (farm.isHarvest) return;
 
-        AudioManager.instance.HarvestAudioPlay();//딸기 수확할 때 효과음
+
+        if (!(isMiniGameMode || Blink.instance.gameObject.activeSelf)) // 미니게임 중에는 소리 안나게-      
+            AudioManager.instance.HarvestAudioPlay();//딸기 수확할 때 효과음
+
         farm.isHarvest = true;
         Vector2 pos = stem.transform.position;
         stem.getInstantBerryObj().GetComponent<Berry>().Explosion(pos, target.position, 0.5f);
