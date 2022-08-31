@@ -21,7 +21,7 @@ public class BannerAd : MonoBehaviour
 #endif
 
         //초기화가 됐는지 확인하고 배너광고 로드
-        StartCoroutine(CheckInitialize());
+        //StartCoroutine(CheckInitialize());
     }
 
     IEnumerator CheckInitialize()
