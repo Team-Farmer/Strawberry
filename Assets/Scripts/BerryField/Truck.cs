@@ -9,10 +9,11 @@ public class Truck : MonoBehaviour
     public GameObject MaxPanel;
     public Button normal_receive_btn;
     public Button add_receive_btn;
+    public Sprite[] truckSprite;
     //public int berryCnt = 0; // 옮김
     private Animator anim;
     private ArbeitMgr arbeit;
-
+    private int truckSpirteLv;
     public const int CNT_LEVEL_0 = Globalvariable.TRUCK_CNT_LEVEL_0;
     public const int CNT_LEVEL_1 = Globalvariable.TRUCK_CNT_LEVEL_1;
     public const int CNT_LEVEL_2 = Globalvariable.TRUCK_CNT_LEVEL_2;
@@ -27,7 +28,7 @@ public class Truck : MonoBehaviour
         add_receive_btn.onClick.AddListener(OnclickAdBtn);
     }
     void FixedUpdate()
-    {
+    {       
         if (DataController.instance.gameData.truckBerryCnt == CNT_LEVEL_0) // 트럭 누적 딸기 개수가 0개라면
         {
             normal_receive_btn.interactable = false; // 받기 버튼을 비활성화
@@ -43,32 +44,38 @@ public class Truck : MonoBehaviour
         }
         if (CNT_LEVEL_0 <= DataController.instance.gameData.truckBerryCnt && DataController.instance.gameData.truckBerryCnt < CNT_LEVEL_1)
         {
-            if (anim.GetInteger("Truck") == 0) return;
-            SetAnim(0); // 트럭 애니메이션을 빈 트럭으로 변경
+            if (truckSpirteLv == 0) return;
+            truckSpirteLv = 0;
+            GetComponent<Image>().sprite = truckSprite[0]; // 트럭 스프라이트를 빈 트럭으로 변경
             MaxPanel.SetActive(false); // MAX 패널 제거
         }
         if (CNT_LEVEL_1 <= DataController.instance.gameData.truckBerryCnt && DataController.instance.gameData.truckBerryCnt < CNT_LEVEL_2)
         {
-            if (anim.GetInteger("Truck") == 1) return;
+            if (truckSpirteLv == 1) return;
 
-            SetAnim(1);
+            truckSpirteLv = 1;
+            GetComponent<Image>().sprite = truckSprite[1];
         }
         if (CNT_LEVEL_2 <= DataController.instance.gameData.truckBerryCnt && DataController.instance.gameData.truckBerryCnt < CNT_LEVEL_MAX)
         {
-            if (anim.GetInteger("Truck") == 2) return;
-            SetAnim(2);
+            if (truckSpirteLv == 2) return;
+
+            truckSpirteLv = 2;
+            GetComponent<Image>().sprite = truckSprite[2];
         }
         if (DataController.instance.gameData.truckBerryCnt == CNT_LEVEL_MAX)
         {
-            if (anim.GetInteger("Truck") == 3) return;
+            if (truckSpirteLv == 3) return;
+
+            truckSpirteLv = 3;
             MaxPanel.SetActive(true);
-            SetAnim(3);
+            GetComponent<Image>().sprite = truckSprite[3];
         }
     }
-    void SetAnim(int level)
+    /*void SetAnim(int level)
     {
         anim.SetInteger("Truck", level);
-    }
+    }*/
 
     public void ReceiveCoinNormal()
     {
