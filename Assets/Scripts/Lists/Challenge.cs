@@ -154,10 +154,10 @@ public class Challenge : MonoBehaviour
                 break;
 
             case 1: // 딸기 수확
-                Info[prefabnum].clearCriterion[0] = 32;
+                Info[prefabnum].clearCriterion[0] = 48;
                 for (int i = 1; i < MaxLevel; i++)
                 {
-                    Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[i - 1] + 32 * i;
+                    Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[i - 1] + 48 * (i + 2);
                 }
                 break;
 
@@ -166,7 +166,7 @@ public class Challenge : MonoBehaviour
                 for (int i = 1; i < MaxLevel; i++)
                 {
                     // 1000 3000 9000 12000 36000
-                    Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[i - 1] * 3;
+                    Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[i - 1] * 4;
                     //Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[0] * (int)Mathf.Pow(2,i);
                     /*if (i <= 10)
                     { Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[i - 1] * 2; }
@@ -175,7 +175,7 @@ public class Challenge : MonoBehaviour
                 break;
 
             case 3: // 누적 하트
-                Info[prefabnum].clearCriterion[0] = 50;
+                Info[prefabnum].clearCriterion[0] = 60;
                 for (int i = 1; i < MaxLevel; i++)
                 {
                     Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[i - 1] * 2;
