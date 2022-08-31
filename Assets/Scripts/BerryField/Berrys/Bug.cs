@@ -58,7 +58,10 @@ public class Bug : MonoBehaviour
     IEnumerator DisableBug(float time)
     {
         yield return new WaitForSeconds(time);
-        AudioManager.instance.Remove2AudioPlay();
+
+        if (!(GameManager.instance.isMiniGameMode || Blink.instance.gameObject.activeSelf))
+            AudioManager.instance.Remove2AudioPlay();
+
         this.gameObject.SetActive(false);
     }
 }

@@ -15685,6 +15685,7 @@ MonoBehaviour:
   HireYNPanel: {fileID: 1436066614}
   HireYNPanel_yes: {fileID: 408412197}
   confirmPanel: {fileID: 604087749}
+  minigame_inside: {fileID: 0}
   priceText_newBerry: {fileID: 1295824419}
   timeText_newBerry: {fileID: 2120615085}
   startBtn_newBerry: {fileID: 787233744}
@@ -28757,7 +28758,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &907141136
 RectTransform:
   m_ObjectHideFlags: 0
@@ -32304,7 +32305,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1008492472
 RectTransform:
   m_ObjectHideFlags: 0

@@ -42,7 +42,7 @@ public class Stem : MonoBehaviour
         }
         else sprite.sortingOrder = 2;
 
-        if (DataController.instance.gameData.berryFieldData[stemIdx].isPlant)
+        if (DataController.instance.gameData.berryFieldData[stemIdx].createTime > 0f)
         {
             MakeBerry();
             updateStem();
