@@ -63,9 +63,10 @@ public class MiniGame : MonoBehaviour
         time = 64;
         score_txt.text = score.ToString();
         isGameRunning = false;
+
         //4초 카운트
         StartCoroutine(Count4Second());
-        AudioManager.instance.CountdownAudioPlay(); // 일시정지해도 안멈춤
+        AudioManager.instance.CountdownAudioPlay();
     }
 
     IEnumerator Count4Second()
@@ -163,6 +164,8 @@ public class MiniGame : MonoBehaviour
 
         isGameRunning = false;
         isMiniGameWork = false;
+
+        AudioManager.instance.StopPlayAudio("CountdownSFXSound");
     }
 
     public virtual void ReStart() //다시하기
@@ -170,7 +173,7 @@ public class MiniGame : MonoBehaviour
         score = 0;
         time = 64;
         unlockList.Clear();
-        //StartGame();
+
         OnEnable();
     }
 
@@ -207,6 +210,14 @@ public class MiniGame : MonoBehaviour
     public void OnclickExitButton() //게임 나가기
     {
         OnClickKeepGoingButton();
+
+        //사운드 끄기, 이미지 없애기
+        AudioManager.instance.StopPlayAudio("CountdownSFXSound");
+        for (int i = 0; i < 4; i++)
+        {
+            countImgs.transform.GetChild(i).gameObject.SetActive(false);
+        }
+
         StopGame();
     }
 }
