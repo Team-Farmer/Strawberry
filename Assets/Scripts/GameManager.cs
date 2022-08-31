@@ -57,6 +57,9 @@ public class GameManager : MonoBehaviour
     public Button HireYNPanel_yes;
     public GameObject confirmPanel;
 
+    [Header("[ MiniGame ]")]
+    public GameObject minigame_inside;
+
     //NEWS
     [NonSerialized]
     public int NewsPrefabNum;
@@ -303,7 +306,7 @@ public class GameManager : MonoBehaviour
             if (st != null)
             {
                 PlantStrawBerry(st, obj); // 심는다
-                AudioManager.instance.SowAudioPlay();
+
                 DataController.instance
                     .gameData.berryFieldData[farm.farmIdx].isPlant = true; // 체크 변수 갱신
             }
@@ -346,6 +349,11 @@ public class GameManager : MonoBehaviour
         //stem.transform.position = obj.transform.position; ; // 밭의 Transform에 달기를 심는다
         stem.gameObject.SetActive(true); // 딸기 활성화              
         coll.enabled = false; // 밭의 콜라이더 비활성화 (잡초와 충돌 방지)
+
+        AudioManager.instance.SowAudioPlay();
+
+        /*if (GameManager.instance.isMiniGameMode || Blink.instance.gameObject.activeSelf) // 미니게임 중에는 소리 안나게
+            AudioManager.instance.PauseAudio("SowSFXSound");*/
     }
     public void Harvest(Stem stem)
     {
@@ -895,7 +903,7 @@ public class GameManager : MonoBehaviour
                     newBerryIndex = berryPercantage(64);
                     /*newBerryIndex = UnityEngine.Random.Range(1, 64);
                     DataController.instance.gameData.newBerryTime = 10 * 60;*/
-                    break;
+        break;
                 case 1:
                     newBerryIndex = berryPercantage(128);
                     break;
