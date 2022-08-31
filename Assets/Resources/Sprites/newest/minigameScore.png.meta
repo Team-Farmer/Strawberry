@@ -17,6 +17,12 @@ TextureImporter:
   - first:
       213: -5087068981328408149
     second: minigameScore_24
+  - first:
+      213: 99001951535773012
+    second: minigameScore_1
+  - first:
+      213: -6286758412362540969
+    second: minigameScore_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -138,7 +144,7 @@ TextureImporter:
         width: 906
         height: 698
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -159,7 +165,7 @@ TextureImporter:
         width: 54
         height: 44
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -180,7 +186,7 @@ TextureImporter:
         width: 42
         height: 42
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -201,7 +207,7 @@ TextureImporter:
         width: 380
         height: 124
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -222,7 +228,7 @@ TextureImporter:
         width: 380
         height: 124
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -230,6 +236,48 @@ TextureImporter:
       bones: []
       spriteID: ba11304c6b91769b0800000000000000
       internalID: -5087068981328408149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minigameScore_1
+      rect:
+        serializedVersion: 2
+        x: 1265
+        y: 664
+        width: 91
+        height: 85
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4553c5910c9bf5100800000000000000
+      internalID: 99001951535773012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minigameScore_2
+      rect:
+        serializedVersion: 2
+        x: 1488
+        y: 666
+        width: 102
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7589e6a5882f0c8a0800000000000000
+      internalID: -6286758412362540969
       vertices: []
       indices: 
       edges: []

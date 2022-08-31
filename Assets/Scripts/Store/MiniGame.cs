@@ -15,7 +15,9 @@ public class MiniGame : MonoBehaviour
     public GameObject countImgs;//카운트 이미지
     public Button pause_btn;   //일시정지 버튼
     public GameObject resultPanel;//결과패널
-    public Text result_txt;    //결과 텍스트
+    public Text result_cur_score_txt;    //결과 현재 스코어 텍스트
+    public Text result_highscore_txt;    //결과 최고기록 텍스트
+    public Text result_coin_txt;    //결과 최고기록 텍스트
     public Button checkButton;
     public Button challengeButton;
     public Button settingButton;
