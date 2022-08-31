@@ -14,6 +14,7 @@ public class RainCtrl : MonoBehaviour
     public int mult = 1;
     public float rainTime;
     private bool isRaining;
+
     void Start()
     {
         rainParticle = GetComponent<ParticleSystem>();
@@ -34,6 +35,7 @@ public class RainCtrl : MonoBehaviour
             StartCoroutine(RainingRoutine());
         }
     }
+
     void Raining()
     {       
         rainPanel.gameObject.SetActive(true);
@@ -47,7 +49,7 @@ public class RainCtrl : MonoBehaviour
 
         //예림 sound
         AudioManager.instance.RainAudioPlay();
-        if (GameManager.instance.isMiniGameMode)
+        if (GameManager.instance.isMiniGameMode||Blink.instance.gameObject.activeSelf)
         {
             AudioManager.instance.PauseAudio("RainSFXSound");
         }

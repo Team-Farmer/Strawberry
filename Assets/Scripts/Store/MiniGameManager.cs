@@ -55,6 +55,10 @@ public class MiniGameManager : MonoBehaviour
         popup.SetActive(false);
         Store.GetComponent<Image>().sprite = StoreSprite[1];
         AudioManager.instance.BGMPlay(2);
+
+        //예림-오디오
+        GameManager.instance.isMiniGameMode = true;
+        AudioManager.instance.PauseAudio("RainSFXSound");
     }
 
     private bool ResearchLevelCheck(int level)

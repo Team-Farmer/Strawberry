@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
@@ -55,6 +55,9 @@ public class Intro : MonoBehaviour
                     introObject[4].SetActive(false);
                     GameManager.instance.EnableObjColliderAll();
                     isEnd = true;
+
+                    //예림
+                    AudioManager.instance.ResumePlayAudio("RainSFXSound");
                 });
         yield return null;
     }
