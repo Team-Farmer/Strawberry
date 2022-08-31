@@ -354,7 +354,7 @@ public class GameManager : MonoBehaviour
         stem.gameObject.SetActive(true); // 딸기 활성화              
         coll.enabled = false; // 밭의 콜라이더 비활성화 (잡초와 충돌 방지)
      
-        Debug.Log((stem.stemIdx+1) + "번에 심었다!");
+       
 
         if (!(isMiniGameMode || Blink.instance.gameObject.activeSelf)) // 미니게임 중에는 소리 안나게
             AudioManager.instance.SowAudioPlay();
