@@ -127,7 +127,7 @@ public class GameManager : MonoBehaviour
     public bool isMiniGameMode = false;
     #endregion
 
-    #region 출석 메인 기능
+    #region 기본 기능
 
 
     void Start()
@@ -427,13 +427,13 @@ public class GameManager : MonoBehaviour
                 coinAnimText.text = text + cost.ToString() + "C";
             }
             coinAnimManager.GetComponent<HeartMover>().CountCoin(-240f);
-            Invoke("invokeCoin", 1.1f);
+            Invoke("invokeCoin", 0.7f);
         }
         else
         {
             heartAnimText.text = text + cost.ToString();
             heartAnimManager.GetComponent<HeartMover>().CountCoin(100f);
-            Invoke("invokeHeart", 1.1f);
+            Invoke("invokeHeart", 0.7f);
         }
         yield return null;
     }

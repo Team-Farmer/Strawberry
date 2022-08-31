@@ -38,7 +38,7 @@ public class HeartAcquireFx : MonoBehaviour
         rect.position = from;
         Sequence seq = DOTween.Sequence()
         .Append(rect.GetComponent<Text>().DOFade(1, 0.3f))
-        .Join(rect.DOAnchorPosX(230f, 0.4f))
+        .Join(rect.DOAnchorPosX(230f, 0.7f))
         .Append(rect.GetComponent<Text>().DOFade(0, 0.3f))
         .OnComplete(() =>
         {
