@@ -50,6 +50,7 @@ public class GameManager : MonoBehaviour
     //PTJ 알바
     public GameObject workingCountText;//고용중인 동물수
     public GameObject PTJList;
+    public GameObject[] PTJPref;
 
     [Header("PTJ === Warning Panel")]
     public GameObject warningBlackPanel;
@@ -306,6 +307,8 @@ public class GameManager : MonoBehaviour
                 AudioManager.instance.SowAudioPlay();
                 DataController.instance
                     .gameData.berryFieldData[farm.farmIdx].isPlant = true; // 체크 변수 갱신
+
+
             }
         }
         else
@@ -609,6 +612,9 @@ public class GameManager : MonoBehaviour
 
                     //고용중인 알바생 수 증가
                     DataController.instance.gameData.PTJCount++;
+
+                    for (int i = 0; i < 6; i++)
+                        PTJPref[i].GetComponent<PanelAnimation>().CloseScale();
                 }
                 else
                 {
@@ -653,6 +659,9 @@ public class GameManager : MonoBehaviour
         //확인창 내리기
         HireYNPanel.GetComponent<PanelAnimation>().CloseScale();
         warningBlackPanel.SetActive(false);
+
+        for (int i = 0; i < 6; i++)
+            PTJPref[i].GetComponent<PanelAnimation>().CloseScale();
     }
     #endregion
 
