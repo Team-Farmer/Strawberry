@@ -861,10 +861,8 @@ public class GameManager : MonoBehaviour
                 timeText_newBerry.GetComponent<Text>().text
                     = TimeForm(Mathf.CeilToInt(DataController.instance.gameData.newBerryTime));
                 //하트를 소비한다.
-                UseHeart(3);
+                UseHeart(5);
             }
-            else
-            { UseHeart(3); }
         }
 
         //창 끄기
