@@ -28717,7 +28717,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &907141136
 RectTransform:
   m_ObjectHideFlags: 0
@@ -32243,7 +32243,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1008492472
 RectTransform:
   m_ObjectHideFlags: 0
@@ -38197,6 +38197,7 @@ MonoBehaviour:
   miniGameBerryPref: {fileID: 7009513062454640041, guid: d3df564ed08a5344bb070f4c14a69f1a, type: 3}
   berryPool: []
   berryGroup: {fileID: 828367657}
+  camera: {fileID: 519420031}
 --- !u!1 &1197904731
 GameObject:
   m_ObjectHideFlags: 0
