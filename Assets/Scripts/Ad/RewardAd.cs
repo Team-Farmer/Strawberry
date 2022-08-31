@@ -35,11 +35,6 @@ public class RewardAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListe
     //Load content to the Ad Unit
     public void LoadAd()
     {
-        //while (!Advertisement.isInitialized)
-        //{
-        ////광고 로드중 팝업 띄우기
-        //yield return wait;
-        //}
         if (Advertisement.isInitialized)
             Advertisement.Load(adUnitId, this);
         else
@@ -81,6 +76,7 @@ public class RewardAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListe
     public void OnUnityAdsShowFailure(string placementId, UnityAdsShowError error, string message)
     {
         Debug.Log($"광고 보여주기 Error : {error}-{message}");
+        OnAdFailed();
     }
 
     public void OnUnityAdsShowClick(string placementId) { }

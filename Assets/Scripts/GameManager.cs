@@ -102,6 +102,7 @@ public class GameManager : MonoBehaviour
     public GameObject attendanceCheck;
     public string url = "";
     private int revenue;
+    public Button add_receive_btn; //부재중수익 2배받기 버튼
 
     [Header("[ Panel List ]")]
     public Text panelCoinText;
@@ -1150,13 +1151,13 @@ public class GameManager : MonoBehaviour
 
         DataController.instance.gameData.nextMidnightTime = DataController.instance.gameData.currentTime.Date.AddDays(1);
 
-        //���� Ÿ�̸�
+        //자동타이머
         Invoke(nameof(ResetTime),
             (float)(DataController.instance.gameData.nextMidnightTime
             - DataController.instance.gameData.currentTime).TotalSeconds);
     }
 
-    IEnumerator CheckElapseTime() //���� �����Ҷ�
+    IEnumerator CheckElapseTime() //게임 복귀할때
     {
         DataController.instance.gameData.isPrework = false;
         yield return StartCoroutine(TryGetCurrentTime());
@@ -1311,6 +1312,34 @@ public class GameManager : MonoBehaviour
             AbsencePanel.GetComponent<PanelAnimation>().OpenScale();
             DataController.instance.gameData.rewardAbsenceTime = TimeSpan.FromSeconds(0);
         }
+    }
+
+    //광고보고 2배받기
+    public void OnclickAdBtn()
+    {
+        RewardAd.instance.LoadAd();
+        RewardAd.instance.OnAdComplete += ReceiveCoin2Times;
+        RewardAd.instance.OnAdFailed += OnFailedAd;
+        RewardAd.instance.ShowAd();
+        add_receive_btn.interactable = false; // 광고 보고 받기 버튼을 비활성화
+    }
+
+    void ReceiveCoin2Times()
+    {
+        GetCoin(revenue * 2);
+
+        RewardAd.instance.OnAdComplete -= ReceiveCoin2Times;
+        add_receive_btn.interactable = true; // 광고 보고 받기 버튼 활성
+        blackPanel.SetActive(false);
+        AbsenceBlackPanel.SetActive(false);
+        AbsencePanel.GetComponent<PanelAnimation>().CloseScale();
+    }
+
+    void OnFailedAd()
+    {
+        RewardAd.instance.OnAdComplete -= ReceiveCoin2Times;
+        RewardAd.instance.OnAdFailed -= OnFailedAd;
+        add_receive_btn.interactable = true; // 광고 보고 받기 버튼 활성
     }
 
     public void AbsenceBtn()
