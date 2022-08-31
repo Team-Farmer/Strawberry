@@ -10,10 +10,9 @@ public class DataController : MonoBehaviour
     [Header("암호화 여부 체크")]
     public bool dataEncryption;
 
-    //�̱���
     public static DataController instance = null;
 
-    //���ӵ����� 
+    //게임데이터
     string gameDataFileName = "gameData.json";
     //[HideInInspector]
     public GameData gameData;
@@ -25,14 +24,13 @@ public class DataController : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            //�� ��ȯ�� �Ǵ��� �ı����� �ʵ��� ��
             DontDestroyOnLoad(this.gameObject);
         }
         else if(instance!=this)
         {
-            //�� ��ȯ�� �Ǿ��µ� �ν��Ͻ��� �����ϴ� ���
-            //���� ������ �Ѿ�� �ν��Ͻ��� ����ϱ� ���� 
-            //���ο� ���� ���ӿ�����Ʈ ����
+            //씬 전환이 되었는데 인스턴스가 존재하는 경우
+            //이전 씬에서 넘어온 인스턴스를 사용하기 위해 
+            //새로운 씬의 게임오브젝트 제거
             Destroy(this.gameObject);
         }
         rainParticle = GameObject.FindGameObjectWithTag("Rain").GetComponent<ParticleSystem>();
@@ -45,15 +43,15 @@ public class DataController : MonoBehaviour
 
         if (File.Exists(filePath))
         {
-            //json���� �ҷ�����
+            //json파일 불러오기
             //Debug.Log(filePath);
             string jsonData = File.ReadAllText(filePath);
 
-            //������ȭ
+            //역직렬화
             gameData =JsonConvert.DeserializeObject<GameData>(jsonData);
             //gameData = JsonUtility.FromJson<GameData>(jsonData);
 
-            // �� ���ӽð� �ε�
+            // 비 지속시간 로드
             var main = rainParticle.main;
             main.duration = gameData.rainDuration;
 
@@ -73,24 +71,24 @@ public class DataController : MonoBehaviour
     {
         string filePath = Application.persistentDataPath + gameDataFileName;
 
-        //������ ����ȭ
+        //데이터 직렬화
         string jsonData = JsonConvert.SerializeObject(gameData);
         //string jsonData = JsonUtility.ToJson(gameData);
 
-        //���ÿ� ����
+        //로컬에 저장
         File.WriteAllText(filePath, jsonData);
 
-        Debug.Log("저장 완료 경로 : "+filePath);
+        Debug.Log("로컬 저장 완료 경로 : "+filePath);
     }
 
     public void InitData()
     {
         gameData.cloudSaveTime = new System.DateTime();
-        // ��ȭ ����
-        gameData.coin = 200; // ���� 500
+        // 재화 변수
+        gameData.coin = 200; // 원래 500
         gameData.heart = 20;
         gameData.medal = 0;
-        // ���� ����
+        // 누적 변수
         gameData.unlockBerryCnt = 1;
         gameData.totalHarvBerryCnt = 0;
         gameData.accCoin = gameData.coin;
@@ -98,7 +96,7 @@ public class DataController : MonoBehaviour
         gameData.accAttendance = 0;
         gameData.mgPlayCnt = 0;
 
-        // ���� ���� �ð�
+        // 딸기 성장 시간
 
 
         //Truck
@@ -116,30 +114,27 @@ public class DataController : MonoBehaviour
             gameData.berryFieldData[i] = new BerryFieldData();                       
         }
         
-        // �� ���ӽð� �ʱ�ȭ
+        // 비 지속시간 초기화
         var main = rainParticle.main;
         main.duration = 5.0f;
 
-        //�ʱ� ���� ���� ����
+        //초기 딸기 가격 설정
         InitBerryPrice();
 
         //=====================================================
-        //���� �Ʒ� ���� �ʿ�
+        //여기 아래 정리 필요
         //isBerryUnlock
         for (int i = 0; i < 192; i++)
         {   gameData.isBerryUnlock[i] = false;   }
-        gameData.isBerryUnlock[0] = true;//ù��° �⺻������ ����
-        /*gameData.isBerryUnlock[1] = true;//�ι�° �⺻������ ����
-        gameData.isBerryUnlock[2] = true;//����° �⺻������ ����
-        gameData.isBerryUnlock[3] = true;//�׹�° �⺻������ ����*/
+        gameData.isBerryUnlock[0] = true;//첫번째 기본베리는 존재
 
-        //��������
+        //도전과제
         for (int i = 0; i < 6; i++) {   gameData.challengeLevel[i] = 0;   }
 
-        //����
+        //수집
         for (int i = 0; i < 7; i++) { gameData.isCollectionDone[i] = false; }
 
-        //����
+        //뉴스
         for (int i = 0; i < 15; i++) {   gameData.newsState[i] = 0;  }
 
         //PTJ
@@ -148,19 +143,19 @@ public class DataController : MonoBehaviour
         gameData.PTJSelectNum[1] = 0;
         gameData.PTJCount = 0;
 
-        //����ǥ !!
+        //느낌표 !!
         for (int i = 0; i < 15; i++) 
         {    gameData.isNewsEM[i] = false;   }
         for (int i = 0; i < 192; i++)
         {    gameData.isBerryEM[i] = false;    }
 
-        //����
+        //딸기
         gameData.newBerryResearchAble = 0;
         gameData.newBerryBtnState = 0;
         gameData.newBerryTime = 0;
         gameData.newBerryIndex = 0;
 
-        //���԰��ú���
+        //가게관련변수
         gameData.isStoreOpend = false;
         for (int i = 0; i < 4; i++) { gameData.highScore[i] = 0; }
         //=====================================================
@@ -184,7 +179,7 @@ public class DataController : MonoBehaviour
     }
     void OnApplicationQuit()
     {
-        //��������� ����
+        //게임종료시 저장
         if(isSaveMode)SaveData();
     }
     
