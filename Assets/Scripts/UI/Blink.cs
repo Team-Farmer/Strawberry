@@ -1,8 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
-using UnityEngine.UI;
+using System;
 
 public class Blink : MonoBehaviour
 {
@@ -34,10 +33,5 @@ public class Blink : MonoBehaviour
             count++;
         }
         readText.SetActive(true);
-    }
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }
