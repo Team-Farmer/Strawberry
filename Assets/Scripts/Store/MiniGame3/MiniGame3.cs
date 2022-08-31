@@ -17,6 +17,7 @@ public class MiniGame3 : MiniGame
     private bool isDrag;
     float accTime, randTime;
     public RectTransform berryGroup;
+    public Camera camera;
 
     // Start is called before the first frame update
     protected override void Awake()
@@ -60,7 +61,9 @@ public class MiniGame3 : MiniGame
         {                     
             Vector3 mousePos = Input.mousePosition;
 
-            //mousePos = Camera.Screen
+            mousePos = camera.ScreenToViewportPoint(mousePos);
+            mousePos.x = mousePos.x * bgRect.rect.width;
+
             Debug.Log("mousePos.x = " + mousePos.x);
             float leftBorder = 0f;
             float rightBorder = bgRect.rect.width - basketRect.rect.width;           
@@ -142,8 +145,7 @@ public class MiniGame3 : MiniGame
 
     public override void ReStart() //다시하기
     {
-        base.ReStart();
-        basketRect.anchoredPosition = new Vector3(425f, 560f, 0f);
+        base.ReStart();       
     }
     protected override void FinishGame()
     {
