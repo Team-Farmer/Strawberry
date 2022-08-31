@@ -18,8 +18,14 @@ public class TEST : MonoBehaviour
         switch (berryClassify) 
         {
             case 0: start = 0;end = 64;break;
-            case 1: start = 64;end = 128;break;
-            case 2: start = 128; end = 192;break;
+            case 1: start = 64;end = 128;
+                if(DataController.instance.gameData.newBerryResearchAble < 1)
+                    DataController.instance.gameData.newBerryResearchAble = 1;
+                break;
+            case 2: start = 128; end = 192;
+                if (DataController.instance.gameData.newBerryResearchAble < 2)
+                    DataController.instance.gameData.newBerryResearchAble = 2;
+                break;
         }
 
         for (int i = start; i < end; i++)
