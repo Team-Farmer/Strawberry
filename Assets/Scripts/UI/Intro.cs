@@ -63,7 +63,7 @@ public class Intro : MonoBehaviour
         yield return new WaitForSeconds(2.8f);
         isEnd = true;
         GameManager.instance.StartPrework();
-        Debug.Log(DataController.instance.gameData.lastExitTime);
+        //Debug.Log(DataController.instance.gameData.lastExitTime);
 
        
     }

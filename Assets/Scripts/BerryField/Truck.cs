@@ -77,7 +77,7 @@ public class Truck : MonoBehaviour
         float totalCoin = (DataController.instance.gameData.truckCoin
             + GameManager.instance.bonusTruckCoin) * coEffi;
 
-        Debug.Log(totalCoin);
+        //Debug.Log(totalCoin);
         GameManager.instance.GetCoin((int)totalCoin);
 
         //Debug.Log("누적 출석 : " + DataController.instance.gameData.accCoin);      // 누적 코인 테스트

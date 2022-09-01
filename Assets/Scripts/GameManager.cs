@@ -287,11 +287,11 @@ public class GameManager : MonoBehaviour
     {
         if (pause)
         {
-            Debug.Log(DataController.instance.gameData.isPrework);
+            //Debug.Log(DataController.instance.gameData.isPrework);
             if (DataController.instance.gameData.isPrework == true)
                 DataController.instance.gameData.lastExitTime = DataController.instance.gameData.currentTime;
 
-            Debug.Log("마지막 종료 시간: " + DataController.instance.gameData.lastExitTime);
+            //Debug.Log("마지막 종료 시간: " + DataController.instance.gameData.lastExitTime);
 
 
             DataController.instance.SaveData();
