@@ -874,14 +874,14 @@ public class GameManager : MonoBehaviour
                     = TimeForm(Mathf.CeilToInt(DataController.instance.gameData.newBerryTime));
                 //하트를 소비한다.
                 UseHeart(3);
+
+                //창 끄기
+                TimeReduceBlackPanel_newBerry.SetActive(false);
+                TimeReducePanel_newBerry.GetComponent<PanelAnimation>().CloseScale();
             }
             else
             { UseHeart(3);  }
         }
-
-        //창 끄기
-        TimeReduceBlackPanel_newBerry.SetActive(false);
-        TimeReducePanel_newBerry.GetComponent<PanelAnimation>().CloseScale();
 
     }
 
