@@ -875,6 +875,8 @@ public class GameManager : MonoBehaviour
                 //하트를 소비한다.
                 UseHeart(3);
             }
+            else
+            { UseHeart(3);  }
         }
 
         //창 끄기
