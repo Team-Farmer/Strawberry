@@ -15,10 +15,13 @@ public class MiniGame2 : MiniGame
     public GameObject O;       //O 이미지
     public GameObject X;       //X 이미지
     public int rottenIndex; // 4(무른) or 8(상한)인 인덱스
+    public Image Sandy;
+    public Sprite[] SandySprite;
 
     private float[] shaded = { 0.5f, 0.75f, 0.9f};
     private int shade_idx = 0;
     private int randomAnswerIndex = 0;
+
     protected override void Awake()
     {
         for (int i = 0; i < 16; i++)
@@ -79,6 +82,8 @@ public class MiniGame2 : MiniGame
             score += 10;
             score_txt.text = score.ToString();
             AudioManager.instance.RightAudioPlay();
+
+            Sandy.GetComponent<Image>().sprite = SandySprite[0];
         }
         //오답 : 10초 줄기
         else
@@ -88,6 +93,8 @@ public class MiniGame2 : MiniGame
             scroll.fillAmount -= size * 10;
             time -= 10;
             AudioManager.instance.WrongAudioPlay();
+
+            Sandy.GetComponent<Image>().sprite = SandySprite[1];
         }
         if (time > 0)
         {                  

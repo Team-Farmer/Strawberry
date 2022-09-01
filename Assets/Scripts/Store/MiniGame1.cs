@@ -14,6 +14,8 @@ public class MiniGame1 : MiniGame
     public Image[] answer_img; //정답딸기 이미지(4개)
     public GameObject O;       //O 이미지
     public GameObject X;       //X 이미지
+    public Image Sandy;
+    public Sprite[] SandySprite;
 
     protected override void Awake()
     {
@@ -81,6 +83,8 @@ public class MiniGame1 : MiniGame
             score += 10;
             score_txt.text = score.ToString();
             AudioManager.instance.RightAudioPlay();
+
+            Sandy.GetComponent<Image>().sprite = SandySprite[0];
         }
         //오답 : 10초 줄기
         else
@@ -89,6 +93,8 @@ public class MiniGame1 : MiniGame
             scroll.fillAmount -= size * 10;
             time -= 10;
             AudioManager.instance.WrongAudioPlay();
+
+            Sandy.GetComponent<Image>().sprite = SandySprite[1];
         }
         if (time > 0)
         {
