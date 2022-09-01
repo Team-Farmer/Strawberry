@@ -442,13 +442,13 @@ public class GameManager : MonoBehaviour
                 coinAnimText.text = text + cost.ToString() + "C";
             }
             coinAnimManager.GetComponent<HeartMover>().CountCoin(-240f);
-            Invoke("invokeCoin", 0.7f);
+            Invoke("invokeCoin", 0.5f);
         }
         else
         {
             heartAnimText.text = text + cost.ToString();
             heartAnimManager.GetComponent<HeartMover>().CountCoin(100f);
-            Invoke("invokeHeart", 0.7f);
+            Invoke("invokeHeart", 0.5f);
         }
         yield return null;
     }

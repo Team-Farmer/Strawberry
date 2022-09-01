@@ -36,16 +36,16 @@ public class MiniGameManager : MonoBehaviour
         }
         else
         {
-            //Debug.Log(DataController.instance.gameData.isStoreOpend);
-            ////해금조건 - 연구레벨 15이상, 700A 소모 가능상태
-            //if (DataController.instance.gameData.coin >= 700 && ResearchLevelCheck(15))
-            //{
-            //    UnlockBtn.interactable = true;
-            //}
-            //else
-            //{
-            //    UnlockBtn.interactable = false;
-            //}
+            Debug.Log(DataController.instance.gameData.isStoreOpend);
+            //해금조건 - 연구레벨 15이상, 700A 소모 가능상태
+            if (DataController.instance.gameData.coin >= 700 && ResearchLevelCheck(15))
+            {
+                UnlockBtn.interactable = true;
+            }
+            else
+            {
+                UnlockBtn.interactable = false;
+            }
         }
     }
 
