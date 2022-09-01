@@ -10,7 +10,6 @@ public class Setting : MonoBehaviour
     public Text versionDate_text;
     public Text version_text;
     public Text saveDate_text;
-    public Button cloudSave_btn;
     public Button cloudLoad_btn;
     #endregion
 
@@ -22,18 +21,17 @@ public class Setting : MonoBehaviour
     void Start()
     {
         SetCloudSave();
-//#if UNITY_EDITOR
+#if UNITY_EDITOR
 
-//#elif UNITY_ANDROID
-//        GPGSManager.instance.OnSaveSucceed += SetCloudSave;
-//#endif
+#elif UNITY_ANDROID
+        GPGSManager.instance.OnSaveSucceed += SetCloudSave;
+#endif
     }
 
     public void SetCloudSave()
     {
         if (DataController.instance.gameData.cloudSaveTime == System.DateTime.MinValue)
         {
-            cloudSave_btn.interactable = false;
             cloudLoad_btn.interactable = false;
             saveDate_text.text = "저장기록 없음";
         }
