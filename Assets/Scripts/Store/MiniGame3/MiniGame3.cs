@@ -162,7 +162,8 @@ public class MiniGame3 : MiniGame
 
         // 미니게임 3 보상 하트 공식(미니게임 3은 해금 하트가 20이다)
         float gain_coin = score * research_level_avg * ((100 + 20 * 2) / 100f);
-        result_coin_txt.text = gain_coin.ToString();
+        //result_coin_txt.text = gain_coin.ToString();
+        GameManager.instance.ShowCoinText(result_coin_txt.GetComponent<Text>(), Convert.ToInt32(gain_coin));
         Debug.Log("얻은 코인:" + Convert.ToInt32(gain_coin));
         //하트지급
         GameManager.instance.GetCoin(Convert.ToInt32(gain_coin));
