@@ -10,6 +10,7 @@ public class Intro : MonoBehaviour
     public GameObject[] introObject = new GameObject[4];
     public Sprite[] sprites = new Sprite[2];
     public RectTransform rect;
+    
     static public bool isEnd=false;
 
     private static Intro instance;
@@ -21,8 +22,7 @@ public class Intro : MonoBehaviour
             Intro.instance = this;
     }
 
-    void Start()
-    {
+    void Start()    {
         StartCoroutine(DoScale());
         introObject[5].SetActive(false);
 
@@ -31,15 +31,15 @@ public class Intro : MonoBehaviour
     IEnumerator DoScale()
     {
         sequence = DOTween.Sequence();
-        sequence.Append(rect.DOAnchorPos(new Vector3(157, -313, 0), 0.8f))
-                .Join(rect.transform.DOScale(Vector3.one, 0.8f))
-                .AppendInterval(0.5f)
+        sequence.Append(rect.DOAnchorPos(new Vector3(157, -313, 0), 0.7f))
+                .Join(rect.transform.DOScale(Vector3.one, 0.7f))
+                .AppendInterval(0.4f)
                 .AppendCallback(() =>
                 {
                     introObject[0].GetComponent<Image>().sprite = sprites[0];
                 })
-                .AppendInterval(0.5f)
-                .Append(rect.transform.DOScale(Vector3.one * 0.002f, 0.5f))
+                .AppendInterval(0.4f)
+                .Append(rect.transform.DOScale(Vector3.one * 0.002f, 0.4f))
                 .AppendInterval(0.1f)
                 .AppendCallback(() =>
                 {
@@ -47,18 +47,24 @@ public class Intro : MonoBehaviour
                     introObject[2].SetActive(true);
                     introObject[3].SetActive(true);
                 })
-                .AppendInterval(0.5f)
-                .Append(rect.transform.DOScale(Vector3.one * 7f, 0.8f).SetEase(Ease.InCubic))
-                .AppendInterval(0.5f)
+                .AppendInterval(0.4f)
+                .Append(rect.transform.DOScale(Vector3.one * 7f, 0.7f).SetEase(Ease.InCubic))
                 .AppendCallback(() =>
                 {
+
                     introObject[4].SetActive(false);
                     GameManager.instance.EnableObjColliderAll();
-                    isEnd = true;
+
 
                     //예림
                     AudioManager.instance.ResumePlayAudio("RainSFXSound");
                 });
-        yield return null;
+
+        yield return new WaitForSeconds(2.8f);
+        isEnd = true;
+        GameManager.instance.StartPrework();
+        Debug.Log(DataController.instance.gameData.lastExitTime);
+
+       
     }
 }

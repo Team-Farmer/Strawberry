@@ -83,11 +83,14 @@ public class AttendanceCheck : MonoBehaviour
             selectDay(days);
         }
         WeeksTag();
+
+        //Debug.Log("날짜 차이:" + daysCompare);
+        //Debug.Log("지난 날짜" +":" + DataController.instance.gameData.atdLastday);
     }
 
     public int DaysCalculate()
     {
-        ts = now - DataController.instance.gameData.atdLastday; //날짜 차이 계산
+        ts = now - DataController.instance.gameData.atdLastday.Date; //날짜 차이 계산
         daysCompare = ts.Days; //Days 정보만 추출.
 
         DataController.instance.gameData.weeks = (DataController.instance.gameData.accDays / 7) + 1;

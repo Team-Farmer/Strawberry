@@ -136,8 +136,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        DataController.instance.gameData.isPrework = false;
-        StartCoroutine(PreWork());
+
 
 
         Application.targetFrameRate = 60;
@@ -163,6 +162,14 @@ public class GameManager : MonoBehaviour
         isStart = true;
 
         InitDataInGM();
+
+        //PrintTime();
+    }
+
+    public void StartPrework()
+    {
+        DataController.instance.gameData.isPrework = false;
+        StartCoroutine(PreWork());
     }
 
     public void GameStart()
@@ -260,7 +267,8 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             DataController.instance.SaveData();
-            //isStart = false;
+            isStart = false;
+            DataController.instance.gameData.lastExitTime = DataController.instance.gameData.currentTime;
 #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
 #else
@@ -279,14 +287,18 @@ public class GameManager : MonoBehaviour
     {
         if (pause)
         {
+            Debug.Log(DataController.instance.gameData.isPrework);
             if (DataController.instance.gameData.isPrework == true)
                 DataController.instance.gameData.lastExitTime = DataController.instance.gameData.currentTime;
+
+            Debug.Log("마지막 종료 시간: " + DataController.instance.gameData.lastExitTime);
+
 
             DataController.instance.SaveData();
         }
         else
         {
-            if (isStart)//&&Intro.isEnd)
+            if (isStart&&Intro.isEnd)
                 StartCoroutine(CheckElapseTime());
         }
 
@@ -1187,14 +1199,14 @@ public class GameManager : MonoBehaviour
 
         TimeSpan gap = DataController.instance.gameData.currentTime - DataController.instance.gameData.lastExitTime;
 
-        if (gap.TotalSeconds > 3610f)
+        if (gap.TotalSeconds > 3610f && Intro.isEnd && DataController.instance.gameData.isStoreOpend)
         {
             yield return StartCoroutine(CalculateTime());
         }
 
         MidNightCheck();
 
-        if (!MiniGameManager.isOpen && DataController.instance.gameData.rewardAbsenceTime.TotalMinutes >= 60)//&&Intro.isEnd)
+        if (!MiniGameManager.isOpen && DataController.instance.gameData.rewardAbsenceTime.TotalMinutes >= 60f&&Intro.isEnd &&DataController.instance.gameData.isStoreOpend)
         {
             //부재중 이벤트
             AbsenceTime();
@@ -1213,7 +1225,7 @@ public class GameManager : MonoBehaviour
 
         MidNightCheck();
 
-        if (DataController.instance.gameData.rewardAbsenceTime.TotalMinutes >= 60)//&&Intro.isEnd)
+        if (DataController.instance.gameData.rewardAbsenceTime.TotalMinutes >= 60f&&Intro.isEnd&&DataController.instance.gameData.isStoreOpend)
         {
             //부재중 이벤트
             AbsenceTime();
@@ -1293,7 +1305,7 @@ public class GameManager : MonoBehaviour
     public void AbsenceTime()
     {
         int researchLevelAdd = 0;
-        int minute = (int)DataController.instance.gameData.rewardAbsenceTime.TotalMinutes;
+        int minute = (int)DataController.instance.gameData.rewardAbsenceTime.Minutes;
         int hour = 0;
 
         if (minute > 59)
@@ -1311,30 +1323,33 @@ public class GameManager : MonoBehaviour
 
         revenue = ((int)DataController.instance.gameData.rewardAbsenceTime.TotalMinutes / 5) * researchLevelAdd / 6 * 2;
 
-        //if (Intro.isEnd&&
-        if (DataController.instance.gameData.isStoreOpend)
-        {
-            if (revenue == 0)
-                return;
 
-            if (revenue <= 9999)           // 0~9999까지 A
-            {
-                AbsenceMoneyText.text = revenue + "A";
-            }
-            else if (revenue <= 9999999)   // 10000~9999999(=9999B)까지 B
-            {
-                revenue /= 1000;
-                AbsenceMoneyText.text = revenue + "B";
-            }
-            else                        // 그 외 C (최대 2100C)
-            {
-                revenue /= 1000000;
-                AbsenceMoneyText.text = revenue + "C";
-            }
-            AbsenceBlackPanel.SetActive(true);
-            AbsencePanel.GetComponent<PanelAnimation>().OpenScale();
-            DataController.instance.gameData.rewardAbsenceTime = TimeSpan.FromSeconds(0);
+        //Debug.Log("부재중 시간:" + DataController.instance.gameData.rewardAbsenceTime.TotalMinutes);
+        //Debug.Log("부재중 수익:" + revenue);
+
+
+
+        if (revenue == 0)
+            return;
+
+        if (revenue <= 9999)           // 0~9999까지 A
+        {
+            AbsenceMoneyText.text = revenue + "A";
         }
+        else if (revenue <= 9999999)   // 10000~9999999(=9999B)까지 B
+        {
+            revenue /= 1000;
+            AbsenceMoneyText.text = revenue + "B";
+        }
+        else                        // 그 외 C (최대 2100C)
+        {
+            revenue /= 1000000;
+            AbsenceMoneyText.text = revenue + "C";
+        }
+        AbsenceBlackPanel.SetActive(true);
+        AbsencePanel.GetComponent<PanelAnimation>().OpenScale();
+        DataController.instance.gameData.rewardAbsenceTime = TimeSpan.FromSeconds(0);
+
     }
 
     //광고보고 2배받기
@@ -1414,10 +1429,16 @@ public class GameManager : MonoBehaviour
     public void OnclickQuit()
     {
 
+        DataController.instance.SaveData();
+        isStart = false;
+        DataController.instance.gameData.lastExitTime = DataController.instance.gameData.currentTime;
+
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
+        
 #else
         Application.Quit();
+
 #endif
     }
     #endregion
