@@ -163,7 +163,7 @@ public class DataController : MonoBehaviour
         for (int i = 0; i < 6; i++) {   gameData.challengeLevel[i] = 0; gameData.challengeTF[i] = false;  }
 
         //수집
-        for (int i = 0; i < 7; i++) { gameData.isCollectionDone[i] = false; }
+        for (int i = 0; i < 6; i++) { gameData.isCollectionDone[i] = false; gameData.collectionTF[i] = false; }
 
         //뉴스
         for (int i = 0; i < 15; i++) {   gameData.newsState[i] = 0;  }

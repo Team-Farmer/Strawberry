@@ -58,14 +58,15 @@ public class GameData
     public int[] researchLevel=new int[6];
 
     //도전과제
-    public bool[] challengeTF = new bool[7];
-    public int[] challengeLevel = new int[7];//현재 달성 수치
+    public bool[] challengeTF = new bool[6];
+    public int[] challengeLevel = new int[6];//현재 달성 수치
 
     //뉴스
     public int[] newsState = new int[15];//0=Lock, 1=Unlock Able 2=Unlock
 
     //수집
-    public bool[] isCollectionDone = new bool[7];
+    public bool[] isCollectionDone = new bool[6];
+    public bool[] collectionTF = new bool[6];
 
     //PTJ 알바생의 현재 고용횟수
     public int[] PTJNum = new int[6];

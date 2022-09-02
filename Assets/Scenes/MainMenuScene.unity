@@ -3754,7 +3754,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adb5dc3f0b039de4a9abb2bfc3a78f87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSaveMode: 0
+  isSaveMode: 1
   dataEncryption: 0
 --- !u!4 &139806055
 Transform:
@@ -15680,6 +15680,8 @@ MonoBehaviour:
   IngImg: {fileID: -7943917676593969559, guid: d7462a2db557512448ed8c9a9d1c7db0, type: 3}
   stemLevelSprites: []
   Global: {fileID: 699566879}
+  bangIcon: {fileID: 738488230}
+  contentChallenge: {fileID: 322382195}
   settingsPanel: {fileID: 0}
   checkPanel: {fileID: 0}
   attendanceCheck: {fileID: 1284243152}

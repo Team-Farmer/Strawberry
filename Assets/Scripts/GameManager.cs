@@ -1096,7 +1096,7 @@ public class GameManager : MonoBehaviour
     {
 
         if (Array.IndexOf(DataController.instance.gameData.challengeTF, true) == -1//보상받을 수 있는 상태이면 true
-            && Array.IndexOf(DataController.instance.gameData.isCollectionDone, true) == -1)
+            && Array.IndexOf(DataController.instance.gameData.collectionTF, true) == -1)
         { bangIcon.SetActive(false); }
         else { bangIcon.SetActive(true); }
 
