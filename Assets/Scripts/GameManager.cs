@@ -1208,7 +1208,7 @@ public class GameManager : MonoBehaviour
 
         MidNightCheck();
 
-        if (!MiniGameManager.isOpen && DataController.instance.gameData.rewardAbsenceTime.TotalMinutes >= 60f&&Intro.isEnd &&DataController.instance.gameData.isStoreOpend)
+        if (DataController.instance.gameData.rewardAbsenceTime.TotalMinutes >= 60f&&Intro.isEnd &&DataController.instance.gameData.isStoreOpend)
         {
             //부재중 이벤트
             AbsenceTime();
@@ -1329,10 +1329,11 @@ public class GameManager : MonoBehaviour
         //Debug.Log("부재중 시간:" + DataController.instance.gameData.rewardAbsenceTime.TotalMinutes);
         //Debug.Log("부재중 수익:" + revenue);
 
-
-
         if (revenue == 0)
+        {
+            DataController.instance.gameData.rewardAbsenceTime = TimeSpan.FromSeconds(0);
             return;
+        }
 
         if (revenue <= 9999)           // 0~9999까지 A
         {
