@@ -1102,6 +1102,16 @@ public class GameManager : MonoBehaviour
 
         
     }
+    public void testtest() 
+    {
+
+        for (int i = 0; i < 6; i++)
+        {
+
+            Debug.Log(i + "===" + DataController.instance.gameData.challengeTF[i] +
+                "/" + DataController.instance.gameData.collectionTF[i]);
+        }
+    }
 
     #region 기타
     //활성화 비활성화로 창 끄고 켜고

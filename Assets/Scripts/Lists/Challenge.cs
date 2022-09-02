@@ -229,6 +229,7 @@ public class Challenge : MonoBehaviour
         {
             //도전과제 게이지 == ValueNow 만큼 증가
             Gauge.GetComponent<Image>().fillAmount = (float)(ValueNow) / Info[prefabnum].clearCriterion[LevelNow];
+            DataController.instance.gameData.challengeTF[prefabnum] = false;
         }
 
         
@@ -290,6 +291,7 @@ public class Challenge : MonoBehaviour
             else
             {
                 FinishChallenge();
+                DataController.instance.gameData.challengeTF[prefabnum] = false;
             }
         }
     }

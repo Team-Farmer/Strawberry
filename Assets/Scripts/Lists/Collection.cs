@@ -101,7 +101,9 @@ public class Collection : MonoBehaviour
         
         }
         collectionBtn.GetComponent<Image>().sprite = collectionBtnSprite;//3개다 얻었으면 버튼변경한다.
-        DataController.instance.gameData.collectionTF[prefabnum] = true;
+
+        if (DataController.instance.gameData.isCollectionDone[prefabnum] == false)
+            DataController.instance.gameData.collectionTF[prefabnum] = true;
      
     }
 
