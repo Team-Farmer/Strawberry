@@ -250,10 +250,10 @@ public class Challenge : MonoBehaviour
             medalMover.GetComponent<HeartMover>().BadgeMover(120);
 
             //∫∏ªÛ»πµÊ
-            GameManager.instance.GetCoin(Info[prefabnum].rewardHeart*100); //ƒ⁄¿Œ ∫∏ªÛ »πµÊ
+        
 
-            //GameManager.instance.GetMedal(Info[prefabnum].rewardMedal); //∏ﬁ¥ﬁ ∫∏ªÛ »πµÊ
-            //GameManager.instance.GetHeart(Info[prefabnum].rewardHeart); //«œ∆Æ ∫∏ªÛ »πµÊ
+            GameManager.instance.GetMedal(Info[prefabnum].rewardMedal); //∏ﬁ¥ﬁ ∫∏ªÛ »πµÊ
+            GameManager.instance.GetHeart(Info[prefabnum].rewardHeart); //«œ∆Æ ∫∏ªÛ »πµÊ
             //Debug.Log(Info[prefabnum].rewardMedal + "   " + Info[prefabnum].rewardHeart);
             //¥Ÿ¿Ω ∑π∫ß∑Œ ¿Ãµø
             if (LevelNow < MaxLevel)
