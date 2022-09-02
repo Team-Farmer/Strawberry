@@ -160,7 +160,7 @@ public class DataController : MonoBehaviour
         gameData.isBerryUnlock[0] = true;//첫번째 기본베리는 존재
 
         //도전과제
-        for (int i = 0; i < 6; i++) {   gameData.challengeLevel[i] = 0;   }
+        for (int i = 0; i < 6; i++) {   gameData.challengeLevel[i] = 0; gameData.challengeTF[i] = false;  }
 
         //수집
         for (int i = 0; i < 7; i++) { gameData.isCollectionDone[i] = false; }

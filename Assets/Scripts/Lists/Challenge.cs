@@ -222,7 +222,7 @@ public class Challenge : MonoBehaviour
             Gauge.GetComponent<Image>().fillAmount = 1;
             //도전과제 버튼 이미지 == Done
             Button.GetComponent<Image>().sprite = DoneButton;
-            
+            DataController.instance.gameData.challengeTF[prefabnum] = true;
 
         }
         else
@@ -254,6 +254,7 @@ public class Challenge : MonoBehaviour
 
             GameManager.instance.GetMedal(Info[prefabnum].rewardMedal); //메달 보상 획득
             GameManager.instance.GetHeart(Info[prefabnum].rewardHeart); //하트 보상 획득
+
             //Debug.Log(Info[prefabnum].rewardMedal + "   " + Info[prefabnum].rewardHeart);
             //다음 레벨로 이동
             if (LevelNow < MaxLevel)
@@ -282,6 +283,7 @@ public class Challenge : MonoBehaviour
                 }
                 */
                 Button.GetComponent<Image>().sprite = IngButton; //도전과제 버튼 이미지 변경
+                DataController.instance.gameData.challengeTF[prefabnum] = false;
                 DataController.instance.gameData.challengeLevel[prefabnum]++; //LevelNow증가 == 레벨증가
                 
             }

@@ -58,6 +58,7 @@ public class GameData
     public int[] researchLevel=new int[6];
 
     //도전과제
+    public bool[] challengeTF = new bool[7];
     public int[] challengeLevel = new int[7];//현재 달성 수치
 
     //뉴스

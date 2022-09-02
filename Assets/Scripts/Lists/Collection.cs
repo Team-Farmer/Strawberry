@@ -101,7 +101,7 @@ public class Collection : MonoBehaviour
         
         }
         collectionBtn.GetComponent<Image>().sprite = collectionBtnSprite;//3개다 얻었으면 버튼변경한다.
-
+     
     }
 
 
@@ -129,7 +129,7 @@ public class Collection : MonoBehaviour
 
         //이미 보상도 받고 다끝난거면 더이상 못누르게
         if (DataController.instance.gameData.isCollectionDone[prefabnum] == true) 
-        { FinishCollect(); }
+        { FinishCollect();}
     }
 
     public void collectionBtnClick() 
@@ -150,6 +150,7 @@ public class Collection : MonoBehaviour
             FinishCollect();
             //완전히 끝났다.
             DataController.instance.gameData.isCollectionDone[prefabnum] = true;
+
         }
         
     }

@@ -95,6 +95,10 @@ public class GameManager : MonoBehaviour
 
     [Header("[ NEW BERRY === GLOBAL ]")]
     public GameObject Global;
+
+    [Header("[ Challenge ]")]
+    public GameObject bangIcon;//업적 느낌표 오브젝트
+    public GameObject contentChallenge;
     //===========================================
 
     [Header("[ Check/Settings Panel ]")]
@@ -263,6 +267,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
+        BangIconSearch();
         //폰에서 뒤로가기 버튼 눌렀을 때/에디터에서 ESC 버튼 눌렀을 때 게임 종료
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -1085,6 +1090,17 @@ public class GameManager : MonoBehaviour
     public void NewsUnlock()
     {
         News.instance.NewsUnlock(NewsPrefabNum);
+    }
+
+    public void BangIconSearch() 
+    {
+
+        if (Array.IndexOf(DataController.instance.gameData.challengeTF, true) == -1//보상받을 수 있는 상태이면 true
+            && Array.IndexOf(DataController.instance.gameData.isCollectionDone, true) == -1)
+        { bangIcon.SetActive(false); }
+        else { bangIcon.SetActive(true); }
+
+        
     }
 
     #region 기타
