@@ -139,10 +139,12 @@ public class Collection : MonoBehaviour
             heartMover.GetComponent<HeartMover>().HeartChMover(120);
             medalMover.GetComponent<HeartMover>().BadgeMover(120);
 
+
+            GameManager.instance.GetCoin(Info[prefabnum].rewardHeart*50);
             //ÇÏÆ® È¹µæ
-            GameManager.instance.GetHeart(Info[prefabnum].rewardHeart);
+            //GameManager.instance.GetHeart(Info[prefabnum].rewardHeart);
             //¸Þ´Þ È¹µæ
-            GameManager.instance.GetMedal(Info[prefabnum].rewardMedal);
+            //GameManager.instance.GetMedal(Info[prefabnum].rewardMedal);
 
             AudioManager.instance.RewardAudioPlay();
             FinishCollect();
