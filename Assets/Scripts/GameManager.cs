@@ -1234,7 +1234,7 @@ public class GameManager : MonoBehaviour
 
         MidNightCheck();
 
-        if (DataController.instance.gameData.rewardAbsenceTime.TotalMinutes >= 60f&&Intro.isEnd &&DataController.instance.gameData.isStoreOpend)
+        if (DataController.instance.gameData.rewardAbsenceTime.TotalMinutes >= 60&&Intro.isEnd &&DataController.instance.gameData.isStoreOpend)
         {
             //부재중 이벤트
             AbsenceTime();
@@ -1253,10 +1253,11 @@ public class GameManager : MonoBehaviour
 
         MidNightCheck();
 
-        if (DataController.instance.gameData.rewardAbsenceTime.TotalMinutes >= 60f&&Intro.isEnd&&DataController.instance.gameData.isStoreOpend)
+        if (DataController.instance.gameData.rewardAbsenceTime.TotalMinutes >= 60&&Intro.isEnd&&DataController.instance.gameData.isStoreOpend)
         {
             //부재중 이벤트
-            AbsenceTime();
+            if(!MiniGameManager.isOpen)
+                AbsenceTime();
         }
 
         attendanceCheck.GetComponent<AttendanceCheck>().Attendance();
@@ -1349,7 +1350,7 @@ public class GameManager : MonoBehaviour
             researchLevelAdd += DataController.instance.gameData.researchLevel[i];
         }
 
-        revenue = ((int)DataController.instance.gameData.rewardAbsenceTime.TotalMinutes / 5) * researchLevelAdd / 6 * 2;
+        revenue = (DataController.instance.gameData.rewardAbsenceTime.Minutes / 5) * researchLevelAdd / 6 * 2;
 
 
         //Debug.Log("부재중 시간:" + DataController.instance.gameData.rewardAbsenceTime.TotalMinutes);
