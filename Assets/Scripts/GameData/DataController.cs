@@ -183,7 +183,13 @@ public class DataController : MonoBehaviour
         //딸기
         gameData.newBerryResearchAble = 0;
         gameData.newBerryBtnState = 0;
+
         gameData.newBerryTime = 0;
+
+        gameData.newBerryTime_start = System.DateTime.Now;
+        gameData.newBerryTime_end = System.DateTime.Now;
+        gameData.newBerryTime_span = gameData.newBerryTime_start - gameData.newBerryTime_end;
+
         gameData.newBerryIndex = 0;
 
         //가게관련변수

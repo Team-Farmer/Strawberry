@@ -49,6 +49,9 @@ public class GameData
     public int newBerryBtnState;//딸기 개발 버튼 상태
     public int newBerryIndex;
     public int newBerryTime;//딸기 개발 시간
+    public DateTime newBerryTime_start;
+    public DateTime newBerryTime_end;
+    public TimeSpan newBerryTime_span;
 
     //베리 개발 가능 구역
     //0이면 classic만, 1이면 unique까지, 2이면 전부 개발가능

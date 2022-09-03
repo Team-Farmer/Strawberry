@@ -821,7 +821,7 @@ public class GameManager : MonoBehaviour
                 if (DataController.instance.gameData.coin >= price_newBerry)
                 {
                     timeText_newBerry.GetComponent<Text>().text
-                        = TimeForm(Mathf.CeilToInt(DataController.instance.gameData.newBerryTime));//시간
+                        = TimeForm(DataController.instance.gameData.newBerryTime_span.Seconds);//시간
                     //돈소비
                     UseCoin(price_newBerry);
 
@@ -829,6 +829,9 @@ public class GameManager : MonoBehaviour
                     DataController.instance.gameData.newBerryBtnState = 1;
 
                     //타이머 시작
+                    DataController.instance.gameData.newBerryTime_start = DateTime.Now;
+                    DataController.instance.gameData.newBerryTime_end 
+                        = DataController.instance.gameData.newBerryTime_start.AddSeconds(DataController.instance.gameData.newBerryTime);
                     StartCoroutine(Timer());
 
                     //시간 감소여부 묻는 패널 띄움.
@@ -842,7 +845,7 @@ public class GameManager : MonoBehaviour
                 break;
 
             case "ing":
-                if (DataController.instance.gameData.newBerryTime > 1)
+                if (DataController.instance.gameData.newBerryTime_start < DataController.instance.gameData.newBerryTime_end)
                 {
                     //시간 감소 여부 묻는 패널 띄움.
                     TimeReduceBlackPanel_newBerry.SetActive(true);
@@ -870,19 +873,28 @@ public class GameManager : MonoBehaviour
             if (DataController.instance.gameData.heart >= 3)
             {
                 //시간을 10분 줄여준다.
-                if (DataController.instance.gameData.newBerryTime < 3 * 60)
-                { DataController.instance.gameData.newBerryTime = 0; }
+                if ((int)DataController.instance.gameData.newBerryTime_end.Second < 3 * 60)
+                { DataController.instance.gameData.newBerryTime_end = DateTime.Now; }
                 else
-                { DataController.instance.gameData.newBerryTime -= 3 * 60; }
+                { 
+                    DataController.instance.gameData.newBerryTime_end 
+                        = DataController.instance.gameData.newBerryTime_end.AddSeconds(-3 * 60);
+                    DataController.instance.gameData.newBerryTime_span 
+                        = DataController.instance.gameData.newBerryTime_start - DataController.instance.gameData.newBerryTime_end;
+                }
 
                 timeText_newBerry.GetComponent<Text>().text
-                    = TimeForm(Mathf.CeilToInt(DataController.instance.gameData.newBerryTime));
+                    = TimeForm(Mathf.CeilToInt(DataController.instance.gameData.newBerryTime_span.Seconds));
+
                 //하트를 소비한다.
                 UseHeart(3);
 
                 //창 끄기
                 TimeReduceBlackPanel_newBerry.SetActive(false);
                 TimeReducePanel_newBerry.GetComponent<PanelAnimation>().CloseScale();
+
+                Debug.Log("start=" + DataController.instance.gameData.newBerryTime_start.ToString("hh mm ss") + "  end=" + DataController.instance.gameData.newBerryTime_end.ToString("hh mm ss"));
+                StartCoroutine(Timer());
             }
             else
             { UseHeart(3);  }
@@ -892,25 +904,27 @@ public class GameManager : MonoBehaviour
 
     IEnumerator Timer()
     {
-
+        
         while (true)
         {
+
             //1초씩 감소
+            DataController.instance.gameData.newBerryTime_start = DateTime.Now;
             yield return new WaitForSeconds(1f);
-            DataController.instance.gameData.newBerryTime--;
 
             //감소하는 시간 보이기
-            if (DataController.instance.gameData.newBerryTime <= 0)
+            if (DataController.instance.gameData.newBerryTime_start >= DataController.instance.gameData.newBerryTime_end)
             { timeText_newBerry.GetComponent<Text>().text = TimeForm(Mathf.CeilToInt(0)); }
             else
             {
                 timeText_newBerry.GetComponent<Text>().text
-             = TimeForm(Mathf.CeilToInt(DataController.instance.gameData.newBerryTime));
+             = TimeForm(Mathf.CeilToInt(DataController.instance.gameData.newBerryTime_span.Seconds));
+                Debug.Log(DataController.instance.gameData.newBerryTime_span.ToString());
             }
 
 
             //타이머 끝나면
-            if (DataController.instance.gameData.newBerryTime < 0.1f)
+            if (DataController.instance.gameData.newBerryTime_start >= DataController.instance.gameData.newBerryTime_end)
             {
                 DataController.instance.gameData.newBerryBtnState = 2;//Done상태로
                 break;
@@ -1092,7 +1106,7 @@ public class GameManager : MonoBehaviour
         News.instance.NewsUnlock(NewsPrefabNum);
     }
 
-    public void BangIconSearch() 
+    public void BangIconSearch()
     {
 
         if (Array.IndexOf(DataController.instance.gameData.challengeTF, true) == -1//보상받을 수 있는 상태이면 true
