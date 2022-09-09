@@ -205,34 +205,35 @@ public class Challenge : MonoBehaviour
     public void InfoUpdate() {
 
         //text 정보=========== update에서 뺄것
-        levelText.GetComponent<Text>().text ="Lv."+ LevelNow.ToString();  //레벨
-        achieveCondition.GetComponent<Text>().text = "/" + Info[prefabnum].clearCriterion[LevelNow].ToString();//도전과제 게이지 달성 조건 숫자
-
-        //도전과제 보상 보인다.
-        medalTxt.GetComponent<Text>().text = "X" + Info[prefabnum].rewardMedal.ToString();
-        heartTxt.GetComponent<Text>().text = "X" + Info[prefabnum].rewardHeart.ToString();
-
-        // 도전과제 게이지 현재값 == ValueNow
-        nowCondition.GetComponent<Text>().text = ValueNow.ToString();
-
-        //게이지===============
-        if (ValueNow >= Info[prefabnum].clearCriterion[LevelNow])
+        if (LevelNow != MaxLevel)
         {
-            //도전과제 게이지 == 가득 찬 상태로
-            Gauge.GetComponent<Image>().fillAmount = 1;
-            //도전과제 버튼 이미지 == Done
-            Button.GetComponent<Image>().sprite = DoneButton;
-            DataController.instance.gameData.challengeTF[prefabnum] = true;
+            levelText.GetComponent<Text>().text = "Lv." + LevelNow.ToString();  //레벨
+            achieveCondition.GetComponent<Text>().text = "/" + Info[prefabnum].clearCriterion[LevelNow].ToString();//도전과제 게이지 달성 조건 숫자
 
-        }
-        else
-        {
-            //도전과제 게이지 == ValueNow 만큼 증가
-            Gauge.GetComponent<Image>().fillAmount = (float)(ValueNow) / Info[prefabnum].clearCriterion[LevelNow];
-            DataController.instance.gameData.challengeTF[prefabnum] = false;
-        }
+            //도전과제 보상 보인다.
+            medalTxt.GetComponent<Text>().text = "X" + Info[prefabnum].rewardMedal.ToString();
+            heartTxt.GetComponent<Text>().text = "X" + Info[prefabnum].rewardHeart.ToString();
 
-        
+            // 도전과제 게이지 현재값 == ValueNow
+            nowCondition.GetComponent<Text>().text = ValueNow.ToString();
+
+            //게이지===============
+            if (ValueNow >= Info[prefabnum].clearCriterion[LevelNow])
+            {
+                //도전과제 게이지 == 가득 찬 상태로
+                Gauge.GetComponent<Image>().fillAmount = 1;
+                //도전과제 버튼 이미지 == Done
+                Button.GetComponent<Image>().sprite = DoneButton;
+                DataController.instance.gameData.challengeTF[prefabnum] = true;
+
+            }
+            else
+            {
+                //도전과제 게이지 == ValueNow 만큼 증가
+                Gauge.GetComponent<Image>().fillAmount = (float)(ValueNow) / Info[prefabnum].clearCriterion[LevelNow];
+                DataController.instance.gameData.challengeTF[prefabnum] = false;
+            }
+        }
     }
     //==================================================================================================================
     //==================================================================================================================
@@ -247,8 +248,8 @@ public class Challenge : MonoBehaviour
         {
             //효과음, 효과 애니메이션
             AudioManager.instance.RewardAudioPlay();
-            heartMover.GetComponent<HeartMover>().HeartChMover(120);
-            medalMover.GetComponent<HeartMover>().BadgeMover(120);
+            heartMover.GetComponent<HeartMover>().RewardMover("heart");
+            medalMover.GetComponent<HeartMover>().RewardMover("medal");
 
             //보상획득
         

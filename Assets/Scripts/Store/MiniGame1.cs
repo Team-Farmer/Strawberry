@@ -147,6 +147,8 @@ public class MiniGame1 : MiniGame
         //코인지급
         GameManager.instance.GetCoin(Convert.ToInt32(gain_coin));
 
+        Sandy.GetComponent<Image>().sprite = SandySprite[0];
+
         StopGame();
     }
 }

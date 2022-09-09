@@ -113,6 +113,81 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &596153225854944541
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3322649810570246770}
+  - component: {fileID: 3412990945660696757}
+  - component: {fileID: 7244267292897994033}
+  m_Layer: 5
+  m_Name: coin (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &3322649810570246770
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 596153225854944541}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3572804201014903790}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 3, y: 21.4}
+  m_SizeDelta: {x: 40, y: 40}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &3412990945660696757
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 596153225854944541}
+  m_CullTransparentMesh: 1
+--- !u!114 &7244267292897994033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 596153225854944541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 3886443268029631212, guid: 69773906e6a863645b5461d6ed09c522, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &1476324555848526793
 GameObject:
   m_ObjectHideFlags: 0
@@ -579,41 +654,32 @@ MonoBehaviour:
   Info:
   - Name: "\uBA4B\uC9C4 \uD5E4\uC5B4\uC2A4\uD0C0\uC77C"
     berryClassify: 090000000a0000000b000000
-    rewardMedal: 1
-    rewardHeart: 30
+    rewardCoin: 10000
   - Name: "\uC774\uC0C1\uD55C \uCE5C\uAD6C\uB4E4"
     berryClassify: 0f0000001000000011000000
-    rewardMedal: 1
-    rewardHeart: 30
+    rewardCoin: 30000
   - Name: "\uAC70\uB300 \uB538\uAE30"
     berryClassify: 4300000044000000
-    rewardMedal: 1
-    rewardHeart: 40
+    rewardCoin: 50000
   - Name: "\uD558\uC580 \uB538\uAE30\uB4E4"
     berryClassify: 420000004a000000
-    rewardMedal: 1
-    rewardHeart: 40
+    rewardCoin: 70000
   - Name: "\uD574\uD53C \uD560\uB85C\uC708"
     berryClassify: 850000008600000087000000
-    rewardMedal: 1
-    rewardHeart: 50
+    rewardCoin: 100000
   - Name: "\uC5B4\uB514\uC11C \uC654\uB2C8?"
     berryClassify: 8c0000008d0000008e000000
-    rewardMedal: 1
-    rewardHeart: 50
+    rewardCoin: 150000
   collectionName: {fileID: 1476324555848526793}
   collectionBtn: {fileID: 4911162250941680714}
   collectionNow: {fileID: 5826314664937963886}
-  medalTxt: {fileID: 2918977390123462885}
-  heartTxt: {fileID: 8197499917771909799}
+  coinTxt: {fileID: 8197499917771909799}
   collectionBtnSprite: {fileID: 6660268247917714091, guid: 1bcf449fa505472459202ce69e0d20c7, type: 3}
   collectionNowSprite: {fileID: -2463527919772510135, guid: 1bcf449fa505472459202ce69e0d20c7, type: 3}
   FinBtn: {fileID: 6764486266852864524}
   FinBG: {fileID: 5645115448955947239}
-  heart: {fileID: 8000951061545820816}
-  medal: {fileID: 1806504805776644555}
+  coin: {fileID: 8000951061545820816}
   heartMover: {fileID: 5714027239636749130}
-  medalMover: {fileID: 6747613001859234775}
   berryClassifyNum: 0
 --- !u!1 &3665103452678471443
 GameObject:
@@ -627,7 +693,7 @@ GameObject:
   - component: {fileID: 7285308854195137498}
   - component: {fileID: 1960135507027838854}
   m_Layer: 5
-  m_Name: heart
+  m_Name: coin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -645,12 +711,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3572804201014903790}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -33.391552, y: -2.522705}
-  m_SizeDelta: {x: 40, y: 40}
+  m_AnchoredPosition: {x: 3, y: 18}
+  m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7285308854195137498
 CanvasRenderer:
@@ -680,9 +746,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 3886443268029631212, guid: 69773906e6a863645b5461d6ed09c522, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d129a563e8abf6248a898fd262ff15ea, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -690,6 +756,85 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &3809137413574552354
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 583467800880599907}
+  - component: {fileID: 8350157069607356728}
+  - component: {fileID: 8059455339202998205}
+  m_Layer: 5
+  m_Name: Txt
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &583467800880599907
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3809137413574552354}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3572804201014903790}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 4.8, y: -25.6}
+  m_SizeDelta: {x: 100.74, y: 38.39}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &8350157069607356728
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3809137413574552354}
+  m_CullTransparentMesh: 1
+--- !u!114 &8059455339202998205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3809137413574552354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.46226418, g: 0.46226418, b: 0.46226418, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: fffcb38c5316eb843924a2af66e3bd38, type: 3}
+    m_FontSize: 25
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 40
+    m_Alignment: 3
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: X
 --- !u!1 &4911162250941680714
 GameObject:
   m_ObjectHideFlags: 0
@@ -722,7 +867,9 @@ RectTransform:
   m_Children:
   - {fileID: 5224306223213258465}
   - {fileID: 890979670450650483}
+  - {fileID: 3322649810570246770}
   - {fileID: 6273015662061063773}
+  - {fileID: 583467800880599907}
   - {fileID: 3514758012156687907}
   m_Father: {fileID: 2365483120866331673}
   m_RootOrder: 6
@@ -912,7 +1059,7 @@ GameObject:
   - component: {fileID: 7761862978669823774}
   - component: {fileID: 21204139049265590}
   m_Layer: 5
-  m_Name: Heart
+  m_Name: Coin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1244,7 +1391,7 @@ GameObject:
   - component: {fileID: 6360827811496445966}
   - component: {fileID: 4781584845299629763}
   m_Layer: 5
-  m_Name: heart
+  m_Name: coin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1297,7 +1444,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -4636918659588236314, guid: 69773906e6a863645b5461d6ed09c522, type: 3}
+  m_Sprite: {fileID: 3886443268029631212, guid: 69773906e6a863645b5461d6ed09c522, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1332,7 +1479,7 @@ GameObject:
   - component: {fileID: 3013794847398093437}
   - component: {fileID: 3332648505469040226}
   m_Layer: 5
-  m_Name: heartTxt
+  m_Name: coinTxt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1350,12 +1497,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3572804201014903790}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 26.509071, y: -2}
-  m_SizeDelta: {x: 57.3, y: 38.39}
+  m_AnchoredPosition: {x: 10.74, y: -25.6}
+  m_SizeDelta: {x: 71.61, y: 38.39}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3013794847398093437
 CanvasRenderer:
@@ -1392,13 +1539,13 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 40
-    m_Alignment: 3
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: X00
+  m_Text: 150B
 --- !u!1 &8969990089381725070
 GameObject:
   m_ObjectHideFlags: 0

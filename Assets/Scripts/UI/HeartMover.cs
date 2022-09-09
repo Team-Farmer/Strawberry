@@ -16,9 +16,8 @@ public class HeartMover : MonoBehaviour
 
 
 
-    public void HeartMove(int num)
+    public void AttHeartMover(int num)
     {
-        //Random.Range(5, 10);
         for (int i = 0; i < 10; ++i)
         {
             var itemFx = GameObject.Instantiate<HeartAcquireFx>(prefab, toObject.transform);
@@ -27,22 +26,22 @@ public class HeartMover : MonoBehaviour
 
     }
 
-    public void BadgeMover(float range)
+    public void RewardMover(string name)
     {
-        for (int i = 0; i < 1; ++i)
-        {
-            var itemFx = GameObject.Instantiate<HeartAcquireFx>(prefab, toObject.transform);
-            itemFx.Explosion2(toObject.transform.position + new Vector3(-50, 0, 0), range);
-        }
-    }
+        int num = 0;
+        if (name == "coin")
+            num = 10;
+        else if (name == "heart")
+            num = 5;
+        else if (name == "medal")
+            num = 1;
 
-    public void HeartChMover(float range)
-    {
-        for (int i = 0; i < 5; ++i)
+        for (int i = 0; i < num; ++i)
         {
             var itemFx = GameObject.Instantiate<HeartAcquireFx>(prefab, toObject.transform);
-            itemFx.Explosion2(toObject.transform.position + new Vector3(-50, 0, 0), range);
+            itemFx.Explosion2(toObject.transform.position + new Vector3(-50, 0, 0), 120.0f);
         }
+
     }
 
 

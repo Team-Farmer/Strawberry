@@ -12,15 +12,13 @@ public class Collection : MonoBehaviour
     {
         public string Name;//수집 제목
         public int[] berryClassify;
-        public int rewardMedal;
-        public int rewardHeart;
+        public int rewardCoin;
 
-        public CollectionPrefabStruct(string Name, int[] berryClassify, int rewardMedal, int rewardHeart)
+        public CollectionPrefabStruct(string Name, int[] berryClassify, int rewardCoin)
         {
             this.Name = Name;
             this.berryClassify = berryClassify;
-            this.rewardHeart = rewardHeart;
-            this.rewardMedal = rewardMedal;
+            this.rewardCoin = rewardCoin;
         }
     }
 
@@ -34,18 +32,15 @@ public class Collection : MonoBehaviour
     public GameObject collectionName;
     public GameObject collectionBtn;
     public GameObject collectionNow;
-    public GameObject medalTxt;
-    public GameObject heartTxt;
+    public GameObject coinTxt;
     public Sprite collectionBtnSprite;//베리 다 모았을 때 완료버튼 스프라이트
     public Sprite collectionNowSprite;//베리 다 모았을 때 베리배경 스프라이트
     public GameObject FinBtn;
     public GameObject FinBG;
-    public GameObject heart;
-    public GameObject medal;
+    public GameObject coin;
 
     [Header("[Animation]")]
-    public GameObject heartMover;
-    public GameObject medalMover;
+    public GameObject heartMover;   // 코인이지만 임의로 하트
 
     //=================================================================================
     //=================================================================================
@@ -77,8 +72,9 @@ public class Collection : MonoBehaviour
 
     private void InfoUpdate()
     {
-        medalTxt.GetComponent<Text>().text = "X" + Info[prefabnum].rewardMedal.ToString();
-        heartTxt.GetComponent<Text>().text = "X" + Info[prefabnum].rewardHeart.ToString();
+        //coinTxt.GetComponent<Text>().text = "X" + Info[prefabnum].rewardCoin.ToString();
+        GameManager.instance.ShowCoinText(coinTxt.GetComponent<Text>(), Info[prefabnum].rewardCoin);
+
         //얻은 베리는 색이 보인다.
         for (int i = 0; i < berryClassifyNum; i++)
         {
@@ -139,11 +135,10 @@ public class Collection : MonoBehaviour
     {
         if (collectionBtn.GetComponent<Image>().sprite == collectionBtnSprite) //지금 버튼 스프라이트가 완료 버튼이면
         {
-            heartMover.GetComponent<HeartMover>().HeartChMover(120);
-            medalMover.GetComponent<HeartMover>().BadgeMover(120);
+            heartMover.GetComponent<HeartMover>().RewardMover("coin");
 
 
-            GameManager.instance.GetCoin(Info[prefabnum].rewardHeart*50);
+            GameManager.instance.GetCoin(Info[prefabnum].rewardCoin);
             //하트 획득
             //GameManager.instance.GetHeart(Info[prefabnum].rewardHeart);
             //메달 획득
@@ -165,7 +160,6 @@ public class Collection : MonoBehaviour
         collectionBtn.SetActive(false);
         FinBtn.SetActive(true);
         FinBG.SetActive(true);
-        medalTxt.SetActive(false);
-        heartTxt.SetActive(false);
+        coinTxt.SetActive(false);
     }
 }

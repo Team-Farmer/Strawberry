@@ -36,7 +36,7 @@ public class MiniGame2 : MiniGame
     protected override void MakeGame()
     {
         // 음영 계수를 점수에 따라 정하기
-        if(score < 100) shade_idx = 0;
+        if (score < 100) shade_idx = 0;
         else if (100 <= score && score <= 200) shade_idx = 1;
         else if(score >= 200) shade_idx = 2;
 
@@ -147,6 +147,8 @@ public class MiniGame2 : MiniGame
 
         //코인지급
         GameManager.instance.GetCoin(Convert.ToInt32(gain_coin));
+
+        Sandy.GetComponent<Image>().sprite = SandySprite[0];
 
         StopGame();
     }

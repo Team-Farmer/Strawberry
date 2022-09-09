@@ -28816,7 +28816,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &907141136
 RectTransform:
   m_ObjectHideFlags: 0
@@ -29158,7 +29158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b170ec3444a73a47b0e7345a3e7b36b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlayAudio: 0
+  isPlayAudio: 1
   BGSoundSlider: {fileID: 649835577}
   SFXSoundSlider: {fileID: 1349655535}
   mixer: {fileID: 24100000, guid: 61b1ac8c39cbb0541ab8ce6a71e1bd09, type: 2}
@@ -32574,7 +32574,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1008492472
 RectTransform:
   m_ObjectHideFlags: 0
@@ -40566,7 +40566,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.7788662, y: 0.5767499}
   m_AnchorMax: {x: 0.7788662, y: 0.5767499}
-  m_AnchoredPosition: {x: 201, y: 385.59998}
+  m_AnchoredPosition: {x: 205, y: 385.59998}
   m_SizeDelta: {x: 491.0841, y: 446}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1258689474
@@ -51010,7 +51010,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1623679226
 RectTransform:
   m_ObjectHideFlags: 0
