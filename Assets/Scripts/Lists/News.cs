@@ -164,9 +164,8 @@ public class News : MonoBehaviour
             WarningPanelBlack.SetActive(false);
 
             int RandomNum = UnityEngine.Random.Range(1, 101);
-            if (RandomNum <= Info[ID].Price * 10 && GameManager.instance.isNewBerryAble()
-                && GameManager.instance.newsBerry() == true
-                ) //price*10%È®·ü·Î º¸³Ê½º µþ±â È¹µæ
+            if (RandomNum <= Info[ID].Price * 10 && GameManager.instance.isNewBerryAble() && GameManager.instance.newsBerry() == true)
+                //price*10%È®·ü·Î º¸³Ê½º µþ±â È¹µæ
             {
 
                 //µþ±â È¹µæ
@@ -176,7 +175,6 @@ public class News : MonoBehaviour
                 //ConfirmPanel.GetComponent<PanelAnimation>().OpenScale();
 
             }
-
             else //´º½º¸¸ ÇØ±Ý
             {
                 //¾È³»Ã¢
@@ -184,7 +182,8 @@ public class News : MonoBehaviour
                 //ConfirmPanel.GetComponent<PanelAnimation>().ScriptTxt.text = "´º½º°¡ ÇØ±ÝµÇ¾ú¾î¿ä!";
                 //ConfirmPanel.GetComponent<PanelAnimation>().OpenScale();
             }
-            YNPanel.SetActive(false);
+            //YNPanel.SetActive(false);
+            YNPanel.GetComponent<PanelAnimation>().CloseScale();
 
         }
         else
@@ -194,8 +193,8 @@ public class News : MonoBehaviour
             WarningPanelBlack.SetActive(true);
             ConfirmPanel.GetComponent<PanelAnimation>().OpenScale();
             ConfirmPanel.transform.GetChild(0).transform.GetComponent<Text>().text = "¸Þ´ÞÀÌ ºÎÁ·ÇØ¿ä!";
-            
         }
+
     }
 
     //´º½º ¼³¸íÃ¢
