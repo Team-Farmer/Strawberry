@@ -228,7 +228,7 @@ public class MiniGame4 : MiniGame
         result_highscore_txt.text = DataController.instance.gameData.highScore[3].ToString();
 
         // 미니게임 4 보상 하트 공식(미니게임 3은 해금 하트가 20이다)
-        float gain_coin = score * research_level_avg * ((100 + 80 * 2) / 100f);
+        float gain_coin = score * research_level_avg * ((100 + 30 * 2) / 100f);
 
         // 코인 보여주고 지급
         //result_coin_txt.text = gain_coin.ToString();

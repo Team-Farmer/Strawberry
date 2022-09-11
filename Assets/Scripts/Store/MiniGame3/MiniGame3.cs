@@ -28,8 +28,8 @@ public class MiniGame3 : MiniGame
     protected override void OnEnable()
     {
         base.OnEnable();
-        minigame_3_src_rndtime = 1.0f;
-        minigame_3_dst_rndtime = 1.5f;
+        minigame_3_src_rndtime = 0.8f;
+        minigame_3_dst_rndtime = 1.2f;
         
         //바구니의 위치 초기화
         basketRect.anchoredPosition = new Vector3(bgRect.rect.width/2 - 125f, bgRect.rect.height*0.25f - 75f, 0f);
@@ -51,8 +51,8 @@ public class MiniGame3 : MiniGame
 
         if (score >= 100) // 점수에 따라 딸기 생성주기 변경
         {
-            minigame_3_src_rndtime = 0.5f;
-            minigame_3_dst_rndtime = 1.0f;
+            minigame_3_src_rndtime = 0.3f;
+            minigame_3_dst_rndtime = 0.6f;
         }
         randTime = UnityEngine.Random.Range(minigame_3_src_rndtime, minigame_3_dst_rndtime);
 
