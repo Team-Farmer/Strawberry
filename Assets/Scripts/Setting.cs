@@ -11,6 +11,7 @@ public class Setting : MonoBehaviour
     public Text version_text;
     public Text saveDate_text;
     public Button cloudLoad_btn;
+    public Button cloudSave_btn;
     #endregion
 
     void Awake()
@@ -30,6 +31,9 @@ public class Setting : MonoBehaviour
 
     public void SetCloudSave()
     {
+        cloudSave_btn.interactable = GPGSManager.instance.isLogined();
+        cloudLoad_btn.interactable = GPGSManager.instance.isLogined();
+
         if (DataController.instance.gameData.cloudSaveTime == System.DateTime.MinValue)
         {
             cloudLoad_btn.interactable = false;
@@ -37,7 +41,6 @@ public class Setting : MonoBehaviour
         }
         else
         {
-            cloudLoad_btn.interactable = true;
             saveDate_text.text = "마지막 저장 날짜\n" + DataController.instance.gameData.cloudSaveTime.ToString("yyyy년 MM월 dd일 HH:mm:ss");
         }
     }
