@@ -908,6 +908,11 @@ public class GameManager : MonoBehaviour
             else
             { UseHeart(3);  }
         }
+        else
+        {
+            TimeReduceBlackPanel_newBerry.SetActive(false);
+            TimeReducePanel_newBerry.GetComponent<PanelAnimation>().CloseScale();
+        }
 
     }
 
