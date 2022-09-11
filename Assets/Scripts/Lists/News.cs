@@ -12,7 +12,7 @@ public class News : MonoBehaviour
     public class NewsStruct
     {
         public string Title;//제목
-        public string Exp;//뉴스 내용
+        [TextArea(3, 7)]public string Exp;//뉴스 내용
         public int Price;
         public bool isShort;
         public NewsStruct(string Title, string Exp,int Price,bool isShort)
