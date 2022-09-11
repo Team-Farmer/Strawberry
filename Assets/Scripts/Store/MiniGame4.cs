@@ -234,7 +234,7 @@ public class MiniGame4 : MiniGame
         //result_coin_txt.text = gain_coin.ToString();
         // 있는 함수 쓰셔야죠 ㅡ ㅡ
         GameManager.instance.ShowCoinText(result_coin_txt.GetComponent<Text>(), Convert.ToInt32(gain_coin));
-        Debug.Log("얻은 코인:" + Convert.ToInt32(gain_coin));
+        //Debug.Log("얻은 코인:" + Convert.ToInt32(gain_coin));
         GameManager.instance.GetCoin(Convert.ToInt32(gain_coin));
 
         base.StopGame();

@@ -142,7 +142,7 @@ public class MiniGame1 : MiniGame
 
         //result_coin_txt.text = gain_coin.ToString();
         GameManager.instance.ShowCoinText(result_coin_txt.GetComponent<Text>(), Convert.ToInt32(gain_coin));
-        Debug.Log("얻은 코인:" + Convert.ToInt32(gain_coin));
+        //Debug.Log("얻은 코인:" + Convert.ToInt32(gain_coin));
 
         //코인지급
         GameManager.instance.GetCoin(Convert.ToInt32(gain_coin));

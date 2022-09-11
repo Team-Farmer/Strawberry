@@ -17,7 +17,7 @@ public class MiniGame3 : MiniGame
     private bool isDrag;
     float accTime, randTime;
     public RectTransform berryGroup;
-    public Camera camera;
+    public new Camera camera;
 
     // Start is called before the first frame update
     protected override void Awake()
@@ -64,7 +64,7 @@ public class MiniGame3 : MiniGame
             mousePos = camera.ScreenToViewportPoint(mousePos);
             mousePos.x = mousePos.x * bgRect.rect.width;
 
-            Debug.Log("mousePos.x = " + mousePos.x);
+            //Debug.Log("mousePos.x = " + mousePos.x);
             float leftBorder = 0f;
             float rightBorder = bgRect.rect.width - basketRect.rect.width;           
             
@@ -99,7 +99,7 @@ public class MiniGame3 : MiniGame
                 float bugrnd = UnityEngine.Random.Range(0f, 10f);
                 if(bugrnd <= 2f)
                 {
-                    Debug.Log("Bug!!");
+                    //Debug.Log("Bug!!");
                     berryPool[i].transform.GetChild(0).gameObject.SetActive(true);
                 }
                 return berryPool[i].GetComponent<MinigameBerry>();
@@ -164,7 +164,7 @@ public class MiniGame3 : MiniGame
         float gain_coin = score * research_level_avg * ((100 + 20 * 2) / 100f);
         //result_coin_txt.text = gain_coin.ToString();
         GameManager.instance.ShowCoinText(result_coin_txt.GetComponent<Text>(), Convert.ToInt32(gain_coin));
-        Debug.Log("얻은 코인:" + Convert.ToInt32(gain_coin));
+        //Debug.Log("얻은 코인:" + Convert.ToInt32(gain_coin));
         //하트지급
         GameManager.instance.GetCoin(Convert.ToInt32(gain_coin));
 
