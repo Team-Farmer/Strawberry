@@ -450,28 +450,14 @@ public class GameManager : MonoBehaviour
     {
         if (num == 0)
         {
-            if (cost <= 9999)           // 0~9999까지 A
-            {
-                coinAnimText.text = text + cost.ToString() + "A";
-            }
-            else if (cost <= 9999999)   // 10000~9999999(=9999B)까지 B
-            {
-                cost /= 1000;
-                coinAnimText.text = text + cost.ToString() + "B";
-            }
-            else                        // 그 외 C (최대 2100C)
-            {
-                cost /= 1000000;
-                coinAnimText.text = text + cost.ToString() + "C";
-            }
-            coinAnimManager.GetComponent<HeartMover>().CountCoin(-240f);
-            Invoke("invokeCoin", 0.5f);
+
+            coinAnimManager.GetComponent<HeartMover>().CountMoney(102f,cost,text,num);
+            Invoke("invokeCoin", 0.3f);
         }
         else
         {
-            heartAnimText.text = text + cost.ToString();
-            heartAnimManager.GetComponent<HeartMover>().CountCoin(100f);
-            Invoke("invokeHeart", 0.5f);
+            heartAnimManager.GetComponent<HeartMover>().CountMoney(442f, cost, text, num);
+            Invoke("invokeHeart", 0.3f);
         }
         yield return null;
     }
@@ -1360,7 +1346,7 @@ public class GameManager : MonoBehaviour
     public void AbsenceTime()
     {
         int researchLevelAdd = 0;
-        int minute = (int)DataController.instance.gameData.rewardAbsenceTime.Minutes;
+        int minute = (int)DataController.instance.gameData.rewardAbsenceTime.TotalMinutes;
         int hour = 0;
 
         if (minute > 59)
@@ -1376,7 +1362,7 @@ public class GameManager : MonoBehaviour
             researchLevelAdd += DataController.instance.gameData.researchLevel[i];
         }
 
-        revenue = (DataController.instance.gameData.rewardAbsenceTime.Minutes / 5) * researchLevelAdd / 6 * 2;
+        revenue = ((int)DataController.instance.gameData.rewardAbsenceTime.TotalMinutes / 5) * researchLevelAdd / 6 * 2;
 
 
         //Debug.Log("부재중 시간:" + DataController.instance.gameData.rewardAbsenceTime.TotalMinutes);

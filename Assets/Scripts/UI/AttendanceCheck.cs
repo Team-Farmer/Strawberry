@@ -165,7 +165,7 @@ public class AttendanceCheck : MonoBehaviour
         {
             isClicked[number] = true;
             AudioManager.instance.RewardAudioPlay();
-            heartMover[number].GetComponent<HeartMover>().AttHeartMover(number);
+            heartMover[number].GetComponent<HeartMover>().AttHeartMover();
             image[number].sprite = Front[number].Behind[1];
             icon.SetActive(false);
 

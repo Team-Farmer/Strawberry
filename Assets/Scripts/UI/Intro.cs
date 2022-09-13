@@ -60,7 +60,7 @@ public class Intro : MonoBehaviour
                     AudioManager.instance.ResumePlayAudio("RainSFXSound");
                 });
 
-        yield return new WaitForSeconds(2.8f);
+        yield return new WaitForSeconds(2.3f);
         isEnd = true;
         GameManager.instance.StartPrework();
         //Debug.Log(DataController.instance.gameData.lastExitTime);
