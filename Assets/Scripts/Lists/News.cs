@@ -12,7 +12,7 @@ public class News : MonoBehaviour
     public class NewsStruct
     {
         public string Title;//제목
-        public string Exp;//뉴스 내용
+        [TextArea(3, 7)]public string Exp;//뉴스 내용
         public int Price;
         public bool isShort;
         public NewsStruct(string Title, string Exp,int Price,bool isShort)
@@ -164,9 +164,8 @@ public class News : MonoBehaviour
             WarningPanelBlack.SetActive(false);
 
             int RandomNum = UnityEngine.Random.Range(1, 101);
-            if (RandomNum <= Info[ID].Price * 10 && GameManager.instance.isNewBerryAble()
-                && GameManager.instance.newsBerry() == true
-                ) //price*10%확률로 보너스 딸기 획득
+            if (RandomNum <= Info[ID].Price * 10 && GameManager.instance.isNewBerryAble() && GameManager.instance.newsBerry() == true)
+                //price*10%확률로 보너스 딸기 획득
             {
 
                 //딸기 획득
@@ -176,7 +175,6 @@ public class News : MonoBehaviour
                 //ConfirmPanel.GetComponent<PanelAnimation>().OpenScale();
 
             }
-
             else //뉴스만 해금
             {
                 //안내창
@@ -184,7 +182,8 @@ public class News : MonoBehaviour
                 //ConfirmPanel.GetComponent<PanelAnimation>().ScriptTxt.text = "뉴스가 해금되었어요!";
                 //ConfirmPanel.GetComponent<PanelAnimation>().OpenScale();
             }
-            YNPanel.SetActive(false);
+            //YNPanel.SetActive(false);
+            YNPanel.GetComponent<PanelAnimation>().CloseScale();
 
         }
         else
@@ -194,8 +193,8 @@ public class News : MonoBehaviour
             WarningPanelBlack.SetActive(true);
             ConfirmPanel.GetComponent<PanelAnimation>().OpenScale();
             ConfirmPanel.transform.GetChild(0).transform.GetComponent<Text>().text = "메달이 부족해요!";
-            
         }
+
     }
 
     //뉴스 설명창

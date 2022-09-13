@@ -86,7 +86,7 @@ public class GPGSManager : MonoBehaviour
                         return;
                     }
                     user = task.Result;
-                    Debug.Log(user.DisplayName + "님 로그인!");
+                    //Debug.Log(user.DisplayName + "님 로그인!");
                 });
             }
         });
@@ -96,6 +96,11 @@ public class GPGSManager : MonoBehaviour
     void Logout()
     {
         auth.SignOut();
+    }
+
+    public bool isLogined()
+    {
+        return auth != null;
     }
 
 

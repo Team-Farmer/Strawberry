@@ -1397,7 +1397,6 @@ public class GameManager : MonoBehaviour
     //광고보고 2배받기
     public void OnclickAdBtn()
     {
-        RewardAd.instance.LoadAd();
         RewardAd.instance.OnAdComplete += ReceiveCoin2Times;
         RewardAd.instance.OnAdFailed += OnFailedAd;
         RewardAd.instance.ShowAd();
@@ -1413,6 +1412,7 @@ public class GameManager : MonoBehaviour
         blackPanel.SetActive(false);
         AbsenceBlackPanel.SetActive(false);
         AbsencePanel.GetComponent<PanelAnimation>().CloseScale();
+        RewardAd.instance.LoadAd();
     }
 
     void OnFailedAd()

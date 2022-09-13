@@ -17,7 +17,7 @@ public class Farm : MonoBehaviour
         }
         else
         {
-            weed.GenerateWeed();
+            weed.GenerateWeed();          
             DataController.instance.gameData.berryFieldData[farmIdx].weedTime = 0f;
         }
     }

@@ -146,18 +146,17 @@ public class Challenge : MonoBehaviour
 
             case 4: // 누적 출석
                 Info[prefabnum].clearCriterion[0] = 3;
-                Info[prefabnum].clearCriterion[1] = 7;
                 for (int i = 2; i < MaxLevel; i++)
                 {
-                    Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[1] + 7 * i;
+                    Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[i - 1] + 3;
                 }
                 break;
 
             case 1: // 딸기 수확
-                Info[prefabnum].clearCriterion[0] = 48;
+                Info[prefabnum].clearCriterion[0] = 100;
                 for (int i = 1; i < MaxLevel; i++)
                 {
-                    Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[i - 1] + 48 * (i + 2);
+                    Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[i - 1] * 2;
                 }
                 break;
 
@@ -165,24 +164,17 @@ public class Challenge : MonoBehaviour
                 Info[prefabnum].clearCriterion[0] = 1000;
                 for (int i = 1; i < MaxLevel; i++)
                 {
-                    // 1000 3000 9000 12000 36000
+                    // 1000 3000 9000 12000 36000 // 좀 키워야할듯......
                     Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[i - 1] * 4;
-                    //Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[0] * (int)Mathf.Pow(2,i);
-                    /*if (i <= 10)
-                    { Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[i - 1] * 2; }
-                    else { Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[i - 1]; }*/
                 }
                 break;
 
             case 3: // 누적 하트
-                Info[prefabnum].clearCriterion[0] = 60;
+                Info[prefabnum].clearCriterion[0] = 100;
                 for (int i = 1; i < MaxLevel; i++)
                 {
-                    Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[i - 1] * 2;
-                    //Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[0] * (int)Mathf.Pow(2, i);
-                    /*if (i <= 10)
-                    { Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[i - 1] * 2; }
-                    else { Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[i - 1]; }*/
+                    // 키울게요
+                    Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[i - 1] + 200;
                 }
                 break;
 
@@ -190,7 +182,7 @@ public class Challenge : MonoBehaviour
                 Info[prefabnum].clearCriterion[0] = 10;
                 for (int i = 1; i < MaxLevel; i++)
                 {
-                    Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[i - 1] + 20 * i;
+                    Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[i - 1] + 20;
                 }
                 break;
 

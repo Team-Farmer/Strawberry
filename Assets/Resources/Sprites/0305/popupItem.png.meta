@@ -556,7 +556,7 @@ TextureImporter:
         height: 798
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 60, y: 60, z: 60, w: 60}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -626,27 +626,6 @@ TextureImporter:
       bones: []
       spriteID: ffb2e30f6e6e78f50800000000000000
       internalID: 6883724435006565375
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: popupItem_1
-      rect:
-        serializedVersion: 2
-        x: 499
-        y: 1565
-        width: 102
-        height: 59
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 430246e14cd87bd90800000000000000
-      internalID: -7082036015553830860
       vertices: []
       indices: 
       edges: []
