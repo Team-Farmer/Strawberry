@@ -124,6 +124,7 @@ public class GameManager : MonoBehaviour
     public GameObject heartAnimManager;
     public GameObject AbsencePanel;
     public GameObject AbsenceBlackPanel;
+    public GameObject QuitPanel;
 
 
 
@@ -277,16 +278,25 @@ public class GameManager : MonoBehaviour
         //폰에서 뒤로가기 버튼 눌렀을 때/에디터에서 ESC 버튼 눌렀을 때 게임 종료
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            DataController.instance.SaveData();
-            isStart = false;
-            DataController.instance.gameData.lastExitTime = DataController.instance.gameData.currentTime;
+            blackPanel.SetActive(true);
+            QuitPanel.GetComponent<PanelAnimation>().OpenScale();
+        }
+    }
+
+    public void QuitOkBtn()
+    {
+
+        DataController.instance.SaveData();
+        isStart = false;
+        DataController.instance.gameData.lastExitTime = DataController.instance.gameData.currentTime;
+
 #if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
+        UnityEditor.EditorApplication.isPlaying = false;
 #else
             Application.Quit();
 #endif
-        }
     }
+
     void LateUpdate()
     {
         //CoinText.text = coin.ToString() + " A";
