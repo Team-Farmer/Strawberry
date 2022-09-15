@@ -55,8 +55,8 @@ public class PanelAnimation : MonoBehaviour
 
     public void OpenScale()
     {
-        gameObject.SetActive(true);
         gameObject.transform.DOScale(Vector3.zero, 0f);
+        gameObject.SetActive(true);
         gameObject.transform.DOScale(Vector3.one, 0.3f);
     }
 
