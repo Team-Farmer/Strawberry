@@ -867,13 +867,19 @@ public class GameManager : MonoBehaviour
         {
             if (DataController.instance.gameData.heart >= 3)
             {
-                //시간을 10분 줄여준다.
-                if ((int)DataController.instance.gameData.newBerryTime_end.Second < 3 * 60)
-                { DataController.instance.gameData.newBerryTime_end = DateTime.Now; }
+                //시간을 줄여준다.
+                if ((int)DataController.instance.gameData.newBerryTime_span.TotalSeconds < 3 * 60)
+                {
+                    timeText_newBerry.GetComponent<Text>().text = TimeForm(Mathf.CeilToInt(0));
+                    DataController.instance.gameData.newBerryTime_end = DateTime.Now;
+                    
+                }
                 else
-                { 
+                {
+                    Debug.Log("간소전=" + (int)DataController.instance.gameData.newBerryTime_span.TotalSeconds);
                     DataController.instance.gameData.newBerryTime_end 
                         = DataController.instance.gameData.newBerryTime_end.AddSeconds(-3 * 60);
+                    Debug.Log("간소후=" + (int)DataController.instance.gameData.newBerryTime_span.TotalSeconds);
                     DataController.instance.gameData.newBerryTime_span 
                         = DataController.instance.gameData.newBerryTime_end - DataController.instance.gameData.newBerryTime_start;
                     //Debug.Log(DataController.instance.gameData.newBerryTime_span);
@@ -889,7 +895,7 @@ public class GameManager : MonoBehaviour
                 TimeReduceBlackPanel_newBerry.SetActive(false);
                 TimeReducePanel_newBerry.GetComponent<PanelAnimation>().CloseScale();
 
-                StartCoroutine(Timer());
+                //StartCoroutine(Timer());
             }
             else
             { UseHeart(3);  }
@@ -912,7 +918,7 @@ public class GameManager : MonoBehaviour
             DataController.instance.gameData.newBerryTime_start = DateTime.Now;
             DataController.instance.gameData.newBerryTime_span 
                 = DataController.instance.gameData.newBerryTime_end - DataController.instance.gameData.newBerryTime_start;
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.005f);
 
 
             //타이머
