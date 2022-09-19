@@ -278,8 +278,16 @@ public class GameManager : MonoBehaviour
         //폰에서 뒤로가기 버튼 눌렀을 때/에디터에서 ESC 버튼 눌렀을 때 게임 종료
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            blackPanel.SetActive(true);
-            QuitPanel.GetComponent<PanelAnimation>().OpenScale();
+            if (!blackPanel.activeSelf)
+            {
+                blackPanel.SetActive(true);
+                QuitPanel.GetComponent<PanelAnimation>().OpenScale();
+            }
+            else
+            {
+                blackPanel.SetActive(false);
+                QuitPanel.GetComponent<PanelAnimation>().CloseScale();
+            }
         }
     }
 
@@ -1413,29 +1421,29 @@ public class GameManager : MonoBehaviour
     //광고보고 2배받기
     public void OnclickAdBtn()
     {
-        RewardAd.instance.OnAdComplete += ReceiveCoin2Times;
-        RewardAd.instance.OnAdFailed += OnFailedAd;
-        RewardAd.instance.ShowAd();
-        add_receive_btn.interactable = false; // 광고 보고 받기 버튼을 비활성화
+        //RewardAd.OnAdComplete += ReceiveCoin2Times;
+        //RewardAd.OnAdFailed += OnFailedAd;
+        //RewardAd.instance.ShowAd();
+        //add_receive_btn.interactable = false; // 광고 보고 받기 버튼을 비활성화
     }
 
     void ReceiveCoin2Times()
     {
-        GetCoin(revenue * 2);
+        //GetCoin(revenue * 2);
 
-        RewardAd.instance.OnAdComplete -= ReceiveCoin2Times;
-        add_receive_btn.interactable = true; // 광고 보고 받기 버튼 활성
-        blackPanel.SetActive(false);
-        AbsenceBlackPanel.SetActive(false);
-        AbsencePanel.GetComponent<PanelAnimation>().CloseScale();
-        RewardAd.instance.LoadAd();
+        //RewardAd.OnAdComplete -= ReceiveCoin2Times;
+        //add_receive_btn.interactable = true; // 광고 보고 받기 버튼 활성
+        //blackPanel.SetActive(false);
+        //AbsenceBlackPanel.SetActive(false);
+        //AbsencePanel.GetComponent<PanelAnimation>().CloseScale();
+        //RewardAd.instance.LoadAd();
     }
 
     void OnFailedAd()
     {
-        RewardAd.instance.OnAdComplete -= ReceiveCoin2Times;
-        RewardAd.instance.OnAdFailed -= OnFailedAd;
-        add_receive_btn.interactable = true; // 광고 보고 받기 버튼 활성
+        //RewardAd.OnAdComplete -= ReceiveCoin2Times;
+        //RewardAd.OnAdFailed -= OnFailedAd;
+        //add_receive_btn.interactable = true; // 광고 보고 받기 버튼 활성
     }
 
     public void AbsenceBtn()
