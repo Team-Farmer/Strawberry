@@ -120,7 +120,6 @@ public class Challenge : MonoBehaviour
     
     private void InfoInit() 
     {
-
         //제목표시
         titleText.GetComponent<Text>().text = Info[prefabnum].Title;
 
@@ -298,5 +297,11 @@ public class Challenge : MonoBehaviour
         medal.SetActive(false);
         FinBtn.SetActive(true);
         FinBG.SetActive(true);
+
+        // 게이지 가득
+        Gauge.GetComponent<Image>().fillAmount = 1;
+        // 숫자 Max
+        nowCondition.GetComponent<Text>().text = Info[prefabnum].clearCriterion[MaxLevel-1].ToString();
+        achieveCondition.GetComponent<Text>().text = "/" + Info[prefabnum].clearCriterion[MaxLevel-1].ToString();//도전과제 게이지 달성 조건 숫자
     }
 }
