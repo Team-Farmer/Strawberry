@@ -12,6 +12,18 @@ public class Setting : MonoBehaviour
     public Text saveDate_text;
     public Button cloudLoad_btn;
     public Button cloudSave_btn;
+
+    // 잠금 해제 코드
+    public InputField code_input;
+    public Text code_text;
+    public GameObject money_btn;
+    public GameObject berry_btn;
+
+    private string money = "money";
+    private string nomoney = "nomoney";
+    private string berry = "berry";
+    private string noberry = "noberry";
+    //private string store = "store";
     #endregion
 
     void Awake()
@@ -79,5 +91,40 @@ public class Setting : MonoBehaviour
     public void Instagram() // 공식 인스타 계정
     {
         Application.OpenURL("https://www.instagram.com/team_farmer_/");
+    }
+
+    public void OpenCodePanel()
+    {
+        code_input.text = "";
+        code_text.text = "";
+    }
+
+    public void EnterCodeBtn()
+    {
+        if (code_input.text == money)
+        {
+            code_text.text = "코인버튼 해제";
+            money_btn.SetActive(true);
+        }
+        else if (code_input.text == nomoney)
+        {
+            code_text.text = "코인버튼 잠금";
+            money_btn.SetActive(false);
+        }
+        else if (code_input.text == berry)
+        {
+            code_text.text = "딸기버튼 해제";
+            berry_btn.SetActive(true);
+        }
+        else if (code_input.text == noberry)
+        {
+            code_text.text = "딸기버튼 잠금";
+            berry_btn.SetActive(false);
+        }
+        /*else if (code_input.text == store)
+        {
+            code_text.text = "가게 오픈";
+            DataController.instance.gameData.isStoreOpend = true;
+        }*/
     }
 }
