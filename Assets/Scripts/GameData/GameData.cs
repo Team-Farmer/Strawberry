@@ -109,4 +109,6 @@ public class GameData
     //가게&미니게임
     public bool isStoreOpend;
     public int[] highScore=new int[4];
+
+    
 }

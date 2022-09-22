@@ -49,7 +49,7 @@ public class ArbeitMgr : MonoBehaviour
                 !DataController.instance.gameData.berryFieldData[i].hasWeed &&
                 !DataController.instance.gameData.berryFieldData[i].hasBug &&
                 DataController.instance.gameData.PTJNum[1] > 0 &&
-                DataController.instance.gameData.truckBerryCnt != Globalvariable.TRUCK_CNT_LEVEL_MAX)
+                DataController.instance.gameData.truckBerryCnt != Globalvariable.instance.truckCntLevel[3, DataController.instance.gameData.newBerryResearchAble])
             {
                 DataController.instance.gameData.PTJNum[1]--;
                 StartCoroutine(HarvestbyThomson(i));

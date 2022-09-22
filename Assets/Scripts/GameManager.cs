@@ -40,10 +40,10 @@ public class GameManager : MonoBehaviour
     public Text truckCoinBonusText;
     public int bonusTruckCoin;
 
-    public const int TRUCK_CNT_LEVEL_0 = Globalvariable.TRUCK_CNT_LEVEL_0;
+    /*public const int TRUCK_CNT_LEVEL_0 = Globalvariable.TRUCK_CNT_LEVEL_0;
     public const int TRUCK_CNT_LEVEL_1 = Globalvariable.TRUCK_CNT_LEVEL_1;
     public const int TRUCK_CNT_LEVEL_2 = Globalvariable.TRUCK_CNT_LEVEL_2;
-    public const int TRUCK_CNT_LEVEL_MAX = Globalvariable.TRUCK_CNT_LEVEL_MAX;
+    public const int TRUCK_CNT_LEVEL_MAX = Globalvariable.TRUCK_CNT_LEVEL_MAX;*/
 
     //PTJ, NEWS================================
     [Header("[ PTJ ]")]
@@ -209,9 +209,9 @@ public class GameManager : MonoBehaviour
             else
                 globalVar.berryListAll[i].GetComponent<Berry>().berryPrice
                     = Convert.ToInt32((1000) * (1 + researchCoeffi));*/
-        }
+}
 
-        for (int i = 0; i < 16; i++)
+for (int i = 0; i < 16; i++)
         {
             if (DataController.instance.gameData.berryFieldData[i].isStemEnable)
             {
@@ -453,9 +453,10 @@ public class GameManager : MonoBehaviour
     }
     void UpdateTruckState(Stem stem)
     {
-        if (DataController.instance.gameData.truckBerryCnt < TRUCK_CNT_LEVEL_MAX)
+        if (DataController.instance.gameData.truckBerryCnt < Globalvariable.instance.truckCntLevel[3, DataController.instance.gameData.newBerryResearchAble])
         {
             DataController.instance.gameData.truckBerryCnt += 1;
+            Debug.Log(DataController.instance.gameData.truckBerryCnt);
             DataController.instance.gameData.truckCoin += stem.getInstantBerryObj().GetComponent<Berry>().berryPrice;
         }
     }

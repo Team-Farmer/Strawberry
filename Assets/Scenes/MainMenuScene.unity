@@ -3848,7 +3848,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSaveMode: 1
-  dataEncryption: 0
+  dataEncryption: 1
 --- !u!4 &139806055
 Transform:
   m_ObjectHideFlags: 0
@@ -27005,6 +27005,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rainPanel: {fileID: 145277550}
+  truckPanel: {fileID: 1218476147}
+  storePanel: {fileID: 926323866}
   mult: 1
   rainTime: 0
 --- !u!1 &828367656
@@ -30069,7 +30071,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &907141136
 RectTransform:
   m_ObjectHideFlags: 0
@@ -34079,7 +34081,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1008492472
 RectTransform:
   m_ObjectHideFlags: 0

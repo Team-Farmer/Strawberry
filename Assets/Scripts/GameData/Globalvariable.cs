@@ -23,10 +23,8 @@ public class Globalvariable : MonoBehaviour
 
     private float coeffi = 0.02f;
 
-    public const int TRUCK_CNT_LEVEL_0 = 0;
-    public const int TRUCK_CNT_LEVEL_1 = 16;
-    public const int TRUCK_CNT_LEVEL_2 = 32;
-    public const int TRUCK_CNT_LEVEL_MAX = 48;
+    // 트럭 내의 딸기 구간 개수 2차원 배열로 설정
+    public int[,] truckCntLevel = { { 0, 0, 0 }, { 16, 24, 32 }, { 32, 48, 64 }, { 48, 72, 96 } };
 
     public readonly int CLASSIC_FIRST = 6;
     public readonly int SPECIAL_FIRST = 50;
