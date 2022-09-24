@@ -88,6 +88,7 @@ public class GameManager : MonoBehaviour
     public Sprite IngImg;
     public SpriteRenderer[] stemLevelSprites;
 
+    public GameObject newBerryBangImg;
 
     private int price_newBerry;//이번에 개발되는 베리 가격
     private string BtnState;//지금 버튼 상태
@@ -231,6 +232,9 @@ for (int i = 0; i < 16; i++)
                 farmList[i].GetComponent<BoxCollider2D>().enabled = false;
             }
         }
+
+        if (DataController.instance.gameData.newBerryBangImgBool) { newBerryBangImg.SetActive(true); }
+        else { newBerryBangImg.SetActive(false); }
     }
     void Update()
     {
@@ -244,7 +248,6 @@ for (int i = 0; i < 16; i++)
         workingCountText.GetComponent<Text>().text = DataController.instance.gameData.PTJCount.ToString();//알바중인 인원수
 
         //NEW BERRY 개발
-        //없애기
         switch (DataController.instance.gameData.newBerryBtnState)
         {
             case 0: BtnState = "start"; startBtn_newBerry.GetComponent<Image>().sprite = StartImg; break;
@@ -1024,6 +1027,10 @@ for (int i = 0; i < 16; i++)
         DataController.instance.gameData.newBerryBtnState = 0;
 
         NewBerryUpdate();
+
+        //딸기 아이콘에 느낌표 표시 띄우기
+        newBerryBangImg.SetActive(true);
+        DataController.instance.gameData.newBerryBangImgBool = true;
 
     }
 

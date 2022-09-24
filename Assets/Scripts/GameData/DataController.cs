@@ -192,6 +192,8 @@ public class DataController : MonoBehaviour
 
         gameData.newBerryIndex = 0;
 
+        gameData.newBerryBangImgBool = false;
+
         //가게관련변수
         gameData.isStoreOpend = false;
         for (int i = 0; i < 4; i++) { gameData.highScore[i] = 0; }

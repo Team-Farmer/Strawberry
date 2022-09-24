@@ -82,7 +82,21 @@ public class Strawberry : MonoBehaviour
         //베리 아직 한번도 확인하지 않았다면 느낌표 표시. 이미 한 번 봤으면 없애기
         if (DataController.instance.gameData.isBerryEM[prefabnum] == true)
         { ExclamationMark.SetActive(true); }
-        else { ExclamationMark.SetActive(false); }
+        else 
+        { 
+            ExclamationMark.SetActive(false);
+
+            // 베리들 검사해서 새 베리 얻었다는 표시 없앨지 정하기-> 흠이거 너무 ㅁㄶ이 검사하는것같다.
+            for (int i = 0; i < DataController.instance.gameData.isBerryEM.Length; i++)
+            {
+                if (DataController.instance.gameData.isBerryEM[i] == true)
+                { return;}
+            
+            }
+            GameManager.instance.newBerryBangImg.SetActive(false);
+            DataController.instance.gameData.newBerryBangImgBool = false;
+
+        }
 
     }
 

@@ -52,6 +52,7 @@ public class GameData
     public DateTime newBerryTime_start;
     public DateTime newBerryTime_end;
     public TimeSpan newBerryTime_span;
+    public bool newBerryBangImgBool;
 
     //베리 개발 가능 구역
     //0이면 classic만, 1이면 unique까지, 2이면 전부 개발가능

@@ -15,11 +15,14 @@ public class MiniGame4 : MiniGame
     public GameObject correctTxt; //정답시 나오는 텍스트
     public GameObject leftBtn;
     public GameObject rightBtn;
-
+    public GameObject dummyBerry;//이거 지우지 마세요
 
     int[] correctNum;
     Sprite[] correctSprite;
     Sprite[] answerSprite;
+
+
+    
 
     
 
@@ -119,7 +122,9 @@ public class MiniGame4 : MiniGame
         correctTxt.GetComponent<Text>().color = new Color(1f, 1f, 1f, 0f);
 
         StopCoroutine(MoveCoroutine(true, content.transform.GetChild(content.transform.childCount - 1).gameObject));
-        
+        dummyBerry.GetComponent<Image>().sprite =
+            content.transform.GetChild(content.transform.childCount - 1).gameObject.GetComponent<Image>().sprite;
+
 
         //정답여부 판별=======================================
         if (isUpgrade == true) //정답이4개일때
@@ -253,12 +258,13 @@ public class MiniGame4 : MiniGame
     }
     IEnumerator MoveCoroutine(bool isLeft,GameObject content)
     {
-
+        
         Vector3 moveCount = content.GetComponent<RectTransform>().position;
         float fadeCount = 1;
 
         while (fadeCount > -0.1f)
         {
+
             //점점흐려짐
             fadeCount -= 0.05f;
 
@@ -268,7 +274,7 @@ public class MiniGame4 : MiniGame
             else
             { moveCount.x += 0.05f; }
 
-            yield return new WaitForSeconds(0.01f);
+            yield return new WaitForSeconds(0.1f);
 
            
         }
