@@ -18,6 +18,7 @@ public class MiniGame : MonoBehaviour
     public Text result_cur_score_txt;    //결과 현재 스코어 텍스트
     public Text result_highscore_txt;    //결과 최고기록 텍스트
     public Text result_coin_txt;    //결과 최고기록 텍스트
+    public Button restart_button;
     public Button checkButton;
     public Button challengeButton;
     public Button settingButton;
@@ -176,6 +177,18 @@ public class MiniGame : MonoBehaviour
         time = 64;
         unlockList.Clear();
 
+        if(DataController.instance.gameData.dotori > 1)
+        {
+            restart_button.interactable = true;
+            // 도토리 재화 업데이트
+            DataController.instance.gameData.dotori--;
+            GameManager.instance.invokeDotori();
+        }
+        else
+        {
+            DataController.instance.gameData.dotori--;
+            restart_button.interactable = false;
+        }
         OnEnable();
     }
 

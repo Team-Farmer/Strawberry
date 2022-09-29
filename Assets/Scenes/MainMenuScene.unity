@@ -6861,6 +6861,7 @@ MonoBehaviour:
   result_cur_score_txt: {fileID: 1586832952}
   result_highscore_txt: {fileID: 2144362631}
   result_coin_txt: {fileID: 2045909379}
+  restart_button: {fileID: 2106758281}
   checkButton: {fileID: 1123470171}
   challengeButton: {fileID: 1431717157}
   settingButton: {fileID: 1986071920}
@@ -33929,6 +33930,7 @@ MonoBehaviour:
   result_cur_score_txt: {fileID: 116971719}
   result_highscore_txt: {fileID: 1611485764}
   result_coin_txt: {fileID: 21171336}
+  restart_button: {fileID: 1896660936}
   checkButton: {fileID: 1123470171}
   challengeButton: {fileID: 1431717157}
   settingButton: {fileID: 1986071920}
@@ -36004,6 +36006,7 @@ MonoBehaviour:
   result_cur_score_txt: {fileID: 1559048968}
   result_highscore_txt: {fileID: 1043573339}
   result_coin_txt: {fileID: 437627927}
+  restart_button: {fileID: 82813775}
   checkButton: {fileID: 1123470171}
   challengeButton: {fileID: 1431717157}
   settingButton: {fileID: 1986071920}
@@ -40942,6 +40945,7 @@ MonoBehaviour:
   result_cur_score_txt: {fileID: 1943749810}
   result_highscore_txt: {fileID: 1376151035}
   result_coin_txt: {fileID: 10725400}
+  restart_button: {fileID: 597266906}
   checkButton: {fileID: 1123470171}
   challengeButton: {fileID: 1431717157}
   settingButton: {fileID: 1986071920}
