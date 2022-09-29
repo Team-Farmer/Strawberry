@@ -105,7 +105,7 @@ public class MiniGameManager : MonoBehaviour
     public void OnclickStartBtn()
     {
         string info_str = infoText.text.Substring(0, 5);
-        Debug.Log(info_str);
+        
         if (info_str == "딸기 창고")
         {
             miniGameList[0].gameObject.SetActive(true);
@@ -126,5 +126,9 @@ public class MiniGameManager : MonoBehaviour
             miniGameList[3].gameObject.SetActive(true);
             AudioManager.instance.BGMPlay(6);
         }
+
+        // 도토리 재화 업데이트
+        DataController.instance.gameData.dotori--;
+        GameManager.instance.invokeDotori();
     }
 }

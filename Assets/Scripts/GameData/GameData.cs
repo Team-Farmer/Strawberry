@@ -15,6 +15,7 @@ public class GameData
     public int coin;
     public int heart;
     public int medal;
+    public int dotori = 5;
 
     //Truck
     public int truckBerryCnt; // 트럭 딸기 개수

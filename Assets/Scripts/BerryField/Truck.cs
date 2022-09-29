@@ -10,6 +10,7 @@ public class Truck : MonoBehaviour
     public Button normal_receive_btn;
     public Button add_receive_btn;
     public Sprite[] truckSprite;
+    private Animator maxAnim;
     //public int berryCnt = 0; // 옮김
     private ArbeitMgr arbeit;
     private int truckSpirteLv;
@@ -20,6 +21,9 @@ public class Truck : MonoBehaviour
 
         //광고보고 3배받기
         add_receive_btn.onClick.AddListener(OnclickAdBtn);
+
+        //트럭 MAX 패널 애니메이션
+        maxAnim = transform.GetChild(0).GetComponent<Animator>();
     }
     void FixedUpdate()
     {
@@ -46,6 +50,7 @@ public class Truck : MonoBehaviour
             if (truckSpirteLv == 0) return;
             truckSpirteLv = 0;
             GetComponent<Image>().sprite = truckSprite[0]; // 트럭 스프라이트를 빈 트럭으로 변경
+
             MaxPanel.SetActive(false); // MAX 패널 제거
         }
         if (level_1 <= DataController.instance.gameData.truckBerryCnt && DataController.instance.gameData.truckBerryCnt < level_2)
@@ -72,6 +77,7 @@ public class Truck : MonoBehaviour
 
             truckSpirteLv = 3;
             MaxPanel.SetActive(true);
+            maxAnim.SetBool("isMax", true);
             GetComponent<Image>().sprite = truckSprite[3];
         }
     }

@@ -9,10 +9,10 @@ public class RainCtrl : MonoBehaviour
     public GameObject rainPanel;
     public GameObject truckPanel;
     public GameObject storePanel;
-
+    public GameObject truckMaxPanel;
     private ParticleSystem rainParticle;
     private ArbeitMgr arbeit;
-    private float rainPeriod = 10f;//240
+    private float rainPeriod = 60f;//240
     public int mult = 1;
     public float rainTime;
     private bool isRaining;
@@ -48,6 +48,7 @@ public class RainCtrl : MonoBehaviour
 
         truckPanel.GetComponent<Image>().DOColor(color, 0.3f);
         storePanel.GetComponent<Image>().DOColor(color, 0.3f);
+        truckMaxPanel.GetComponent<Image>().DOColor(color, 0.3f);
 
         mult = arbeit.lluvia();
         //Debug.Log("mult: " + mult);
@@ -74,7 +75,7 @@ public class RainCtrl : MonoBehaviour
 
         truckPanel.GetComponent<Image>().DOColor(color, 0.3f);
         storePanel.GetComponent<Image>().DOColor(color, 0.3f);
-
+        truckMaxPanel.GetComponent<Image>().DOColor(color, 0.3f);
 
         mult = 1;
         isRaining = false;

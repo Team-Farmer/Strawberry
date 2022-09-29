@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public Text CoinText;
     public Text HeartText;
     public Text MedalText;
+    public Text DotoriText;
     public Text coinAnimText;
     public Text heartAnimText;
 
@@ -142,9 +143,6 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-
-
-
         Application.targetFrameRate = 60;
         instance = this;
 
@@ -162,6 +160,7 @@ public class GameManager : MonoBehaviour
 
         ShowCoinText(CoinText, DataController.instance.gameData.coin);
         HeartText.text = DataController.instance.gameData.heart.ToString();
+        invokeDotori();
 
         globalVar = GameObject.FindGameObjectWithTag("Global").GetComponent<Globalvariable>();
 
@@ -493,7 +492,10 @@ for (int i = 0; i < 16; i++)
     {
         HeartText.text = DataController.instance.gameData.heart.ToString();
     }
-
+    public void invokeDotori()
+    {
+        DotoriText.text = 'x' + DataController.instance.gameData.dotori.ToString();
+    }
     public void ShowCoinText(Text coinText, int coin)
     {
         //int coin = DataController.instance.gameData.coin;
