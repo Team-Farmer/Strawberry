@@ -112,6 +112,10 @@ public class MiniGame4 : MiniGame
 
         }
 
+        dummyBerry.GetComponent<Image>().sprite = content.transform.GetChild(content.transform.childCount - 1).GetComponent<Image>().sprite;
+        dummyBerry.GetComponent<RectTransform>().position = content.transform.GetChild(content.transform.childCount - 1).GetComponent<RectTransform>().position;
+
+
     }
 
 
@@ -121,9 +125,10 @@ public class MiniGame4 : MiniGame
         StopCoroutine("FadeCoroutine");
         correctTxt.GetComponent<Text>().color = new Color(1f, 1f, 1f, 0f);
 
-        StopCoroutine(MoveCoroutine(true, content.transform.GetChild(content.transform.childCount - 1).gameObject));
-        dummyBerry.GetComponent<Image>().sprite =
-            content.transform.GetChild(content.transform.childCount - 1).gameObject.GetComponent<Image>().sprite;
+        StopCoroutine(MoveCoroutine(true));
+        dummyBerry.GetComponent<Image>().sprite = content.transform.GetChild(content.transform.childCount - 1).GetComponent<Image>().sprite;
+        dummyBerry.GetComponent<RectTransform>().position = content.transform.GetChild(content.transform.childCount - 1).GetComponent<RectTransform>().position;
+        dummyBerry.GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f);
 
 
         //정답여부 판별=======================================
@@ -172,7 +177,7 @@ public class MiniGame4 : MiniGame
         }
 
         //좌우 이동==========================================
-        StartCoroutine(MoveCoroutine(isLeft, content.transform.GetChild(content.transform.childCount - 1).gameObject));
+        StartCoroutine(MoveCoroutine(isLeft));
 
 
 
@@ -256,28 +261,31 @@ public class MiniGame4 : MiniGame
             correctTxt.GetComponent<Text>().color = new Color(1f, 1f, 1f, fadeCount);
         }
     }
-    IEnumerator MoveCoroutine(bool isLeft,GameObject content)
+    IEnumerator MoveCoroutine(bool isLeft)
     {
-        
-        Vector3 moveCount = content.GetComponent<RectTransform>().position;
         float fadeCount = 1;
 
         while (fadeCount > -0.1f)
         {
 
             //점점흐려짐
-            fadeCount -= 0.05f;
+            fadeCount -= 0.1f;
 
             //점점이동함
             if (isLeft == true)
-            { moveCount.x -= 0.05f; }
+            { dummyBerry.transform.Translate(new Vector3(-0.05f,0,0)); }
             else
-            { moveCount.x += 0.05f; }
+            { dummyBerry.transform.Translate(new Vector3(0.05f,0,0));}
+
+            dummyBerry.GetComponent<Image>().color = new Color(1f, 1f, 1f,fadeCount);
 
             yield return new WaitForSeconds(0.1f);
 
            
         }
+        dummyBerry.transform.position = new Vector3(49f, -914f, 0);
+        dummyBerry.GetComponent<Image>().color = new Color(1f, 1f, 1f, 0f);
+
     }
 
 }
