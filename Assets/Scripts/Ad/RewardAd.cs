@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Advertisements;
 using System;
-
+using UnityEngine.UI;
 public class RewardAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListener
 {
     public static RewardAd instance = null;
-    public GameObject Popup;
     public Action OnAdComplete;
     public Action OnAdFailed;
 
@@ -56,10 +55,8 @@ public class RewardAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListe
     {
         Debug.Log($"광고 로드 실패: {error}-{message}");
 
-        OnAdFailed();
+        //OnAdFailed();
 
-        //잠시후 다시 시도해주세요 팝업
-        //Popup.SetActive(true);
         Debug.Log("잠시후 다시 시도해주세요");
     }
 
@@ -69,14 +66,23 @@ public class RewardAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListe
         if (adUnitId.Equals(placementId) && UnityAdsShowCompletionState.COMPLETED.Equals(showCompletionState))
         {
             if (OnAdComplete != null)
+            {
+                Debug.Log("이벤트 실행");
                 OnAdComplete();
+            }
+            LoadAd();
         }
     }
 
     public void OnUnityAdsShowFailure(string placementId, UnityAdsShowError error, string message)
     {
         Debug.Log($"광고 보여주기 Error : {error}-{message}");
-        OnAdFailed();
+        if (OnAdFailed != null)
+        {
+            Debug.Log("이벤트 실패 이벤트 실행");
+            OnAdFailed();
+        }
+        LoadAd();
     }
 
     public void OnUnityAdsShowClick(string placementId) { }

@@ -9,11 +9,13 @@ using Firebase.Auth;    //login
 using Newtonsoft.Json; //serialize/deserialize
 using System.Text;     //for encoding
 using System;
+using UnityEngine.UI;
 
 public class GPGSManager : MonoBehaviour
 {
     public static GPGSManager instance = null;
     public Action OnSaveSucceed;
+    public Image Loading_img;
 
     FirebaseAuth auth = null; //auth용 instance
     FirebaseUser user = null; //현재 사용자 계정

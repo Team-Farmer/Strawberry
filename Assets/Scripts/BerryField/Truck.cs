@@ -119,7 +119,6 @@ public class Truck : MonoBehaviour
 
         RewardAd.instance.OnAdComplete -= ReceiveCoin3Times;
         add_receive_btn.interactable = true; // 광고 보고 받기 버튼 활성
-        RewardAd.instance.LoadAd();
     }
 
     void OnFailedAd()

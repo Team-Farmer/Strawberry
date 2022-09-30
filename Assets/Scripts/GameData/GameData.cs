@@ -8,6 +8,9 @@ using System;
 
 public class GameData
 {
+    //튜토리얼 했는지
+    public bool isTutorialDone = false;
+
     //클라우드 저장 날짜
     public DateTime cloudSaveTime;
 

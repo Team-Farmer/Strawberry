@@ -10,7 +10,10 @@ public class Intro : MonoBehaviour
     public GameObject[] introObject = new GameObject[4];
     public Sprite[] sprites = new Sprite[2];
     public RectTransform rect;
-    
+
+    //튜토리얼
+    public GameObject tutorialObject;
+
     static public bool isEnd=false;
 
     private static Intro instance;
@@ -26,6 +29,10 @@ public class Intro : MonoBehaviour
         StartCoroutine(DoScale());
         introObject[5].SetActive(false);
 
+        if (!DataController.instance.gameData.isTutorialDone)
+        {
+            tutorialObject.SetActive(true);
+        }
     }
 
     IEnumerator DoScale()
@@ -53,18 +60,18 @@ public class Intro : MonoBehaviour
                 {
 
                     introObject[4].SetActive(false);
-                    GameManager.instance.EnableObjColliderAll();
-
 
                     //예림
-                    AudioManager.instance.ResumePlayAudio("RainSFXSound");
+                    if (DataController.instance.gameData.isTutorialDone)
+                    {
+                        AudioManager.instance.ResumePlayAudio("RainSFXSound");
+                        GameManager.instance.EnableObjColliderAll();
+                    }
                 });
 
         yield return new WaitForSeconds(2.3f);
         isEnd = true;
         GameManager.instance.StartPrework();
         //Debug.Log(DataController.instance.gameData.lastExitTime);
-
-       
     }
 }
