@@ -21,7 +21,7 @@ public class PanelAnimation : MonoBehaviour
 
     public void CloseUp()
     {
-        gameObject.GetComponent<RectTransform>().DOAnchorPosY(-1940, 0.2f);
+        gameObject.GetComponent<RectTransform>().DOAnchorPosY(-2400, 0.2f);
         Invoke("ActiveOff", 0.3f);
     }
 
