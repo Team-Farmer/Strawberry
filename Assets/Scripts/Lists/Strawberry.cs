@@ -45,7 +45,7 @@ public class Strawberry : MonoBehaviour
     {
 
         berryExp = GameObject.FindGameObjectWithTag("BerryExplanation");
-        berryExpPanelBlack = berryExp.transform.parent.GetChild(8).gameObject; // 시원건드림
+        berryExpPanelBlack = berryExp.transform.parent.GetChild(7).gameObject; // 시원건드림
         berryExp = berryExp.transform.GetChild(0).gameObject;
         
 
