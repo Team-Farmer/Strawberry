@@ -52,12 +52,11 @@ public class MiniGame2 : MiniGame
         {
             normalIndex = unlockList[UnityEngine.Random.Range(0, unlockList.Count)];
             if (normalIndex != 4 && normalIndex != 8) break;
-        }
-        Debug.Log("normalIndex: " + normalIndex);
+        }        
 
         //랜덤의 상한 딸기 인덱스(0~16)에 상한 딸기 배치
         randomAnswerIndex = UnityEngine.Random.Range(0, 16);
-        Debug.Log("randomAnswerIndex: " + randomAnswerIndex);
+       
         for (int i = 0; i < 16; i++)
         {
             answerIndex_4x4[i] = normalIndex; // 딸기 배치
@@ -120,8 +119,6 @@ public class MiniGame2 : MiniGame
         }
         O.SetActive(false);
         X.SetActive(false);
-
-
     }
 
     protected override void FinishGame()
@@ -135,8 +132,6 @@ public class MiniGame2 : MiniGame
         resultPanel.SetActive(true);
         result_cur_score_txt.text = score + "점";
         result_highscore_txt.text = DataController.instance.gameData.highScore[1].ToString();
-
-
 
         // 미니게임 2 보상 하트 공식(미니게임 2은 해금 하트가 40이다)
         float gain_coin = score * research_level_avg * ((100 + 40 * 2) / 100f);

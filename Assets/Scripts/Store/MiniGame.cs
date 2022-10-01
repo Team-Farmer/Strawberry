@@ -67,6 +67,20 @@ public class MiniGame : MonoBehaviour
         score_txt.text = score.ToString();
         isGameRunning = false;
 
+        if (DataController.instance.gameData.dotori > 0)
+        {
+            restart_button.interactable = true;
+            Debug.Log("다시하기 활성화");
+            // 도토리 재화 업데이트            
+            GameManager.instance.invokeDotori();
+        }
+        else
+        {
+            DataController.instance.gameData.dotori = 0;
+            Debug.Log("다시하기 비활성화");
+            restart_button.interactable = false;
+        }
+
         //4초 카운트
         StartCoroutine(Count4Second());
         AudioManager.instance.CountdownAudioPlay();
@@ -177,18 +191,8 @@ public class MiniGame : MonoBehaviour
         time = 64;
         unlockList.Clear();
 
-        if(DataController.instance.gameData.dotori > 1)
-        {
-            restart_button.interactable = true;
-            // 도토리 재화 업데이트
-            DataController.instance.gameData.dotori--;
-            GameManager.instance.invokeDotori();
-        }
-        else
-        {
-            DataController.instance.gameData.dotori--;
-            restart_button.interactable = false;
-        }
+        DataController.instance.gameData.dotori--;
+        GameManager.instance.invokeDotori();
         OnEnable();
     }
 
@@ -225,7 +229,7 @@ public class MiniGame : MonoBehaviour
     public void OnclickExitButton() //게임 나가기
     {
         OnClickKeepGoingButton();
-
+        GameManager.instance.invokeDotori();
         //사운드 끄기, 이미지 없애기
         AudioManager.instance.StopPlayAudio("CountdownSFXSound");
         for (int i = 0; i < 4; i++)
