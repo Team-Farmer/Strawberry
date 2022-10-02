@@ -93,8 +93,6 @@ public class Strawberry : MonoBehaviour
                 { return;}
             
             }
-            GameManager.instance.newBerryBangImg.SetActive(false);
-            DataController.instance.gameData.newBerryBangImgBool = false;
 
         }
 

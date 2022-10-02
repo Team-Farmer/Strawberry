@@ -232,8 +232,6 @@ for (int i = 0; i < 16; i++)
             }
         }
 
-        if (DataController.instance.gameData.newBerryBangImgBool) { newBerryBangImg.SetActive(true); }
-        else { newBerryBangImg.SetActive(false); }
     }
     void Update()
     {
@@ -251,7 +249,9 @@ for (int i = 0; i < 16; i++)
         {
             case 0: BtnState = "start"; startBtn_newBerry.GetComponent<Image>().sprite = StartImg; break;
             case 1: BtnState = "ing"; startBtn_newBerry.GetComponent<Image>().sprite = IngImg; break;
-            case 2: BtnState = "done"; startBtn_newBerry.GetComponent<Image>().sprite = DoneImg; break;
+            case 2: BtnState = "done";
+                newBerryBangImg.SetActive(true);
+                startBtn_newBerry.GetComponent<Image>().sprite = DoneImg; break;
         }
 
         if (Input.GetMouseButton(0)) // 마우스 왼쪽 버튼으로
@@ -457,7 +457,8 @@ for (int i = 0; i < 16; i++)
     {
         if (DataController.instance.gameData.truckBerryCnt < Globalvariable.instance.truckCntLevel[3, DataController.instance.gameData.newBerryResearchAble])
         {
-            DataController.instance.gameData.truckBerryCnt += 1;        
+            DataController.instance.gameData.truckBerryCnt += 1;
+            Debug.Log(DataController.instance.gameData.truckBerryCnt);
             DataController.instance.gameData.truckCoin += stem.getInstantBerryObj().GetComponent<Berry>().berryPrice;
         }
     }
@@ -875,6 +876,7 @@ for (int i = 0; i < 16; i++)
 
             case "done": //딸기 개발
                 GetNewBerry();
+                newBerryBangImg.SetActive(false);
                 break;
 
         }
@@ -1028,10 +1030,6 @@ for (int i = 0; i < 16; i++)
         DataController.instance.gameData.newBerryBtnState = 0;
 
         NewBerryUpdate();
-
-        //딸기 아이콘에 느낌표 표시 띄우기
-        newBerryBangImg.SetActive(true);
-        DataController.instance.gameData.newBerryBangImgBool = true;
 
     }
 

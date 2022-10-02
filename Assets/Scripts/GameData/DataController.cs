@@ -192,9 +192,6 @@ public class DataController : MonoBehaviour
 
         gameData.newBerryIndex = 0;
 
-        gameData.newBerryBangImgBool = false;
-
-
         //오디오
         gameData.BGSoundVolume = 0.5f;
         gameData.SFXSoundVolume = 0.5f;
