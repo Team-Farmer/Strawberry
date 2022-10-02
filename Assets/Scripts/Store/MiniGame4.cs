@@ -128,7 +128,7 @@ public class MiniGame4 : MiniGame
         StopCoroutine(MoveCoroutine(true));
         dummyBerry.GetComponent<Image>().sprite = content.transform.GetChild(content.transform.childCount - 1).GetComponent<Image>().sprite;
         dummyBerry.GetComponent<RectTransform>().position = content.transform.GetChild(content.transform.childCount - 1).GetComponent<RectTransform>().position;
-        dummyBerry.GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f);
+        //dummyBerry.GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f);
 
 
         //정답여부 판별=======================================
@@ -269,22 +269,22 @@ public class MiniGame4 : MiniGame
         {
 
             //점점흐려짐
-            fadeCount -= 0.1f;
+            fadeCount -= 0.3f;
 
             //점점이동함
             if (isLeft == true)
-            { dummyBerry.transform.Translate(new Vector3(-0.05f,0,0)); }
+            { dummyBerry.transform.Translate(new Vector3(-0.1f,0,0)); }
             else
-            { dummyBerry.transform.Translate(new Vector3(0.05f,0,0));}
+            { dummyBerry.transform.Translate(new Vector3(0.1f,0,0));}
 
-            dummyBerry.GetComponent<Image>().color = new Color(1f, 1f, 1f,fadeCount);
+            //dummyBerry.GetComponent<Image>().color = new Color(1f, 1f, 1f,fadeCount);
 
             yield return new WaitForSeconds(0.1f);
 
            
         }
         dummyBerry.transform.position = new Vector3(49f, -914f, 0);
-        dummyBerry.GetComponent<Image>().color = new Color(1f, 1f, 1f, 0f);
+        //dummyBerry.GetComponent<Image>().color = new Color(1f, 1f, 1f, 0f);
 
     }
 
