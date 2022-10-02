@@ -457,8 +457,7 @@ for (int i = 0; i < 16; i++)
     {
         if (DataController.instance.gameData.truckBerryCnt < Globalvariable.instance.truckCntLevel[3, DataController.instance.gameData.newBerryResearchAble])
         {
-            DataController.instance.gameData.truckBerryCnt += 1;
-            Debug.Log(DataController.instance.gameData.truckBerryCnt);
+            DataController.instance.gameData.truckBerryCnt += 1;        
             DataController.instance.gameData.truckCoin += stem.getInstantBerryObj().GetComponent<Berry>().berryPrice;
         }
     }
