@@ -857,7 +857,7 @@ for (int i = 0; i < 16; i++)
                     TimeReduceBlackPanel_newBerry.SetActive(true); //시원 건드림
                     TimeReducePanel_newBerry.GetComponent<PanelAnimation>().OpenScale(); //시원 건드림
                     TimeReduceText_newBerry.GetComponent<Text>().text //시원 건드림
-                        = "하트 3개로 시간을 3분 단축하시겠습니까??\n";
+                        = "하트로 시간을\n단축하시겠습니까??\n";
                 }
                 else//돈 부족
                 { UseCoin(price_newBerry); }
@@ -870,7 +870,7 @@ for (int i = 0; i < 16; i++)
                     TimeReduceBlackPanel_newBerry.SetActive(true);
                     TimeReducePanel_newBerry.GetComponent<PanelAnimation>().OpenScale();
                     TimeReduceText_newBerry.GetComponent<Text>().text
-                        = "하트 3개로 시간을 3분 단축하시겠습니까?\n";
+                        = "하트로 시간을\n단축하시겠습니까?\n";
                 }
                 break;
 
@@ -885,52 +885,51 @@ for (int i = 0; i < 16; i++)
 
     //TimeReucePanel_newBerry
     //하트 써서 시간을 줄인지 여부 패널
-    public void TimeReduce(bool isTimeReduce)
+    public void TimeReduce(int heartNum)
     {
         //하트 써서 시간을 줄일거면
-        if (isTimeReduce == true)
+
+        if (DataController.instance.gameData.heart >= heartNum)
         {
-            if (DataController.instance.gameData.heart >= 3)
+            //시간을 줄여준다.
+            if ((int)DataController.instance.gameData.newBerryTime_span.TotalSeconds < heartNum * 60)
             {
-                //시간을 줄여준다.
-                if ((int)DataController.instance.gameData.newBerryTime_span.TotalSeconds < 3 * 60)
-                {
-                    timeText_newBerry.GetComponent<Text>().text = TimeForm(Mathf.CeilToInt(0));
-                    DataController.instance.gameData.newBerryTime_end = DateTime.Now;
+                timeText_newBerry.GetComponent<Text>().text = TimeForm(Mathf.CeilToInt(0));
+                DataController.instance.gameData.newBerryTime_end = DateTime.Now;
                     
-                }
-                else
-                {
-                    Debug.Log("간소전=" + (int)DataController.instance.gameData.newBerryTime_span.TotalSeconds);
-                    DataController.instance.gameData.newBerryTime_end 
-                        = DataController.instance.gameData.newBerryTime_end.AddSeconds(-3 * 60);
-                    Debug.Log("간소후=" + (int)DataController.instance.gameData.newBerryTime_span.TotalSeconds);
-                    DataController.instance.gameData.newBerryTime_span 
-                        = DataController.instance.gameData.newBerryTime_end - DataController.instance.gameData.newBerryTime_start;
-                    //Debug.Log(DataController.instance.gameData.newBerryTime_span);
-                }
-
-                timeText_newBerry.GetComponent<Text>().text
-                    = TimeForm(Mathf.CeilToInt(DataController.instance.gameData.newBerryTime_span.Seconds));
-
-                //하트를 소비한다.
-                UseHeart(3);
-
-                //창 끄기
-                TimeReduceBlackPanel_newBerry.SetActive(false);
-                TimeReducePanel_newBerry.GetComponent<PanelAnimation>().CloseScale();
-
-                //StartCoroutine(Timer());
             }
             else
-            { UseHeart(3);  }
+            {
+                Debug.Log("간소전=" + (int)DataController.instance.gameData.newBerryTime_span.TotalSeconds);
+                DataController.instance.gameData.newBerryTime_end 
+                    = DataController.instance.gameData.newBerryTime_end.AddSeconds(-heartNum * 60);
+                Debug.Log("간소후=" + (int)DataController.instance.gameData.newBerryTime_span.TotalSeconds);
+                DataController.instance.gameData.newBerryTime_span 
+                    = DataController.instance.gameData.newBerryTime_end - DataController.instance.gameData.newBerryTime_start;
+                //Debug.Log(DataController.instance.gameData.newBerryTime_span);
+            }
+
+            timeText_newBerry.GetComponent<Text>().text
+                = TimeForm(Mathf.CeilToInt(DataController.instance.gameData.newBerryTime_span.Seconds));
+
+            //하트를 소비한다.
+            UseHeart(heartNum);
+
+                
+
+            //StartCoroutine(Timer());
         }
         else
-        {
-            TimeReduceBlackPanel_newBerry.SetActive(false);
-            TimeReducePanel_newBerry.GetComponent<PanelAnimation>().CloseScale();
-        }
+        { UseHeart(heartNum);  }
 
+
+
+    }
+    public void TimeReduceClose() 
+    {
+        //창 끄기
+        TimeReduceBlackPanel_newBerry.SetActive(false);
+        TimeReducePanel_newBerry.GetComponent<PanelAnimation>().CloseScale();
     }
 
     IEnumerator Timer()
