@@ -70,8 +70,10 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        BGSoundSlider.GetComponent<Slider>().value = 0.5f;
-        SFXSoundSlider.GetComponent<Slider>().value = 0.5f;
+        BGSoundSlider.GetComponent<Slider>().value = DataController.instance.gameData.BGSoundVolume;
+        SFXSoundSlider.GetComponent<Slider>().value = DataController.instance.gameData.SFXSoundVolume;
+        BGSoundVolume();
+        SFXVolume();
 
         AudioManager.instance.BGMPlay(1);
 
@@ -94,6 +96,7 @@ public class AudioManager : MonoBehaviour
         else { mixer.SetFloat("BGSoundVolume", Mathf.Log10(BGSoundSlider.GetComponent<Slider>().value) * 20); }
 
 
+        DataController.instance.gameData.BGSoundVolume = BGSoundSlider.GetComponent<Slider>().value;
 
     }
 
@@ -103,7 +106,7 @@ public class AudioManager : MonoBehaviour
         if (SFXSoundSlider.GetComponent<Slider>().value == 0) { mixer.SetFloat("SFXVolume", -80); }
         else { mixer.SetFloat("SFXVolume", Mathf.Log10(SFXSoundSlider.GetComponent<Slider>().value) * 20); }
 
-
+        DataController.instance.gameData.SFXSoundVolume = SFXSoundSlider.GetComponent<Slider>().value;
     }
 
 

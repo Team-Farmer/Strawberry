@@ -85,7 +85,12 @@ public class GameData
     public bool[] isBerryEM = new bool[192];
     public bool[] isNewsEM = new bool[15];
     //=====================================================================================
+    //오디오
+    public float SFXSoundVolume;
+    public float BGSoundVolume;
 
+
+    //=====================================================================================
     //도전과제를 위한 누적 저장 변수 (누적 : accumulate)
     public int unlockBerryCnt; // 해금 딸기 개수 (누적)
     public int totalHarvBerryCnt; // 수확 딸기 개수 (누적)

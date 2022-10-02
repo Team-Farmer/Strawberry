@@ -194,6 +194,11 @@ public class DataController : MonoBehaviour
 
         gameData.newBerryBangImgBool = false;
 
+
+        //오디오
+        gameData.BGSoundVolume = 0.5f;
+        gameData.SFXSoundVolume = 0.5f;
+
         //가게관련변수
         gameData.isStoreOpend = false;
         for (int i = 0; i < 4; i++) { gameData.highScore[i] = 0; }
