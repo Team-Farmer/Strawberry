@@ -8,6 +8,7 @@ public class PTJWorking : MonoBehaviour
 {
     //========알바생 정보==========
     public Sprite[] FacePicture;
+    public Sprite[] WorkingFacePicture;
     public GameObject face;
     public GameObject employCount;
 

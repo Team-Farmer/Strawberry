@@ -136,6 +136,13 @@ MonoBehaviour:
   - {fileID: 1306309026794346754, guid: 93753ccc8cbf2554ba3b829ed94b9ed1, type: 3}
   - {fileID: 2312389103385020965, guid: 93753ccc8cbf2554ba3b829ed94b9ed1, type: 3}
   - {fileID: -1513482845346613526, guid: 93753ccc8cbf2554ba3b829ed94b9ed1, type: 3}
+  WorkingFacePicture:
+  - {fileID: -8059329173949588152, guid: 68a49c4d3c1ffc74bae9600e7ab046b9, type: 3}
+  - {fileID: -6616273400849634969, guid: 68a49c4d3c1ffc74bae9600e7ab046b9, type: 3}
+  - {fileID: -3641906314411023565, guid: 68a49c4d3c1ffc74bae9600e7ab046b9, type: 3}
+  - {fileID: 6289574342279545935, guid: 68a49c4d3c1ffc74bae9600e7ab046b9, type: 3}
+  - {fileID: -2717871936399279665, guid: 68a49c4d3c1ffc74bae9600e7ab046b9, type: 3}
+  - {fileID: 2325462982609036812, guid: 68a49c4d3c1ffc74bae9600e7ab046b9, type: 3}
   face: {fileID: 7809778659071548713}
   employCount: {fileID: 7809778657780772914}
 --- !u!1 &7809778659071548713
