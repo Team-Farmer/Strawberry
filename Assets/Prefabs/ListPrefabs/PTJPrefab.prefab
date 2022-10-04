@@ -35,7 +35,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -271.4, y: 0.000021935}
-  m_SizeDelta: {x: 160, y: 160}
+  m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8588996463547964912
 CanvasRenderer:
@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 118610161138818046, guid: 9fe2522d09c446346b852650ce21a7f9, type: 3}
+  m_Sprite: {fileID: 118610161138818046, guid: 165b2af07615f914fafa2bd15d62f172, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -295,33 +295,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Info:
   - Name: "\uB808\uC774\uCCBC"
-    Picture: {fileID: 118610161138818046, guid: 9fe2522d09c446346b852650ce21a7f9, type: 3}
-    FacePicture: {fileID: -7688503138522254423, guid: 7b5781554daf5bd4f9ebd7e65b6cce4a, type: 3}
+    Picture: {fileID: 118610161138818046, guid: 165b2af07615f914fafa2bd15d62f172, type: 3}
+    FacePicture: {fileID: -7688503138522254423, guid: 93753ccc8cbf2554ba3b829ed94b9ed1, type: 3}
     Explanation: "\uB538\uAE30 \uC528\uC557\uB4E4\uC744 \uC2EC\uC5B4\uC904\uAC8C"
     Price: 20
   - Name: "\uD1B0\uC2A8"
-    Picture: {fileID: 4898508702420887539, guid: 9fe2522d09c446346b852650ce21a7f9, type: 3}
-    FacePicture: {fileID: -8995298805207334545, guid: 7b5781554daf5bd4f9ebd7e65b6cce4a, type: 3}
+    Picture: {fileID: 4898508702420887539, guid: 165b2af07615f914fafa2bd15d62f172, type: 3}
+    FacePicture: {fileID: -8995298805207334545, guid: 93753ccc8cbf2554ba3b829ed94b9ed1, type: 3}
     Explanation: "\uB538\uAE30\uB4E4\uC744 \uC218\uD655\uD574\uC904\uAC8C"
     Price: 20
   - Name: "\uD584\uC2A4\uC6CC\uC2A4"
-    Picture: {fileID: -3022224164914145473, guid: 9fe2522d09c446346b852650ce21a7f9, type: 3}
-    FacePicture: {fileID: -7850888183806381051, guid: 7b5781554daf5bd4f9ebd7e65b6cce4a, type: 3}
+    Picture: {fileID: -3022224164914145473, guid: 165b2af07615f914fafa2bd15d62f172, type: 3}
+    FacePicture: {fileID: -7850888183806381051, guid: 93753ccc8cbf2554ba3b829ed94b9ed1, type: 3}
     Explanation: "\uBC8C\uB808\uB294 \uB098\uC5D0\uAC8C \uB9E1\uACA8"
     Price: 30
   - Name: "\uD478\uBCF4"
-    Picture: {fileID: -1493095850736361556, guid: 9fe2522d09c446346b852650ce21a7f9, type: 3}
-    FacePicture: {fileID: 1306309026794346754, guid: 7b5781554daf5bd4f9ebd7e65b6cce4a, type: 3}
+    Picture: {fileID: -1493095850736361556, guid: 165b2af07615f914fafa2bd15d62f172, type: 3}
+    FacePicture: {fileID: 1306309026794346754, guid: 93753ccc8cbf2554ba3b829ed94b9ed1, type: 3}
     Explanation: "\uC7A1\uCD08\uB4E4\uC744 \uBF51\uC544\uC904\uAC8C"
     Price: 30
   - Name: "\uB8E8\uBE44\uC544"
-    Picture: {fileID: 1491852098334267804, guid: 9fe2522d09c446346b852650ce21a7f9, type: 3}
-    FacePicture: {fileID: 2312389103385020965, guid: 7b5781554daf5bd4f9ebd7e65b6cce4a, type: 3}
+    Picture: {fileID: 1491852098334267804, guid: 165b2af07615f914fafa2bd15d62f172, type: 3}
+    FacePicture: {fileID: 2312389103385020965, guid: 93753ccc8cbf2554ba3b829ed94b9ed1, type: 3}
     Explanation: "\uAC15\uB825\uD55C \uBE44\uB97C \uC6D0\uD558\uB2C8?"
     Price: 300
   - Name: "\uD53C\uADF8\uB9C8"
-    Picture: {fileID: 296038017401492265, guid: 9fe2522d09c446346b852650ce21a7f9, type: 3}
-    FacePicture: {fileID: -1513482845346613526, guid: 7b5781554daf5bd4f9ebd7e65b6cce4a, type: 3}
+    Picture: {fileID: 296038017401492265, guid: 165b2af07615f914fafa2bd15d62f172, type: 3}
+    FacePicture: {fileID: -1513482845346613526, guid: 93753ccc8cbf2554ba3b829ed94b9ed1, type: 3}
     Explanation: "\uB538\uAE30\uB97C \uBE44\uC2F8\uAC8C \uD314\uC544\uC904\uAC8C
       \uC544\uB9C8\uB3C4! "
     Price: 400

@@ -1,7 +1,25 @@
 fileFormatVersion: 2
 guid: 165b2af07615f914fafa2bd15d62f172
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 118610161138818046
+    second: alba_0
+  - first:
+      213: 4898508702420887539
+    second: alba_1
+  - first:
+      213: -3022224164914145473
+    second: alba_2
+  - first:
+      213: -1493095850736361556
+    second: alba_3
+  - first:
+      213: 296038017401492265
+    second: alba_4
+  - first:
+      213: 1491852098334267804
+    second: alba_5
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -113,7 +131,133 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: alba_0
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 231
+        width: 190
+        height: 230
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efb5e69205365a100800000000000000
+      internalID: 118610161138818046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alba_1
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 231
+        width: 190
+        height: 230
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f7e4f026bffaf340800000000000000
+      internalID: 4898508702420887539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alba_2
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 231
+        width: 190
+        height: 230
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f37d0ba6227ee06d0800000000000000
+      internalID: -3022224164914145473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alba_3
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 0
+        width: 190
+        height: 230
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cafdf390c35774be0800000000000000
+      internalID: -1493095850736361556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alba_4
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 0
+        width: 190
+        height: 230
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9231a33220dbb1400800000000000000
+      internalID: 296038017401492265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: alba_5
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 0
+        width: 190
+        height: 230
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9992aa449f14b410800000000000000
+      internalID: 1491852098334267804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

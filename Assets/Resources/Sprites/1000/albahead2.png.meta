@@ -1,7 +1,25 @@
 fileFormatVersion: 2
 guid: 68a49c4d3c1ffc74bae9600e7ab046b9
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -8059329173949588152
+    second: albahead2_0
+  - first:
+      213: -6616273400849634969
+    second: albahead2_1
+  - first:
+      213: -3641906314411023565
+    second: albahead2_2
+  - first:
+      213: 6289574342279545935
+    second: albahead2_3
+  - first:
+      213: 2325462982609036812
+    second: albahead2_4
+  - first:
+      213: -2717871936399279665
+    second: albahead2_5
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -113,7 +131,133 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: albahead2_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 200
+        width: 190
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84ddac201d2872090800000000000000
+      internalID: -8059329173949588152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: albahead2_1
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 200
+        width: 190
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 769ed7d75664e24a0800000000000000
+      internalID: -6616273400849634969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: albahead2_2
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 200
+        width: 190
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3336740b089557dc0800000000000000
+      internalID: -3641906314411023565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: albahead2_3
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 0
+        width: 190
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f44cbfb6a8e094750800000000000000
+      internalID: 6289574342279545935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: albahead2_4
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 0
+        width: 190
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c066bb80344b54020800000000000000
+      internalID: 2325462982609036812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: albahead2_5
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 0
+        width: 190
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc9faedafdd284ad0800000000000000
+      internalID: -2717871936399279665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
