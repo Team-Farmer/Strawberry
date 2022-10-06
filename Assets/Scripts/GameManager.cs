@@ -1291,7 +1291,21 @@ for (int i = 0; i < 16; i++)
         if (DataController.instance.gameData.rewardAbsenceTime.TotalMinutes >= 60&&Intro.isEnd &&DataController.instance.gameData.isStoreOpend)
         {
             //부재중 이벤트
-            AbsenceTime();
+            int num = (int)DataController.instance.gameData.rewardAbsenceTime.TotalMinutes / 60;
+
+            if (DataController.instance.gameData.dotori < 5)
+            {
+                DataController.instance.gameData.dotori += num;
+
+                if (DataController.instance.gameData.dotori > 5)
+                    DataController.instance.gameData.dotori=5;
+            }
+            invokeDotori();
+
+            if (!MiniGameManager.isOpen)
+            {
+                AbsenceTime();
+            }
         }
 
         attendanceCheck.GetComponent<AttendanceCheck>().Attendance();
@@ -1309,9 +1323,19 @@ for (int i = 0; i < 16; i++)
 
         if (DataController.instance.gameData.rewardAbsenceTime.TotalMinutes >= 60&&Intro.isEnd&&DataController.instance.gameData.isStoreOpend)
         {
+            int num = (int)DataController.instance.gameData.rewardAbsenceTime.TotalMinutes / 60;
+
+            if (DataController.instance.gameData.dotori < 5)
+            {
+                DataController.instance.gameData.dotori += num;
+
+                if (DataController.instance.gameData.dotori > 5)
+                    DataController.instance.gameData.dotori = 5;
+            }
+            invokeDotori();
+
             //부재중 이벤트
-            if(!MiniGameManager.isOpen)
-                AbsenceTime();
+            AbsenceTime();
         }
 
         attendanceCheck.GetComponent<AttendanceCheck>().Attendance();

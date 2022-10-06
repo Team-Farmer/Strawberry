@@ -84,6 +84,11 @@ public class MiniGameManager : MonoBehaviour
         isOpen = false;
         GameManager.instance.isMiniGameMode = false;
         AudioManager.instance.ResumePlayAudio("RainSFXSound");
+        if (DataController.instance.gameData.rewardAbsenceTime.TotalMinutes >= 60)
+        {
+            //부재중 이벤트
+            GameManager.instance.AbsenceTime();
+        }
     }
 
     public void SetInfo(int btnIdx)
