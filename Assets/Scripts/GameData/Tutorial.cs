@@ -63,5 +63,11 @@ public class Tutorial : MonoBehaviour
         DataController.instance.gameData.isTutorialDone = true;
         AudioManager.instance.ResumePlayAudio("RainSFXSound");
         GameManager.instance.EnableObjColliderAll();
+
+        //½Ã¿ø Æ©Åä¸®¾ó ³¡³ª°í ÀçÈ­È¹µæ
+        GameManager.instance.StartTutorialRewardCo();
     }
+
+
+
 }

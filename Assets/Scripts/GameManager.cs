@@ -466,6 +466,18 @@ for (int i = 0; i < 16; i++)
 
     #region 재화
 
+    public void StartTutorialRewardCo()
+    {
+        StartCoroutine(TutorialReward());
+    }
+
+    public IEnumerator TutorialReward()
+    {
+        yield return new WaitForSeconds(0.3f);
+        GameManager.instance.GetCoin(200);
+        GameManager.instance.GetHeart(20);
+    }
+
     IEnumerator CountAnimation(int cost, String text, int num) //재화 증가 애니메이션
 
     {
