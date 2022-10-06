@@ -13,7 +13,7 @@ public class Dotori : MonoBehaviour
     Sequence mySequence;
     void Start()
     {
-        DataController.instance.gameData.dotori--;
+        --DataController.instance.gameData.dotori;
         GameManager.instance.invokeDotori();
         mySequence = DOTween.Sequence()
         .SetAutoKill(false) //Ãß°¡
