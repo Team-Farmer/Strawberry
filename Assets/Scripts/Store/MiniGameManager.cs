@@ -9,6 +9,9 @@ public class MiniGameManager : MonoBehaviour
     public Sprite[] StoreSprite;
     public GameObject popup;
     public GameObject inside;
+    public GameObject dotori;
+    public PanelAnimation storeConfirm;
+    public PanelAnimation blackPanel;
     public Button UnlockBtn;
     public Button startButton;
     public Text infoText;
@@ -27,6 +30,7 @@ public class MiniGameManager : MonoBehaviour
         if (DataController.instance.gameData.isStoreOpend == true)
         {
             inside.SetActive(true);
+            dotori.SetActive(true);
             isOpen = true;
             AudioManager.instance.BGMPlay(2);
 
@@ -37,6 +41,9 @@ public class MiniGameManager : MonoBehaviour
         else
         {
             Debug.Log(DataController.instance.gameData.isStoreOpend);
+            blackPanel.gameObject.SetActive(true);
+            blackPanel.Fadein();
+            storeConfirm.OpenScale();
             //해금조건 - 연구레벨 15이상, 700A 소모 가능상태
             /*
             if (DataController.instance.gameData.coin >= 700 && ResearchLevelCheck(15))
@@ -107,8 +114,9 @@ public class MiniGameManager : MonoBehaviour
         string info_str = infoText.text.Substring(0, 5);
 
         // 도토리 재화 업데이트
-        DataController.instance.gameData.dotori--;
-        GameManager.instance.invokeDotori();
+        //DataController.instance.gameData.dotori--;
+        //GameManager.instance.invokeDotori();
+        dotori.SetActive(false);
 
         if (info_str == "딸기 창고")
         {
