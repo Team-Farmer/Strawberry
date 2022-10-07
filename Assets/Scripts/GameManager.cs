@@ -113,6 +113,7 @@ public class GameManager : MonoBehaviour
     public string url = "";
     private int revenue;
     public Button add_receive_btn; //부재중수익 2배받기 버튼
+    public GameObject absenceBlackPanel;
 
     [Header("[ Panel List ]")]
     public Text panelCoinText;
@@ -1307,6 +1308,10 @@ for (int i = 0; i < 16; i++)
                 AbsenceTime();
             }
         }
+        else if (DataController.instance.gameData.rewardAbsenceTime.TotalMinutes < 60)
+        {
+            DataController.instance.gameData.rewardAbsenceTime = TimeSpan.FromSeconds(0);
+        }
 
         attendanceCheck.GetComponent<AttendanceCheck>().Attendance();
 
@@ -1336,6 +1341,10 @@ for (int i = 0; i < 16; i++)
 
             //부재중 이벤트
             AbsenceTime();
+        }
+        else if (DataController.instance.gameData.rewardAbsenceTime.TotalMinutes < 60)
+        {
+            DataController.instance.gameData.rewardAbsenceTime = TimeSpan.FromSeconds(0);
         }
 
         attendanceCheck.GetComponent<AttendanceCheck>().Attendance();
@@ -1455,7 +1464,8 @@ for (int i = 0; i < 16; i++)
             revenue /= 1000000;
             AbsenceMoneyText.text = revenue + "C";
         }
-        AbsenceBlackPanel.SetActive(true);
+        absenceBlackPanel.SetActive(true);
+        absenceBlackPanel.GetComponent<PanelAnimation>().Fadein();
         AbsencePanel.GetComponent<PanelAnimation>().OpenScale();
         DataController.instance.gameData.rewardAbsenceTime = TimeSpan.FromSeconds(0);
 
