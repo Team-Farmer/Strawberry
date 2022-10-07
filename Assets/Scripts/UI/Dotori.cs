@@ -9,32 +9,34 @@ public class Dotori : MonoBehaviour
     [SerializeField] int duration;
     [SerializeField] MiniGameManager minigameManager;
     [SerializeField] GameObject info;
+    [SerializeField] GameObject text;
     
     Sequence mySequence;
     void Start()
     {
-        --DataController.instance.gameData.dotori;
-        GameManager.instance.invokeDotori();
+
         mySequence = DOTween.Sequence()
         .SetAutoKill(false) //Ãß°¡
         .OnStart(() =>
         {
             transform.localScale = Vector3.one;
         })
-        .Append(transform.DOMove(Vector3.zero, 0.7f).SetEase(Ease.InBack))
-        .InsertCallback(0.6f, () => AudioManager.instance.Cute1AudioPlay())
-        .Append(transform.DOScale(7, 0.7f))
-        .Join(transform.GetComponent<Image>().DOFade(0, 1f))
+        .Append(transform.DOMove(transform.position+new Vector3(0,0.38f,0), 0.5f))
+        .Join(transform.GetComponent<Image>().DOFade(0, 0.9f))
+        .Join(text.GetComponent<Text>().DOFade(0, 0.9f))
         .OnComplete(() =>
          {
+             GameManager.instance.invokeDotori();
+             gameObject.SetActive(false);
              minigameManager.OnclickStartBtn();
              info.SetActive(false);
-             gameObject.SetActive(false);
          });
     }
 
     void OnEnable()
     {
+        DataController.instance.gameData.dotori -= 1;
+        GameManager.instance.invokeDotori();
         mySequence.Restart();
     }
 }
