@@ -45,7 +45,7 @@ public class Tutorial : MonoBehaviour
         right_btn.gameObject.SetActive(tutoIndex != 9);
         end_btn.gameObject.SetActive(tutoIndex == 9);
 
-        if(tutoIndex>=4 && tutoIndex <= 7)
+        if(tutoIndex>=4 && tutoIndex < 7)
         {
             txBox_transform.anchoredPosition = new Vector2(txBox_transform.localPosition.x, 640f);
         }
