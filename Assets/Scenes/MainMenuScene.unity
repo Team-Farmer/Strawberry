@@ -21072,6 +21072,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 938b4015322d2ab4b8675bb1db459ae9, type: 3}
   - {fileID: 21300000, guid: 62f128a2927a0d74aa7a0dc9b3608fb5, type: 3}
   - {fileID: 21300000, guid: e0845f5cf23583342bb0537a538f9919, type: 3}
+  bannerAd: {fileID: 695055844}
 --- !u!114 &636419816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53572,6 +53573,7 @@ MonoBehaviour:
   - {fileID: -2944626022730672794, guid: 63a02578bf5d11841afc30594708759b, type: 3}
   rect: {fileID: 811843686}
   tutorialObject: {fileID: 636419813}
+  bannerAd: {fileID: 695055844}
 --- !u!1 &1547343653
 GameObject:
   m_ObjectHideFlags: 0

@@ -32,10 +32,11 @@ public class BannerAd : MonoBehaviour
             yield return wait;
         }
         Advertisement.Banner.SetPosition(bannerPosition);
+        Advertisement.Banner.Hide(false); //일단 숨기기
         LoadBanner();
     }
 
-    public void LoadBanner()
+    void LoadBanner()
     {
         //Set up options to notify the SDK of load events
         BannerLoadOptions options = new BannerLoadOptions
@@ -51,7 +52,7 @@ public class BannerAd : MonoBehaviour
     void OnBannerLoaded()
     {
         Debug.Log("배너광고 로드");
-        Advertisement.Banner.Show(adUnitId);
+        //Advertisement.Banner.Show(adUnitId);
     }
 
     void OnBannerError(string message)
@@ -59,11 +60,9 @@ public class BannerAd : MonoBehaviour
         Debug.Log($"배너광고 로드 실패:{message}");
     }
 
-    /*void OnDestroy()
+    public void ShowBanner()
     {
-        if (Advertisement.Banner.isLoaded)
-        {
-            Advertisement.Banner.Hide(true);
-        }    
-    }*/
+        //Advertisement.Banner.SetPosition(bannerPosition);
+        Advertisement.Banner.Show(adUnitId);
+    }
 }

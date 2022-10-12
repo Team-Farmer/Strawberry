@@ -11,8 +11,9 @@ public class Intro : MonoBehaviour
     public Sprite[] sprites = new Sprite[2];
     public RectTransform rect;
 
-    //튜토리얼
+    //튜토리얼 및 배너광고
     public GameObject tutorialObject;
+    public BannerAd bannerAd;
 
     static public bool isEnd=false;
 
@@ -66,6 +67,7 @@ public class Intro : MonoBehaviour
                     {
                         AudioManager.instance.ResumePlayAudio("RainSFXSound");
                         GameManager.instance.EnableObjColliderAll();
+                        bannerAd.ShowBanner();
                     }
                 });
 

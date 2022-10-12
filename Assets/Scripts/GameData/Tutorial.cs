@@ -15,6 +15,8 @@ public class Tutorial : MonoBehaviour
     [SerializeField] Image tuto_img;
     [SerializeField] Sprite[] tuto_sprite;
 
+    [SerializeField] BannerAd bannerAd;
+
     void Start()
     {
         left_btn.onClick.AddListener(OnClickLeftBtn);
@@ -63,6 +65,7 @@ public class Tutorial : MonoBehaviour
         DataController.instance.gameData.isTutorialDone = true;
         AudioManager.instance.ResumePlayAudio("RainSFXSound");
         GameManager.instance.EnableObjColliderAll();
+        bannerAd.ShowBanner();
 
         //½Ã¿ø Æ©Åä¸®¾ó ³¡³ª°í ÀçÈ­È¹µæ
         GameManager.instance.StartTutorialRewardCo();

@@ -50,7 +50,6 @@ public class RewardAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListe
         Advertisement.Show(adUnitId, this);
     }
 
-
     public void OnUnityAdsFailedToLoad(string placementId, UnityAdsLoadError error, string message)
     {
         Debug.Log($"광고 로드 실패: {error}-{message}");
