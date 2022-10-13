@@ -19,6 +19,13 @@ public class AudioManager : MonoBehaviour
     public AudioMixer mixer;//오디오 믹서
     public AudioSource bgSound;//오디오 매니저
 
+    [Header("Pooling")]
+    [SerializeField]
+    private GameObject poolingObjectPrefab; //미리 생성될 프리팹
+    Queue<Sound> poolingObjectQueue = new Queue<Sound>(); //큐 생성
+
+
+
     //public bool isGameMain;//true=메인게임 false=미니게임
 
     //배경음 오디오
@@ -62,9 +69,11 @@ public class AudioManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(instance);
-            //SceneManager.sceneLoaded += OnSceneLoaded;//씬 시작될때마다 실행
+
         }
         else { Destroy(gameObject); }
+
+        Initialize(10);//10개 미리 만들기
     }
 
 
@@ -87,7 +96,7 @@ public class AudioManager : MonoBehaviour
     //========================================================================================================
     //========================================================================================================
 
-
+    //----------오디오 음량 조절----------
     public void BGSoundVolume()
     {
 
@@ -110,9 +119,10 @@ public class AudioManager : MonoBehaviour
     }
 
 
+    //========================================================================================================
+    //========================================================================================================
 
-    //효과음
-    //이거 미완성
+    //효과음 플레이 함수
     public void SFXPlay(string sfxName, AudioClip clip)
     {
         GameObject go = new GameObject(sfxName + "Sound");//해당이름을 가진 오브젝트가 소리 날때마다 생성된다.
@@ -229,6 +239,7 @@ public class AudioManager : MonoBehaviour
         SFXPlay("", clip);
     }
 
+    //배경음악 플레이 함수
     public void BGMPlay(int index)
     {
         AudioClip clip;
@@ -244,4 +255,51 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+
+    //========================================================================================================
+    //========================================================================================================
+    //오브젝트 풀링
+
+    private void Initialize(int initCount)
+    {
+        for (int i = 0; i < initCount; i++)
+        {
+            poolingObjectQueue.Enqueue(CreateNewObject()); //10번 Enqueue
+        }
+    }
+
+    
+    private Sound CreateNewObject()
+    {
+        var newObj = Instantiate(poolingObjectPrefab).GetComponent<Sound>();
+        newObj.gameObject.SetActive(false);
+        newObj.transform.SetParent(transform);
+        return newObj; //그리고 Queue에 넣게 반환
+    }
+
+    public static Sound GetObject() // 나 미리 만든거 가져다가 쓴다!
+    {
+        if (instance.poolingObjectQueue.Count > 0) // 미리 생성된게 안부족하면
+        {
+            var obj = instance.poolingObjectQueue.Dequeue(); // Dequeue
+            obj.transform.SetParent(null);
+            obj.gameObject.SetActive(true); // 미리 생성되어있는거 ON
+            return obj;
+        }
+        else // 부족하면
+        {
+            var newObj = instance.CreateNewObject(); // 하나 새로 만들어서
+            newObj.gameObject.SetActive(true); // 밑에는 위와 같음
+            newObj.transform.SetParent(null);
+            return newObj;
+        }
+    }
+
+    public static void ReturnObject(Sound obj) //썼던 거 다시 반환
+    {
+        obj.gameObject.SetActive(false); //끄고
+        obj.transform.SetParent(instance.transform); // 다시 원래 부모로 돌아와서 Object Pool 자식으로 만듬
+        instance.poolingObjectQueue.Enqueue(obj); // 그리고 다시 Enqueue 삽입
+    }
+    //부모 변경하는거 필요없을듯 사운드는 
 }
