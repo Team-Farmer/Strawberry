@@ -18,6 +18,7 @@ public class PTJWorking : MonoBehaviour
     int prefabnum;
     //==========고용 횟수==========
     private int PTJ_NUM_NOW;
+    private bool PTJ_IS_WORKING;
 
     private bool isOnetime;//첫번째에만 scrollView맨 앞으로 이동하게 한다.
 
@@ -42,6 +43,7 @@ public class PTJWorking : MonoBehaviour
     {
         //자신의 고용횟수값 변경 파악
         PTJNumNow = DataController.instance.gameData.PTJNum[prefabnum];
+        PTJIsWorking = DataController.instance.gameData.PTJIsWorking[prefabnum];
     }
 
     int PTJNumNow
@@ -76,5 +78,31 @@ public class PTJWorking : MonoBehaviour
         }
         get { return PTJ_NUM_NOW; }
     }
+
+    bool PTJIsWorking
+    {
+        set
+        {
+            if (PTJ_IS_WORKING == value) return;
+            PTJ_IS_WORKING = value;
+
+            if (PTJ_IS_WORKING == true) 
+            {
+                StartCoroutine("workingFace");
+                
+            }
+        }
+        get { return PTJ_IS_WORKING; }
+    
+    }
+
+    private IEnumerator workingFace() 
+    {
+        face.GetComponent<Image>().sprite = WorkingFacePicture[prefabnum];
+        yield return new WaitForSeconds(0.5f);
+        face.GetComponent<Image>().sprite = FacePicture[prefabnum];
+        DataController.instance.gameData.PTJIsWorking[prefabnum] = false;
+    }
+
 
 }

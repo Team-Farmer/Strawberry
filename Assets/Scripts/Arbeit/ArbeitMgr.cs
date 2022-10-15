@@ -35,6 +35,7 @@ public class ArbeitMgr : MonoBehaviour
                 GameManager.instance.PlantStrawBerry(GameManager.instance.stemList[i], GameManager.instance.farmObjList[i]); // ½É´Â´Ù                            
                 DataController.instance.gameData.berryFieldData[i].isPlant = true; // Ã¼Å© º¯¼ö °»½Å
                 DataController.instance.gameData.PTJNum[0]--;
+                DataController.instance.gameData.PTJIsWorking[0] = true;//ÇãÀ±Áö
                 //Debug.Log("·¹ÀÌÃ¿ ³²Àº È½¼ö: " + DataController.instance.gameData.PTJNum[0]);
                 break;
             }
@@ -61,7 +62,7 @@ public class ArbeitMgr : MonoBehaviour
     IEnumerator HarvestbyThomson(int idx)
     {
         yield return new WaitForSeconds(0.25f);
-
+        DataController.instance.gameData.PTJIsWorking[1] = true;//ÇãÀ±Áö
         GameManager.instance.Harvest(GameManager.instance.stemList[idx]); // ¼öÈ®ÇÑ´Ù    
     }  
     void Hamsworth()//ÇÜ½ºÅÍ 2
@@ -82,6 +83,7 @@ public class ArbeitMgr : MonoBehaviour
     IEnumerator DeleteBugByHamsworth(Bug bug)
     {
         yield return new WaitForSeconds(0.75f);
+        DataController.instance.gameData.PTJIsWorking[2] = true;//ÇãÀ±Áö
         bug.DieBug();       
     }
 
@@ -103,7 +105,7 @@ public class ArbeitMgr : MonoBehaviour
     IEnumerator DeleteWeedByFubo(GameObject obj)
     {
         yield return new WaitForSeconds(0.75f);
-
+        DataController.instance.gameData.PTJIsWorking[3] = true;//ÇãÀ±Áö
         Farm farm = obj.GetComponent<Farm>();
         farm.weed.DeleteWeed();
         //obj.GetComponent<BoxCollider2D>().enabled = false;
@@ -114,6 +116,7 @@ public class ArbeitMgr : MonoBehaviour
         {
             float coEffi = Random.Range(0.7f, 1.8f);
             DataController.instance.gameData.PTJNum[5]--;
+            DataController.instance.gameData.PTJIsWorking[5] = true;//ÇãÀ±Áö
 
             Debug.Log(coEffi);
             return coEffi;
@@ -124,7 +127,9 @@ public class ArbeitMgr : MonoBehaviour
     {
         if (DataController.instance.gameData.PTJNum[4] > 0)
         {
-            DataController.instance.gameData.PTJNum[4]--;           
+            DataController.instance.gameData.PTJNum[4]--;
+            DataController.instance.gameData.PTJIsWorking[4] = true;//ÇãÀ±Áö
+
             return 3;
         }
         else

@@ -79,6 +79,7 @@ public class GameData
     public int[] PTJNum = new int[6];
     public int PTJCount;
     public int[] PTJSelectNum =new int[2];//지금 선택된 (prefabNum , 슬라이더 넘버)
+    public bool[] PTJIsWorking = new bool[6];
 
     //느낌표 ! 이거 없앨ㄴ수있음?
     public bool[] isBerryEM = new bool[192];

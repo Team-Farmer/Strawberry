@@ -169,7 +169,8 @@ public class DataController : MonoBehaviour
         for (int i = 0; i < 15; i++) {   gameData.newsState[i] = 0;  }
 
         //PTJ
-        for (int i = 0; i < 6; i++) { gameData.PTJNum[i] = 0; }
+        for (int i = 0; i < 6; i++) 
+        { gameData.PTJNum[i] = 0; gameData.PTJIsWorking[i] = false; }
         gameData.PTJSelectNum[0] = 0;
         gameData.PTJSelectNum[1] = 0;
         gameData.PTJCount = 0;
