@@ -204,50 +204,50 @@ public class AudioManager : MonoBehaviour
     //얘네 줄일수있긴한데 그러면 오디오 수작ㅇ업으로 넣어야함
 
     public void HarvestAudioPlay()  //수확 효과음
-    { SFXPlay("HarvestSFX", HarvestClip); }
+    { SFXPlayPoolingVersion("HarvestSFX", HarvestClip); }
     public void SowAudioPlay()      //씨뿌리기 효과음
-    { SFXPlay("SowSFX", SowClip); }
+    { SFXPlayPoolingVersion("SowSFX", SowClip); }
     public void Cute1AudioPlay()// 클릭 효과음
-    { SFXPlay("Cute1SFX", ClickClip); }
+    { SFXPlayPoolingVersion("Cute1SFX", ClickClip); }
     public void Cute2AudioPlay()// 패널 등장 (확인)
-    { SFXPlay("Cute2SFX", OKClip); }
+    { SFXPlayPoolingVersion("Cute2SFX", OKClip); }
     public void SFXAudioPlay()  // X버튼 blop
-    { SFXPlay("ButtonSFX", BackClip); }
+    { SFXPlayPoolingVersion("ButtonSFX", BackClip); }
     public void Cute4AudioPlay()// 에러 패널
-    { SFXPlay("Cute4SFX", ErrorClip); }
+    { SFXPlayPoolingVersion("Cute4SFX", ErrorClip); }
     public void TadaAudioPlay() // 딸기 획득
-    { SFXPlay("TadaSFX", TadaClip); }
+    { SFXPlayPoolingVersion("TadaSFX", TadaClip); }
     //public void RainAudioPlay() // 소나기
     //{ SFXPlay("RainSFX", RainClip); }
     public void RightAudioPlay()// 미니게임 정답
-    { SFXPlay("RightSFX", RightClip); }
+    { SFXPlayPoolingVersion("RightSFX", RightClip); }
     public void WrongAudioPlay()// 미니게임 오답 
-    { SFXPlay("WrongSFX", WrongClip); }
+    { SFXPlayPoolingVersion("WrongSFX", WrongClip); }
     public void DoorOpenAudioPlay()     // 가게 열기
-    { SFXPlay("DoorOpenSFX", DoorOpenClip); }
+    { SFXPlayPoolingVersion("DoorOpenSFX", DoorOpenClip); }
     public void DoorCloseAudioPlay()    // 가게 닫기 
-    { SFXPlay("DoorCloseSFX", DoorCloseClip); }
+    { SFXPlayPoolingVersion("DoorCloseSFX", DoorCloseClip); }
     public void CoinAudioPlay()         // 코인 획득
-    { SFXPlay("CoinSFX", CoinClip); }
+    { SFXPlayPoolingVersion("CoinSFX", CoinClip); }
     public void RewardAudioPlay()       // 보상 획득
-    { SFXPlay("RewardSFX", RewardClip); }
+    { SFXPlayPoolingVersion("RewardSFX", RewardClip); }
     public void TimerCloseAudioPlay()   // 미니게임 타이머
-    { SFXPlay("TimerSFX", TimerClip); }
+    { SFXPlayPoolingVersion("TimerSFX", TimerClip); }
     public void TimerVeryCloseAudioPlay()   // 미니게임 더 빠른 타이머
-    { SFXPlay("FastTimerSFX", FastTimerClip); }
+    { SFXPlayPoolingVersion("FastTimerSFX", FastTimerClip); }
     public void RemoveAudioPlay()       // 잡초 제거
-    { SFXPlay("RemoveWeedSFX", RemoveWeedClip); }
+    { SFXPlayPoolingVersion("RemoveWeedSFX", RemoveWeedClip); }
     public void Remove2AudioPlay()      // 벌레 제거
-    { SFXPlay("RemoveBugSFX", RemoveBugClip); }
+    { SFXPlayPoolingVersion("RemoveBugSFX", RemoveBugClip); }
     public void CountdownAudioPlay()      // 미니게임 카운트 다운
-    { SFXPlay("CountdownSFX", CountdownClip); }
+    { SFXPlayPoolingVersion("CountdownSFX", CountdownClip); }
     public void EndAudioPlay()      // 미니게임 종료
-    { SFXPlay("EndSFX", EndClip); }
+    { SFXPlayPoolingVersion("EndSFX", EndClip); }
     public void ScrollbarAudioPlay()      // 스크롤바
-    { SFXPlay("ScrollbarSFX", ScrollbarClip); }
+    { SFXPlayPoolingVersion("ScrollbarSFX", ScrollbarClip); }
 
     public void Cute5AudioPlay()      // 스크롤바
-    { SFXPlay("Cute5SFX", Cute5Clip); }
+    { SFXPlayPoolingVersion("Cute5SFX", Cute5Clip); }
 
 
     //직접 오디오 넣는 함수
