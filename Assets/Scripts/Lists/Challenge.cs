@@ -215,14 +215,14 @@ public class Challenge : MonoBehaviour
                 Gauge.GetComponent<Image>().fillAmount = 1;
                 //도전과제 버튼 이미지 == Done
                 Button.GetComponent<Image>().sprite = DoneButton;
-                DataController.instance.gameData.challengeTF[prefabnum] = true;
+
 
             }
             else
             {
                 //도전과제 게이지 == ValueNow 만큼 증가
                 Gauge.GetComponent<Image>().fillAmount = (float)(ValueNow) / Info[prefabnum].clearCriterion[LevelNow];
-                DataController.instance.gameData.challengeTF[prefabnum] = false;
+                
             }
         }
     }
@@ -276,14 +276,14 @@ public class Challenge : MonoBehaviour
                 }
                 */
                 Button.GetComponent<Image>().sprite = IngButton; //도전과제 버튼 이미지 변경
-                DataController.instance.gameData.challengeTF[prefabnum] = false;
+
                 DataController.instance.gameData.challengeLevel[prefabnum]++; //LevelNow증가 == 레벨증가
                 
             }
             else
             {
                 FinishChallenge();
-                DataController.instance.gameData.challengeTF[prefabnum] = false;
+
             }
         }
     }

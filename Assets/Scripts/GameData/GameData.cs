@@ -61,30 +61,32 @@ public class GameData
     //0이면 classic만, 1이면 unique까지, 2이면 전부 개발가능
     public int newBerryResearchAble;
 
+    //=====================================================================================
     //연구 레벨
     public int[] researchLevel=new int[6];
+    //=====================================================================================
 
     //도전과제
-    public bool[] challengeTF = new bool[6];
     public int[] challengeLevel = new int[6];//현재 달성 수치
 
     //뉴스
-    public int[] newsState = new int[15];//0=Lock, 1=Unlock Able 2=Unlock
+    public int[] newsState = new int[15];//0=Lock, 1=Unlock Able, 2=Unlock
 
     //수집
     public bool[] isCollectionDone = new bool[6];
 
-
-    //PTJ 알바생의 현재 고용횟수
-    public int[] PTJNum = new int[6];
-    public int PTJCount;
-    public int[] PTJSelectNum =new int[2];//지금 선택된 (prefabNum , 슬라이더 넘버)
-    public bool[] PTJIsWorking = new bool[6];
-
-    //느낌표 ! 이거 없앨ㄴ수있음?
-    public bool[] isBerryEM = new bool[192];
-    public bool[] isNewsEM = new bool[15];
     //=====================================================================================
+    //PTJ
+    public int[] PTJNum = new int[6];//고용 횟수
+    public int PTJCount;//n명 고용중
+    public int[] PTJSelectNum =new int[2];//지금 선택된 (prefabNum , 슬라이더 넘버)
+    public bool[] PTJIsWorking = new bool[6];//일하는 '순간'인지
+    //=====================================================================================
+
+    //느낌표 !
+    public bool[] isBerryEM = new bool[192];
+    //=====================================================================================
+
     //오디오
     public float SFXSoundVolume;
     public float BGSoundVolume;

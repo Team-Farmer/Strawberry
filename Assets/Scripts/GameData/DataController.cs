@@ -160,7 +160,7 @@ public class DataController : MonoBehaviour
         gameData.isBerryUnlock[0] = true;//첫번째 기본베리는 존재
 
         //도전과제
-        for (int i = 0; i < 6; i++) {   gameData.challengeLevel[i] = 0; gameData.challengeTF[i] = false;  }
+        for (int i = 0; i < 6; i++) {   gameData.challengeLevel[i] = 0; }
 
         //수집
         for (int i = 0; i < 6; i++) { gameData.isCollectionDone[i] = false; }
@@ -176,8 +176,6 @@ public class DataController : MonoBehaviour
         gameData.PTJCount = 0;
 
         //느낌표 !!
-        for (int i = 0; i < 15; i++) 
-        {    gameData.isNewsEM[i] = false;   }
         for (int i = 0; i < 192; i++)
         {    gameData.isBerryEM[i] = false;    }
 

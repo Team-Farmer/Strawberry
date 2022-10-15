@@ -1196,11 +1196,6 @@ public class GameManager : MonoBehaviour
     private bool ChallengeBangIconSearch()
     {
 
-        /*
-        if (Array.IndexOf(DataController.instance.gameData.challengeTF, true) == -1)
-        { bangIcon.SetActive(false); }
-        else { bangIcon.SetActive(true); }
-        */
         return false;
     }
     #endregion
