@@ -32342,6 +32342,8 @@ MonoBehaviour:
   SFXSoundSlider: {fileID: 1349655535}
   mixer: {fileID: 24100000, guid: 61b1ac8c39cbb0541ab8ce6a71e1bd09, type: 2}
   bgSound: {fileID: 909940709}
+  poolingObjectPrefab: {fileID: 9173422468622026512, guid: 78f17fdf688793449b2228887173ed59, type: 3}
+  AudioManagerObj: {fileID: 909940708}
   BgClipList:
   - {fileID: 8300000, guid: 59e27cfaf43ecee4c8a77c9da02c4f96, type: 3}
   - {fileID: 8300000, guid: dc249394d81c09048a3e9ff773df352c, type: 3}

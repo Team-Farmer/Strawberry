@@ -23,6 +23,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField]
     private GameObject poolingObjectPrefab; //미리 생성될 프리팹
     Queue<Sound> poolingObjectQueue = new Queue<Sound>(); //큐 생성
+    public GameObject AudioManagerObj;
 
 
 
@@ -137,6 +138,18 @@ public class AudioManager : MonoBehaviour
 
         Destroy(go, clip.length);//효과음 재생 후(clip.length 시간 지난후) 파괴
     }
+    public void SFXPlayPoolingVersion(string sfxName, AudioClip clip) 
+    {
+        var obj = GetObject();
+        obj.gameObject.GetComponent<AudioSource>().clip = clip;
+        obj.gameObject.GetComponent<AudioSource>().loop = false;
+        obj.gameObject.GetComponent<AudioSource>().Play();
+        obj.gameObject.GetComponent<AudioSource>().outputAudioMixerGroup = mixer.FindMatchingGroups("SFX")[0];
+
+    }
+
+    //========================================================================================================
+    //========================================================================================================
 
     //예림 오디오 멈춤
     public void PauseAudio(string clipName)
@@ -181,7 +194,11 @@ public class AudioManager : MonoBehaviour
         audioSource.Play();//재생
 
         audioSource.outputAudioMixerGroup = mixer.FindMatchingGroups("SFX")[0];
+        
     }
+
+    //========================================================================================================
+    //========================================================================================================
 
 
     //얘네 줄일수있긴한데 그러면 오디오 수작ㅇ업으로 넣어야함
@@ -273,11 +290,11 @@ public class AudioManager : MonoBehaviour
     {
         var newObj = Instantiate(poolingObjectPrefab).GetComponent<Sound>();
         newObj.gameObject.SetActive(false);
-        newObj.transform.SetParent(transform);
+        newObj.transform.SetParent(AudioManagerObj.transform);
         return newObj; //그리고 Queue에 넣게 반환
     }
 
-    public static Sound GetObject() // 나 미리 만든거 가져다가 쓴다!
+    public static Sound GetObject() // 미리 만든거 가져다가 쓴다!
     {
         if (instance.poolingObjectQueue.Count > 0) // 미리 생성된게 안부족하면
         {
@@ -299,7 +316,7 @@ public class AudioManager : MonoBehaviour
     {
         obj.gameObject.SetActive(false); //끄고
         obj.transform.SetParent(instance.transform); // 다시 원래 부모로 돌아와서 Object Pool 자식으로 만듬
-        instance.poolingObjectQueue.Enqueue(obj); // 그리고 다시 Enqueue 삽입
+        instance.poolingObjectQueue.Enqueue(obj); // 다시 Enqueue 삽입
     }
     //부모 변경하는거 필요없을듯 사운드는 
 }
