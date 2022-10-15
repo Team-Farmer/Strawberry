@@ -5,16 +5,13 @@ using UnityEngine.UI;
 
 public class Sound : MonoBehaviour
 {
-    // Start is called before the first frame update
+
     void Start()
     {
-        Debug.Log("object pooling Sound Prefab");
-
 
     }
 
-    
-    // Update is called once per frame
+    //근데 update안ㅆ구하느방벙은 없나..
     void Update()
     {
         if (this.GetComponent<AudioSource>().isPlaying == false)

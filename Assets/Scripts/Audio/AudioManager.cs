@@ -124,6 +124,7 @@ public class AudioManager : MonoBehaviour
     //========================================================================================================
 
     //효과음 플레이 함수
+    /*
     public void SFXPlay(string sfxName, AudioClip clip)
     {
         GameObject go = new GameObject(sfxName + "Sound");//해당이름을 가진 오브젝트가 소리 날때마다 생성된다.
@@ -138,6 +139,7 @@ public class AudioManager : MonoBehaviour
 
         Destroy(go, clip.length);//효과음 재생 후(clip.length 시간 지난후) 파괴
     }
+    */
     public void SFXPlayPoolingVersion(string sfxName, AudioClip clip) 
     {
         var obj = GetObject();
@@ -251,10 +253,12 @@ public class AudioManager : MonoBehaviour
 
 
     //직접 오디오 넣는 함수
+    /*
     public void SFXPlayButton(AudioClip clip)
     {
         SFXPlay("", clip);
     }
+    */
 
     //배경음악 플레이 함수
     public void BGMPlay(int index)
@@ -299,7 +303,6 @@ public class AudioManager : MonoBehaviour
         if (instance.poolingObjectQueue.Count > 0) // 미리 생성된게 안부족하면
         {
             var obj = instance.poolingObjectQueue.Dequeue(); // Dequeue
-            obj.transform.SetParent(null);
             obj.gameObject.SetActive(true); // 미리 생성되어있는거 ON
             return obj;
         }
@@ -307,7 +310,6 @@ public class AudioManager : MonoBehaviour
         {
             var newObj = instance.CreateNewObject(); // 하나 새로 만들어서
             newObj.gameObject.SetActive(true); // 밑에는 위와 같음
-            newObj.transform.SetParent(null);
             return newObj;
         }
     }
@@ -315,8 +317,7 @@ public class AudioManager : MonoBehaviour
     public static void ReturnObject(Sound obj) //썼던 거 다시 반환
     {
         obj.gameObject.SetActive(false); //끄고
-        obj.transform.SetParent(instance.transform); // 다시 원래 부모로 돌아와서 Object Pool 자식으로 만듬
         instance.poolingObjectQueue.Enqueue(obj); // 다시 Enqueue 삽입
     }
-    //부모 변경하는거 필요없을듯 사운드는 
+
 }
