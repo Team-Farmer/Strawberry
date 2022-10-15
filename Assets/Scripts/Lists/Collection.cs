@@ -56,6 +56,7 @@ public class Collection : MonoBehaviour
     void Start()
     {
         Global = GameObject.FindGameObjectWithTag("Global");
+       
         //프리팹들에게 번호를 붙여 주자
         if (Prefabcount >= 6) { Prefabcount %= 6; }
         prefabnum = Prefabcount;
@@ -88,7 +89,7 @@ public class Collection : MonoBehaviour
 
     }
     private void buttonUpdate()
-    {//여기수정
+    {
         for (int i = 0; i < berryClassifyNum; i++) 
         {
             if (DataController.instance.gameData.isBerryUnlock[Info[prefabnum].berryClassify[i]] == true)
@@ -98,8 +99,6 @@ public class Collection : MonoBehaviour
         }
         collectionBtn.GetComponent<Image>().sprite = collectionBtnSprite;//3개다 얻었으면 버튼변경한다.
 
-        if (DataController.instance.gameData.isCollectionDone[prefabnum] == false)
-            DataController.instance.gameData.collectionTF[prefabnum] = true;
      
     }
 
@@ -128,7 +127,7 @@ public class Collection : MonoBehaviour
 
         //이미 보상도 받고 다끝난거면 더이상 못누르게
         if (DataController.instance.gameData.isCollectionDone[prefabnum] == true) 
-        { FinishCollect();DataController.instance.gameData.collectionTF[prefabnum] = false; }
+        { FinishCollect();}
     }
 
     public void collectionBtnClick() 
@@ -148,7 +147,6 @@ public class Collection : MonoBehaviour
             FinishCollect();
             //완전히 끝났다.
             DataController.instance.gameData.isCollectionDone[prefabnum] = true;
-            DataController.instance.gameData.collectionTF[prefabnum] = false;
         }
         
     }

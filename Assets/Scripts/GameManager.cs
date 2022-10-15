@@ -8,6 +8,9 @@ using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 
 
+[System.Serializable]
+public class CollectionAcquire 
+{ public int[] collectionInfos; }
 
 public class GameManager : MonoBehaviour
 {
@@ -98,9 +101,20 @@ public class GameManager : MonoBehaviour
     [Header("[ NEW BERRY === GLOBAL ]")]
     public GameObject Global;
 
-    [Header("[ Challenge ]")]
+
+
+    //Challenge, Collection================================
+
+
+    [Header("[ Challenge / Collection]")]
     public GameObject bangIcon;//업적 느낌표 오브젝트
     public GameObject contentChallenge;
+    public CollectionAcquire[] collectionInfo;
+
+
+
+
+
     //===========================================
 
     [Header("[ Check/Settings Panel ]")]
@@ -210,9 +224,9 @@ public class GameManager : MonoBehaviour
             else
                 globalVar.berryListAll[i].GetComponent<Berry>().berryPrice
                     = Convert.ToInt32((1000) * (1 + researchCoeffi));*/
-}
+        }
 
-for (int i = 0; i < 16; i++)
+        for (int i = 0; i < 16; i++)
         {
             if (DataController.instance.gameData.berryFieldData[i].isStemEnable)
             {
@@ -277,7 +291,7 @@ for (int i = 0; i < 16; i++)
         }
 
 
-        BangIconSearch();
+
         //폰에서 뒤로가기 버튼 눌렀을 때/에디터에서 ESC 버튼 눌렀을 때 게임 종료
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -292,6 +306,8 @@ for (int i = 0; i < 16; i++)
                 QuitPanel.GetComponent<PanelAnimation>().CloseScale();
             }
         }
+
+        BangIconSearch();
     }
 
     public void QuitOkBtn()
@@ -330,7 +346,7 @@ for (int i = 0; i < 16; i++)
         }
         else
         {
-            if (isStart&&Intro.isEnd)
+            if (isStart && Intro.isEnd)
                 StartCoroutine(CheckElapseTime());
         }
 
@@ -356,7 +372,7 @@ for (int i = 0; i < 16; i++)
 
                 PlantStrawBerry(st, obj); // 심는다
 
-                
+
             }
         }
         else
@@ -397,8 +413,8 @@ for (int i = 0; i < 16; i++)
         //stem.transform.position = obj.transform.position; ; // 밭의 Transform에 달기를 심는다
         stem.gameObject.SetActive(true); // 딸기 활성화              
         coll.enabled = false; // 밭의 콜라이더 비활성화 (잡초와 충돌 방지)
-     
-       
+
+
 
         if (!(isMiniGameMode || Blink.instance.gameObject.activeSelf)) // 미니게임 중에는 소리 안나게
             AudioManager.instance.SowAudioPlay();
@@ -485,7 +501,7 @@ for (int i = 0; i < 16; i++)
         if (num == 0)
         {
 
-            coinAnimManager.GetComponent<HeartMover>().CountMoney(102f,cost,text,num);
+            coinAnimManager.GetComponent<HeartMover>().CountMoney(102f, cost, text, num);
             Invoke("invokeCoin", 0.3f);
         }
         else
@@ -643,7 +659,7 @@ for (int i = 0; i < 16; i++)
 
     #region 리스트
 
-    #region PTJ
+    #region ===PTJ
 
     //고용 버튼 클릭시
     public void PTJEmployButtonClick(int prefabNum)
@@ -723,7 +739,7 @@ for (int i = 0; i < 16; i++)
     }
     #endregion
 
-    #region New Berry Add
+    #region ===New Berry Add
     public void NewBerryUpdate()
     {
         //새 딸기 개발======
@@ -860,7 +876,7 @@ for (int i = 0; i < 16; i++)
 
                     //타이머 시작
                     DataController.instance.gameData.newBerryTime_start = DateTime.Now;
-                    DataController.instance.gameData.newBerryTime_end 
+                    DataController.instance.gameData.newBerryTime_end
                         = DataController.instance.gameData.newBerryTime_start.AddSeconds(DataController.instance.gameData.newBerryTime);
                     DataController.instance.gameData.newBerryTime_span
                         = DataController.instance.gameData.newBerryTime_end - DataController.instance.gameData.newBerryTime_start;
@@ -909,15 +925,15 @@ for (int i = 0; i < 16; i++)
             {
                 timeText_newBerry.GetComponent<Text>().text = TimeForm(Mathf.CeilToInt(0));
                 DataController.instance.gameData.newBerryTime_end = DateTime.Now;
-                    
+
             }
             else
             {
                 Debug.Log("간소전=" + (int)DataController.instance.gameData.newBerryTime_span.TotalSeconds);
-                DataController.instance.gameData.newBerryTime_end 
+                DataController.instance.gameData.newBerryTime_end
                     = DataController.instance.gameData.newBerryTime_end.AddSeconds(-heartNum * 60);
                 Debug.Log("간소후=" + (int)DataController.instance.gameData.newBerryTime_span.TotalSeconds);
-                DataController.instance.gameData.newBerryTime_span 
+                DataController.instance.gameData.newBerryTime_span
                     = DataController.instance.gameData.newBerryTime_end - DataController.instance.gameData.newBerryTime_start;
                 //Debug.Log(DataController.instance.gameData.newBerryTime_span);
             }
@@ -928,17 +944,17 @@ for (int i = 0; i < 16; i++)
             //하트를 소비한다.
             UseHeart(heartNum);
 
-                
+
 
             //StartCoroutine(Timer());
         }
         else
-        { UseHeart(heartNum);  }
+        { UseHeart(heartNum); }
 
 
 
     }
-    public void TimeReduceClose() 
+    public void TimeReduceClose()
     {
         //창 끄기
         TimeReduceBlackPanel_newBerry.SetActive(false);
@@ -947,13 +963,13 @@ for (int i = 0; i < 16; i++)
 
     IEnumerator Timer()
     {
-        
+
         while (true)
         {
 
             //1초씩 감소
             DataController.instance.gameData.newBerryTime_start = DateTime.Now;
-            DataController.instance.gameData.newBerryTime_span 
+            DataController.instance.gameData.newBerryTime_span
                 = DataController.instance.gameData.newBerryTime_end - DataController.instance.gameData.newBerryTime_start;
             yield return new WaitForSeconds(0.005f);
 
@@ -988,7 +1004,7 @@ for (int i = 0; i < 16; i++)
                     newBerryIndex = berryPercantage(64);
                     /*newBerryIndex = UnityEngine.Random.Range(1, 64);
                     DataController.instance.gameData.newBerryTime = 10 * 60;*/
-        break;
+                    break;
                 case 1:
                     newBerryIndex = berryPercantage(128);
                     break;
@@ -1104,7 +1120,7 @@ for (int i = 0; i < 16; i++)
 
     #endregion
 
-    #region Explanation
+    #region ===Explanation
     /*
     public void Explanation(GameObject berry,int prefabnum)
     {
@@ -1142,30 +1158,56 @@ for (int i = 0; i < 16; i++)
     */
     #endregion
 
-    public void NewsUnlock()
-    {
-        News.instance.NewsUnlock(NewsPrefabNum);
-    }
-
+    #region ===Challenge BangIcon
     public void BangIconSearch()
     {
 
-        if (Array.IndexOf(DataController.instance.gameData.challengeTF, true) == -1//보상받을 수 있는 상태이면 true
-            && Array.IndexOf(DataController.instance.gameData.collectionTF, true) == -1)
-        { bangIcon.SetActive(false); }
-        else { bangIcon.SetActive(true); }
-
-        
+        if (CollectionBangIconSearch() == true || ChallengeBangIconSearch()==true)
+        { bangIcon.SetActive(true); }
+        else { bangIcon.SetActive(false); }
     }
-    public void testtest() 
-    {
 
-        for (int i = 0; i < 6; i++)
+    private bool CollectionBangIconSearch()
+    {
+        if (Array.IndexOf(DataController.instance.gameData.isCollectionDone, false) == -1)
+        { return false; }
+        else
         {
 
-            Debug.Log(i + "===" + DataController.instance.gameData.challengeTF[i] +
-                "/" + DataController.instance.gameData.collectionTF[i]);
+            for (int i = 0; i < collectionInfo.Length; i++)
+            {
+                if (DataController.instance.gameData.isCollectionDone[i] == false)
+                {
+                    for (int j = 0; j < collectionInfo[i].collectionInfos.Length; j++)
+                    {
+                        if (DataController.instance.gameData.isBerryUnlock[collectionInfo[i].collectionInfos[j]] == false)
+                        { break; }
+                        if (j == collectionInfo[i].collectionInfos.Length - 1)
+                        { return true; }
+
+                    }
+                }
+
+            }
+
+            return false;
         }
+    }
+    private bool ChallengeBangIconSearch()
+    {
+
+        /*
+        if (Array.IndexOf(DataController.instance.gameData.challengeTF, true) == -1)
+        { bangIcon.SetActive(false); }
+        else { bangIcon.SetActive(true); }
+        */
+        return false;
+    }
+    #endregion
+
+    public void NewsUnlock()
+    {
+        News.instance.NewsUnlock(NewsPrefabNum);
     }
 
     #region 기타

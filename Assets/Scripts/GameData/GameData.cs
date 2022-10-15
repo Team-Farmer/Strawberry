@@ -73,7 +73,7 @@ public class GameData
 
     //수집
     public bool[] isCollectionDone = new bool[6];
-    public bool[] collectionTF = new bool[6];
+
 
     //PTJ 알바생의 현재 고용횟수
     public int[] PTJNum = new int[6];

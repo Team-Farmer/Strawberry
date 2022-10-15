@@ -16846,6 +16846,13 @@ MonoBehaviour:
   Global: {fileID: 699566879}
   bangIcon: {fileID: 738488230}
   contentChallenge: {fileID: 322382195}
+  collectionInfo:
+  - collectionInfos: 090000000a0000000b000000
+  - collectionInfos: 0f0000001000000011000000
+  - collectionInfos: 4300000044000000
+  - collectionInfos: 420000004a000000
+  - collectionInfos: 850000008600000087000000
+  - collectionInfos: 8c0000008d0000008e000000
   settingsPanel: {fileID: 0}
   checkPanel: {fileID: 0}
   attendanceCheck: {fileID: 1284243152}
