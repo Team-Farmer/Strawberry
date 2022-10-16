@@ -12,6 +12,13 @@ using UnityEngine.SceneManagement;
 public class CollectionAcquire 
 { public int[] collectionInfos; }
 
+[System.Serializable]
+public class ChallengeAcquire
+{ 
+    public int[] challengeCriterions;
+    public int[] challengeCriterionAccumulates;
+}
+
 public class GameManager : MonoBehaviour
 {
     #region 인스펙터 및 변수 생성
@@ -110,7 +117,8 @@ public class GameManager : MonoBehaviour
     public GameObject bangIcon;//업적 느낌표 오브젝트
     public GameObject contentChallenge;
     public CollectionAcquire[] collectionInfo;
-
+    public ChallengeAcquire[] challengeCriterion;
+    private int[] ChallengeValue = new int[6];
 
 
 
@@ -155,7 +163,10 @@ public class GameManager : MonoBehaviour
 
     #region 기본 기능
 
-
+    private void Awake()
+    {
+        setChallenge();
+    }
     void Start()
     {
         Application.targetFrameRate = 60;
@@ -184,6 +195,7 @@ public class GameManager : MonoBehaviour
         InitDataInGM();
 
         //PrintTime();
+
     }
 
     public void StartPrework()
@@ -196,6 +208,8 @@ public class GameManager : MonoBehaviour
     {
         isGameRunning = true;
         Invoke("EnableObjColliderAll", 4.5f);
+
+        
     }
 
     void InitDataInGM()
@@ -250,13 +264,9 @@ public class GameManager : MonoBehaviour
     }
     void Update()
     {
-        /*
-        Debug.Log("남은시간=" + DataController.instance.gameData.newBerryTime_span.ToString()+
-            "\n시작시간="+DataController.instance.gameData.newBerryTime_start+
-            " 끝시간="+DataController.instance.gameData.newBerryTime_end);
-        */
+        BangIconSearch();
+
         //PTJ
-        //없애기
         workingCountText.GetComponent<Text>().text = DataController.instance.gameData.PTJCount.ToString();//알바중인 인원수
 
         //NEW BERRY 개발
@@ -307,7 +317,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        BangIconSearch();
+
     }
 
     public void QuitOkBtn()
@@ -929,10 +939,10 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                Debug.Log("간소전=" + (int)DataController.instance.gameData.newBerryTime_span.TotalSeconds);
+                //Debug.Log("간소전=" + (int)DataController.instance.gameData.newBerryTime_span.TotalSeconds);
                 DataController.instance.gameData.newBerryTime_end
                     = DataController.instance.gameData.newBerryTime_end.AddSeconds(-heartNum * 60);
-                Debug.Log("간소후=" + (int)DataController.instance.gameData.newBerryTime_span.TotalSeconds);
+                //Debug.Log("간소후=" + (int)DataController.instance.gameData.newBerryTime_span.TotalSeconds);
                 DataController.instance.gameData.newBerryTime_span
                     = DataController.instance.gameData.newBerryTime_end - DataController.instance.gameData.newBerryTime_start;
                 //Debug.Log(DataController.instance.gameData.newBerryTime_span);
@@ -1195,8 +1205,87 @@ public class GameManager : MonoBehaviour
     }
     private bool ChallengeBangIconSearch()
     {
+        ChallengeValue[0] = DataController.instance.gameData.unlockBerryCnt;
+        ChallengeValue[1] = DataController.instance.gameData.totalHarvBerryCnt;
+        ChallengeValue[2] = DataController.instance.gameData.accCoin;
+        ChallengeValue[3] = DataController.instance.gameData.accHeart;
+        ChallengeValue[4] = DataController.instance.gameData.accAttendance;
+        ChallengeValue[5] = DataController.instance.gameData.mgPlayCnt;
 
+        for (int i = 0; i < 6; i++)
+        {
+            if (ChallengeValue[i] >= challengeCriterion[i].challengeCriterionAccumulates[DataController.instance.gameData.challengeLevel[i]])
+            { 
+                Debug.Log("challenge test=" + i+" 값="+ChallengeValue[i]+" 누적 값="+ challengeCriterion[i].challengeCriterionAccumulates[DataController.instance.gameData.challengeLevel[i]]); 
+                return true; }
+        }
         return false;
+    }
+
+    private void setChallenge() 
+    {
+        
+
+        //GameData에 변수 추가한다음 challenge 달성 기준들 저장해서 Challenge에서 가져다 쓰면 이렇게 ㄷ개 중복되게 안해도 될듯
+
+        int MaxLevel = 6;
+
+
+        challengeCriterion[0].challengeCriterions[0] = 10;
+        challengeCriterion[0].challengeCriterionAccumulates[0] = challengeCriterion[0].challengeCriterions[0];
+        for (int i = 1; i < MaxLevel; i++)
+        {
+            challengeCriterion[0].challengeCriterions[i] = challengeCriterion[0].challengeCriterions[0] + 10 * i;
+            challengeCriterion[0].challengeCriterionAccumulates[i] = challengeCriterion[0].challengeCriterionAccumulates[i - 1] + challengeCriterion[0].challengeCriterions[i];
+
+        }
+
+
+        challengeCriterion[1].challengeCriterions[0] = 100;
+        challengeCriterion[1].challengeCriterionAccumulates[0] = challengeCriterion[1].challengeCriterions[0];
+        for (int i = 1; i < MaxLevel; i++)
+        {
+            challengeCriterion[1].challengeCriterions[i] = challengeCriterion[1].challengeCriterions[i - 1] * 2;
+            challengeCriterion[1].challengeCriterionAccumulates[i] = challengeCriterion[1].challengeCriterionAccumulates[i - 1] + challengeCriterion[1].challengeCriterions[i];
+        }
+
+
+        challengeCriterion[2].challengeCriterions[0] = 1000;
+        challengeCriterion[2].challengeCriterionAccumulates[0] = challengeCriterion[2].challengeCriterions[0];
+        for (int i = 1; i < MaxLevel; i++)
+        {
+            // 1000 3000 9000 12000 36000 // 좀 키워야할듯......
+            challengeCriterion[2].challengeCriterions[i] = challengeCriterion[2].challengeCriterions[i - 1] * 4;
+            challengeCriterion[2].challengeCriterionAccumulates[i] = challengeCriterion[2].challengeCriterionAccumulates[i - 1] + challengeCriterion[2].challengeCriterions[i];
+        }
+
+
+        challengeCriterion[3].challengeCriterions[0] = 100;
+        challengeCriterion[3].challengeCriterionAccumulates[0] = challengeCriterion[3].challengeCriterions[0];
+        for (int i = 1; i < MaxLevel; i++)
+        {
+            // 키울게요
+            challengeCriterion[3].challengeCriterions[i] = challengeCriterion[3].challengeCriterions[i - 1] + 200;
+            challengeCriterion[3].challengeCriterionAccumulates[i] = challengeCriterion[3].challengeCriterionAccumulates[i - 1] + challengeCriterion[3].challengeCriterions[i];
+        }
+
+
+        challengeCriterion[4].challengeCriterions[0] = 4;
+        challengeCriterion[4].challengeCriterionAccumulates[0] = challengeCriterion[4].challengeCriterions[0];
+        for (int i = 1; i < MaxLevel; i++)
+        {
+            challengeCriterion[4].challengeCriterions[i] = challengeCriterion[4].challengeCriterions[i - 1] + 3;
+            challengeCriterion[4].challengeCriterionAccumulates[i] = challengeCriterion[4].challengeCriterionAccumulates[i - 1] + challengeCriterion[4].challengeCriterions[i];
+        }
+
+        challengeCriterion[5].challengeCriterions[0] = 10;
+        challengeCriterion[5].challengeCriterionAccumulates[0] = challengeCriterion[5].challengeCriterions[0];
+        for (int i = 1; i < MaxLevel; i++)
+        {
+            challengeCriterion[5].challengeCriterions[i] = challengeCriterion[5].challengeCriterions[i - 1] + 20;
+            challengeCriterion[5].challengeCriterionAccumulates[i] = challengeCriterion[5].challengeCriterionAccumulates[i - 1] + challengeCriterion[5].challengeCriterions[i];
+        }
+
     }
     #endregion
 
