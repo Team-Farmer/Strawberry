@@ -109,6 +109,7 @@ public class GameData
     public DateTime currentTime = new DateTime();
     public DateTime lastExitTime = new DateTime();
     public DateTime nextMidnightTime = new DateTime();
+    public DateTime nextDotoriTimer = new DateTime();
     public TimeSpan rewardAbsenceTime = TimeSpan.FromSeconds(0);
     //출석 일 수
     public int accDays = 0;

@@ -1556,6 +1556,10 @@ public class GameManager : MonoBehaviour
             hour = minute / 60;
             minute %= 60;
         }
+        else
+        {
+            return;
+        }
 
         AbsenceTimeText.text = string.Format("{0:D2}:{1:D2}", hour, minute);
 
