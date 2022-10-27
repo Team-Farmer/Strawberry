@@ -533,7 +533,7 @@ public class GameManager : MonoBehaviour
     }
     public void invokeDotori()
     {
-        DotoriText.text = 'x' + DataController.instance.gameData.dotori.ToString();
+        DotoriText.text = DataController.instance.gameData.dotori.ToString() + " / 5";
     }
     public void ShowCoinText(Text coinText, int coin)
     {
