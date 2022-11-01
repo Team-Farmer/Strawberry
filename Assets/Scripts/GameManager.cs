@@ -209,7 +209,7 @@ public class GameManager : MonoBehaviour
         isGameRunning = true;
         Invoke("EnableObjColliderAll", 4.5f);
 
-        
+
     }
 
     void InitDataInGM()
@@ -750,6 +750,7 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region ===New Berry Add
+
     public void NewBerryUpdate()
     {
         //새 딸기 개발======

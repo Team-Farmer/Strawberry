@@ -34492,6 +34492,7 @@ GameObject:
   - component: {fileID: 853177032}
   - component: {fileID: 853177034}
   - component: {fileID: 853177033}
+  - component: {fileID: 853177035}
   m_Layer: 5
   m_Name: newBerryBangImg
   m_TagString: Untagged
@@ -34556,6 +34557,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 853177031}
   m_CullTransparentMesh: 1
+--- !u!95 &853177035
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 853177031}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3aec3c6689ef0df41a53df04135874a9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &866649870
 GameObject:
   m_ObjectHideFlags: 0
@@ -46555,6 +46575,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1165187663}
+  - component: {fileID: 1165187664}
   m_Layer: 5
   m_Name: Coin
   m_TagString: Untagged
@@ -46583,6 +46604,25 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &1165187664
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1165187662}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d0fd56c9219d51e498be4f36454ae6bc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1166646938
 PrefabInstance:
   m_ObjectHideFlags: 0
