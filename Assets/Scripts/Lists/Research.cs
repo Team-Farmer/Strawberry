@@ -71,33 +71,37 @@ public class Research : MonoBehaviour
         if (Prefabcount >= 6) { Prefabcount %= 6; }
         prefabnum = Prefabcount;
 
-        if (DataController.instance.gameData.researchLevel[prefabnum] < 5) // 연구 레벨이 5레벨 이하라면
-            Info[prefabnum].Price = (1 + DataController.instance.gameData.researchLevel[prefabnum]) * 200;
-        else if (DataController.instance.gameData.researchLevel[prefabnum] < 10) // 연구 레벨이 10레벨 이하라면
-            Info[prefabnum].Price = 1000 + (DataController.instance.gameData.researchLevel[prefabnum] - 4) * 400;
-        else // 연구 레벨이 15레벨 이하라면
-            Info[prefabnum].Price = 3000 + (DataController.instance.gameData.researchLevel[prefabnum] - 9) * 600;
-     
-
-        //타이틀, 설명, 코인값, 레벨, 고용여부 텍스트에 표시
+        //타이틀, 그림, 설명, 비용 텍스트에 표시
         titleText.GetComponent<Text>().text = Info[prefabnum].Name;//제목(이름) 표시
 
         Picture.GetComponent<Image>().sprite = Info[prefabnum].Picture;//그림 표시
 
-        
-        explanationText.GetComponent<Text>().text = Info[prefabnum].Explanation+"\n"+
-            ((DataController.instance.gameData.researchLevel[prefabnum]*2) + "% →" + 
-            (DataController.instance.gameData.researchLevel[prefabnum]+1)*2 + "%");//설명 텍스트 표시
-
-
-       
-        GameManager.instance.ShowCoinText(coinNum.GetComponent<Text>(), Info[prefabnum].Price); //비용 표시
-
         levelNum.GetComponent<Text>().text = DataController.instance.gameData.researchLevel[prefabnum].ToString();
 
+        if (DataController.instance.gameData.researchLevel[prefabnum] >= 25)
+        {
+            coinNum.GetComponent<Text>().text = "Max";
+            explanationText.GetComponent<Text>().text =
+                Info[prefabnum].Explanation + "\n" +
+                (DataController.instance.gameData.researchLevel[prefabnum] * 2) + "%";//설명 텍스트 표시
+        }
+        else
+        {
+            if (DataController.instance.gameData.researchLevel[prefabnum] < 5) // 연구 레벨이 5레벨 이하라면
+                Info[prefabnum].Price = (1 + DataController.instance.gameData.researchLevel[prefabnum]) * 200;
+            else if (DataController.instance.gameData.researchLevel[prefabnum] < 10) // 연구 레벨이 10레벨 이하라면
+                Info[prefabnum].Price = 1000 + (DataController.instance.gameData.researchLevel[prefabnum] - 4) * 400;
+            else // 연구 레벨이 15레벨 이하라면
+                Info[prefabnum].Price = 3000 + (DataController.instance.gameData.researchLevel[prefabnum] - 9) * 600;
 
+            explanationText.GetComponent<Text>().text = Info[prefabnum].Explanation + "\n" +
+            ((DataController.instance.gameData.researchLevel[prefabnum] * 2) + "% →" +
+            (DataController.instance.gameData.researchLevel[prefabnum] + 1) * 2 + "%");//설명 텍스트 표시
 
+            GameManager.instance.ShowCoinText(coinNum.GetComponent<Text>(), Info[prefabnum].Price); //비용 표시
+        }
         Prefabcount++;
+        
     }
 
     //=============================================================================================================================
@@ -137,7 +141,7 @@ public class Research : MonoBehaviour
                     case "부르는 게 값": break;
                 }
 
-                if (DataController.instance.gameData.researchLevel[prefabnum] == 25)
+                if (DataController.instance.gameData.researchLevel[prefabnum] >= 25)
                 {
                     coinNum.GetComponent<Text>().text = "Max";
                     explanationText.GetComponent<Text>().text = 
