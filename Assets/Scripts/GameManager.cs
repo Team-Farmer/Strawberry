@@ -50,6 +50,8 @@ public class GameManager : MonoBehaviour
     public Text truckCoinText;
     public Text truckCoinBonusText;
     public int bonusTruckCoin;
+    public Text truckCountNowText;
+    public Text truckCountMaxText;
 
     /*public const int TRUCK_CNT_LEVEL_0 = Globalvariable.TRUCK_CNT_LEVEL_0;
     public const int TRUCK_CNT_LEVEL_1 = Globalvariable.TRUCK_CNT_LEVEL_1;
@@ -407,6 +409,10 @@ public class GameManager : MonoBehaviour
     {
         bonusTruckCoin = (int)(DataController.instance.gameData.truckCoin *
             DataController.instance.gameData.researchLevel[5] * Globalvariable.instance.getEffi());
+
+        // 트럭에 담긴 현재 딸기 개수와 현재 MAX 개수 출력
+        truckCountNowText.text = DataController.instance.gameData.truckBerryCnt.ToString();
+        truckCountMaxText.text = "/ " + Globalvariable.instance.truckCntLevel[3, DataController.instance.gameData.newBerryResearchAble].ToString();
         ShowCoinText(truckCoinText, DataController.instance.gameData.truckCoin);
         ShowCoinText(truckCoinBonusText, bonusTruckCoin);
     }
@@ -484,8 +490,7 @@ public class GameManager : MonoBehaviour
     {
         if (DataController.instance.gameData.truckBerryCnt < Globalvariable.instance.truckCntLevel[3, DataController.instance.gameData.newBerryResearchAble])
         {
-            DataController.instance.gameData.truckBerryCnt += 1;
-            Debug.Log(DataController.instance.gameData.truckBerryCnt);
+            DataController.instance.gameData.truckBerryCnt += 1;        
             DataController.instance.gameData.truckCoin += stem.getInstantBerryObj().GetComponent<Berry>().berryPrice;
         }
     }
