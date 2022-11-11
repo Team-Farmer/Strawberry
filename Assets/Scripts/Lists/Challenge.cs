@@ -13,16 +13,14 @@ public class Challenge : MonoBehaviour
         public int rewardMedal; //메달 보상
         public int rewardHeart; //하트 보상
         public int[] clearCriterion;  //달성 조건
-        public int[] clearCriterionAccumulate;
         public Sprite challengeImage;
 
-        public ChallengeStruct(string Title, int rewardMedal, int rewardHeart,int[] clearCriterion, int[] clearCriterionAccumulate,Sprite challengeImage)
+        public ChallengeStruct(string Title, int rewardMedal, int rewardHeart,int[] clearCriterion,Sprite challengeImage)
         {
             this.Title = Title;
             this.rewardMedal = rewardMedal;
             this.rewardHeart = rewardHeart;
             this.clearCriterion = clearCriterion;
-            this.clearCriterionAccumulate = clearCriterionAccumulate;
             this.challengeImage = challengeImage;
 
         }
@@ -50,7 +48,6 @@ public class Challenge : MonoBehaviour
     public GameObject heart;
     public GameObject medal;
 
-    public GameObject TestText;
 
     [Header("==========Gauge==========")]
     [SerializeField]
@@ -78,9 +75,10 @@ public class Challenge : MonoBehaviour
     
     private int[] ChallengeValue = new int[6];//누적된 수
 
-    private int ValueNow;//이번 레벨에서의 수(0부터 갱신된). -> 0부터 갱신안된거임
+    private int ValueNow;
 
     private int MaxLevel = 6;
+
 
     //=======================================================================================================================
     //=======================================================================================================================
@@ -136,69 +134,56 @@ public class Challenge : MonoBehaviour
 
         //수집 기준 설정
         Info[prefabnum].clearCriterion = new int[MaxLevel];
-        Info[prefabnum].clearCriterionAccumulate = new int[MaxLevel];
 
         switch (prefabnum)
         {
             case 0: // 딸기 수집
                 Info[prefabnum].clearCriterion[0] = 10;
-                Info[prefabnum].clearCriterionAccumulate[0] = Info[prefabnum].clearCriterion[0];
                 for (int i = 1; i < MaxLevel; i++)
                 {
                     Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[0] + 10 * i;
-                    Info[prefabnum].clearCriterionAccumulate[i] = Info[prefabnum].clearCriterionAccumulate[i - 1] + Info[prefabnum].clearCriterion[i];
                 }
                 break;
 
             case 4: // 누적 출석
                 Info[prefabnum].clearCriterion[0] = 3;
-                Info[prefabnum].clearCriterionAccumulate[0] = Info[prefabnum].clearCriterion[0];
                 for (int i = 2; i < MaxLevel; i++)
                 {
                     Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[i - 1] + 3;
-                    Info[prefabnum].clearCriterionAccumulate[i] = Info[prefabnum].clearCriterionAccumulate[i - 1] + Info[prefabnum].clearCriterion[i];
                 }
                 break;
 
             case 1: // 딸기 수확
                 Info[prefabnum].clearCriterion[0] = 100;
-                Info[prefabnum].clearCriterionAccumulate[0] = Info[prefabnum].clearCriterion[0];
                 for (int i = 1; i < MaxLevel; i++)
                 {
                     Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[i - 1] * 2;
-                    Info[prefabnum].clearCriterionAccumulate[i] = Info[prefabnum].clearCriterionAccumulate[i - 1] + Info[prefabnum].clearCriterion[i];
                 }
                 break;
 
             case 2: // 누적 코인
                 Info[prefabnum].clearCriterion[0] = 1000;
-                Info[prefabnum].clearCriterionAccumulate[0] = Info[prefabnum].clearCriterion[0];
                 for (int i = 1; i < MaxLevel; i++)
                 {
                     // 1000 3000 9000 12000 36000 // 좀 키워야할듯......
                     Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[i - 1] * 4;
-                    Info[prefabnum].clearCriterionAccumulate[i] = Info[prefabnum].clearCriterionAccumulate[i - 1] + Info[prefabnum].clearCriterion[i];
                 }
                 break;
 
             case 3: // 누적 하트
                 Info[prefabnum].clearCriterion[0] = 100;
-                Info[prefabnum].clearCriterionAccumulate[0] = Info[prefabnum].clearCriterion[0];
                 for (int i = 1; i < MaxLevel; i++)
                 {
                     // 키울게요
                     Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[i - 1] + 200;
-                    Info[prefabnum].clearCriterionAccumulate[i] = Info[prefabnum].clearCriterionAccumulate[i - 1] + Info[prefabnum].clearCriterion[i];
                 }
                 break;
 
             case 5: //미니게임 플레이
                 Info[prefabnum].clearCriterion[0] = 10;
-                Info[prefabnum].clearCriterionAccumulate[0] = Info[prefabnum].clearCriterion[0];
                 for (int i = 1; i < MaxLevel; i++)
                 {
                     Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[i - 1] + 20;
-                    Info[prefabnum].clearCriterionAccumulate[i] = Info[prefabnum].clearCriterionAccumulate[i - 1] + Info[prefabnum].clearCriterion[i];
                 }
                 break;
 
@@ -223,21 +208,12 @@ public class Challenge : MonoBehaviour
             heartTxt.GetComponent<Text>().text = "X" + Info[prefabnum].rewardHeart.ToString();
 
 
-            // 도전과제 게이지 현재값
-            if (LevelNow == 0)
-            {
-                nowCondition.GetComponent<Text>().text = ValueNow.ToString();
-                TestText.GetComponent<Text>().text = "0";
-            }
-            else 
-            {
-                nowCondition.GetComponent<Text>().text = (ValueNow - Info[prefabnum].clearCriterionAccumulate[LevelNow - 1]).ToString();
-                TestText.GetComponent<Text>().text = Info[prefabnum].clearCriterionAccumulate[LevelNow - 1].ToString();
-            }
-            
+
+            nowCondition.GetComponent<Text>().text = ValueNow.ToString();
+
 
             //게이지===============업적 값이 현재 레벨 목표값 이상으로 차있다.
-            if (ValueNow >= Info[prefabnum].clearCriterionAccumulate[LevelNow])
+            if (ValueNow >= Info[prefabnum].clearCriterion[LevelNow])
             {
                 //도전과제 게이지 == 가득 찬 상태로
                 Gauge.GetComponent<Image>().fillAmount = 1;
@@ -264,7 +240,7 @@ public class Challenge : MonoBehaviour
     {
 
         //도전과제 달성했는지 확인
-        if (ValueNow >= Info[prefabnum].clearCriterionAccumulate[LevelNow])
+        if (ValueNow >= Info[prefabnum].clearCriterion[LevelNow])
         {
             //효과음, 효과 애니메이션
             AudioManager.instance.RewardAudioPlay();

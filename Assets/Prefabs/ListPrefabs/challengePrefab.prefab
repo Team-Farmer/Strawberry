@@ -425,7 +425,6 @@ RectTransform:
   - {fileID: 2911658881347657346}
   - {fileID: 1232052147478666423}
   - {fileID: 2092732143923423232}
-  - {fileID: 5753186256744780518}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -451,37 +450,31 @@ MonoBehaviour:
     rewardMedal: 0
     rewardHeart: 0
     clearCriterion: 00000000
-    clearCriterionAccumulate: 
     challengeImage: {fileID: 6934086728263231946, guid: 8647c3afc86716a4b80730f89d72eea6, type: 3}
   - Title: "\uB538\uAE30 \uC218\uD655"
     rewardMedal: 0
     rewardHeart: 0
     clearCriterion: 00000000
-    clearCriterionAccumulate: 
     challengeImage: {fileID: -7441382367286639308, guid: 8647c3afc86716a4b80730f89d72eea6, type: 3}
   - Title: "\uB204\uC801 \uCF54\uC778"
     rewardMedal: 0
     rewardHeart: 0
     clearCriterion: 00000000
-    clearCriterionAccumulate: 
     challengeImage: {fileID: -229256013063241344, guid: 8647c3afc86716a4b80730f89d72eea6, type: 3}
   - Title: "\uB204\uC801 \uD558\uD2B8"
     rewardMedal: 0
     rewardHeart: 0
     clearCriterion: 00000000
-    clearCriterionAccumulate: 
     challengeImage: {fileID: 1618293649664528702, guid: 8647c3afc86716a4b80730f89d72eea6, type: 3}
   - Title: "\uB204\uC801 \uCD9C\uC11D"
     rewardMedal: 0
     rewardHeart: 0
     clearCriterion: 00000000
-    clearCriterionAccumulate: 
     challengeImage: {fileID: -3885610455112514396, guid: 8647c3afc86716a4b80730f89d72eea6, type: 3}
   - Title: "\uBBF8\uB2C8\uAC8C\uC784 \uD50C\uB808\uC774"
     rewardMedal: 0
     rewardHeart: 0
     clearCriterion: 00000000
-    clearCriterionAccumulate: 
     challengeImage: {fileID: 21300000, guid: ddbffbdc38ee63b40bf220b80ab8bf8b, type: 3}
   levelText: {fileID: 24569728808626950}
   titleText: {fileID: 527783996456215474}
@@ -495,12 +488,12 @@ MonoBehaviour:
   FinBG: {fileID: 1631165551613105944}
   heart: {fileID: 2647036563277685573}
   medal: {fileID: 2157807828004521961}
-  TestText: {fileID: 3059164203854145993}
   Gauge: {fileID: 8123540764124747059}
   IngButton: {fileID: -2039454062554464529, guid: 0d07e1966ace1f34bb2579ddb3a45fa8, type: 3}
   DoneButton: {fileID: -379006227563035724, guid: 0d07e1966ace1f34bb2579ddb3a45fa8, type: 3}
   heartMover: {fileID: 1118165276891983343}
   medalMover: {fileID: 4509833555740243221}
+  TestText: {fileID: 0}
 --- !u!1 &527783997747247045
 GameObject:
   m_ObjectHideFlags: 0
@@ -1001,85 +994,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!1 &3059164203854145993
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5753186256744780518}
-  - component: {fileID: 4557371226716729779}
-  - component: {fileID: 7118488061204440112}
-  m_Layer: 5
-  m_Name: TestText
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &5753186256744780518
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3059164203854145993}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 527783997503068513}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 77.65}
-  m_SizeDelta: {x: 271.8, y: 57.3}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &4557371226716729779
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3059164203854145993}
-  m_CullTransparentMesh: 1
---- !u!114 &7118488061204440112
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3059164203854145993}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 12800000, guid: fffcb38c5316eb843924a2af66e3bd38, type: 3}
-    m_FontSize: 24
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
-    m_Alignment: 0
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: "\uC9C4\uC9DC \uB808\uBCA8/\uB204\uC801 \uAC8C\uC774\uC9C0"
 --- !u!1 &4206148771154013079
 GameObject:
   m_ObjectHideFlags: 0
@@ -1845,6 +1759,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 493aaa4e8f5e9634284ae7a152b4c796, type: 3}
+--- !u!224 &8956052210182060300 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2626726663596245358, guid: 493aaa4e8f5e9634284ae7a152b4c796, type: 3}
+  m_PrefabInstance: {fileID: 6358603232963688546}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &576111008284070252 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6899666480510904590, guid: 493aaa4e8f5e9634284ae7a152b4c796, type: 3}
@@ -1856,11 +1775,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94c8812041f20544e91d5f275cf1e637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!224 &8956052210182060300 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 2626726663596245358, guid: 493aaa4e8f5e9634284ae7a152b4c796, type: 3}
-  m_PrefabInstance: {fileID: 6358603232963688546}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2647036563277685573 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8971841476397914919, guid: 493aaa4e8f5e9634284ae7a152b4c796, type: 3}
