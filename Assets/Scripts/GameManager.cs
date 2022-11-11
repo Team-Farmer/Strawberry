@@ -102,6 +102,7 @@ public class GameManager : MonoBehaviour
     public SpriteRenderer[] stemLevelSprites;
 
     public GameObject newBerryBangImg;
+    public GameObject newBerryBangImg2;
 
     private int price_newBerry;//이번에 개발되는 베리 가격
     private string BtnState;//지금 버튼 상태
@@ -278,6 +279,7 @@ public class GameManager : MonoBehaviour
             case 1: BtnState = "ing"; startBtn_newBerry.GetComponent<Image>().sprite = IngImg; break;
             case 2: BtnState = "done";
                 newBerryBangImg.SetActive(true);
+                newBerryBangImg2.SetActive(true);
                 startBtn_newBerry.GetComponent<Image>().sprite = DoneImg; break;
         }
 
@@ -922,6 +924,7 @@ public class GameManager : MonoBehaviour
             case "done": //딸기 개발
                 GetNewBerry();
                 newBerryBangImg.SetActive(false);
+                newBerryBangImg2.SetActive(false);
                 break;
 
         }
