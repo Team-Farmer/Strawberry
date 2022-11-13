@@ -267,8 +267,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -88.1, y: -0.00000065569}
-  m_SizeDelta: {x: 84.67, y: 36}
+  m_AnchoredPosition: {x: -154.7, y: -0.00000065569}
+  m_SizeDelta: {x: 134.2, y: 36}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &527783996540281742
 CanvasRenderer:
@@ -347,8 +347,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 47.703053, y: -43.39453}
-  m_SizeDelta: {x: 84.67, y: 36}
+  m_AnchoredPosition: {x: 90.3, y: -43.39453}
+  m_SizeDelta: {x: 169.8, y: 36}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &527783997037598292
 CanvasRenderer:
@@ -493,7 +493,6 @@ MonoBehaviour:
   DoneButton: {fileID: -379006227563035724, guid: 0d07e1966ace1f34bb2579ddb3a45fa8, type: 3}
   heartMover: {fileID: 1118165276891983343}
   medalMover: {fileID: 4509833555740243221}
-  TestText: {fileID: 0}
 --- !u!1 &527783997747247045
 GameObject:
   m_ObjectHideFlags: 0

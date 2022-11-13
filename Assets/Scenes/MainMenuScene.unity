@@ -16955,17 +16955,11 @@ MonoBehaviour:
   - collectionInfos: 8c0000008d0000008e000000
   challengeCriterion:
   - challengeCriterions: 000000000000000000000000000000000000000000000000
-    challengeCriterionAccumulates: 000000000000000000000000000000000000000000000000
   - challengeCriterions: 000000000000000000000000000000000000000000000000
-    challengeCriterionAccumulates: 000000000000000000000000000000000000000000000000
   - challengeCriterions: 000000000000000000000000000000000000000000000000
-    challengeCriterionAccumulates: 000000000000000000000000000000000000000000000000
   - challengeCriterions: 000000000000000000000000000000000000000000000000
-    challengeCriterionAccumulates: 000000000000000000000000000000000000000000000000
   - challengeCriterions: 000000000000000000000000000000000000000000000000
-    challengeCriterionAccumulates: 000000000000000000000000000000000000000000000000
   - challengeCriterions: 000000000000000000000000000000000000000000000000
-    challengeCriterionAccumulates: 000000000000000000000000000000000000000000000000
   settingsPanel: {fileID: 0}
   checkPanel: {fileID: 0}
   attendanceCheck: {fileID: 1284243152}
@@ -29778,8 +29772,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 67.50004, y: -15.5}
-  m_SizeDelta: {x: 135, y: 121.3}
+  m_AnchoredPosition: {x: 91, y: 15}
+  m_SizeDelta: {x: 121.3, y: 121.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &853177033
 MonoBehaviour:
@@ -29801,7 +29795,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -4928458371787971548, guid: 96be02f6d1067f442a4ce706bfc23757, type: 3}
+  m_Sprite: {fileID: -3758477705955872588, guid: f7f2be59ec8c013468c254c4a2d30283, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -48135,7 +48129,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -4928458371787971548, guid: 96be02f6d1067f442a4ce706bfc23757, type: 3}
+  m_Sprite: {fileID: -2951275973838062318, guid: f7f2be59ec8c013468c254c4a2d30283, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
