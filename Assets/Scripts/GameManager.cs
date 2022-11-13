@@ -16,7 +16,6 @@ public class CollectionAcquire
 public class ChallengeAcquire
 { 
     public int[] challengeCriterions;
-    public int[] challengeCriterionAccumulates;
 }
 
 public class GameManager : MonoBehaviour
@@ -1223,10 +1222,8 @@ public class GameManager : MonoBehaviour
 
         for (int i = 0; i < 6; i++)
         {
-            if (ChallengeValue[i] >= challengeCriterion[i].challengeCriterionAccumulates[DataController.instance.gameData.challengeLevel[i]])
-            { 
-                Debug.Log("challenge test=" + i+" 값="+ChallengeValue[i]+" 누적 값="+ challengeCriterion[i].challengeCriterionAccumulates[DataController.instance.gameData.challengeLevel[i]]); 
-                return true; }
+            if (ChallengeValue[i] >= challengeCriterion[i].challengeCriterions[DataController.instance.gameData.challengeLevel[i]])
+            { return true; }
         }
         return false;
     }
@@ -1241,58 +1238,45 @@ public class GameManager : MonoBehaviour
 
 
         challengeCriterion[0].challengeCriterions[0] = 10;
-        challengeCriterion[0].challengeCriterionAccumulates[0] = challengeCriterion[0].challengeCriterions[0];
         for (int i = 1; i < MaxLevel; i++)
         {
             challengeCriterion[0].challengeCriterions[i] = challengeCriterion[0].challengeCriterions[0] + 10 * i;
-            challengeCriterion[0].challengeCriterionAccumulates[i] = challengeCriterion[0].challengeCriterionAccumulates[i - 1] + challengeCriterion[0].challengeCriterions[i];
-
         }
 
 
         challengeCriterion[1].challengeCriterions[0] = 100;
-        challengeCriterion[1].challengeCriterionAccumulates[0] = challengeCriterion[1].challengeCriterions[0];
         for (int i = 1; i < MaxLevel; i++)
         {
             challengeCriterion[1].challengeCriterions[i] = challengeCriterion[1].challengeCriterions[i - 1] * 2;
-            challengeCriterion[1].challengeCriterionAccumulates[i] = challengeCriterion[1].challengeCriterionAccumulates[i - 1] + challengeCriterion[1].challengeCriterions[i];
         }
 
 
         challengeCriterion[2].challengeCriterions[0] = 1000;
-        challengeCriterion[2].challengeCriterionAccumulates[0] = challengeCriterion[2].challengeCriterions[0];
         for (int i = 1; i < MaxLevel; i++)
         {
             // 1000 3000 9000 12000 36000 // 좀 키워야할듯......
             challengeCriterion[2].challengeCriterions[i] = challengeCriterion[2].challengeCriterions[i - 1] * 4;
-            challengeCriterion[2].challengeCriterionAccumulates[i] = challengeCriterion[2].challengeCriterionAccumulates[i - 1] + challengeCriterion[2].challengeCriterions[i];
         }
 
 
         challengeCriterion[3].challengeCriterions[0] = 100;
-        challengeCriterion[3].challengeCriterionAccumulates[0] = challengeCriterion[3].challengeCriterions[0];
         for (int i = 1; i < MaxLevel; i++)
         {
             // 키울게요
             challengeCriterion[3].challengeCriterions[i] = challengeCriterion[3].challengeCriterions[i - 1] + 200;
-            challengeCriterion[3].challengeCriterionAccumulates[i] = challengeCriterion[3].challengeCriterionAccumulates[i - 1] + challengeCriterion[3].challengeCriterions[i];
         }
 
 
         challengeCriterion[4].challengeCriterions[0] = 4;
-        challengeCriterion[4].challengeCriterionAccumulates[0] = challengeCriterion[4].challengeCriterions[0];
         for (int i = 1; i < MaxLevel; i++)
         {
             challengeCriterion[4].challengeCriterions[i] = challengeCriterion[4].challengeCriterions[i - 1] + 3;
-            challengeCriterion[4].challengeCriterionAccumulates[i] = challengeCriterion[4].challengeCriterionAccumulates[i - 1] + challengeCriterion[4].challengeCriterions[i];
         }
 
         challengeCriterion[5].challengeCriterions[0] = 10;
-        challengeCriterion[5].challengeCriterionAccumulates[0] = challengeCriterion[5].challengeCriterions[0];
         for (int i = 1; i < MaxLevel; i++)
         {
             challengeCriterion[5].challengeCriterions[i] = challengeCriterion[5].challengeCriterions[i - 1] + 20;
-            challengeCriterion[5].challengeCriterionAccumulates[i] = challengeCriterion[5].challengeCriterionAccumulates[i - 1] + challengeCriterion[5].challengeCriterions[i];
         }
 
     }
