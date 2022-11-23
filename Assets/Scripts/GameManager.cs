@@ -120,7 +120,7 @@ public class GameManager : MonoBehaviour
     public GameObject contentChallenge;
     public CollectionAcquire[] collectionInfo;
     public ChallengeAcquire[] challengeCriterion;
-    private int[] ChallengeValue = new int[6];
+    private int[] ChallengeValueNow = new int[6];
 
 
 
@@ -266,7 +266,7 @@ public class GameManager : MonoBehaviour
     }
     void Update()
     {
-        BangIconSearch();
+        
 
         //PTJ
         workingCountText.GetComponent<Text>().text = DataController.instance.gameData.PTJCount.ToString();//알바중인 인원수
@@ -322,7 +322,18 @@ public class GameManager : MonoBehaviour
 
 
     }
+    private void FixedUpdate()
+    {
+        ChallengeValueNow[0] = DataController.instance.gameData.unlockBerryCnt;
+        ChallengeValueNow[1] = DataController.instance.gameData.totalHarvBerryCnt;
+        ChallengeValueNow[2] = DataController.instance.gameData.accCoin;
+        ChallengeValueNow[3] = DataController.instance.gameData.accHeart;
+        ChallengeValueNow[4] = DataController.instance.gameData.accAttendance;
+        ChallengeValueNow[5] = DataController.instance.gameData.mgPlayCnt;
 
+        BangIconSearch();
+
+    }
     public void QuitOkBtn()
     {
 
@@ -1213,16 +1224,12 @@ public class GameManager : MonoBehaviour
     }
     private bool ChallengeBangIconSearch()
     {
-        ChallengeValue[0] = DataController.instance.gameData.unlockBerryCnt;
-        ChallengeValue[1] = DataController.instance.gameData.totalHarvBerryCnt;
-        ChallengeValue[2] = DataController.instance.gameData.accCoin;
-        ChallengeValue[3] = DataController.instance.gameData.accHeart;
-        ChallengeValue[4] = DataController.instance.gameData.accAttendance;
-        ChallengeValue[5] = DataController.instance.gameData.mgPlayCnt;
 
         for (int i = 0; i < 6; i++)
         {
-            if (ChallengeValue[i] >= challengeCriterion[i].challengeCriterions[DataController.instance.gameData.challengeLevel[i]])
+            if (ChallengeValueNow[i] >= 
+                challengeCriterion[i].challengeCriterions
+                [DataController.instance.gameData.challengeLevel[i]])
             { return true; }
         }
         return false;
@@ -1231,10 +1238,7 @@ public class GameManager : MonoBehaviour
     private void setChallenge() 
     {
         
-
-        //GameData에 변수 추가한다음 challenge 달성 기준들 저장해서 Challenge에서 가져다 쓰면 이렇게 ㄷ개 중복되게 안해도 될듯
-
-        int MaxLevel = 6;
+        int MaxLevel = 7;
 
 
         challengeCriterion[0].challengeCriterions[0] = 10;
