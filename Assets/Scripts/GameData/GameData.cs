@@ -68,7 +68,7 @@ public class GameData
 
     //도전과제
     public int[] challengeLevel = new int[6];//현재 달성 수치
-
+    public bool[] isChallengeMax = new bool[6];//도전과제 max level인지 여분
     //뉴스
     public int[] newsState = new int[15];//0=Lock, 1=Unlock Able, 2=Unlock
 

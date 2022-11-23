@@ -253,7 +253,6 @@ public class Challenge : MonoBehaviour
             GameManager.instance.GetMedal(Info[prefabnum].rewardMedal); //메달 보상 획득
             GameManager.instance.GetHeart(Info[prefabnum].rewardHeart); //하트 보상 획득
 
-            //Debug.Log(Info[prefabnum].rewardMedal + "   " + Info[prefabnum].rewardHeart);
             //다음 레벨로 이동
             if (LevelNow < MaxLevel)
             {
@@ -282,7 +281,7 @@ public class Challenge : MonoBehaviour
                 */
                 Button.GetComponent<Image>().sprite = IngButton; //도전과제 버튼 이미지 변경
 
-                DataController.instance.gameData.challengeLevel[prefabnum]++; //LevelNow증가 == 레벨증가
+                DataController.instance.gameData.challengeLevel[prefabnum]++; //Level증가
                 Info[prefabnum].rewardHeart = (DataController.instance.gameData.challengeLevel[prefabnum] + 1) * 10;//하트 보상
 
             }
@@ -309,5 +308,8 @@ public class Challenge : MonoBehaviour
         // 숫자 Max
         nowCondition.GetComponent<Text>().text = Info[prefabnum].clearCriterion[MaxLevel-1].ToString();
         achieveCondition.GetComponent<Text>().text = "/" + Info[prefabnum].clearCriterion[MaxLevel-1].ToString();//도전과제 게이지 달성 조건 숫자
+
+        DataController.instance.gameData.isChallengeMax[prefabnum] = true;
+    
     }
 }

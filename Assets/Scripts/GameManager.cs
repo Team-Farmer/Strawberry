@@ -1224,13 +1224,17 @@ public class GameManager : MonoBehaviour
     }
     private bool ChallengeBangIconSearch()
     {
-
+        
         for (int i = 0; i < 6; i++)
         {
-            if (ChallengeValueNow[i] >= 
-                challengeCriterion[i].challengeCriterions
-                [DataController.instance.gameData.challengeLevel[i]])
-            { return true; }
+            if (DataController.instance.gameData.isChallengeMax[i] ==false)
+            {
+                if (ChallengeValueNow[i] >=
+                    challengeCriterion[i].challengeCriterions
+                    [DataController.instance.gameData.challengeLevel[i]])
+                { return true; }
+
+            }
         }
         return false;
     }
