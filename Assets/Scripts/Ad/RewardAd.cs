@@ -54,7 +54,7 @@ public class RewardAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListe
     {
         Debug.Log($"광고 로드 실패: {error}-{message}");
 
-        //OnAdFailed();
+        OnAdFailed();
 
         Debug.Log("잠시후 다시 시도해주세요");
     }
