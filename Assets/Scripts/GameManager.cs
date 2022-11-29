@@ -1242,7 +1242,7 @@ public class GameManager : MonoBehaviour
     private void setChallenge() 
     {
         
-        int MaxLevel = 7;
+        int MaxLevel = 6;
 
 
         challengeCriterion[0].challengeCriterions[0] = 10;
