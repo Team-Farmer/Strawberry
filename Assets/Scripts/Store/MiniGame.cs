@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class MiniGame : MonoBehaviour
 {
@@ -66,6 +67,9 @@ public class MiniGame : MonoBehaviour
         time = 64;
         score_txt.text = score.ToString();
         isGameRunning = false;
+
+
+
 
         if (DataController.instance.gameData.dotori > 0)
         {
@@ -175,6 +179,9 @@ public class MiniGame : MonoBehaviour
 
     public virtual void StopGame()
     {
+        MiniGameManager.instance.dotoriTimer.text = DataController.instance.gameData.nextDotoriTime.ToString("mm':'ss");
+        MiniGameManager.instance.DotoriInit();
+
         score = 0;
         time = 64;
         unlockList.Clear();
@@ -191,7 +198,7 @@ public class MiniGame : MonoBehaviour
         time = 64;
         unlockList.Clear();
 
-        DataController.instance.gameData.dotori--;
+        GameManager.instance.UseDotori();
         GameManager.instance.invokeDotori();
         OnEnable();
     }
@@ -236,6 +243,8 @@ public class MiniGame : MonoBehaviour
         {
             countImgs.transform.GetChild(i).gameObject.SetActive(false);
         }
+
+
 
         StopGame();
     }

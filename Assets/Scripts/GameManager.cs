@@ -72,6 +72,7 @@ public class GameManager : MonoBehaviour
 
     [Header("[ MiniGame ]")]
     public GameObject minigame_inside;
+    public Text dotoriTimer;
 
     //NEWS
     [NonSerialized]
@@ -336,11 +337,15 @@ public class GameManager : MonoBehaviour
     }
     public void QuitOkBtn()
     {
-
-        DataController.instance.SaveData();
         isStart = false;
         DataController.instance.gameData.lastExitTime = DataController.instance.gameData.currentTime;
 
+        if (MiniGameManager.isOpen == true)
+        {
+            DataController.instance.gameData.lastMinigameExitTime = DataController.instance.gameData.currentTime;
+            StopCoroutine(DotoriTimer());
+        }
+        DataController.instance.SaveData();
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else
@@ -359,19 +364,27 @@ public class GameManager : MonoBehaviour
     {
         if (pause)
         {
-            //Debug.Log(DataController.instance.gameData.isPrework);
             if (DataController.instance.gameData.isPrework == true)
+            {
                 DataController.instance.gameData.lastExitTime = DataController.instance.gameData.currentTime;
 
-            //Debug.Log("마지막 종료 시간: " + DataController.instance.gameData.lastExitTime);
-
+                if (MiniGameManager.isOpen == true)
+                {
+                    DataController.instance.gameData.lastMinigameExitTime = DataController.instance.gameData.currentTime;
+                    StopCoroutine(DotoriTimer());
+                }
+            }
 
             DataController.instance.SaveData();
         }
         else
         {
             if (isStart && Intro.isEnd)
+            {
                 StartCoroutine(CheckElapseTime());
+            }
+
+
         }
 
     }
@@ -643,6 +656,33 @@ public class GameManager : MonoBehaviour
     public void ShowMedalText()
     {
         MedalText.GetComponent<Text>().text = DataController.instance.gameData.medal.ToString();
+    }
+
+
+    public void UseDotori()
+    {
+        --DataController.instance.gameData.dotori;
+        DataController.instance.gameData.totalDotoriTime = DataController.instance.gameData.totalDotoriTime.Add(TimeSpan.FromMinutes(60));
+
+        if (DataController.instance.gameData.totalDotoriTime.TotalSeconds < 3600f)
+            DataController.instance.gameData.nextDotoriTime = DataController.instance.gameData.totalDotoriTime;
+        else
+        {
+            if (DataController.instance.gameData.nextDotoriTime.TotalSeconds <= 0)
+            {
+                DataController.instance.gameData.nextDotoriTime = TimeSpan.FromSeconds(3600f);
+                dotoriTimer.text = "60:00";
+            }
+        }
+
+
+    }
+
+
+
+    IEnumerator DotoriTimer()
+    {
+        yield return new WaitForSeconds(3600);
     }
     #endregion
 
@@ -1390,7 +1430,7 @@ public class GameManager : MonoBehaviour
     }
 
     //자정 체크 및 정보갱신
-    void ResetTime()
+    void ResetTime() // 자정 지날 시 정보 갱신
     {
         attendanceCheck.GetComponent<AttendanceCheck>().Attendance();
 
@@ -1402,74 +1442,53 @@ public class GameManager : MonoBehaviour
             - DataController.instance.gameData.currentTime).TotalSeconds);
     }
 
-    IEnumerator CheckElapseTime() //게임 복귀할때
+    IEnumerator CheckElapseTime() // 게임 복귀할때 
     {
+
         DataController.instance.gameData.isPrework = false;
         yield return StartCoroutine(TryGetCurrentTime());
-
+        if (MiniGameManager.isOpen == true)
+        {
+            MiniGameManager.instance.DotoriInit();
+        }
         TimeSpan gap = DataController.instance.gameData.currentTime - DataController.instance.gameData.lastExitTime;
 
-        if (gap.TotalSeconds > 3610f && Intro.isEnd && DataController.instance.gameData.isStoreOpend)
+        if (gap.TotalSeconds > 60f) //재접속 부재중 시간이 1분이상이면 Calculate 추가 계산
         {
             yield return StartCoroutine(CalculateTime());
         }
 
         MidNightCheck();
 
-        if (DataController.instance.gameData.rewardAbsenceTime.TotalMinutes >= 60&&Intro.isEnd &&DataController.instance.gameData.isStoreOpend)
+        if (DataController.instance.gameData.rewardAbsenceTime.TotalMinutes >= 60 && Intro.isEnd && DataController.instance.gameData.isStoreOpend)
         {
-            //부재중 이벤트
-            int num = (int)DataController.instance.gameData.rewardAbsenceTime.TotalMinutes / 60;
-
-            if (DataController.instance.gameData.dotori < 5)
-            {
-                DataController.instance.gameData.dotori += num;
-
-                if (DataController.instance.gameData.dotori > 5)
-                    DataController.instance.gameData.dotori=5;
-            }
-            invokeDotori();
-
             if (!MiniGameManager.isOpen)
-            {
                 AbsenceTime();
-            }
         }
         else if (DataController.instance.gameData.rewardAbsenceTime.TotalMinutes < 60)
-        {
             DataController.instance.gameData.rewardAbsenceTime = TimeSpan.FromSeconds(0);
-        }
 
         attendanceCheck.GetComponent<AttendanceCheck>().Attendance();
 
     }
 
-    IEnumerator PreWork() //접속할 때
+    IEnumerator PreWork() // 접속할 때 
     {
         yield return StartCoroutine(TryGetCurrentTime()); //현재시간 불러오기 체크
         yield return StartCoroutine(CalculateTime());
 
         StartCoroutine(UpdateCurrentTime()); //30초 갱신
-
         MidNightCheck();
+        invokeDotori(); // 도토리 텍스트 갱신
+        //도토리 시간 갱신
 
-        if (DataController.instance.gameData.rewardAbsenceTime.TotalMinutes >= 60&&Intro.isEnd&&DataController.instance.gameData.isStoreOpend)
+        double checkTime = DataController.instance.gameData.rewardAbsenceTime.TotalMinutes;
+
+        if (checkTime >= 60 && Intro.isEnd && DataController.instance.gameData.isStoreOpend) // 60분 이상 && 인트로가 끝났을 때 && 미니게임 오픈
         {
-            int num = (int)DataController.instance.gameData.rewardAbsenceTime.TotalMinutes / 60;
-
-            if (DataController.instance.gameData.dotori < 5)
-            {
-                DataController.instance.gameData.dotori += num;
-
-                if (DataController.instance.gameData.dotori > 5)
-                    DataController.instance.gameData.dotori = 5;
-            }
-            invokeDotori();
-
-            //부재중 이벤트
-            AbsenceTime();
+            AbsenceTime(); // 부재중 패널
         }
-        else if (DataController.instance.gameData.rewardAbsenceTime.TotalMinutes < 60)
+        else if (DataController.instance.gameData.rewardAbsenceTime.TotalMinutes < 60) // 60분 이하
         {
             DataController.instance.gameData.rewardAbsenceTime = TimeSpan.FromSeconds(0);
         }
@@ -1477,8 +1496,7 @@ public class GameManager : MonoBehaviour
         attendanceCheck.GetComponent<AttendanceCheck>().Attendance();
     }
 
-
-    public void MidNightCheck()
+    public void MidNightCheck() // 자정 체크 
     {
         DateTime temp = new DateTime();
         if (temp != DataController.instance.gameData.nextMidnightTime && temp != DataController.instance.gameData.currentTime)
@@ -1532,6 +1550,7 @@ public class GameManager : MonoBehaviour
         else
             DataController.instance.gameData.rewardAbsenceTime += gap;
 
+
         //알바 남은 시간 갱신 자리
     }
 
@@ -1546,62 +1565,62 @@ public class GameManager : MonoBehaviour
         Debug.Log("마지막 출석:" + DataController.instance.gameData.atdLastday);
     }
 
-    public void AbsenceTime()
+    public void AbsenceTime() // 부재중 패널
     {
         int researchLevelAdd = 0;
         int minute = (int)DataController.instance.gameData.rewardAbsenceTime.TotalMinutes;
         int hour = 0;
-
-        if (minute > 59)
-        {
-            hour = minute / 60;
-            minute %= 60;
-        }
-        else
-        {
-            return;
-        }
-
-        AbsenceTimeText.text = string.Format("{0:D2}:{1:D2}", hour, minute);
-
+        // 현재 연구레벨 계산
         for (int i = 0; i < 6; i++)
         {
             researchLevelAdd += DataController.instance.gameData.researchLevel[i];
         }
 
-        revenue = ((int)DataController.instance.gameData.rewardAbsenceTime.TotalMinutes / 5) * researchLevelAdd / 6 * 2;
+        revenue = (minute / 5) * researchLevelAdd / 6 * 2;
+        // 한시간이 안넘거나 연구레벨이 하나라도 0 레벨이면 시간 초기화 하고 종료
+        // 애초에 가게 오픈 가능 레벨이 모든 연구 레벨 15 이상임. 가게가 안열렸으면 부재중 보상도 오픈 X
 
-
-        //Debug.Log("부재중 시간:" + DataController.instance.gameData.rewardAbsenceTime.TotalMinutes);
-        //Debug.Log("부재중 수익:" + revenue);
-
-        if (revenue == 0)
+        // 예외처리
+        if (revenue == 0 || revenue < 0)
         {
             DataController.instance.gameData.rewardAbsenceTime = TimeSpan.FromSeconds(0);
             return;
         }
+        else
+        {
+            if (revenue <= 9999)           // 0~9999까지 A
+            {
+                AbsenceMoneyText.text = revenue + "A";
+            }
+            else if (revenue <= 9999999)   // 10000~9999999(=9999B)까지 B
+            {
+                revenue /= 1000;
+                AbsenceMoneyText.text = revenue + "B";
+            }
+            else                        // 그 외 C (최대 2100C)
+            {
+                revenue /= 1000000;
+                AbsenceMoneyText.text = revenue + "C";
+            }
+        }
 
-        if (revenue <= 9999)           // 0~9999까지 A
+        // 시간 텍스트 갱신 
+        if (minute > 59)
         {
-            AbsenceMoneyText.text = revenue + "A";
+            hour = minute / 60;
+            minute %= 60;
+            AbsenceTimeText.text = string.Format("{0:D2}:{1:D2}", hour, minute);
         }
-        else if (revenue <= 9999999)   // 10000~9999999(=9999B)까지 B
+        else
         {
-            revenue /= 1000;
-            AbsenceMoneyText.text = revenue + "B";
+            return; // 예외처리 2
         }
-        else                        // 그 외 C (최대 2100C)
-        {
-            revenue /= 1000000;
-            AbsenceMoneyText.text = revenue + "C";
-        }
+
+        // 보상 패널 띄우기
         absenceBlackPanel.SetActive(true);
         absenceBlackPanel.GetComponent<PanelAnimation>().Fadein();
         AbsencePanel.GetComponent<PanelAnimation>().OpenScale();
-        DataController.instance.gameData.rewardAbsenceTime = TimeSpan.FromSeconds(0);
-
     }
-
     //광고보고 2배받기
     public void OnclickAdBtn()
     {
@@ -1620,6 +1639,7 @@ public class GameManager : MonoBehaviour
         blackPanel.SetActive(false);
         AbsenceBlackPanel.SetActive(false);
         AbsencePanel.GetComponent<PanelAnimation>().CloseScale();
+        InitAbsenceReward();
     }
     
     void OnFailedAd()
@@ -1632,35 +1652,17 @@ public class GameManager : MonoBehaviour
     public void AbsenceBtn()
     {
         GetCoin(revenue);
+        InitAbsenceReward();
         AbsencePanel.GetComponent<PanelAnimation>().CloseScale();
     }
 
-    /*    public void CheckTime()
-        {
-            //플레이 도중 자정이 넘어갈 경우 출석 가능하게
-            // 자정시간 구하기.
-            DateTime target = new DateTime(DataController.instance.gameData.currentTime.Year, 
-                DataController.instance.gameData.currentTime.Month, DataController.instance.gameData.currentTime.Day);
-            target = target.AddDays(1);
-            // 자정시간 - 현재시간
-            TimeSpan ts = target - DataController.instance.gameData.currentTime;
-            // 남은시간 만큼 대기 후 OnTimePass 호출.
-            Invoke("OnTimePass", (float)ts.TotalSeconds);
-            Debug.Log("자정까지 남은 시간(분): " + ts.TotalMinutes);
-        }*/
+    public void InitAbsenceReward()
+    {
+        //DataController.instance.gameData.isAbsence = true; // 부재중 보상 받았음
+        DataController.instance.gameData.rewardAbsenceTime = TimeSpan.FromSeconds(0); // 부재중 시간 초기화
+    }
 
-    /*    public void OnTimePass()
-        {
-            //정보갱신
-            Debug.Log("출석 정보가 갱신되었습니다.");
 
-            StartCoroutine(UpdateCurrentTime());
-            CheckTime();
-            if (DataController.instance.gameData.currentTime.Day != DataController.instance.gameData.atdLastday.Day)
-                DataController.instance.gameData.isAttendance = false;
-
-            attendanceCheck.GetComponent<AttendanceCheck>().Attendance();
-        }*/
 
 
     #endregion
@@ -1677,11 +1679,14 @@ public class GameManager : MonoBehaviour
 
     public void OnclickQuit()
     {
-
-        DataController.instance.SaveData();
         isStart = false;
         DataController.instance.gameData.lastExitTime = DataController.instance.gameData.currentTime;
-
+        if (MiniGameManager.isOpen == true)
+        {
+            DataController.instance.gameData.lastMinigameExitTime = DataController.instance.gameData.currentTime;
+            StopCoroutine(DotoriTimer());
+        }
+        DataController.instance.SaveData();
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
         

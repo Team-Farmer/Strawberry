@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class MiniGameManager : MonoBehaviour
 {
@@ -16,13 +17,19 @@ public class MiniGameManager : MonoBehaviour
     public Button startButton;
     public Text infoText;
     public Text daramSpeechBubbleText;
+    public Text dotoriTimer;
     public List<GameObject> miniGameList;
     public static bool isOpen;
+    public static bool isTimerOn;
+
+    public static MiniGameManager instance { get; private set; }
 
     void Awake()
     {
+        instance = this;
         if (DataController.instance.gameData.isStoreOpend == true)
             Store.GetComponent<Image>().sprite = StoreSprite[1];
+        isTimerOn = false;
     }
 
     public void EnterStore()
@@ -37,6 +44,8 @@ public class MiniGameManager : MonoBehaviour
             //예림-오디오
             GameManager.instance.isMiniGameMode = true;
             AudioManager.instance.PauseAudio("RainSFXSound");
+            dotoriTimer.text = DataController.instance.gameData.nextDotoriTime.ToString("mm':'ss");
+            DotoriInit();
         }
         else
         {
@@ -67,6 +76,8 @@ public class MiniGameManager : MonoBehaviour
         //예림-오디오
         GameManager.instance.isMiniGameMode = true;
         AudioManager.instance.PauseAudio("RainSFXSound");
+        dotoriTimer.text = DataController.instance.gameData.nextDotoriTime.ToString("mm':'ss");
+        DotoriInit();
     }
 
     private bool ResearchLevelCheck(int level)
@@ -84,14 +95,11 @@ public class MiniGameManager : MonoBehaviour
         isOpen = false;
         GameManager.instance.isMiniGameMode = false;
         AudioManager.instance.ResumePlayAudio("RainSFXSound");
-        if (DataController.instance.gameData.rewardAbsenceTime.TotalMinutes >= 60)
-        {
-            //부재중 이벤트
-            GameManager.instance.AbsenceTime();
-        }
+        DataController.instance.gameData.lastMinigameExitTime = DataController.instance.gameData.currentTime;
+        StopCoroutine(DotoriTimer());
     }
 
-    public void SetInfo(int btnIdx)
+        public void SetInfo(int btnIdx)
     {
         switch (btnIdx)
         {
@@ -114,14 +122,114 @@ public class MiniGameManager : MonoBehaviour
         }
     }
 
+    public void DotoriInit()
+    {
+
+        if (DataController.instance.gameData.dotori < 5) //0초 이상일 때 , 5개보다 적을 때
+        {
+            if (DataController.instance.gameData.totalDotoriTime.TotalMinutes >= 300) // 최대치 300 고정
+                DataController.instance.gameData.totalDotoriTime = TimeSpan.FromMinutes(300);
+
+            TimeSpan gap = DataController.instance.gameData.currentTime // 미니게임 부재중 시간
+            - DataController.instance.gameData.lastMinigameExitTime;
+
+            DataController.instance.gameData.lastMinigameExitTime = DataController.instance.gameData.currentTime;
+
+            double dotoriDiv = Math.Round(gap.TotalSeconds / 3600f); // 충전해야하는 도토리 개수
+            double dotoriRem = Math.Round(gap.TotalSeconds % 3600f); // 남은 타이머 갱신 시간
+
+            if (DataController.instance.gameData.totalDotoriTime.TotalSeconds > 0)
+            {
+                DataController.instance.gameData.totalDotoriTime=DataController.instance.gameData.totalDotoriTime.Subtract(TimeSpan.FromHours((int)dotoriDiv));
+                DataController.instance.gameData.totalDotoriTime=DataController.instance.gameData.totalDotoriTime.Subtract(TimeSpan.FromSeconds(dotoriRem));
+
+                if (DataController.instance.gameData.totalDotoriTime.TotalSeconds <= 0)
+                    DataController.instance.gameData.totalDotoriTime = TimeSpan.FromSeconds(0);
+                else
+                {
+                    if (DataController.instance.gameData.totalDotoriTime.TotalSeconds < 3600f)
+                        DataController.instance.gameData.nextDotoriTime = DataController.instance.gameData.totalDotoriTime;
+                    else
+                    {
+                        TimeSpan gap2 = DataController.instance.gameData.nextDotoriTime.Subtract(TimeSpan.FromSeconds(dotoriRem));
+                        if(gap2.TotalSeconds<=0)
+                            DataController.instance.gameData.nextDotoriTime = DataController.instance.gameData.nextDotoriTime.Subtract(TimeSpan.FromSeconds(3600f-gap.TotalSeconds));
+                        else
+                            DataController.instance.gameData.nextDotoriTime = DataController.instance.gameData.nextDotoriTime.Subtract(TimeSpan.FromSeconds(dotoriRem));
+                    }
+                       
+                }
+            }
+
+            if (DataController.instance.gameData.dotori + (int)dotoriDiv > 5) // 5개 이상이면
+            {
+                DataController.instance.gameData.dotori = 5;
+                GameManager.instance.invokeDotori();
+                DataController.instance.gameData.nextDotoriTime = TimeSpan.FromSeconds(0);
+                DataController.instance.gameData.totalDotoriTime = TimeSpan.FromSeconds(0);
+                dotoriTimer.text = "00:00";
+            }
+            else
+            {
+                DataController.instance.gameData.dotori += (int)dotoriDiv;
+                GameManager.instance.invokeDotori();
+                dotoriTimer.text = DataController.instance.gameData.nextDotoriTime.ToString("mm':'ss");
+                //Debug.Log("다음 도토리 충전까지 : " + DataController.instance.gameData.nextDotoriTime);
+                //Debug.Log("총 남은 시간 : " + DataController.instance.gameData.totalDotoriTime);
+
+                if(isTimerOn==false)
+                    StartCoroutine(DotoriTimer());
+            }
+        }
+        else
+        {
+            GameManager.instance.invokeDotori();
+            DataController.instance.gameData.nextDotoriTime = TimeSpan.FromSeconds(0);
+            DataController.instance.gameData.totalDotoriTime = TimeSpan.FromSeconds(0);
+            dotoriTimer.text = "00:00";
+        }
+    }
+
+    IEnumerator DotoriTimer()
+    {
+        isTimerOn = true;
+        while (DataController.instance.gameData.nextDotoriTime.TotalSeconds > 0)
+        {
+            yield return new WaitForSeconds(1f);
+            DataController.instance.gameData.nextDotoriTime=DataController.instance.gameData.nextDotoriTime.Subtract(TimeSpan.FromSeconds(1f));
+            DataController.instance.gameData.totalDotoriTime=DataController.instance.gameData.totalDotoriTime.Subtract(TimeSpan.FromSeconds(1f));
+            dotoriTimer.text = DataController.instance.gameData.nextDotoriTime.ToString("mm':'ss");
+        }
+
+
+        //남은 총 시간을 보여줘야지 next 도토리 타임은 한번 충전할 때 쓰려고 만든거임
+        if (DataController.instance.gameData.totalDotoriTime.TotalSeconds <= 0)
+        {
+            isTimerOn = false;
+            yield return null;
+        }
+        else
+        {
+            DataController.instance.gameData.dotori++;
+            GameManager.instance.invokeDotori();
+            DataController.instance.gameData.nextDotoriTime = TimeSpan.FromSeconds(3600f);
+            dotoriTimer.text = DataController.instance.gameData.nextDotoriTime.ToString("mm':'ss");
+
+            //String str = DataController.instance.gameData.nextDotoriTime.ToString("hhmm");
+            //GameManager.instance.dotoriTimer.text = str;
+
+            isTimerOn = false;
+            StartCoroutine(DotoriTimer());
+        }
+    }
+
     public void OnclickStartBtn()
     {
         string info_str = infoText.text.Substring(0, 5);
 
-        // 도토리 재화 업데이트
-        //DataController.instance.gameData.dotori--;
-        //GameManager.instance.invokeDotori();
         dotori.SetActive(false);
+        DataController.instance.gameData.lastMinigameExitTime = DataController.instance.gameData.currentTime;
+        StopCoroutine(DotoriTimer());
 
         if (info_str == "딸기 창고")
         {

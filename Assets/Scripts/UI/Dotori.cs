@@ -35,7 +35,7 @@ public class Dotori : MonoBehaviour
 
     void OnEnable()
     {
-        DataController.instance.gameData.dotori -= 1;
+        GameManager.instance.UseDotori();
         GameManager.instance.invokeDotori();
         mySequence.Restart();
     }

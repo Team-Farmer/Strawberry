@@ -16923,6 +16923,7 @@ MonoBehaviour:
   HireYNPanel_yes: {fileID: 408412197}
   confirmPanel: {fileID: 604087749}
   minigame_inside: {fileID: 0}
+  dotoriTimer: {fileID: 1993797002}
   priceText_newBerry: {fileID: 1295824419}
   timeText_newBerry: {fileID: 2120615085}
   startBtn_newBerry: {fileID: 787233744}
@@ -33891,6 +33892,7 @@ MonoBehaviour:
   startButton: {fileID: 356585423}
   infoText: {fileID: 1015856940}
   daramSpeechBubbleText: {fileID: 252816385}
+  dotoriTimer: {fileID: 1993797002}
   miniGameList:
   - {fileID: 1048971386}
   - {fileID: 208079357}
@@ -62287,6 +62289,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 737585862}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1802891354
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69490,7 +69504,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 10:00
+  m_Text: 00:00
 --- !u!222 &1993797003
 CanvasRenderer:
   m_ObjectHideFlags: 0
