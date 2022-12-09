@@ -8,6 +8,12 @@ public class AdCoin : MonoBehaviour
     [SerializeField] Button adCoinBtn;
     [SerializeField] PanelAnimation panel;
     [SerializeField] GameObject panelBlack;
+    public Text adCoinText;
+
+    void Update()
+    {
+        adCoinText.text = "광고를 시청하고\n코인 "+ (1000 * (DataController.instance.gameData.researchLevelAv + 1)) + "A를 받을까요?";
+    }
 
     public void OnClickPlusCoinBtn()
     {
@@ -19,7 +25,7 @@ public class AdCoin : MonoBehaviour
 
     void ReceiveCoin()
     {
-        GameManager.instance.GetCoin(1000);
+        GameManager.instance.GetCoin(1000*(DataController.instance.gameData.researchLevelAv+1));
         RewardAd.instance.OnAdComplete -= ReceiveCoin;
         RewardAd.instance.OnAdFailed -= OnAdFail;
         adCoinBtn.interactable = true;

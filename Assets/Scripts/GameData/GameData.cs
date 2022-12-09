@@ -63,7 +63,8 @@ public class GameData
 
     //=====================================================================================
     //연구 레벨
-    public int[] researchLevel=new int[6];
+    public int[] researchLevel = new int[6];
+    public int researchLevelAv;
     //=====================================================================================
 
     //도전과제
@@ -79,7 +80,7 @@ public class GameData
     //PTJ
     public int[] PTJNum = new int[6];//고용 횟수
     public int PTJCount;//n명 고용중
-    public int[] PTJSelectNum =new int[2];//지금 선택된 (prefabNum , 슬라이더 넘버)
+    public int[] PTJSelectNum = new int[2];//지금 선택된 (prefabNum , 슬라이더 넘버)
     public bool[] PTJIsWorking = new bool[6];//일하는 '순간'인지
     //=====================================================================================
 

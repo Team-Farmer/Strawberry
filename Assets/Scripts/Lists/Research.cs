@@ -109,6 +109,7 @@ public class Research : MonoBehaviour
     //연구 레벨
     public void clickCoin_Research() {
         AudioManager.instance.Cute1AudioPlay();
+
         //Debug.Log("prefabnum: " + prefabnum);
         if (DataController.instance.gameData.researchLevel[prefabnum] < 25)//레벨 25로 한계두기
         {
@@ -157,6 +158,14 @@ public class Research : MonoBehaviour
                         (DataController.instance.gameData.researchLevel[prefabnum] * 2) + "%" + "→" +
                         (DataController.instance.gameData.researchLevel[prefabnum] + 1) * 2 + "%";//설명 텍스트 표시
                 }
+
+                // 연구레벨 평균값 업데이트
+                DataController.instance.gameData.researchLevelAv = 0;
+                for (int i = 0; i < 6; i++)
+                {
+                    DataController.instance.gameData.researchLevelAv += DataController.instance.gameData.researchLevel[i];
+                }
+                DataController.instance.gameData.researchLevelAv /= 6;
             }
             else
             {

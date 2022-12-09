@@ -8,6 +8,12 @@ public class AdHeart : MonoBehaviour
     [SerializeField] Button adHeartBtn;
     [SerializeField] PanelAnimation panel;
     [SerializeField] GameObject panelBlack;
+    public Text adHeartText;
+
+    void Update()
+    {
+        adHeartText.text = "광고를 시청하고\n하트 " + (10 * (DataController.instance.gameData.researchLevelAv + 1)) + "개를 받을까요?";
+    }
 
     public void OnClickPlusHeartBtn()
     {
@@ -19,7 +25,7 @@ public class AdHeart : MonoBehaviour
 
     void ReceiveHeart()
     {
-        GameManager.instance.GetHeart(10);
+        GameManager.instance.GetHeart(10 * (DataController.instance.gameData.researchLevelAv + 1));
         adHeartBtn.interactable = true;
         RewardAd.instance.OnAdComplete -= ReceiveHeart;
         RewardAd.instance.OnAdFailed -= OnFailAd;

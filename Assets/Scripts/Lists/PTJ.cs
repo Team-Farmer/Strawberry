@@ -77,9 +77,6 @@ public class PTJ : MonoBehaviour
     //==========고용 횟수==========
     private int PTJ_NUM_NOW;
 
-    //우선 알바에서만 쓸 연구레벨 평균값...
-    int researchLevelAv;
-
     //???
     //비 파티클
     //private ParticleSystem rainParticle;
@@ -124,14 +121,6 @@ public class PTJ : MonoBehaviour
 
     void OnEnable()
     {
-        researchLevelAv = 0;
-        for (int i = 0; i < 6; i++)
-        {
-            researchLevelAv += DataController.instance.gameData.researchLevel[i];
-        }
-        researchLevelAv /= 6;
-        Debug.Log(researchLevelAv);
-
         PreafbInfoUpdate();
     }
 
@@ -181,9 +170,9 @@ public class PTJ : MonoBehaviour
         //설명
         explanationText.GetComponent<Text>().text = Info[prefabnum].Explanation;
         //비용
-        if (researchLevelAv < 5) // 연구 레벨이 5레벨 이하라면
+        if (DataController.instance.gameData.researchLevelAv < 5) // 연구 레벨이 5레벨 이하라면
             GameManager.instance.ShowCoinText(coinNum.GetComponent<Text>(), Info[prefabnum].Price);
-        else if (researchLevelAv < 10) // 연구 레벨이 10레벨 이하라면
+        else if (DataController.instance.gameData.researchLevelAv < 10) // 연구 레벨이 10레벨 이하라면
             GameManager.instance.ShowCoinText(coinNum.GetComponent<Text>(), Info[prefabnum].Price * 2);
         else
             GameManager.instance.ShowCoinText(coinNum.GetComponent<Text>(), Info[prefabnum].Price * 4);
@@ -284,9 +273,9 @@ public class PTJ : MonoBehaviour
         DataController.instance.gameData.PTJSelectNum[0] = prefabnum;
         DataController.instance.gameData.PTJSelectNum[1] = value;
         //가격
-        if (researchLevelAv < 5) // 연구 레벨이 5레벨 이하라면
+        if (DataController.instance.gameData.researchLevelAv < 5) // 연구 레벨이 5레벨 이하라면
             GameManager.instance.ShowCoinText(price.GetComponent<Text>(), value * Info[prefabnum].Price);
-        else if (researchLevelAv < 10) // 연구 레벨이 10레벨 이하라면
+        else if (DataController.instance.gameData.researchLevelAv < 10) // 연구 레벨이 10레벨 이하라면
             GameManager.instance.ShowCoinText(price.GetComponent<Text>(), value * Info[prefabnum].Price * 2);
         else // 연구 레벨이 15레벨 이하라면
             GameManager.instance.ShowCoinText(price.GetComponent<Text>(), value * Info[prefabnum].Price * 4);
@@ -324,9 +313,9 @@ public class PTJ : MonoBehaviour
             //n회
             SliderNum.transform.GetComponent<Text>().text = "10회";
             //가격
-            if (researchLevelAv < 5) // 연구 레벨이 5레벨 이하라면
+            if (DataController.instance.gameData.researchLevelAv < 5) // 연구 레벨이 5레벨 이하라면
                 GameManager.instance.ShowCoinText(price.GetComponent<Text>(), 10 * Info[prefabnum].Price);
-            else if (researchLevelAv < 10) // 연구 레벨이 10레벨 이하라면
+            else if (DataController.instance.gameData.researchLevelAv < 10) // 연구 레벨이 10레벨 이하라면
                 GameManager.instance.ShowCoinText(price.GetComponent<Text>(), 10 * Info[prefabnum].Price * 2);
             else // 연구 레벨이 15레벨 이하라면
                 GameManager.instance.ShowCoinText(price.GetComponent<Text>(), 10 * Info[prefabnum].Price * 4);
@@ -347,9 +336,9 @@ public class PTJ : MonoBehaviour
             //n회
             SliderNum.transform.GetComponent<Text>().text = "1회";
             //가격
-            if (researchLevelAv < 5) // 연구 레벨이 5레벨 이하라면
+            if (DataController.instance.gameData.researchLevelAv < 5) // 연구 레벨이 5레벨 이하라면
                 GameManager.instance.ShowCoinText(price.GetComponent<Text>(), Info[prefabnum].Price);
-            else if (researchLevelAv < 10) // 연구 레벨이 10레벨 이하라면
+            else if (DataController.instance.gameData.researchLevelAv < 10) // 연구 레벨이 10레벨 이하라면
                 GameManager.instance.ShowCoinText(price.GetComponent<Text>(), Info[prefabnum].Price * 2);
             else // 연구 레벨이 15레벨 이하라면
                 GameManager.instance.ShowCoinText(price.GetComponent<Text>(), Info[prefabnum].Price * 4);
