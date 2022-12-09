@@ -1617,6 +1617,7 @@ public class GameManager : MonoBehaviour
         }
 
         // 보상 패널 띄우기
+        DisableObjColliderAll();
         absenceBlackPanel.SetActive(true);
         absenceBlackPanel.GetComponent<PanelAnimation>().Fadein();
         AbsencePanel.GetComponent<PanelAnimation>().OpenScale();
@@ -1660,6 +1661,7 @@ public class GameManager : MonoBehaviour
     {
         //DataController.instance.gameData.isAbsence = true; // 부재중 보상 받았음
         DataController.instance.gameData.rewardAbsenceTime = TimeSpan.FromSeconds(0); // 부재중 시간 초기화
+        EnableObjColliderAll();
     }
 
 
