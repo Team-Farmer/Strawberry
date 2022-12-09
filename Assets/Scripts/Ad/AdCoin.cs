@@ -25,7 +25,7 @@ public class AdCoin : MonoBehaviour
 
     void ReceiveCoin()
     {
-        GameManager.instance.GetCoin(1000*(DataController.instance.gameData.researchLevelAv+1));
+        GameManager.instance.GetCoin(1000 * (DataController.instance.gameData.researchLevelAv + 1));
         RewardAd.instance.OnAdComplete -= ReceiveCoin;
         RewardAd.instance.OnAdFailed -= OnAdFail;
         adCoinBtn.interactable = true;
