@@ -62,6 +62,7 @@ public class PTJWorking : MonoBehaviour
                 DataController.instance.gameData.PTJCount--;
                 isOnetime = true;
                 gameObject.transform.SetAsLastSibling();
+                AudioManager.instance.TadaAudioPlay();//알바 끝나면 효과음. 바꿀거임 임시임
             }
             //알바 하는중
             else
