@@ -84,7 +84,7 @@ public class ArbeitMgr : MonoBehaviour
     {
         yield return new WaitForSeconds(0.75f);
         DataController.instance.gameData.PTJIsWorking[2] = true;//허윤지
-        bug.DieBug();       
+        bug.DieBug();
     }
 
     void Fubo()//강아지 3

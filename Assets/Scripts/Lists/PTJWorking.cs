@@ -99,7 +99,7 @@ public class PTJWorking : MonoBehaviour
     private IEnumerator workingFace() 
     {
         face.GetComponent<Image>().sprite = WorkingFacePicture[prefabnum];
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(2f);
         face.GetComponent<Image>().sprite = FacePicture[prefabnum];
         DataController.instance.gameData.PTJIsWorking[prefabnum] = false;
     }

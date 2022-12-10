@@ -814,7 +814,7 @@ public class GameManager : MonoBehaviour
 
         //PRICE
         price_newBerry = 90 + 10 * (BerryCount("classic", true) + BerryCount("special", true) + BerryCount("unique", true));
-        //priceText_newBerry.GetComponent<Text>().text = price_newBerry.ToString();
+       
         ShowCoinText(priceText_newBerry.GetComponent<Text>(), price_newBerry);
 
         if (DataController.instance.gameData.newBerryBtnState == 1)//개발 가능한 딸기
@@ -1144,17 +1144,17 @@ public class GameManager : MonoBehaviour
         if (randomNum < 45)
         {
             newBerryIndex = UnityEngine.Random.Range(1, 64);
-            DataController.instance.gameData.newBerryTime = 3 * 60;
+            DataController.instance.gameData.newBerryTime = 10 * 60;
         }//classic
         else if (randomNum < 80)
         {
             newBerryIndex = UnityEngine.Random.Range(64, 128);
-            DataController.instance.gameData.newBerryTime = 6 * 60;
+            DataController.instance.gameData.newBerryTime = 20 * 60;
         }//special
         else if (randomNum <= 100)
         {
             newBerryIndex = UnityEngine.Random.Range(128, 192);
-            DataController.instance.gameData.newBerryTime = 9 * 60;
+            DataController.instance.gameData.newBerryTime = 30 * 60;
         }//unique
 
 
