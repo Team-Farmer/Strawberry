@@ -24,6 +24,8 @@ public class Intro : MonoBehaviour
     {
         if (Intro.instance == null)
             Intro.instance = this;
+
+        isEnd = false;
     }
 
     void Start()    {
@@ -71,7 +73,7 @@ public class Intro : MonoBehaviour
                     }
                 });
 
-        yield return new WaitForSeconds(2.3f);
+        yield return new WaitForSeconds(1.8f);
         isEnd = true;
         GameManager.instance.StartPrework();
         //Debug.Log(DataController.instance.gameData.lastExitTime);

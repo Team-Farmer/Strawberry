@@ -179,7 +179,6 @@ public class MiniGame : MonoBehaviour
 
     public virtual void StopGame()
     {
-        MiniGameManager.instance.dotoriTimer.text = DataController.instance.gameData.nextDotoriTime.ToString("mm':'ss");
         MiniGameManager.instance.DotoriInit();
 
         score = 0;

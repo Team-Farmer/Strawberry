@@ -9,12 +9,12 @@ using UnityEngine.SceneManagement;
 
 
 [System.Serializable]
-public class CollectionAcquire 
+public class CollectionAcquire
 { public int[] collectionInfos; }
 
 [System.Serializable]
 public class ChallengeAcquire
-{ 
+{
     public int[] challengeCriterions;
 }
 
@@ -267,7 +267,7 @@ public class GameManager : MonoBehaviour
     }
     void Update()
     {
-        
+
 
         //PTJ
         workingCountText.GetComponent<Text>().text = DataController.instance.gameData.PTJCount.ToString();//알바중인 인원수
@@ -277,7 +277,8 @@ public class GameManager : MonoBehaviour
         {
             case 0: BtnState = "start"; startBtn_newBerry.GetComponent<Image>().sprite = StartImg; break;
             case 1: BtnState = "ing"; startBtn_newBerry.GetComponent<Image>().sprite = IngImg; break;
-            case 2: BtnState = "done";
+            case 2:
+                BtnState = "done";
                 newBerryBangImg.SetActive(true);
                 newBerryBangImg2.SetActive(true);
                 startBtn_newBerry.GetComponent<Image>().sprite = DoneImg; break;
@@ -343,7 +344,6 @@ public class GameManager : MonoBehaviour
         if (MiniGameManager.isOpen == true)
         {
             DataController.instance.gameData.lastMinigameExitTime = DataController.instance.gameData.currentTime;
-            StopCoroutine(DotoriTimer());
         }
         DataController.instance.SaveData();
 #if UNITY_EDITOR
@@ -371,7 +371,8 @@ public class GameManager : MonoBehaviour
                 if (MiniGameManager.isOpen == true)
                 {
                     DataController.instance.gameData.lastMinigameExitTime = DataController.instance.gameData.currentTime;
-                    StopCoroutine(DotoriTimer());
+                    MiniGameManager.instance.StopAllCoroutines();
+                    MiniGameManager.instance.isTimerOn = false;
                 }
             }
 
@@ -515,7 +516,7 @@ public class GameManager : MonoBehaviour
     {
         if (DataController.instance.gameData.truckBerryCnt < Globalvariable.instance.truckCntLevel[3, DataController.instance.gameData.newBerryResearchAble])
         {
-            DataController.instance.gameData.truckBerryCnt += 1;        
+            DataController.instance.gameData.truckBerryCnt += 1;
             DataController.instance.gameData.truckCoin += stem.getInstantBerryObj().GetComponent<Berry>().berryPrice;
         }
     }
@@ -661,29 +662,24 @@ public class GameManager : MonoBehaviour
 
     public void UseDotori()
     {
-        --DataController.instance.gameData.dotori;
-        DataController.instance.gameData.totalDotoriTime = DataController.instance.gameData.totalDotoriTime.Add(TimeSpan.FromMinutes(60));
-
-        if (DataController.instance.gameData.totalDotoriTime.TotalSeconds < 3600f)
-            DataController.instance.gameData.nextDotoriTime = DataController.instance.gameData.totalDotoriTime;
-        else
+        if (DataController.instance.gameData.dotori > 0)
         {
+            --DataController.instance.gameData.dotori;
+            DataController.instance.gameData.totalDotoriTime = DataController.instance.gameData.totalDotoriTime.Add(TimeSpan.FromMinutes(30));
+
+            if (DataController.instance.gameData.totalDotoriTime.TotalMinutes >= 150) // 최대치 150분 고정
+                DataController.instance.gameData.totalDotoriTime = TimeSpan.FromMinutes(150);
+
             if (DataController.instance.gameData.nextDotoriTime.TotalSeconds <= 0)
             {
-                DataController.instance.gameData.nextDotoriTime = TimeSpan.FromSeconds(3600f);
-                dotoriTimer.text = "60:00";
+                DataController.instance.gameData.nextDotoriTime = TimeSpan.FromSeconds(1800f);
+                dotoriTimer.text = "30:00";
             }
         }
-
-
     }
 
 
 
-    IEnumerator DotoriTimer()
-    {
-        yield return new WaitForSeconds(3600);
-    }
     #endregion
 
     #region 콜라이더
@@ -814,7 +810,7 @@ public class GameManager : MonoBehaviour
 
         //PRICE
         price_newBerry = 90 + 10 * (BerryCount("classic", true) + BerryCount("special", true) + BerryCount("unique", true));
-       
+
         ShowCoinText(priceText_newBerry.GetComponent<Text>(), price_newBerry);
 
         if (DataController.instance.gameData.newBerryBtnState == 1)//개발 가능한 딸기
@@ -1229,7 +1225,7 @@ public class GameManager : MonoBehaviour
     public void BangIconSearch()
     {
 
-        if (CollectionBangIconSearch() == true || ChallengeBangIconSearch()==true)
+        if (CollectionBangIconSearch() == true || ChallengeBangIconSearch() == true)
         { bangIcon.SetActive(true); }
         else { bangIcon.SetActive(false); }
     }
@@ -1262,10 +1258,10 @@ public class GameManager : MonoBehaviour
     }
     private bool ChallengeBangIconSearch()
     {
-        
+
         for (int i = 0; i < 6; i++)
         {
-            if (DataController.instance.gameData.isChallengeMax[i] ==false)
+            if (DataController.instance.gameData.isChallengeMax[i] == false)
             {
                 if (ChallengeValueNow[i] >=
                     challengeCriterion[i].challengeCriterions
@@ -1277,9 +1273,9 @@ public class GameManager : MonoBehaviour
         return false;
     }
 
-    private void setChallenge() 
+    private void setChallenge()
     {
-        
+
         int MaxLevel = 6;
 
 
@@ -1640,7 +1636,7 @@ public class GameManager : MonoBehaviour
         AbsencePanel.GetComponent<PanelAnimation>().CloseScale();
         InitAbsenceReward();
     }
-    
+
     void OnFailedAd()
     {
         RewardAd.instance.OnAdComplete -= ReceiveCoin2Times;
@@ -1684,12 +1680,11 @@ public class GameManager : MonoBehaviour
         if (MiniGameManager.isOpen == true)
         {
             DataController.instance.gameData.lastMinigameExitTime = DataController.instance.gameData.currentTime;
-            StopCoroutine(DotoriTimer());
         }
         DataController.instance.SaveData();
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
-        
+
 #else
         Application.Quit();
 
