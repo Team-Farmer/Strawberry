@@ -30,6 +30,10 @@ public class MiniGame1 : MiniGame
 
     protected override void MakeGame()
     {
+        for(int i = 0; i < answer_btn.Length; i++) // 미니게임 연속 클릭 방지 - 희규
+        {
+            answer_btn[i].enabled = true;
+        }
         quiz_img.gameObject.SetActive(true);
         for (int i = 0; i < 4; i++)
         {
@@ -98,6 +102,10 @@ public class MiniGame1 : MiniGame
         }
         if (time > 0)
         {
+            for (int i = 0; i < answer_btn.Length; i++) // 미니게임 연속 클릭 방지 - 희규
+            {
+                answer_btn[i].enabled = false;
+            }
             Invoke("MakeNextQuiz", 0.3f);
         }
     }

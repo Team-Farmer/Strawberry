@@ -35,6 +35,11 @@ public class MiniGame2 : MiniGame
 
     protected override void MakeGame()
     {
+        for (int i = 0; i < answer_btn_4x4.Length; i++)
+        {
+            answer_btn_4x4[i].enabled = true;
+        }
+
         // 음영 계수를 점수에 따라 정하기
         if (score < 100) shade_idx = 0;
         else if (100 <= score && score <= 200) shade_idx = 1;
@@ -94,9 +99,13 @@ public class MiniGame2 : MiniGame
             AudioManager.instance.WrongAudioPlay();
 
             Sandy.GetComponent<Image>().sprite = SandySprite[1];
-        }
+        }      
         if (time > 0)
-        {                  
+        {
+            for (int i = 0; i < answer_btn_4x4.Length; i++) // 버튼 연속 클릭 방지
+            {
+                answer_btn_4x4[i].enabled = false;
+            }
             Invoke("MakeNextQuiz", 0.3f);
         }
     }
@@ -105,6 +114,7 @@ public class MiniGame2 : MiniGame
     {
         O.SetActive(false);
         X.SetActive(false);
+
         MakeGame();
     }
 
