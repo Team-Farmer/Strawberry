@@ -58,10 +58,11 @@ public class MiniGameManager : MonoBehaviour
             blackPanel.gameObject.SetActive(true);
             blackPanel.Fadein();
             storeConfirm.OpenScale();
-            //해금조건 - 연구레벨 15이상, 700A 소모 가능상태
 
-            if (DataController.instance.gameData.coin >= 700 && ResearchLevelCheck(15))
+            //해금조건 - 연구레벨 7 이상, 2000A 소모
+            if (DataController.instance.gameData.coin >= 2000 && ResearchLevelCheck(7))
             {
+                GameManager.instance.UseCoin(2000);
                 UnlockBtn.interactable = true;
             }
             else

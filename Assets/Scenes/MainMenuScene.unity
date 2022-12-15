@@ -30079,8 +30079,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uC870\uAC74 : \uBAA8\uB4E0 \uC5F0\uAD6C\uB808\uBCA8 15 \uC774\uC0C1,\n\t\uCF54\uC778
-    700A \uC18C\uBAA8"
+  m_Text: "\uC870\uAC74 :  \uD3C9\uADE0 \uC5F0\uAD6C\uB808\uBCA8 7 \uC774\uC0C1,\n  
+    \t\t\uCF54\uC778 2000A \uC18C\uBAA8"
 --- !u!222 &844846437
 CanvasRenderer:
   m_ObjectHideFlags: 0
