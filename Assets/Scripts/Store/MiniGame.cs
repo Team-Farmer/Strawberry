@@ -164,17 +164,7 @@ public class MiniGame : MonoBehaviour
             DataController.instance.gameData.highScore[idx] = score;
         }
 
-        //미니게임 플레이 횟수 증가 (업적 채우기 위한 플레이 방지)
-        if (idx == 4)
-        {
-            if (score >= 45)
-                DataController.instance.gameData.mgPlayCnt++;
-        }
-        else
-        {
-            if (score >= 30)
-                DataController.instance.gameData.mgPlayCnt++;
-        }
+        DataController.instance.gameData.mgPlayCnt++;
     }
 
     public virtual void StopGame()
