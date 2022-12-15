@@ -19,11 +19,12 @@ public class Setting : MonoBehaviour
     public GameObject money_btn;
     public GameObject berry_btn;
 
-    private string money = "money";
-    private string nomoney = "nomoney";
-    private string berry = "berry";
-    private string noberry = "noberry";
-    //private string store = "store";
+    private string coin = "yc";
+    private string nocoin = "nc";
+    private string berry = "yb";
+    private string noberry = "nb";
+    private string store = "ys";
+    private string nostore = "ns";
     #endregion
 
     void Awake()
@@ -101,12 +102,12 @@ public class Setting : MonoBehaviour
 
     public void EnterCodeBtn()
     {
-        if (code_input.text == money)
+        if (code_input.text == coin)
         {
             code_text.text = "코인버튼 해제";
             money_btn.SetActive(true);
         }
-        else if (code_input.text == nomoney)
+        else if (code_input.text == nocoin)
         {
             code_text.text = "코인버튼 잠금";
             money_btn.SetActive(false);
@@ -121,10 +122,23 @@ public class Setting : MonoBehaviour
             code_text.text = "딸기버튼 잠금";
             berry_btn.SetActive(false);
         }
-        /*else if (code_input.text == store)
+        else if (code_input.text == store)
         {
             code_text.text = "가게 오픈";
             DataController.instance.gameData.isStoreOpend = true;
-        }*/
+        }
+        else if (code_input.text == nostore)
+        {
+            code_text.text = "가게 닫기";
+            DataController.instance.gameData.isStoreOpend = false;
+        }
+        else if (code_input.text == "")
+        {
+            code_text.text = "코드 입력 필요";
+        }
+        else
+        {
+            code_text.text = "해당 코드 없음";
+        }
     }
 }
