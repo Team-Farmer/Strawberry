@@ -46,13 +46,21 @@ public class Intro : MonoBehaviour
                 .AppendInterval(0.4f)
                 .AppendCallback(() =>
                 {
+                    AudioManager.instance.WinkAudioPlay();
+
+                })
+                .AppendInterval(0.4f)
+                .AppendCallback(() =>
+                {
                     introObject[0].GetComponent<Image>().sprite = sprites[0];
+
                 })
                 .AppendInterval(0.4f)
                 .Append(rect.transform.DOScale(Vector3.one * 0.002f, 0.4f))
                 .AppendInterval(0.1f)
                 .AppendCallback(() =>
                 {
+
                     introObject[1].SetActive(false);
                     introObject[2].SetActive(true);
                     introObject[3].SetActive(true);
