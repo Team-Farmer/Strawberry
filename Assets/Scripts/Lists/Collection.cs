@@ -74,7 +74,10 @@ public class Collection : MonoBehaviour
     private void InfoUpdate()
     {
         //coinTxt.GetComponent<Text>().text = "X" + Info[prefabnum].rewardCoin.ToString();
-        GameManager.instance.ShowCoinText(coinTxt.GetComponent<Text>(), Info[prefabnum].rewardCoin);
+        if (Info[prefabnum].rewardCoin <= 10000)
+            coinTxt.GetComponent<Text>().text = (Info[prefabnum].rewardCoin/1000).ToString() + "B";
+        else
+            GameManager.instance.ShowCoinText(coinTxt.GetComponent<Text>(), Info[prefabnum].rewardCoin);
 
         //얻은 베리는 색이 보인다.
         for (int i = 0; i < berryClassifyNum; i++)

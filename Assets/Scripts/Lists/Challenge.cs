@@ -126,7 +126,7 @@ public class Challenge : MonoBehaviour
 
         //보상 설정
         Info[prefabnum].rewardMedal = 1; // 1 뱃지
-        Info[prefabnum].rewardHeart = (DataController.instance.gameData.challengeLevel[prefabnum]+1) * 10;//레벨X5 하트
+        Info[prefabnum].rewardHeart = (DataController.instance.gameData.challengeLevel[prefabnum]+1) * 5;//레벨X5 하트
 
         //그림 설정
         image.GetComponent<Image>().sprite = Info[prefabnum].challengeImage;

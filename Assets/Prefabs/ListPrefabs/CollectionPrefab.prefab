@@ -655,22 +655,22 @@ MonoBehaviour:
   Info:
   - Name: "\uBA4B\uC9C4 \uD5E4\uC5B4\uC2A4\uD0C0\uC77C"
     berryClassify: 090000000a0000000b000000
-    rewardCoin: 10000
+    rewardCoin: 5000
   - Name: "\uC774\uC0C1\uD55C \uCE5C\uAD6C\uB4E4"
     berryClassify: 0f0000001000000011000000
-    rewardCoin: 30000
+    rewardCoin: 7000
   - Name: "\uAC70\uB300 \uB538\uAE30"
     berryClassify: 4300000044000000
-    rewardCoin: 50000
+    rewardCoin: 10000
   - Name: "\uD558\uC580 \uB538\uAE30\uB4E4"
     berryClassify: 420000004a000000
-    rewardCoin: 70000
+    rewardCoin: 14000
   - Name: "\uD574\uD53C \uD560\uB85C\uC708"
     berryClassify: 850000008600000087000000
-    rewardCoin: 100000
+    rewardCoin: 19000
   - Name: "\uC5B4\uB514\uC11C \uC654\uB2C8?"
     berryClassify: 8c0000008d0000008e000000
-    rewardCoin: 150000
+    rewardCoin: 25000
   collectionName: {fileID: 1476324555848526793}
   collectionBtn: {fileID: 4911162250941680714}
   collectionNow: {fileID: 5826314664937963886}
@@ -791,7 +791,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4.8, y: -25.6}
+  m_AnchoredPosition: {x: 12.6, y: -25.6}
   m_SizeDelta: {x: 100.74, y: 38.39}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8350157069607356728
@@ -937,7 +937,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -1547,7 +1547,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 150B
+  m_Text: 30B
 --- !u!1 &8969990089381725070
 GameObject:
   m_ObjectHideFlags: 0
