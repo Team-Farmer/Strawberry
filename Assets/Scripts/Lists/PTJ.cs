@@ -175,7 +175,7 @@ public class PTJ : MonoBehaviour
         else if (DataController.instance.gameData.researchLevelAv < 10) // 연구 레벨이 10레벨 이하라면
             GameManager.instance.ShowCoinText(coinNum.GetComponent<Text>(), Info[prefabnum].Price * 2);
         else
-            GameManager.instance.ShowCoinText(coinNum.GetComponent<Text>(), Info[prefabnum].Price * 4);
+            GameManager.instance.ShowCoinText(coinNum.GetComponent<Text>(), Info[prefabnum].Price * 3);
     }
 
     //PTJ Explanation Panel 띄우기
@@ -278,7 +278,7 @@ public class PTJ : MonoBehaviour
         else if (DataController.instance.gameData.researchLevelAv < 10) // 연구 레벨이 10레벨 이하라면
             GameManager.instance.ShowCoinText(price.GetComponent<Text>(), value * Info[prefabnum].Price * 2);
         else // 연구 레벨이 15레벨 이하라면
-            GameManager.instance.ShowCoinText(price.GetComponent<Text>(), value * Info[prefabnum].Price * 4);
+            GameManager.instance.ShowCoinText(price.GetComponent<Text>(), value * Info[prefabnum].Price * 3);
     }
     public void ToggleChange()
     {
@@ -318,7 +318,7 @@ public class PTJ : MonoBehaviour
             else if (DataController.instance.gameData.researchLevelAv < 10) // 연구 레벨이 10레벨 이하라면
                 GameManager.instance.ShowCoinText(price.GetComponent<Text>(), 10 * Info[prefabnum].Price * 2);
             else // 연구 레벨이 15레벨 이하라면
-                GameManager.instance.ShowCoinText(price.GetComponent<Text>(), 10 * Info[prefabnum].Price * 4);
+                GameManager.instance.ShowCoinText(price.GetComponent<Text>(), 10 * Info[prefabnum].Price * 3);
 
         }
         //1단위
@@ -341,7 +341,7 @@ public class PTJ : MonoBehaviour
             else if (DataController.instance.gameData.researchLevelAv < 10) // 연구 레벨이 10레벨 이하라면
                 GameManager.instance.ShowCoinText(price.GetComponent<Text>(), Info[prefabnum].Price * 2);
             else // 연구 레벨이 15레벨 이하라면
-                GameManager.instance.ShowCoinText(price.GetComponent<Text>(), Info[prefabnum].Price * 4);
+                GameManager.instance.ShowCoinText(price.GetComponent<Text>(), Info[prefabnum].Price * 3);
         }
     }
 }

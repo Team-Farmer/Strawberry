@@ -318,13 +318,13 @@ MonoBehaviour:
     Picture: {fileID: 1491852098334267804, guid: 165b2af07615f914fafa2bd15d62f172, type: 3}
     FacePicture: {fileID: 2312389103385020965, guid: 93753ccc8cbf2554ba3b829ed94b9ed1, type: 3}
     Explanation: "\uAC15\uB825\uD55C \uBE44\uB97C \uC6D0\uD558\uB2C8?"
-    Price: 300
+    Price: 200
   - Name: "\uD53C\uADF8\uB9C8"
     Picture: {fileID: 296038017401492265, guid: 165b2af07615f914fafa2bd15d62f172, type: 3}
     FacePicture: {fileID: -1513482845346613526, guid: 93753ccc8cbf2554ba3b829ed94b9ed1, type: 3}
     Explanation: "\uB538\uAE30\uB97C \uBE44\uC2F8\uAC8C \uD314\uC544\uC904\uAC8C
       \uC544\uB9C8\uB3C4! "
-    Price: 400
+    Price: 300
   PTJBackground: {fileID: 3464224768173057888}
   nameText: {fileID: 9018496231175234831}
   facePicture: {fileID: 56983697321961158}
