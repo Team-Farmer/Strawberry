@@ -5164,7 +5164,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "30\uBD84 \uC904\uC774\uAE30"
+  m_Text: "10\uBD84 \uC904\uC774\uAE30"
 --- !u!222 &157983676
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10124,7 +10124,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "10\uBD84 \uC904\uC774\uAE30"
+  m_Text: "5\uBD84 \uC904\uC774\uAE30"
 --- !u!222 &308032390
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -21510,7 +21510,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: X 30
+  m_Text: X 10
 --- !u!222 &632368845
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -24765,7 +24765,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -158, y: -200.99983}
+  m_AnchoredPosition: {x: -171, y: -200.99983}
   m_SizeDelta: {x: 300, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &720320626
@@ -24843,7 +24843,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 10
+          m_IntArgument: 5
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
@@ -24868,7 +24868,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -464533967283577750, guid: 3669433d78cafd44e91c6ad2ab592b81, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ef6ed484fbeaf2648a1cbfaed33e62a7, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -26512,7 +26512,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 909940711}
         m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: Cute1AudioPlay
+        m_MethodName: SFXAudioPlay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -31473,7 +31473,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 275, y: 200}
+  m_AnchoredPosition: {x: 310, y: 205}
   m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &875503247
@@ -40917,7 +40917,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 175, y: -200.99998}
+  m_AnchoredPosition: {x: 191, y: -200.99998}
   m_SizeDelta: {x: 300, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1101791554
@@ -40995,7 +40995,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 30
+          m_IntArgument: 10
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
@@ -41915,7 +41915,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 8, y: -0.000016212}
-  m_SizeDelta: {x: 715.9, y: 590}
+  m_SizeDelta: {x: 800, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1139367167
 MonoBehaviour:
@@ -41990,7 +41990,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -206, y: -105.99982}
+  m_AnchoredPosition: {x: -211, y: -105.99982}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5000004}
 --- !u!114 &1146217379
@@ -48819,7 +48819,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4, y: 61}
+  m_AnchoredPosition: {x: 4, y: 74}
   m_SizeDelta: {x: 700, y: 263}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1356704009
@@ -48844,7 +48844,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: fffcb38c5316eb843924a2af66e3bd38, type: 3}
-    m_FontSize: 50
+    m_FontSize: 58
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -58843,7 +58843,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 84, y: 1.7504349}
+  m_AnchoredPosition: {x: 71, y: 1.7504349}
   m_SizeDelta: {x: 137.2, y: 90.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1645567602
@@ -58879,7 +58879,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: X 10
+  m_Text: X 5
 --- !u!222 &1645567603
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -63886,7 +63886,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 127.99999, y: -106}
+  m_AnchoredPosition: {x: 144, y: -106}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5000004}
 --- !u!114 &1794138775
@@ -77944,7 +77944,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: fffcb38c5316eb843924a2af66e3bd38, type: 3}
-    m_FontSize: 64
+    m_FontSize: 58
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -77955,7 +77955,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uD558\uD2B8 30\uAC1C\uB85C \uB3C4\uD1A0\uB9AC\n\uD558\uB098\uB97C \uAD6C\uB9E4\uD560\uAE4C\uC694?"
+  m_Text: "\uD558\uD2B8 30\uAC1C\uB97C \uC0AC\uC6A9\uD574\uC11C\n\uB3C4\uD1A0\uB9AC
+    \uD558\uB098\uB97C \uAD6C\uB9E4\uD560\uAE4C\uC694?"
 --- !u!222 &2130082067
 CanvasRenderer:
   m_ObjectHideFlags: 0
