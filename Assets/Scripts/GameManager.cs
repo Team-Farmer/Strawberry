@@ -1561,18 +1561,12 @@ public class GameManager : MonoBehaviour
 
     public void AbsenceTime() // 부재중 패널
     {
-        int researchLevelAdd = 0;
         int minute = (int)DataController.instance.gameData.rewardAbsenceTime.TotalMinutes;
         int hour = 0;
-        // 현재 연구레벨 계산
-        for (int i = 0; i < 6; i++)
-        {
-            researchLevelAdd += DataController.instance.gameData.researchLevel[i];
-        }
 
-        revenue = (minute / 5) * researchLevelAdd / 6 * 2;
+        revenue = minute * DataController.instance.gameData.researchLevelAv / 2; // 평균 7렙 기준 10분에 35A, 1시간 210A, 24시간 5040A
         // 한시간이 안넘거나 연구레벨이 하나라도 0 레벨이면 시간 초기화 하고 종료
-        // 애초에 가게 오픈 가능 레벨이 모든 연구 레벨 15 이상임. 가게가 안열렸으면 부재중 보상도 오픈 X
+        // 애초에 가게 오픈 가능 레벨이 모든 연구 레벨 7 이상임. 가게가 안열렸으면 부재중 보상도 오픈 X
 
         // 예외처리
         if (revenue == 0 || revenue < 0)
@@ -1596,6 +1590,7 @@ public class GameManager : MonoBehaviour
                 revenue /= 1000000;
                 AbsenceMoneyText.text = revenue + "C";
             }
+            // ShowCoin 안 쓰는 이유가 있음? (-우연)
         }
 
         // 시간 텍스트 갱신 
