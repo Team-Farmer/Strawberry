@@ -12,7 +12,7 @@ public class AdHeart : MonoBehaviour
 
     void Update()
     {
-        adHeartText.text = "광고를 시청하고\n하트 " + (10 * (DataController.instance.gameData.researchLevelAv + 1)) + "개를 받을까요?";
+        adHeartText.text = "광고를 시청하고\n하트 " + (5 * (DataController.instance.gameData.researchLevelAv + 1)) + "개를 받을까요?";
     }
 
     public void OnClickPlusHeartBtn()
@@ -25,7 +25,7 @@ public class AdHeart : MonoBehaviour
 
     void ReceiveHeart()
     {
-        GameManager.instance.GetHeart(10 * (DataController.instance.gameData.researchLevelAv + 1));
+        GameManager.instance.GetHeart(5 * (DataController.instance.gameData.researchLevelAv + 1));
         adHeartBtn.interactable = true;
         RewardAd.instance.OnAdComplete -= ReceiveHeart;
         RewardAd.instance.OnAdFailed -= OnFailAd;
