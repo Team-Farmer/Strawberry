@@ -33413,6 +33413,7 @@ MonoBehaviour:
   ScrollbarClip: {fileID: 8300000, guid: 3fb798026451a4348904665697b27f97, type: 3}
   Cute5Clip: {fileID: 8300000, guid: 763b1d670aec49b42bb072e9b6cce1a1, type: 3}
   WinkClip: {fileID: 8300000, guid: a9ddb256dab90c24aafcc8594b9f6a19, type: 3}
+  DisappearClip: {fileID: 8300000, guid: 897895c27bc4b8b47a165f7cafe76a8f, type: 3}
 --- !u!1 &910149892
 GameObject:
   m_ObjectHideFlags: 0
