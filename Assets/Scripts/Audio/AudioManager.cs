@@ -57,6 +57,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip Cute5Clip;
     public AudioClip WinkClip;
     public AudioClip DisappearClip;
+    public AudioClip HeartClip;
 
     //instance
     public static AudioManager instance;
@@ -253,8 +254,10 @@ public class AudioManager : MonoBehaviour
     { SFXPlayPoolingVersion("Cute5SFX", Cute5Clip); }
     public void WinkAudioPlay()      // 윙크
     { SFXPlayPoolingVersion("WinkSFX", WinkClip); }
-    public void DisappearAudioPlay()      // 윙크
+    public void DisappearAudioPlay()      // 알바 사라짐
     { SFXPlayPoolingVersion("DisappearSFX", DisappearClip); }
+    public void HeartAudioPlay()      // 하트
+    { SFXPlayPoolingVersion("HeartSFX", HeartClip); }
 
     //직접 오디오 넣는 함수
     /*

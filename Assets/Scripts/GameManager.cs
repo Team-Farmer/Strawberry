@@ -615,6 +615,7 @@ public class GameManager : MonoBehaviour
         StartCoroutine(CountAnimation(cost, "+", 1));
         DataController.instance.gameData.heart += cost; // 현재 하트 +
         DataController.instance.gameData.accHeart += cost; // 누적 하트 +
+        AudioManager.instance.HeartAudioPlay();
     }
 
     public void UseHeart(int cost) // 하트 획득 함수 (마이너스 방지 위함)
