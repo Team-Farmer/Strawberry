@@ -30,16 +30,16 @@ public class Setting : MonoBehaviour
     void Awake()
     {
         SetVersionInfo();
-    }
-
-    void Start()
-    {
-        SetCloudSave();
 #if UNITY_EDITOR
 
 #elif UNITY_ANDROID
         GPGSManager.instance.OnSaveSucceed += SetCloudSave;
 #endif
+    }
+
+    void OnEnable()
+    {
+        SetCloudSave();
     }
 
     public void SetCloudSave()
