@@ -93,23 +93,29 @@ public class DataController : MonoBehaviour
 
     public void SaveData()
     {
-        string filePath = Application.persistentDataPath + gameDataFileName;
-
-        //데이터 직렬화
-        string jsonData = JsonConvert.SerializeObject(gameData);
-
-        //암호화x
-        if (!instance.dataEncryption)
+        if (!isSaveMode)
         {
-            File.WriteAllText(filePath, jsonData);
-            Debug.Log("암호화 하지 않고 저장 : " + filePath);
+            Debug.Log("저장모드 아님!");
         }
         else
         {
-            DataSecurity.Save(gameDataFileName,jsonData);
-            Debug.Log("암호화저장");
-        }
+            string filePath = Application.persistentDataPath + gameDataFileName;
 
+            //데이터 직렬화
+            string jsonData = JsonConvert.SerializeObject(gameData);
+
+            //암호화x
+            if (!instance.dataEncryption)
+            {
+                File.WriteAllText(filePath, jsonData);
+                Debug.Log("암호화 하지 않고 저장 : " + filePath);
+            }
+            else
+            {
+                DataSecurity.Save(gameDataFileName, jsonData);
+                Debug.Log("암호화저장");
+            }
+        }
     }
 
     public void InitData()
