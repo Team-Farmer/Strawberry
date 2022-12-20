@@ -9,10 +9,20 @@ public class AdCoin : MonoBehaviour
     [SerializeField] PanelAnimation panel;
     [SerializeField] GameObject panelBlack;
     public Text adCoinText;
+    public Text remainAdText;
 
-    void Update()
+    public void OnEnable()
     {
-        adCoinText.text = "광고를 시청하고\n코인 "+ (500 * (DataController.instance.gameData.researchLevelAv + 1)) + "A를 받을까요?";
+        if (DataController.instance.gameData.coinAdCnt > 0)
+        {
+            adCoinText.text = "광고를 시청하고\n코인 " + (500 * (DataController.instance.gameData.researchLevelAv + 1)) + "A를 받을까요?";
+        }
+        else
+        {
+            adCoinText.text = "오늘 볼 수 있는 광고를\n모두 시청하였어요!";
+            adCoinBtn.interactable = false;
+        }
+        remainAdText.text = $"오늘 남은 횟수 : {DataController.instance.gameData.coinAdCnt}";
     }
 
     public void OnClickPlusCoinBtn()
@@ -30,12 +40,14 @@ public class AdCoin : MonoBehaviour
         RewardAd.instance.OnAdFailed -= OnAdFail;
         adCoinBtn.interactable = true;
 
+        DataController.instance.gameData.coinAdCnt--;
         panelBlack.SetActive(false);
         panel.CloseScale();
     }
 
     void OnAdFail()
     {
+        Debug.Log("실패");
         RewardAd.instance.OnAdFailed -= OnAdFail;
         RewardAd.instance.OnAdComplete -= OnClickPlusCoinBtn;
         adCoinBtn.interactable = true;

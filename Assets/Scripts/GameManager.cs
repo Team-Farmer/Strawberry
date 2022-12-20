@@ -1507,6 +1507,10 @@ public class GameManager : MonoBehaviour
             {
                 DataController.instance.gameData.nextMidnightTime = DataController.instance.gameData.currentTime.Date.AddDays(1);
                 attendanceCheck.GetComponent<AttendanceCheck>().Attendance();
+
+                //광고시간 초기화
+                DataController.instance.gameData.coinAdCnt = 3;
+                DataController.instance.gameData.heartAdCnt = 3;
             }
             //자정시간을 지나지 않았다면
             gap = DataController.instance.gameData.nextMidnightTime - DataController.instance.gameData.currentTime;

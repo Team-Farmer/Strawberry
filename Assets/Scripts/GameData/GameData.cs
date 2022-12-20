@@ -128,5 +128,7 @@ public class GameData
     public bool isStoreOpend;
     public int[] highScore=new int[4];
 
-    
+    //±¤°í È½¼ö Á¦ÇÑ
+    public int coinAdCnt = 3;
+    public int heartAdCnt = 3;
 }

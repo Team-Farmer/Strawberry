@@ -4157,7 +4157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adb5dc3f0b039de4a9abb2bfc3a78f87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSaveMode: 1
+  isSaveMode: 0
   dataEncryption: 0
 --- !u!4 &139806055
 Transform:
@@ -23557,19 +23557,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1643399065}
-        m_TargetAssemblyTypeName: AdHeart, Assembly-CSharp
-        m_MethodName: OnClickPlusHeartBtn
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 2136310391}
+      - m_Target: {fileID: 41530273}
         m_TargetAssemblyTypeName: PanelAnimation, Assembly-CSharp
         m_MethodName: FadeOut
         m_Mode: 1
@@ -23584,6 +23572,18 @@ MonoBehaviour:
       - m_Target: {fileID: 496606690}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: EnableObjColliderAll
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2136310394}
+        m_TargetAssemblyTypeName: AdHeart, Assembly-CSharp
+        m_MethodName: OnClickPlusHeartBtn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -25253,18 +25253,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1782476185}
-        m_TargetAssemblyTypeName: AdCoin, Assembly-CSharp
-        m_MethodName: OnClickPlusCoinBtn
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 41530273}
         m_TargetAssemblyTypeName: PanelAnimation, Assembly-CSharp
         m_MethodName: FadeOut
@@ -25280,6 +25268,18 @@ MonoBehaviour:
       - m_Target: {fileID: 496606690}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: EnableObjColliderAll
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1010726887}
+        m_TargetAssemblyTypeName: AdCoin, Assembly-CSharp
+        m_MethodName: OnClickPlusCoinBtn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -37594,6 +37594,7 @@ GameObject:
   - component: {fileID: 1010726886}
   - component: {fileID: 1010726885}
   - component: {fileID: 1010726884}
+  - component: {fileID: 1010726887}
   m_Layer: 5
   m_Name: AdCoinPanel
   m_TagString: YNPanel
@@ -37678,6 +37679,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1010726882}
   m_CullTransparentMesh: 1
+--- !u!114 &1010726887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1010726882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f35032f3d0533425eb0d69335d8676cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  adCoinBtn: {fileID: 732400821}
+  panel: {fileID: 1010726884}
+  panelBlack: {fileID: 41530268}
+  adCoinText: {fileID: 526420138}
+  remainAdText: {fileID: 2041261343}
 --- !u!1 &1015507216
 GameObject:
   m_ObjectHideFlags: 0
@@ -58551,7 +58569,6 @@ GameObject:
   - component: {fileID: 1643399064}
   - component: {fileID: 1643399063}
   - component: {fileID: 1643399062}
-  - component: {fileID: 1643399065}
   m_Layer: 5
   m_Name: PlusBtn
   m_TagString: Untagged
@@ -58708,22 +58725,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1643399060}
   m_CullTransparentMesh: 1
---- !u!114 &1643399065
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1643399060}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff8ced561603e46eebe7d9b8e5bd8062, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  adHeartBtn: {fileID: 685027499}
-  panel: {fileID: 2136310391}
-  panelBlack: {fileID: 638678300}
-  adHeartText: {fileID: 2056450450}
 --- !u!1 &1645567600
 GameObject:
   m_ObjectHideFlags: 0
@@ -63593,7 +63594,6 @@ GameObject:
   - component: {fileID: 1782476184}
   - component: {fileID: 1782476183}
   - component: {fileID: 1782476182}
-  - component: {fileID: 1782476185}
   m_Layer: 5
   m_Name: PlusBtn
   m_TagString: Untagged
@@ -63750,22 +63750,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1782476180}
   m_CullTransparentMesh: 1
---- !u!114 &1782476185
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1782476180}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f35032f3d0533425eb0d69335d8676cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  adCoinBtn: {fileID: 732400821}
-  panel: {fileID: 1010726884}
-  panelBlack: {fileID: 638678300}
-  adCoinText: {fileID: 526420138}
 --- !u!1 &1794138773
 GameObject:
   m_ObjectHideFlags: 0
@@ -77986,6 +77970,7 @@ GameObject:
   - component: {fileID: 2136310393}
   - component: {fileID: 2136310392}
   - component: {fileID: 2136310391}
+  - component: {fileID: 2136310394}
   m_Layer: 5
   m_Name: AdHeartPanel
   m_TagString: YNPanel
@@ -78070,6 +78055,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2136310389}
   m_CullTransparentMesh: 1
+--- !u!114 &2136310394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2136310389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff8ced561603e46eebe7d9b8e5bd8062, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  adHeartBtn: {fileID: 685027499}
+  panel: {fileID: 2136310391}
+  panelBlack: {fileID: 41530268}
+  adHeartText: {fileID: 2056450450}
+  remainAdText: {fileID: 345517454}
 --- !u!1 &2138400512 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8833736872408924906, guid: 35ed71b70c5403e4eb648503f90d7caf, type: 3}

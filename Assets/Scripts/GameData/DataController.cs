@@ -39,6 +39,14 @@ public class DataController : MonoBehaviour
     }   
     public void LoadData()
     {
+        if (!isSaveMode)
+        {
+            Debug.Log("새로운 데이터 생성");
+            gameData = new GameData();
+            InitData();
+            return;
+        }
+
         //암호화x
         if (!instance.dataEncryption)
         {
@@ -205,6 +213,9 @@ public class DataController : MonoBehaviour
         gameData.isStoreOpend = false;
         for (int i = 0; i < 4; i++) { gameData.highScore[i] = 0; }
         //=====================================================
+
+        gameData.heartAdCnt = 3;
+        gameData.coinAdCnt = 3;
     }
     void InitBerryPrice()
     {      
