@@ -43,13 +43,11 @@ public class Intro : MonoBehaviour
         sequence = DOTween.Sequence();
         sequence.Append(rect.DOAnchorPos(new Vector3(157, -313, 0), 0.7f))
                 .Join(rect.transform.DOScale(Vector3.one, 0.7f))
-                .AppendInterval(0.4f)
                 .AppendCallback(() =>
                 {
                     AudioManager.instance.WinkAudioPlay();
-
                 })
-                .AppendInterval(0.4f)
+                .AppendInterval(0.2f)
                 .AppendCallback(() =>
                 {
                     introObject[0].GetComponent<Image>().sprite = sprites[0];
