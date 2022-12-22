@@ -146,10 +146,11 @@ public class Challenge : MonoBehaviour
                 break;
 
             case 4: // 누적 출석
-                Info[prefabnum].clearCriterion[0] = 3;
+                Info[prefabnum].clearCriterion[0] = 2;
                 for (int i = 2; i < MaxLevel; i++)
                 {
-                    Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[i - 1] + 3;
+                    // 줄임
+                    Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[i - 1] + 2;
                 }
                 break;
 
@@ -157,7 +158,8 @@ public class Challenge : MonoBehaviour
                 Info[prefabnum].clearCriterion[0] = 100;
                 for (int i = 1; i < MaxLevel; i++)
                 {
-                    Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[i - 1] * 2;
+                    // 늘림
+                    Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[i - 1] * 3;
                 }
                 break;
 
@@ -165,8 +167,8 @@ public class Challenge : MonoBehaviour
                 Info[prefabnum].clearCriterion[0] = 1000;
                 for (int i = 1; i < MaxLevel; i++)
                 {
-                    // 1000 3000 9000 12000 36000 // 좀 키워야할듯......
-                    Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[i - 1] * 4;
+                    // 늘림
+                    Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[i - 1] * 5;
                 }
                 break;
 
@@ -174,16 +176,17 @@ public class Challenge : MonoBehaviour
                 Info[prefabnum].clearCriterion[0] = 100;
                 for (int i = 1; i < MaxLevel; i++)
                 {
-                    // 키울게요
-                    Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[i - 1] + 200;
+                    // 줄임
+                    Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[i - 1] + 100;
                 }
                 break;
 
             case 5: //미니게임 플레이
-                Info[prefabnum].clearCriterion[0] = 10;
+                Info[prefabnum].clearCriterion[0] = 5;
                 for (int i = 1; i < MaxLevel; i++)
                 {
-                    Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[i - 1] + 20;
+                    // 줄임
+                    Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[i - 1] + 10;
                 }
                 break;
 

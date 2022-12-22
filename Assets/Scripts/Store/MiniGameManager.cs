@@ -62,7 +62,6 @@ public class MiniGameManager : MonoBehaviour
             //해금조건 - 연구레벨 7 이상, 2000A 소모
             if (DataController.instance.gameData.coin >= 2000 && ResearchLevelCheck(7))
             {
-                GameManager.instance.UseCoin(2000);
                 UnlockBtn.interactable = true;
             }
             else
