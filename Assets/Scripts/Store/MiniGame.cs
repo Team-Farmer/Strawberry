@@ -30,8 +30,8 @@ public class MiniGame : MonoBehaviour
     protected List<int> unlockList = new List<int>(); //해금된 딸기 번호 리스트
 
     protected Globalvariable global;
-    protected int research_level_sum;
-    protected float research_level_avg;
+    //protected int research_level_sum;
+    //protected float research_level_avg;
 
 
     protected virtual void Awake()
@@ -142,6 +142,7 @@ public class MiniGame : MonoBehaviour
 
     protected virtual void FinishGame()
     {
+        /*
         research_level_sum = 0;
 
         for (int i = 0; i < DataController.instance.gameData.researchLevel.Length; i++)
@@ -153,7 +154,7 @@ public class MiniGame : MonoBehaviour
         // 연구레벨의 평균을 구한다.
         research_level_avg = research_level_sum / DataController.instance.gameData.researchLevel.Length;
 
-        
+        */
     }
 
     public void ManageScore(int idx, int score)

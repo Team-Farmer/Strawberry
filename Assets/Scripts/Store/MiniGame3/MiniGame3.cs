@@ -160,12 +160,13 @@ public class MiniGame3 : MiniGame
         result_cur_score_txt.text = score + "점";
         result_highscore_txt.text = DataController.instance.gameData.highScore[2].ToString();
 
-        // 미니게임 3 보상 하트 공식(미니게임 3은 해금 하트가 20이다)
-        float gain_coin = score * research_level_avg * ((100 + 20 * 2) / 100f);
+        // 미니게임3 보상 코인
+        float gain_coin = score * DataController.instance.gameData.researchLevelAv * (135 / 100f);
         //result_coin_txt.text = gain_coin.ToString();
         GameManager.instance.ShowCoinText(result_coin_txt.GetComponent<Text>(), Convert.ToInt32(gain_coin));
         //Debug.Log("얻은 코인:" + Convert.ToInt32(gain_coin));
-        //하트지급
+        
+        // 코인 지급
         GameManager.instance.GetCoin(Convert.ToInt32(gain_coin));
 
         StopGame();
