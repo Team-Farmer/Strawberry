@@ -737,6 +737,14 @@ public class GameManager : MonoBehaviour
             if (DataController.instance.gameData.PTJCount < 3)
             {
                 int cost = PTJ.instance.Info[prefabNum].Price * DataController.instance.gameData.PTJSelectNum[1];
+
+                if (DataController.instance.gameData.researchLevelAv < 5) // 연구 레벨이 5레벨 이하라면
+                    cost *= 1;
+                else if (DataController.instance.gameData.researchLevelAv < 10) // 연구 레벨이 10레벨 이하라면
+                    cost *= 2;
+                else
+                    cost *= 3;
+
                 if (cost <= DataController.instance.gameData.coin)
                 {
                     int ID = DataController.instance.gameData.PTJSelectNum[0];
