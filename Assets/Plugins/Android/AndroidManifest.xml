@@ -7,6 +7,7 @@
     <application>
         <activity android:name="com.unity3d.player.UnityPlayerActivity"
                   android:theme="@style/UnityThemeSelector"
+                  android:exported="true"
                   android:usesCleartextTraffic="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
