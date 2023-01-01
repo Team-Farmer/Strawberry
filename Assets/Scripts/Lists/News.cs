@@ -53,7 +53,7 @@ public class News : MonoBehaviour
     GameObject YNPanel;
     GameObject ConfirmPanel;
     GameObject WarningPanelBlack;
-    GameObject GetBonusBerryPanel;
+    //GameObject GetBonusBerryPanel;
     //=======================================================================================================================
     //=======================================================================================================================
     private void Awake()
@@ -76,7 +76,7 @@ public class News : MonoBehaviour
         WarningPanelBlack= WarningPanel.transform.GetChild(0).gameObject;
         YNPanel = WarningPanel.transform.GetChild(2).gameObject;
         ConfirmPanel= WarningPanel.transform.GetChild(7).gameObject;
-        GetBonusBerryPanel = WarningPanel.transform.GetChild(10).gameObject;
+        //GetBonusBerryPanel = WarningPanel.transform.GetChild(10).gameObject;
 
         //¸Þ´Þ
         GameManager.instance.ShowMedalText();
@@ -162,7 +162,7 @@ public class News : MonoBehaviour
             thisNews.transform.GetChild(3).gameObject.SetActive(false);//Lock
             thisNews.transform.GetChild(4).gameObject.SetActive(true);//Lock
             WarningPanelBlack.SetActive(false);
-
+            /*
             int RandomNum = UnityEngine.Random.Range(1, 101);
             if (RandomNum <= Info[ID].Price * 10 && GameManager.instance.isNewBerryAble() && GameManager.instance.newsBerry() == true)
                 //price*10%È®·ü·Î º¸³Ê½º µþ±â È¹µæ
@@ -181,7 +181,7 @@ public class News : MonoBehaviour
                 //WarningPanelBlack.SetActive(true);
                 //ConfirmPanel.GetComponent<PanelAnimation>().ScriptTxt.text = "´º½º°¡ ÇØ±ÝµÇ¾ú¾î¿ä!";
                 //ConfirmPanel.GetComponent<PanelAnimation>().OpenScale();
-            }
+            }*/
             //YNPanel.SetActive(false);
             YNPanel.GetComponent<PanelAnimation>().CloseScale();
 

@@ -1298,36 +1298,34 @@ public class GameManager : MonoBehaviour
         challengeCriterion[1].challengeCriterions[0] = 100;
         for (int i = 1; i < MaxLevel; i++)
         {
-            challengeCriterion[1].challengeCriterions[i] = challengeCriterion[1].challengeCriterions[i - 1] * 2;
+            challengeCriterion[1].challengeCriterions[i] = challengeCriterion[1].challengeCriterions[i - 1] * 3;
         }
 
 
         challengeCriterion[2].challengeCriterions[0] = 1000;
         for (int i = 1; i < MaxLevel; i++)
         {
-            // 1000 3000 9000 12000 36000 // 좀 키워야할듯......
-            challengeCriterion[2].challengeCriterions[i] = challengeCriterion[2].challengeCriterions[i - 1] * 4;
+            challengeCriterion[2].challengeCriterions[i] = challengeCriterion[2].challengeCriterions[i - 1] * 5;
         }
 
 
         challengeCriterion[3].challengeCriterions[0] = 100;
         for (int i = 1; i < MaxLevel; i++)
         {
-            // 키울게요
-            challengeCriterion[3].challengeCriterions[i] = challengeCriterion[3].challengeCriterions[i - 1] + 200;
+            challengeCriterion[3].challengeCriterions[i] = challengeCriterion[3].challengeCriterions[i - 1] + 100;
         }
 
 
-        challengeCriterion[4].challengeCriterions[0] = 4;
+        challengeCriterion[4].challengeCriterions[0] = 2;
         for (int i = 1; i < MaxLevel; i++)
         {
-            challengeCriterion[4].challengeCriterions[i] = challengeCriterion[4].challengeCriterions[i - 1] + 3;
+            challengeCriterion[4].challengeCriterions[i] = challengeCriterion[4].challengeCriterions[i - 1] + 2;
         }
 
-        challengeCriterion[5].challengeCriterions[0] = 10;
+        challengeCriterion[5].challengeCriterions[0] = 5;
         for (int i = 1; i < MaxLevel; i++)
         {
-            challengeCriterion[5].challengeCriterions[i] = challengeCriterion[5].challengeCriterions[i - 1] + 20;
+            challengeCriterion[5].challengeCriterions[i] = challengeCriterion[5].challengeCriterions[i - 1] + 10;
         }
 
     }
