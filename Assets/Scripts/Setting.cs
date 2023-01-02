@@ -60,8 +60,8 @@ public class Setting : MonoBehaviour
 
     private void SetVersionInfo() // 버전 정보 세팅
     {
-        versionDate_text.text = "22-05-09";
-        version_text.text = "V 1.0.1";
+        versionDate_text.text = "23-01-02";
+        version_text.text = "V 1.0.2";
     }
 
     public void PrivacyPolicy() // 개인정보처리방침
