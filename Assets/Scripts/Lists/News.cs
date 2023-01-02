@@ -130,7 +130,7 @@ public class News : MonoBehaviour
                 YNPanel.GetComponent<PanelAnimation>().OpenScale();
                 YNPanel.transform.GetChild(1).GetComponent<Text>().text
                     = "뱃지" + Info[prefabnum].Price + "개를 소모하여\n뉴스를 해금할까요?";
-                WarningPanelBlack.SetActive(true);
+                WarningPanelBlack.GetComponent<PanelAnimation>().Fadein();
                 break;
             case 1://UNLOCK ABLE
                 //처음 누르는 상황
@@ -161,7 +161,8 @@ public class News : MonoBehaviour
             GameObject thisNews = newsContent.transform.GetChild(ID).gameObject;
             thisNews.transform.GetChild(3).gameObject.SetActive(false);//Lock
             thisNews.transform.GetChild(4).gameObject.SetActive(true);//Lock
-            WarningPanelBlack.SetActive(false);
+            WarningPanelBlack.GetComponent<PanelAnimation>().FadeOut();
+
             /*
             int RandomNum = UnityEngine.Random.Range(1, 101);
             if (RandomNum <= Info[ID].Price * 10 && GameManager.instance.isNewBerryAble() && GameManager.instance.newsBerry() == true)
@@ -190,7 +191,7 @@ public class News : MonoBehaviour
         {
             //메달이 부족할 시
             YNPanel.GetComponent<PanelAnimation>().CloseScale();
-            WarningPanelBlack.SetActive(true);
+            WarningPanelBlack.GetComponent<PanelAnimation>().Fadein();
             ConfirmPanel.GetComponent<PanelAnimation>().OpenScale();
             ConfirmPanel.transform.GetChild(0).transform.GetComponent<Text>().text = "메달이 부족해요!";
         }
