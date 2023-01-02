@@ -8078,7 +8078,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1922965542}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Setting, Assembly-CSharp
         m_MethodName: EnterCodeBtn
         m_Mode: 1
@@ -12434,7 +12434,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1922965542}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Setting, Assembly-CSharp
         m_MethodName: Instagram
         m_Mode: 1
@@ -17235,7 +17235,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1922965542}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Setting, Assembly-CSharp
         m_MethodName: PrivacyPolicy
         m_Mode: 1
@@ -25992,7 +25992,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 1922965542}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Setting, Assembly-CSharp
         m_MethodName: OpenCodePanel
         m_Mode: 1
@@ -63254,7 +63254,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: V 1.0.1
+  m_Text: V 1.0.2
 --- !u!222 &1759201232
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -68569,7 +68569,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1922965541}
-  - component: {fileID: 1922965542}
   m_Layer: 5
   m_Name: Settings Panel
   m_TagString: Untagged
@@ -68597,27 +68596,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1922965542
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1922965540}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 822471c2928aead41a77e8e246082a24, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  versionDate_text: {fileID: 221963174}
-  version_text: {fileID: 1759201231}
-  saveDate_text: {fileID: 209293523}
-  cloudLoad_btn: {fileID: 791402902}
-  cloudSave_btn: {fileID: 1202437569}
-  code_input: {fileID: 2029959261}
-  code_text: {fileID: 590783963}
-  money_btn: {fileID: 1623679225}
-  berry_btn: {fileID: 1519701482}
 --- !u!1 &1925498773 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9217127060991989623, guid: 2cfd907148d0b4f49b367715f9f94d8a, type: 3}
@@ -74308,6 +74286,7 @@ GameObject:
   - component: {fileID: 2031592368}
   - component: {fileID: 2031592369}
   - component: {fileID: 2031592371}
+  - component: {fileID: 2031592370}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -74364,6 +74343,27 @@ MonoBehaviour:
   UpPosition: 50
   DownPosition: 30
   ScriptTxt: {fileID: 0}
+--- !u!114 &2031592370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2031592367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 822471c2928aead41a77e8e246082a24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  versionDate_text: {fileID: 221963174}
+  version_text: {fileID: 1759201231}
+  saveDate_text: {fileID: 209293523}
+  cloudLoad_btn: {fileID: 791402902}
+  cloudSave_btn: {fileID: 1202437569}
+  code_input: {fileID: 2029959261}
+  code_text: {fileID: 590783963}
+  money_btn: {fileID: 1623679225}
+  berry_btn: {fileID: 1519701482}
 --- !u!212 &2031592371
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -75098,7 +75098,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1922965542}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Setting, Assembly-CSharp
         m_MethodName: ContactByEmail
         m_Mode: 1
