@@ -190,6 +190,7 @@ public class PTJ : MonoBehaviour
         PTJPanel.transform.GetChild(0).gameObject.SetActive(true);
         PTJPanel.GetComponent<PanelAnimation>().OpenScale();
 
+
         //알바 창 채우기
         GameObject picture = PTJPanel.transform.GetChild(3).gameObject;
         GameObject name = PTJPanel.transform.GetChild(4).gameObject;

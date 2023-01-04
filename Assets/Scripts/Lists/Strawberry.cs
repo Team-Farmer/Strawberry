@@ -115,7 +115,7 @@ public class Strawberry : MonoBehaviour
                 //설명창 띄운다
                 //berryExp.SetActive(true);
                 berryExp.GetComponent<PanelAnimation>().OpenScale();
-                berryExpPanelBlack.SetActive(true);
+                berryExpPanelBlack.GetComponent<PanelAnimation>().Fadein();
 
                 GameObject berryExpImage = berryExp.transform.GetChild(2).gameObject;
                 GameObject berryExpName = berryExp.transform.GetChild(3).gameObject;

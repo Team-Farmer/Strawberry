@@ -1,11 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using DG.Tweening;
-using System;
 using UnityEngine.Networking;
-using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
 [System.Serializable]
@@ -136,22 +134,23 @@ public class GameManager : MonoBehaviour
     [Header("[ Check/Day List ]")]
     public GameObject attendanceCheck;
     public string url = "";
+
+    [Header("[ Absence Panel ]")]
+    public GameObject absencePanel;
+    public GameObject absenceBlackPanel;
+    public Text absenceMoneyText;
+    public Text absenceTimeText;
     private int revenue;
     public Button add_receive_btn; //부재중수익 2배받기 버튼
-    public GameObject absenceBlackPanel;
 
     [Header("[ Panel List ]")]
     public Text panelCoinText;
     public Text panelHearText;
-    public Text AbsenceMoneyText;
-    public Text AbsenceTimeText;
     public GameObject noCoinPanel;
     public GameObject noHeartPanel;
     public GameObject blackPanel;
     public GameObject coinAnimManager;
     public GameObject heartAnimManager;
-    public GameObject AbsencePanel;
-    public GameObject AbsenceBlackPanel;
     public GameObject QuitPanel;
 
 
@@ -312,12 +311,14 @@ public class GameManager : MonoBehaviour
         {
             if (!blackPanel.activeSelf)
             {
-                blackPanel.SetActive(true);
+                DisableObjColliderAll();
+                BlackPanelOn();
                 QuitPanel.GetComponent<PanelAnimation>().OpenScale();
             }
             else
             {
-                blackPanel.SetActive(false);
+                EnableObjColliderAll();
+                blackPanel.GetComponent<PanelAnimation>().FadeOut();
                 QuitPanel.GetComponent<PanelAnimation>().CloseScale();
             }
         }
@@ -605,7 +606,7 @@ public class GameManager : MonoBehaviour
         {
             //경고 패널 등장
             ShowCoinText(panelCoinText, DataController.instance.gameData.coin);
-            blackPanel.SetActive(true);
+            blackPanel.GetComponent<PanelAnimation>().Fadein();
             noCoinPanel.GetComponent<PanelAnimation>().OpenScale();
 
             AudioManager.instance.Cute4AudioPlay(); // 효과음
@@ -633,7 +634,7 @@ public class GameManager : MonoBehaviour
         {
             //경고 패널 등장
             panelHearText.text = DataController.instance.gameData.heart.ToString() + "개";
-            blackPanel.SetActive(true);
+            blackPanel.GetComponent<PanelAnimation>().Fadein();
             noHeartPanel.GetComponent<PanelAnimation>().OpenScale();
 
             AudioManager.instance.Cute4AudioPlay(); // 효과음
@@ -685,7 +686,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
+    public void BlackPanelOn()
+    {
+        blackPanel.GetComponent<PanelAnimation>().Fadein();
+    }
 
     #endregion
 
@@ -775,7 +779,7 @@ public class GameManager : MonoBehaviour
                     //재화 부족 경고 패널
                     ShowCoinText(panelCoinText, DataController.instance.gameData.coin);
                     noCoinPanel.GetComponent<PanelAnimation>().OpenScale();
-                    warningBlackPanel.SetActive(true);
+                    GameManager.instance.BlackPanelOn();
                 }
             }
             else
@@ -785,7 +789,7 @@ public class GameManager : MonoBehaviour
                 //3명 이상 고용중이라는 패널 등장
                 confirmPanel.GetComponent<PanelAnimation>().ScriptTxt.text = "고용 가능한 알바 수를\n넘어섰어요!";
                 confirmPanel.GetComponent<PanelAnimation>().OpenScale();
-                warningBlackPanel.SetActive(true);
+                GameManager.instance.BlackPanelOn();
             }
         }
         //고용중인 상태이다
@@ -794,7 +798,7 @@ public class GameManager : MonoBehaviour
             //FIRE
             //확인창 띄우기
             HireYNPanel.GetComponent<PanelAnimation>().OpenScale();
-            warningBlackPanel.SetActive(true);
+            GameManager.instance.BlackPanelOn();
         }
 
 
@@ -810,7 +814,7 @@ public class GameManager : MonoBehaviour
 
         //확인창 내리기
         HireYNPanel.GetComponent<PanelAnimation>().CloseScale();
-        warningBlackPanel.SetActive(false);
+        warningBlackPanel.GetComponent<PanelAnimation>().FadeOut();
 
         for (int i = 0; i < 6; i++)
             PTJPref[i].GetComponent<PanelAnimation>().CloseScale();
@@ -962,7 +966,7 @@ public class GameManager : MonoBehaviour
                     StartCoroutine(Timer());
 
                     //시간 감소여부 묻는 패널 띄움.
-                    TimeReduceBlackPanel_newBerry.SetActive(true); //시원 건드림
+                    TimeReduceBlackPanel_newBerry.GetComponent<PanelAnimation>().Fadein(); //시원 건드림
                     TimeReducePanel_newBerry.GetComponent<PanelAnimation>().OpenScale(); //시원 건드림
                     TimeReduceText_newBerry.GetComponent<Text>().text //시원 건드림
                         = "하트로 시간을\n단축하시겠습니까??\n";
@@ -975,7 +979,7 @@ public class GameManager : MonoBehaviour
                 if (DataController.instance.gameData.newBerryTime_start < DataController.instance.gameData.newBerryTime_end)
                 {
                     //시간 감소 여부 묻는 패널 띄움.
-                    TimeReduceBlackPanel_newBerry.SetActive(true);
+                    TimeReduceBlackPanel_newBerry.GetComponent<PanelAnimation>().Fadein(); //시원 건드림
                     TimeReducePanel_newBerry.GetComponent<PanelAnimation>().OpenScale();
                     TimeReduceText_newBerry.GetComponent<Text>().text
                         = "하트로 시간을\n단축하시겠습니까?\n";
@@ -1037,7 +1041,7 @@ public class GameManager : MonoBehaviour
     public void TimeReduceClose()
     {
         //창 끄기
-        TimeReduceBlackPanel_newBerry.SetActive(false);
+        TimeReduceBlackPanel_newBerry.GetComponent<PanelAnimation>().FadeOut();
         TimeReducePanel_newBerry.GetComponent<PanelAnimation>().CloseScale();
     }
 
@@ -1132,7 +1136,7 @@ public class GameManager : MonoBehaviour
 
 
         //검정창 띄우기
-        BlackPanel_newBerry.SetActive(true);
+        BlackPanel_newBerry.GetComponent<PanelAnimation>().Fadein();
 
 
         DataController.instance.gameData.newBerryBtnState = 0;
@@ -1595,17 +1599,17 @@ public class GameManager : MonoBehaviour
         {
             if (revenue <= 9999)           // 0~9999까지 A
             {
-                AbsenceMoneyText.text = revenue + "A";
+                absenceMoneyText.text = revenue + "A";
             }
             else if (revenue <= 9999999)   // 10000~9999999(=9999B)까지 B
             {
                 revenue /= 1000;
-                AbsenceMoneyText.text = revenue + "B";
+                absenceMoneyText.text = revenue + "B";
             }
             else                        // 그 외 C (최대 2100C)
             {
                 revenue /= 1000000;
-                AbsenceMoneyText.text = revenue + "C";
+                absenceMoneyText.text = revenue + "C";
             }
             // ShowCoin 안 쓰는 이유가 있음? (-우연)
         }
@@ -1615,7 +1619,7 @@ public class GameManager : MonoBehaviour
         {
             hour = minute / 60;
             minute %= 60;
-            AbsenceTimeText.text = string.Format("{0:D2}:{1:D2}", hour, minute);
+            absenceTimeText.text = string.Format("{0:D2}:{1:D2}", hour, minute);
         }
         else
         {
@@ -1624,9 +1628,8 @@ public class GameManager : MonoBehaviour
 
         // 보상 패널 띄우기
         DisableObjColliderAll();
-        absenceBlackPanel.SetActive(true);
         absenceBlackPanel.GetComponent<PanelAnimation>().Fadein();
-        AbsencePanel.GetComponent<PanelAnimation>().OpenScale();
+        absencePanel.GetComponent<PanelAnimation>().OpenScale();
     }
     //광고보고 2배받기
     public void OnclickAdBtn()
@@ -1643,9 +1646,8 @@ public class GameManager : MonoBehaviour
 
         RewardAd.instance.OnAdComplete -= ReceiveCoin2Times;
         add_receive_btn.interactable = true; // 광고 보고 받기 버튼 활성
-        blackPanel.SetActive(false);
-        AbsenceBlackPanel.SetActive(false);
-        AbsencePanel.GetComponent<PanelAnimation>().CloseScale();
+        absenceBlackPanel.GetComponent<PanelAnimation>().FadeOut();
+        absencePanel.GetComponent<PanelAnimation>().CloseScale();
         InitAbsenceReward();
     }
 
@@ -1660,7 +1662,8 @@ public class GameManager : MonoBehaviour
     {
         GetCoin(revenue);
         InitAbsenceReward();
-        AbsencePanel.GetComponent<PanelAnimation>().CloseScale();
+        absenceBlackPanel.GetComponent<PanelAnimation>().FadeOut();
+        absencePanel.GetComponent<PanelAnimation>().CloseScale();
     }
 
     public void InitAbsenceReward()
