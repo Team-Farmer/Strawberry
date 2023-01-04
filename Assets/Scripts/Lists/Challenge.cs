@@ -285,7 +285,7 @@ public class Challenge : MonoBehaviour
                 Button.GetComponent<Image>().sprite = IngButton; //도전과제 버튼 이미지 변경
 
                 DataController.instance.gameData.challengeLevel[prefabnum]++; //Level증가
-                Info[prefabnum].rewardHeart = (DataController.instance.gameData.challengeLevel[prefabnum] + 1) * 10;//하트 보상
+                Info[prefabnum].rewardHeart = (DataController.instance.gameData.challengeLevel[prefabnum] + 1) * 5;//하트 보상
 
             }
             else

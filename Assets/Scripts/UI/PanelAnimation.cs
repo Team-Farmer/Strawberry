@@ -46,7 +46,7 @@ public class PanelAnimation : MonoBehaviour
     public void Fadein()
     {
         gameObject.SetActive(true);
-        gameObject.GetComponent<Image>().DOFade(0.5f, 0.3f);
+        gameObject.GetComponent<Image>().DOFade(0.275f, 0.3f); // 255*0.275 = 70
     }
 
     public void ActiveOff()

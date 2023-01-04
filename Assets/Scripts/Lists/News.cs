@@ -53,6 +53,8 @@ public class News : MonoBehaviour
     GameObject YNPanel;
     GameObject ConfirmPanel;
     GameObject WarningPanelBlack;
+    GameObject BonusHeartPanel;
+    GameObject BonusHeartTxt;
     //GameObject GetBonusBerryPanel;
     //=======================================================================================================================
     //=======================================================================================================================
@@ -75,7 +77,9 @@ public class News : MonoBehaviour
         WarningPanel = GameObject.FindGameObjectWithTag("WarningPanel");
         WarningPanelBlack= WarningPanel.transform.GetChild(0).gameObject;
         YNPanel = WarningPanel.transform.GetChild(2).gameObject;
-        ConfirmPanel= WarningPanel.transform.GetChild(7).gameObject;
+        ConfirmPanel = WarningPanel.transform.GetChild(7).gameObject;
+        BonusHeartPanel = WarningPanel.transform.GetChild(8).gameObject;
+        BonusHeartTxt = WarningPanel.transform.GetChild(8).gameObject.transform.GetChild(3).gameObject;
         //GetBonusBerryPanel = WarningPanel.transform.GetChild(10).gameObject;
 
         //메달
@@ -129,11 +133,12 @@ public class News : MonoBehaviour
                 GameManager.instance.NewsPrefabNum = prefabnum;
                 YNPanel.GetComponent<PanelAnimation>().OpenScale();
                 YNPanel.transform.GetChild(1).GetComponent<Text>().text
-                    = "뱃지" + Info[prefabnum].Price + "개를 소모하여\n뉴스를 해금할까요?";
+                    = "뱃지 " + Info[prefabnum].Price + "개를 사용해서\n뉴스를 읽을까요?";
                 WarningPanelBlack.GetComponent<PanelAnimation>().Fadein();
                 break;
             case 1://UNLOCK ABLE
                 //처음 누르는 상황
+                GetBonusHeart(prefabnum);
                 Explantion();
                 DataController.instance.gameData.newsState[prefabnum] = 2;
                 break;
@@ -198,6 +203,16 @@ public class News : MonoBehaviour
             ConfirmPanel.transform.GetChild(0).transform.GetComponent<Text>().text = "메달이 부족해요!";
         }
 
+    }
+
+    public void GetBonusHeart(int ID)
+    {
+        int RandomNum = UnityEngine.Random.Range(1, Info[ID].Price * 3 + 1); // 1부터 메달 수 * 3 사이 숫자 중 하나
+        GameManager.instance.GetHeart(RandomNum);
+        WarningPanelBlack.GetComponent<PanelAnimation>().Fadein();
+        BonusHeartPanel.GetComponent<PanelAnimation>().OpenScale();
+
+        BonusHeartTxt.GetComponent<Text>().text = "X "+ RandomNum;
     }
 
     //뉴스 설명창
