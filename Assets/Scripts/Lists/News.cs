@@ -189,6 +189,8 @@ public class News : MonoBehaviour
         }
         else
         {
+            AudioManager.instance.Cute4AudioPlay(); // 효과음
+
             //메달이 부족할 시
             YNPanel.GetComponent<PanelAnimation>().CloseScale();
             WarningPanelBlack.GetComponent<PanelAnimation>().Fadein();

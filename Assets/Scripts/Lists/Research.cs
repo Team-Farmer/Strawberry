@@ -170,7 +170,6 @@ public class Research : MonoBehaviour
             else
             {
                 //재화 부족 경고 패널 등장
-                AudioManager.instance.Cute4AudioPlay();
                 GameManager.instance.UseCoin(Info[prefabnum].Price);
 
             }

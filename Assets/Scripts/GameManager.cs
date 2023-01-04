@@ -607,6 +607,8 @@ public class GameManager : MonoBehaviour
             ShowCoinText(panelCoinText, DataController.instance.gameData.coin);
             blackPanel.SetActive(true);
             noCoinPanel.GetComponent<PanelAnimation>().OpenScale();
+
+            AudioManager.instance.Cute4AudioPlay(); // 효과음
         }
     }
 
@@ -633,6 +635,9 @@ public class GameManager : MonoBehaviour
             panelHearText.text = DataController.instance.gameData.heart.ToString() + "개";
             blackPanel.SetActive(true);
             noHeartPanel.GetComponent<PanelAnimation>().OpenScale();
+
+            AudioManager.instance.Cute4AudioPlay(); // 효과음
+
         }
     }
 
@@ -653,6 +658,7 @@ public class GameManager : MonoBehaviour
         else
         {
             //메달이 모자를 떄 뜨는 경고
+            AudioManager.instance.Cute4AudioPlay(); // 효과음
         }
     }
     public void ShowMedalText()
