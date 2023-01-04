@@ -571,7 +571,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 208.13, y: 8.4}
+  m_AnchoredPosition: {x: 195, y: 8.4}
   m_SizeDelta: {x: 226.7, y: 65.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &15140178
@@ -607,7 +607,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 0A
+  m_Text: 000A
 --- !u!222 &15140179
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1858,7 +1858,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uD604\uC7AC \uC794\uACE0 : "
+  m_Text: "\uD604\uC7AC \uCF54\uC778: "
 --- !u!222 &53477396
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5427,7 +5427,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 241.5, y: 7.6}
+  m_AnchoredPosition: {x: 160, y: 7.6}
   m_SizeDelta: {x: 203.95, y: 65.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &164830268
@@ -5453,7 +5453,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 12800000, guid: fffcb38c5316eb843924a2af66e3bd38, type: 3}
     m_FontSize: 40
-    m_FontStyle: 1
+    m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 4
     m_MaxSize: 40
@@ -7475,7 +7475,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 3
     m_MaxSize: 52
-    m_Alignment: 3
+    m_Alignment: 6
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -7506,8 +7506,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -173, y: -455}
-  m_SizeDelta: {x: 492.75, y: 54}
+  m_AnchoredPosition: {x: -173, y: -426}
+  m_SizeDelta: {x: 492.8, y: 101.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &209584890
 GameObject:
@@ -9854,7 +9854,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uC794\uACE0\uAC00 \uBD80\uC871\uD569\uB2C8\uB2E4!"
+  m_Text: "\uCF54\uC778\uC774 \uBD80\uC871\uD569\uB2C8\uB2E4!"
 --- !u!222 &294634493
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12434,7 +12434,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2031592370}
         m_TargetAssemblyTypeName: Setting, Assembly-CSharp
         m_MethodName: Instagram
         m_Mode: 1
@@ -17235,7 +17235,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2031592370}
         m_TargetAssemblyTypeName: Setting, Assembly-CSharp
         m_MethodName: PrivacyPolicy
         m_Mode: 1
@@ -17686,6 +17686,18 @@ MonoBehaviour:
       - m_Target: {fileID: 926323871}
         m_TargetAssemblyTypeName: MiniGameManager, Assembly-CSharp
         m_MethodName: HeartDotori
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 17443432}
+        m_TargetAssemblyTypeName: PanelAnimation, Assembly-CSharp
+        m_MethodName: CloseScale
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -21773,10 +21785,10 @@ RectTransform:
   m_Father: {fileID: 366425174}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 1080, y: 2400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &636419815
 MonoBehaviour:
@@ -75098,7 +75110,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2031592370}
         m_TargetAssemblyTypeName: Setting, Assembly-CSharp
         m_MethodName: ContactByEmail
         m_Mode: 1
@@ -77294,6 +77306,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1805678593}
+        m_TargetAssemblyTypeName: PanelAnimation, Assembly-CSharp
+        m_MethodName: CloseScale
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2113464365
 GameObject:
   m_ObjectHideFlags: 0
@@ -77859,7 +77883,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -56, y: -70.2}
+  m_AnchoredPosition: {x: -10.8, y: -70.2}
   m_SizeDelta: {x: 265.8, y: 65.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2121018112
@@ -77895,7 +77919,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uD604\uC7AC \uD558\uD2B8 \uC218  : "
+  m_Text: "\uD604\uC7AC \uD558\uD2B8: "
 --- !u!222 &2121018113
 CanvasRenderer:
   m_ObjectHideFlags: 0

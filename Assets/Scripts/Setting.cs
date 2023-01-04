@@ -54,7 +54,7 @@ public class Setting : MonoBehaviour
         }
         else
         {
-            saveDate_text.text = "마지막 저장 날짜\n" + DataController.instance.gameData.cloudSaveTime.ToString("yyyy년 MM월 dd일 HH:mm:ss");
+            saveDate_text.text = "마지막 저장 시간\n" + DataController.instance.gameData.cloudSaveTime.ToString("yyyy년 MM월 dd일 HH:mm:ss");
         }
     }
 
