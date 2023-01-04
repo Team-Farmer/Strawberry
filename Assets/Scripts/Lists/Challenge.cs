@@ -164,11 +164,11 @@ public class Challenge : MonoBehaviour
                 break;
 
             case 2: // 누적 코인
-                Info[prefabnum].clearCriterion[0] = 1000;
+                Info[prefabnum].clearCriterion[0] = 3000;
                 for (int i = 1; i < MaxLevel; i++)
                 {
                     // 늘림
-                    Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[i - 1] * 5;
+                    Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[i - 1] * 3;
                 }
                 break;
 
@@ -223,7 +223,7 @@ public class Challenge : MonoBehaviour
                 //도전과제 버튼 이미지 == Done
                 Button.GetComponent<Image>().sprite = DoneButton;
                 //도전과제 값을 현재 레벨 목표값과 같게
-                nowCondition.GetComponent<Text>().text = Info[prefabnum].clearCriterion[LevelNow].ToString();
+                //nowCondition.GetComponent<Text>().text = Info[prefabnum].clearCriterion[LevelNow].ToString();
 
             }
             else

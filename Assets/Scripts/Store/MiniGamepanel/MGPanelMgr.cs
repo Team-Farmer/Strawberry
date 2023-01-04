@@ -5,25 +5,24 @@ using UnityEngine.UI;
 
 public class MGPanelMgr : MonoBehaviour
 {
-    public GameObject MiniGamePanels;
-    public Button MiniGamePanel_1;
-    public Button MiniGamePanel_2;
-    public Button MiniGamePanel_3;
-    public Button MiniGamePanel_4;
+    //public GameObject MiniGamePanels;
+    public Button[] MiniGamePanel; // 배열로 교체
 
-    private GameObject lock_1;
-    private GameObject lock_2;
-    private GameObject lock_3;
-    private GameObject lock_4;
+    private GameObject[] dark_;
+    private GameObject[] lock_;
 
     private bool enable_flag, disable_flag;
     // Start is called before the first frame update
     void Start()
     {
-        lock_1 = MiniGamePanel_1.transform.GetChild(2).gameObject;
-        lock_2 = MiniGamePanel_2.transform.GetChild(2).gameObject;
-        lock_3 = MiniGamePanel_3.transform.GetChild(2).gameObject;
-        lock_4 = MiniGamePanel_4.transform.GetChild(2).gameObject;
+        dark_ = new GameObject[4];
+        lock_ = new GameObject[4];
+
+        for (int i=0; i<4; i++)
+        {
+            dark_[i] = MiniGamePanel[i].transform.GetChild(2).gameObject;
+            lock_[i] = MiniGamePanel[i].transform.GetChild(3).gameObject;
+        }
     }
 
     // Update is called once per frame
@@ -37,11 +36,13 @@ public class MGPanelMgr : MonoBehaviour
             
             enable_flag = false;
             disable_flag = true;
-            lock_1.SetActive(false); lock_2.SetActive(false);
-            lock_3.SetActive(false); lock_4.SetActive(false);
-            MiniGamePanel_1.interactable = true; MiniGamePanel_2.interactable = true;
-            MiniGamePanel_3.interactable = true; MiniGamePanel_4.interactable = true;
 
+            for (int i = 0; i < 4; i++)
+            {
+                dark_[i].SetActive(false);
+                lock_[i].SetActive(false);
+                MiniGamePanel[i].interactable = true;
+            }
         }
         else
         {
@@ -49,11 +50,13 @@ public class MGPanelMgr : MonoBehaviour
            
             enable_flag = true;
             disable_flag = false;
-            lock_1.SetActive(true); lock_2.SetActive(true);
-            lock_3.SetActive(true); lock_4.SetActive(true);
 
-            MiniGamePanel_1.interactable = false; MiniGamePanel_2.interactable = false;
-            MiniGamePanel_3.interactable = false; MiniGamePanel_4.interactable = false;
+            for (int i = 0; i < 4; i++)
+            {
+                dark_[i].SetActive(true);
+                lock_[i].SetActive(true);
+                MiniGamePanel[i].interactable = false;
+            }
         }
     }
 }

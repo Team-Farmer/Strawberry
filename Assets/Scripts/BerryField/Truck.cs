@@ -109,9 +109,9 @@ public class Truck : MonoBehaviour
     {
         float coEffi = arbeit.Pigma();
         float totalCoin = (DataController.instance.gameData.truckCoin
-            + GameManager.instance.bonusTruckCoin) * coEffi * 3;
+            + GameManager.instance.bonusTruckCoin) * coEffi * 2; // 2배로 수정!
 
-        Debug.Log($"광고보고 3배받기 {totalCoin}");
+        Debug.Log($"광고보고 2배 받기 {totalCoin}");
         GameManager.instance.GetCoin((int)totalCoin);
 
         DataController.instance.gameData.truckBerryCnt = 0;
