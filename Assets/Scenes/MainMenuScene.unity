@@ -17601,7 +17601,6 @@ MonoBehaviour:
   - challengeCriterions: 00000000000000000000000000000000000000000000000000000000
   settingsPanel: {fileID: 0}
   checkPanel: {fileID: 0}
-  attendanceCheck: {fileID: 1284243152}
   url: www.naver.com
   absencePanel: {fileID: 1934262437}
   absenceBlackPanel: {fileID: 1318028245}
@@ -44600,7 +44599,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 368.7, y: -191.8003}
+  m_AnchoredPosition: {x: 368.69995, y: -191.7998}
   m_SizeDelta: {x: 310, y: 94.2}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1187532004
@@ -69648,7 +69647,7 @@ RectTransform:
   m_GameObject: {fileID: 1934262437}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 288321196}
   - {fileID: 1877403372}
