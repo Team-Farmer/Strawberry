@@ -42,7 +42,7 @@ public class AdCoin : MonoBehaviour
 
         DataController.instance.gameData.coinAdCnt--;
         panelBlack.SetActive(false);
-        panel.CloseScale();
+        panel.gameObject.SetActive(false);// 시원 수정
     }
 
     void OnAdFail()

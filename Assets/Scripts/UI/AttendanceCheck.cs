@@ -18,6 +18,10 @@ public class AttendanceCheck : MonoBehaviour
 {
     #region 인스펙터 및 변수 생성
 
+    public static AttendanceCheck Inst { get; private set; }
+
+    void Awake() => Inst = this;
+
     [SerializeField] TMP_Text weekTMP;
     [SerializeField] TMP_Text[] tagTMP;
 

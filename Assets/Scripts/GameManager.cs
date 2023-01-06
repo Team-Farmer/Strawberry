@@ -132,7 +132,6 @@ public class GameManager : MonoBehaviour
 
 
     [Header("[ Check/Day List ]")]
-    public GameObject attendanceCheck;
     public string url = "";
 
     [Header("[ Absence Panel ]")]
@@ -1443,8 +1442,7 @@ public class GameManager : MonoBehaviour
     //자정 체크 및 정보갱신
     void ResetTime() // 자정 지날 시 정보 갱신
     {
-        attendanceCheck.GetComponent<AttendanceCheck>().Attendance();
-
+        AttendanceCheck.Inst.Attendance();
         DataController.instance.gameData.nextMidnightTime = DataController.instance.gameData.currentTime.Date.AddDays(1);
 
         //자동타이머
@@ -1458,10 +1456,12 @@ public class GameManager : MonoBehaviour
 
         DataController.instance.gameData.isPrework = false;
         yield return StartCoroutine(TryGetCurrentTime());
-        if (MiniGameManager.isOpen == true)
+
+        if (MiniGameManager.isOpen)
         {
             MiniGameManager.instance.DotoriInit();
         }
+
         TimeSpan gap = DataController.instance.gameData.currentTime - DataController.instance.gameData.lastExitTime;
 
         if (gap.TotalSeconds > 60f) //재접속 부재중 시간이 1분이상이면 Calculate 추가 계산
@@ -1470,17 +1470,8 @@ public class GameManager : MonoBehaviour
         }
 
         MidNightCheck();
-
-        if (DataController.instance.gameData.rewardAbsenceTime.TotalMinutes >= 60 && Intro.isEnd && DataController.instance.gameData.isStoreOpend)
-        {
-            if (!MiniGameManager.isOpen)
-                AbsenceTime();
-        }
-        else if (DataController.instance.gameData.rewardAbsenceTime.TotalMinutes < 60)
-            DataController.instance.gameData.rewardAbsenceTime = TimeSpan.FromSeconds(0);
-
-        attendanceCheck.GetComponent<AttendanceCheck>().Attendance();
-
+        AbsenceCheck();
+        AttendanceCheck.Inst.Attendance();
     }
 
     IEnumerator PreWork() // 접속할 때 
@@ -1488,23 +1479,11 @@ public class GameManager : MonoBehaviour
         yield return StartCoroutine(TryGetCurrentTime()); //현재시간 불러오기 체크
         yield return StartCoroutine(CalculateTime());
 
-        StartCoroutine(UpdateCurrentTime()); //30초 갱신
-        MidNightCheck();
+        StartCoroutine(UpdateCurrentTime()); //30초마다 시간 갱신 시작
+        MidNightCheck(); // 자정시간 체크
         invokeDotori(); // 도토리 텍스트 갱신
-        //도토리 시간 갱신
-
-        double checkTime = DataController.instance.gameData.rewardAbsenceTime.TotalMinutes;
-
-        if (checkTime >= 60 && Intro.isEnd && DataController.instance.gameData.isStoreOpend) // 60분 이상 && 인트로가 끝났을 때 && 미니게임 오픈
-        {
-            AbsenceTime(); // 부재중 패널
-        }
-        else if (DataController.instance.gameData.rewardAbsenceTime.TotalMinutes < 60) // 60분 이하
-        {
-            DataController.instance.gameData.rewardAbsenceTime = TimeSpan.FromSeconds(0);
-        }
-
-        attendanceCheck.GetComponent<AttendanceCheck>().Attendance();
+        AbsenceCheck(); // 부재중 시간 체크
+        AttendanceCheck.Inst.Attendance(); // 출석 확인
     }
 
     public void MidNightCheck() // 자정 체크 
@@ -1522,7 +1501,7 @@ public class GameManager : MonoBehaviour
             if (gap.TotalSeconds >= 0)
             {
                 DataController.instance.gameData.nextMidnightTime = DataController.instance.gameData.currentTime.Date.AddDays(1);
-                attendanceCheck.GetComponent<AttendanceCheck>().Attendance();
+                AttendanceCheck.Inst.Attendance();
 
                 //광고시간 초기화
                 DataController.instance.gameData.coinAdCnt = 3;
@@ -1532,6 +1511,21 @@ public class GameManager : MonoBehaviour
             gap = DataController.instance.gameData.nextMidnightTime - DataController.instance.gameData.currentTime;
             if (gap.TotalSeconds >= 0)
                 Invoke(nameof(ResetTime), (float)gap.TotalSeconds);
+        }
+    }
+
+    public void AbsenceCheck()
+    {
+        double checkTime = DataController.instance.gameData.rewardAbsenceTime.TotalMinutes;
+
+        if (checkTime >= 60 && DataController.instance.gameData.isStoreOpend) // 60분 이상 && 인트로가 끝났을 때 && 미니게임 오픈
+        {
+            AbsenceTime(); // 부재중 패널
+        }
+        else if (checkTime < 60 && DataController.instance.gameData.isStoreOpend) // 60분 미만
+        {
+            DataController.instance.gameData.rewardAbsenceTime = TimeSpan.FromSeconds(0);
+            Debug.Log("부재중 60분 미만");
         }
     }
 
@@ -1587,35 +1581,22 @@ public class GameManager : MonoBehaviour
 
         revenue = minute * DataController.instance.gameData.researchLevelAv / 2; // 평균 7렙 기준 10분에 35A, 1시간 210A, 24시간 5040A
         // 한시간이 안넘거나 연구레벨이 하나라도 0 레벨이면 시간 초기화 하고 종료
-        // 애초에 가게 오픈 가능 레벨이 모든 연구 레벨 7 이상임. 가게가 안열렸으면 부재중 보상도 오픈 X
+        // 가게 오픈 가능 레벨이 모든 연구 레벨 7 이상임. 가게가 안열렸으면 부재중 보상도 오픈 X
 
         // 예외처리
-        if (revenue == 0 || revenue < 0)
+        if (revenue <= 0)
         {
             DataController.instance.gameData.rewardAbsenceTime = TimeSpan.FromSeconds(0);
             return;
         }
         else
         {
-            if (revenue <= 9999)           // 0~9999까지 A
-            {
-                absenceMoneyText.text = revenue + "A";
-            }
-            else if (revenue <= 9999999)   // 10000~9999999(=9999B)까지 B
-            {
-                revenue /= 1000;
-                absenceMoneyText.text = revenue + "B";
-            }
-            else                        // 그 외 C (최대 2100C)
-            {
-                revenue /= 1000000;
-                absenceMoneyText.text = revenue + "C";
-            }
-            // ShowCoin 안 쓰는 이유가 있음? (-우연)
+            ShowCoinText(absenceMoneyText, revenue);
+            // ShowCoin 안 쓰는 이유가 있음? (-우연) -> 아 맞네 만들 당시에 생각나는대로 적다보니 잊어버림
         }
 
         // 시간 텍스트 갱신 
-        if (minute > 59)
+        if (minute >= 60)
         {
             hour = minute / 60;
             minute %= 60;
@@ -1623,6 +1604,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            DataController.instance.gameData.rewardAbsenceTime = TimeSpan.FromSeconds(0);
             return; // 예외처리 2
         }
 
@@ -1646,8 +1628,8 @@ public class GameManager : MonoBehaviour
 
         RewardAd.instance.OnAdComplete -= ReceiveCoin2Times;
         add_receive_btn.interactable = true; // 광고 보고 받기 버튼 활성
-        absenceBlackPanel.GetComponent<PanelAnimation>().FadeOut();
-        absencePanel.GetComponent<PanelAnimation>().CloseScale();
+        absenceBlackPanel.SetActive(false);
+        absencePanel.SetActive(false);
         InitAbsenceReward();
     }
 

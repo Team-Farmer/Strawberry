@@ -42,7 +42,7 @@ public class AdHeart : MonoBehaviour
         RewardAd.instance.OnAdFailed -= OnFailAd;
 
         DataController.instance.gameData.heartAdCnt--;
-        panel.CloseScale();
+        panel.gameObject.SetActive(false); // 시원 수정
         panelBlack.SetActive(false);
     }
 
