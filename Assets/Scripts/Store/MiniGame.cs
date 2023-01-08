@@ -19,6 +19,7 @@ public class MiniGame : MonoBehaviour
     public Text result_cur_score_txt;    //결과 현재 스코어 텍스트
     public Text result_highscore_txt;    //결과 최고기록 텍스트
     public Text result_coin_txt;    //결과 최고기록 텍스트
+    public Text result_dotori_txt;
     public Button restart_button;
     public Button checkButton;
     public Button challengeButton;

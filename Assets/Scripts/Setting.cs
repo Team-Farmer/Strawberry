@@ -25,6 +25,7 @@ public class Setting : MonoBehaviour
     private string noberry = "nb";
     private string store = "ys";
     private string nostore = "ns";
+    private string dotori = "yd";
     #endregion
 
     void Awake()
@@ -131,6 +132,11 @@ public class Setting : MonoBehaviour
         {
             code_text.text = "가게 닫기";
             DataController.instance.gameData.isStoreOpend = false;
+        }
+        else if (code_input.text == dotori)
+        {
+            code_text.text = "도토리 충전";
+            DataController.instance.gameData.dotori = 5;
         }
         else if (code_input.text == "")
         {

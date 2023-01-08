@@ -137,9 +137,10 @@ public class MiniGame1 : MiniGame
         AudioManager.instance.EndAudioPlay();
 
         ManageScore(0, score);
-
+        
         //결과패널
         resultPanel.SetActive(true);
+        result_dotori_txt.text = DataController.instance.gameData.dotori +" / 5";
         //result_txt.text = "최고기록 : " + DataController.instance.gameData.highScore[0] + "\n현재점수 : " + score;
         result_cur_score_txt.text = score + "점";
         result_highscore_txt.text = DataController.instance.gameData.highScore[0].ToString();

@@ -75,7 +75,7 @@ public class Intro : MonoBehaviour
                     {
                         AudioManager.instance.ResumePlayAudio("RainSFXSound");
                         GameManager.instance.EnableObjColliderAll();
-                        bannerAd.ShowBanner();
+                        bannerAd.ShowBanner(); // 광고 끄고싶을 때 주석하기
                     }
                 });
 

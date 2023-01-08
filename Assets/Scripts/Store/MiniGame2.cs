@@ -140,6 +140,7 @@ public class MiniGame2 : MiniGame
 
         //결과패널
         resultPanel.SetActive(true);
+        result_dotori_txt.text = DataController.instance.gameData.dotori + " / 5";
         result_cur_score_txt.text = score + "점";
         result_highscore_txt.text = DataController.instance.gameData.highScore[1].ToString();
 
