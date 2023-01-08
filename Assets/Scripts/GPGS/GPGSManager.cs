@@ -10,12 +10,11 @@ using Newtonsoft.Json; //serialize/deserialize
 using System.Text;     //for encoding
 using System;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GPGSManager : MonoBehaviour
 {
     public static GPGSManager instance = null;
-    public Action OnSaveSucceed;
-    public Image Loading_img;
 
     FirebaseAuth auth = null; //auth용 instance
     FirebaseUser user = null; //현재 사용자 계정
@@ -24,6 +23,12 @@ public class GPGSManager : MonoBehaviour
     ISavedGameClient SavedGame => PlayGamesPlatform.Instance.SavedGame;
     string fileName = "gameData";
     bool saving;
+
+    private byte[] cloudData = null;
+    public bool isCloudDataNull = true; //클라우드 데이터가 없을 때 true
+    public GameObject subText; //클라우드 저장 팝업의 서브텍스트
+    public Image Loading_img;
+    public Action OnSaveSucceed;
 
     void Awake()
     {
@@ -89,6 +94,8 @@ public class GPGSManager : MonoBehaviour
                     }
                     user = task.Result;
                     //Debug.Log(user.DisplayName + "님 로그인!");
+
+                    LoadFromCloud();
                 });
             }
         });
@@ -106,6 +113,20 @@ public class GPGSManager : MonoBehaviour
     }
 
 
+    public void CloudSaveOrLoad()
+    {
+        if (subText.activeSelf)
+        {
+            //Load
+            OverrideData();
+        }
+        else
+        {
+            //Save
+            SaveToCloud();
+        }
+    }
+
     //overwrites old file or saves a new one
     public void SaveToCloud()
     {
@@ -113,6 +134,8 @@ public class GPGSManager : MonoBehaviour
         {
             if (user != null)
             {
+                //LoadingImg SetActive True
+
                 Debug.Log("클라우드로 게임 데이터를 전송합니다...");
                 saving = true;
                 SavedGame.OpenWithAutomaticConflictResolution(
@@ -135,10 +158,12 @@ public class GPGSManager : MonoBehaviour
     {
         if (Application.platform == RuntimePlatform.Android)
         {
-            Debug.Log("클라우드로부터 게임 데이터를 가져옵니다...");
+            Debug.Log("클라우드로부터 게임 데이터가 있는지 확인중...");
             saving = false;
             if (user != null)
             {
+                //LoadingImg Setactive true
+
                 SavedGame.OpenWithAutomaticConflictResolution(
                     fileName,
                     DataSource.ReadCacheOrNetwork,
@@ -205,6 +230,8 @@ public class GPGSManager : MonoBehaviour
             OnSaveSucceed();
         }
         else Debug.LogError("클라우드 저장 실패 : " + state);
+
+        //LoadingImg Setactive true
     }
 
 
@@ -222,17 +249,32 @@ public class GPGSManager : MonoBehaviour
             }
             else
             {
-                //클라우드 데이터 유저데이터에 넣고 로컬저장..이렇게 해도 바로 반영 되는건지 확인해야 함
-                //byte[] to gameData
-                Debug.Log("데이터가져옴");
-                DataController.instance.gameData = JsonConvert.DeserializeObject<GameData>(Encoding.UTF8.GetString(cloudData));
-                DataController.instance.SaveData();
+                isCloudDataNull = false;
+                this.cloudData = cloudData;
             }
         }
         else
         {
             Debug.Log("로딩 실패 : " + state);
         }
+
+        //LoadingImg Setactive true
+    }
+
+
+    //데이터 덮어쓰기
+    private void OverrideData()
+    {
+        //클라우드 데이터 유저데이터에 넣고 로컬저장..이렇게 해도 바로 반영 되는건지 확인해야 함
+        //byte[] to gameData
+        Debug.Log("데이터가져옴");
+        DataController.instance.gameData = JsonConvert.DeserializeObject<GameData>(Encoding.UTF8.GetString(cloudData));
+        DataController.instance.SaveData();
+
+        //FadeOut
+
+        //씬 재로드
+        SceneManager.LoadScene(0);
     }
 
     //public void DeleteCloud()
