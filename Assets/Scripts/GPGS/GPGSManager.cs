@@ -27,7 +27,10 @@ public class GPGSManager : MonoBehaviour
     private byte[] cloudData = null;
     public bool isCloudDataNull = true; //클라우드 데이터가 없을 때 true
     public GameObject subText; //클라우드 저장 팝업의 서브텍스트
-    public Image Loading_img;
+    public PanelAnimation loadingPanel;
+    public GameObject panelBlack;
+    public PanelAnimation cloudConfirmPanel;
+    public Text confirm_tx;
     public Action OnSaveSucceed;
 
     void Awake()
@@ -128,13 +131,14 @@ public class GPGSManager : MonoBehaviour
     }
 
     //overwrites old file or saves a new one
-    public void SaveToCloud()
+    void SaveToCloud()
     {
         if (Application.platform == RuntimePlatform.Android)
         {
             if (user != null)
             {
                 //LoadingImg SetActive True
+                loadingPanel.OpenScale();
 
                 Debug.Log("클라우드로 게임 데이터를 전송합니다...");
                 saving = true;
@@ -149,12 +153,15 @@ public class GPGSManager : MonoBehaviour
                 Debug.Log("로그인이 되어있지 않음");
             }
         }
-        else print("안드로이드에서 테스트 해주세요");
+        else
+        {
+            print("안드로이드에서 테스트 해주세요");
+        }
     }
 
 
     //load from cloud
-    public void LoadFromCloud()
+    void LoadFromCloud()
     {
         if (Application.platform == RuntimePlatform.Android)
         {
@@ -163,6 +170,7 @@ public class GPGSManager : MonoBehaviour
             if (user != null)
             {
                 //LoadingImg Setactive true
+                loadingPanel.OpenScale();
 
                 SavedGame.OpenWithAutomaticConflictResolution(
                     fileName,
@@ -228,10 +236,21 @@ public class GPGSManager : MonoBehaviour
             DataController.instance.SaveData();
             //설정창 날짜 갱신 - 클라우드 저장 후 실행되어야 하므로 액션으로 설정
             OnSaveSucceed();
+            //텍스트변경
+            confirm_tx.text = "저장을 완료했어요!";
         }
-        else Debug.LogError("클라우드 저장 실패 : " + state);
+        else
+        {
+            confirm_tx.text = "저장에 실패했어요!";
+            Debug.LogError("클라우드 저장 실패 : " + state);
+        }
 
-        //LoadingImg Setactive true
+        //LoadingImg Setactive false
+        loadingPanel.CloseScale();
+
+        //확인창 띄우기
+        cloudConfirmPanel.OpenScale();
+        panelBlack.SetActive(true);
     }
 
 
@@ -245,7 +264,8 @@ public class GPGSManager : MonoBehaviour
             if (cloudData == null)
             {
                 Debug.Log("불러올 데이터가 존재하지 않음");
-                return;
+                isCloudDataNull = true;
+                this.cloudData = null;
             }
             else
             {
@@ -258,7 +278,8 @@ public class GPGSManager : MonoBehaviour
             Debug.Log("로딩 실패 : " + state);
         }
 
-        //LoadingImg Setactive true
+        //LoadingImg Setactive false
+        loadingPanel.CloseScale();
     }
 
 
@@ -268,10 +289,17 @@ public class GPGSManager : MonoBehaviour
         //클라우드 데이터 유저데이터에 넣고 로컬저장..이렇게 해도 바로 반영 되는건지 확인해야 함
         //byte[] to gameData
         Debug.Log("데이터가져옴");
+        confirm_tx.text = "저장된 내용을 불러왔어요!";
+
+        //확인창 띄우기
+        cloudConfirmPanel.OpenScale();
+        panelBlack.SetActive(true);
+
         DataController.instance.gameData = JsonConvert.DeserializeObject<GameData>(Encoding.UTF8.GetString(cloudData));
         DataController.instance.SaveData();
 
-        //FadeOut
+        //LoadingImg SetActive true
+        loadingPanel.OpenScale();
 
         //씬 재로드
         SceneManager.LoadScene(0);

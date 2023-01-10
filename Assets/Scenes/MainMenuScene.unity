@@ -2294,7 +2294,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isCloudDataNull: 1
   subText: {fileID: 324501000}
-  Loading_img: {fileID: 0}
+  loadingPanel: {fileID: 1409468538}
+  panelBlack: {fileID: 638678300}
+  cloudConfirmPanel: {fileID: 604087751}
+  confirm_tx: {fileID: 1747652079}
 --- !u!224 &81318102
 RectTransform:
   m_ObjectHideFlags: 0
@@ -23640,6 +23643,7 @@ GameObject:
   - component: {fileID: 675224305}
   - component: {fileID: 675224307}
   - component: {fileID: 675224306}
+  - component: {fileID: 675224308}
   m_Layer: 5
   m_Name: LoadingImg
   m_TagString: Untagged
@@ -23704,6 +23708,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 675224304}
   m_CullTransparentMesh: 1
+--- !u!95 &675224308
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 675224304}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e95ad5b0987141e4fa6aa63b61fe3b9a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &677943246
 GameObject:
   m_ObjectHideFlags: 0
@@ -52221,6 +52244,7 @@ GameObject:
   - component: {fileID: 1409468535}
   - component: {fileID: 1409468537}
   - component: {fileID: 1409468536}
+  - component: {fileID: 1409468538}
   m_Layer: 5
   m_Name: LoadingPanel
   m_TagString: Untagged
@@ -52262,7 +52286,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0.5882353}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -52286,6 +52310,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1409468534}
   m_CullTransparentMesh: 1
+--- !u!114 &1409468538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1409468534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 572474bec6679744aaec1b74c64505d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UpPosition: 0
+  DownPosition: 0
+  ScriptTxt: {fileID: 0}
 --- !u!1 &1411763100
 GameObject:
   m_ObjectHideFlags: 0
@@ -72208,7 +72247,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.15065816, y: 0.09858333}
   m_AnchorMax: {x: 0.15065816, y: 0.09858333}
-  m_AnchoredPosition: {x: -96.000015, y: -87}
+  m_AnchoredPosition: {x: -96, y: -87}
   m_SizeDelta: {x: 195.0152, y: 180}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1973577414
@@ -76386,7 +76425,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.15065816, y: 0.09858333}
   m_AnchorMax: {x: 0.15065816, y: 0.09858333}
-  m_AnchoredPosition: {x: -96.000015, y: -87}
+  m_AnchoredPosition: {x: -96, y: -87}
   m_SizeDelta: {x: 195.0152, y: 180}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &2037819671
@@ -78962,19 +79001,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 81318101}
         m_TargetAssemblyTypeName: GPGSManager, Assembly-CSharp
-        m_MethodName: SaveToCloud
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 604087751}
-        m_TargetAssemblyTypeName: PanelAnimation, Assembly-CSharp
-        m_MethodName: CloudConfirm
+        m_MethodName: CloudSaveOrLoad
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

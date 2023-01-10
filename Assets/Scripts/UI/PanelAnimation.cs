@@ -78,9 +78,4 @@ public class PanelAnimation : MonoBehaviour
     {
         ScriptTxt.text = "진행사항을 저장할까요?";
     }
-
-    public void CloudConfirm()
-    {
-        ScriptTxt.text = "저장을 완료했어요!";
-    }
 }

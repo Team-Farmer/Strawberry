@@ -47,7 +47,7 @@ public class Setting : MonoBehaviour
     {
         //버튼 컨트롤
         cloudSave_btn.interactable = GPGSManager.instance.isLogined();
-        cloudLoad_btn.interactable = GPGSManager.instance.isCloudDataNull;
+        cloudLoad_btn.interactable = !GPGSManager.instance.isCloudDataNull;
 
         //텍스트 컨트롤
         if (DataController.instance.gameData.cloudSaveTime == System.DateTime.MinValue)
