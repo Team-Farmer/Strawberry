@@ -25,10 +25,14 @@ public class Intro : MonoBehaviour
         if (Intro.instance == null)
             Intro.instance = this;
 
+        if (GooglePlayManager.Instance != null)
+            GooglePlayManager.Instance.UpdateApp();
+
         isEnd = false;
     }
 
-    void Start()    {
+    void Start()
+    {
         StartCoroutine(DoScale());
         introObject[5].SetActive(false);
 

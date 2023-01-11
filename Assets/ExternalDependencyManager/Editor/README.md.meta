@@ -1,11 +1,12 @@
 fileFormatVersion: 2
-guid: 57b5c3f72b65480eba2cc96380835972
+guid: af375ab7a7be496495fce13d2f5d8f21
 labels:
-- gvh
-- gvh_version-8.8.0
+- gvh_version-1.2.172
 - gvhp_exportpath-ExternalDependencyManager/Editor/README.md
+- gvh
+timeCreated: 1584567712
+licenseType: Pro
 TextScriptImporter:
-  externalObjects: {}
   userData: 
   assetBundleName: 
   assetBundleVariant: 
