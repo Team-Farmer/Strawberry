@@ -45,8 +45,8 @@ public class Setting : MonoBehaviour
 
     public void SetCloudSave()
     {
-        cloudSave_btn.interactable = GPGSManager.instance.isLogined();
-        cloudLoad_btn.interactable = GPGSManager.instance.isLogined();
+        cloudSave_btn.interactable = false;//GPGSManager.instance.isLogined();
+        cloudLoad_btn.interactable = false;//GPGSManager.instance.isLogined();
 
         if (DataController.instance.gameData.cloudSaveTime == System.DateTime.MinValue)
         {
@@ -61,8 +61,8 @@ public class Setting : MonoBehaviour
 
     private void SetVersionInfo() // 버전 정보 세팅
     {
-        versionDate_text.text = "23-01-02";
-        version_text.text = "V 1.0.2";
+        versionDate_text.text = "23-01-08";
+        version_text.text = "V 1.0.3";
     }
 
     public void PrivacyPolicy() // 개인정보처리방침
