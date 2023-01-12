@@ -11,8 +11,6 @@ public class GooglePlayManager : MonoBehaviour
     // √‚√≥2: https://wonjuri.tistory.com/entry/unity-%EA%B5%AC%EA%B8%80%ED%94%8C%EB%A0%88%EC%9D%B4-%EC%9D%B8%EC%95%B1-%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8-%EB%B0%8F-%EC%9D%B8%EC%95%B1-%EB%A6%AC%EB%B7%B0-%EC%97%B0%EB%8F%99-%ED%81%B4%EB%9E%98%EC%8A%A4
     public static GooglePlayManager Instance { get; private set; }
 
-    bool Updating = false;
-
     public void Awake()
     {
         Instance = this;

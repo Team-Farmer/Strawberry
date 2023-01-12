@@ -1311,10 +1311,10 @@ public class GameManager : MonoBehaviour
         }
 
 
-        challengeCriterion[2].challengeCriterions[0] = 1000;
+        challengeCriterion[2].challengeCriterions[0] = 3000;
         for (int i = 1; i < MaxLevel; i++)
         {
-            challengeCriterion[2].challengeCriterions[i] = challengeCriterion[2].challengeCriterions[i - 1] * 5;
+            challengeCriterion[2].challengeCriterions[i] = challengeCriterion[2].challengeCriterions[i - 1] * 3;
         }
 
 
