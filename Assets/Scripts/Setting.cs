@@ -48,9 +48,9 @@ public class Setting : MonoBehaviour
         cloudSave_btn.interactable = false;//GPGSManager.instance.isLogined();
         cloudLoad_btn.interactable = false;//GPGSManager.instance.isLogined();
 
+        //텍스트 컨트롤
         if (DataController.instance.gameData.cloudSaveTime == System.DateTime.MinValue)
         {
-            cloudLoad_btn.interactable = false;
             saveDate_text.text = "저장기록 없음";
         }
         else
