@@ -827,7 +827,7 @@ public class GameManager : MonoBehaviour
         //새 딸기 개발======
 
         //PRICE
-        price_newBerry = 90 + 10 * (BerryCount("classic", true) + BerryCount("special", true) * 3 + BerryCount("unique", true) * 5);
+        price_newBerry = 90 + 10 * (BerryCount("classic", true) + BerryCount("special", true) * 2 + BerryCount("unique", true) * 4);
 
         ShowCoinText(priceText_newBerry.GetComponent<Text>(), price_newBerry);
 
