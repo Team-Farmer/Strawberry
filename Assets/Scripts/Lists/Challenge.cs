@@ -147,7 +147,7 @@ public class Challenge : MonoBehaviour
 
             case 4: // 누적 출석
                 Info[prefabnum].clearCriterion[0] = 2;
-                for (int i = 2; i < MaxLevel; i++)
+                for (int i = 1; i < MaxLevel; i++)
                 {
                     // 줄임
                     Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[i - 1] + 2;
