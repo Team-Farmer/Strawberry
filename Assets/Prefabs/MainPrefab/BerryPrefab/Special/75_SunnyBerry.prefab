@@ -99,12 +99,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   berryName: "\uC368\uB2C8\uBCA0\uB9AC"
   berrykindProb: 100
-  berryExplain: "\uD587\uBCD5\uC744 \uBCF4\uACE0 \uC798  \uD070\uB2E4\uB294 \uB73B\uC758
+  berryExplain: "\uD587\uBCD5\uC744 \uBCF4\uACE0 \uC798 \uD070\uB2E4\uB294 \uB73B\uC758
     \uB538\uAE30\uC774\uB2E4. \uC57D\uAC04 \uC791\uC9C0\uB9CC \uACFC\uD53C\uAC00
     \uB2E8\uB2E8\uD558\uACE0 \uC800\uC7A5\uC131\uC774 \uC6B0\uC218\uD558\uBA70, \uAE30\uD615\uACFC\uC640
     \uD751\uBCC0\uACFC \uBC1C\uC0DD\uC774 \uC801\uB2E4."
   berryIdx: 75
-  berryPrice: 195
+  berryPrice: 94
   berryRank: 1
 --- !u!95 &8238155578764226143
 Animator:
