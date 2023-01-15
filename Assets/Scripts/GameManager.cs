@@ -152,6 +152,10 @@ public class GameManager : MonoBehaviour
     public GameObject heartAnimManager;
     public GameObject QuitPanel;
 
+    [Header("[ Ad Btn ]")]
+    public Button truckAdBtn;
+    public Button coinAdBtn;
+    public Button heartAdBtn;
 
 
     [Header("[ Game Flag ]")]
@@ -1390,50 +1394,91 @@ public class GameManager : MonoBehaviour
 
     //인터넷 시간 가져오기.
 
+    public void InternetCheck()
+    {
+        if (Application.internetReachability == NetworkReachability.NotReachable)
+        {
+            truckAdBtn.interactable = false;
+            coinAdBtn.interactable = false;
+            heartAdBtn.interactable = false;
+        }
+        else if (Application.internetReachability == NetworkReachability.ReachableViaCarrierDataNetwork ||
+             Application.internetReachability == NetworkReachability.ReachableViaLocalAreaNetwork)
+        {
+            truckAdBtn.interactable = true;
+            coinAdBtn.interactable = true;
+            heartAdBtn.interactable = true;
+        }
+    }
+
     public static IEnumerator UpdateCurrentTime()
     {
-        while (true)
+        if (Application.internetReachability == NetworkReachability.ReachableViaCarrierDataNetwork ||
+             Application.internetReachability == NetworkReachability.ReachableViaLocalAreaNetwork)
         {
-            yield return new WaitForSeconds(30f);
-            UnityWebRequest request = new UnityWebRequest();
-            using (request = UnityWebRequest.Get("https://naver.com"))
+            while (true)
             {
-                yield return request.SendWebRequest();
+                yield return new WaitForSeconds(30f);
+                UnityWebRequest request = new UnityWebRequest();
+                using (request = UnityWebRequest.Get("https://naver.com"))
+                {
+                    yield return request.SendWebRequest();
 
-                if (request.result == UnityWebRequest.Result.ConnectionError)
-                {
-                    Debug.Log(request.error);
-                }
-                else
-                {
-                    string date = request.GetResponseHeader("date");
-                    DateTime dateTime = DateTime.Parse(date);
-                    DataController.instance.gameData.currentTime = dateTime;
+                    if (request.result == UnityWebRequest.Result.ConnectionError)
+                    {
+                        Debug.Log(request.error + "오류 났다 야");
+                    }
+                    else
+                    {
+                        string date = request.GetResponseHeader("date");
+                        DateTime dateTime = DateTime.Parse(date);
+                        DataController.instance.gameData.currentTime = dateTime;
+                    }
                 }
             }
         }
+        else if (Application.internetReachability == NetworkReachability.NotReachable)
+        {
+            while (true)
+            {
+                yield return new WaitForSeconds(30f);
+                DateTime dateTime = DateTime.Now;
+                DataController.instance.gameData.currentTime = dateTime;
+            }
+        }
+
     }
 
     public static IEnumerator TryGetCurrentTime()
     {
         while (DataController.instance.gameData.isPrework == false)
         {
-            UnityWebRequest request = new UnityWebRequest();
-            using (request = UnityWebRequest.Get("https://naver.com"))
+            if (Application.internetReachability == NetworkReachability.ReachableViaCarrierDataNetwork ||
+     Application.internetReachability == NetworkReachability.ReachableViaLocalAreaNetwork)
             {
-                yield return request.SendWebRequest();
+                UnityWebRequest request = new UnityWebRequest();
+                using (request = UnityWebRequest.Get("https://naver.com"))
+                {
+                    yield return request.SendWebRequest();
 
-                if (request.result == UnityWebRequest.Result.ConnectionError)
-                {
-                    DataController.instance.gameData.isPrework = false;
+                    if (request.result == UnityWebRequest.Result.ConnectionError)
+                    {
+                        DataController.instance.gameData.isPrework = false;
+                    }
+                    else
+                    {
+                        string date = request.GetResponseHeader("date");
+                        DateTime dateTime = DateTime.Parse(date);
+                        DataController.instance.gameData.currentTime = dateTime;
+                        DataController.instance.gameData.isPrework = true;
+                    }
                 }
-                else
-                {
-                    string date = request.GetResponseHeader("date");
-                    DateTime dateTime = DateTime.Parse(date);
-                    DataController.instance.gameData.currentTime = dateTime;
-                    DataController.instance.gameData.isPrework = true;
-                }
+            }
+            else if (Application.internetReachability == NetworkReachability.NotReachable)
+            {
+                DateTime dateTime = DateTime.Now;
+                DataController.instance.gameData.currentTime = dateTime;
+                DataController.instance.gameData.isPrework = true;
             }
             yield return new WaitForSecondsRealtime(1f);
         }
@@ -1453,7 +1498,6 @@ public class GameManager : MonoBehaviour
 
     IEnumerator CheckElapseTime() // 게임 복귀할때 
     {
-
         DataController.instance.gameData.isPrework = false;
         yield return StartCoroutine(TryGetCurrentTime());
 
@@ -1469,6 +1513,7 @@ public class GameManager : MonoBehaviour
             yield return StartCoroutine(CalculateTime());
         }
 
+        InternetCheck();
         MidNightCheck();
         AbsenceCheck();
         AttendanceCheck.Inst.Attendance();
@@ -1480,9 +1525,11 @@ public class GameManager : MonoBehaviour
         yield return StartCoroutine(CalculateTime());
 
         StartCoroutine(UpdateCurrentTime()); //30초마다 시간 갱신 시작
+        InternetCheck();
         MidNightCheck(); // 자정시간 체크
         invokeDotori(); // 도토리 텍스트 갱신
         AbsenceCheck(); // 부재중 시간 체크
+
         AttendanceCheck.Inst.Attendance(); // 출석 확인
     }
 

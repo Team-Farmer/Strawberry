@@ -131,7 +131,7 @@ public class MiniGameManager : MonoBehaviour
     {
         if (DataController.instance.gameData.dotori >= 5)
         {
-            PlusDotori();
+            DotoriPlus();
             return;
         }
         else
@@ -143,7 +143,12 @@ public class MiniGameManager : MonoBehaviour
 
             if (gap.TotalSeconds > 9000f)
             {
-                PlusDotori();
+                DotoriPlus();
+                return;
+            }
+            else if (gap.TotalSeconds < 0)
+            {
+                DotoriZero();
                 return;
             }
 
@@ -170,14 +175,14 @@ public class MiniGameManager : MonoBehaviour
             }
             else
             {
-                PlusDotori();
+                DotoriPlus();
                 return;
             }
 
 
             if (DataController.instance.gameData.dotori + (int)dotoriDiv > 5) // 5개 이상이면
             {
-                PlusDotori();
+                DotoriPlus();
                 return;
             }
             else
@@ -205,7 +210,7 @@ public class MiniGameManager : MonoBehaviour
 
         if (DataController.instance.gameData.totalDotoriTime.TotalSeconds <= 0)
         {
-            PlusDotori();
+            DotoriPlus();
             yield return null;
         }
         else
@@ -250,12 +255,25 @@ public class MiniGameManager : MonoBehaviour
         }
     }
 
-    public void PlusDotori()
+    public void DotoriPlus()
     {
         DataController.instance.gameData.dotori = 5;
         GameManager.instance.invokeDotori();
         MaxDotori();
         dotoriPlus.GetComponent<Button>().interactable = false;
+    }
+    public void DotoriZero()
+    {
+        DataController.instance.gameData.dotori = 0;
+        GameManager.instance.invokeDotori();
+
+        DataController.instance.gameData.totalDotoriTime = TimeSpan.FromMinutes(150);
+        DataController.instance.gameData.nextDotoriTime = TimeSpan.FromMinutes(30);
+
+        dotoriTimer.text = DataController.instance.gameData.nextDotoriTime.ToString("mm':'ss");
+        dotoriPlus.GetComponent<Button>().interactable = true;
+        if (isTimerOn == false)
+            StartCoroutine(DotoriTimer());
     }
 
     public void MaxDotori()
