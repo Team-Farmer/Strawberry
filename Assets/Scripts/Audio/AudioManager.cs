@@ -160,10 +160,12 @@ public class AudioManager : MonoBehaviour
     public void PauseAudio(string clipName)
     {
         GameObject player = GameObject.Find(clipName);
-        if (player!=null)
+        if (player != null)
         {
+            //Debug.Log($"Pause {clipName}");
             player.GetComponent<AudioSource>().Pause();
         }
+        //else Debug.Log($"player {clipName} is null!");
     }
 
     //오디오 재개
@@ -172,8 +174,10 @@ public class AudioManager : MonoBehaviour
         GameObject player = GameObject.Find(clipName);
         if (player != null)
         {
+            //Debug.Log($"Resume {clipName}");
             player.GetComponent<AudioSource>().Play();
         }
+        //else Debug.Log($"player {clipName} is null!");
     }
 
     //오디오 멈춤
@@ -182,12 +186,13 @@ public class AudioManager : MonoBehaviour
         GameObject player = GameObject.Find(clipName);
         if (player != null)
         {
+            //Debug.Log($"Stop {clipName}");
             player.GetComponent<AudioSource>().Stop();
             Destroy(player);
         }
     }
 
-    //소나기재새-파티클 꺼질 때까지 재생해야한다!
+    //소나기재생-파티클 꺼질 때까지 재생해야한다!
     public void RainAudioPlay()
     {
         GameObject go = new GameObject("RainSFXSound");
@@ -200,6 +205,18 @@ public class AudioManager : MonoBehaviour
 
         audioSource.outputAudioMixerGroup = mixer.FindMatchingGroups("SFX")[0];
         
+    }
+
+    //미니게임 카운트다운 일시정지 문제때문에 따로뺍니다
+    public void CountdownAudioPlay()
+    {
+        GameObject go = new GameObject("CountdownSFXSound");
+
+        //재생
+        AudioSource audioSource = go.AddComponent<AudioSource>();
+        audioSource.clip = CountdownClip;
+        audioSource.Play();
+        audioSource.outputAudioMixerGroup = mixer.FindMatchingGroups("SFX")[0];
     }
 
     //========================================================================================================
@@ -244,8 +261,8 @@ public class AudioManager : MonoBehaviour
     { SFXPlayPoolingVersion("RemoveWeedSFX", RemoveWeedClip); }
     public void Remove2AudioPlay()      // 벌레 제거
     { SFXPlayPoolingVersion("RemoveBugSFX", RemoveBugClip); }
-    public void CountdownAudioPlay()      // 미니게임 카운트 다운
-    { SFXPlayPoolingVersion("CountdownSFX", CountdownClip); }
+    //public void CountdownAudioPlay()      // 미니게임 카운트 다운
+    //{ SFXPlayPoolingVersion("CountdownSFX", CountdownClip); }
     public void EndAudioPlay()      // 미니게임 종료
     { SFXPlayPoolingVersion("EndSFX", EndClip); }
     public void ScrollbarAudioPlay()      // 스크롤바
