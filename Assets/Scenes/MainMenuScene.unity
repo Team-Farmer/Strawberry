@@ -17989,6 +17989,7 @@ MonoBehaviour:
   truckAdBtn: {fileID: 109862329}
   coinAdBtn: {fileID: 732400821}
   heartAdBtn: {fileID: 685027499}
+  absenceAdBtn: {fileID: 843779967}
   isGameRunning: 0
   isBlackPanelOn: 0
   isStart: 0

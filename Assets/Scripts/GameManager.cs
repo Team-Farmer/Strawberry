@@ -156,6 +156,7 @@ public class GameManager : MonoBehaviour
     public Button truckAdBtn;
     public Button coinAdBtn;
     public Button heartAdBtn;
+    public Button absenceAdBtn;
 
 
     [Header("[ Game Flag ]")]
@@ -386,6 +387,7 @@ public class GameManager : MonoBehaviour
         {
             if (isStart && Intro.isEnd)
             {
+                //AdsInitializer.instance.InitializeAds();
                 StartCoroutine(CheckElapseTime());
             }
 
@@ -1401,6 +1403,7 @@ public class GameManager : MonoBehaviour
             truckAdBtn.interactable = false;
             coinAdBtn.interactable = false;
             heartAdBtn.interactable = false;
+            absenceAdBtn.interactable = false;
         }
         else if (Application.internetReachability == NetworkReachability.ReachableViaCarrierDataNetwork ||
              Application.internetReachability == NetworkReachability.ReachableViaLocalAreaNetwork)
@@ -1408,6 +1411,7 @@ public class GameManager : MonoBehaviour
             truckAdBtn.interactable = true;
             coinAdBtn.interactable = true;
             heartAdBtn.interactable = true;
+            absenceAdBtn.interactable = true;
         }
     }
 
