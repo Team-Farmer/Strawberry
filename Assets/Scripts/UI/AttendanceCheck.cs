@@ -55,13 +55,13 @@ public class AttendanceCheck : MonoBehaviour
         days = DataController.instance.gameData.accDays; // 출석 누적 날짜
         now = DataController.instance.gameData.currentTime;
 
-        for (int i = 0; i < 7; i++) //출석 버튼 초기화
-        {
-            image[i].sprite = Front[i].Behind[0];
-            isClicked[i] = false;
-            image[i].gameObject.SetActive(false);
-        }
+        DaysBtnInit();
+        DayCheck();
+        WeeksTag();
+    }
 
+    public void DayCheck()
+    {
         if (DaysCalculate() == 0) //연속 출석
         {
             DataController.instance.gameData.isAttendance = false;
@@ -86,10 +86,16 @@ public class AttendanceCheck : MonoBehaviour
             DataController.instance.gameData.weeks = 1;
             selectDay(days);
         }
-        WeeksTag();
+    }
 
-        //Debug.Log("날짜 차이:" + daysCompare);
-        //Debug.Log("지난 날짜" +":" + DataController.instance.gameData.atdLastday);
+    public void DaysBtnInit()
+    {       
+        for (int i = 0; i < 7; i++) //출석 버튼 초기화
+        {
+            image[i].sprite = Front[i].Behind[0];
+            isClicked[i] = false;
+            image[i].gameObject.SetActive(false);
+        }
     }
 
     public int DaysCalculate()
@@ -101,7 +107,7 @@ public class AttendanceCheck : MonoBehaviour
         if (DataController.instance.gameData.weeks > 9)
             DataController.instance.gameData.weeks = 9;
 
-        if (days > 7)
+        if (days >= 7)
         {
             days %= 7;            
         }
