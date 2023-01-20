@@ -150,12 +150,12 @@ public class Challenge : MonoBehaviour
                 for (int i = 1; i < MaxLevel; i++)
                 {
                     // 줄임
-                    Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[i - 1] + 2;
+                    Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[i - 1] + 3;
                 }
                 break;
 
             case 1: // 딸기 수확
-                Info[prefabnum].clearCriterion[0] = 100;
+                Info[prefabnum].clearCriterion[0] = 80;
                 for (int i = 1; i < MaxLevel; i++)
                 {
                     // 늘림
@@ -182,11 +182,11 @@ public class Challenge : MonoBehaviour
                 break;
 
             case 5: //미니게임 플레이
-                Info[prefabnum].clearCriterion[0] = 5;
+                Info[prefabnum].clearCriterion[0] = 4;
                 for (int i = 1; i < MaxLevel; i++)
                 {
                     // 줄임
-                    Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[i - 1] + 10;
+                    Info[prefabnum].clearCriterion[i] = Info[prefabnum].clearCriterion[i - 1] + 8;
                 }
                 break;
 
@@ -246,7 +246,7 @@ public class Challenge : MonoBehaviour
         if (ValueNow >= Info[prefabnum].clearCriterion[LevelNow])
         {
             //효과음, 효과 애니메이션
-            AudioManager.instance.RewardAudioPlay();
+            //AudioManager.instance.RewardAudioPlay(); //하트 효과음이랑 겹쳐서..
             heartMover.GetComponent<HeartMover>().RewardMover("heart");
             medalMover.GetComponent<HeartMover>().RewardMover("medal");
 

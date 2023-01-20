@@ -833,7 +833,7 @@ public class GameManager : MonoBehaviour
         //새 딸기 개발======
 
         //PRICE
-        price_newBerry = 90 + 10 * (BerryCount("classic", true) + BerryCount("special", true) * 2 + BerryCount("unique", true) * 4);
+        price_newBerry = 80 + 20 * (BerryCount("classic", true) + BerryCount("special", true) * 2 + BerryCount("unique", true) * 5);
 
         ShowCoinText(priceText_newBerry.GetComponent<Text>(), price_newBerry);
 
@@ -1310,7 +1310,7 @@ public class GameManager : MonoBehaviour
         }
 
 
-        challengeCriterion[1].challengeCriterions[0] = 100;
+        challengeCriterion[1].challengeCriterions[0] = 80;
         for (int i = 1; i < MaxLevel; i++)
         {
             challengeCriterion[1].challengeCriterions[i] = challengeCriterion[1].challengeCriterions[i - 1] * 3;
@@ -1334,13 +1334,13 @@ public class GameManager : MonoBehaviour
         challengeCriterion[4].challengeCriterions[0] = 2;
         for (int i = 1; i < MaxLevel; i++)
         {
-            challengeCriterion[4].challengeCriterions[i] = challengeCriterion[4].challengeCriterions[i - 1] + 2;
+            challengeCriterion[4].challengeCriterions[i] = challengeCriterion[4].challengeCriterions[i - 1] + 3;
         }
 
-        challengeCriterion[5].challengeCriterions[0] = 5;
+        challengeCriterion[5].challengeCriterions[0] = 4;
         for (int i = 1; i < MaxLevel; i++)
         {
-            challengeCriterion[5].challengeCriterions[i] = challengeCriterion[5].challengeCriterions[i - 1] + 10;
+            challengeCriterion[5].challengeCriterions[i] = challengeCriterion[5].challengeCriterions[i - 1] + 8;
         }
 
     }

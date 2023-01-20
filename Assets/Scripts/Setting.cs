@@ -17,15 +17,19 @@ public class Setting : MonoBehaviour
     public InputField code_input;
     public Text code_text;
     public GameObject money_btn;
+    public GameObject heart_btn;
     public GameObject berry_btn;
 
     private string coin = "yc";
     private string nocoin = "nc";
+    private string heart = "yh";
+    private string noheart = "nh";
     private string berry = "yb";
     private string noberry = "nb";
     private string store = "ys";
     private string nostore = "ns";
     private string dotori = "yd";
+    private string all = "ya";
     #endregion
 
     void Awake()
@@ -103,7 +107,15 @@ public class Setting : MonoBehaviour
 
     public void EnterCodeBtn()
     {
-        if (code_input.text == coin)
+        if (code_input.text == all)
+        {
+            code_text.text = "코인/하트/딸기/도토리 해제";
+            money_btn.SetActive(true);
+            heart_btn.SetActive(true);
+            berry_btn.SetActive(true);
+            DataController.instance.gameData.dotori = 5;
+        }
+        else if (code_input.text == coin)
         {
             code_text.text = "코인버튼 해제";
             money_btn.SetActive(true);
@@ -112,6 +124,16 @@ public class Setting : MonoBehaviour
         {
             code_text.text = "코인버튼 잠금";
             money_btn.SetActive(false);
+        }
+        else if(code_input.text == heart)
+        {
+            code_text.text = "하트버튼 해제";
+            heart_btn.SetActive(true);
+        }
+        else if (code_input.text == noheart)
+        {
+            code_text.text = "하트버튼 잠금";
+            heart_btn.SetActive(false);
         }
         else if (code_input.text == berry)
         {
