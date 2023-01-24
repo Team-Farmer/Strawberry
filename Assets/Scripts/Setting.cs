@@ -31,6 +31,7 @@ public class Setting : MonoBehaviour
     private string nostore = "ns";
     private string dotori = "yd118";
     private string all = "ya118";
+    private string deleteCloud = "dc";
 
     // 배포용
     private string badge10 = "badgebs10";
@@ -55,7 +56,8 @@ public class Setting : MonoBehaviour
 
     public void SetCloudSave()
     {
-        cloudSave_btn.interactable = false;//GPGSManager.instance.isLogined();
+        //Debug.Log($"로그인 상태 : {GPGSManager.instance.isLogined()}");
+        cloudSave_btn.interactable = GPGSManager.instance.isLogined();
         cloudLoad_btn.interactable = false;//GPGSManager.instance.isLogined();
 
         //텍스트 컨트롤
