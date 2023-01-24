@@ -97,8 +97,6 @@ public class GPGSManager : MonoBehaviour
                     }
                     user = task.Result;
                     //Debug.Log(user.DisplayName + "님 로그인!");
-
-                    LoadFromCloud();
                 });
             }
         });
@@ -121,7 +119,7 @@ public class GPGSManager : MonoBehaviour
         if (subText.activeSelf)
         {
             //Load
-            OverrideData();
+            LoadFromCloud();
         }
         else
         {
@@ -263,14 +261,20 @@ public class GPGSManager : MonoBehaviour
             Debug.Log("로딩 성공");
             if (cloudData == null)
             {
-                Debug.Log("불러올 데이터가 존재하지 않음");
                 isCloudDataNull = true;
                 this.cloudData = null;
+
+                confirm_tx.text = "불러올 데이터가 없어요!";
+                
+                //확인창 띄우기
+                cloudConfirmPanel.OpenScale();
+                panelBlack.SetActive(true);
             }
             else
             {
                 isCloudDataNull = false;
                 this.cloudData = cloudData;
+                OverrideData();
             }
         }
         else
@@ -286,17 +290,17 @@ public class GPGSManager : MonoBehaviour
     //데이터 덮어쓰기
     private void OverrideData()
     {
-        //클라우드 데이터 유저데이터에 넣고 로컬저장..이렇게 해도 바로 반영 되는건지 확인해야 함
-        //byte[] to gameData
         Debug.Log("데이터가져옴");
         confirm_tx.text = "저장된 내용을 불러왔어요!";
+
+        //클라우드 데이터 유저데이터에 넣고 로컬저장..이렇게 해도 바로 반영 되는건지 확인해야 함
+        //byte[] to gameData
+        DataController.instance.gameData = JsonConvert.DeserializeObject<GameData>(Encoding.UTF8.GetString(cloudData));
+        DataController.instance.SaveData();
 
         //확인창 띄우기
         cloudConfirmPanel.OpenScale();
         panelBlack.SetActive(true);
-
-        DataController.instance.gameData = JsonConvert.DeserializeObject<GameData>(Encoding.UTF8.GetString(cloudData));
-        DataController.instance.SaveData();
 
         //LoadingImg SetActive true
         loadingPanel.OpenScale();
@@ -305,8 +309,29 @@ public class GPGSManager : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-    //public void DeleteCloud()
-    //{
 
-    //}
+    //클라우드 데이터 삭제
+    public void DeleteCloudData()
+    {
+        loadingPanel.OpenScale();
+
+        SavedGame.OpenWithAutomaticConflictResolution(
+            fileName,
+            DataSource.ReadCacheOrNetwork,
+            ConflictResolutionStrategy.UseLongestPlaytime,
+            DeleteSavedGame);
+    }
+
+    void DeleteSavedGame(SavedGameRequestStatus status, ISavedGameMetadata game)
+    {
+        if (status == SavedGameRequestStatus.Success)
+        {
+            SavedGame.Delete(game);
+        }
+        else
+        {
+            Debug.Log("클라우드 데이터 지우기 실패ㅠ");
+        }
+        loadingPanel.CloseScale();
+    }
 }
