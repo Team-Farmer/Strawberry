@@ -1486,6 +1486,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 909940711}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: StopPlayAudio
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: TruckStartSFX
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &41530271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2682,6 +2694,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 909940711}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: StopPlayAudio
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: TruckStartSFX
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &85999773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3287,6 +3311,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 909940711}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: StopPlayAudio
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: TruckStartSFX
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &109862330
@@ -28035,6 +28071,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 909940711}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: StopPlayAudio
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: TruckStartSFX
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &766781380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34255,8 +34303,8 @@ MonoBehaviour:
   RainClip: {fileID: 8300000, guid: da4a484d33128504fbae6f3a0feeaf31, type: 3}
   RightClip: {fileID: 8300000, guid: 7b6b28bd2dfb30a42a4d867b87a32f41, type: 3}
   WrongClip: {fileID: 8300000, guid: 3acbf0f186a76454b91979b6e73e3684, type: 3}
-  DoorOpenClip: {fileID: 8300000, guid: fba200efab9ec0a4db912ed50e87c53d, type: 3}
-  DoorCloseClip: {fileID: 8300000, guid: b0f0184635d6ad74bac1f1911cdfc7ea, type: 3}
+  DoorOpenClip: {fileID: 8300000, guid: b2789d24e27815b4b8eba7a3b5c20515, type: 3}
+  DoorCloseClip: {fileID: 8300000, guid: 8a882c400668fe941becb85b5f72ccd8, type: 3}
   CoinClip: {fileID: 8300000, guid: 0d0a916bee94de346bdb062c2230b1d1, type: 3}
   RewardClip: {fileID: 8300000, guid: 628771933e8c2194dae74965c11d654f, type: 3}
   TimerClip: {fileID: 8300000, guid: 837c8f7fa3eed2d4f8e09a6d21df15d9, type: 3}
@@ -35331,18 +35379,6 @@ MonoBehaviour:
       - m_Target: {fileID: 926323871}
         m_TargetAssemblyTypeName: MiniGameManager, Assembly-CSharp
         m_MethodName: EnterStore
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 909940711}
-        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: Cute1AudioPlay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -76934,7 +76970,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 909940711}
         m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: SFXAudioPlay
+        m_MethodName: DoorCloseAudioPlay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

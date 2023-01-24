@@ -221,6 +221,17 @@ public class AudioManager : MonoBehaviour
         audioSource.outputAudioMixerGroup = mixer.FindMatchingGroups("SFX")[0];
     }
 
+    public void TruckStartAudioPlay()
+    {
+        GameObject go = new GameObject("TruckStartSFX");
+
+        //재생
+        AudioSource audioSource = go.AddComponent<AudioSource>();
+        audioSource.clip = TruckStartClip;
+        audioSource.Play();
+        audioSource.outputAudioMixerGroup = mixer.FindMatchingGroups("SFX")[0];
+    }
+
     //========================================================================================================
     //========================================================================================================
 
@@ -277,8 +288,6 @@ public class AudioManager : MonoBehaviour
     { SFXPlayPoolingVersion("DisappearSFX", DisappearClip); }
     public void HeartAudioPlay()      // 하트
     { SFXPlayPoolingVersion("HeartSFX", HeartClip); }
-    public void TruckStartAudioPlay()      // 트럭 시종
-    { SFXPlayPoolingVersion("TruckStartSFX", TruckStartClip); }
     public void TruckHornAudioPlay()      // 트럭 경적
     { SFXPlayPoolingVersion("TruckHornSFX", TruckHornClip); }
 

@@ -41,6 +41,7 @@ public class MiniGameManager : MonoBehaviour
     {
         if (DataController.instance.gameData.isStoreOpend == true)
         {
+            AudioManager.instance.DoorOpenAudioPlay();
             inside.SetActive(true);
             dotori.SetActive(true);
             isOpen = true;
@@ -54,6 +55,7 @@ public class MiniGameManager : MonoBehaviour
         }
         else
         {
+            AudioManager.instance.Cute1AudioPlay();
             Debug.Log(DataController.instance.gameData.isStoreOpend);
             blackPanel.gameObject.SetActive(true);
             blackPanel.Fadein();
