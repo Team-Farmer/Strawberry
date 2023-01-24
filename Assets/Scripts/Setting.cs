@@ -30,6 +30,7 @@ public class Setting : MonoBehaviour
     private string nostore = "ns";
     private string dotori = "yd";
     private string all = "ya";
+    private string deleteCloud = "dc";
     #endregion
 
     void Awake()
@@ -49,7 +50,8 @@ public class Setting : MonoBehaviour
 
     public void SetCloudSave()
     {
-        cloudSave_btn.interactable = false;//GPGSManager.instance.isLogined();
+        //Debug.Log($"로그인 상태 : {GPGSManager.instance.isLogined()}");
+        cloudSave_btn.interactable = GPGSManager.instance.isLogined();
         cloudLoad_btn.interactable = false;//GPGSManager.instance.isLogined();
 
         //텍스트 컨트롤
@@ -159,6 +161,11 @@ public class Setting : MonoBehaviour
         {
             code_text.text = "도토리 충전";
             DataController.instance.gameData.dotori = 5;
+        }
+        else if (code_input.text == deleteCloud)
+        {
+            code_text.text = "클라우드 데이터 지우기";
+            GPGSManager.instance.DeleteCloudData();
         }
         else if (code_input.text == "")
         {
