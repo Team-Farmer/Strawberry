@@ -322,8 +322,7 @@ MonoBehaviour:
   - Name: "\uD53C\uADF8\uB9C8"
     Picture: {fileID: 296038017401492265, guid: 165b2af07615f914fafa2bd15d62f172, type: 3}
     FacePicture: {fileID: -1513482845346613526, guid: 93753ccc8cbf2554ba3b829ed94b9ed1, type: 3}
-    Explanation: "\uB538\uAE30\uB97C \uBE44\uC2F8\uAC8C \uD314\uC544\uC904\uAC8C
-      \uC544\uB9C8\uB3C4! "
+    Explanation: "\uB538\uAE30\uB97C \uBE44\uC2F8\uAC8C \uD314\uC544\uC904\uAC8C!"
     Price: 100
   PTJBackground: {fileID: 3464224768173057888}
   nameText: {fileID: 9018496231175234831}

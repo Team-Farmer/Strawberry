@@ -126,9 +126,13 @@ public class GameData
 
     //가게&미니게임
     public bool isStoreOpend;
-    public int[] highScore=new int[4];
+    public int[] highScore = new int[4];
 
     //광고 횟수 제한
     public int coinAdCnt = 3;
     public int heartAdCnt = 3;
+
+    // 설정 사용자 배포용 코드 받았는지
+    public bool[] userCode = new bool[10];
+
 }

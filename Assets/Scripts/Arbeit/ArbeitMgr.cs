@@ -114,7 +114,7 @@ public class ArbeitMgr : MonoBehaviour
     {
         if (DataController.instance.gameData.PTJNum[5] > 0)
         {
-            float coEffi = Random.Range(0.7f, 1.8f);
+            float coEffi = Random.Range(1.0f, 1.4f);
             DataController.instance.gameData.PTJNum[5]--;
             DataController.instance.gameData.PTJIsWorking[5] = true;//ÇãÀ±Áö
 

@@ -13,23 +13,28 @@ public class Setting : MonoBehaviour
     public Button cloudLoad_btn;
     public Button cloudSave_btn;
 
-    // 잠금 해제 코드
     public InputField code_input;
     public Text code_text;
     public GameObject money_btn;
     public GameObject heart_btn;
     public GameObject berry_btn;
 
-    private string coin = "yc";
+    // 잠금 해제 코드
+    // 개발자용
+    private string coin = "yc118";
     private string nocoin = "nc";
-    private string heart = "yh";
+    private string heart = "yh118";
     private string noheart = "nh";
-    private string berry = "yb";
+    private string berry = "yb118";
     private string noberry = "nb";
-    private string store = "ys";
+    private string store = "ys118";
     private string nostore = "ns";
-    private string dotori = "yd";
-    private string all = "ya";
+    private string dotori = "yd118";
+    private string all = "ya118";
+    // 배포용
+    private string badge10 = "badgebs10";
+    private string heart30 = "heartbs30";
+    private string coin5000 = "coinbs5000";
     #endregion
 
     void Awake()
@@ -159,6 +164,48 @@ public class Setting : MonoBehaviour
         {
             code_text.text = "도토리 충전";
             DataController.instance.gameData.dotori = 5;
+        }
+        else if (code_input.text == badge10)
+        {
+            if (!DataController.instance.gameData.userCode[0]) // false라면(처음이라면)
+            {
+                code_text.text = "뱃지 10개 추가";
+                GameManager.instance.GetMedal(10);
+                DataController.instance.gameData.userCode[0] = true;
+            }
+            else
+            {
+                code_text.text = "이미 사용된 코드";
+            }
+            Debug.Log(DataController.instance.gameData.userCode[0]);
+        }
+        else if (code_input.text == heart30)
+        {
+            if (!DataController.instance.gameData.userCode[1]) // false라면(처음이라면)
+            {
+                code_text.text = "하트 30개 추가";
+                GameManager.instance.GetHeart(30);
+                DataController.instance.gameData.userCode[1] = true;
+            }
+            else
+            {
+                code_text.text = "이미 사용된 코드";
+            }
+            Debug.Log(DataController.instance.gameData.userCode[1]);
+        }
+        else if (code_input.text == coin5000)
+        {
+            if (!DataController.instance.gameData.userCode[2]) // false라면(처음이라면)
+            {
+                code_text.text = "코인 5000A 추가";
+                GameManager.instance.GetCoin(5000);
+                DataController.instance.gameData.userCode[2] = true;
+            }
+            else
+            {
+                code_text.text = "이미 사용된 코드";
+            }
+            Debug.Log(DataController.instance.gameData.userCode[2]);
         }
         else if (code_input.text == "")
         {
