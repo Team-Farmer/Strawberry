@@ -239,7 +239,7 @@ public class MiniGame4 : MiniGame
         result_highscore_txt.text = DataController.instance.gameData.highScore[3].ToString();
 
         // 미니게임4 보상 코인
-        float gain_coin = score * DataController.instance.gameData.researchLevelAv * (180 / 100f);
+        float gain_coin = score * DataController.instance.gameData.researchLevelAv * (150 / 100f);
 
         // 코인 보여주고 지급
         //result_coin_txt.text = gain_coin.ToString();

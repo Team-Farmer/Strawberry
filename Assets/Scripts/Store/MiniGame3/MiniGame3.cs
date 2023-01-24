@@ -162,7 +162,7 @@ public class MiniGame3 : MiniGame
         result_highscore_txt.text = DataController.instance.gameData.highScore[2].ToString();
 
         // 미니게임3 보상 코인
-        float gain_coin = score * DataController.instance.gameData.researchLevelAv * (135 / 100f);
+        float gain_coin = score * DataController.instance.gameData.researchLevelAv * (110 / 100f);
         //result_coin_txt.text = gain_coin.ToString();
         GameManager.instance.ShowCoinText(result_coin_txt.GetComponent<Text>(), Convert.ToInt32(gain_coin));
         //Debug.Log("얻은 코인:" + Convert.ToInt32(gain_coin));

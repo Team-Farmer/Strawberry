@@ -9751,7 +9751,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 42.05001}
-  m_SizeDelta: {x: 578, y: 84.1}
+  m_SizeDelta: {x: 578, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &294634492
 MonoBehaviour:
@@ -34270,6 +34270,8 @@ MonoBehaviour:
   WinkClip: {fileID: 8300000, guid: a9ddb256dab90c24aafcc8594b9f6a19, type: 3}
   DisappearClip: {fileID: 8300000, guid: 897895c27bc4b8b47a165f7cafe76a8f, type: 3}
   HeartClip: {fileID: 8300000, guid: db08ccd56430bfc4fafc90b20d8754b4, type: 3}
+  TruckStartClip: {fileID: 8300000, guid: 8562bd61ccffeb34496a28140e2b6bde, type: 3}
+  TruckHornClip: {fileID: 8300000, guid: 0fc4781a8eb848a43a25b4a0ce33aabf, type: 3}
 --- !u!1 &910149892
 GameObject:
   m_ObjectHideFlags: 0
@@ -45960,6 +45962,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d92bf83d39bb86c4ca3ba187ecafe817, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  intro: {fileID: 1008492471}
   MaxPanel: {fileID: 1148245772}
   normal_receive_btn: {fileID: 766781379}
   add_receive_btn: {fileID: 109862329}
@@ -46105,7 +46108,7 @@ MonoBehaviour:
           m_CallState: 2
         - m_Target: {fileID: 909940711}
           m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-          m_MethodName: Cute1AudioPlay
+          m_MethodName: TruckStartAudioPlay
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -47081,7 +47084,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.7788662, y: 0.5767499}
   m_AnchorMax: {x: 0.7788662, y: 0.5767499}
-  m_AnchoredPosition: {x: 204.99994, y: 385.59998}
+  m_AnchoredPosition: {x: 205, y: 385.59998}
   m_SizeDelta: {x: 491.0841, y: 446}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1258689474
@@ -57535,7 +57538,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 42.05001}
-  m_SizeDelta: {x: 578, y: 84.1}
+  m_SizeDelta: {x: 578, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1556691417
 MonoBehaviour:
@@ -68635,7 +68638,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.71400005, y: 0.63158333}
   m_AnchorMax: {x: 0.71400005, y: 0.63158333}
-  m_AnchoredPosition: {x: 211.00003, y: 208}
+  m_AnchoredPosition: {x: 211.00006, y: 208}
   m_SizeDelta: {x: 367.7, y: 399.1}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1870965505
@@ -72576,7 +72579,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.15065816, y: 0.09858333}
   m_AnchorMax: {x: 0.15065816, y: 0.09858333}
-  m_AnchoredPosition: {x: -96, y: -86.99988}
+  m_AnchoredPosition: {x: -96.00003, y: -86.99988}
   m_SizeDelta: {x: 195.0152, y: 180}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1973577414
@@ -76834,7 +76837,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.15065816, y: 0.09858333}
   m_AnchorMax: {x: 0.15065816, y: 0.09858333}
-  m_AnchoredPosition: {x: -96, y: -86.99988}
+  m_AnchoredPosition: {x: -96.00003, y: -86.99988}
   m_SizeDelta: {x: 195.0152, y: 180}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &2037819671
@@ -77567,7 +77570,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.71400005, y: 0.63158333}
   m_AnchorMax: {x: 0.71400005, y: 0.63158333}
-  m_AnchoredPosition: {x: 211.00003, y: 208}
+  m_AnchoredPosition: {x: 211.00006, y: 208}
   m_SizeDelta: {x: 367.7, y: 399.1}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &2054212633

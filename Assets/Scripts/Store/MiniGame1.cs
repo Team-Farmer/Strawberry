@@ -147,7 +147,7 @@ public class MiniGame1 : MiniGame
 
 
         // 미니게임1 보상 코인
-        float gain_coin = score * DataController.instance.gameData.researchLevelAv * (250 / 100f);
+        float gain_coin = score * DataController.instance.gameData.researchLevelAv * (220 / 100f);
 
         //result_coin_txt.text = gain_coin.ToString();
         GameManager.instance.ShowCoinText(result_coin_txt.GetComponent<Text>(), Convert.ToInt32(gain_coin));

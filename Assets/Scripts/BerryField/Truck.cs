@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class Truck : MonoBehaviour
 {
+    public GameObject intro;
     public GameObject MaxPanel;
     public Button normal_receive_btn;
     public Button add_receive_btn;
@@ -74,7 +75,8 @@ public class Truck : MonoBehaviour
         if (DataController.instance.gameData.truckBerryCnt == level_3)
         {
             if (truckSpirteLv == 3) return;
-
+            if (intro.activeInHierarchy == false) // 인트로가 꺼져있으면
+                AudioManager.instance.TruckHornAudioPlay(); // 트럭 Max 시 경적 소리
             truckSpirteLv = 3;
             MaxPanel.SetActive(true);
             maxAnim.SetBool("isMax", true);

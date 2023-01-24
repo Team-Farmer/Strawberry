@@ -58,6 +58,8 @@ public class AudioManager : MonoBehaviour
     public AudioClip WinkClip;
     public AudioClip DisappearClip;
     public AudioClip HeartClip;
+    public AudioClip TruckStartClip;
+    public AudioClip TruckHornClip;
 
     //instance
     public static AudioManager instance;
@@ -275,6 +277,10 @@ public class AudioManager : MonoBehaviour
     { SFXPlayPoolingVersion("DisappearSFX", DisappearClip); }
     public void HeartAudioPlay()      // 하트
     { SFXPlayPoolingVersion("HeartSFX", HeartClip); }
+    public void TruckStartAudioPlay()      // 트럭 시종
+    { SFXPlayPoolingVersion("TruckStartSFX", TruckStartClip); }
+    public void TruckHornAudioPlay()      // 트럭 경적
+    { SFXPlayPoolingVersion("TruckHornSFX", TruckHornClip); }
 
     //직접 오디오 넣는 함수
     /*
