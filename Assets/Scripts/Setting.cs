@@ -31,6 +31,7 @@ public class Setting : MonoBehaviour
     private string nostore = "ns";
     private string dotori = "yd118";
     private string all = "ya118";
+
     // 배포용
     private string badge10 = "badgebs10";
     private string heart30 = "heartbs30";
@@ -130,7 +131,7 @@ public class Setting : MonoBehaviour
             code_text.text = "코인버튼 잠금";
             money_btn.SetActive(false);
         }
-        else if(code_input.text == heart)
+        else if (code_input.text == heart)
         {
             code_text.text = "하트버튼 해제";
             heart_btn.SetActive(true);
@@ -206,6 +207,11 @@ public class Setting : MonoBehaviour
                 code_text.text = "이미 사용된 코드";
             }
             Debug.Log(DataController.instance.gameData.userCode[2]);
+        }
+        else if (code_input.text == deleteCloud)
+        {
+            code_text.text = "클라우드 데이터 지우기";
+            GPGSManager.instance.DeleteCloudData();
         }
         else if (code_input.text == "")
         {
