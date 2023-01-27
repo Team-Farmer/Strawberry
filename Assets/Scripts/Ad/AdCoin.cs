@@ -11,7 +11,13 @@ public class AdCoin : MonoBehaviour
     public Text adCoinText;
     public Text remainAdText;
 
-    public void OnEnable()
+    void Awake()
+    {
+        GameManager.instance.OnOnline += CoinAdCountCheck;
+        GameManager.instance.OnOffline += AdBtnOff;
+    }
+
+    public void CoinAdCountCheck()
     {
         if (DataController.instance.gameData.coinAdCnt > 0)
         {
@@ -23,6 +29,11 @@ public class AdCoin : MonoBehaviour
             adCoinBtn.interactable = false;
         }
         remainAdText.text = $"¿À´Ã ³²Àº È½¼ö : {DataController.instance.gameData.coinAdCnt}";
+    }
+
+    public void AdBtnOff()
+    {
+        adCoinBtn.interactable = false;
     }
 
     public void OnClickPlusCoinBtn()

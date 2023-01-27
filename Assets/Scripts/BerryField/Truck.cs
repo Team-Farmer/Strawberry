@@ -25,6 +25,9 @@ public class Truck : MonoBehaviour
 
         //트럭 MAX 패널 애니메이션
         maxAnim = transform.GetChild(0).GetComponent<Animator>();
+
+        //GameManager.instance.OnOnline += AdCountCheck;
+        //GameManager.instance.OnOffline += AdBtnOff;
     }
     void FixedUpdate()
     {
@@ -128,5 +131,10 @@ public class Truck : MonoBehaviour
         RewardAd.instance.OnAdComplete -= ReceiveCoin3Times;
         RewardAd.instance.OnAdFailed -= OnFailedAd;
         add_receive_btn.interactable = true; // 광고 보고 받기 버튼 활성
+    }
+
+    public void AdBtnOff()
+    {
+        add_receive_btn.interactable = false;
     }
 }

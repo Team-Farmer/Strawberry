@@ -11,11 +11,7 @@ public class AdsInitializer : MonoBehaviour,IUnityAdsInitializationListener
     [SerializeField] string iosGameId;
     [SerializeField] bool isTestMode = true;
     string gameId;
-
-    void Awake()
-    {
-        InitializeAds();
-    }
+    public bool isInitialize = false;
 
     void Start()
     {
@@ -42,6 +38,7 @@ public class AdsInitializer : MonoBehaviour,IUnityAdsInitializationListener
     {
         Debug.Log("Unity Ads initialization complete");
         RewardAd.instance.LoadAd();
+        isInitialize = true;
     }
 
     public void OnInitializationFailed(UnityAdsInitializationError error, string message)

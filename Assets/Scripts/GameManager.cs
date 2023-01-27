@@ -76,7 +76,6 @@ public class GameManager : MonoBehaviour
     [NonSerialized]
     public int NewsPrefabNum;
 
-
     //새로운딸기================================
     [Header("[ NEW BERRY === OBJECT ]")]
     public GameObject priceText_newBerry;
@@ -109,11 +108,7 @@ public class GameManager : MonoBehaviour
     [Header("[ NEW BERRY === GLOBAL ]")]
     public GameObject Global;
 
-
-
     //Challenge, Collection================================
-
-
     [Header("[ Challenge / Collection]")]
     public GameObject bangIcon;//업적 느낌표 오브젝트
     public GameObject contentChallenge;
@@ -121,11 +116,7 @@ public class GameManager : MonoBehaviour
     public ChallengeAcquire[] challengeCriterion;
     private int[] ChallengeValueNow = new int[6];
 
-
-
-
     //===========================================
-
     [Header("[ Check/Settings Panel ]")]
     public GameObject settingsPanel;
     public GameObject checkPanel;
@@ -165,6 +156,10 @@ public class GameManager : MonoBehaviour
     private int coinUpdate;
     public bool isStart;
     public bool isMiniGameMode = false;
+
+    public Action OnOnline;
+    public Action OnOffline;
+    static bool isOnline = false;
     #endregion
 
     #region 기본 기능
@@ -172,6 +167,8 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         setChallenge();
+
+        
     }
     void Start()
     {
@@ -369,11 +366,11 @@ public class GameManager : MonoBehaviour
     {
         if (pause)
         {
-            if (DataController.instance.gameData.isPrework == true)
+            if (DataController.instance.gameData.isPrework)
             {
                 DataController.instance.gameData.lastExitTime = DataController.instance.gameData.currentTime;
 
-                if (MiniGameManager.isOpen == true)
+                if (MiniGameManager.isOpen)
                 {
                     DataController.instance.gameData.lastMinigameExitTime = DataController.instance.gameData.currentTime;
                     MiniGameManager.instance.StopAllCoroutines();
@@ -387,7 +384,6 @@ public class GameManager : MonoBehaviour
         {
             if (isStart && Intro.isEnd)
             {
-                //AdsInitializer.instance.InitializeAds();
                 StartCoroutine(CheckElapseTime());
             }
 
@@ -1396,31 +1392,31 @@ public class GameManager : MonoBehaviour
 
     //인터넷 시간 가져오기.
 
-    public void InternetCheck()
+    public static IEnumerator InternetCheck()
     {
-        if (Application.internetReachability == NetworkReachability.NotReachable)
+        UnityWebRequest request = new UnityWebRequest("https://www.naver.com");
+        yield return request.SendWebRequest();
+        if (request.isDone)
         {
-            truckAdBtn.interactable = false;
-            coinAdBtn.interactable = false;
-            heartAdBtn.interactable = false;
-            absenceAdBtn.interactable = false;
+            if (!AdsInitializer.instance.isInitialize)
+                AdsInitializer.instance.InitializeAds();
+            isOnline = true;
         }
-        else if (Application.internetReachability == NetworkReachability.ReachableViaCarrierDataNetwork ||
-             Application.internetReachability == NetworkReachability.ReachableViaLocalAreaNetwork)
-        {
-            truckAdBtn.interactable = true;
-            coinAdBtn.interactable = true;
-            heartAdBtn.interactable = true;
-            absenceAdBtn.interactable = true;
-        }
+        else
+            isOnline = false;
+    }
+
+    public void AdBtnInternetCheck()
+    {
+        if (isOnline)
+            OnOnline();
+        else
+            OnOffline();
     }
 
     public static IEnumerator UpdateCurrentTime()
     {
-        if (Application.internetReachability == NetworkReachability.ReachableViaCarrierDataNetwork ||
-             Application.internetReachability == NetworkReachability.ReachableViaLocalAreaNetwork)
-        {
-            while (true)
+            while (isOnline)
             {
                 yield return new WaitForSeconds(30f);
                 UnityWebRequest request = new UnityWebRequest();
@@ -1440,25 +1436,20 @@ public class GameManager : MonoBehaviour
                     }
                 }
             }
-        }
-        else if (Application.internetReachability == NetworkReachability.NotReachable)
-        {
-            while (true)
+
+            while (!isOnline)
             {
                 yield return new WaitForSeconds(30f);
                 DateTime dateTime = DateTime.Now;
                 DataController.instance.gameData.currentTime = dateTime;
             }
-        }
-
     }
 
     public static IEnumerator TryGetCurrentTime()
     {
         while (DataController.instance.gameData.isPrework == false)
         {
-            if (Application.internetReachability == NetworkReachability.ReachableViaCarrierDataNetwork ||
-     Application.internetReachability == NetworkReachability.ReachableViaLocalAreaNetwork)
+            if (isOnline)
             {
                 UnityWebRequest request = new UnityWebRequest();
                 using (request = UnityWebRequest.Get("https://naver.com"))
@@ -1478,7 +1469,7 @@ public class GameManager : MonoBehaviour
                     }
                 }
             }
-            else if (Application.internetReachability == NetworkReachability.NotReachable)
+            else
             {
                 DateTime dateTime = DateTime.Now;
                 DataController.instance.gameData.currentTime = dateTime;
@@ -1502,6 +1493,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator CheckElapseTime() // 게임 복귀할때 
     {
+        yield return StartCoroutine(InternetCheck());
         DataController.instance.gameData.isPrework = false;
         yield return StartCoroutine(TryGetCurrentTime());
 
@@ -1517,7 +1509,7 @@ public class GameManager : MonoBehaviour
             yield return StartCoroutine(CalculateTime());
         }
 
-        InternetCheck();
+        //InternetCheck();
         MidNightCheck();
         AbsenceCheck();
         AttendanceCheck.Inst.Attendance();
@@ -1525,11 +1517,12 @@ public class GameManager : MonoBehaviour
 
     IEnumerator PreWork() // 접속할 때 
     {
+        yield return StartCoroutine(InternetCheck());
         yield return StartCoroutine(TryGetCurrentTime()); //현재시간 불러오기 체크
         yield return StartCoroutine(CalculateTime());
 
         StartCoroutine(UpdateCurrentTime()); //30초마다 시간 갱신 시작
-        InternetCheck();
+        //InternetCheck();
         MidNightCheck(); // 자정시간 체크
         invokeDotori(); // 도토리 텍스트 갱신
         AbsenceCheck(); // 부재중 시간 체크
@@ -1663,6 +1656,9 @@ public class GameManager : MonoBehaviour
         DisableObjColliderAll();
         absenceBlackPanel.GetComponent<PanelAnimation>().Fadein();
         absencePanel.GetComponent<PanelAnimation>().OpenScale();
+
+        if(!isOnline)
+            add_receive_btn.interactable = false;
     }
     //광고보고 2배받기
     public void OnclickAdBtn()
@@ -1701,7 +1697,6 @@ public class GameManager : MonoBehaviour
 
     public void InitAbsenceReward()
     {
-        //DataController.instance.gameData.isAbsence = true; // 부재중 보상 받았음
         DataController.instance.gameData.rewardAbsenceTime = TimeSpan.FromSeconds(0); // 부재중 시간 초기화
         EnableObjColliderAll();
     }

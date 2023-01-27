@@ -11,8 +11,13 @@ public class AdHeart : MonoBehaviour
     public Text adHeartText;
     public Text remainAdText;
 
+    void Awake()
+    {
+        GameManager.instance.OnOnline += HeartAdCountCheck;
+        GameManager.instance.OnOffline += AdBtnOff;
+    }
 
-    public void OnEnable()
+    public void HeartAdCountCheck()
     {
         if (DataController.instance.gameData.heartAdCnt > 0)
         {
@@ -25,6 +30,12 @@ public class AdHeart : MonoBehaviour
         }
         remainAdText.text = $"¿À´Ã ³²Àº È½¼ö : {DataController.instance.gameData.heartAdCnt}";
     }
+
+    public void AdBtnOff()
+    {
+        adHeartBtn.interactable = false;
+    }
+
 
     public void OnClickPlusHeartBtn()
     {

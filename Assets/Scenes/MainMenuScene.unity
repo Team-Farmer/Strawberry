@@ -9171,6 +9171,7 @@ MonoBehaviour:
   androidGameId: 4597599
   iosGameId: 4597598
   isTestMode: 1
+  isInitialize: 0
 --- !u!4 &274168414
 Transform:
   m_ObjectHideFlags: 0
@@ -46154,18 +46155,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 1
           m_CallState: 2
-        - m_Target: {fileID: 496606690}
-          m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-          m_MethodName: InternetCheck
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
 --- !u!1 &1221325161
 GameObject:
   m_ObjectHideFlags: 0
@@ -60295,7 +60284,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 496606690}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: InternetCheck
+        m_MethodName: AdBtnInternetCheck
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -65775,7 +65764,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 496606690}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: InternetCheck
+        m_MethodName: AdBtnInternetCheck
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -72615,7 +72604,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.15065816, y: 0.09858333}
   m_AnchorMax: {x: 0.15065816, y: 0.09858333}
-  m_AnchoredPosition: {x: -96.00003, y: -86.99988}
+  m_AnchoredPosition: {x: -96, y: -87}
   m_SizeDelta: {x: 195.0152, y: 180}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1973577414
@@ -76873,7 +76862,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.15065816, y: 0.09858333}
   m_AnchorMax: {x: 0.15065816, y: 0.09858333}
-  m_AnchoredPosition: {x: -96.00003, y: -86.99988}
+  m_AnchoredPosition: {x: -96, y: -87}
   m_SizeDelta: {x: 195.0152, y: 180}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &2037819671
