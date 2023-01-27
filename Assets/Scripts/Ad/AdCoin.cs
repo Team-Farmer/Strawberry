@@ -17,11 +17,18 @@ public class AdCoin : MonoBehaviour
         GameManager.instance.OnOffline += AdBtnOff;
     }
 
+    void OnEnable()
+    {
+        GameManager.instance.OnOnline += CoinAdCountCheck;
+        GameManager.instance.OnOffline += AdBtnOff;
+    }
+
     public void CoinAdCountCheck()
     {
         if (DataController.instance.gameData.coinAdCnt > 0)
         {
             adCoinText.text = "광고를 시청하고\n코인 " + (500 * (DataController.instance.gameData.researchLevelAv + 1)) + "A를 받을까요?";
+            adCoinBtn.interactable = true;
         }
         else
         {
@@ -34,6 +41,7 @@ public class AdCoin : MonoBehaviour
     public void AdBtnOff()
     {
         adCoinBtn.interactable = false;
+        adCoinText.text = "인터넷을\n연결해주세요!";
     }
 
     public void OnClickPlusCoinBtn()

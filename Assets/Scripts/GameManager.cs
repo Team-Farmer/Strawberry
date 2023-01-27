@@ -168,7 +168,7 @@ public class GameManager : MonoBehaviour
     {
         setChallenge();
 
-        
+
     }
     void Start()
     {
@@ -443,6 +443,9 @@ public class GameManager : MonoBehaviour
         truckCountMaxText.text = "/ " + Globalvariable.instance.truckCntLevel[3, DataController.instance.gameData.newBerryResearchAble].ToString();
         ShowCoinText(truckCoinText, DataController.instance.gameData.truckCoin);
         ShowCoinText(truckCoinBonusText, bonusTruckCoin);
+
+        if (!isOnline)
+            truckAdBtn.interactable = false;
     }
 
     Stem GetStem(int idx)
@@ -1394,19 +1397,31 @@ public class GameManager : MonoBehaviour
 
     public static IEnumerator InternetCheck()
     {
-        UnityWebRequest request = new UnityWebRequest("https://www.naver.com");
-        yield return request.SendWebRequest();
-        if (request.isDone)
+        UnityWebRequest uwr = UnityWebRequest.Get("http://naver.com");
+        yield return uwr.SendWebRequest();
+        if (uwr.result != UnityWebRequest.Result.Success)
+        {
+            isOnline = false;
+            yield return null;
+
+        }
+        else
         {
             if (!AdsInitializer.instance.isInitialize)
                 AdsInitializer.instance.InitializeAds();
+
             isOnline = true;
         }
-        else
-            isOnline = false;
+
+        //Debug.Log(isOnline);
     }
 
-    public void AdBtnInternetCheck()
+    public bool GetisOnline()
+    {
+        return isOnline;
+    }
+
+    public void GoodsAdBtnInternetCheck()
     {
         if (isOnline)
             OnOnline();
@@ -1414,35 +1429,48 @@ public class GameManager : MonoBehaviour
             OnOffline();
     }
 
+    public void TruckInternetCheck()
+    {
+        if (!isOnline)
+            truckAdBtn.interactable = false;
+    }
+
     public static IEnumerator UpdateCurrentTime()
     {
-            while (isOnline)
+        while (isOnline)
+        {
+            yield return new WaitForSeconds(30f);
+            UnityWebRequest request = new UnityWebRequest();
+            using (request = UnityWebRequest.Get("https://naver.com"))
             {
-                yield return new WaitForSeconds(30f);
-                UnityWebRequest request = new UnityWebRequest();
-                using (request = UnityWebRequest.Get("https://naver.com"))
-                {
-                    yield return request.SendWebRequest();
+                yield return request.SendWebRequest();
 
-                    if (request.result == UnityWebRequest.Result.ConnectionError)
-                    {
-                        Debug.Log(request.error + "오류 났다 야");
-                    }
-                    else
-                    {
-                        string date = request.GetResponseHeader("date");
-                        DateTime dateTime = DateTime.Parse(date);
-                        DataController.instance.gameData.currentTime = dateTime;
-                    }
+                if (request.result == UnityWebRequest.Result.ConnectionError)
+                {
+                    Debug.Log(request.error + "오류 났다 야");
+                }
+                else
+                {
+                    string date = request.GetResponseHeader("date");
+                    DateTime dateTime = DateTime.Parse(date);
+                    DataController.instance.gameData.currentTime = dateTime;
                 }
             }
+            InternetCheck();
+        }
 
-            while (!isOnline)
-            {
-                yield return new WaitForSeconds(30f);
-                DateTime dateTime = DateTime.Now;
-                DataController.instance.gameData.currentTime = dateTime;
-            }
+        while (!isOnline)
+        {
+            yield return new WaitForSeconds(30f);
+            DateTime dateTime = DateTime.Now;
+            DataController.instance.gameData.currentTime = dateTime;
+        }
+
+
+        InternetCheck();
+        if (!AdsInitializer.instance.isInitialize)
+            AdsInitializer.instance.InitializeAds();
+
     }
 
     public static IEnumerator TryGetCurrentTime()
@@ -1569,7 +1597,7 @@ public class GameManager : MonoBehaviour
         else if (checkTime < 60 && DataController.instance.gameData.isStoreOpend) // 60분 미만
         {
             DataController.instance.gameData.rewardAbsenceTime = TimeSpan.FromSeconds(0);
-            Debug.Log("부재중 60분 미만");
+            //Debug.Log("부재중 60분 미만");
         }
     }
 
@@ -1653,13 +1681,21 @@ public class GameManager : MonoBehaviour
         }
 
         // 보상 패널 띄우기
-        DisableObjColliderAll();
+
         absenceBlackPanel.GetComponent<PanelAnimation>().Fadein();
         absencePanel.GetComponent<PanelAnimation>().OpenScale();
+        Invoke("DisColDelay", 0.5f);
 
-        if(!isOnline)
+
+        if (!isOnline)
             add_receive_btn.interactable = false;
     }
+
+    void DisColDelay()
+    {
+        DisableObjColliderAll();
+    }
+
     //광고보고 2배받기
     public void OnclickAdBtn()
     {

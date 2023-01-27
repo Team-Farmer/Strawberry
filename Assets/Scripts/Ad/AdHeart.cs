@@ -17,11 +17,18 @@ public class AdHeart : MonoBehaviour
         GameManager.instance.OnOffline += AdBtnOff;
     }
 
+    void OnEnable()
+    {
+        GameManager.instance.OnOnline += HeartAdCountCheck;
+        GameManager.instance.OnOffline += AdBtnOff;
+    }
+
     public void HeartAdCountCheck()
     {
         if (DataController.instance.gameData.heartAdCnt > 0)
         {
             adHeartText.text = "광고를 시청하고\n하트 " + (5 * (DataController.instance.gameData.researchLevelAv + 1)) + "개를 받을까요?";
+            adHeartBtn.interactable = true;
         }
         else
         {
@@ -34,6 +41,8 @@ public class AdHeart : MonoBehaviour
     public void AdBtnOff()
     {
         adHeartBtn.interactable = false;
+        adHeartText.text = "인터넷을\n연결해주세요!";
+
     }
 
 
