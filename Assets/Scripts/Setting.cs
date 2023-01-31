@@ -57,7 +57,7 @@ public class Setting : MonoBehaviour
     public void SetCloudSave()
     {
         //Debug.Log($"로그인 상태 : {GPGSManager.instance.isLogined()}");
-        cloudSave_btn.interactable = GPGSManager.instance.isLogined();
+        cloudSave_btn.interactable = false;//GPGSManager.instance.isLogined();
         cloudLoad_btn.interactable = false;//GPGSManager.instance.isLogined();
 
         //텍스트 컨트롤
