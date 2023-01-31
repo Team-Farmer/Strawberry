@@ -757,7 +757,7 @@ public class GameManager : MonoBehaviour
                 else if (DataController.instance.gameData.researchLevelAv < 10) // 연구 레벨이 10레벨 이하라면
                     cost *= 2;
                 else
-                    cost *= 3;
+                    cost *= 4;
 
                 if (cost <= DataController.instance.gameData.coin)
                 {
