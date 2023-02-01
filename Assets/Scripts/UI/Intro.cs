@@ -25,9 +25,6 @@ public class Intro : MonoBehaviour
         if (Intro.instance == null)
             Intro.instance = this;
 
-        if (GooglePlayManager.Instance != null)
-            GooglePlayManager.Instance.UpdateApp();
-
         isEnd = false;
     }
 
