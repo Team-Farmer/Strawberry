@@ -752,6 +752,7 @@ public class GameManager : MonoBehaviour
             {
                 int cost = PTJ.instance.Info[prefabNum].Price * DataController.instance.gameData.PTJSelectNum[1];
 
+                // PTJ 스크립트도 변경
                 if (DataController.instance.gameData.researchLevelAv < 5) // 연구 레벨이 5레벨 이하라면
                     cost *= 1;
                 else if (DataController.instance.gameData.researchLevelAv < 10) // 연구 레벨이 10레벨 이하라면
