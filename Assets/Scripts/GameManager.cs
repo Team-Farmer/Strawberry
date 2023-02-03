@@ -1403,18 +1403,11 @@ public class GameManager : MonoBehaviour
         if (uwr.result != UnityWebRequest.Result.Success)
         {
             isOnline = false;
-            yield return null;
-
         }
         else
         {
-            if (!AdsInitializer.instance.isInitialize)
-                AdsInitializer.instance.InitializeAds();
-
             isOnline = true;
         }
-
-        //Debug.Log(isOnline);
     }
 
     public bool GetisOnline()
@@ -1456,8 +1449,11 @@ public class GameManager : MonoBehaviour
                     DateTime dateTime = DateTime.Parse(date);
                     DataController.instance.gameData.currentTime = dateTime;
                 }
+
+                if (request.result != UnityWebRequest.Result.Success)
+                    isOnline = false;
             }
-            InternetCheck();
+
         }
 
         while (!isOnline)
@@ -1465,13 +1461,11 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(30f);
             DateTime dateTime = DateTime.Now;
             DataController.instance.gameData.currentTime = dateTime;
+            InternetCheck();
         }
 
-
-        InternetCheck();
         if (!AdsInitializer.instance.isInitialize)
             AdsInitializer.instance.InitializeAds();
-
     }
 
     public static IEnumerator TryGetCurrentTime()
